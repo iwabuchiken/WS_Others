@@ -14,7 +14,7 @@ r.245-115.5#1.elec-conductivity.rb
 =end
 
 ###############################
-   prep data for => def: gen_elec_conductivity
+#   prep data for => def: gen_elec_conductivity
 #
 # How to prepare the data file
 #

@@ -1,0 +1,17 @@
+program file path = C:\WORKS_2\WS\WS_Others\prog\D-5\1#\get_folder_list.rb
+version = 1.0
+list file created at = 20161223_221017
+dir path = C:/WORKS_2/WS/WS_Others/prog/D-5/1#
+dirs = 0
+files = 6
+
+<directories> 0
+
+
+<files> 6
+directory_list.20161223_220336.txt
+directory_list.20161223_220409.txt
+directory_list.20161223_220434.txt
+directory_list.20161223_220824.txt
+directory_list.20161223_220848.txt
+get_folder_list.rb
