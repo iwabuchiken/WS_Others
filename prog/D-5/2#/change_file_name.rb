@@ -12,6 +12,7 @@ change_file_name.rb
 =end
 
 require 'pathname'
+require 'fileutils'
 
 
 #ref http://stackoverflow.com/questions/837123/adding-a-directory-to-load-path-ruby
@@ -39,6 +40,11 @@ def change_file_names
 #  dpath = "C:\\WORKS_2\\WS\\WS_Processing\\1#\\sketch_1_3_20161227_141618\\movie_frame.20161228_122543"
   
   result = get_dir_list(dpath, "files", sort = true)
+  
+  # sort ==> reverse
+  #ref http://stackoverflow.com/questions/22639201/sorting-an-array-in-reverse-order answered Mar 25 '14 at 15:35
+  result.reverse!
+#  result.sort_reverse!
   
 #  p result
   
@@ -103,23 +109,41 @@ def change_file_names
     
     p num_new
     
+    num_new_final = num_new + result.size
     
-    count += 1
+    puts "[#{File.basename(__FILE__)}:#{__LINE__}] num_new_final => #{num_new_final}"
     
-    if count > 5
-#    if count > 10
-      
-      break
-      
-    end
     
-  end
-  
-
-#  puts "[#{__LINE__}] files => #{result.size.to_s}"
-#  puts "[#{__LINE__}] dpath => #{dpath}"
-  
-#  print "[#{__LINE__}] yes"
+    #ref https://docs.ruby-lang.org/ja/latest/doc/print_format.html
+#    fname_dst = num_new_final
+    fname_dst = sprintf("%s.%s.%04d.%s", tokens[0], tokens[1], num_new_final, tokens[3])
+    
+#    p sprintf("%s.%s.%04d.%s", tokens[0], tokens[1], fname_dst, tokens[3])
+#    p sprintf("%s.%s.%04d.%s", tokens[0], tokens[1], num_new_final, tokens[3])
+#    p sprintf("%s.%s.%04d.%s", tokens[0], tokens[1], num_new, tokens[3])
+    
+    # copy file
+    #ref join http://stackoverflow.com/questions/597488/how-to-do-a-safe-join-pathname-in-ruby
+    #ref copy http://stackoverflow.com/questions/9519645/copying-a-file-from-one-directory-to-another-with-ruby
+    FileUtils.cp(File.join(dpath, fname_src), File.join(dpath, fname_dst))
+    
+    puts "[#{File.basename(__FILE__)}:#{__LINE__}] file copied => dst = #{fname_dst}"
+    
+    ################################
+    #	
+    #	stopper
+    #
+    ################################
+#    count += 1
+#    
+#    if count > 5
+##    if count > 10
+#      
+#      break
+#      
+#    end
+    
+  end#result.each do |name|
   
 end#change_file_names
 
