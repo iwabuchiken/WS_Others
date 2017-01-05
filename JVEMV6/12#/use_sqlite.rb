@@ -150,14 +150,16 @@ def update_single_record
   #	build sql statement
   #
   ################################
-  fname = line[0].split("=")[1]
-  tags = line[3].split("=")[1]
-  
-  p line
+#  fname = line[0].split("=")[1]
+#  tags = line[3].split("=")[1]
+  fname = line[0].split("=")[1].strip
+  tags = line[3].split("=")[1].strip
+
+#  p line
   
   #ref http://ref.xaio.jp/ruby/classes/string/percent
   sql = "UPDATE ifm11 SET tags = '%s' WHERE file_name = '%s';" % [tags, fname]
-  sql = "UPDATE ifm11 SET tags = '-' WHERE file_name = '2017-01-05_10-47-41_000.jpg';"
+#  sql = "UPDATE ifm11 SET tags = '-' WHERE file_name = '2017-01-05_10-47-41_000.jpg';"
 #  sql = "UPDATE ifm11 SET tags = \"%s\" WHERE file_name = \"%s\";" % [tags, fname]
 #  sql = "UPDATE ifm11 SET tags = %s WHERE file_name = %s;" % tags, fname
 #  sql = "UPDATE ifm11 SET tags = %s WHERE file_name = %s;" % tags, fname
@@ -171,8 +173,8 @@ def update_single_record
   #ref http://www.ownway.info/Ruby/sqlite3-ruby/about
   db = SQLite3::Database.new(fname)
 
-  cursor = db.execute("UPDATE ifm11 SET tags = '?' WHERE file_name = '?';" % [tags, fname])
-#  cursor = db.execute(sql)
+#  cursor = db.execute("UPDATE ifm11 SET tags = '?' WHERE file_name = '?';" % [tags, fname])
+  cursor = db.execute(sql)
   
   p cursor  
   
