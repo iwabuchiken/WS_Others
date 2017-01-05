@@ -131,12 +131,13 @@ def update_single_record
   
   #ref http://ref.xaio.jp/ruby/classes/string/percent
   sql = "UPDATE ifm11 SET tags = '%s' WHERE file_name = '%s';" % [tags, fname]
+  sql = "UPDATE ifm11 SET tags = '-' WHERE file_name = '2017-01-05_10-47-41_000.jpg';"
 #  sql = "UPDATE ifm11 SET tags = \"%s\" WHERE file_name = \"%s\";" % [tags, fname]
 #  sql = "UPDATE ifm11 SET tags = %s WHERE file_name = %s;" % tags, fname
 #  sql = "UPDATE ifm11 SET tags = %s WHERE file_name = %s;" % tags, fname
   
   #debug
-  puts "[#{File.basename(__FILE__)}:#{__LINE__}] sql => #{sql}"
+#  puts "[#{File.basename(__FILE__)}:#{__LINE__}] sql => #{sql}"
 
   # execute
   fname = "C:/WORKS_2/WS/Eclipse_Luna/Cake_IFM11/app/Lib/data/ifm11_backup_20160110_080900.bk"
@@ -144,7 +145,8 @@ def update_single_record
   #ref http://www.ownway.info/Ruby/sqlite3-ruby/about
   db = SQLite3::Database.new(fname)
 
-  cursor = db.execute(sql)
+  cursor = db.execute("UPDATE ifm11 SET tags = '?' WHERE file_name = '?';" % [tags, fname])
+#  cursor = db.execute(sql)
   
   p cursor  
   
