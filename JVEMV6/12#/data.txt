@@ -1,4 +1,4 @@
 start=2017-01-05_01-01-51_000.jpg
 end=2017-01-05_10-47-41_000.jpg
 memos=
-tags=yes
+tags=yes,yes

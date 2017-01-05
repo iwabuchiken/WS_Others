@@ -84,8 +84,10 @@ def test_sqlite_2
   f.close
   
   # extract strings
-  fname = line[0].split("=")[1]
-  tags = line[3].split("=")[1]
+  fname = line[0].split("=")[1].strip
+  tags = line[3].split("=")[1].strip
+#  fname = line[0].split("=")[1]
+#  tags = line[3].split("=")[1]
 
   
   ################################
