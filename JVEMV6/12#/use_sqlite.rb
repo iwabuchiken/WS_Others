@@ -75,7 +75,8 @@ def test_sqlite_2
   #	db
   #
   ################################
-  sql = "UPDATE ifm11 SET tags = '-' WHERE file_name = '2017-01-05_10-47-41_000.jpg';"
+  sql = "UPDATE ifm11 SET tags = '++' WHERE file_name = '2017-01-05_10-47-41_000.jpg';"
+#  sql = "UPDATE ifm11 SET tags = '-' WHERE file_name = '2017-01-05_10-47-41_000.jpg';"
 #  sql = "SELECT * FROM ifm11 WHERE _id > 18586"
   
   cursor = db.execute(sql)
@@ -157,9 +158,9 @@ end#update_single_record
 
 def exec
 
-  update_single_record
+#  update_single_record
   
-#  test_sqlite_2
+  test_sqlite_2
 #  test_sqlite
   
   puts "[#{File.basename(__FILE__)}:#{__LINE__}] done!"
