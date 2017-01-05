@@ -72,12 +72,34 @@ def test_sqlite_2
   
   ################################
   #	
+  #	get: data
+  #
+  ################################
+  f = File.open("data.txt", "r")
+  
+  line = f.readlines
+#  line = f.read
+  
+  # close file
+  f.close
+  
+  # extract strings
+  fname = line[0].split("=")[1]
+  tags = line[3].split("=")[1]
+
+  
+  ################################
+  #	
   #	db
   #
   ################################
-  sql = "UPDATE ifm11 SET tags = '++' WHERE file_name = '2017-01-05_10-47-41_000.jpg';"
+  sql = "UPDATE ifm11 SET tags = '%s' WHERE file_name = '2017-01-05_10-47-41_000.jpg';" % tags
+#  sql = "UPDATE ifm11 SET tags = '++' WHERE file_name = '2017-01-05_10-47-41_000.jpg';"
 #  sql = "UPDATE ifm11 SET tags = '-' WHERE file_name = '2017-01-05_10-47-41_000.jpg';"
 #  sql = "SELECT * FROM ifm11 WHERE _id > 18586"
+  
+  puts "[#{File.basename(__FILE__)}:#{__LINE__}] sql => #{sql}"
+  
   
   cursor = db.execute(sql)
 #  cursor = db.execute("SELECT * FROM ifm11 WHERE _id < 10")
