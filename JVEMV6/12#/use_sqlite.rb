@@ -14,6 +14,13 @@ use_sqlite.rb
 
 =end
 
+=begin
+
+sqlite3 C:\WORKS_2\WS\Eclipse_Luna\Cake_IFM11\app\Lib\data\ifm11_backup_20160110_080900.bk
+SELECT * FROM ifm11 WHERE file_name = '2017-01-05_10-47-41_000.jpg' ;
+
+=end
+
 FPATH = "C:/WORKS_2/WS/WS_Others/prog/D-5/2#"
 
 #ref http://stackoverflow.com/questions/837123/adding-a-directory-to-load-path-ruby
@@ -91,11 +98,66 @@ def test_sqlite_2
   
 end#test_sqlite_2
 
+def update_single_record
+  
+  puts "[#{File.basename(__FILE__)}:#{__LINE__}] updating..."
+  
+  ################################
+  #	
+  #	read file
+  #
+  ################################
+  f = File.open("data.txt", "r")
+  
+  line = f.readlines
+#  line = f.read
+  
+  ################################
+  #	
+  #	close file
+  #
+  ################################
+  f.close
+  
+  ################################
+  #	
+  #	build sql statement
+  #
+  ################################
+  fname = line[0].split("=")[1]
+  tags = line[3].split("=")[1]
+  
+  p line
+  
+  #ref http://ref.xaio.jp/ruby/classes/string/percent
+  sql = "UPDATE ifm11 SET tags = '%s' WHERE file_name = '%s';" % [tags, fname]
+#  sql = "UPDATE ifm11 SET tags = \"%s\" WHERE file_name = \"%s\";" % [tags, fname]
+#  sql = "UPDATE ifm11 SET tags = %s WHERE file_name = %s;" % tags, fname
+#  sql = "UPDATE ifm11 SET tags = %s WHERE file_name = %s;" % tags, fname
+  
+  #debug
+  puts "[#{File.basename(__FILE__)}:#{__LINE__}] sql => #{sql}"
 
+  # execute
+  fname = "C:/WORKS_2/WS/Eclipse_Luna/Cake_IFM11/app/Lib/data/ifm11_backup_20160110_080900.bk"
+  
+  #ref http://www.ownway.info/Ruby/sqlite3-ruby/about
+  db = SQLite3::Database.new(fname)
+
+  cursor = db.execute(sql)
+  
+  p cursor  
+  
+  # close db
+  db.close
+  
+end#update_single_record
 
 def exec
 
-  test_sqlite_2
+  update_single_record
+  
+#  test_sqlite_2
 #  test_sqlite
   
   puts "[#{File.basename(__FILE__)}:#{__LINE__}] done!"
