@@ -57,7 +57,7 @@ def get_folder_list
   
   puts
   puts "[#{__LINE__}] directory => #{dpath}" 
-  
+
   puts
   puts "[#{__LINE__}] folders ...."
   p dirs
