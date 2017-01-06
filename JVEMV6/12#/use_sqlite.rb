@@ -44,8 +44,8 @@ $FNAME_ONE_ENTRY  = "data.txt"
 $FNAME_RANGE      = "range.txt"
 $FNAME_MULTIPLE      = "multiple.csv"
 
-$FNAME_DB = "C:/WORKS_2/WS/Eclipse_Luna/Cake_IFM11/app/Lib/data/#ifm11_backup_20160110_080900.bk.for-use"
-
+#$FNAME_DB = "C:/WORKS_2/WS/Eclipse_Luna/Cake_IFM11/app/Lib/data/#ifm11_backup_20160110_080900.bk.for-use"
+$FNAME_DB = "C:/WORKS_2/WS/Eclipse_Luna/Cake_IFM11/app/Lib/data/ifm11_backup_20160110_080900.bk"
 
 
 ################################
@@ -285,7 +285,9 @@ def update_records__multiple
 #  csv_data = CSV.read($FNAME_MULTIPLE, headers: true, force_quotes: true)  #=> w
 #  csv_data = CSV.read($FNAME_MULTIPLE, headers: true)
   #ref http://stackoverflow.com/questions/7078974/how-to-change-the-encoding-during-csv-parsing-in-rails no=12
-  csv_data = CSV.read($FNAME_MULTIPLE, headers: true, encoding: 'utf-8')  #=> w.
+#  csv_data = CSV.read($FNAME_MULTIPLE, headers: true, encoding: 'utf-8')  #=> w.
+#  csv_data = CSV.read($FNAME_MULTIPLE, headers: true, encoding: 'utf-8', col_sep: '\t')  #=> n.w.
+  csv_data = CSV.read($FNAME_MULTIPLE, headers: true, encoding: 'utf-8', col_sep: "\t")  #=> w.
   
   
   ################################
@@ -309,34 +311,34 @@ def update_records__multiple
   csv_data.each do |data|
     
 #    tags = data["tags"].encode #=> w.
-    tags = data["tags"] #=> w.
+    memos = data["memos"] #=> w.
     fname = data["file_name"]
 
           
     
 
     # validate
-    if tags == "" or tags == nil
+    if memos == "" or memos == nil
       
-      puts "[#{File.basename(__FILE__)}:#{__LINE__}] skipping the line ... (tag is '#{tags}')"
+      puts "[#{File.basename(__FILE__)}:#{__LINE__}] skipping the line ... (memo is '#{memos}')"
       
       next
       
     end
 
-    sql = "UPDATE ifm11 SET tags = '%s' "\
+    sql = "UPDATE ifm11 SET memos = '%s' "\
           "WHERE file_name = '%s';"\
-          % [tags, fname]
+          % [memos, fname]
           
     puts "[#{File.basename(__FILE__)}:#{__LINE__}] sql => #{sql}"
     
     #test
-    tags = tags.gsub("\/","")
+#    tags = tags.gsub("\/","")
 #    tags = tags.gsub("\\","")
 #    tags = tags.gsub(/\\/,"")
 #    tags = tags.gsub(/\\/,"")
     
-    puts "[#{File.basename(__FILE__)}:#{__LINE__}] sql => #{sql}"
+#    puts "[#{File.basename(__FILE__)}:#{__LINE__}] sql => #{sql}"
   
     cursor = db.execute(sql)
     puts "[#{File.basename(__FILE__)}:#{__LINE__}] db => executed"
