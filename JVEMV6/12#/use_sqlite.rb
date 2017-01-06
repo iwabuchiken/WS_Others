@@ -392,14 +392,39 @@ def generate_entries_file
   
 #  CSV.open('test.csv','w', encoding: 'utf-8', col_sep: "\t") do |test|
   #ref http://qiita.com/shizuma/items/7719172eb5e8c29a7d6e
-  CSV.generate do |csv|
+#  p CSV.generate do |csv|  #=> "`generate': no block given"
+  result = CSV.generate do |csv|
     
     csv << ["A","B","C"]
+    csv << ["milk","coffee","water"]
     
 #  CSV.open('test.csv','w') do |test|
 #   test << ["A","B","C"]
 #   test << ["milk","coffee","water"]
   end
+  
+  p result
+  
+  # write file
+  f = File.open("abc.csv", 'w')
+  
+  f.puts(" UTF-8 に変換できなかった場合は")
+  
+  f.close
+  
+#  File.open("abc.csv", 'w') do |file|
+##  File.open("intro.#{get_time_label("serial")}.csv", 'w') do |file|
+##  File.open("intro.csv", 'w') do |file|
+#    
+#    #debug
+#    puts "[#{File.basename(__FILE__)}:#{__LINE__}] file => opened"
+#    
+#    
+#    file.write("このクラスは CSV ファイルやデータに対する完全なインターフェイスを提供します。")
+##    file.write(result)
+##    file.write(intro_csv)
+#    
+#  end
   
   #debug
   puts "[#{File.basename(__FILE__)}:#{__LINE__}] write csv => done"
@@ -464,6 +489,17 @@ def exec
     return
     
   elsif ARGV[0] == "f"
+
+#    #test    #=> w.
+#    puts "[#{File.basename(__FILE__)}:#{__LINE__}] writing a file..."
+#        
+#    File.open("intro.csv", 'w') do |file|
+#      
+#      file.write("出力は以下のような感じ。")
+#    #    file.write(intro_csv)
+#      
+#    end
+
     
     generate_entries_file
     
@@ -474,6 +510,7 @@ def exec
   
 #  test_sqlite_2
 #  test_sqlite
+  
   
   puts "[#{File.basename(__FILE__)}:#{__LINE__}] done!"
   
