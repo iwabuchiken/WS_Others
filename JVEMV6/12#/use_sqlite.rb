@@ -391,9 +391,14 @@ def generate_entries_file
 #  csv_data = CSV.write($FNAME_ENTRIES, headers: true, encoding: 'utf-8', col_sep: "\t")  #=> w.
   
 #  CSV.open('test.csv','w', encoding: 'utf-8', col_sep: "\t") do |test|
-  CSV.open('test.csv','w') do |test|
-   test << ["A","B","C"]
-   test << ["milk","coffee","water"]
+  #ref http://qiita.com/shizuma/items/7719172eb5e8c29a7d6e
+  CSV.generate do |csv|
+    
+    csv << ["A","B","C"]
+    
+#  CSV.open('test.csv','w') do |test|
+#   test << ["A","B","C"]
+#   test << ["milk","coffee","water"]
   end
   
   #debug
