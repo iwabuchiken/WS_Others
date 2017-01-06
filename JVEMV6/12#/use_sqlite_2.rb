@@ -32,13 +32,116 @@ $LOAD_PATH.unshift(FPATH) unless $LOAD_PATH.include?(libdir)
 
 require 'utils.20161228_123529'
 
+################################
+# 
+# variables
+#
+################################
+#ref http://qiita.com/kansiho/items/f5ab9b6eeb990e6af327
+$FNAME_ONE_ENTRY  = "data.txt"
+$FNAME_RANGE      = "range.txt"
+$FNAME_MULTIPLE      = "multiple.csv"
+$FNAME_ENTRIES      = "entries.csv"
+
+#$FNAME_DB = "C:/WORKS_2/WS/Eclipse_Luna/Cake_IFM11/app/Lib/data/#ifm11_backup_20160110_080900.bk.for-use"
+$FNAME_DB = "C:/WORKS_2/WS/Eclipse_Luna/Cake_IFM11/app/Lib/data/ifm11_backup_20160110_080900.bk"
+
+################################
+#	
+#	methods
+#
+################################
+def show_help
+
+  puts "<Usage>"  
+  puts "\tuse_sqlite.rb [type]"  
+  
+  puts "<types>"
+  puts "\tf\tgenerate csv file with entries ('entries.csv')"
+  puts "\tm\trecord multiple items ('multiple.csv')"
+  puts "\tr\trecord items from a range of period ('range.txt')"
+  puts "\ts\trecord a single item ('one_entry.txt')"
+  
+end#show_help
+
+
+
+def update_records__multiple
+
+  puts "[#{File.basename(__FILE__)}:#{__LINE__}] updating..."
+  
+  ################################
+  # 
+  # read file
+  #
+  ################################
+  #ref http://qiita.com/shizuma/items/7719172eb5e8c29a7d6e#csvread
+  csv_data = CSV.read($FNAME_MULTIPLE, headers: true, encoding: 'utf-8', col_sep: "\t")  #=> w.
+  
+  ################################
+  # 
+  # build sql statement
+  #
+  ################################
+  # execute
+  fname_db = $FNAME_DB
+#  fname_db = "C:/WORKS_2/WS/Eclipse_Luna/Cake_IFM11/app/Lib/data/#ifm11_backup_20160110_080900.bk.for-use"
+#  fname = "C:/WORKS_2/WS/Eclipse_Luna/Cake_IFM11/app/Lib/data/ifm11_backup_20160110_080900.bk"
+  
+  #ref http://www.ownway.info/Ruby/sqlite3-ruby/about
+  db = SQLite3::Database.new(fname_db)
+
+  #test
+  #ref http://ref.xaio.jp/ruby/classes/string/encode
+  Encoding.default_internal = "utf-8"
+
+  csv_data.each do |data|
+    
+    memos = data["memos"] #=> w.
+    fname = data["file_name"]
+
+    # validate
+    if memos == "" or memos == nil
+      
+      puts "[#{File.basename(__FILE__)}:#{__LINE__}] skipping the line ... (memo is '#{memos}')"
+      
+      next
+      
+    end
+
+    sql = "UPDATE ifm11 SET memos = '%s' "\
+          "WHERE file_name = '%s';"\
+          % [memos, fname]
+          
+    puts "[#{File.basename(__FILE__)}:#{__LINE__}] sql => #{sql}"
+    
+    #test
+#    tags = tags.gsub("\/","")
+#    tags = tags.gsub("\\","")
+#    tags = tags.gsub(/\\/,"")
+#    tags = tags.gsub(/\\/,"")
+    
+#    puts "[#{File.basename(__FILE__)}:#{__LINE__}] sql => #{sql}"
+  
+    cursor = db.execute(sql)
+    puts "[#{File.basename(__FILE__)}:#{__LINE__}] db => executed"
+      
+  end#csv_data.each do |data|
+
+  # close db
+  db.close
+  
+  puts "[#{File.basename(__FILE__)}:#{__LINE__}] db => closed"
+
+end#update_records__multiple
+
 def generate_entries_file
   
 #  puts "[#{File.basename(__FILE__)}:#{__LINE__}] generating..."
 
   ################################
-  # 
-  # files list
+  #	
+  #	files list
   #
   ################################
   dpath = "C:/Users/iwabuchiken/data/images/iphone"
@@ -50,8 +153,8 @@ def generate_entries_file
   p files[0]
   
   ################################
-  # 
-  # write: csv
+  #	
+  #	write: csv
   #
   ################################
 #  csv_data = CSV.write($FNAME_ENTRIES, headers: true, encoding: 'utf-8', col_sep: "\t")  #=> w.
@@ -59,38 +162,47 @@ def generate_entries_file
 #  CSV.open('test.csv','w', encoding: 'utf-8', col_sep: "\t") do |test|
   #ref http://qiita.com/shizuma/items/7719172eb5e8c29a7d6e
 #  p CSV.generate do |csv|  #=> "`generate': no block given"
-  result = CSV.generate do |csv|
-    
-    csv << ["A","B","C"]
-    csv << ["milk","coffee","water"]
+#  result = CSV.generate do |csv|
+  result = CSV.generate() do |csv|
+   
+    files.each_with_index do |name, i|
+      
+      csv << [i + 1, name]
+      
+    end#files.each do |name|
+     
+#    csv << ["A","B","C"]
+#    csv << ["milk","coffee","water"]
     
 #  CSV.open('test.csv','w') do |test|
 #   test << ["A","B","C"]
 #   test << ["milk","coffee","water"]
-  end
+  end#result = CSV.generate do |csv|
   
-  p result
+#  p result
   
   # write file
-  f = File.open("abc.csv", 'w')
-  
-  f.puts(" UTF-8 に変換できなかった場合は")
-  
-  f.close
+#  f = File.open("abc.csv", 'w')
+#  
+#  f.puts(" UTF-8 に変換できなかった場合は")
+#  
+#  f.close
   
 #  File.open("abc.csv", 'w') do |file|
-##  File.open("intro.#{get_time_label("serial")}.csv", 'w') do |file|
-##  File.open("intro.csv", 'w') do |file|
-#    
-#    #debug
-#    puts "[#{File.basename(__FILE__)}:#{__LINE__}] file => opened"
-#    
-#    
+  File.open("#{$FNAME_ENTRIES}.#{get_time_label()}.csv", 'w') do |file|
+#  File.open("intro.#{get_time_label()}.csv", 'w') do |file|
+#  File.open("intro.csv", 'w') do |file|
+    
+    #debug
+    puts "[#{File.basename(__FILE__)}:#{__LINE__}] file => opened"
+
+        
+    
 #    file.write("このクラスは CSV ファイルやデータに対する完全なインターフェイスを提供します。")
-##    file.write(result)
-##    file.write(intro_csv)
-#    
-#  end
+    file.write(result)
+#    file.write(intro_csv)
+    
+  end#File.open("intro.#{get_time_label()}.csv", 'w') do |file|
   
   #debug
   puts "[#{File.basename(__FILE__)}:#{__LINE__}] write csv => done"
@@ -112,15 +224,11 @@ def generate_entries_file
   
 end#generate_entries_file
 
-def test_file_io
-  
-end
-
 def exec
 
   ################################
-  # 
-  # validate: parameters
+  #	
+  #	validate: parameters
   #
   ################################
 #  p ARGV.size
@@ -129,63 +237,58 @@ def exec
     
     puts "[#{File.basename(__FILE__)}:#{__LINE__}] arguments needed"
     
-#    show_help
+    show_help
     
     return
     
   end
 
   ################################
-  # 
-  # one entry
+  #	
+  #	one entry
   #
   ################################
-  if ARGV[0] == "f"
+  if ARGV[0] == "s"
+    
+    update_single_record
+    
+    return
+    
+  elsif ARGV[0] == "r"
+    
+    update_records__range
 
-#    #test    #=> 
+    return
+    
+  elsif ARGV[0] == "m"
+    
+    update_records__multiple
+    
+    return
+    
+  elsif ARGV[0] == "f"
+
+#    #test    #=> w.
 #    puts "[#{File.basename(__FILE__)}:#{__LINE__}] writing a file..."
 #        
-#    File.open("xyz.csv", 'w') do |file|
+#    File.open("intro.csv", 'w') do |file|
 #      
 #      file.write("出力は以下のような感じ。")
 #    #    file.write(intro_csv)
 #      
 #    end
+
     
-#    generate_entries_file
-
-    dpath = "C:/Users/iwabuchiken/data/images/iphone"
-    type_name = "files"
-    
-    sort = true
-    
-    files_list = get_dir_list(dpath, type_name, sort)
-#    files_list = get_dir_list(dpath, type_name, sort = true)
-#    files = get_dir_list(dpath, type_name, sort = true)
-#    files = get_dir_list(dpath, type, sort = true)
-  
-    p files_list.size  
-    p files_list[0]
-#    p files.size  
-#    p files[0]
-
-        
-    File.open("abc.#{get_time_label()}.csv", 'w') do |file|
-#    File.open("abc.csv", 'w') do |file|
-#    File.open("xyz.csv", 'w') do |file|
-      
-      file.write("出力は以下のような感じ。")
-    #    file.write(intro_csv)
-      
-    end
-
-    #debug
-    puts "[#{File.basename(__FILE__)}:#{__LINE__}] write csv => done"
-
+    generate_entries_file
     
     return
     
   end
+#  update_single_record
+  
+#  test_sqlite_2
+#  test_sqlite
+  
   
   puts "[#{File.basename(__FILE__)}:#{__LINE__}] done!"
   
