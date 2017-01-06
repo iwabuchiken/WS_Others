@@ -76,8 +76,9 @@ def update_records__multiple
   #
   ################################
   #ref http://qiita.com/shizuma/items/7719172eb5e8c29a7d6e#csvread
-  csv_data = CSV.read($FNAME_MULTIPLE, headers: true, encoding: 'utf-8', col_sep: "\t")  #=> w.
-  
+  csv_data = CSV.read($FNAME_ENTRIES, headers: true, encoding: 'utf-8', col_sep: "\t")  #=> w.
+#  csv_data = CSV.read($FNAME_MULTIPLE, headers: true, encoding: 'utf-8', col_sep: "\t")  #=> w.
+
   ################################
   # 
   # build sql statement
@@ -149,6 +150,9 @@ def generate_entries_file
   
   files = get_dir_list(dpath, type, sort = true)
 
+  # sort ==> DESC
+  files.reverse!
+  
   p files.size  
   p files[0]
   
@@ -167,8 +171,12 @@ def generate_entries_file
   #ref http://d.akiroom.com/2013-04/ruby-header-csv/
   header = ["no", "file_name", "memos"]
   
-  result = CSV.generate(headers: header, encoding: 'utf-8', col_sep: "\t") do |csv|
+  result = CSV.generate(encoding: 'utf-8', col_sep: "\t") do |csv|
+#  result = CSV.generate(headers: header, encoding: 'utf-8', col_sep: "\t") do |csv|
    
+    # header
+    csv << header
+    
     files.each_with_index do |name, i|
       
       csv << [i + 1, name]
@@ -193,7 +201,8 @@ def generate_entries_file
 #  f.close
   
 #  File.open("abc.csv", 'w') do |file|
-  File.open("#{$FNAME_ENTRIES}.#{get_time_label()}.csv", 'w') do |file|
+  File.open("#{$FNAME_ENTRIES}.csv", 'w') do |file|
+#  File.open("#{$FNAME_ENTRIES}.#{get_time_label()}.csv", 'w') do |file|
 #  File.open("intro.#{get_time_label()}.csv", 'w') do |file|
 #  File.open("intro.csv", 'w') do |file|
     
