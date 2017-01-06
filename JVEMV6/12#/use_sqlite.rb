@@ -43,6 +43,7 @@ require 'utils.20161228_123529'
 $FNAME_ONE_ENTRY  = "data.txt"
 $FNAME_RANGE      = "range.txt"
 $FNAME_MULTIPLE      = "multiple.csv"
+$FNAME_ENTRIES      = "entries.csv"
 
 #$FNAME_DB = "C:/WORKS_2/WS/Eclipse_Luna/Cake_IFM11/app/Lib/data/#ifm11_backup_20160110_080900.bk.for-use"
 $FNAME_DB = "C:/WORKS_2/WS/Eclipse_Luna/Cake_IFM11/app/Lib/data/ifm11_backup_20160110_080900.bk"
@@ -358,11 +359,62 @@ def show_help
   puts "\tuse_sqlite.rb [type]"  
   
   puts "<types>"
+  puts "\tf\tgenerate csv file with entries ('entries.csv')"
   puts "\tm\trecord multiple items ('multiple.csv')"
   puts "\tr\trecord items from a range of period ('range.txt')"
   puts "\ts\trecord a single item ('one_entry.txt')"
   
 end#show_help
+
+def generate_entries_file
+  
+#  puts "[#{File.basename(__FILE__)}:#{__LINE__}] generating..."
+
+  ################################
+  #	
+  #	files list
+  #
+  ################################
+  dpath = "C:/Users/iwabuchiken/data/images/iphone"
+  type = "files"
+  
+  files = get_dir_list(dpath, type, sort = true)
+
+  p files.size  
+  p files[0]
+  
+  ################################
+  #	
+  #	write: csv
+  #
+  ################################
+#  csv_data = CSV.write($FNAME_ENTRIES, headers: true, encoding: 'utf-8', col_sep: "\t")  #=> w.
+  
+#  CSV.open('test.csv','w', encoding: 'utf-8', col_sep: "\t") do |test|
+  CSV.open('test.csv','w') do |test|
+   test << ["A","B","C"]
+   test << ["milk","coffee","water"]
+  end
+  
+  #debug
+  puts "[#{File.basename(__FILE__)}:#{__LINE__}] write csv => done"
+  
+  
+#  ################################
+#  # 
+#  # build sql statement
+#  #
+#  ################################
+#  # execute
+#  fname_db = $FNAME_DB
+#  #  fname_db = "C:/WORKS_2/WS/Eclipse_Luna/Cake_IFM11/app/Lib/data/#ifm11_backup_20160110_080900.bk.for-use"
+#  #  fname = "C:/WORKS_2/WS/Eclipse_Luna/Cake_IFM11/app/Lib/data/ifm11_backup_20160110_080900.bk"
+#  
+#  #ref http://www.ownway.info/Ruby/sqlite3-ruby/about
+#  db = SQLite3::Database.new(fname_db)
+  
+  
+end#generate_entries_file
 
 def exec
 
@@ -403,6 +455,12 @@ def exec
   elsif ARGV[0] == "m"
     
     update_records__multiple
+    
+    return
+    
+  elsif ARGV[0] == "f"
+    
+    generate_entries_file
     
     return
     
