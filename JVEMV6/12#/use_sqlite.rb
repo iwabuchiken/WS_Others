@@ -1,5 +1,7 @@
+# encoding: utf-8
 
 require 'sqlite3'
+require 'csv'
 
 =begin
 
@@ -30,6 +32,27 @@ $LOAD_PATH.unshift(FPATH) unless $LOAD_PATH.include?(libdir)
 
 require 'utils.20161228_123529'
 
+
+
+################################
+#	
+#	variables
+#
+################################
+#ref http://qiita.com/kansiho/items/f5ab9b6eeb990e6af327
+$FNAME_ONE_ENTRY  = "data.txt"
+$FNAME_RANGE      = "range.txt"
+$FNAME_MULTIPLE      = "multiple.csv"
+
+$FNAME_DB = "C:/WORKS_2/WS/Eclipse_Luna/Cake_IFM11/app/Lib/data/#ifm11_backup_20160110_080900.bk.for-use"
+
+
+
+################################
+#	
+#	methods
+#
+################################
 def test_sqlite
   
   #debug
@@ -168,7 +191,8 @@ def update_single_record
 #  puts "[#{File.basename(__FILE__)}:#{__LINE__}] sql => #{sql}"
 
   # execute
-  fname = "C:/WORKS_2/WS/Eclipse_Luna/Cake_IFM11/app/Lib/data/ifm11_backup_20160110_080900.bk"
+  fname = "C:/WORKS_2/WS/Eclipse_Luna/Cake_IFM11/app/Lib/data/#ifm11_backup_20160110_080900.bk.for-use"
+#  fname = "C:/WORKS_2/WS/Eclipse_Luna/Cake_IFM11/app/Lib/data/ifm11_backup_20160110_080900.bk"
   
   #ref http://www.ownway.info/Ruby/sqlite3-ruby/about
   db = SQLite3::Database.new(fname)
@@ -183,11 +207,196 @@ def update_single_record
   
 end#update_single_record
 
+def update_records__range
+  
+  puts "[#{File.basename(__FILE__)}:#{__LINE__}] updating..."
+  
+  ################################
+  #	
+  #	read file
+  #
+  ################################
+  f = File.open($FNAME_RANGE, "r")
+  
+  line = f.readlines
+  
+  ################################
+  #	
+  #	close file
+  #
+  ################################
+  f.close
+  
+  ################################
+  #	
+  #	build sql statement
+  #
+  ################################
+  fname_start = line[0].split("=")[1].strip
+  fname_end = line[1].split("=")[1].strip
+  tags = line[3].split("=")[1].strip
+
+#  p line
+  
+  #ref http://ref.xaio.jp/ruby/classes/string/percent
+  #ref http://stackoverflow.com/questions/2337510/ruby-can-i-write-multi-line-string-with-no-concatenation no=329
+  sql = "UPDATE ifm11 SET tags = '%s' "\
+        "WHERE file_name >= '%s' "\
+        "AND "\
+        "file_name <= '%s';"\
+        % [tags, fname_start, fname_end]
+  
+  puts "[#{File.basename(__FILE__)}:#{__LINE__}] sql => #{sql}"
+  
+        
+  # execute
+  fname_db = $FNAME_DB
+#  fname_db = "C:/WORKS_2/WS/Eclipse_Luna/Cake_IFM11/app/Lib/data/#ifm11_backup_20160110_080900.bk.for-use"
+#  fname = "C:/WORKS_2/WS/Eclipse_Luna/Cake_IFM11/app/Lib/data/ifm11_backup_20160110_080900.bk"
+  
+  #ref http://www.ownway.info/Ruby/sqlite3-ruby/about
+  db = SQLite3::Database.new(fname_db)
+
+  cursor = db.execute(sql)
+  
+  puts "[#{File.basename(__FILE__)}:#{__LINE__}] db => executed"
+  
+#  p cursor  
+  
+  # close db
+  db.close
+  
+  puts "[#{File.basename(__FILE__)}:#{__LINE__}] db => closed"
+  
+  
+end#update_single_record
+
+def update_records__multiple
+  
+  puts "[#{File.basename(__FILE__)}:#{__LINE__}] updating..."
+  
+  ################################
+  #	
+  #	read file
+  #
+  ################################
+  #ref http://qiita.com/shizuma/items/7719172eb5e8c29a7d6e#csvread
+#  csv_data = CSV.read($FNAME_MULTIPLE, headers: true, force_quotes: true, force_slashes: true) #=> error
+  csv_data = CSV.read($FNAME_MULTIPLE, headers: true, force_quotes: true)  #=> w
+#  csv_data = CSV.read($FNAME_MULTIPLE, headers: true)
+  
+  
+  ################################
+  #	
+  #	build sql statement
+  #
+  ################################
+  # execute
+  fname_db = $FNAME_DB
+#  fname_db = "C:/WORKS_2/WS/Eclipse_Luna/Cake_IFM11/app/Lib/data/#ifm11_backup_20160110_080900.bk.for-use"
+#  fname = "C:/WORKS_2/WS/Eclipse_Luna/Cake_IFM11/app/Lib/data/ifm11_backup_20160110_080900.bk"
+  
+  #ref http://www.ownway.info/Ruby/sqlite3-ruby/about
+  db = SQLite3::Database.new(fname_db)
+
+  #test
+  #ref http://ref.xaio.jp/ruby/classes/string/encode
+  Encoding.default_internal = "utf-8"
+  
+  
+  csv_data.each do |data|
+    
+    tags = data["tags"].encode
+#    tags = data["tags"]
+    fname = data["file_name"]
+      
+    
+
+#    # validate
+#    if tags == "" or tags == nil
+#      
+#      puts "[#{File.basename(__FILE__)}:#{__LINE__}] skipping the line ... (tag is '#{tags}')"
+#      
+#      next
+#      
+#    end
+
+    sql = "UPDATE ifm11 SET tags = '%s' "\
+          "WHERE file_name = '%s';"\
+          % [tags, fname]
+          
+    puts "[#{File.basename(__FILE__)}:#{__LINE__}] sql => #{sql}"
+    
+    cursor = db.execute(sql)
+    puts "[#{File.basename(__FILE__)}:#{__LINE__}] db => executed"
+      
+  end
+  
+  # close db
+  db.close
+  
+  puts "[#{File.basename(__FILE__)}:#{__LINE__}] db => closed"
+  
+end#update_single_record
+
+def show_help
+
+  puts "<Usage>"  
+  puts "\tuse_sqlite.rb [type]"  
+  
+  puts "<types>"
+  puts "\tm\trecord multiple items ('multiple.csv')"
+  puts "\tr\trecord items from a range of period ('range.txt')"
+  puts "\ts\trecord a single item ('one_entry.txt')"
+  
+end#show_help
+
 def exec
 
+  ################################
+  #	
+  #	validate: parameters
+  #
+  ################################
+#  p ARGV.size
+  
+  if ARGV.size < 1
+    
+    puts "[#{File.basename(__FILE__)}:#{__LINE__}] arguments needed"
+    
+    show_help
+    
+    return
+    
+  end
+
+  ################################
+  #	
+  #	one entry
+  #
+  ################################
+  if ARGV[0] == "s"
+    
+    update_single_record
+    
+    return
+    
+  elsif ARGV[0] == "r"
+    
+    update_records__range
+
+    return
+    
+  elsif ARGV[0] == "m"
+    
+    update_records__multiple
+    
+    return
+    
+  end
 #  update_single_record
   
-  test_sqlite_2
+#  test_sqlite_2
 #  test_sqlite
   
   puts "[#{File.basename(__FILE__)}:#{__LINE__}] done!"
