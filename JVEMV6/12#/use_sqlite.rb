@@ -284,6 +284,7 @@ def update_records__multiple
 #  csv_data = CSV.read($FNAME_MULTIPLE, headers: true, force_quotes: true, force_slashes: true) #=> error
 #  csv_data = CSV.read($FNAME_MULTIPLE, headers: true, force_quotes: true)  #=> w
 #  csv_data = CSV.read($FNAME_MULTIPLE, headers: true)
+  #ref http://stackoverflow.com/questions/7078974/how-to-change-the-encoding-during-csv-parsing-in-rails no=12
   csv_data = CSV.read($FNAME_MULTIPLE, headers: true, encoding: 'utf-8')  #=> w.
   
   
@@ -310,7 +311,8 @@ def update_records__multiple
 #    tags = data["tags"].encode #=> w.
     tags = data["tags"] #=> w.
     fname = data["file_name"]
-      
+
+          
     
 
     # validate
@@ -328,6 +330,14 @@ def update_records__multiple
           
     puts "[#{File.basename(__FILE__)}:#{__LINE__}] sql => #{sql}"
     
+    #test
+    tags = tags.gsub("\/","")
+#    tags = tags.gsub("\\","")
+#    tags = tags.gsub(/\\/,"")
+#    tags = tags.gsub(/\\/,"")
+    
+    puts "[#{File.basename(__FILE__)}:#{__LINE__}] sql => #{sql}"
+  
     cursor = db.execute(sql)
     puts "[#{File.basename(__FILE__)}:#{__LINE__}] db => executed"
       
