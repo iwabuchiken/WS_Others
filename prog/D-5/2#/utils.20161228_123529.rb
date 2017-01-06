@@ -45,8 +45,23 @@ end#get_time_label(type = "serial")
 #def get dir_list(dpath)
 #def get dir_list(dpath, type, sort)
 def get_dir_list(dpath, type = "files", sort = true)
+
+  #debug
+#  puts "[#{File.basename(__FILE__)}:#{__LINE__}] current dir => #{Dir.pwd}"
   
-  # set path
+  ################################
+  #	
+  #	get: current dir
+  #
+  ################################
+  dir_current = Dir.pwd
+  
+  ################################
+  #	
+  #	set path
+  #
+  ################################
+  # change path
   Dir.chdir(dpath)
   
   if type == "files"
@@ -63,10 +78,16 @@ def get_dir_list(dpath, type = "files", sort = true)
         
       if sort == true
         
+        # reset dir
+        Dir.chdir(dir_current)
+        
         return result.sort
         
       else
-        
+       
+        # reset dir
+        Dir.chdir(dir_current)
+         
         return result
         
       end#if sort == true
@@ -77,9 +98,15 @@ def get_dir_list(dpath, type = "files", sort = true)
 
     if sort == true
       
+      # reset dir
+      Dir.chdir(dir_current)
+
       return result.sort
       
     else
+
+      # reset dir
+      Dir.chdir(dir_current)
       
       return result
       
@@ -90,10 +117,16 @@ def get_dir_list(dpath, type = "files", sort = true)
       result = Dir.glob('*')
 
     if sort == true
+
+      # reset dir
+      Dir.chdir(dir_current)
       
       return result.sort
       
     else
+
+      # reset dir
+      Dir.chdir(dir_current)
       
       return result
       
@@ -104,10 +137,16 @@ def get_dir_list(dpath, type = "files", sort = true)
     result = Dir.glob('*')
 
     if sort == true
+
+      # reset dir
+      Dir.chdir(dir_current)
       
       return result.sort
       
     else
+
+      # reset dir
+      Dir.chdir(dir_current)
       
       return result
       

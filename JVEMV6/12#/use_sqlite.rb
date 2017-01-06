@@ -406,25 +406,25 @@ def generate_entries_file
   p result
   
   # write file
-  f = File.open("abc.csv", 'w')
-  
-  f.puts(" UTF-8 に変換できなかった場合は")
-  
-  f.close
+#  f = File.open("abc.csv", 'w')
+#  
+#  f.puts(" UTF-8 に変換できなかった場合は")
+#  
+#  f.close
   
 #  File.open("abc.csv", 'w') do |file|
-##  File.open("intro.#{get_time_label("serial")}.csv", 'w') do |file|
-##  File.open("intro.csv", 'w') do |file|
-#    
-#    #debug
-#    puts "[#{File.basename(__FILE__)}:#{__LINE__}] file => opened"
-#    
-#    
+  File.open("intro.#{get_time_label()}.csv", 'w') do |file|
+#  File.open("intro.csv", 'w') do |file|
+    
+    #debug
+    puts "[#{File.basename(__FILE__)}:#{__LINE__}] file => opened"
+    
+    
 #    file.write("このクラスは CSV ファイルやデータに対する完全なインターフェイスを提供します。")
-##    file.write(result)
-##    file.write(intro_csv)
-#    
-#  end
+    file.write(result)
+#    file.write(intro_csv)
+    
+  end
   
   #debug
   puts "[#{File.basename(__FILE__)}:#{__LINE__}] write csv => done"
