@@ -163,7 +163,11 @@ def generate_entries_file
   #ref http://qiita.com/shizuma/items/7719172eb5e8c29a7d6e
 #  p CSV.generate do |csv|  #=> "`generate': no block given"
 #  result = CSV.generate do |csv|
-  result = CSV.generate() do |csv|
+  
+  #ref http://d.akiroom.com/2013-04/ruby-header-csv/
+  header = ["no", "file_name", "memos"]
+  
+  result = CSV.generate(headers: header, encoding: 'utf-8', col_sep: "\t") do |csv|
    
     files.each_with_index do |name, i|
       
