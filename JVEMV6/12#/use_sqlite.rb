@@ -307,20 +307,20 @@ def update_records__multiple
   
   csv_data.each do |data|
     
-    tags = data["tags"].encode
-#    tags = data["tags"]
+#    tags = data["tags"].encode #=> w.
+    tags = data["tags"] #=> w.
     fname = data["file_name"]
       
     
 
-#    # validate
-#    if tags == "" or tags == nil
-#      
-#      puts "[#{File.basename(__FILE__)}:#{__LINE__}] skipping the line ... (tag is '#{tags}')"
-#      
-#      next
-#      
-#    end
+    # validate
+    if tags == "" or tags == nil
+      
+      puts "[#{File.basename(__FILE__)}:#{__LINE__}] skipping the line ... (tag is '#{tags}')"
+      
+      next
+      
+    end
 
     sql = "UPDATE ifm11 SET tags = '%s' "\
           "WHERE file_name = '%s';"\
