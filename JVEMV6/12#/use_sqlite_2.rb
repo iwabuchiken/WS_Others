@@ -14,6 +14,14 @@ C:\WORKS_2\WS\WS_Others\JVEMV6\12#\use_sqlite_2.rb
 pushd C:\WORKS_2\WS\WS_Others\JVEMV6\12#
 use_sqlite_2.rb
 
+use_sqlite_2.rb f
+use_sqlite_2.rb m
+
+C:\WORKS_2\WS\WS_Others\JVEMV6\12#\use_sqlite_2.rb m
+
+pushd C:\WORKS_2\WS\WS_Others\JVEMV6\12#
+use_sqlite_2.rb m
+
 =end
 
 =begin
@@ -57,6 +65,7 @@ def show_help
   puts "\tuse_sqlite.rb [type]"  
   
   puts "<types>"
+  puts "\td\tDelete unused photos"
   puts "\tf\tgenerate csv file with entries ('entries.csv')"
   puts "\tm\trecord multiple items ('multiple.csv')"
   puts "\tr\trecord items from a range of period ('range.txt')"
@@ -237,6 +246,35 @@ def generate_entries_file
   
 end#generate_entries_file
 
+def delete_unused_photos
+  
+  ################################
+  # 
+  # build sql statement
+  #
+  ################################
+  # execute
+  fname_db = $FNAME_DB
+  
+  #ref http://www.ownway.info/Ruby/sqlite3-ruby/about
+  db = SQLite3::Database.new(fname_db)
+
+  sql = "DELETE  FROM ifm11 WHERE memos LIKE '-*%';"
+#  sql = "DELETE  FROM ifm11 WHERE memos LIKE "-*%";"
+        
+  puts "[#{File.basename(__FILE__)}:#{__LINE__}] sql => #{sql}"
+  
+  cursor = db.execute(sql)
+
+  p cursor
+  
+  puts "[#{File.basename(__FILE__)}:#{__LINE__}] db => executed"
+
+  # close db
+  db.close
+  
+end#delete_unused_photos
+
 def exec
 
   ################################
@@ -280,22 +318,25 @@ def exec
     return
     
   elsif ARGV[0] == "f"
-
-#    #test    #=> w.
-#    puts "[#{File.basename(__FILE__)}:#{__LINE__}] writing a file..."
-#        
-#    File.open("intro.csv", 'w') do |file|
-#      
-#      file.write("出力は以下のような感じ。")
-#    #    file.write(intro_csv)
-#      
-#    end
-
     
     generate_entries_file
     
     return
     
+  elsif ARGV[0] == "d"
+    
+#    generate_entries_file
+    
+    delete_unused_photos
+    
+    return
+    
+  else
+    
+    puts "[#{File.basename(__FILE__)}:#{__LINE__}] unknown option => #{ARGV[0]}"
+    
+    return
+  
   end
 #  update_single_record
   
