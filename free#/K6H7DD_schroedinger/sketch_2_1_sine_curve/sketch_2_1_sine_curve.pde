@@ -18,6 +18,9 @@ static int STROKE    = 1;
 static final String  fname_trunk  = "2_1";  
 static final String  fname_ext  = ".png";
 
+color yellow = color(255, 255, 0);
+color yellow_dark = color(120, 120, 0);
+
 /******************************************
 
   variables
@@ -41,7 +44,15 @@ String fname_id;
 
 ******************************************/
 void setup() {
-  size(640, 360);
+  
+  size(1000, 640);
+  //size(640, 640);
+  //size(640, 360);
+  
+  // resizable
+  //ref https://forum.processing.org/one/topic/is-there-a-way-to-resize-the-display-window-during-the-program-execution.html
+  frame.setResizable(true);
+  
   w = width+16;
   dx = (TWO_PI / period) * xspacing;
   yvalues = new float[w/xspacing];
@@ -54,16 +65,27 @@ void setup() {
 
 void draw() {
   background(0);
+  //background(255);
+  
+    // bg lines
+  _draw__BgLines();
+  
+  // text
+  _draw__ShowMessage();
+  
   calcWave();
   renderWave();
   
+  //// bg lines
+  //_draw__BgLines();
+  
   //saveFrame("images" + "/" + "frame" + "." + fname_id + "." + "####.tif");
-  saveFrame("images" + "_" + fname_id + "/" + "frame" + "." + fname_id + "." + "####.tif");
+  //saveFrame("images" + "_" + fname_id + "/" + "frame" + "." + fname_id + "." + "####.tif");
 
-  if(frameCount > 500) { // 20 seconds * 25 fps = 500
-  //if(frameCount > 100) { // 20 seconds * 25 fps = 500
-    noLoop();
-  }
+  //if(frameCount > 500) { // 20 seconds * 25 fps = 500
+  ////if(frameCount > 100) { // 20 seconds * 25 fps = 500
+  //  noLoop();
+  //}
 
   
 }
@@ -144,3 +166,52 @@ String get_time_label__Now(int type) {
       return label;
      
 }//get_time_label__Now(int type)
+
+void _draw__BgLines() {
+  
+  // horizontal, center
+  //fill(yellow);
+  //fill(255,255,0);
+  
+  // thichkness
+  strokeWeight(4);
+
+  /*****************************
+      horizontals: sub
+  *****************************/
+  // hori upper
+  stroke(yellow_dark);
+  line(0, height/4, width, height/4);  
+  // hori lower
+  line(0, height*3/4, width, height*3/4);  
+
+  /*****************************
+      verticals: sub
+  *****************************/
+  int unit = height/4;
+  
+  // vertical left
+  line(width/2 - unit, 0, width/2 - unit, height);
+
+  /*****************************
+      mains
+  *****************************/
+  //ref http://labs.uechoco.com/blog/2008/02/processing_4.html
+  stroke(yellow);
+
+  // horizontal center
+  line(0, height/2, width, height/2);
+
+  // vertical center
+  line(width/2, 0, width/2, height);
+
+}//_draw__BgLines()
+
+void _draw__ShowMessage() {
+
+  //ref https://processing.org/reference/text_.html
+  textSize(32);
+  //text("word", 10, 30);
+  text(width + "," + height, 10, 30);
+  
+}//_draw__ShowMessage()
