@@ -15,18 +15,24 @@ static final int TYPE_FORMATTED    = 2;
 
 static int STROKE    = 1;
 
+static final int GRID_UNIT    = 100;
+
 static final String  fname_trunk  = "2_1";  
 static final String  fname_ext  = ".png";
 
 color yellow = color(255, 255, 0);
 color yellow_dark = color(120, 120, 0);
 
+//static final int DOT_RADIUS  = 8;  // dot in the curve
+static final int DOT_RADIUS  = 4;  // dot in the curve
+
 /******************************************
 
   variables
 
 ******************************************/
-int xspacing = 16;   // How far apart should each horizontal location be spaced
+//int xspacing = 16;   // How far apart should each horizontal location be spaced
+int xspacing = DOT_RADIUS;   // How far apart should each horizontal location be spaced
 int w;              // Width of entire wave
 
 float theta = 0.0;  // Start angle at 0
@@ -38,6 +44,8 @@ float[] yvalues;  // Using an array to store height values for the wave
 
 String fname_id;
 
+int i;  // iterator
+
 /******************************************
 
   functions
@@ -45,13 +53,17 @@ String fname_id;
 ******************************************/
 void setup() {
   
-  size(1000, 640);
+  size(600, 600);
+  //size(500, 500);
+  //size(1210, 750);  //=> golden ratio / https://ja.wikipedia.org/wiki/%E9%BB%84%E9%87%91%E6%AF%94#.E9.96.A2.E9.80.A3.E9.A0.85.E7.9B.AE
+  //size(1000, 750);
   //size(640, 640);
   //size(640, 360);
   
   // resizable
   //ref https://forum.processing.org/one/topic/is-there-a-way-to-resize-the-display-window-during-the-program-execution.html
-  frame.setResizable(true);
+  //frame.setResizable(true);
+  surface.setResizable(true);
   
   w = width+16;
   dx = (TWO_PI / period) * xspacing;
@@ -66,8 +78,15 @@ void setup() {
 void draw() {
   background(0);
   //background(255);
+
+  /******************
+    key listener
+  ******************/
+  _draw__KeyListener();
   
-    // bg lines
+  /******************
+    bg lines
+  ******************/
   _draw__BgLines();
   
   // text
@@ -80,12 +99,12 @@ void draw() {
   //_draw__BgLines();
   
   //saveFrame("images" + "/" + "frame" + "." + fname_id + "." + "####.tif");
-  //saveFrame("images" + "_" + fname_id + "/" + "frame" + "." + fname_id + "." + "####.tif");
+  saveFrame("images" + "_" + fname_id + "/" + "frame" + "." + fname_id + "." + "####.tif");
 
-  //if(frameCount > 500) { // 20 seconds * 25 fps = 500
-  ////if(frameCount > 100) { // 20 seconds * 25 fps = 500
-  //  noLoop();
-  //}
+  if(frameCount > 500) { // 20 seconds * 25 fps = 500
+  //if(frameCount > 100) { // 20 seconds * 25 fps = 500
+    noLoop();
+  }
 
   
 }
@@ -107,7 +126,10 @@ void renderWave() {
   fill(255);
   // A simple way to draw the wave with an ellipse at each location
   for (int x = 0; x < yvalues.length; x++) {
-    ellipse(x*xspacing, height/2+yvalues[x], 16, 16);
+
+    //ellipse(x*xspacing, height/2+yvalues[x], 16, 16);
+    ellipse(x*xspacing, height/2+yvalues[x], DOT_RADIUS, DOT_RADIUS);
+    
   }
 }
 
@@ -177,6 +199,14 @@ void _draw__BgLines() {
   strokeWeight(4);
 
   /*****************************
+      prep
+  *****************************/
+  //int unit = height/4;
+  int unit = GRID_UNIT;
+  
+  int ans = (width / 2) / unit;
+
+  /*****************************
       horizontals: sub
   *****************************/
   // hori upper
@@ -188,10 +218,20 @@ void _draw__BgLines() {
   /*****************************
       verticals: sub
   *****************************/
-  int unit = height/4;
-  
+  ////debug
+  //textSize(32);
+  //text("ans => " + ans, 10, 30);
+
   // vertical left
-  line(width/2 - unit, 0, width/2 - unit, height);
+  //line(width/2 - unit, 0, width/2 - unit, height);
+  
+  for(i = 1; i <= ans; i++) {
+   
+    line(width/2 - unit * i, 0, width/2 - unit * i, height);
+    
+    line(width/2 - unit * (-i), 0, width/2 - unit * (-i), height);
+    
+  }
 
   /*****************************
       mains
@@ -213,5 +253,25 @@ void _draw__ShowMessage() {
   textSize(32);
   //text("word", 10, 30);
   text(width + "," + height, 10, 30);
+  //text("unit => " + GRID_UNIT, 10, 30);
+  //text("width /2 / GRID_UNIT => " + width /2 / GRID_UNIT, 10, 30);
+  //text("unit => ");
   
 }//_draw__ShowMessage()
+
+void _draw__KeyListener() {
+
+  //ref https://processing.org/reference/key.html
+  if (keyPressed) {
+    if (key == 'q' || key == 'Q') {
+      
+      exit();
+      
+    }
+  } else {
+    
+    //fill(255);
+    
+  }
+  
+}//_draw__KeyListener()
