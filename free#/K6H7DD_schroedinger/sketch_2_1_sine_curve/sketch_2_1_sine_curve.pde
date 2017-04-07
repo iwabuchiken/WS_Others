@@ -39,6 +39,11 @@ int xspacing = DOT_RADIUS;   // How far apart should each horizontal location be
 int w;              // Width of entire wave
 
 float theta = 0.0;  // Start angle at 0
+
+float theta_cos = 0.02;  // Start angle at 0
+
+float theta_diff = 0.02;  // +- to theta in calcWave()
+
 float amplitude = 75.0;  // Height of wave
 float period = 500.0;  // How many pixels before the wave repeats
 float dx;  // Value for incrementing X, a function of period and xspacing
@@ -127,7 +132,8 @@ void draw() {
 
 void calcWave() {
   // Increment theta (try different values for 'angular velocity' here
-  theta += 0.02;
+  //theta += 0.02;
+  theta += theta_diff;
   
   //theta = 0.0299;
   //theta = -0.02;
@@ -145,13 +151,24 @@ void calcWave() {
   
   // For every x value, calculate a y value with sine function
   float x = theta;
+  
+  //float x_2 = theta - theta_diff;
+  float x_2 = 0.02;
+  
   for (int i = 0; i < yvalues.length; i++) {
     yvalues[i] = sin(x)*amplitude;
     
-    yvalues_2[i] = cos(x)*amplitude;
+    //yvalues_2[i] = cos(x)*amplitude;
+    yvalues_2[i] = cos(x_2)*amplitude;
+    //yvalues_2[i] = cos(0.1)*amplitude;
+    //yvalues_2[i] = cos(theta_cos)*amplitude;
+    
     yvalues_3[i] = yvalues[i] + yvalues_2[i];
     
     x+=dx;
+    // increment
+    x_2 += dx;
+    
   }
 }
 
