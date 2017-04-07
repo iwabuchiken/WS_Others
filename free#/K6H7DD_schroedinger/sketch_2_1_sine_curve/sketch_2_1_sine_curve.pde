@@ -46,6 +46,12 @@ String fname_id;
 
 int i;  // iterator
 
+float diff      = 0.0;
+//float diff_unit  = 0.01;
+float diff_unit  = 0.005;
+
+boolean flag_diff = false;
+
 /******************************************
 
   functions
@@ -53,7 +59,8 @@ int i;  // iterator
 ******************************************/
 void setup() {
   
-  size(600, 600);
+  size(800, 600);
+  //size(600, 600);
   //size(500, 500);
   //size(1210, 750);  //=> golden ratio / https://ja.wikipedia.org/wiki/%E9%BB%84%E9%87%91%E6%AF%94#.E9.96.A2.E9.80.A3.E9.A0.85.E7.9B.AE
   //size(1000, 750);
@@ -99,20 +106,34 @@ void draw() {
   //_draw__BgLines();
   
   //saveFrame("images" + "/" + "frame" + "." + fname_id + "." + "####.tif");
-  saveFrame("images" + "_" + fname_id + "/" + "frame" + "." + fname_id + "." + "####.tif");
+  //saveFrame("images" + "_" + fname_id + "/" + "frame" + "." + fname_id + "." + "####.tif");
 
-  if(frameCount > 500) { // 20 seconds * 25 fps = 500
-  //if(frameCount > 100) { // 20 seconds * 25 fps = 500
-    noLoop();
-  }
+  //if(frameCount > 500) { // 20 seconds * 25 fps = 500
+  ////if(frameCount > 100) { // 20 seconds * 25 fps = 500
+  //  noLoop();
+  //}
 
   
 }
 
 void calcWave() {
   // Increment theta (try different values for 'angular velocity' here
-  theta += 0.02;
-
+  //theta += 0.02;
+  
+  //theta = 0.0299;
+  theta = -0.02;
+  
+  // add up/down theta
+  //if(flag_diff == true) {
+    
+  //  // add up/down the theta
+  //  theta += diff;
+    
+  //  // reset the flag
+  //  flag_diff = false;
+    
+  //}
+  
   // For every x value, calculate a y value with sine function
   float x = theta;
   for (int i = 0; i < yvalues.length; i++) {
@@ -211,9 +232,17 @@ void _draw__BgLines() {
   *****************************/
   // hori upper
   stroke(yellow_dark);
-  line(0, height/4, width, height/4);  
-  // hori lower
-  line(0, height*3/4, width, height*3/4);  
+  //line(0, height/4, width, height/4);  
+  //// hori lower
+  //line(0, height*3/4, width, height*3/4);  
+  for(i = 1; i <= ans; i++) {
+   
+    line(0, height/2 - unit * i, width, height/2 - unit * i);
+    line(0, height/2 - unit * (-i), width, height/2 - unit * (-i));
+    
+    //line(width/2 - unit * (-i), 0, width/2 - unit * (-i), height);
+    
+  }
 
   /*****************************
       verticals: sub
@@ -253,9 +282,10 @@ void _draw__ShowMessage() {
   textSize(32);
   //text("word", 10, 30);
   text(width + "," + height, 10, 30);
-  //text("unit => " + GRID_UNIT, 10, 30);
-  //text("width /2 / GRID_UNIT => " + width /2 / GRID_UNIT, 10, 30);
-  //text("unit => ");
+
+  // theta
+  text("theta => " + theta, 10, 80);
+  
   
 }//_draw__ShowMessage()
 
@@ -267,7 +297,22 @@ void _draw__KeyListener() {
       
       exit();
       
-    }
+    } else if (key == 'a' || key == 'A') {
+      
+      diff -= diff_unit;
+      
+      // set the flag
+      flag_diff = true;
+      
+    } else if (key == 'd' || key == 'D') {
+      
+      diff += diff_unit;
+
+      // set the flag
+      flag_diff = true;
+
+    }//if (key == 'q' || key == 'Q') {
+    
   } else {
     
     //fill(255);
