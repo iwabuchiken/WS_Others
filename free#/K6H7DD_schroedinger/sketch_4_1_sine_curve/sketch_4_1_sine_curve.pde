@@ -27,6 +27,8 @@ color green = color(0, 120, 0);
 
 static int DOT_RADIUS  = 4;  // dot in the curve
 
+static final int delay_chattering = 200;
+
 /******************************************
 
   variables
@@ -51,6 +53,10 @@ float amplitude = 75.0;
 // unit for sin(x) modulation
 //float dx = TWO_PI / 200;
 float dx;
+
+// dx denominator
+int dx_denomi = 8;
+int denomi_addition = 1;
 
 /******************************************
 
@@ -79,8 +85,8 @@ void setup() {
   /*
       wave-related
   */
-  calcWave();
-  renderWave();
+  //calcWave();
+  //renderWave();
 
 }
 
@@ -101,8 +107,8 @@ void draw() {
   // text
   _draw__ShowMessage();
   
-  //calcWave();
-  //renderWave();
+  calcWave();
+  renderWave();
   
   //// bg lines
   //_draw__BgLines();
@@ -115,11 +121,23 @@ void draw() {
   //  noLoop();
   //}
 
+  /*
+      delay
+  */
+  delay(100);
   
 }
 
 void calcWave() {
 
+  /**********************
+      update denominator
+  **********************/
+  dx = TWO_PI / (width / dx_denomi);
+  
+  /**********************
+      calculate
+  **********************/
   float x = 0.0;
   
   // calc --> yvalues
@@ -131,50 +149,75 @@ void calcWave() {
 
   }
 
-  /*
-    debug: yvalues ---> write to a file
-  */
-  try{
-    
-    //File fout = new File("data" + "/log" + get_time_label__Now(TYPE_SERIAL) + ".txt");
-    File fout = new File("C:/WORKS_2/WS/WS_Others/free#/K6H7DD_schroedinger/sketch_4_1_sine_curve/data"
-                  + "/log." + get_time_label__Now(TYPE_SERIAL) + ".txt");
-    
-    if(fout.exists()) {
-      
-      //out = new FileWriter("data" + "/log" + get_time_label__Now(TYPE_SERIAL) + ".txt", true);
-      out = new FileWriter(fout, true);
-      
-    } else {
-      
-      System.out.println("file doesn't exist");
-      
-      //out = new FileWriter("data" + "/log" + get_time_label__Now(TYPE_SERIAL) + ".txt");
-      
-      fout.createNewFile();
-      
-      out = new FileWriter(fout);
-      
-    }
-    
-    //out = new FileWriter("data" + "/log" + get_time_label__Now(TYPE_SERIAL) + ".txt", true);
+  /**********************
+      update: denomi
+  **********************/
+  // change denominator
+  if(dx_denomi > 20) {
 
-    for (int i = 0; i < yvalues.length; i++) {
-
-      out.write(i + "\t" + yvalues[i] + "\n");
-  
-    }//for (int i = 0; i < yvalues.length; i++)
-
-    out.flush();
+    denomi_addition = -1;
     
-    out.close();
-
+  } else if (dx_denomi < -20) {
+    
+    denomi_addition = 1;
+    
   }
-  catch(IOException e) {
 
-    e.printStackTrace();
+  dx_denomi += denomi_addition;
+  
+  if(dx_denomi == 0) dx_denomi += denomi_addition;
     
-  }//try{
+
+  
+      
+  // validate
+  //if(dx_denomi == 0) dx_denomi = -1;
+
+
+  ///*
+  //  debug: yvalues ---> write to a file
+  //*/
+  //try{
+    
+  //  //File fout = new File("data" + "/log" + get_time_label__Now(TYPE_SERIAL) + ".txt");
+  //  File fout = new File("C:/WORKS_2/WS/WS_Others/free#/K6H7DD_schroedinger/sketch_4_1_sine_curve/data"
+  //                + "/log." + get_time_label__Now(TYPE_SERIAL) + ".txt");
+    
+  //  if(fout.exists()) {
+      
+  //    //out = new FileWriter("data" + "/log" + get_time_label__Now(TYPE_SERIAL) + ".txt", true);
+  //    out = new FileWriter(fout, true);
+      
+  //  } else {
+      
+  //    System.out.println("file doesn't exist");
+      
+  //    //out = new FileWriter("data" + "/log" + get_time_label__Now(TYPE_SERIAL) + ".txt");
+      
+  //    fout.createNewFile();
+      
+  //    out = new FileWriter(fout);
+      
+  //  }
+    
+  //  //out = new FileWriter("data" + "/log" + get_time_label__Now(TYPE_SERIAL) + ".txt", true);
+
+  //  for (int i = 0; i < yvalues.length; i++) {
+
+  //    out.write(i + "\t" + yvalues[i] + "\n");
+  
+  //  }//for (int i = 0; i < yvalues.length; i++)
+
+  //  out.flush();
+    
+  //  out.close();
+
+  //}
+  //catch(IOException e) {
+
+  //  e.printStackTrace();
+    
+  //}//try{
   
 
   
@@ -182,7 +225,22 @@ void calcWave() {
 
 void renderWave() {
 
-}
+  noStroke();
+  fill(255);
+  
+  // A simple way to draw the wave with an ellipse at each location
+  for (int x = 0; x < yvalues.length; x++) {
+
+    fill(255);
+    
+    //ellipse(x*xspacing, height/2+yvalues[x], 16, 16);
+    //ellipse(x*xspacing, height/2+yvalues[x], DOT_RADIUS, DOT_RADIUS);
+    ellipse(x * r, height/2+yvalues[x], r, r);
+    
+  }
+
+  
+}//void renderWave() {
 
 
 /***************************************
@@ -313,6 +371,12 @@ void _draw__ShowMessage() {
   textSize(32);
   //text("word", 10, 30);
   text(width + "," + height, 10, 30);
+  
+  /*
+      dx denominator
+  */
+  text("dx denomi => " + dx_denomi, 10, 60);
+  
 
 }//_draw__ShowMessage()
 
@@ -324,19 +388,36 @@ void _draw__KeyListener() {
       
       exit();
       
-    //} else if (key == 'a' || key == 'A') {
+    } else if (key == 'a' || key == 'A') {
       
-    //  diff -= diff_unit;
+      // decrease denominator
+      dx_denomi -= 1;
       
-    //  // set the flag
-    //  flag_diff = true;
+      // validate
+      if(dx_denomi == 0) dx_denomi = -1;
       
-    //} else if (key == 'd' || key == 'D') {
+      // delay
+      delay(delay_chattering);
       
-    //  diff += diff_unit;
+      //diff -= diff_unit;
+      
+      //// set the flag
+      //flag_diff = true;
+      
+    } else if (key == 'd' || key == 'D') {
+      
+      dx_denomi += 1;
 
-    //  // set the flag
-    //  flag_diff = true;
+      // validate
+      if(dx_denomi == 0) dx_denomi = 1;
+
+      // delay
+      delay(delay_chattering);
+
+      //diff += diff_unit;
+
+      //// set the flag
+      //flag_diff = true;
 
     }//if (key == 'q' || key == 'Q') {
     
@@ -372,6 +453,14 @@ void _setup__InitVars() {
   fname_id = get_time_label__Now(TYPE_SERIAL);  
 
   // dx
-  dx = TWO_PI / (width / 4);
+  //dx = TWO_PI / (width / 4);
+  //dx = TWO_PI / (width / 8);
+  dx = TWO_PI / (width / dx_denomi);
+  
+  //debug
+  stack = new Throwable().getStackTrace()[0];
+  
+  System.out.println("[" + stack.getLineNumber() + "]" + " " + "dx => " + dx);
+  
   
 }//_setup__InitVars(
