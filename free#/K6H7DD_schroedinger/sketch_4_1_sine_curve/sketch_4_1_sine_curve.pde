@@ -7,6 +7,8 @@
     
 */
 
+import java.io.FileWriter;
+
 /**********************************
     constants
 **********************************/
@@ -35,6 +37,9 @@ float[] yvalues;  // Using an array to store height values for the wave
 int r = 4;    //=> plotting object, the radius thereof
 
 PrintWriter output;
+
+//ref https://forum.processing.org/two/discussion/561/easiest-way-to-append-to-a-file-in-processing
+FileWriter out;
 
 StackTraceElement stack;
 
@@ -70,7 +75,13 @@ void setup() {
   
   //// id
   //fname_id = get_time_label__Now(TYPE_SERIAL);  
-  
+
+  /*
+      wave-related
+  */
+  calcWave();
+  renderWave();
+
 }
 
 void draw() {
@@ -90,8 +101,8 @@ void draw() {
   // text
   _draw__ShowMessage();
   
-  calcWave();
-  renderWave();
+  //calcWave();
+  //renderWave();
   
   //// bg lines
   //_draw__BgLines();
@@ -109,7 +120,65 @@ void draw() {
 
 void calcWave() {
 
-}
+  float x = 0.0;
+  
+  // calc --> yvalues
+  for (int i = 0; i < yvalues.length; i++) {
+
+    yvalues[i] = sin(x)*amplitude;
+    
+    x+=dx;
+
+  }
+
+  /*
+    debug: yvalues ---> write to a file
+  */
+  try{
+    
+    //File fout = new File("data" + "/log" + get_time_label__Now(TYPE_SERIAL) + ".txt");
+    File fout = new File("C:/WORKS_2/WS/WS_Others/free#/K6H7DD_schroedinger/sketch_4_1_sine_curve/data"
+                  + "/log." + get_time_label__Now(TYPE_SERIAL) + ".txt");
+    
+    if(fout.exists()) {
+      
+      //out = new FileWriter("data" + "/log" + get_time_label__Now(TYPE_SERIAL) + ".txt", true);
+      out = new FileWriter(fout, true);
+      
+    } else {
+      
+      System.out.println("file doesn't exist");
+      
+      //out = new FileWriter("data" + "/log" + get_time_label__Now(TYPE_SERIAL) + ".txt");
+      
+      fout.createNewFile();
+      
+      out = new FileWriter(fout);
+      
+    }
+    
+    //out = new FileWriter("data" + "/log" + get_time_label__Now(TYPE_SERIAL) + ".txt", true);
+
+    for (int i = 0; i < yvalues.length; i++) {
+
+      out.write(i + "\t" + yvalues[i] + "\n");
+  
+    }//for (int i = 0; i < yvalues.length; i++)
+
+    out.flush();
+    
+    out.close();
+
+  }
+  catch(IOException e) {
+
+    e.printStackTrace();
+    
+  }//try{
+  
+
+  
+}//void calcWave()
 
 void renderWave() {
 

@@ -1,1 +1,0 @@
-[sketch_4_1_sine_curve.java:301] / yvalues => 200
