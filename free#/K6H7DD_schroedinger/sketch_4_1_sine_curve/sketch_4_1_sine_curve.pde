@@ -19,10 +19,18 @@ static int STROKE    = 1;
 
 static final int GRID_UNIT    = 100;
 
+color white = color(255, 255, 255);
+
 color yellow = color(255, 255, 0);
 color yellow_dark = color(10, 120, 0);
 
 color green = color(0, 120, 0);
+color green_light = color(0, 255, 0);
+
+//color purple_light = color(100,0,100);
+color purple_light = color(200,0,200);
+
+color yellow_lower = color(120,120,0);
 
 
 static int DOT_RADIUS  = 4;  // dot in the curve
@@ -35,6 +43,10 @@ static final int delay_chattering = 200;
 
 ******************************************/
 float[] yvalues;  // Using an array to store height values for the wave
+float[] yvalues_cos;
+float[] yvalues_aggre;    // sin + cos
+float[] yvalues_aggre_2;  // sin + cos + aggre
+
 
 int r = 4;    //=> plotting object, the radius thereof
 
@@ -55,7 +67,8 @@ float amplitude = 75.0;
 float dx;
 
 // dx denominator
-int dx_denomi = 8;
+//int dx_denomi = 8;
+int dx_denomi = 10;
 int denomi_addition = 1;
 
 int turning_point = 30;
@@ -79,7 +92,10 @@ void setup() {
   surface.setResizable(true);
 
   // init -->  yvalues
-  yvalues = new float[width/r];
+  yvalues        = new float[width/r];
+  yvalues_cos    = new float[width/r];
+  yvalues_aggre  = new float[width/r];
+  yvalues_aggre_2  = new float[width/r];
 
   /*
       init variables
@@ -134,22 +150,22 @@ void draw() {
   
   delay(100);
 
-  /**********************
-    save image
-  **********************/
-  saveFrame("images" + "_" + fname_id + "/" + "frame" + "." + fname_id + "." + "####.tif");
+  ///**********************
+  //  save image
+  //**********************/
+  //saveFrame("images" + "_" + fname_id + "/" + "frame" + "." + fname_id + "." + "####.tif");
 
-  /**********************
-    stop
-  **********************/
-  cnt_draw ++;
+  ///**********************
+  //  stop
+  //**********************/
+  //cnt_draw ++;
   
-  //if (cnt_draw > (turning_point * 2 + 2)) {
-    if (cnt_draw > (turning_point * 4 + 2)) {
+  ////if (cnt_draw > (turning_point * 2 + 2)) {
+  //  if (cnt_draw > (turning_point * 4 + 2)) {
    
-    noLoop();
+  //  noLoop();
     
-  }
+  //}
   
 }//void draw() {
 
@@ -170,29 +186,35 @@ void calcWave() {
 
     yvalues[i] = sin(x)*amplitude;
     
+    yvalues_cos[i] = cos(x)*amplitude;
+    
+    yvalues_aggre[i] = yvalues[i] + yvalues_cos[i];
+    
+    yvalues_aggre_2[i] = yvalues[i] + yvalues_cos[i] + yvalues_aggre[i];
+
     x+=dx;
 
   }
 
-  /**********************
-      update: denomi
-  **********************/
-  // change denominator
-  //if(dx_denomi > 20) {
-    if(dx_denomi > turning_point) {
+  ///**********************
+  //    update: denomi
+  //**********************/
+  //// change denominator
+  ////if(dx_denomi > 20) {
+  //  if(dx_denomi > turning_point) {
 
-    denomi_addition = -1;
+  //  denomi_addition = -1;
     
-  //} else if (dx_denomi < -20) {
-    } else if (dx_denomi < -turning_point) {
+  ////} else if (dx_denomi < -20) {
+  //  } else if (dx_denomi < -turning_point) {
     
-    denomi_addition = 1;
+  //  denomi_addition = 1;
     
-  }
+  //}
 
-  dx_denomi += denomi_addition;
+  //dx_denomi += denomi_addition;
   
-  if(dx_denomi == 0) dx_denomi += denomi_addition;
+  //if(dx_denomi == 0) dx_denomi += denomi_addition;
     
 
   
@@ -258,12 +280,38 @@ void renderWave() {
   // A simple way to draw the wave with an ellipse at each location
   for (int x = 0; x < yvalues.length; x++) {
 
+    /******************
+      sine
+    ******************/    
     fill(255);
     
     //ellipse(x*xspacing, height/2+yvalues[x], 16, 16);
     //ellipse(x*xspacing, height/2+yvalues[x], DOT_RADIUS, DOT_RADIUS);
     ellipse(x * r, height/2+yvalues[x], r, r);
     
+    /******************
+      cos
+    ******************/
+    fill(purple_light);
+    
+    ////ellipse(x*xspacing, height/2+yvalues[x], 16, 16);
+    ////ellipse(x*xspacing, height/2+yvalues[x], DOT_RADIUS, DOT_RADIUS);
+    ellipse(x * r, height/2+yvalues_cos[x], r, r);
+    
+    /******************
+      aggregate
+    ******************/
+    fill(green);
+    
+    ellipse(x * r, height/2+yvalues_aggre[x], r, r);
+
+    /******************
+      aggregate
+    ******************/
+    fill(green_light);
+    
+    ellipse(x * r, height/2+yvalues_aggre_2[x], r, r);
+
   }
 
   
@@ -346,7 +394,16 @@ void _draw__BgLines() {
       horizontals: sub
   *****************************/
   // hori upper
-  stroke(yellow_dark);
+  //stroke(yellow_dark);
+  
+  //fill(yellow_dark);
+  
+  //stroke(white);
+  
+  //stroke(yellow_dark);
+
+  stroke(yellow_lower);
+  
   //line(0, height/4, width, height/4);  
   //// hori lower
   //line(0, height*3/4, width, height*3/4);  
@@ -394,16 +451,38 @@ void _draw__BgLines() {
 
 void _draw__ShowMessage() {
 
+  fill(white);
+  
   //ref https://processing.org/reference/text_.html
   textSize(32);
   //text("word", 10, 30);
   text(width + "," + height, 10, 30);
   
-  /*
+  /*******************
       dx denominator
-  */
+  *******************/
   text("dx denomi => " + dx_denomi, 10, 60);
-  
+
+  /*******************
+      curves
+  *******************/
+  //fill(255,255,255);
+  fill(white);
+  text("sine", 10, 90);
+
+  fill(purple_light);
+  text("cosine", 10, 120);
+
+  fill(green);
+  //fill(yellow);
+  text("aggregate", 10, 150);
+
+  fill(green_light);
+  //fill(yellow);
+  text("aggregate_2", 10, 150);
+
+  // reset filling
+  //fill(yellow);
 
 }//_draw__ShowMessage()
 
