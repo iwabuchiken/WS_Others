@@ -37,7 +37,7 @@ static final int DOT_RADIUS  = 4;  // dot in the curve
 //int xspacing = 16;   // How far apart should each horizontal location be spaced
 int xspacing = DOT_RADIUS;   // How far apart should each horizontal location be spaced
 int w;              // Width of entire wave
-
+  
 float theta = 0.0;  // Start angle at 0
 
 float theta_cos = 0.02;  // Start angle at 0

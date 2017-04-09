@@ -20,7 +20,7 @@ static int STROKE    = 1;
 static final int GRID_UNIT    = 100;
 
 color yellow = color(255, 255, 0);
-color yellow_dark = color(120, 120, 0);
+color yellow_dark = color(10, 120, 0);
 
 color green = color(0, 120, 0);
 
@@ -58,6 +58,13 @@ float dx;
 int dx_denomi = 8;
 int denomi_addition = 1;
 
+int turning_point = 30;
+
+// draw cycle count
+int cnt_draw = 0;
+
+
+
 /******************************************
 
   functions
@@ -80,7 +87,7 @@ void setup() {
   _setup__InitVars();
   
   //// id
-  //fname_id = get_time_label__Now(TYPE_SERIAL);  
+  fname_id = get_time_label__Now(TYPE_SERIAL);  
 
   /*
       wave-related
@@ -124,9 +131,27 @@ void draw() {
   /*
       delay
   */
-  delay(100);
   
-}
+  delay(100);
+
+  /**********************
+    save image
+  **********************/
+  saveFrame("images" + "_" + fname_id + "/" + "frame" + "." + fname_id + "." + "####.tif");
+
+  /**********************
+    stop
+  **********************/
+  cnt_draw ++;
+  
+  //if (cnt_draw > (turning_point * 2 + 2)) {
+    if (cnt_draw > (turning_point * 4 + 2)) {
+   
+    noLoop();
+    
+  }
+  
+}//void draw() {
 
 void calcWave() {
 
@@ -153,11 +178,13 @@ void calcWave() {
       update: denomi
   **********************/
   // change denominator
-  if(dx_denomi > 20) {
+  //if(dx_denomi > 20) {
+    if(dx_denomi > turning_point) {
 
     denomi_addition = -1;
     
-  } else if (dx_denomi < -20) {
+  //} else if (dx_denomi < -20) {
+    } else if (dx_denomi < -turning_point) {
     
     denomi_addition = 1;
     
