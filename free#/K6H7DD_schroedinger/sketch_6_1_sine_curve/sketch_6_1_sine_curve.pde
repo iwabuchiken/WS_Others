@@ -1,7 +1,7 @@
 /*
-  file:  C:\WORKS_2\WS\WS_Others\free#\K6H7DD_schroedinger\sketch_4_1_sine_curve\sketch_4_1_sine_curve.pde
+  file:  C:\WORKS_2\WS\WS_Others\free#\K6H7DD_schroedinger\sketch_6_1_sine_curve\sketch_6_1_sine_curve.pde
   
-  created at: 2017/04/07 15:15:29
+  created at: 2017/04/11 17:41:30
   
   <usage>
     
@@ -76,7 +76,9 @@ int turning_point = 30;
 // draw cycle count
 int cnt_draw = 0;
 
-
+//test
+//ref http://stackoverflow.com/questions/41710079/imports-in-processing answered Jan 23 at 1:46
+Button bt = new Button();
 
 /******************************************
 
@@ -103,7 +105,7 @@ void setup() {
   _setup__InitVars();
   
   //// id
-  fname_id = get_time_label__Now(TYPE_SERIAL);  
+  //fname_id = get_time_label__Now(TYPE_SERIAL);  
 
   /*
       wave-related
@@ -111,7 +113,13 @@ void setup() {
   //calcWave();
   //renderWave();
 
-}
+  /*
+    test
+  */
+  //Button bt = new Button();
+
+
+}//setup()
 
 void draw() {
   background(0);
@@ -484,6 +492,10 @@ void _draw__ShowMessage() {
   // reset filling
   //fill(yellow);
 
+  //test
+  //text(bt.number, 10, 150);
+  text(Button.number, 10, 180);
+
 }//_draw__ShowMessage()
 
 void _draw__KeyListener() {
@@ -556,7 +568,8 @@ void _setup__InitVars() {
   output.close();
 
   // id
-  fname_id = get_time_label__Now(TYPE_SERIAL);  
+  //fname_id = get_time_label__Now(TYPE_SERIAL);  
+  fname_id = Utils.get_time_label__Now(TYPE_SERIAL);
 
   // dx
   //dx = TWO_PI / (width / 4);
