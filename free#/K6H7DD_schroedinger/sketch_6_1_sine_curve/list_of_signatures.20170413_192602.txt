@@ -1,0 +1,14 @@
+generated at:	2017/04/13  19:26:02
+source file:	sketch_6_1_sine_curve.pde
+
+### methods (9) ###################
+void calcWave()
+void draw()
+String get_time_label__Now(int type)
+void renderWave()
+void setup()
+void _draw__BgLines()
+void _draw__KeyListener()
+void _draw__ShowMessage()
+void _setup__InitVars()
+

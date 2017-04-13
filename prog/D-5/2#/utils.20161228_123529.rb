@@ -6,7 +6,7 @@
 
 # @param
 #   serial    20161221_141900
-#
+#   display   2016/12/21 14:19:00
 #
 ################################
 def get_time_label(type = "serial")
