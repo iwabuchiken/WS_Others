@@ -23,6 +23,7 @@ color white = color(255, 255, 255);
 
 color yellow = color(255, 255, 0);
 color yellow_dark = color(10, 120, 0);
+color yellow_lower = color(120,120,0);
 
 color green = color(0, 120, 0);
 color green_light = color(0, 255, 0);
@@ -30,12 +31,15 @@ color green_light = color(0, 255, 0);
 //color purple_light = color(100,0,100);
 color purple_light = color(200,0,200);
 
-color yellow_lower = color(120,120,0);
-
+color red_light = color(255, 140, 140);
 
 static int DOT_RADIUS  = 4;  // dot in the curve
 
 static final int delay_chattering = 200;
+//static final int delay_pause      = 300;
+static final int delay_pause      = 30;
+
+final int stop_number      = 125;
 
 /******************************************
 
@@ -44,6 +48,7 @@ static final int delay_chattering = 200;
 ******************************************/
 float[] yvalues;  // Using an array to store height values for the wave
 float[] yvalues_2;
+float[] yvalues_3;
 float[] yvalues_aggre;    // sin + cos
 float[] yvalues_aggre_2;  // sin + cos + aggre
 
@@ -85,6 +90,11 @@ Button bt = new Button();
 */
 float phase_2 = TWO_PI / 8;
 
+/*
+  others
+*/
+int frame_number = 1;
+
 
 /******************************************
 
@@ -102,6 +112,7 @@ void setup() {
   // init -->  yvalues
   yvalues        = new float[width/r];
   yvalues_2    = new float[width/r];
+  yvalues_3    = new float[width/r];
   yvalues_aggre  = new float[width/r];
   yvalues_aggre_2  = new float[width/r];
 
@@ -164,10 +175,17 @@ void draw() {
   
   delay(100);
 
+  /**********************
+    change phase values
+  **********************/
+  phase_2 -= 0.1;
+  
+  if (phase_2 < -5) phase_2 = 5;
+
   ///**********************
   //  save image
   //**********************/
-  //saveFrame("images" + "_" + fname_id + "/" + "frame" + "." + fname_id + "." + "####.tif");
+  saveFrame("images" + "_" + fname_id + "/" + "frame" + "." + fname_id + "." + "####.tif");
 
   ///**********************
   //  stop
@@ -180,6 +198,31 @@ void draw() {
   //  noLoop();
     
   //}
+
+  /**********************
+    increment ---> frame numberq
+  **********************/
+  frame_number ++;
+
+
+  /**********************
+    save frame
+  **********************/
+  //saveFrame("images" + "_" + fname_id + "/" + "frame" + "." + fname_id + "." + "####.tif");
+  
+  /**********************
+    stop
+  **********************/
+  if (frame_number > (stop_number)) {
+   
+    noLoop();
+    
+  }
+  
+  /**********************
+    pause
+  **********************/
+  delay(delay_pause);
   
 }//void draw() {
 
@@ -204,7 +247,10 @@ void calcWave() {
     //yvalues_cos[i] = cos(x + phase_2)*amplitude;
     yvalues_2[i] = sin(x + phase_2)*amplitude;
     
-    yvalues_aggre[i] = yvalues[i] + yvalues_2[i];
+    yvalues_3[i] = sin(x * phase_2)*amplitude;
+
+    //yvalues_aggre[i] = yvalues[i] + yvalues_2[i];
+    yvalues_aggre[i] = yvalues[i] + yvalues_2[i] + yvalues_3[i];
     
     //yvalues_aggre_2[i] = yvalues[i] + yvalues_2[i] + yvalues_aggre[i];
 
@@ -315,11 +361,22 @@ void renderWave() {
     ellipse(x * r, height/2 + yvalues_2[x], r, r);
     
     /******************
+      yvalues_3
+    ******************/
+    fill(red_light);
+    
+    ////ellipse(x*xspacing, height/2+yvalues[x], 16, 16);
+    ////ellipse(x*xspacing, height/2+yvalues[x], DOT_RADIUS, DOT_RADIUS);
+    ellipse(x * r, height/2 + yvalues_3[x], r, r);
+    
+    /******************
       aggregate
     ******************/
-    fill(green);
+    //fill(green);
+    fill(green_light);
     
-    ellipse(x * r, height/2+yvalues_aggre[x], r, r);
+    //ellipse(x * r, height/2+yvalues_aggre[x], r, r);
+    ellipse(x * r, height/2+yvalues_aggre[x], r + 3, r + 3);
 
     ///******************
     //  aggregate
@@ -474,10 +531,10 @@ void _draw__ShowMessage() {
   //text("word", 10, 30);
   text(width + "," + height, 10, 30);
   
-  /*******************
-      dx denominator
-  *******************/
-  text("dx denomi => " + dx_denomi, 10, 60);
+  ///*******************
+  //    dx denominator
+  //*******************/
+  //text("dx denomi => " + dx_denomi, 10, 60);
 
   /*******************
       curves 
@@ -487,23 +544,37 @@ void _draw__ShowMessage() {
   text("sine", 10, 90);
 
   fill(purple_light);
+  //fill(red_light);
   //text("cosine", 10, 120);
-  text("sin (" + phase_2 + ")", 10, 120);
+  text("sin_2 (+ " + phase_2 + ")", 10, 120);
 
-  fill(green);
-  //fill(yellow);
-  text("aggregate", 10, 150);
+  fill(red_light);
+  //text("cosine", 10, 120);
+  text("sin_3 (* " + phase_2 + ")", 10, 150);
 
   fill(green_light);
+  //fill(green);
   //fill(yellow);
-  text("aggregate_2", 10, 150);
+  text("aggregate", 10, 180);
+
+  /******************
+    frame number
+  ******************/
+  fill(white);
+  //fill(yellow);
+  text("frame = " + frame_number, width - 250, 50);
+  
+
+  //fill(green_light);
+  ////fill(yellow);
+  //text("aggregate_2", 10, 150);
 
   // reset filling
   //fill(yellow);
 
-  //test
-  //text(bt.number, 10, 150);
-  text(Button.number, 10, 180);
+  ////test
+  ////text(bt.number, 10, 150);
+  //text(Button.number, 10, 180);
 
 }//_draw__ShowMessage()
 
