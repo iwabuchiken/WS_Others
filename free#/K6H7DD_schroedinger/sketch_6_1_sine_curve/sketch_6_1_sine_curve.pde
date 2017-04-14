@@ -43,7 +43,7 @@ static final int delay_chattering = 200;
 
 ******************************************/
 float[] yvalues;  // Using an array to store height values for the wave
-float[] yvalues_cos;
+float[] yvalues_2;
 float[] yvalues_aggre;    // sin + cos
 float[] yvalues_aggre_2;  // sin + cos + aggre
 
@@ -80,6 +80,12 @@ int cnt_draw = 0;
 //ref http://stackoverflow.com/questions/41710079/imports-in-processing answered Jan 23 at 1:46
 Button bt = new Button();
 
+/*
+  phase-related
+*/
+float phase_2 = TWO_PI / 8;
+
+
 /******************************************
 
   functions
@@ -95,7 +101,7 @@ void setup() {
 
   // init -->  yvalues
   yvalues        = new float[width/r];
-  yvalues_cos    = new float[width/r];
+  yvalues_2    = new float[width/r];
   yvalues_aggre  = new float[width/r];
   yvalues_aggre_2  = new float[width/r];
 
@@ -194,11 +200,13 @@ void calcWave() {
 
     yvalues[i] = sin(x)*amplitude;
     
-    yvalues_cos[i] = cos(x)*amplitude;
+    //yvalues_cos[i] = cos(x)*amplitude;
+    //yvalues_cos[i] = cos(x + phase_2)*amplitude;
+    yvalues_2[i] = sin(x + phase_2)*amplitude;
     
-    yvalues_aggre[i] = yvalues[i] + yvalues_cos[i];
+    yvalues_aggre[i] = yvalues[i] + yvalues_2[i];
     
-    yvalues_aggre_2[i] = yvalues[i] + yvalues_cos[i] + yvalues_aggre[i];
+    yvalues_aggre_2[i] = yvalues[i] + yvalues_2[i] + yvalues_aggre[i];
 
     x+=dx;
 
@@ -304,7 +312,7 @@ void renderWave() {
     
     ////ellipse(x*xspacing, height/2+yvalues[x], 16, 16);
     ////ellipse(x*xspacing, height/2+yvalues[x], DOT_RADIUS, DOT_RADIUS);
-    ellipse(x * r, height/2+yvalues_cos[x], r, r);
+    ellipse(x * r, height/2 + yvalues_2[x], r, r);
     
     /******************
       aggregate
@@ -479,7 +487,8 @@ void _draw__ShowMessage() {
   text("sine", 10, 90);
 
   fill(purple_light);
-  text("cosine", 10, 120);
+  //text("cosine", 10, 120);
+  text("sin (" + phase_2 + ")", 10, 120);
 
   fill(green);
   //fill(yellow);

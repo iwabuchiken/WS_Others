@@ -410,6 +410,7 @@ def exec
     # list of files ending with ".pde"
     p File.dirname(__FILE__)
     
+    #ref http://stackoverflow.com/questions/32125318/ruby-dir-glob-alternative-with-regexp answered Aug 20 '15 at 18:18
     filelist = Dir.glob("#{File.dirname(__FILE__)}/*").grep(/\.pde$/)
 #    dirlist = Dir.glob("#{File.dirname(__FILE__)}/*").grep(/.pde$/)
 #    dirlist = Dir.glob(File.dirname(__FILE__)).grep(/.pde$/)
