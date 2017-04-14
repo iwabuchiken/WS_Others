@@ -206,7 +206,7 @@ void calcWave() {
     
     yvalues_aggre[i] = yvalues[i] + yvalues_2[i];
     
-    yvalues_aggre_2[i] = yvalues[i] + yvalues_2[i] + yvalues_aggre[i];
+    //yvalues_aggre_2[i] = yvalues[i] + yvalues_2[i] + yvalues_aggre[i];
 
     x+=dx;
 
@@ -321,12 +321,12 @@ void renderWave() {
     
     ellipse(x * r, height/2+yvalues_aggre[x], r, r);
 
-    /******************
-      aggregate
-    ******************/
-    fill(green_light);
+    ///******************
+    //  aggregate
+    //******************/
+    //fill(green_light);
     
-    ellipse(x * r, height/2+yvalues_aggre_2[x], r, r);
+    //ellipse(x * r, height/2+yvalues_aggre_2[x], r, r);
 
   }
 
@@ -516,12 +516,9 @@ void _draw__KeyListener() {
       exit();
       
     } else if (key == 'a' || key == 'A') {
-      
-      // decrease denominator
-      dx_denomi -= 1;
-      
-      // validate
-      if(dx_denomi == 0) dx_denomi = -1;
+
+      // decrement
+      phase_2 -= 0.1;
       
       // delay
       delay(delay_chattering);
@@ -533,10 +530,8 @@ void _draw__KeyListener() {
       
     } else if (key == 'd' || key == 'D') {
       
-      dx_denomi += 1;
-
-      // validate
-      if(dx_denomi == 0) dx_denomi = 1;
+      // decrement
+      phase_2 += 0.1;
 
       // delay
       delay(delay_chattering);
