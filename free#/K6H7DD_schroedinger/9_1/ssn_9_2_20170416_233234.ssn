@@ -1,0 +1,4 @@
+;;; xyzzy session file.
+;;; This file is generated automatically. do not edit.
+(in-package "user")
+(editor::restore-session '(("C:/WORKS_2/WS/WS_Others/free#/K6H7DD_schroedinger/9_1/test-3.plt" 288 (wgnuplot-mode) (nil)) ("C:/WORKS_2/Programs/freeware/xyzzy/site-lisp/wgnuplot-bind-close.plt" 666 (wgnuplot-mode) (nil))) '(("Frame 1" (window-configuration 0 ((nil ("C:/WORKS_2/WS/WS_Others/free#/K6H7DD_schroedinger/9_1/test-3.plt" . "test-3.plt") 288 0 nil nil nil nil nil nil nil 0 -1 0 (0 0 1 1) (0 0 784 376))) (784 398)) t)))
