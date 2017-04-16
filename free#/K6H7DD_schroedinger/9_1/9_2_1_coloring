@@ -1,0 +1,4 @@
+;;; xyzzy session file.
+;;; This file is generated automatically. do not edit.
+(in-package "user")
+(editor::restore-session '(("C:/WORKS_2/WS/WS_Others/free#/K6H7DD_schroedinger/9_1/9_2_1_coloring.plt" 0 (fundamental-mode) ((buffer-read-only)))) '(("Frame 1" (window-configuration 0 ((nil (nil . "*untitled*") 96 0 nil nil nil nil nil nil nil 0 -1 0 (0 0 1 1) (0 0 784 376))) (784 398)) t)))
