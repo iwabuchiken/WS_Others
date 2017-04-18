@@ -1,0 +1,8 @@
+#msg(x)=sprintf("your message => %s", x)
+title_session(x)=sprintf("session %s", x)
+
+wait = 0.001
+count_max = 40
+count_init = 0.1
+count_tick = 0.1
+samples_value = 50
