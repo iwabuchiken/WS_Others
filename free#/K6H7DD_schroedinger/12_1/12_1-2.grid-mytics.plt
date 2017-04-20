@@ -1,0 +1,46 @@
+#	load "C:/WORKS_2/WS/WS_Others/free#/K6H7DD_schroedinger/12_1/12_1-2.grid-mytics..plt"
+#	
+#	20170417_163651
+#	ref: http://www.ss.scphys.kyoto-u.ac.jp/person/yonezawa/contents/program/gnuplot/script.html
+#
+
+#set isosamples 50
+
+############################
+#
+# includes
+#
+############################
+load "C:/WORKS_2/WS/WS_Others/free#/K6H7DD_schroedinger/lib_gnuplot/lib.plt"
+load "C:/WORKS_2/WS/WS_Others/free#/K6H7DD_schroedinger/lib_gnuplot/cons.plt"
+
+
+############################
+#
+# variables
+#
+############################
+#wait = 0.001
+#count_max = 40
+#count_init = 0.1
+#count_tick = 0.1
+#samples_value = 10
+
+############################
+#
+# for loop
+#
+############################
+#ref http://www.gnuplot-cmd.com/plot/replot.html
+
+set isosamples samples_value
+
+set title title_session("12_2 grid mytics")
+
+#set xrange[0:2*pi]
+set xrange[0:10]
+
+#set grid ytics mytics lw 1   #=> working
+set grid ytics lw 3 mytics lw 1   #=> working; not change in line width
+ 
+plot log(x)

@@ -67,8 +67,6 @@ plot tan(x) \
 #     , -1.0 lt 1 lc rgb gray dt (10,5) \
 #   , -0.5 lt 1 lc rgb gray dt (10,5)
 
-set title title_session("cos + tan")
-
 plot  tan(x) \
      , cos(x) \
      , tan(x) + cos(x) \
