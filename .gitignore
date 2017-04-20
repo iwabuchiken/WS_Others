@@ -1,6 +1,21 @@
+########################
+#
+#	file type
+#
+########################
 *.pdf
 *.dat
+*.png
+*.wmv
+*.tif
+*.avi
+*.gif
 
+########################
+#
+#	directories
+#
+########################
 GQF8XX/
 
 JVEMV6/12#/entries.csv.20*.csv
@@ -9,14 +24,11 @@ free#/ELS7JR/3_1/*.vtu
 
 proj_home-appliances-engineer/*/*.txt
 
-*.png
 
 denken-3/*.png
 
-*.wmv
 
-2017/04/05 15:12:21
-*.tif
-*.avi
+#2017/04/05 15:12:21
 
 free#/K6H7DD_schroedinger/sketch_4_1_sine_curve/data/*.txt
+
