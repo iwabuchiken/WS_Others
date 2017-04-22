@@ -41,7 +41,7 @@ if (exist("sequence") == 0 || sequence < 0) sequence = 0 #•Ï”‚Ì‰Šú‰»
 # graph: 1
 #
 ###########################
-name = sprintf("14-1-1 (%02d) parameter")
+name = sprintf("14-1-1 (%02d)", sequence)
 
 set title title_session(name)
 
@@ -55,7 +55,14 @@ set isosamples 50
 set pm3d depthorder
 #set view 75,45
 #set view 25,45
-set view 25,15
+#set view 25,15
+#set view 85 - sequence, 45
+#set view 75, 45 - sequence / 2
+#set view 75, 45 - sequence
+set view 75, abs(45 - sequence)
+
+set xlabel "x"
+set ylabel "y"
 
 set xrange [-1:1]
 set yrange [-1:1]
