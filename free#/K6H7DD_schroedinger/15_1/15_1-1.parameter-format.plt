@@ -67,7 +67,9 @@ set ylabel "y"
 set xrange [-1:1]
 set yrange [-1:1]
 set zrange [-1:1]
-splot sin(u)*cos(v),sin(u)*sin(v),cos(u) with pm3d
+
+#splot sin(u)*cos(v),sin(u)*sin(v),cos(u) with pm3d
+splot sin(u)*cos(v),sin(u)*sin(v), sin(u) with pm3d
 
 ############################
 #
