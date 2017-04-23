@@ -70,8 +70,15 @@ Fz(u,v)=cos(u)
 
 # 光の方向
 sx=1.0
+#sx=0
+#sx=40
+#sx=0.0 + count
+
 sy=1.0
+#sy=2.0
+
 sz=1.0
+#sz=0
 
 # 微分用の微小数
 h=0.000001
@@ -108,7 +115,8 @@ light(u,v)=(n_length(u,v)!=0.0 ? \
 ##### title
 #name = sprintf("16-1-1 Fy(u,v)=cos(u)*cos(v)")
 #name = sprintf("16-1-3 Fz(u,v)=sin(u)")
-name = sprintf("16-1-3 (%03d) Fz(u,v)=cos(v)", sequence)
+#name = sprintf("16-1-3 (%03d) Fz(u,v)=cos(v)", sequence)
+name = sprintf("16-1-3 (%03d) (count = %04f", sequence, count)
 
 set title title_session(name)
 
@@ -140,14 +148,31 @@ set zrange [-a:a]
 
 set pm3d depthorder
 
-#set view 60,30
+set view 60,30
 #set view 30 + sequence, 30
 #set view 30, 0 + sequence
-view_z = 55
-set view view_z, 0 + sequence
+#view_z = 55
+#set view view_z, 0 + sequence
 
 # 色使いの指定
-set palette defined ( 0 "dark-blue" , 1 "cyan")
+#set palette defined ( 0 "dark-blue" , 1 "cyan")
+#set palette defined ( 0 "red" , 1 "cyan")
+#set palette defined ( 0 "red" , 1 "cyan")
+set palette defined ( 0 "black" , 1 "white")
+
+#ref http://stackoverflow.com/questions/27269578/gnuplot-change-background-color
+#set terminal svg enhanced background rgb 'white'
+#set terminal svg enhanced background rgb 'yello'   #=> n.w.
+
+#ref 
+#set terminal png x222222 xffffff   #=> 'obsolete color option'
+#set terminal png "#222222" "#ffffff"   #=> 'unrecognized terminal option'
+
+#ref http://stackoverflow.com/questions/6933637/gnuplot-background-color answered Jan 17 '12 at 18:18
+set obj 1 rectangle behind from screen 0,0 to screen 1,1
+#set obj 1 fillstyle solid 1.0 fillcolor rgbcolor "black"
+set obj 1 fillstyle solid 1.0 fillcolor rgbcolor "yellow"
+
 
 splot tablefile using (Fx($1,$2)):(Fy($1,$2)):(Fz($1,$2)):(light($1,$2)) \
       with pm3d
