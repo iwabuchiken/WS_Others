@@ -49,14 +49,18 @@ if (exist("sequence") == 0 || sequence < 0) sequence = 0 #•Ï”‚Ì‰Šú‰»
 #
 ############################
 # •\–Ê‚Ì”}‰î•Ï”ŠÖ”
-#Fx(u,v)=sin(u)*cos(v)
-#Fy(u,v)=sin(u)*sin(v)
+Fx(u,v)=sin(u)*cos(v)
+Fy(u,v)=sin(u)*sin(v)
+#Fy(u,v)=cos(u)*cos(v)
 #Fz(u,v)=cos(u)
+Fz(u,v)=cos(u)*sin(u)
+#Fz(u,v)=cos(u)**2
+#Fz(u,v)=sin(u)
 
-Y(u,v)=sqrt(5.0/(4.0*pi))*0.5*(3.0*cos(u)**2-1) # ‹…–Ê’²˜aŠÖ”
-Fx(u,v)=sin(u)*cos(v)*abs(Y(u,v))
-Fy(u,v)=sin(u)*sin(v)*abs(Y(u,v))
-Fz(u,v)=cos(u)*abs(Y(u,v))
+#Y(u,v)=sqrt(5.0/(4.0*pi))*0.5*(3.0*cos(u)**2-1) # ‹…–Ê’²˜aŠÖ”
+#Fx(u,v)=sin(u)*cos(v)*abs(Y(u,v))
+#Fy(u,v)=sin(u)*sin(v)*abs(Y(u,v))
+#z(u,v)=cos(u)*abs(Y(u,v))
 
 # Œõ‚Ì•ûŒü
 sx=1.0
@@ -96,7 +100,8 @@ light(u,v)=(n_length(u,v)!=0.0 ? \
 #
 ############################
 ##### title
-name = sprintf("16-1-1")
+#name = sprintf("16-1-1 Fy(u,v)=cos(u)*cos(v)")
+name = sprintf("16-1-3 Fz(u,v)=sin(u)")
 
 set title title_session(name)
 
@@ -118,10 +123,14 @@ unset table
 #set xrange [-1:1]
 #set yrange [-1:1]
 #set zrange [-1:1]
+
 a = 0.65
+a = 1
+
 set xrange [-a:a]
 set yrange [-a:a]
 set zrange [-a:a]
+
 set pm3d depthorder
 set view 60,30
 
