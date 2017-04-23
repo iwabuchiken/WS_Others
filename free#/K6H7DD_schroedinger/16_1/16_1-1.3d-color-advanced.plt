@@ -50,10 +50,16 @@ if (exist("sequence") == 0 || sequence < 0) sequence = 0 #変数の初期化
 ############################
 # 表面の媒介変数関数
 Fx(u,v)=sin(u)*cos(v)
+
 Fy(u,v)=sin(u)*sin(v)
 #Fy(u,v)=cos(u)*cos(v)
-#Fz(u,v)=cos(u)
-Fz(u,v)=cos(u)*sin(u)
+
+Fz(u,v)=cos(u)
+#Fz(u,v)=cos(u)**2
+#Fz(u,v)=cos(v)
+#Fz(u,v)=cos(v)*cos(v)
+#Fz(u,v)=cos(u)*cos(u)
+#Fz(u,v)=cos(u)*sin(u)
 #Fz(u,v)=cos(u)**2
 #Fz(u,v)=sin(u)
 
@@ -101,7 +107,8 @@ light(u,v)=(n_length(u,v)!=0.0 ? \
 ############################
 ##### title
 #name = sprintf("16-1-1 Fy(u,v)=cos(u)*cos(v)")
-name = sprintf("16-1-3 Fz(u,v)=sin(u)")
+#name = sprintf("16-1-3 Fz(u,v)=sin(u)")
+name = sprintf("16-1-3 (%03d) Fz(u,v)=cos(v)", sequence)
 
 set title title_session(name)
 
@@ -116,9 +123,9 @@ set isosamples 100
 
 # いったんパラメータファイルを作る
 tablefile="table3.dat"
-set table tablefile
-splot 0
-unset table
+#set table tablefile
+#splot 0
+#unset table
 
 #set xrange [-1:1]
 #set yrange [-1:1]
@@ -132,7 +139,12 @@ set yrange [-a:a]
 set zrange [-a:a]
 
 set pm3d depthorder
-set view 60,30
+
+#set view 60,30
+#set view 30 + sequence, 30
+#set view 30, 0 + sequence
+view_z = 55
+set view view_z, 0 + sequence
 
 # 色使いの指定
 set palette defined ( 0 "dark-blue" , 1 "cyan")
@@ -150,9 +162,9 @@ splot tablefile using (Fx($1,$2)):(Fy($1,$2)):(Fz($1,$2)):(light($1,$2)) \
 #ref http://www.math.utk.edu/~vasili/refs/How-to/gnuplot.print.html
 #set terminal gif
 
-#time_label = "20170422_160332"
+time_label = "20170423_173941"
 
-#set output sprintf("image_%s/15_1-1.%s.%002d.gif", time_label, time_label, sequence)
+#set output sprintf("image_%s/16_1-6.%s.%002d.gif", time_label, time_label, sequence)
 
 
 ############################
@@ -161,7 +173,10 @@ splot tablefile using (Fx($1,$2)):(Fy($1,$2)):(Fz($1,$2)):(light($1,$2)) \
 #
 ############################
 #if (count < count_max) pause wait;  count = count + count_tick; sequence = sequence + 1; reread
+#if (sequece < sequence_max) pause wait;  count = count + count_tick; sequence = sequence + 1; reread
+#if (sequence < sequence_max) pause wait;  count = count + count_tick; sequence = sequence + 1; reread
 
 #count = count_init
+#sequence = sequence_init
 
 
