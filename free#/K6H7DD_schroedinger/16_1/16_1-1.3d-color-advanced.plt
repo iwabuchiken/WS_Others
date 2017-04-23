@@ -49,9 +49,14 @@ if (exist("sequence") == 0 || sequence < 0) sequence = 0 #•Ï”‚Ì‰Šú‰»
 #
 ############################
 # •\–Ê‚Ì”}‰î•Ï”ŠÖ”
-Fx(u,v)=sin(u)*cos(v)
-Fy(u,v)=sin(u)*sin(v)
-Fz(u,v)=cos(u)
+#Fx(u,v)=sin(u)*cos(v)
+#Fy(u,v)=sin(u)*sin(v)
+#Fz(u,v)=cos(u)
+
+Y(u,v)=sqrt(5.0/(4.0*pi))*0.5*(3.0*cos(u)**2-1) # ‹…–Ê’²˜aŠÖ”
+Fx(u,v)=sin(u)*cos(v)*abs(Y(u,v))
+Fy(u,v)=sin(u)*sin(v)*abs(Y(u,v))
+Fz(u,v)=cos(u)*abs(Y(u,v))
 
 # Œõ‚Ì•ûŒü
 sx=1.0
@@ -110,9 +115,13 @@ set table tablefile
 splot 0
 unset table
 
-set xrange [-1:1]
-set yrange [-1:1]
-set zrange [-1:1]
+#set xrange [-1:1]
+#set yrange [-1:1]
+#set zrange [-1:1]
+a = 0.65
+set xrange [-a:a]
+set yrange [-a:a]
+set zrange [-a:a]
 set pm3d depthorder
 set view 60,30
 
