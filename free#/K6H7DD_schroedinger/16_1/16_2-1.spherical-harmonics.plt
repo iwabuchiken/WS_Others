@@ -50,9 +50,11 @@ if (exist("sequence") == 0 || sequence < 0) sequence = 0 #•Ï”‚Ì‰Šú‰»
 ############################
 #Y(u,v)=sqrt(5.0/(4.0*pi))*0.5*(3.0*cos(u)**2-1) # ‹…–Ê’²˜aŠÖ”
 #param = 2.0 + count
-param = 0.1 + count   # cos(u)**2 - param
+#param = 0.1 + count   # cos(u)**2 - param
+param = 0.1 + count   # (3.0 * cos(u)** param - 1)
 
-Y(u,v)=sqrt(5.0/(4.0*pi))*0.5* (3.0 * cos(u)**2-param) # ‹…–Ê’²˜aŠÖ”
+Y(u,v)=sqrt(5.0/(4.0*pi))*0.5* (3.0 * cos(u)** param - 1) # ‹…–Ê’²˜aŠÖ”
+#Y(u,v)=sqrt(5.0/(4.0*pi))*0.5* (3.0 * cos(u)**2-param) # ‹…–Ê’²˜aŠÖ”
 #Y(u,v)=sqrt(5.0/(4.0*pi))*0.5* (param * cos(u)**2-1) # ‹…–Ê’²˜aŠÖ”
 #Y(u,v)=sqrt(5.0/(4.0*pi))*0.5*(2.0*cos(u)**2-1) # ‹…–Ê’²˜aŠÖ”
 
@@ -187,11 +189,11 @@ splot tablefile using (Fx($1,$2)):(Fy($1,$2)):(Fz($1,$2)):(light($1,$2)) \
 
 
 #ref http://www.math.utk.edu/~vasili/refs/How-to/gnuplot.print.html
-set terminal gif
+#set terminal gif
 
 time_label = "20170424_005818"
 
-set output sprintf("image_%s/16_2-2.%s.%002d.gif", time_label, time_label, sequence)
+#set output sprintf("image_%s/16_2-2.%s.%002d.gif", time_label, time_label, sequence)
 
 
 ############################

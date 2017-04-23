@@ -1,0 +1,207 @@
+<!--   Created by wxMaxima 16.04.2   -->
+<!--http://wxmaxima.sourceforge.net-->
+
+<wxMaximaDocument version="1.4" zoom="119" activecell="8">
+
+<cell type="code">
+<input>
+<editor type="input">
+<line>f1: sin(x);</line>
+<line>f2: cos(x);</line>
+<line>f3: f1 * f2;</line>
+<line>a: 3;</line>
+<line>xrng: [x, -a* %pi, a*%pi];</line>
+<line>fs: [f1, f2, f3];</line>
+<line>wxplot2d(fs, xrng);</line>
+</editor>
+</input>
+<output>
+<mth><lbl userdefined="yes">(f1)</lbl><fn><fnm>sin</fnm><p><v>x</v></p></fn><lbl userdefined="yes">(f2)</lbl><fn><fnm>cos</fnm><p><v>x</v></p></fn><lbl userdefined="yes">(f3)</lbl><fn><fnm>cos</fnm><p><v>x</v></p></fn><h>*</h><fn><fnm>sin</fnm><p><v>x</v></p></fn><lbl userdefined="yes">(a)</lbl><n>3</n><lbl userdefined="yes">(xrng)</lbl><t>[</t><v>x</v><t>,</t><v></v><n>3</n><h>*</h><s>%pi</s><t>,</t><n>3</n><h>*</h><s>%pi</s><t>]</t><lbl userdefined="yes">(fs)</lbl><t>[</t><fn><fnm>sin</fnm><p><v>x</v></p></fn><t>,</t><fn><fnm>cos</fnm><p><v>x</v></p></fn><t>,</t><fn><fnm>cos</fnm><p><v>x</v></p></fn><h>*</h><fn><fnm>sin</fnm><p><v>x</v></p></fn><t>]</t><lbl>(%t13) </lbl><img>image1.png</img><lbl>(%o13) </lbl><v></v>
+</mth></output>
+</cell>
+
+<cell type="code">
+<input>
+<editor type="input">
+<line>/* http://www.ss.scphys.kyoto-u.ac.jp/person/yonezawa/contents/program/gnuplot/3D_surface.html#color-light */</line>
+<line></line>
+</editor>
+</input>
+</cell>
+
+<cell type="code">
+<input>
+<editor type="input">
+<line>a: 1;</line>
+<line>/*urng: [u, -a*%pi, a*%pi];*/</line>
+<line>urng: [u, 0, a*%pi];</line>
+<line>/*Y: sqrt(5.0/(4.0*pi))*0.5*(3.0*cos(u)**2-1);*/</line>
+<line>Y: (3.0*cos(u)**2-1);</line>
+<line>wxplot2d(Y, urng);</line>
+</editor>
+</input>
+<output>
+<mth><lbl userdefined="yes">(a)</lbl><n>1</n><lbl userdefined="yes">(urng)</lbl><t>[</t><v>u</v><t>,</t><n>0</n><t>,</t><s>%pi</s><t>]</t><lbl userdefined="yes">(Y)</lbl><n>3.0</n><h>*</h><e><r><fn><fnm>cos</fnm><p><v>u</v></p></fn></r><r><n>2</n></r></e><v></v><n>1</n><lbl>(%t25) </lbl><img>image2.png</img><lbl>(%o25) </lbl><v></v>
+</mth></output>
+</cell>
+
+<cell type="code">
+<input>
+<editor type="input">
+<line>Y1: 0.5*(3.0*cos(u)**2-1);</line>
+<line>wxplot2d(Y1, urng);</line>
+</editor>
+</input>
+<output>
+<mth><lbl userdefined="yes">(Y1)</lbl><n>0.5</n><h>*</h><p><n>3.0</n><h>*</h><e><r><fn><fnm>cos</fnm><p><v>u</v></p></fn></r><r><n>2</n></r></e><v></v><n>1</n></p><lbl>(%t29) </lbl><img>image3.png</img><lbl>(%o29) </lbl><v></v>
+</mth></output>
+</cell>
+
+<cell type="code">
+<input>
+<editor type="input">
+<line>M: sqrt(5.0/(4.0*%pi));</line>
+</editor>
+</input>
+<output>
+<mth><lbl userdefined="yes">(M)</lbl><f><r><n>1.118033988749895</n></r><r><q><s>%pi</s></q></r></f>
+</mth></output>
+</cell>
+
+<cell type="code">
+<input>
+<editor type="input">
+<line>float(%);</line>
+</editor>
+</input>
+<output>
+<mth><lbl>(%o33) </lbl><n>0.6307831305050402</n>
+</mth></output>
+</cell>
+
+<cell type="code">
+<input>
+<editor type="input">
+<line>a: 1;</line>
+<line>urng: [u, -a*%pi, a*%pi];</line>
+<line>/*urng: [u, 0, a*%pi];*/</line>
+<line>Y: sqrt(5.0/(4.0*%pi))*0.5*(3.0*cos(u)**2-1);</line>
+<line>/*Y: (3.0*cos(u)**2-1);*/</line>
+<line>wxplot2d(Y, urng);</line>
+</editor>
+</input>
+<output>
+<mth><lbl userdefined="yes">(a)</lbl><n>1</n><lbl userdefined="yes">(urng)</lbl><t>[</t><v>u</v><t>,</t><v></v><s>%pi</s><t>,</t><s>%pi</s><t>]</t><lbl userdefined="yes">(Y)</lbl><f><r><n>0.5590169943749475</n><h>*</h><p><n>3.0</n><h>*</h><e><r><fn><fnm>cos</fnm><p><v>u</v></p></fn></r><r><n>2</n></r></e><v></v><n>1</n></p></r><r><q><s>%pi</s></q></r></f><lbl>(%t37) </lbl><img>image4.png</img><lbl>(%o37) </lbl><v></v>
+</mth></output>
+</cell>
+
+<cell type="code">
+<input>
+<editor type="input">
+<line>/* section : M832MM*/</line>
+<line>a: 1;</line>
+<line>urng: [u, -a*%pi, a*%pi];</line>
+<line>vrng: [v, 0, 3];</line>
+<line>Y: sqrt(5.0/(4.0*%pi))*0.5*(v*cos(u)**2-1);</line>
+<line>/*Y: (3.0*cos(u)**2-1);*/</line>
+<line>wxplot3d(Y, urng, vrng);</line>
+<line>plot3d(Y, urng, vrng);</line>
+</editor>
+</input>
+<output>
+<mth><lbl userdefined="yes">(a)</lbl><n>1</n><lbl userdefined="yes">(urng)</lbl><t>[</t><v>u</v><t>,</t><v></v><s>%pi</s><t>,</t><s>%pi</s><t>]</t><lbl userdefined="yes">(vrng)</lbl><t>[</t><v>v</v><t>,</t><n>0</n><t>,</t><n>3</n><t>]</t><lbl userdefined="yes">(Y)</lbl><f><r><n>0.5590169943749475</n><h>*</h><p><e><r><fn><fnm>cos</fnm><p><v>u</v></p></fn></r><r><n>2</n></r></e><h>*</h><v>v</v><v></v><n>1</n></p></r><r><q><s>%pi</s></q></r></f><lbl>(%t106) </lbl><img>image5.png</img><lbl>(%o106) </lbl><v></v><lbl>(%o107) </lbl><t>[</t><st>C:/Users/iwabuchiken/maxout4240.gnuplot</st><t>]</t>
+</mth></output>
+</cell>
+
+<cell type="code">
+<input>
+<editor type="input">
+<line>a: 1;</line>
+<line>urng: [u, -a*%pi, a*%pi];</line>
+<line>/*urng: [u, 0, a*%pi];*/</line>
+<line>Y: sqrt(5.0/(4.0*%pi))*0.5*(3.0*cos(u)**2-1);</line>
+<line>/*Y: (3.0*cos(u)**2-1);*/</line>
+<line>wxplot2d(Y, urng);</line>
+</editor>
+</input>
+<output>
+<mth><lbl userdefined="yes">(a)</lbl><n>1</n><lbl userdefined="yes">(urng)</lbl><t>[</t><v>u</v><t>,</t><v></v><s>%pi</s><t>,</t><s>%pi</s><t>]</t><lbl userdefined="yes">(Y)</lbl><f><r><n>0.5590169943749475</n><h>*</h><p><n>3.0</n><h>*</h><e><r><fn><fnm>cos</fnm><p><v>u</v></p></fn></r><r><n>2</n></r></e><v></v><n>1</n></p></r><r><q><s>%pi</s></q></r></f><lbl>(%t59) </lbl><img>image6.png</img><lbl>(%o59) </lbl><v></v>
+</mth></output>
+</cell>
+
+<cell type="code">
+<input>
+<editor type="input">
+<line>y: 3*cos(u)**2;</line>
+<line>wxplot2d(y, urng);</line>
+</editor>
+</input>
+<output>
+<mth><lbl userdefined="yes">(y)</lbl><n>3</n><h>*</h><e><r><fn><fnm>cos</fnm><p><v>u</v></p></fn></r><r><n>2</n></r></e><lbl>(%t66) </lbl><img>image7.png</img><lbl>(%o66) </lbl><v></v>
+</mth></output>
+</cell>
+
+<cell type="code">
+<input>
+<editor type="input">
+<line>y: 3*cos(u)**2-1;</line>
+<line>wxplot2d(y, urng);</line>
+</editor>
+</input>
+<output>
+<mth><lbl userdefined="yes">(y)</lbl><n>3</n><h>*</h><e><r><fn><fnm>cos</fnm><p><v>u</v></p></fn></r><r><n>2</n></r></e><v></v><n>1</n><lbl>(%t68) </lbl><img>image8.png</img><lbl>(%o68) </lbl><v></v>
+</mth></output>
+</cell>
+
+<cell type="code">
+<input>
+<editor type="input">
+<line>y: 1*cos(u)**2-1;</line>
+<line>y2: 2*cos(u)**2-1;</line>
+<line>y3: 3*cos(u)**2-1;</line>
+<line>fs2: [y, y2, y3];</line>
+<line>wxplot2d(fs2, urng);</line>
+</editor>
+</input>
+<output>
+<mth><lbl userdefined="yes">(y)</lbl><e><r><fn><fnm>cos</fnm><p><v>u</v></p></fn></r><r><n>2</n></r></e><v></v><n>1</n><lbl userdefined="yes">(y2)</lbl><n>2</n><h>*</h><e><r><fn><fnm>cos</fnm><p><v>u</v></p></fn></r><r><n>2</n></r></e><v></v><n>1</n><lbl userdefined="yes">(y3)</lbl><n>3</n><h>*</h><e><r><fn><fnm>cos</fnm><p><v>u</v></p></fn></r><r><n>2</n></r></e><v></v><n>1</n><lbl userdefined="yes">(fs2)</lbl><t>[</t><e><r><fn><fnm>cos</fnm><p><v>u</v></p></fn></r><r><n>2</n></r></e><v></v><n>1</n><t>,</t><n>2</n><h>*</h><e><r><fn><fnm>cos</fnm><p><v>u</v></p></fn></r><r><n>2</n></r></e><v></v><n>1</n><t>,</t><n>3</n><h>*</h><e><r><fn><fnm>cos</fnm><p><v>u</v></p></fn></r><r><n>2</n></r></e><v></v><n>1</n><t>]</t><lbl>(%t73) </lbl><img>image9.png</img><lbl>(%o73) </lbl><v></v>
+</mth></output>
+</cell>
+
+<cell type="code">
+<input>
+<editor type="input">
+<line>a: 1;</line>
+<line>urng: [u, -a*%pi, a*%pi];</line>
+<line>b: 3;</line>
+<line>y: 1*cos(u)**b-1;</line>
+<line>y2: 2*cos(u)**b-1;</line>
+<line>y3: 3*cos(u)**b-1;</line>
+<line>fs2: [y, y2, y3];</line>
+<line>wxplot2d(fs2, urng);</line>
+</editor>
+</input>
+<output>
+<mth><lbl userdefined="yes">(a)</lbl><n>1</n><lbl userdefined="yes">(urng)</lbl><t>[</t><v>u</v><t>,</t><v></v><s>%pi</s><t>,</t><s>%pi</s><t>]</t><lbl userdefined="yes">(b)</lbl><n>3</n><lbl userdefined="yes">(y)</lbl><e><r><fn><fnm>cos</fnm><p><v>u</v></p></fn></r><r><n>3</n></r></e><v></v><n>1</n><lbl userdefined="yes">(y2)</lbl><n>2</n><h>*</h><e><r><fn><fnm>cos</fnm><p><v>u</v></p></fn></r><r><n>3</n></r></e><v></v><n>1</n><lbl userdefined="yes">(y3)</lbl><n>3</n><h>*</h><e><r><fn><fnm>cos</fnm><p><v>u</v></p></fn></r><r><n>3</n></r></e><v></v><n>1</n><lbl userdefined="yes">(fs2)</lbl><t>[</t><e><r><fn><fnm>cos</fnm><p><v>u</v></p></fn></r><r><n>3</n></r></e><v></v><n>1</n><t>,</t><n>2</n><h>*</h><e><r><fn><fnm>cos</fnm><p><v>u</v></p></fn></r><r><n>3</n></r></e><v></v><n>1</n><t>,</t><n>3</n><h>*</h><e><r><fn><fnm>cos</fnm><p><v>u</v></p></fn></r><r><n>3</n></r></e><v></v><n>1</n><t>]</t><lbl>(%t87) </lbl><img>image10.png</img><lbl>(%o87) </lbl><v></v>
+</mth></output>
+</cell>
+
+<cell type="code">
+<input>
+<editor type="input">
+<line>a: 3;</line>
+<line>urng: [u, -a*%pi, a*%pi];</line>
+<line>b: 3;</line>
+<line>y: 1*cos(u)**b-1;</line>
+<line>y2: 2*cos(u)**b-1;</line>
+<line>y3: 3*cos(u)**b-1;</line>
+<line>fs2: [y, y2, y3];</line>
+<line>wxplot2d(fs2, urng);</line>
+</editor>
+</input>
+<output>
+<mth><lbl userdefined="yes">(a)</lbl><n>3</n><lbl userdefined="yes">(urng)</lbl><t>[</t><v>u</v><t>,</t><v></v><n>3</n><h>*</h><s>%pi</s><t>,</t><n>3</n><h>*</h><s>%pi</s><t>]</t><lbl userdefined="yes">(b)</lbl><n>3</n><lbl userdefined="yes">(y)</lbl><e><r><fn><fnm>cos</fnm><p><v>u</v></p></fn></r><r><n>3</n></r></e><v></v><n>1</n><lbl userdefined="yes">(y2)</lbl><n>2</n><h>*</h><e><r><fn><fnm>cos</fnm><p><v>u</v></p></fn></r><r><n>3</n></r></e><v></v><n>1</n><lbl userdefined="yes">(y3)</lbl><n>3</n><h>*</h><e><r><fn><fnm>cos</fnm><p><v>u</v></p></fn></r><r><n>3</n></r></e><v></v><n>1</n><lbl userdefined="yes">(fs2)</lbl><t>[</t><e><r><fn><fnm>cos</fnm><p><v>u</v></p></fn></r><r><n>3</n></r></e><v></v><n>1</n><t>,</t><n>2</n><h>*</h><e><r><fn><fnm>cos</fnm><p><v>u</v></p></fn></r><r><n>3</n></r></e><v></v><n>1</n><t>,</t><n>3</n><h>*</h><e><r><fn><fnm>cos</fnm><p><v>u</v></p></fn></r><r><n>3</n></r></e><v></v><n>1</n><t>]</t><lbl>(%t95) </lbl><img>image11.png</img><lbl>(%o95) </lbl><v></v>
+</mth></output>
+</cell>
+
+</wxMaximaDocument>

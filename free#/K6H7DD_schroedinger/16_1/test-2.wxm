@@ -1,0 +1,32 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 16.04.2 ] */
+
+/* [wxMaxima: input   start ] */
+a: 1;
+brng: [b, 0, 2];
+urng: [u, -a*%pi, a*%pi];
+f: 3.0 * cos(u)** b - 1;
+wxplot3d(f, urng, brng);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+a: 1;
+brng: [b, 0, 2];
+urng: [u, -a*%pi, a*%pi];
+f: 3.0 * cos(u)** b - 1;
+gnu_param: [gnuplot_preamble,"set isosamples 200"];
+wxplot3d(f, urng, brng, gnu_param);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* ref http://maxima.sourceforge.net/maxima-gnuplot.html */
+a: 1;
+brng: [b, 0, 2];
+urng: [u, -a*%pi, a*%pi];
+f: 3.0 * cos(u)** b - 1;
+gnu_param: [gnuplot_preamble,"set key bottom"];
+wxplot3d(f, urng, brng, gnu_param);
+/* [wxMaxima: input   end   ] */
+
+/* Maxima can't load/batch files which end with a comment! */
+"Created with wxMaxima"$
