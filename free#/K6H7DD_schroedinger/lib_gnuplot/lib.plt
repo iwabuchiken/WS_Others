@@ -10,7 +10,8 @@ count_max = 8   #=> 13_1-2.3d-add-color.animation.plt
 #sequence_max = 120   #=> 16_1-6
 #sequence_max = 360   #=> 16_1-6
 #sequence_max = 40   #=> 16_2-1
-sequence_max = 80   #=> 16_2-1
+#sequence_max = 80   #=> 16_2-1
+sequence_max = 100   #=> 17_1-1
 
 sequence_init = 0   #=> 16_1-6
 
