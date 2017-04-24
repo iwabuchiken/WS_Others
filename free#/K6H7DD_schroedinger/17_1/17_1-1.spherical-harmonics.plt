@@ -51,9 +51,15 @@ if (exist("sequence") == 0 || sequence < 0) sequence = 0 #•Ï”‚Ì‰Šú‰»
 #Y(u,v)=sqrt(5.0/(4.0*pi))*0.5*(3.0*cos(u)**2-1) # ‹…–Ê’²˜aŠÖ”
 #param = 2.0 + count
 #param = 0.1 + count   # cos(u)**2 - param
-param = 0.1 + count   # (3.0 * cos(u)** param - 1)
+#param = 0.1 + count   # (3.0 * cos(u)** param - 1)
+#param = 0.2 + count   # param * (3.0 * cos(u)** 2 - 1)
+param = 2 + count   # sqrt(5.0/( param * pi))* 0.5 * (3.0 * cos(u)** 2 - 1)
 
-Y(u,v)=sqrt(5.0/(4.0*pi))*0.5* (3.0 * cos(u)** param - 1) # ‹…–Ê’²˜aŠÖ”
+Y(u,v)=sqrt(param / ( 4.0 * pi))* 0.5 * (3.0 * cos(u)** 2 - 1) # ‹…–Ê’²˜aŠÖ”
+#Y(u,v)=sqrt(5.0/( 20.0 * pi))* 0.5 * (3.0 * cos(u)** 2 - 1) # ‹…–Ê’²˜aŠÖ”
+#Y(u,v)=sqrt(5.0/( param * pi))* 0.5 * (3.0 * cos(u)** 2 - 1) # ‹…–Ê’²˜aŠÖ”
+#Y(u,v)=sqrt(5.0/(4.0*pi))* param * (3.0 * cos(u)** 2 - 1) # ‹…–Ê’²˜aŠÖ”
+#Y(u,v)=sqrt(5.0/(4.0*pi))*0.5* (3.0 * cos(u)** param - 1) # ‹…–Ê’²˜aŠÖ”
 #Y(u,v)=sqrt(5.0/(4.0*pi))*0.5* (3.0 * cos(u)**2-param) # ‹…–Ê’²˜aŠÖ”
 #Y(u,v)=sqrt(5.0/(4.0*pi))*0.5* (param * cos(u)**2-1) # ‹…–Ê’²˜aŠÖ”
 #Y(u,v)=sqrt(5.0/(4.0*pi))*0.5*(2.0*cos(u)**2-1) # ‹…–Ê’²˜aŠÖ”
@@ -111,8 +117,8 @@ light(u,v)=(n_length(u,v)!=0.0 ? \
 #name = sprintf("16-1-3 Fz(u,v)=sin(u)")
 #name = sprintf("16-1-3 (%03d) Fz(u,v)=cos(v)", sequence)
 #name = sprintf("16-2-1 (%03d) (count = %04f)", sequence, count)
-name = sprintf("11-1-1 (%03d) \
-Y(u,v)=sqrt(5.0/(4.0*pi))*0.5* (3.0 * cos(u)** param - 1) \
+name = sprintf("17-1-2 (%03d) \
+Y(u,v)=sqrt(5.0/( param * pi))* 0.5 * (3.0 * cos(u)** 2 - 1) \
 (param = %04f)"\
      , sequence, param)
 
@@ -189,11 +195,11 @@ splot tablefile using (Fx($1,$2)):(Fy($1,$2)):(Fz($1,$2)):(light($1,$2)) \
 
 
 #ref http://www.math.utk.edu/~vasili/refs/How-to/gnuplot.print.html
-set terminal gif
+#set terminal gif
 
-time_label = "20170424_125834"
+time_label = "20170424_132124"
 
-set output sprintf("image_%s/17_1-1.%s.%002d.gif", time_label, time_label, sequence)
+#set output sprintf("image_%s/17_1-1.%s.%002d.gif", time_label, time_label, sequence)
 
 
 ############################
@@ -203,6 +209,7 @@ set output sprintf("image_%s/17_1-1.%s.%002d.gif", time_label, time_label, seque
 ############################
 #if (count < count_max) pause wait;  count = count + count_tick; sequence = sequence + 1; reread
 #if (sequece < sequence_max) pause wait;  count = count + count_tick; sequence = sequence + 1; reread
+
 if (sequence < sequence_max) pause wait;  count = count + count_tick; sequence = sequence + 1; reread
 
 count = count_init

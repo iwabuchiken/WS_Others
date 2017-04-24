@@ -20,7 +20,9 @@ count_init = 0   #=> 13_1-2.3d-add-color.animation.plt
 
 #count_tick = 0.1
 #count_tick = 0.1   #=> 13_1-2.3d-add-color.animation.plt
-count_tick = 0.05   #=> 16_2-2
+#count_tick = 0.05   #=> 16_2-2
+#count_tick = 0.01   #=> 17_1-1
+count_tick = 1   #=> 17_1-1 Y(u,v)=sqrt(5.0/( param * pi))* 0.5 * (3.0 * cos(u)** 2 - 1) # ‹…–Ê’²˜aŠÖ”
 
 #samples_value = 50
 #samples_value = 50   #=> 13_1-2.3d-add-color.animation.plt
