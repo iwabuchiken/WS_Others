@@ -47,21 +47,24 @@ if (exist("sequence") == 0 || sequence < 0) sequence = 0 #•Ï”‚Ì‰Šú‰»
 # params setup
 #
 ############################
-#Y(u,v)=sqrt(5.0/(4.0*pi))*0.5*(3.0*cos(u)**2-1) # ‹…–Ê’²˜aŠÖ”
-#param = 2.0 + count
-#param = 0.1 + count   # cos(u)**2 - param
-#param = 0.1 + count   # (3.0 * cos(u)** param - 1)
-#param = 0.2 + count   # param * (3.0 * cos(u)** 2 - 1)
-param = 2 + count   # sqrt(5.0/( param * pi))* 0.5 * (3.0 * cos(u)** 2 - 1)
+param = 2 + count
 
-Y(u,v)=sqrt(param / ( 4.0 * pi))* 0.5 * (3.0 * cos(u)** 2 - 1) # ‹…–Ê’²˜aŠÖ”
-#Y(u,v)=sqrt(5.0/( 20.0 * pi))* 0.5 * (3.0 * cos(u)** 2 - 1) # ‹…–Ê’²˜aŠÖ”
-#Y(u,v)=sqrt(5.0/( param * pi))* 0.5 * (3.0 * cos(u)** 2 - 1) # ‹…–Ê’²˜aŠÖ”
-#Y(u,v)=sqrt(5.0/(4.0*pi))* param * (3.0 * cos(u)** 2 - 1) # ‹…–Ê’²˜aŠÖ”
-#Y(u,v)=sqrt(5.0/(4.0*pi))*0.5* (3.0 * cos(u)** param - 1) # ‹…–Ê’²˜aŠÖ”
-#Y(u,v)=sqrt(5.0/(4.0*pi))*0.5* (3.0 * cos(u)**2-param) # ‹…–Ê’²˜aŠÖ”
-#Y(u,v)=sqrt(5.0/(4.0*pi))*0.5* (param * cos(u)**2-1) # ‹…–Ê’²˜aŠÖ”
-#Y(u,v)=sqrt(5.0/(4.0*pi))*0.5*(2.0*cos(u)**2-1) # ‹…–Ê’²˜aŠÖ”
+#Y(u,v)=sqrt(5.0/(4.0*pi))*0.5*(3.0*cos(u)**2-1) # ‹…–Ê’²˜aŠÖ”
+#Y(u,v)=1.0/sqrt(4.0*pi)   #=> 1s
+#Y(u,v)=sqrt(3.0/(4.0*pi))*cos(u)   #=> 2pz
+#Y(u,v)=sqrt(3.0/(4.0*pi))*sin(u)*cos(v)   #=> 2px
+#Y(u,v)=sqrt(3.0/(4.0*pi))*sin(u)*cos(u)   #=> 2px, v-1
+#Y(u,v)=sqrt(3.0/(4.0*pi))*sin(u)*sin(v)   #=> 2py
+#Y(u,v)=sqrt(3.0/(4.0*pi))*cos(u)*cos(v)   #=> 2py, v-1
+#Y(u,v)=sqrt(3.0/(4.0*pi))*(sin(u)*(1/2))*(cos(v)*(1/2))   #=> 2py, v-2 ---> 'recursion depth limit exceeded'
+#Y(u,v)=sqrt(5.0/(4.0*pi))*0.5*(3.0*cos(u)**2-1.0)   #=> 3d_z^2
+#Y(u,v)=sqrt(15.0/(4.0*pi))*(sin(u)*cos(u)*cos(v))   #=> 3d_xz
+#Y(u,v)=sqrt(15.0/(4.0*pi))*(sin(u)*sin(u)*cos(v))   #=> 3d_xz, v-1
+#Y(u,v)=sqrt(15.0/(4.0*pi))*(sin(u)*sin(u)*sin(v))   #=> 3d_xz, v-1
+#Y(u,v)=sqrt(15.0/(4.0*pi))*(cos(u)*cos(u)*cos(v))   #=> 3d_xz, v-1
+#Y(u,v)=sqrt(15.0/(4.0*pi))*(sin(u)*cos(u)*sin(v))   #=> 3d_yz
+#Y(u,v)=sqrt(15.0/(4.0*pi))*0.5*(sin(u)**2*cos(2*v))   #=> 3d_x^2-y^2
+Y(u,v)=sqrt(15.0/(4.0*pi))*0.5*(sin(u)**2*sin(2*v))   #=> 3d_xy
 
 Fx(u,v)=sin(u)*cos(v)*abs(Y(u,v))
 Fy(u,v)=sin(u)*sin(v)*abs(Y(u,v))
@@ -116,8 +119,8 @@ light(u,v)=(n_length(u,v)!=0.0 ? \
 #name = sprintf("16-1-3 Fz(u,v)=sin(u)")
 #name = sprintf("16-1-3 (%03d) Fz(u,v)=cos(v)", sequence)
 #name = sprintf("16-2-1 (%03d) (count = %04f)", sequence, count)
-name = sprintf("17-1-2 (%03d) \
-Y(u,v)=sqrt(5.0/( param * pi))* 0.5 * (3.0 * cos(u)** 2 - 1) \
+name = sprintf("17-1-3 (%03d) \
+Y(u,v)=sqrt(5.0/(4.0*pi))*0.5*(3.0*cos(u)**2-1) \
 (param = %04f)"\
      , sequence, param)
 
@@ -209,7 +212,7 @@ time_label = "20170424_132124"
 #if (count < count_max) pause wait;  count = count + count_tick; sequence = sequence + 1; reread
 #if (sequece < sequence_max) pause wait;  count = count + count_tick; sequence = sequence + 1; reread
 
-if (sequence < sequence_max) pause wait;  count = count + count_tick; sequence = sequence + 1; reread
+#if (sequence < sequence_max) pause wait;  count = count + count_tick; sequence = sequence + 1; reread
 
 count = count_init
 sequence = sequence_init
