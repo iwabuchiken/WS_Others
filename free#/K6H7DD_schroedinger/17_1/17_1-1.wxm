@@ -142,5 +142,14 @@ wxplot2d(f, urng);
 sqrt(5.0/(4.0*%pi));
 /* [wxMaxima: input   end   ] */
 
+/* [wxMaxima: input   start ] */
+/* 2pz */
+a: 1;
+urng: [u, 0, a * %pi];
+f: sqrt(3.0/(4.0*%pi))*cos(u);
+wxplot2d(f, urng);
+/* [wxMaxima: input   end   ] */
+
+
 /* Maxima can't load/batch files which end with a comment! */
 "Created with wxMaxima"$
