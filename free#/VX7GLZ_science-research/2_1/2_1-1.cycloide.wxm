@@ -1,0 +1,54 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 16.04.2 ] */
+
+/* [wxMaxima: input   start ] */
+trng: [t, 0, 5*%pi];
+f1: t - sin(t);
+wxplot2d(f1, trng);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+fs: [cos(t), 1-cos(t), sin(t), 1-cos(t)-1];
+wxplot2d(fs, trng);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+trng: [t, 0, %pi * 2];
+fs: [cos(t), 1-cos(t), sin(t), 1-cos(t)-1];
+wxplot2d(fs, trng);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* res free# VX7GLZ 2#1 / science research / 20170425_121044 || 2.1 */
+trng2: [t, 0.0001, 2*%pi - 0.0001];
+f2: sin(t)/(1-cos(t));
+wxplot2d(f2, trng2);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+trng2: [t, (1/2)*%pi, (3/2)*%pi];
+f2: sin(t)/(1-cos(t));
+wxplot2d(f2, trng2);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* 2_1-1.cycloide.velocity-curve.png */
+a: 0.5;
+trng2: [t, a, 2*%pi - a];
+f2: sin(t)/(1-cos(t));
+/* ref http://www.k3.dion.ne.jp/~kawada/Uinx/maxima-plot.html */
+gnu_opt: [gnuplot_preamble, "set xrange [-1:1]"];
+wxplot2d(f2, trng2, gnu_opt);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+a: 0.5;
+trng2: [t, a, 2*%pi - a];
+f3: 1/(1-cos(t))^2;
+/* ref http://www.k3.dion.ne.jp/~kawada/Uinx/maxima-plot.html */
+gnu_opt: [gnuplot_preamble, "set xrange [-1:1]"];
+wxplot2d(f3, trng2, gnu_opt);
+/* [wxMaxima: input   end   ] */
+
+/* Maxima can't load/batch files which end with a comment! */
+"Created with wxMaxima"$

@@ -49,6 +49,7 @@ yrange_end = 3
 set yrange [0:yrange_end]
 #set yrange [0:3]
 
+#ref http://www.gnuplot-cmd.com/chart/grid.html
 set grid lw 1
 
 ########## graph size ##########

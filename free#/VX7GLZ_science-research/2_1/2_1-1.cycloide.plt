@@ -57,20 +57,34 @@ set ytics 0, 1, 3
 set nokey
 set parametric
 
-#set terminal jpeg  enhanced font "Times" 20 size 600, 240
-#set tics font 'Times,18'
+########## grid ##########
+xtic_value = 1
+set xtics 0, xtic_value, 15
+
+ytic_value = 0.5
+set ytics 0, ytic_value, 3
+
+set grid lw 1
+
+set terminal jpeg  enhanced font "Times" 20 size 600, 240
+set tics font 'Times,18'
 
 if (exist("n")==0 || n<0) n=0 #変数の初期化
 #outfile(n) = sprintf("f/%d.jpg",n+1000)  #出力ファイル名
+outfile(n) = sprintf("f-2/%d.jpg",n+1000)  #出力ファイル名
 
 #title(n) = sprintf("t = %d",n)  #タイトル名
 #title(n) = sprintf("t = %d (t = %f)",n, t)  #タイトル名
 
 unset label 
 #set label title(n)  font 'Times,20'  at 0 , 3.3 
-#set output outfile(n)
+set output outfile(n)
 
 theta = pi/20 * n
+
+#title(n) = sprintf("t = %d / theta = %f",n, theta)  #タイトル名
+
+
 fx(t) = t<=theta ? t-sin(t) : 1/0
 fy(t) = t<=theta ? 1-cos(t) : 1/0
 
@@ -102,7 +116,8 @@ plot\
 #     cos(t)+theta,sin(t)+1 w l ,\   #=> the circle : orig
 #     fx(theta), fy(theta) with points pt 7 lc rgb "blue"   #=> point on the circumference
 
-if (n<100)  n=n+1; pause 0.1; reread
+#if (n<100)  n=n+1; pause 0.1; reread
+if (n<100)  n=n+1; reread
 n = 0
 
 ############################
