@@ -1,0 +1,18 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 16.04.2 ] */
+
+/* [wxMaxima: input   start ] */
+a: 3;
+xrng: [x, -a*%pi, a*%pi];
+y: sin(x)/(1-cos(x));
+gnu_opt: [gnuplot_preamble, "set yrange [-4 : 4]"];
+wxplot2d(y, xrng, gnu_opt);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* ref http://d.hatena.ne.jp/jurupapa/20110507/1304742775 */
+solve(y = 0, x);
+/* [wxMaxima: input   end   ] */
+
+/* Maxima can't load/batch files which end with a comment! */
+"Created with wxMaxima"$
