@@ -67,7 +67,11 @@ set vrange [-pi:pi]
 set isosamples 36,24
 
 set hidden3d
-set view 75,15,1,1
+#ref " ‰ñ“]1, ‰ñ“]2, ƒOƒ‰ƒt‚ÌŠg‘å—¦, zŽ²‚ÌŠg‘å—¦" http://dsl4.eee.u-ryukyu.ac.jp/DOCS/gnuplot/node128.html
+set view 75,15,1,1   #=> original
+#set view 75,15,1,2
+#set view 75,15,2,1
+
 unset key
 set ticslevel 0
 
@@ -77,9 +81,24 @@ z1(u,v)=.5*sin(v)
 x2(u,v)=1+cos(u)+.5*cos(u)*cos(v)
 y2(u,v)=.5*sin(v)
 z2(u,v)=sin(u)+.5*sin(u)*cos(v)
+#set multiplot
 set multiplot
 
-#splot x1(u,v), y1(u,v), z1(u,v) w pm3d, x2(u,v), y2(u,v), z2(u,v) w pm3d
+#ref http://www.ss.scphys.kyoto-u.ac.jp/person/yonezawa/contents/program/gnuplot/3D_surface.html
+palette_0 = "dark-blue"
+palette_1 = "cyan"
+set palette defined ( 0 palette_0 , 1 palette_1)
+#set palette defined ( 0 "dark-blue" , 1 "cyan")
+
+#splot "++" using (x1($1,$2)) : (y1($1,$2)) : (z1($1,$2)) : (sin($1+$2*2))   #=> 
+#splot "++" using (x1($1,$2)) : (y1($1,$2)) : (z1($1,$2)) : (sin($1+$2*2)) lt 1   #=> 
+#splot "++" using (x1($1,$2)) : (y1($1,$2)) : (z1($1,$2)) : (sin($1+$2*2)) lt 5   #=> 
+#splot "++" using (x1($1,$2)) : (y1($1,$2)) : (z1($1,$2)) : (sin($1+$2*2)) with pm3d   #=> working
+#splot "++" using 1:2:(x1($1,$2)):(sin($1+$2*2)) with pm3d   #=> working
+#splot "++" using cos($1)+.5*cos($1)*cos($2):2:(sin($1)*sin($2)):(sin($1+$2*2)) with pm3d   #=> 'column() called from invalid context'
+#splot "++" using x1(($1),($2)) : y1(($1),($2)) : z1(($1),($2)):(sin($1+$2*2)) with pm3d   #=> 'column() called from invalid context'
+#splot "++" using 1:2:(sin($1)*sin($2)):(sin($1+$2*2)) with pm3d
+splot x1(u,v), y1(u,v), z1(u,v) w pm3d, x2(u,v), y2(u,v), z2(u,v) w pm3d
 splot x1(u,v), y1(u,v), z1(u,v) lt 3, x2(u,v), y2(u,v), z2(u,v) lt 5
 
 
