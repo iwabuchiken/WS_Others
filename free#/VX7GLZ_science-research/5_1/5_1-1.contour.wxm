@@ -2,10 +2,31 @@
 /* [ Created with wxMaxima version 16.04.2 ] */
 
 /* [wxMaxima: input   start ] */
-a: 3
+/* ref http://folk.uio.no/hpl/scripting/doc/gnuplot/Kawano/plot3d.html*/
+a: 3;
 xrng: [x, -a * %pi, a * %pi];
-yrng: [x, -a * %pi, a * %pi];
+yrng: [y, -a * %pi, a * %pi];
 z: sin(x) * cos(y);
+opt: [gnuplot_preamble, "set isosample 40"];
+wxplot3d(z, xrng, yrng);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+a: 3;
+xrng: [x, -a * %pi, a * %pi];
+yrng: [y, -a * %pi, a * %pi];
+z: sin(x) * cos(y);
+opt: [gnuplot_preamble, "set isosample 40"];
+wxplot3d(z, xrng, yrng, opt);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+a: 3;
+xrng: [x, -a * %pi, a * %pi];
+yrng: [y, -a * %pi, a * %pi];
+z: sin(x) * cos(y);
+opt: [gnuplot_preamble, "set isosample 200"];
+wxplot3d(z, xrng, yrng, opt, [nticks, 100]);
 /* [wxMaxima: input   end   ] */
 
 /* Maxima can't load/batch files which end with a comment! */

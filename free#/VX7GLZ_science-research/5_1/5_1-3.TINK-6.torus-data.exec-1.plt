@@ -66,22 +66,11 @@ set urange [0:2*pi]
 set vrange [-pi:pi]
 set isosamples 36,24
 
-##### save data to table
-set xrange [-1:1]
-set yrange [-1:1]
-
-tablefile="TINK-5-2.u-v-values.table"
-set table tablefile
-splot 0
-unset table
-
 set parametric
 
 set hidden3d
 #ref " ‰ñ“]1, ‰ñ“]2, ƒOƒ‰ƒt‚ÌŠg‘å—¦, zŽ²‚ÌŠg‘å—¦" http://dsl4.eee.u-ryukyu.ac.jp/DOCS/gnuplot/node128.html
 set view 75,15,1,1   #=> original
-#set view 75,15,1,2
-#set view 75,15,2,1
 
 unset key
 set ticslevel 0
@@ -109,9 +98,14 @@ set palette defined ( 0 palette_0 , 1 palette_1)
 #splot "++" using cos($1)+.5*cos($1)*cos($2):2:(sin($1)*sin($2)):(sin($1+$2*2)) with pm3d   #=> 'column() called from invalid context'
 #splot "++" using x1(($1),($2)) : y1(($1),($2)) : z1(($1),($2)):(sin($1+$2*2)) with pm3d   #=> 'column() called from invalid context'
 #splot "++" using 1:2:(sin($1)*sin($2)):(sin($1+$2*2)) with pm3d
-splot x1(u,v), y1(u,v), z1(u,v) w pm3d, x2(u,v), y2(u,v), z2(u,v) w pm3d
-splot x1(u,v), y1(u,v), z1(u,v) lt 3, x2(u,v), y2(u,v), z2(u,v) lt 5
+#splot x1(u,v), y1(u,v), z1(u,v) w pm3d, x2(u,v), y2(u,v), z2(u,v) w pm3d
+#splot x1(u,v), y1(u,v), z1(u,v) lt 3, x2(u,v), y2(u,v), z2(u,v) lt 5
 
+#ref http://stackoverflow.com/questions/7208665/how-to-export-from-gnuplot-to-extern-datafile-the-frecuency-counts-used-to-gener answered Aug 26 '11 at 19:15
+#search https://www.google.co.jp/search?q=gnuplot+splot+write+data&oq=gnuplot+splot+write+data&aqs=chrome..69i64j5l2.6678j0j4&sourceid=chrome&ie=UTF-8#q=gnuplot+write+plot+data
+set table "torus-data.dat"
+splot x1(u,v), y1(u,v), z1(u,v) lt 3
+unset table
 
 #count = count + 1
 

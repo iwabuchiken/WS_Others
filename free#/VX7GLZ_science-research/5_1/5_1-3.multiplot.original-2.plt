@@ -67,8 +67,8 @@ set vrange [-pi:pi]
 set isosamples 36,24
 
 ##### save data to table
-set xrange [-1:1]
-set yrange [-1:1]
+#set xrange [-1:1]
+#set yrange [-1:1]
 
 tablefile="TINK-5-2.u-v-values.table"
 set table tablefile
@@ -76,6 +76,7 @@ splot 0
 unset table
 
 set parametric
+
 
 set hidden3d
 #ref " ‰ñ“]1, ‰ñ“]2, ƒOƒ‰ƒt‚ÌŠg‘å—¦, zŽ²‚ÌŠg‘å—¦" http://dsl4.eee.u-ryukyu.ac.jp/DOCS/gnuplot/node128.html
