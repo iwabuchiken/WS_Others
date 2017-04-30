@@ -40,29 +40,38 @@ set hidden3d
 view_X = 50 + count
 view_Y = 15 + count
 
-set view view_X, view_Y, 1, 1
+#set view view_X, view_Y, 1, 1
 #set view 75 + count,15 + count, 1, 1
 #set view 75,15,1,1
+set view 50, 15, 1,1
 
 #ref contour http://lowrank.net/gnuplot/plot3d.html
 #set contour
 #set cntrparam levels 10
 set cntrparam levels incremental -1.5, 0.2, 1.5
 
-set title sprintf("6_1-2 TINK-3-2 (count = %d / view = %d, %d)", count, view_X, view_Y)
+#set title sprintf("6_1-2 TINK-3-3 (count = %d / view = %d, %d)", count, view_X, view_Y)
+#set title sprintf("6_1-2 TINK-3-3 (count = %d / a = %f)", count, a)   #=> TINK-3-3
 
 #unset key
 
 #set ticslevel 0
 set ticslevel 0.5
 
-a = 1.0
+#a = 1.0
+#a = 0.3 + count * 0.1
+#a = 0.1 + count * 0.1
+#a = 0.4 + count * 0.01
+a = 0.1 + count * 0.01
+#a = 0.5
+
+set title sprintf("6_1-2 TINK-3-3 (count = %d / a = %f)", count, a)   #=> TINK-3-3
 
 x1(u,v)=cos(u)+.5*cos(u)*cos(v)
 x1_1(u,v)=cos(u)+ a * cos(u)*cos(v)
 
 y1(u,v)=sin(u)+.5*sin(u)*cos(v)
-y1_1(u,v)=sin(u)+ a **sin(u)*cos(v)
+y1_1(u,v)=sin(u)+ a *sin(u)*cos(v)
 
 z1(u,v)=.5*sin(v)
 
@@ -76,23 +85,30 @@ z2(u,v)=sin(u)+.5*sin(u)*cos(v)
 # save image
 ############################
 #ref http://www.math.utk.edu/~vasili/refs/How-to/gnuplot.print.html
-#set terminal gif
+set terminal gif
 
-time_label = "20170430_175030"
+time_label = "20170501_000027"
+#time_label = "20170430_175030"
 #time_label = "20170430_174244"
 #time_label = "20170430_173728"
 
-#set output sprintf("f_TINK-3-2/6_1-2.TINK-2.%s.%02d.gif", time_label, sequence)
+set output sprintf("f_TINK-3-3_%s/6_1-2.TINK-3-3.%s.%02d.gif", time_label, time_label, sequence)
 #set output sprintf("images_%s/6_1-2.TINK-2.%s.%02d.gif", time_label, time_label, sequence)
 
 set xlabel "x1(u,v)"
 set ylabel "y1(u,v)"
 
+set grid lw 1
+
+#set xrange [-5:5]
+#set yrange[-15:10]
+
 #set multiplot
 
-splot x1(u,v), y1(u,v), 0 lt 2, x1_1(u,v), y1_1(u,v), 0 lt 3
+#splot x1(u,v), y1(u,v), 0 lt 2, x1_1(u,v), y1_1(u,v), 0 lt 3
 #splot x1(u,v), y1(u,v), 0 lt 2
 #splot x1_1(u,v), y1_1(u,v), 0 lt 3
+splot x1_1(u,v), y1_1(u,v), 0 lt 2
 
 #splot u, v, x1(u,v) lt 1, u, v, y1(u,v) lt 2
 #splot u, v, x1(u,v) w pm3d, u, v, y1(u,v) w pm3d
@@ -108,7 +124,9 @@ splot x1(u,v), y1(u,v), 0 lt 2, x1_1(u,v), y1_1(u,v), 0 lt 3
 # animation: loop
 #
 ############################
-wait = 0
+wait = 1
 #count_max = 200
-count_max = 300
-#if (count < count_max) pause wait;  count = count + 1; sequence = sequence + 1; reread
+#count_max = 300
+count_max = 90
+
+if (count < count_max) pause wait;  count = count + 1; sequence = sequence + 1; reread
