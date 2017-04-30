@@ -1,4 +1,4 @@
-#	load "C:\WORKS_2\WS\WS_Others\free#\VX7GLZ_science-research\5_1\5_1-3.multiplot.plt.plt"
+#	load "C:\WORKS_2\WS\WS_Others\free#\VX7GLZ_science-research\6_1\6_1-2.TINK-3-3.plt"
 #	
 #       2017/04/25 12:13:53
 #
@@ -56,9 +56,16 @@ set title sprintf("6_1-2 TINK-3-2 (count = %d / view = %d, %d)", count, view_X, 
 #set ticslevel 0
 set ticslevel 0.5
 
+a = 1.0
+
 x1(u,v)=cos(u)+.5*cos(u)*cos(v)
+x1_1(u,v)=cos(u)+ a * cos(u)*cos(v)
+
 y1(u,v)=sin(u)+.5*sin(u)*cos(v)
+y1_1(u,v)=sin(u)+ a **sin(u)*cos(v)
+
 z1(u,v)=.5*sin(v)
+
 x2(u,v)=1+cos(u)+.5*cos(u)*cos(v)
 y2(u,v)=.5*sin(v)
 z2(u,v)=sin(u)+.5*sin(u)*cos(v)
@@ -69,19 +76,24 @@ z2(u,v)=sin(u)+.5*sin(u)*cos(v)
 # save image
 ############################
 #ref http://www.math.utk.edu/~vasili/refs/How-to/gnuplot.print.html
-set terminal gif
+#set terminal gif
 
 time_label = "20170430_175030"
 #time_label = "20170430_174244"
 #time_label = "20170430_173728"
 
-set output sprintf("f_TINK-3-2/6_1-2.TINK-2.%s.%02d.gif", time_label, sequence)
+#set output sprintf("f_TINK-3-2/6_1-2.TINK-2.%s.%02d.gif", time_label, sequence)
 #set output sprintf("images_%s/6_1-2.TINK-2.%s.%02d.gif", time_label, time_label, sequence)
 
 set xlabel "x1(u,v)"
 set ylabel "y1(u,v)"
 
-splot x1(u,v), y1(u,v), 0 lt 2
+#set multiplot
+
+splot x1(u,v), y1(u,v), 0 lt 2, x1_1(u,v), y1_1(u,v), 0 lt 3
+#splot x1(u,v), y1(u,v), 0 lt 2
+#splot x1_1(u,v), y1_1(u,v), 0 lt 3
+
 #splot u, v, x1(u,v) lt 1, u, v, y1(u,v) lt 2
 #splot u, v, x1(u,v) w pm3d, u, v, y1(u,v) w pm3d
 #splot u, v, x1(u,v) w pm3d
@@ -99,4 +111,4 @@ splot x1(u,v), y1(u,v), 0 lt 2
 wait = 0
 #count_max = 200
 count_max = 300
-if (count < count_max) pause wait;  count = count + 1; sequence = sequence + 1; reread
+#if (count < count_max) pause wait;  count = count + 1; sequence = sequence + 1; reread

@@ -23,7 +23,7 @@ wxplot2d([f3, f4], urng);
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: input   start ] */
-wxplot2d([parametric, f3, f4, urng]);
+/* wxplot2d([parametric, f3, f4, urng]); */;
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: input   start ] */
@@ -104,6 +104,58 @@ g1: cos(x) * cos(x) * b + cos(x);
 g2: sin(x) * cos(x) * b + sin(x);
 xrng: [x, -5, %pi * 3];
 wxplot2d([parametric, g1, g2, xrng]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* TINK-3-3 */
+fs3: [f3, f4];
+wxplot2d([f3, f4], urng);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+a: 3;
+urng: [u, -a * %pi, a * %pi];
+f5: cos(u) * cos(u) * 0.5 + cos(u);
+f6: sin(u) * cos(u) * 0.5 + sin(u);
+fs4: [sin(u), cos(u), f5, f6];
+wxplot2d(fs4, urng);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+a: 3;
+urng: [u, -a * %pi, a * %pi];
+f5: cos(u) * cos(u) * 0.5 + cos(u);
+f6: sin(u) * cos(u) * 0.5 + sin(u);
+
+wxplot2d([cos(u), cos(u)*cos(u)*0.5,  cos(u)*cos(u)*0.5 + cos(u)], urng);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+a: 3;
+urng: [u, -a * %pi, a * %pi];
+f5: cos(u) * cos(u) * 0.5 + cos(u);
+f6: sin(u) * cos(u) * 0.5 + sin(u);
+
+wxplot2d([
+        cos(u), 
+        cos(u)*cos(u)*0.5, 
+        cos(u)*cos(u)*0.5 + cos(u)
+        , cos(u)*cos(u)*1
+        , cos(u)*cos(u)*1 + cos(u)
+        ],
+        urng);
+plot2d([
+        cos(u), 
+        cos(u)*cos(u)*0.5, 
+        cos(u)*cos(u)*0.5 + cos(u)
+        , cos(u)*cos(u)*1
+        , cos(u)*cos(u)*1 + cos(u)
+        ],
+        urng);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+a;
 /* [wxMaxima: input   end   ] */
 
 /* Maxima can't load/batch files which end with a comment! */
