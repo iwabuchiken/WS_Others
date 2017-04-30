@@ -1,6 +1,6 @@
-#	load "C:\WORKS_2\WS\WS_Others\free#\VX7GLZ_science-research\6_1\6_1-1.TINK-1.torus-data_x1,y1.plt"
+#	load "C:\WORKS_2\WS\WS_Others\free#\VX7GLZ_science-research\5_1\5_1-3.multiplot.plt.plt"
 #	
-#       2017/04/30 15:29:00
+#       2017/04/25 12:13:53
 #
 #      ref: 
 #
@@ -62,60 +62,66 @@ if (exist("level") == 0 || level < 0) level = 0 #•Ï”‚Ì‰Šú‰»
 #set term png crop enhanced font "calibri, 10"
 #set output "toros.png"
 #set parametric
-set xrange [0:2*pi]
-set yrange [-pi:pi]
-set zrange [-1:1]
-
+set urange [0:2*pi]
+set vrange [-pi:pi]
 set isosamples 36,24
 
-#set table "6_1-1.TINK-1.table"
-#splot 0
-#unset table
+##### save data to table
+#set xrange [-1:1]
+#set yrange [-1:1]
 
-#exit
+tablefile="TINK-5-2.u-v-values.table"
+set table tablefile
+splot 0
+unset table
 
 set parametric
+
 
 set hidden3d
 #ref " ‰ñ“]1, ‰ñ“]2, ƒOƒ‰ƒt‚ÌŠg‘å—¦, zŽ²‚ÌŠg‘å—¦" http://dsl4.eee.u-ryukyu.ac.jp/DOCS/gnuplot/node128.html
 set view 75,15,1,1   #=> original
+#set view 75,15,1,2
+#set view 75,15,2,1
 
-#unset key
+unset key
 set ticslevel 0
-
-#set xrange [-1 : 1]
-#set yrange [-1 : 1]
-#set zrange [-1 : 1]
-
-set urange [0:2*pi]
-set vrange [-pi:pi]
 
 x1(u,v)=cos(u)+.5*cos(u)*cos(v)
 y1(u,v)=sin(u)+.5*sin(u)*cos(v)
 z1(u,v)=.5*sin(v)
-
-splot x1(u,v) with pm3d   #=> 'parametric function not fully specified'
-
-#plot sin(x)
-#plot x1(x,y)
-
-#splot "++" using ($1) : ($2) : (x1($1,$2)) : (sin($1+$2*2)) 
-#splot "++" using (x1($1,$2)) : (y1($1,$2)) : (z1($1,$2)) : (sin($1+$2*2)) 
-#splot cos(u)+.5*cos(u)*cos(v)
-#splot cos(x)+.5*cos(x)*cos(y)   #=> 
-
-#setn multiplot
+x2(u,v)=1+cos(u)+.5*cos(u)*cos(v)
+y2(u,v)=.5*sin(v)
+z2(u,v)=sin(u)+.5*sin(u)*cos(v)
+#set multiplot
+set multiplot
 
 #ref http://www.ss.scphys.kyoto-u.ac.jp/person/yonezawa/contents/program/gnuplot/3D_surface.html
-#palette_0 = "dark-blue"
-#palette_1 = "cyan"
-#set palette defined ( 0 palette_0 , 1 palette_1)
+palette_0 = "dark-blue"
+palette_1 = "cyan"
+set palette defined ( 0 palette_0 , 1 palette_1)
 #set palette defined ( 0 "dark-blue" , 1 "cyan")
 
-#ref http://stackoverflow.com/questions/7208665/how-to-export-from-gnuplot-to-extern-datafile-the-frecuency-counts-used-to-gener answered Aug 26 '11 at 19:15
-#search https://www.google.co.jp/search?q=gnuplot+splot+write+data&oq=gnuplot+splot+write+data&aqs=chrome..69i64j5l2.6678j0j4&sourceid=chrome&ie=UTF-8#q=gnuplot+write+plot+data
+#splot "++" using (x1($1,$2)) : (y1($1,$2)) : (z1($1,$2)) : (sin($1+$2*2))   #=> 
+#splot "++" using (x1($1,$2)) : (y1($1,$2)) : (z1($1,$2)) : (sin($1+$2*2)) lt 1   #=> 
+#splot "++" using (x1($1,$2)) : (y1($1,$2)) : (z1($1,$2)) : (sin($1+$2*2)) lt 5   #=> 
+#splot "++" using (x1($1,$2)) : (y1($1,$2)) : (z1($1,$2)) : (sin($1+$2*2)) with pm3d   #=> working
+#splot "++" using 1:2:(x1($1,$2)):(sin($1+$2*2)) with pm3d   #=> working
+#splot "++" using cos($1)+.5*cos($1)*cos($2):2:(sin($1)*sin($2)):(sin($1+$2*2)) with pm3d   #=> 'column() called from invalid context'
+#splot "++" using x1(($1),($2)) : y1(($1),($2)) : z1(($1),($2)):(sin($1+$2*2)) with pm3d   #=> 'column() called from invalid context'
+#splot "++" using 1:2:(sin($1)*sin($2)):(sin($1+$2*2)) with pm3d
+splot x1(u,v), y1(u,v), z1(u,v) w pm3d, x2(u,v), y2(u,v), z2(u,v) w pm3d
+splot x1(u,v), y1(u,v), z1(u,v) lt 3, x2(u,v), y2(u,v), z2(u,v) lt 5
 
-#splot x1(u,v), y1(u,v), z1(u,v) lt 3
+
+#count = count + 1
+
+#if(count < 10) pause 1; level = level + 0.1; reread
+#if(count < 10) pause 2; level = level + 0.1; sequence = sequence + 1; reread
+#if(count < 10)  level = level + 0.1; sequence = sequence + 1; reread
+
+#count=0
+
 
 ############################
 #

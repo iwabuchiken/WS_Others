@@ -83,28 +83,16 @@ set view 75,15,1,1   #=> original
 #unset key
 set ticslevel 0
 
-#set xrange [-1 : 1]
-#set yrange [-1 : 1]
-#set zrange [-1 : 1]
-
-set urange [0:2*pi]
-set vrange [-pi:pi]
+set xrange [-1 : 1]
+set yrange [-1 : 1]
+set zrange [-1 : 1]
 
 x1(u,v)=cos(u)+.5*cos(u)*cos(v)
 y1(u,v)=sin(u)+.5*sin(u)*cos(v)
-z1(u,v)=.5*sin(v)
 
-splot x1(u,v) with pm3d   #=> 'parametric function not fully specified'
+splot "6_1-1.TINK-1.table" using 1 : 2 : 
 
-#plot sin(x)
-#plot x1(x,y)
-
-#splot "++" using ($1) : ($2) : (x1($1,$2)) : (sin($1+$2*2)) 
-#splot "++" using (x1($1,$2)) : (y1($1,$2)) : (z1($1,$2)) : (sin($1+$2*2)) 
-#splot cos(u)+.5*cos(u)*cos(v)
-#splot cos(x)+.5*cos(x)*cos(y)   #=> 
-
-#setn multiplot
+#set multiplot
 
 #ref http://www.ss.scphys.kyoto-u.ac.jp/person/yonezawa/contents/program/gnuplot/3D_surface.html
 #palette_0 = "dark-blue"
