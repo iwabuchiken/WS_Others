@@ -33,14 +33,7 @@ plot3d([x, y, urng, vrng]);
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: input   start ] */
-x(t):=A1*cos(w*t);
-y(t):=A2*cos(w*t+d);
-wxplot2d([parametric, x(t),y(t),[t,0,1],[nticks,1000],
-        [plot_format, gnuplot],[gnuplot_preamble,"set size square"]])
-,A1=1,A2=2,w=2*%pi,d=%pi/2;
-plot2d([parametric, x(t),y(t),[t,0,1],[nticks,1000],
-        [plot_format, gnuplot],[gnuplot_preamble,"set size 1.0"]])
-,A1=1,A2=2,w=2*%pi,d=%pi/2;
+ntick
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: input   start ] */
@@ -84,12 +77,13 @@ plot2d([parametric,cos(2*%pi*t/6),sin(2*%pi*t/6), [t, 0, 3]]);
 /* [wxMaxima: input   start ] */
 x(t):=A1*cos(w*t);
 y(t):=A2*cos(w*t+d);
-wxplot2d([parametric, x(t),y(t),[t,0,1],[nticks,1000],
+trng: [t, 0, 1];
+wxplot2d([parametric, x(t),y(t),trng,urng, [nticks,1],
         [plot_format, gnuplot],[gnuplot_preamble,"set size square"]])
 ,A1=1,A2=2,w=2*%pi,d=%pi/2;
 /*plot2d([parametric, x(t),y(t),[t,0,1],[nticks,1000],
         [plot_format, gnuplot],[gnuplot_preamble,"set size 1.0"]])
-,A1=1,A2=2,w=2*%pi,d=%pi/2;*/
+,A1=1,A2=2,w=2*%pi,d=%pi/2;*/;
 /* [wxMaxima: input   end   ] */
 
 /* Maxima can't load/batch files which end with a comment! */
