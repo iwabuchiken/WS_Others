@@ -46,7 +46,8 @@ z2(u,v)=sin(u)+.5*sin(u)*cos(v)
 
 #set multiplot
 
-splot u, v, x1(u,v) lt 1, u, v, y1(u,v) lt 2
+splot x1(u,v), y1(u,v), 0 lt 2
+#splot u, v, x1(u,v) lt 1, u, v, y1(u,v) lt 2
 #splot u, v, x1(u,v) w pm3d, u, v, y1(u,v) w pm3d
 #splot u, v, x1(u,v) w pm3d
 
