@@ -54,7 +54,9 @@ view_Y = 15 + count
 #set view 75 + count,15 + count, 1, 1
 #set view 75,15,1,1
 #set view 50, 15, 1,1
-set view 10, 35, 1,1
+#set view 10, 35, 1,1
+set view 10, 35, 1.3, 1
+#set view 0, 0, 1.5, 1
 #set view 5, 5, 1,1
 #set view 25, 35, 1.5,1
 #set view 25, 35, 1, 1
@@ -69,8 +71,8 @@ A_value = 0
 #A_value = u   #=> ' undefined variable: u'
 
 session_num = "7_1"
-title_num = "2-3"
-set title sprintf("%s TINK-%s (count = %d / urange = %f, %f / A = %f)", \
+title_num = "2-3-1"
+set title sprintf("%s TINK-%s (graph = +u, +v, +u+v, original)  (count = %d / urange = %f, %f / A = %f)", \
           session_num, title_num, count, urange_start, urange_end, A_value)   #=> TINK-3-3
 
 #unset key
@@ -112,7 +114,8 @@ z2(u,v)=sin(u)+.5*sin(u)*cos(v)
 #ref http://www.math.utk.edu/~vasili/refs/How-to/gnuplot.print.html
 set terminal gif
 
-time_label = "20170501_153918"
+time_label = "20170501_160443"
+#time_label = "20170501_153918"
 #time_label = "20170501_142352"
 #time_label = "20170501_131530"
 #time_label = "20170501_130628"
@@ -134,8 +137,10 @@ set ylabel "y1(u,v)"
 
 set grid lw 1
 
-set xrange [-7:2]
-set yrange[-7:2]
+#set xrange [-7:2]
+#set yrange[-7:2]
+#set xrange [-7:-2]
+#set yrange[-7:-2]
 
 #set multiplot
 
@@ -146,7 +151,15 @@ set yrange[-7:2]
 #splot x1_1(u,v), y1_1(u,v), 0 lt 2
 #splot x1_2(u,v), y1_2(u,v), 0 lt 2
 #splot x1_2(u,v) + u, y1_2(u,v) + u, 0 lt 2
-splot x1_2(u,v) + u, y1_2(u,v) + u, 0 lt 2, x1(u,v), y1(u,v), 0.5 lt 3
+
+#splot x1_2(u,v) + v, y1_2(u,v) + v, sin(v) lt 2, \   #=> no plot shown
+splot x1_2(u,v) + u, y1_2(u,v) + u, 0 lt 2, \
+    x1_2(u,v) + v, y1_2(u,v) + v, 0.3 lt 3, \
+    x1_2(u,v) + v + u, y1_2(u,v) + v + u, 0.6 lt 4, \
+  x1(u,v), y1(u,v), 0.9 lt 5
+
+#   x1_2(u,v) + v, y1_2(u,v) + v, 0.3 lt 3
+#   x1_2(u,v) + v + u, y1_2(u,v) + v + u, 0.6 lt 4, \
 
 #splot u, v, x1(u,v) lt 1, u, v, y1(u,v) lt 2
 #splot u, v, x1(u,v) w pm3d, u, v, y1(u,v) w pm3d
@@ -165,6 +178,7 @@ splot x1_2(u,v) + u, y1_2(u,v) + u, 0 lt 2, x1(u,v), y1(u,v), 0.5 lt 3
 #wait = 0.1
 #count_max = 200
 #count_max = 300
+#count_max = 170
 count_max = 70
 
 if (count < count_max) pause wait;  count = count + 1; sequence = sequence + 1; reread
