@@ -1,4 +1,4 @@
-#	load "C:\WORKS_2\WS\WS_Others\free#\VX7GLZ_science-research\7_1\7_1.TINK-1.plt"
+#	load "C:\WORKS_2\WS\WS_Others\free#\VX7GLZ_science-research\7_1\7_1.TINK-1-3.plt"
 #	
 #       2017/04/25 12:13:53
 #
@@ -51,7 +51,8 @@ view_Y = 15 + count
 #set view 75,15,1,1
 #set view 50, 15, 1,1
 #set view 0, 0, 1,1
-set view 5, 5, 1,1
+#set view 5, 5, 1,1
+set view 25, 35, 1.5,1
 
 #ref contour http://lowrank.net/gnuplot/plot3d.html
 #set contour
@@ -74,8 +75,8 @@ a = 0.1 + count * 0.01
 
 #set title sprintf("6_1-2 TINK-3-3 (count = %d / a = %f)", count, a)   #=> TINK-3-3
 
-#x1(u,v)=cos(u)+.5*cos(u)*cos(v)
-x1(u,v)=.5*cos(u)*cos(v)
+x1(u,v)=cos(u)+.5*cos(u)*cos(v)
+#x1(u,v)=.5*cos(u)*cos(v)
 x1_1(u,v)=cos(u)+ a * cos(u)*cos(v)
 
 
@@ -94,23 +95,22 @@ z2(u,v)=sin(u)+.5*sin(u)*cos(v)
 # save image
 ############################
 #ref http://www.math.utk.edu/~vasili/refs/How-to/gnuplot.print.html
-#set terminal gif
+set terminal gif
 
-time_label = "20170501_111009"
+time_label = "20170501_125637"
+#time_label = "20170501_111009"
 #time_label = "20170430_175030"
 #time_label = "20170430_174244"
 #time_label = "20170430_173728"
 
-#set output sprintf("f_TINK-1-1_%s/7_1.TINK-1-1.%s.%02d.gif", time_label, time_label, sequence)
-
-#set output sprintf("images_%s/6_1-2.TINK-2.%s.%02d.gif", time_label, time_label, sequence)
+set output sprintf("f_TINK-1-3_%s/7_1.TINK-1-3.%s.%02d.gif", time_label, time_label, sequence)
 
 set xlabel "x1(u,v)"
 set ylabel "y1(u,v)"
 
 set grid lw 1
 
-set xrange [-0.5:0.5]
+set xrange [-2:2]
 set yrange[-2:2]
 
 #set multiplot
