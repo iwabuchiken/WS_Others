@@ -103,13 +103,13 @@ splot sin(u)*cos(v),sin(u)*sin(v),cos(u) with pm3d
 
 
 #ref http://www.math.utk.edu/~vasili/refs/How-to/gnuplot.print.html
-#set terminal gif
+set terminal gif
 
 time_label = "20170422_155122"
 
 #system "mkdir "."image2_".time_label
 
-#set output sprintf("image_%s/15_1-1.%s.%002d.gif", time_label, time_label, sequence)
+set output sprintf("image_%s/15_1-1.%s.%002d.gif", time_label, time_label, sequence)
 
 
 ############################
