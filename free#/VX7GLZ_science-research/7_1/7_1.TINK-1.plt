@@ -1,4 +1,4 @@
-#	load "C:\WORKS_2\WS\WS_Others\free#\VX7GLZ_science-research\6_1\6_1-2.TINK-3-3.plt"
+#	load "C:\WORKS_2\WS\WS_Others\free#\VX7GLZ_science-research\7_1\7_1.TINK-1.plt"
 #	
 #       2017/04/25 12:13:53
 #
@@ -43,7 +43,8 @@ view_Y = 15 + count
 #set view view_X, view_Y, 1, 1
 #set view 75 + count,15 + count, 1, 1
 #set view 75,15,1,1
-set view 50, 15, 1,1
+#set view 50, 15, 1,1
+set view 0, 0, 1,1
 
 #ref contour http://lowrank.net/gnuplot/plot3d.html
 #set contour
@@ -67,8 +68,10 @@ a = 0.1 + count * 0.01
 
 set title sprintf("6_1-2 TINK-3-3 (count = %d / a = %f)", count, a)   #=> TINK-3-3
 
-x1(u,v)=cos(u)+.5*cos(u)*cos(v)
+#x1(u,v)=cos(u)+.5*cos(u)*cos(v)
+x1(u,v)=.5*cos(u)*cos(v)
 x1_1(u,v)=cos(u)+ a * cos(u)*cos(v)
+
 
 y1(u,v)=sin(u)+.5*sin(u)*cos(v)
 y1_1(u,v)=sin(u)+ a *sin(u)*cos(v)
@@ -106,9 +109,9 @@ set grid lw 1
 #set multiplot
 
 #splot x1(u,v), y1(u,v), 0 lt 2, x1_1(u,v), y1_1(u,v), 0 lt 3
-#splot x1(u,v), y1(u,v), 0 lt 2
+splot x1(u,v), y1(u,v), 0 lt 2
 #splot x1_1(u,v), y1_1(u,v), 0 lt 3
-splot x1_1(u,v), y1_1(u,v), 0 lt 2
+#splot x1_1(u,v), y1_1(u,v), 0 lt 2
 
 #splot u, v, x1(u,v) lt 1, u, v, y1(u,v) lt 2
 #splot u, v, x1(u,v) w pm3d, u, v, y1(u,v) w pm3d
@@ -129,4 +132,4 @@ wait = 1
 #count_max = 300
 count_max = 90
 
-if (count < count_max) pause wait;  count = count + 1; sequence = sequence + 1; reread
+#if (count < count_max) pause wait;  count = count + 1; sequence = sequence + 1; reread
