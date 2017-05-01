@@ -1,0 +1,31 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 16.04.2 ] */
+
+/* [wxMaxima: input   start ] */
+a: 2;
+urng: [u, -a * %pi, a * %pi];
+vrng: [v, -a * %pi, a * %pi];
+f1: cos(u) * cos(v);
+wxplot3d([f1, cos(u), urng, vrng]);
+plot3d([f1, cos(u), urng, vrng]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+a: 2;
+urng: [u, -a * %pi, a * %pi];
+vrng: [v, -a * %pi, a * %pi];
+f1: cos(u) * cos(v);
+wxplot3d(f1 + cos(u), urng, vrng);
+plot3d(f1 + cos(u), urng, vrng, [gnuplot_preamble, "set contour"]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+a: 2;
+urng: [u, -a * %pi, a * %pi];
+f1: cos(u) * cos(u);
+f2: cos(u);
+wxplot2d([f1, f2, f1 + f2, f1 * 0.5 + f2], urng);
+/* [wxMaxima: input   end   ] */
+
+/* Maxima can't load/batch files which end with a comment! */
+"Created with wxMaxima"$

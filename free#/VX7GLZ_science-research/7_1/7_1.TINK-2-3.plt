@@ -29,10 +29,10 @@ urange_start = -2 * pi
 #urange_end = count * 0.1 * pi
 urange_end = urange_start + count * 0.1
 
-set urange [urange_start : urange_end]
+#set urange [urange_start : urange_end]
 #set urange [-2 * pi : count * pi]
 #set urange [-2 * pi : 2 * pi]
-#set urange [0:2*pi]
+set urange [0:2*pi]
 
 #set vrange [-pi:pi]
 set vrange [-pi * 2 : pi * 2]
@@ -112,7 +112,7 @@ z2(u,v)=sin(u)+.5*sin(u)*cos(v)
 # save image
 ############################
 #ref http://www.math.utk.edu/~vasili/refs/How-to/gnuplot.print.html
-set terminal gif
+#set terminal gif
 
 time_label = "20170501_160443"
 #time_label = "20170501_153918"
@@ -129,7 +129,7 @@ time_label = "20170501_160443"
 serial_string = title_num
 #session_string = "7-1"
 session_string = session_num
-set output sprintf("f_TINK-%s_%s/%s.TINK-%s.%s.%02d.gif", \
+#set output sprintf("f_TINK-%s_%s/%s.TINK-%s.%s.%02d.gif", \
      serial_string, time_label, session_string, time_label, serial_string, sequence)
 
 set xlabel "x1(u,v)"
@@ -181,4 +181,4 @@ splot x1_2(u,v) + u, y1_2(u,v) + u, 0 lt 2, \
 #count_max = 170
 count_max = 70
 
-if (count < count_max) pause wait;  count = count + 1; sequence = sequence + 1; reread
+#if (count < count_max) pause wait;  count = count + 1; sequence = sequence + 1; reread
