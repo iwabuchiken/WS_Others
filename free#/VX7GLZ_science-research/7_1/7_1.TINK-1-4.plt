@@ -29,9 +29,9 @@ urange_start = -2 * pi
 #urange_end = count * 0.1 * pi
 urange_end = urange_start + count * 0.1
 
-#set urange [urange_start : urange_end]
+set urange [urange_start : urange_end]
 #set urange [-2 * pi : count * pi]
-set urange [-2 * pi : 2 * pi]
+#set urange [-2 * pi : 2 * pi]
 #set urange [0:2*pi]
 
 #set vrange [-pi:pi]
@@ -101,14 +101,15 @@ z2(u,v)=sin(u)+.5*sin(u)*cos(v)
 #ref http://www.math.utk.edu/~vasili/refs/How-to/gnuplot.print.html
 set terminal gif
 
-time_label = "20170501_130628"
+time_label = "20170501_131530"
+#time_label = "20170501_130628"
 #time_label = "20170501_125637"
 #time_label = "20170501_111009"
 #time_label = "20170430_175030"
 #time_label = "20170430_174244"
 #time_label = "20170430_173728"
 
-set output sprintf("f_TINK-1-4_%s/7_1.TINK-1-4.%s.%02d.gif", time_label, time_label, sequence)
+set output sprintf("f_TINK-1-5_%s/7_1.TINK-1-5.%s.%02d.gif", time_label, time_label, sequence)
 
 set xlabel "x1(u,v)"
 set ylabel "y1(u,v)"
