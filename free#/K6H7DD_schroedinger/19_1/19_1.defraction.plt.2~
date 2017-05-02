@@ -1,0 +1,6 @@
+set xrange[-3*pi : 3*pi]
+set yrange[-2 : 2]
+
+set grid lw 1
+
+plot sin(x)

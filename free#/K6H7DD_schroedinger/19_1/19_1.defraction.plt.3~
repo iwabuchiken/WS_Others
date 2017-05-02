@@ -1,0 +1,24 @@
+if (exist("count") == 0 || count < 0) count = 0 #•Ï”‚Ì‰Šú‰»
+if (exist("sequence") == 0 || sequence < 0) sequence = 0 #•Ï”‚Ì‰Šú‰»
+
+
+set xrange[-3*pi : 3*pi]
+set yrange[-2 : 2]
+
+set title sprintf("19_1 (count = %d)", count)
+
+set grid lw 1
+
+count_max = 20
+
+tick = pi / count_max
+
+plot sin(x + tick * count)
+#plot sin(x)
+
+
+
+
+if (count < count_max) pause wait;  count = count + 1; sequence = sequence + 1; reread
+
+count = 0; sequence = 0
