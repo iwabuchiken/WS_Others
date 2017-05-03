@@ -36,7 +36,7 @@ str_dpath = sprintf("f_SEG-2_TINK-1_%s", str_timelabel)
 
 #set output sprintf("%s/mandelbrot.%s.%02d.png",  str_dpath, str_timelabel, count)
 
-NMAX = 500
+NMAX = 50
 set title sprintf("mandelbrot @%s / NMAX = %d", str_time, NMAX)
 #set title sprintf("mandelbrot @%s cbtics = %f", str_time, val_cbtics)
 #set title sprintf("mandelbrot / count = %02d / time = %s / view = %d, %d", \
