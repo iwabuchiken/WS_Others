@@ -3,6 +3,7 @@
 pushd C:\WORKS_2\WS\WS_Others\free#\VX7GLZ_science-research\9_1\
 gcc example-2.c -o example-2.exe
 example-2.exe > data.txt
+(took ---> 1.32 2017/05/03 17:08:59)
 
 
  *
@@ -14,7 +15,8 @@ example-2.exe > data.txt
 #define C0i      0.1145 // 計算する場所の中心座標（虚数部）
 #define VS       0.003  // 計算する場所の中心座標からの範囲（±VS）
 
-#define NMAX     20000  // 計算の繰り返し上限
+//#define NMAX     20000  // 計算の繰り返し上限
+#define NMAX     10000  // 計算の繰り返し上限
 #define STEP     800.0  // 計算する刻み
 
 
