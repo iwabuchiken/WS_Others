@@ -16,7 +16,8 @@ example-2.exe > data.txt
 #define VS       0.003  // 計算する場所の中心座標からの範囲（±VS）
 
 //#define NMAX     20000  // 計算の繰り返し上限
-#define NMAX     10000  // 計算の繰り返し上限
+//#define NMAX     10000  // 計算の繰り返し上限
+#define NMAX     5000  // 計算の繰り返し上限
 #define STEP     800.0  // 計算する刻み
 
 
