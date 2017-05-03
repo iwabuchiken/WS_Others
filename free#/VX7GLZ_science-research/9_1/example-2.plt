@@ -36,7 +36,7 @@ str_dpath = sprintf("f_SEG-2_TINK-1_%s", str_timelabel)
 
 #set output sprintf("%s/mandelbrot.%s.%02d.png",  str_dpath, str_timelabel, count)
 
-NMAX = 10000
+NMAX = 500
 set title sprintf("mandelbrot @%s / NMAX = %d", str_time, NMAX)
 #set title sprintf("mandelbrot @%s cbtics = %f", str_time, val_cbtics)
 #set title sprintf("mandelbrot / count = %02d / time = %s / view = %d, %d", \
@@ -72,3 +72,4 @@ splot "data.txt" u 1:2:3
 #count = 0; sequence = 0
 
 #set terminal wxt; set output
+#load "C:/WORKS_2/WS/WS_Others/free#/VX7GLZ_science-research/9_1/example-2.plt"

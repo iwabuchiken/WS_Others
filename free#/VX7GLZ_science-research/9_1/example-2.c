@@ -17,7 +17,9 @@ example-2.exe > data.txt
 
 //#define NMAX     20000  // 計算の繰り返し上限
 //#define NMAX     10000  // 計算の繰り返し上限
-#define NMAX     5000  // 計算の繰り返し上限
+//#define NMAX     5000  // 計算の繰り返し上限
+//#define NMAX     500  // 計算の繰り返し上限
+#define NMAX     50  // 計算の繰り返し上限
 #define STEP     800.0  // 計算する刻み
 
 
