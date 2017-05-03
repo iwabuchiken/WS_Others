@@ -15,15 +15,19 @@ set mcbtics 4
 str_time = time("%Y%m%d_%H%M%S")
 
 ########## view ##########
-view_X = count * 10
-view_Y = 0
+#view_X = count * 10
+view_X = 80
+#view_Y = 0
+view_Y = 0 + count * 10
 set view view_X, view_Y, 1, 1
 
 #set output "mandelbrot.png"
 
 #set output sprintf("mandelbrot.%s.png",  str_time)
 
-str_timelabel = "20170503_151857"
+#str_timelabel = "20170503_151857"
+str_timelabel = "20170503_155638"
+
 str_dpath = sprintf("f_SEG-2_TINK-1_%s", str_timelabel)
 
 set output sprintf("%s/mandelbrot.%s.%02d.png",  str_dpath, str_timelabel, count)
@@ -53,7 +57,8 @@ splot "data.txt" u 1:2:3
 #
 ############################
 wait = 0
-count_max = 20
+#count_max = 20
+count_max = 33
 
 if (count < count_max) pause wait;  count = count + 1; sequence = sequence + 1; reread
 
