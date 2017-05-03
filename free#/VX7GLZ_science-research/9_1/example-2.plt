@@ -16,9 +16,12 @@ str_time = time("%Y%m%d_%H%M%S")
 
 ########## view ##########
 #view_X = count * 10
-view_X = 80
+#view_X = 80
+view_X = 80 + count * 10
+
+view_Y = 20
 #view_Y = 0
-view_Y = 0 + count * 10
+#view_Y = 0 + count * 10
 set view view_X, view_Y, 1, 1
 
 #set output "mandelbrot.png"
@@ -26,7 +29,8 @@ set view view_X, view_Y, 1, 1
 #set output sprintf("mandelbrot.%s.png",  str_time)
 
 #str_timelabel = "20170503_151857"
-str_timelabel = "20170503_155638"
+#str_timelabel = "20170503_155638"
+str_timelabel = "20170503_164231"
 
 str_dpath = sprintf("f_SEG-2_TINK-1_%s", str_timelabel)
 
@@ -58,7 +62,8 @@ splot "data.txt" u 1:2:3
 ############################
 wait = 0
 #count_max = 20
-count_max = 33
+#count_max = 33
+count_max = 28
 
 if (count < count_max) pause wait;  count = count + 1; sequence = sequence + 1; reread
 
