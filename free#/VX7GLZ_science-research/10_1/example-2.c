@@ -6,6 +6,8 @@ example-2.exe > data.txt
 example-2.exe
 (took ---> 1.32 2017/05/03 17:08:59)
 
+	file: C:\WORKS_2\WS\WS_Others\free#\VX7GLZ_science-research\10_1\example-2.c
+	from: C:\WORKS_2\WS\WS_Others\free#\VX7GLZ_science-research\9_1\example-2.c
 
  *
  */
@@ -32,25 +34,30 @@ int n_max;
 
 double mandelbrot(double a, double b){
 
-	printf("[%s:%d] NMAX => %d\n", basename(__FILE__, '\\'), __LINE__, NMAX);
-	printf("[%s:%d] n_max => %d\n", basename(__FILE__, '\\'), __LINE__, n_max);
-
-	return 0.0;
-
-//  double x = 0.0;
-//  double y = 0.0;
-//  double x1, y1;
+//	//test
+//	printf("[%s:%d] NMAX => %d\n", basename(__FILE__, '\\'), __LINE__, NMAX);
+//	printf("[%s:%d] n_max => %d\n", basename(__FILE__, '\\'), __LINE__, n_max);
 //
-//  int n;
+//	return 0.0;
 //
+//	//] test end
+
+  double x = 0.0;
+  double y = 0.0;
+  double x1, y1;
+
+  int n;
+
+  for (n = 1; n <= n_max; n++) {
 //  for (n = 1; n <= NMAX; n++) {
-//    x1 = x * x - y * y + a;
-//    y1 = 2.0 * x * y + b;
-//    if ( x1 * x1 + y1 * y1 > 4.0) return log(n); // 発散
-//    x = x1;
-//    y = y1;
-//  }
-//  return 0; // 計算の繰り返し上限到達
+    x1 = x * x - y * y + a;
+    y1 = 2.0 * x * y + b;
+    if ( x1 * x1 + y1 * y1 > 4.0) return log(n); // 発散
+    x = x1;
+    y = y1;
+  }
+  return 0; // 計算の繰り返し上限到達
+
 }
 
 void show_usage() {
@@ -69,9 +76,9 @@ void show_usage() {
  */
 int _setup_nmax(int argc, char *argv[]) {
 
-	printf("[%s:%d] argc => %d\n", basename(__FILE__, '\\'), __LINE__, argc);
-
-	printf("[%s:%d] argv[0] => '%s'\n", basename(__FILE__, '\\'), __LINE__, argv[0]);
+//	printf("[%s:%d] argc => %d\n", basename(__FILE__, '\\'), __LINE__, argc);
+//
+//	printf("[%s:%d] argv[0] => '%s'\n", basename(__FILE__, '\\'), __LINE__, argv[0]);
 
 	if (argc < 2) {
 
@@ -83,7 +90,7 @@ int _setup_nmax(int argc, char *argv[]) {
 
 	} else if (!is_numeric(argv[1])){//if (argc < 2)
 
-		printf("[%s:%d] argument needed\n", basename(__FILE__, '\\'), __LINE__);
+		printf("[%s:%d] argument is not numeric: %s\n", basename(__FILE__, '\\'), __LINE__, argv[1]);
 
 		show_usage();
 
@@ -95,7 +102,7 @@ int _setup_nmax(int argc, char *argv[]) {
 
 	n_max = given;
 
-	printf("[%s:%d] n_max set ---> %d\n", basename(__FILE__, '\\'), __LINE__, n_max);
+//	printf("[%s:%d] n_max set ---> %d\n", basename(__FILE__, '\\'), __LINE__, n_max);
 
 
 	return 1;
@@ -117,23 +124,23 @@ int main(int argc, char *argv[]) {
 		return -1;
 
 	}
-
-
-	mandelbrot(0.1, 0.2);
-
-	return 0;
-
-	//] test end
-
-//  double a, b;
 //
-//  for (a = C0r-VS; a < C0r+VS; a += 2.0*VS/STEP) {
-//    for (b = C0i-VS; b < C0i+VS; b += 2.0*VS/STEP) {
-//      printf("%1.14e %1.14e %1.14e\n", a, b, mandelbrot(a, b));
-//    }
-//    printf("\n"); // これがないとgnuplotでエラーが出る
-//  }
 //
-//  return 0;
+//	mandelbrot(0.1, 0.2);
+//
+//	return 0;
+//
+//	//] test end
+
+  double a, b;
+
+  for (a = C0r-VS; a < C0r+VS; a += 2.0*VS/STEP) {
+    for (b = C0i-VS; b < C0i+VS; b += 2.0*VS/STEP) {
+      printf("%1.14e %1.14e %1.14e\n", a, b, mandelbrot(a, b));
+    }
+    printf("\n"); // これがないとgnuplotでエラーが出る
+  }
+
+  return 0;
 
 }
