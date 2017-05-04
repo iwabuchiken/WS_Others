@@ -42,6 +42,7 @@ double mandelbrot(double a, double b){
 
 
 int main() {
+
   double a, b;
 
   for (a = C0r-VS; a < C0r+VS; a += 2.0*VS/STEP) {
@@ -51,4 +52,5 @@ int main() {
     printf("\n"); // これがないとgnuplotでエラーが出る
   }
   return 0;
+
 }
