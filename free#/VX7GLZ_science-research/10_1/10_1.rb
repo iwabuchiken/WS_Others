@@ -1,3 +1,9 @@
+=begin
+
+pushd C:\WORKS_2\WS\WS_Others\free#\VX7GLZ_science-research\10_1
+10_1.rb
+
+=end
 require 'shellwords'
 
 require "C:/WORKS_2/WS/WS_Others/utils/utils.20161228_123529.rb"
@@ -20,11 +26,14 @@ def execute
   
 #  command = "example-2.exe"    #=> works
 #  command = "example-2.exe 1000"  #=> works
-  aryof_nmax = [1000, 900, 800, 700]
+  #ref http://blog.cototoco.net/work/201405/ruby-%E9%85%8D%E5%88%97/ "多次元配列を初期化する"
+  aryof_nmax = Array.new(10){|i| (i + 1) * 100}
+#  aryof_nmax = [1000, 900, 800, 700]
   
   aryof_nmax.each {|x|
 
-    command = "example-2.exe 1000 > data.#{time_label}.nmax-#{x.to_s}.txt"  #=> 
+    command = "example-2.exe #{x.to_s} > data.#{time_label}.nmax-#{x.to_s}.txt"  #=> 
+#    command = "example-2.exe 1000 > data.#{time_label}.nmax-#{x.to_s}.txt"  #=> 
       
     puts "[#{File.basename(__FILE__)}:#{__LINE__}] command => #{command}"
     

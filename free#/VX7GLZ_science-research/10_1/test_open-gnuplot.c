@@ -24,6 +24,7 @@ int main(int argc, char *argv[]) {
 
 	char storage[20];	//=> used for gets()
 
+
 	FILE *fp = _popen(exec_path, "w");
 //	FILE *fp = _popen("C:/gnuplot/bin/pgnuplot.exe", "w");
 
