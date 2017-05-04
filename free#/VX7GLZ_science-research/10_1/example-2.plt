@@ -26,7 +26,9 @@ str_time = time("%Y%m%d_%H%M%S")
 
 #set output "mandelbrot.png"
 
-set output sprintf("mandelbrot.%s.png",  str_time)
+#set output sprintf("mandelbrot.%s.png",  str_time)
+#set output sprintf("input_file.%s.png",  str_time)
+set output sprintf("%s.%s.png", input_file, str_time)
 
 #str_timelabel = "20170503_151857"
 #str_timelabel = "20170503_155638"
@@ -53,9 +55,10 @@ set size square
 #set palette defined (0 "#000000", 2 "#c00000", 7 "#ffff00", 9 "#ffffff")
 set palette defined (0 "#000000", 2 "#c00000", 7 "blue", 9 "#ffffff")
 
-str_fdst = sprintf("%s.txt", "data.20170504_133655.nmax-1000")
+#str_fdst = sprintf("%s.txt", "data.20170504_133655.nmax-1000")
 
-splot str_fdst u 1:2:3
+splot input_file u 1:2:3
+#splot str_fdst u 1:2:3
 #splot str_fdst_trunk ".txt" u 1:2:3
 #splot str_fdst_trunk + ".txt" u 1:2:3
 #splot "data.txt" u 1:2:3
