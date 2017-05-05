@@ -1,7 +1,9 @@
 =begin
 
-pushd C:\WORKS_2\WS\WS_Others\free#\VX7GLZ_science-research\10_1
+pushd C:\WORKS_2\WS\WS_Others\free#\VX7GLZ_science-research\11_1
 test_popen.rb
+
+C:/WORKS_2/WS/WS_Others/free#/VX7GLZ_science-research/11_1
 
 =end
 
@@ -126,8 +128,26 @@ def execute_2
   
 end#execute_2
 
+def show_usage
+  
+  msg =<<EOF
+<Usage>
+
+test_popen.rb "data.20170505_133410.nmax-300.txt" 300  
+  
+EOF
+
+  puts msg
+
+end
+
 def execute_1_file(fname_src, nmax)
 
+  puts "[#{File.basename(__FILE__)}:#{__LINE__}] data source => '#{fname_src}'"
+  
+  puts "[#{File.basename(__FILE__)}:#{__LINE__}] nmax => #{nmax}"
+  
+  
   exec_path = "C:/WORKS_2/Programs/gnuplot_4.6.7/bin/pgnuplot.exe"
   
   dir_target = "C:/WORKS_2/WS/WS_Others/free#/VX7GLZ_science-research/11_1"
@@ -157,8 +177,77 @@ def execute_1_file(fname_src, nmax)
   
 end#execute_1_file(fname_src, fname_dst)
 
+##p ARGV
+#      #test_popen.rb abc => ["abc"]
+#puts "[#{File.basename(__FILE__)}:#{__LINE__}] ARGC =>"
+#
+#p ARGV == nil ? "ARGV => nil" : ARGV.length
+
 #execute
+if ARGV.size == 0
+
+  execute_2
+
+elsif ARGV.size == 1#if (ARGC = 0)
+
+  puts "[#{File.basename(__FILE__)}:#{__LINE__}] ARGV.size => 1"
+  
+  p ARGV
+  
+  show_usage
+  
+#  return
+
+elsif ARGV.size == 2#if (ARGC = 0)
+
+  ### validate : file name
+  fpath = "C:/WORKS_2/WS/WS_Others/free#/VX7GLZ_science-research/11_1/#{ARGV[0]}"
+  
+  #ref exist https://docs.ruby-lang.org/ja/search/query:File.exist%3F/#entry-0
+  res = File.exist?(fpath)
+  
+  if res == false
+    
+    puts "[#{File.basename(__FILE__)}:#{__LINE__}] file doesn't exist => '#{fpath}'"
+    
+    show_usage
+
+    exit    
+    
+  end
+  
+  ### validate : numeric
+  #ref http://qiita.com/yutackall/items/76c931d4029665a7192c
+  res = ARGV[1].to_i.integer?
+
+  if res == false
+    
+    puts "[#{File.basename(__FILE__)}:#{__LINE__}] arg is not an integer => '#{ARGV[1]}'"
+    
+    show_usage
+    
+    exit
+#    return
+    
+  end
+    
+  puts "[#{File.basename(__FILE__)}:#{__LINE__}] executing..."
+  
+  execute_1_file(ARGV[0], ARGV[1].to_i)
+
+else
+  
+  puts "[#{File.basename(__FILE__)}:#{__LINE__}] unknown argument => "
+  p ARGV
+
+  p ARGV.size
+  
+  show_usage
+  
+#  return
+  
+end#if (ARGC = 0)
 #execute_2
 
-execute_1_file("data.20170505_122426.nmax-300.txt", 300)
+##execute_1_file("data.20170505_122426.nmax-300.txt", 300)
 

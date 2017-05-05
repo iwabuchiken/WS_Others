@@ -19,7 +19,8 @@ def execute
   
   #ref http://blog.cototoco.net/work/201405/ruby-%E9%85%8D%E5%88%97/ "多次元配列を初期化する"
 #  aryof_nmax = Array.new(10){|i| (i + 1) * 100}
-  aryof_nmax = Array.new(20){|i| (i + 1) * 100}
+#  aryof_nmax = Array.new(20){|i| (i + 1) * 100}
+  aryof_nmax = Array.new((300-100) / 10 + 1){|i| (i + 10) * 10}
   
   aryof_nmax.each {|x|
 
