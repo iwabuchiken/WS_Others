@@ -60,11 +60,21 @@ def execute_2
 
   exec_path = "C:/WORKS_2/Programs/gnuplot_4.6.7/bin/pgnuplot.exe"
   
-  dir_target = "C:/WORKS_2/WS/WS_Others/free#/VX7GLZ_science-research/11_1"
+  dir_root = "C:/WORKS_2/WS/WS_Others/free#/VX7GLZ_science-research"
+  
+  dir_specific = "data.20170505_142139.txt"
+  
+  dir_session = "11_1"
+  
+  dir_target = "#{dir_root}/#{dir_session}/#{dir_specific}"
+#  dir_target = "C:/WORKS_2/WS/WS_Others/free#/VX7GLZ_science-research/11_1"
+  
+  dir_plt = "#{dir_root}/#{dir_session}"
   
   plt_target = "example-2.plt"
   
-  plot_command = "load \"#{dir_target}/#{plt_target}\"\n";
+  plot_command = "load \"#{dir_plt}/#{plt_target}\"\n";
+#  plot_command = "load \"#{dir_target}/#{plt_target}\"\n";
 #  plot_command = "load \"C:/WORKS_2/WS/WS_Others/free#/VX7GLZ_science-research/10_1/example-2.plt\"\n";
   
   #ref https://docs.ruby-lang.org/ja/latest/method/IO/s/popen.html
@@ -72,7 +82,7 @@ def execute_2
 
   #test
   #ref pwd https://www.google.co.jp/search?q=ruby+directory+list&oq=ruby+directory+list&aqs=chrome..69i64j5l2j0l3.5690j0j9&sourceid=chrome&ie=UTF-8#q=ruby+pwd
-  dir_tmp = Dir.pwd
+#  dir_tmp = Dir.pwd
   
 #  dir_target = "C:/WORKS_2/WS/WS_Others/free#/VX7GLZ_science-research/11_1"
 #  dir_target = "C:/WORKS_2/WS/WS_Others/free#/VX7GLZ_science-research/10_1"
@@ -96,7 +106,9 @@ def execute_2
   
   aryof_fnames.each {|fname|
 
-    io.puts "input_file = \"#{fname}\""
+    io.puts "input_file = \"#{dir_target}/#{fname}\""
+#    io.puts "input_file = \"#{fname}\""
+        #    dir_target = "#{dir_root}/#{dir_session}/#{dir_specific}"
 
     # namax value
     #ref match http://ref.xaio.jp/ruby/classes/string/match
