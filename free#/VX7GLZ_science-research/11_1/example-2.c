@@ -29,7 +29,8 @@ example-2.exe
 //#define NMAX     50  // 計算の繰り返し上限
 #define STEP     800.0  // 計算する刻み
 
-int n_max;
+int		n_max;
+float	step;
 
 double mandelbrot(double a, double b){
 
@@ -93,32 +94,114 @@ int _setup_nmax(int argc, char *argv[]) {
 
 }//int _setup_nmax(int argc, char *argv[])
 
+/*
+ * @return
+ * -1	argument not given
+ * -2	argument is not a numeric
+ */
+int _setup_step(int argc, char *argv[]) {
+
+	if (argc < 2) {
+
+		printf("[%s:%d] argument needed\n", basename(__FILE__, '\\'), __LINE__);
+
+		show_usage();
+
+		return -1;
+
+	} else if (!is_numeric(argv[1])){//if (argc < 2)
+
+		printf("[%s:%d] argument is not numeric: %s\n", basename(__FILE__, '\\'), __LINE__, argv[1]);
+
+		show_usage();
+
+		return -2;
+
+	}//if (argc < 2)
+
+	float given = atoi(argv[1]) / 1.0;	//=> divided by 1.0 ~~> integer to float
+
+	step = given;
+
+	return 1;
+
+}//int _setup_step(int argc, char *argv[])
+
+void _calc() {
+
+	double a, b;
+
+	for (a = C0r-VS; a < C0r+VS; a += 2.0 * VS / step) {
+//	for (a = C0r-VS; a < C0r+VS; a += 2.0*VS/STEP) {
+
+		for (b = C0i-VS; b < C0i+VS; b += 2.0 * VS / step) {
+//		for (b = C0i-VS; b < C0i+VS; b += 2.0*VS/STEP) {
+
+		  printf("%1.14e %1.14e %1.14e\n", a, b, mandelbrot(a, b));
+
+		}
+
+		printf("\n"); // これがないとgnuplotでエラーが出る
+
+	}
+
+}//_calc
+
 //ref argc,argv https://www.tutorialspoint.com/cprogramming/c_command_line_arguments.htm
 int main(int argc, char *argv[]) {
 
-	int result = _setup_nmax(argc, argv);
+	/**********************
+
+		setup: NMAX
+
+	**********************/
+	n_max = NMAX;		//=> default
+//	int result = _setup_nmax(argc, argv);
+//
+//	if (result < 0) {
+//
+//		printf("[%s:%d] setup => undone: %d\n", basename(__FILE__, '\\'), __LINE__, result);
+//
+//		return -1;
+//
+//	}
+
+	/**********************
+
+		setup: STEP
+
+	**********************/
+	int result = _setup_step(argc, argv);
 
 	if (result < 0) {
 
-		printf("[%s:%d] setup => undone: %d\n", basename(__FILE__, '\\'), __LINE__, result);
+		printf("[%s:%d] setup step => undone: %d\n", basename(__FILE__, '\\'), __LINE__, result);
 
 		return -1;
 
 	}
+
 
 	/**********************
 
 		calc
 
 	**********************/
-	double a, b;
+	_calc();
 
-	for (a = C0r-VS; a < C0r+VS; a += 2.0*VS/STEP) {
-		for (b = C0i-VS; b < C0i+VS; b += 2.0*VS/STEP) {
-		  printf("%1.14e %1.14e %1.14e\n", a, b, mandelbrot(a, b));
-		}
-		printf("\n"); // これがないとgnuplotでエラーが出る
-	}
+//	double a, b;
+//
+//	for (a = C0r-VS; a < C0r+VS; a += 2.0*VS/STEP) {
+//
+//		for (b = C0i-VS; b < C0i+VS; b += 2.0*VS/STEP) {
+//
+//		  printf("%1.14e %1.14e %1.14e\n", a, b, mandelbrot(a, b));
+//
+//		}
+//
+//		printf("\n"); // これがないとgnuplotでエラーが出る
+//
+//	}
 
   return 0;
 

@@ -34,11 +34,15 @@ def execute
 #  aryof_nmax = Array.new(10){|i| (i + 1) * 100}
 #  aryof_nmax = Array.new(20){|i| (i + 1) * 100}
 #  aryof_nmax = Array.new((300-100) / 10 + 1){|i| (i + 10) * 10}
-  aryof_nmax = Array.new((500-50)/5+1){|i| (i+10) * 5}
+#  aryof_nmax = Array.new((500-50)/5+1){|i| (i+10) * 5}
+  aryof_nmax = Array.new((800-100)/100+1){|i| (i) * 100 + 100}
   
+  variable_name = "step"
+    
   aryof_nmax.each {|x|
 
-    command = "example-2.exe #{x.to_s} > #{dname}\\data.#{time_label}.nmax-#{x.to_s}.txt"  #=> 
+    command = "example-2.exe #{x.to_s} > #{dname}\\data.#{time_label}.#{variable_name}-#{x.to_s}.txt"  #=> 
+#    command = "example-2.exe #{x.to_s} > #{dname}\\data.#{time_label}.nmax-#{x.to_s}.txt"  #=> 
 #    command = "example-2.exe #{x.to_s} > data.#{time_label}.nmax-#{x.to_s}.txt"  #=> 
       
     puts "[#{File.basename(__FILE__)}:#{__LINE__}] command => #{command}"

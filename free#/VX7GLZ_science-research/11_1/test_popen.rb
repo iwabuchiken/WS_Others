@@ -62,7 +62,8 @@ def execute_2
   
   dir_root = "C:/WORKS_2/WS/WS_Others/free#/VX7GLZ_science-research"
   
-  dir_specific = "data.20170505_142139.txt"
+  dir_specific = "data.20170505_154016.txt"
+#  dir_specific = "data.20170505_142139.txt"
   
   dir_session = "11_1"
   
@@ -111,16 +112,20 @@ def execute_2
         #    dir_target = "#{dir_root}/#{dir_session}/#{dir_specific}"
 
     # namax value
+    # step value
     #ref match http://ref.xaio.jp/ruby/classes/string/match
-    m = fname.match(/nmax-(\d+)/)
+    m = fname.match(/step-(\d+)/)
+#    m = fname.match(/nmax-(\d+)/)
     
     if m != nil
     
-      io.puts "nmax = #{m[1]}"
+      io.puts "step = #{m[1]}"
+#      io.puts "nmax = #{m[1]}"
     
     else#if ()
     
-      io.puts "nmax = -1"
+      io.puts "step = -1"
+#      io.puts "nmax = -1"
     
     end#if ()
     
