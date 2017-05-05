@@ -1,0 +1,60 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 16.04.2 ] */
+
+/* [wxMaxima: input   start ] */
+/* email 1.1.1 */
+nrng: [n, 1, 50];
+f: log(n);
+wxplot2d(f, nrng);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+limit(log(n), n, inf);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+limit(log(n), n, 1000); float(%);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+float(%);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+nrng: [n, 1, 50];
+f: log(n);
+f2: log(f);
+fs: [f, f2];
+wxplot2d(fs, nrng);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+nrng: [n, 1, 25];
+f: log(n);
+f2: log(f);
+fs: [f, f2];
+opt: [gnuplot_preamble, "set yrange [-5 : 5]"];
+wxplot2d(fs, nrng, opt);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+nrng: [n, 1, 50];
+f: log(n);
+f2: log(f);
+fs: [f, f2];
+opt: [gnuplot_preamble, "set xrange [0 : 25]; set yrange [-5 : 5]"];
+wxplot2d(fs, nrng, opt);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* email 1.1.1.2 */
+nrng: [n, 0, 2];
+f3: n;
+f4: sqrt(n);
+fs2: [f3, f4];
+opt: [gnuplot_preamble, "set xrange [0 : 10]; set yrange [0 : 2]"];
+wxplot2d(fs2, nrng, opt);
+/* [wxMaxima: input   end   ] */
+
+/* Maxima can't load/batch files which end with a comment! */
+"Created with wxMaxima"$
