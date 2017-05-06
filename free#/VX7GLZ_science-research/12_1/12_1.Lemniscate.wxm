@@ -1,0 +1,98 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 16.04.2 ] */
+
+/* [wxMaxima: input   start ] */
+wxplot2d([parametric, sin(t), cos(t), [t, 0, %pi]]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+x: sin(t);
+y: cos(t);
+wxplot2d([parametric, x, y, [t, 0, %pi]]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+a: 3; l: 1;
+x: a + l * cos(t);
+y: a * tan(t) + l * sin(t);
+wxplot2d([parametric, x, y, [t, 0, %pi]]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+a: 3; l: 1;
+x: a + l * cos(t);
+y: a * tan(t) + l * sin(t);
+opt: [gnuplot_preamble, "set yrange [-1 : 20]"];
+trng: [t, 0, %pi];
+wxplot2d([parametric, x, y, trng, opt]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+a: 3; l: 1;
+x: a + l * cos(t);
+y: a * tan(t) + l * sin(t);
+opt: [gnuplot_preamble, "set yrange [-1 : 20]"];
+trng: [t, -%pi, %pi];
+wxplot2d([parametric, x, y, trng, opt]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+a: 3; l: 1;
+x: a + l * cos(t);
+y: a * tan(t) + l * sin(t);
+opt: [gnuplot_preamble, "set yrange [-20 : 20]"];
+trng: [t, -%pi, %pi];
+wxplot2d([parametric, x, y, trng, opt]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+	
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+a: 3; l: 1;
+x: a + l * cos(t);
+y: a * tan(t) + l * sin(t);
+opt: [gnuplot_preamble, "set yrange [-20 : 20]; set xrange [0 : 4]"];
+trng: [t, -%pi, %pi];
+wxplot2d([parametric, x, y, trng, opt]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+a: 3; l: 1;
+x: a + l * cos(t);
+y: a * tan(t) + l * sin(t);
+opt: [gnuplot_preamble, "set yrange [-30 : 30]; set xrange [0 : 4]"];
+trng: [t, -%pi, %pi];
+wxplot2d([parametric, x, y, trng, opt]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+a: 3; l: 1;
+x: a + l * cos(t)**3;
+y: a * tan(t) + l * sin(t);
+opt: [gnuplot_preamble, "set yrange [-30 : 30]; set xrange [0 : 4]"];
+trng: [t, -%pi, %pi];
+wxplot2d([parametric, x, y, trng, opt]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+a: 3; l: 1;
+x: a + l * cos(t * 2);
+y: a * tan(t) + l * sin(t);
+opt: [gnuplot_preamble, "set yrange [-30 : 30]; set xrange [0 : 4]"];
+trng: [t, -%pi, %pi];
+wxplot2d([parametric, x, y, trng, opt]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+a: 3; l: 1;
+x: a + l * cos(t * 2)**2;
+y: a * tan(t) + l * sin(t);
+opt: [gnuplot_preamble, "set yrange [-30 : 30]; set xrange [0 : 4]"];
+trng: [t, -%pi, %pi];
+wxplot2d([parametric, x, y, trng, opt]);
+/* [wxMaxima: input   end   ] */
+
+/* Maxima can't load/batch files which end with a comment! */
+"Created with wxMaxima"$
