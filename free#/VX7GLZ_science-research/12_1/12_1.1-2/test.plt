@@ -36,7 +36,7 @@ xrange_end = 10
 set xrange [xrange_start : xrange_end]
 
 yrange_start = 0
-yrange_end = 10
+yrange_end = 20
 #yrange_end = 15
 
 set yrange [yrange_start : yrange_end]
@@ -51,7 +51,7 @@ ytic_value = 0.5
 set ytics yrange_start, ytic_value, yrange_end
 
 ##### key, parametric  ##### 
-#set nokey
+set nokey
 #set parametric
 
 ########## grid ##########
@@ -67,20 +67,21 @@ set tics font 'Times,10'
 ########## variables ##########
 #a = 1.0   #=> A(0, a)
 a = 1.0 + n * 0.1   #=> A(0, a)
+a_original = 1.0
 
 ########## labels ##########
 set ylabel font "Arial,10"
 
-dname_images = "images_20170507_134739"
+dname_images = "images_20170507_144005"
 str_session = "12_1.1-2"
 str_time = time("%Y%m%d_%H%M%S")
 str_title = "Catenary"
 
 title(n) = sprintf("[%s] %s @%s \n(a = %1.2f)", str_session, str_title, str_time, a)
 
-#outfile(n) = sprintf("%s/%d.jpg", dname_images, n+1000)  #出力ファイル名
+outfile(n) = sprintf("%s/%d.jpg", dname_images, n+1000)  #出力ファイル名
 image_file_name = "catenaries"
-outfile(n) = sprintf("%s.jpg", image_file_name)  #=> single image output
+#outfile(n) = sprintf("%s.jpg", image_file_name)  #=> single image output
 
 set label title(n)  font 'Times,10'  at -9 , 8
 
@@ -99,8 +100,12 @@ set output outfile(n)
 #plot for [i = 1 : 3] exp(i)
 #plot for [i = 1 : 10] exp(x / (a + i * 0.1)), exp(x / (a + i * 0.1)) + exp(- x / (a + i * 0.1))   #=> Only first formula gets iterated
 #plot for [i = 1 : 10]  exp(x / (a + i * 0.1)) + exp(- x / (a + i * 0.1))
-i_magnify = 0.3
-plot for [i = 1 : 10]  (exp(x / (a + i * i_magnify)) + exp(- x / (a + i * i_magnify))) / 2 * (a + i * i_magnify)
+
+i_magnify = 0.2
+
+plot for [i = 0 : n]  (exp(x / (a_original + i * i_magnify)) + exp(- x / (a_original + i * i_magnify))) / 2 * (a_original + i * i_magnify)
+#plot for [i = 0 : n]  (exp(x / (a + i * i_magnify)) + exp(- x / (a + i * i_magnify))) / 2 * (a + i * i_magnify)
+#plot for [i = 1 : 10]  (exp(x / (a + i * i_magnify)) + exp(- x / (a + i * i_magnify))) / 2 * (a + i * i_magnify)
 
 #plot \
 #     for [i=1:10] \
@@ -126,7 +131,7 @@ wait = 0.0   #=> for image files output
 
 n_max = 50
 
-#if (n < n_max)  pause wait; n=n+1; reread
+if (n < n_max)  pause wait; n=n+1; reread
 
 n = 0
 
