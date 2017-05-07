@@ -1,6 +1,6 @@
-#	load "C:\WORKS_2\WS\WS_Others\free#\VX7GLZ_science-research\2_1\2_1-1.cycloide.plt"
+#	load "C:\WORKS_2\WS\WS_Others\free#\VX7GLZ_science-research\12_1\12_1.1\12_1.1-1.trochoid"
 #	
-#       2017/04/25 12:13:53
+#       2017/05/07 09:36:54
 #
 ############################
 #
@@ -92,7 +92,6 @@ fy(t) = t<=theta ? 1-cos(t) : 1/0
 #title(n) = sprintf("t = %d (t = %f / theta = %f)",n, t, theta)  #タイトル名
 #title(n) = sprintf("t = %d (t = %f / theta = %f / fx(t) = %f)",n, t, theta, fx(t))  #タイトル名   #=> 't' --> 'undefined value'
 set label title(n)  font 'Times,20'  at 0 , 3.3 
-
 
 ########## plot ##########
 ### plot: cycloid, circle, point on the circumference

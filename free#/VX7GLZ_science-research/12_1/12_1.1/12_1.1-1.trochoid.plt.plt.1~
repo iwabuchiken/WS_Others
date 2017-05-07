@@ -93,7 +93,6 @@ fy(t) = t<=theta ? 1-cos(t) : 1/0
 #title(n) = sprintf("t = %d (t = %f / theta = %f / fx(t) = %f)",n, t, theta, fx(t))  #ƒ^ƒCƒgƒ‹–¼   #=> 't' --> 'undefined value'
 set label title(n)  font 'Times,20'  at 0 , 3.3 
 
-
 ########## plot ##########
 ### plot: cycloid, circle, point on the circumference
 plot\
