@@ -35,8 +35,9 @@ xrange_end = 10
 
 set xrange [xrange_start : xrange_end]
 
-yrange_start = -2
-yrange_end = 15
+yrange_start = 0
+yrange_end = 10
+#yrange_end = 15
 
 set yrange [yrange_start : yrange_end]
 
@@ -77,7 +78,9 @@ str_title = "Catenary"
 
 title(n) = sprintf("[%s] %s @%s \n(a = %1.2f)", str_session, str_title, str_time, a)
 
-outfile(n) = sprintf("%s/%d.jpg", dname_images, n+1000)  #出力ファイル名
+#outfile(n) = sprintf("%s/%d.jpg", dname_images, n+1000)  #出力ファイル名
+image_file_name = "catenaries"
+outfile(n) = sprintf("%s.jpg", image_file_name)  #=> single image output
 
 set label title(n)  font 'Times,10'  at -9 , 8
 
@@ -90,10 +93,26 @@ set output outfile(n)
 ########## plot ##########
 #plot (a / 2) * ((exp((x / a)) - exp(-(x / a))) / 2)
 
-plot exp(x), exp(x / a), exp(-x / a), \
-     (exp(x / a) + exp(-x / a)), \
-     (exp(x / a) + exp(-x / a)) / 2, \
-     (exp(x / a) + exp(-x / a)) / 2 * a
+#plot for [i = 0: 5] sin(x + i)
+
+#plot for [i = 1 : 3] exp(i)   #=> not working
+#plot for [i = 1 : 3] exp(i)
+#plot for [i = 1 : 10] exp(x / (a + i * 0.1)), exp(x / (a + i * 0.1)) + exp(- x / (a + i * 0.1))   #=> Only first formula gets iterated
+#plot for [i = 1 : 10]  exp(x / (a + i * 0.1)) + exp(- x / (a + i * 0.1))
+i_magnify = 0.3
+plot for [i = 1 : 10]  (exp(x / (a + i * i_magnify)) + exp(- x / (a + i * i_magnify))) / 2 * (a + i * i_magnify)
+
+#plot \
+#     for [i=1:10] \
+#     exp(x), exp(x / (a + i * 0.1)), exp(-x / (a + i * 0.1)), \
+#     (exp(x / (a + i * 0.1)) + exp(-x / (a + i * 0.1))), \
+#    (exp(x / (a + i * 0.1)) + exp(-x / (a + i * 0.1))) / 2, \
+#     (exp(x / (a + i * 0.1)) + exp(-x / (a + i * 0.1))) / 2 * (a + i * 0.1)
+
+#      exp(x), exp(x / a), exp(-x / a), \
+#     (exp(x / a) + exp(-x / a)), \
+#     (exp(x / a) + exp(-x / a)) / 2, \
+#     (exp(x / a) + exp(-x / a)) / 2 * a
 
 #plot sin(x)
 
@@ -107,7 +126,7 @@ wait = 0.0   #=> for image files output
 
 n_max = 50
 
-if (n < n_max)  pause wait; n=n+1; reread
+#if (n < n_max)  pause wait; n=n+1; reread
 
 n = 0
 
