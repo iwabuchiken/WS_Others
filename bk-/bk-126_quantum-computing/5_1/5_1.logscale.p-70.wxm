@@ -1,0 +1,55 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 14.12.1 ] */
+
+/* [wxMaxima: input   start ] */
+xrng : [x, 0, 10];
+y: 2^x;
+wxplot2d(y, xrng);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* ref http://opamp.hatenablog.jp/entry/2015/04/24/152734 */
+xrng : [x, 0, 10];
+y: 2^x;
+opt : [gnuplot_preamble, "set logscale y 10"];
+wxplot2d(y, xrng, opt);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+xrng : [x, 0, 10];
+y: 2^x;
+opt : [gnuplot_preamble, "set logscale xy 10"];
+wxplot2d(y, xrng, opt);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+xrng : [x, 0, 10000];
+y: 2^x;
+opt : [gnuplot_preamble, "set logscale xy 10"];
+wxplot2d(y, xrng, opt);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+xrng : [x, 0, 10000];
+y: 2^x;
+opt : [gnuplot_preamble, "set logscale y 10"];
+wxplot2d(y, xrng, opt);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+xrng : [x, 0, 20];
+y: 2^x;
+opt : [gnuplot_preamble, "set logscale y 10"];
+wxplot2d(y, xrng, opt);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+2^10;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+sqrt(%);
+/* [wxMaxima: input   end   ] */
+
+/* Maxima can't load/batch files which end with a comment! */
+"Created with wxMaxima"$

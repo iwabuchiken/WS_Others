@@ -1,0 +1,101 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 16.04.2 ] */
+
+/* [wxMaxima: input   start ] */
+a : 1;
+y : a^3/(a^2 + x^2);
+xrng : [x, -5, 5];
+wxplot2d(y, xrng);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+kill(a);
+arng : [a, 1, 3];
+y : a^3/(a^2 + x^2);
+xrng : [x, -5, 5];
+wxplot3d(y, xrng, arng);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+kill(a);
+arng : [a, -10, 10];
+y : a^3/(a^2 + x^2);
+xrng : [x, -5, 5];
+wxplot3d(y, xrng, arng);
+plot3d(y, xrng, arng);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+m : 3;
+arng : [a, -m, m];
+y : a^4/(a^2 + x^2);
+mx : 100;
+xrng : [x, -mx, mx];
+wxplot3d(y, xrng, arng);
+plot3d(y, xrng, arng);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+m : 2;
+arng : [a, -m, m];
+y : a^3/(a^3 + x^2);
+mx : 2;
+xrng : [x, -mx, mx];
+wxplot3d(y, xrng, arng);
+plot3d(y, xrng, arng);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+m : 3;
+arng : [a, -m, m];
+y : a^3/(a^3 + x^2);
+mx : 3;
+xrng : [x, -mx, mx];
+opt: [gnuplot_preamble, "set zrange [-10 : 10]"];
+wxplot3d(y, xrng, arng, opt);
+plot3d(y, xrng, arng, opt);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+m : 4;
+arng : [a, -m, m];
+y : a^3/(a^3 + x^2);
+mx : 4;
+xrng : [x, -mx, mx];
+opt: [gnuplot_preamble, "set zrange [-10 : 10]"];
+wxplot3d(y, xrng, arng, opt);
+plot3d(y, xrng, arng, opt);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* ref file:///C:/WORKS_2/Downloads/Curves/Curves.htm */
+/* agnesi */
+a : 3;
+xrng : [x, -5, 5];
+y : a * x^(3/2);
+opt : [gnuplot_preamble, "set yrange [-30 : 30]"];
+wxplot2d(y, xrng, opt);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+a * (5)^(3/2);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+float(%);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+y;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+solve(y = -3, x);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+kill(y);
+/* [wxMaxima: input   end   ] */
+
+/* Maxima can't load/batch files which end with a comment! */
+"Created with wxMaxima"$
