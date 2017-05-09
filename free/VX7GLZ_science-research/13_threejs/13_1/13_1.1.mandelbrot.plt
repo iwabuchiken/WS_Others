@@ -41,31 +41,60 @@ if (exist("sequence") == 0 || sequence < 0) sequence = 0 #変数の初期化
 # params setup
 #
 ############################
+##### terminal
+term_size_x = 1500
+term_size_y = 1000
+
+set terminal jpeg  enhanced font "Times" 10 size term_size_x, term_size_y
+#set terminal jpeg  enhanced font "Times" 10 size 600, 240
+
+
+set isosamples 60
+#set isosamples 120
 numof_samples = 60 + count * 10
-set isosamples numof_samples
+#set isosamples numof_samples
+
+set samples 300 + count * 10
 
 set title sprintf("Mandelbrot function (samples = %03d)", numof_samples)
 #set title "Mandelbrot function"
 
-#set isosamples 60
-#set isosamples 120
+##### setup : output
+dname_images = "images_13_1_20170509_170143"
 
+outfile(n) = sprintf("%s/%02d.jpg", dname_images, count)  #出力ファイル名
+
+set output outfile(count)
+
+
+##### funcs
 compl(a,b)=a*{1,0}+b*{0,1}
 mand(z,a,n) = n<=0 || abs(z)>100 ? 1:mand(z*z+a,a,n-1)+1
-splot [-2:1][-1.5:1.5] mand({0,0},compl(x,y),30) 
-set pm3d map
-replot
 
-replot
+##### palette
 set palette defined (0 "white", 6 "blue", 12 "green", 18 "yellow", 24 "red", 30 "black")
-replot
+
+##### plot
+set pm3d map
+
+splot [-2:1][-1.5:1.5] mand({0,0},compl(x,y),30)
+
+#splot [-2:1][-1.5:1.5] mand({0,0},compl(x,y),30) 
+#set pm3d map
+#replot
+
+#replot
+#set palette defined (0 "white", 6 "blue", 12 "green", 18 "yellow", 24 "red", 30 "black")
+#replot
 
 ############################
 #
 # animation: loop
 #
 ############################
-wait = 0.1
+wait = 0
+
+#count_max = 10
 count_max = 30
 
 if (count < count_max) pause wait;  count = count + count_tick; sequence = sequence + 1; reread

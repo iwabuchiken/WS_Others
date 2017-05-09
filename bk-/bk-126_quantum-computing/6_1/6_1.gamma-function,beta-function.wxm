@@ -1,0 +1,59 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 16.04.2 ] */
+
+/* [wxMaxima: input   start ] */
+gamma(1.2);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+prng : [p, -5, -1];
+qrng : [q, 1, 5];
+y1 : gamma(p);
+y2 : gamma(q);
+opt : [gnuplot_preamble, "set zrange [-10 : 10]"];
+wxplot3d([y1, y2, prng, qrng], opt);
+plot3d([y1, y2, prng, qrng], opt);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+prng : [p, -5, -1];
+qrng : [q, 1, 5];
+y1 : gamma(p);
+y2 : gamma(q);
+opt : [gnuplot_preamble, "set zrange [-10 : 10]"];
+wxplot3d(y1 * y2, prng, qrng, opt);
+plot3d(y1 * y2, prng, qrng, opt);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+prng : [p, -5, 5];
+qrng : [q, -5, 5];
+y1 : gamma(p);
+y2 : gamma(q);
+opt : [gnuplot_preamble, "set zrange [-10 : 10]"];
+wxplot3d(y1 * y2, prng, qrng, opt);
+plot3d(y1 * y2, prng, qrng, opt);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+prng : [p, -5, 5];
+qrng : [q, -5, 5];
+y1 : gamma(p);
+y2 : gamma(q);
+opt : [gnuplot_preamble, "set zrange [-10 : 10]"];
+wxplot3d([y1 * y2, y1 + y2, prng, qrng], opt);
+plot3d([y1 * y2, y1 + y2, prng, qrng], opt);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+prng : [p, -5, 5];
+qrng : [q, -5, 5];
+y1 : gamma(p);
+y2 : gamma(q);
+opt : [gnuplot_preamble, "set zrange [-10 : 10]"];
+wxplot3d((y1 * y2) / (y1 + y2), prng, qrng, opt);
+plot3d((y1 * y2) / (y1 + y2), prng, qrng, opt);
+/* [wxMaxima: input   end   ] */
+
+/* Maxima can't load/batch files which end with a comment! */
+"Created with wxMaxima"$
