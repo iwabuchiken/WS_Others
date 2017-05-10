@@ -1,0 +1,123 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 16.04.2 ] */
+
+/* [wxMaxima: input   start ] */
+xrng : [x, -10*%pi, 10*%pi];
+y : sin(x);
+wxplot2d(y, xrng);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+a : 3;
+/*xrng : [x, -a*%pi, a*%pi];*/
+xrng : [x, 0, a*%pi];
+y : sin(x^2);
+/*opt: [gnuplot_preamble, "set x"];}*/
+wxplot2d(y, xrng);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+wxplot2d([sin(x), sin(x*2), sin(x*3)], [x, 0, %pi * 3]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+wxplot2d([sin(x), sin(x+2), sin(x+3)], [x, 0, %pi * 3]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+integrate(sin(x), x, 0, %pi*4);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* ref http://maxima.sourceforge.net/docs/manual/maxima_19.html */
+y1 : integrate(sin(x), x, 0, %pi*t);
+wxplot2d(y1, [t, 0, %pi]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+y1 : integrate(sin(x), x, -%pi, %pi*t);
+wxplot2d(y1, [t, 0, %pi]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+y1 : integrate(sin(x), x, -%pi+t, %pi+t);
+wxplot2d(y1, [t, 0, %pi]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+integrate(sin(x^2), x, 0, inf);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+integrate(sin(x^2), x, -inf, inf);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* Fresnel integrals https://ja.wikipedia.org/wiki/%E3%83%95%E3%83%AC%E3%83%8D%E3%83%AB%E7%A9%8D%E5%88%86 */
+S : integrate(sin(t^2), t, 0, x);
+C : integrate(cos(t^2), t, 0, x);
+xrng : [x, 0, 10];
+wxplot2d([S, C], xrng);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+limit(S, x, inf);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+float(%);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+wxplot2d([parametric, S, C, xrng]);
+/* ref https://ja.wikipedia.org/wiki/クロソイド曲線 */;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+wxplot2d([parametric, S, C, [x, -%pi, %pi]]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+wxplot2d([parametric, C, S, [x, -%pi, %pi]]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+wxplot2d([parametric, C, S, [x, -%pi, %pi * (1/2)]]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+wxplot2d([parametric, C, S, [x, -%pi, %pi * (1/2)]], [gnu_preamble, "set xrange [0 : 1]"]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+wxplot2d([parametric, C, S, [x, -%pi, %pi * (1/2)], [gnu_preamble, "set xrange [0 : 1]"]]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* ref http://maxima.osdn.jp/maxima_12.html#SEC66 */
+wxplot2d([[parametric, cos(t), sin(t), [t,0,2*%pi]], -abs(x)],
+         [x, -sqrt(2), sqrt(2)], same_xy);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+wxplot2d([[parametric, C, S, [x, 0, 2*%pi]], -abs(x)],
+         [x, -sqrt(2), sqrt(2)], same_xy);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+wxplot2d([[parametric, C, S, [x, 0, 2]], -abs(x)],
+         [x, -sqrt(2), sqrt(2)], same_xy, [gnuplot_preamble, "set xrange [0 : 2]"]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+wxplot2d([[parametric, C, S, [x, 0, 2*%pi]]],
+same_xy, [gnuplot_preamble, "set xrange [0 : 1]"]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+wxplot2d([[parametric, C, S, [x, 0, 2*%pi]]],
+ [gnuplot_preamble, "set xrange [0 : 1]; set yrange [0 : 0.1]"]);
+/* [wxMaxima: input   end   ] */
+
+/* Maxima can't load/batch files which end with a comment! */
+"Created with wxMaxima"$
