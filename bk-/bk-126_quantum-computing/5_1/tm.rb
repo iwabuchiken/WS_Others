@@ -38,6 +38,9 @@ end
 
 def aux_add_head_mark(str_Target, loc_Head)
   
+#  puts "[#{File.basename(__FILE__)}:#{__LINE__}] starting => add head mark"
+  
+  
   return str_Target.map.with_index {|elem, i|
   #  tmp = str_current.map!.with_index {|elem, i|
       
@@ -56,6 +59,60 @@ def aux_add_head_mark(str_Target, loc_Head)
     }
   
 end#aux_add_head_mark(str_Target, loc_Head)
+
+def aux_add_changed(str_Target, aryof_index_changed)
+
+  tmp = str_Target.map.with_index {|elem, i|
+#  return str_Target.map.with_index {|elem, i|
+  #  tmp = str_current.map!.with_index {|elem, i|
+      
+      if aryof_index_changed[i] > 0
+#      if i == loc_Head
+        
+        puts "[#{File.basename(__FILE__)}:#{__LINE__}] "\
+            "aryof_index_changed[i] > 0 ==> #{aryof_index_changed[i].to_s}"
+        
+        puts "[#{File.basename(__FILE__)}:#{__LINE__}] elem => '#{elem}'"
+        
+#        elem + "+"
+        
+#        puts "[#{File.basename(__FILE__)}:#{__LINE__}] i == head ---> i = #{i.to_s}"
+        aryof_index_changed[i].times do
+          
+          puts "[#{File.basename(__FILE__)}:#{__LINE__}] update elem..."
+          
+          elem = elem + "+"
+#          elem + "+"
+#          elem.to_s
+#          elem
+#          elem = "a"
+#          elem += "a"
+#          elem += "+"
+          
+        end
+        
+        elem
+        
+#        elem = elem + "*"
+        
+      else
+        
+        elem
+        
+      end
+      
+  }
+  
+  ##### report
+  print "[#{File.basename(__FILE__)}:#{__LINE__}] target => "
+  p str_Target
+  
+  print "[#{File.basename(__FILE__)}:#{__LINE__}] index changed => "
+  p tmp
+  
+  return tmp
+  
+end#aux_add_head_mark(str_Target, aryof_index_changed)
 
 def exec
 
@@ -77,18 +134,25 @@ def exec
   ##### initial : str_current
   str = "010011101"
   
+  puts "[#{File.basename(__FILE__)}:#{__LINE__}] str => '#{str}'"
+  
+  
   str_current = str.split("");
   
-  puts "[#{File.basename(__FILE__)}:#{__LINE__}] str_current =>"
+  print "[#{File.basename(__FILE__)}:#{__LINE__}] str_current => "
+  p str_current
 
   ##### initial : aryof_index_changed
   aryof_index_changed = Array.new(str_current.length, 0)
   
-  puts "[#{File.basename(__FILE__)}:#{__LINE__}] aryof_index_changed =>"
+  print "[#{File.basename(__FILE__)}:#{__LINE__}] aryof_index_changed => "
   
   p aryof_index_changed
     
   ##### str ---> add head mark
+#  puts "[#{File.basename(__FILE__)}:#{__LINE__}] callling ---> aux_add_head_mark"
+  
+  
   str_current_aux = aux_add_head_mark(str_current, loc_Head)
 #  str_current_aux = str_current.map.with_index {|elem, i|
 ##  tmp = str_current.map!.with_index {|elem, i|
@@ -135,7 +199,8 @@ def exec
   #########################
   puts "========== q0 ---> q1 =========="
   
-  puts "[#{File.basename(__FILE__)}:#{__LINE__}] command 1st =>"
+  print "[#{File.basename(__FILE__)}:#{__LINE__}] command 1st => "
+#  puts "[#{File.basename(__FILE__)}:#{__LINE__}] command 1st =>"
   
   p cmd[0]
 
@@ -148,7 +213,8 @@ def exec
   ##### read: command
   command_current = str_current[loc_Head].to_i == 1 ? cmd[0][0] : cmd[0][1]
   
-  puts "[#{File.basename(__FILE__)}:#{__LINE__}] command is =>"
+  print "[#{File.basename(__FILE__)}:#{__LINE__}] command is => "
+#  puts "[#{File.basename(__FILE__)}:#{__LINE__}] command is =>"
   
   p command_current
 
@@ -157,6 +223,9 @@ def exec
 ##  str_current[loc_head] = command_current[1].to_s + "+"
 #  
 #  
+  
+  print "[#{File.basename(__FILE__)}:#{__LINE__}] str_current changed => "
+  p str_current
   
   ##### update : aryof_index_changed
   if command_current[0] == command_current[1]
@@ -169,18 +238,26 @@ def exec
   
   end#if (command_current[0] == command_current[1])
   
-  puts "[#{File.basename(__FILE__)}:#{__LINE__}] aryof_index_changed is now =>"
+  print "[#{File.basename(__FILE__)}:#{__LINE__}] aryof_index_changed is now => "
   
   p aryof_index_changed
   
+#  ##### update : 
+#  aux_add_head_mark(str_current, aryof_index_changed)
+  
   ##### report: str_current
-  puts "[#{File.basename(__FILE__)}:#{__LINE__}] str_current is now =>"
+  
+#  puts "[#{File.basename(__FILE__)}:#{__LINE__}] str_current is now =>"
   
   ### update : loc_Head
-  puts "[#{File.basename(__FILE__)}:#{__LINE__}] Evaluating the direction command..."
+  puts
+  print "[#{File.basename(__FILE__)}:#{__LINE__}] Evaluating the direction command"
+#  puts "[#{File.basename(__FILE__)}:#{__LINE__}] Evaluating the direction command..."
   
   if command_current[2] == "L"
 
+    puts " => 'L'"
+    
     puts "[#{File.basename(__FILE__)}:#{__LINE__}] Moving the head toward => Left"
       
     loc_Head -= 1
@@ -196,6 +273,8 @@ def exec
     
   elsif command_current[2] == "R"
 
+    puts " => 'R'"
+    
     puts "[#{File.basename(__FILE__)}:#{__LINE__}] Moving the head toward => Right"
     
     loc_Head += 1
@@ -219,8 +298,17 @@ def exec
   
   
   ##### report: str_current_aux
+  str_current_aux = aux_add_head_mark(str_current, loc_Head)
   
-  p aux_add_head_mark(str_current, loc_Head)
+  print "[#{File.basename(__FILE__)}:#{__LINE__}] head ---> processed: "
+  p str_current_aux
+  
+  str_current_aux = aux_add_changed(str_current_aux, aryof_index_changed)
+  print "[#{File.basename(__FILE__)}:#{__LINE__}] index ---> processed: "
+  p str_current_aux
+  
+  
+#  p aux_add_head_mark(str_current, loc_Head)
 #  p str_current
   
   
