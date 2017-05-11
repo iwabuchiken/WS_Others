@@ -1,0 +1,72 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 16.04.2 ] */
+
+/* [wxMaxima: input   start ] */
+p : 5/3;
+wxplot2d([x^x^x, (p*x)^(p*x)^(p*x)], [x, -2.5, 2.5],
+     [gnuplot_preamble, "set yrange [0 : 10]"]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+wxplot3d([x^x, (p*x)^(p*x), [x, -2.5, 2.5],[p, 0.1, 2]]
+     , [gnuplot_preamble, "set zrange [0 : 10]"]
+);
+plot3d([x^x, (p*x)^(p*x), [x, -2.5, 2.5],[p, 0.1, 2]]
+     , [gnuplot_preamble, "set zrange [0 : 10]"]
+);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+kill(p);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+wxplot3d((p*x)^(p*x), [x, -2.5, 2.5],[p, 0.1, 2]
+     , [gnuplot_preamble, "set zrange [0 : 10]"]
+);
+plot3d((p*x)^(p*x), [x, -2.5, 2.5],[p, 0.1, 2]
+     , [gnuplot_preamble, "set zrange [0 : 10]"]
+);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+end : 5;
+wxplot3d((p*x)^(p*x), [x, -2.5, end],[p, 0.1, end]
+     , [gnuplot_preamble, "set zrange [0 : 10]"]
+);
+plot3d((p*x)^(p*x), [x, -2.5, end],[p, 0.1, end]
+     , [gnuplot_preamble, "set zrange [0 : 10]"]
+);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+end : 5;
+start : -5;
+wxplot3d((p*x), [x, start, end],[p, start, end]
+     , [gnuplot_preamble, "set zrange [-10 : 10]"]
+);
+plot3d((p*x), [x, start, end],[p, start, end]
+     , [gnuplot_preamble, "set zrange [-10 : 10]"]
+);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+end : 5;
+start : -5;
+grid_val : 100;
+wxplot3d((p*x) * cos(p*x), [x, start, end],[p, start, end]
+     , [gnuplot_preamble, "set zrange [-10 : 10]"]
+    , [grid, grid_val, grid_val]
+);
+plot3d((p*x) * cos(p*x), [x, start, end],[p, start, end]
+     , [gnuplot_preamble, "set zrange [-10 : 10]"]
+        , [grid, grid_val, grid_val]
+);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+(p*x) * cos(p*x)
+/* [wxMaxima: input   end   ] */
+
+/* Maxima can't load/batch files which end with a comment! */
+"Created with wxMaxima"$

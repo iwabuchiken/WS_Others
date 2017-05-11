@@ -1,0 +1,136 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 14.12.1 ] */
+
+/* [wxMaxima: input   start ] */
+y : abs(x);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+plot2d(y, [x, -5, 5]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+arng : [a, 0.01, 0.99];
+brng : [b, 1, 7];
+plot3d(a * b, arng, brng, [gnuplot_preamble, "set zrange [0, 10]"]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+plot2d(sin(x), [x, -3, 3]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+plot3d(x*y, [x, 1, 3], [y, 1, 3]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+arng : [a, 0.01, 0.99];
+brng : [b, 1, 7];
+plot3d(a * b, arng, brng);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* ワイエルシュトラス関数 https://ja.wikipedia.org/wiki/%E3%83%AF%E3%82%A4%E3%82%A8%E3%83%AB%E3%82%B7%E3%83%A5%E3%83%88%E3%83%A9%E3%82%B9%E9%96%A2%E6%95%B0 */
+arng : [a, 0.01, 0.99];
+brng : [b, 4, 15];
+plot3d([a * b, 1+(3/2*%pi), arng, brng]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+a : 0.7; b : 11;
+y : a^n * cos(b^n * %pi * x);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+wxplot3d(y, [n, 0, 10], [x, 0, 5], [grid, 50, 50]);
+plot3d(y, [n, 0, 10], [x, 0, 5], [grid, 50, 50]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+y;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+integrate(sin(x), x, 0, %pi);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/*integrate(y, n, 0, 10);*/;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/*integrate(y, n, 0, 2);*/;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+a : 0.7; b : 11;
+x : 0.5;
+y : a^n * cos(b^n * %pi * x);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+n : 1;
+y : a^n * cos(b^n * %pi * x);
+float(%);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+n : 2;
+y : a^n * cos(b^n * %pi * x);
+float(%);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+b^n * %pi * x;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+cos(%);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+float(%)
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+60.5 * %pi / (2 * %pi);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+%pi * 0.25;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+float(%);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+cos(%);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+% * a^n;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+cos(60.5*%pi);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+float(%);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+60.5*%pi;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+float(%);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+cos(%);
+/* [wxMaxima: input   end   ] */
+
+/* Maxima can't load/batch files which end with a comment! */
+"Created with wxMaxima"$

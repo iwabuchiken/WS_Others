@@ -91,7 +91,32 @@ wxplot2d([B, G], prng, opt);
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: input   start ] */
-plot2d(1/(x^2) + 1, [x, 0, 100]);
+opt : [gnuplot_preamble, "set yrange [0 : 100]; set grid lw 1"];
+plot2d(1/(x^2) + 1, [x, 0, 2], opt);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+y3 : 1/(x^2) + 1;
+integrate(y3, x, 0, inf);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+y3 : 1/(x^2) + 1;
+integrate(y3, x, 0, 10);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+debugmode(true);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+y3 : 1/(x^2) + 1;
+integrate(y3, x, 0, inf);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+y3 : 1/(x^2) + 1;
+integrate(y3, x, 0, inf);
 /* [wxMaxima: input   end   ] */
 
 /* Maxima can't load/batch files which end with a comment! */
