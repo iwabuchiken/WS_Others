@@ -1,0 +1,15 @@
+# Created by Octave 4.2.1, Thu May 11 14:34:13 2017 GMT <unknown@unknown>
+# name: ans
+# type: function handle
+@<anonymous>
+@(x) cos (x)
+
+
+# name: f1
+# type: inline function
+# nargs: 1
+x
+0
+cos(x)
+
+

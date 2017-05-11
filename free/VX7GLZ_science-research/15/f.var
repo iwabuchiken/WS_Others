@@ -1,0 +1,9 @@
+# Created by Octave 4.2.1, Thu May 11 14:21:47 2017 GMT <unknown@unknown>
+# name: f
+# type: inline function
+# nargs: 1
+x
+0
+x^2*cos(x)
+
+

@@ -1,0 +1,98 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 16.04.2 ] */
+
+/* [wxMaxima: input   start ] */
+kill(p);
+/*p : 4;*/
+q : 3;
+y1 : t^(p-1);
+y2 : (1-t)^(q-1);
+y3 : y1 * y2;
+B : integrate(y3, t, 0, 1);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+prng : [p, 2, 5];
+q : 3;
+y1 : t^(p-1);
+y2 : (1-t)^(q-1);
+y3 : y1 * y2;
+B : integrate(y3, t, 0, 1);
+wxplot2d(B, prng);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+prng : [p, -5, 5];
+q : 3;
+y1 : t^(p-1);
+y2 : (1-t)^(q-1);
+y3 : y1 * y2;
+opt : [gnuplot_preamble, "set yrange [-10 : 10]"];
+B : integrate(y3, t, 0, 1);
+wxplot2d(B, prng, opt);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+prng : [p, -5, 5];
+q : 3;
+y1 : t^(p-1);
+y2 : (1-t)^(q-1);
+y3 : y1 * y2;
+opt : [gnuplot_preamble, "set yrange [-10 : 10]"];
+B : integrate(y3, t, 0, 1);
+G : integrate(t^(p-1)*%e^(-t), t, 0, inf);
+wxplot2d([B, G], prng, opt);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+kill(p);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+kill(q);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+prng : [p, -5, 5];
+qrng : [q, -5, 5];
+
+y1 : t^(p-1);
+y2 : (1-t)^(q-1);
+y3 : y1 * y2;
+opt : [gnuplot_preamble, "set zrange [-100 : 100]"];
+B : integrate(y3, t, 0, 1);
+
+wxplot3d(B, prng, qrng, opt);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+prng : [p, -5, 5];
+qrng : [q, -5, 5];
+
+y1 : t^(p-1);
+y2 : (1-t)^(q-1);
+y3 : y1 * y2;
+opt : [gnuplot_preamble, "set zrange [-100 : 100]"];
+B : integrate(y3, t, 0, 1);
+
+wxplot3d(B, prng, qrng, opt);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+prng : [p, -5, 5];
+q : 2;
+y1 : t^(p-1);
+y2 : (1-t)^(q-1);
+y3 : y1 * y2;
+opt : [gnuplot_preamble, "set yrange [-10 : 10]"];
+B : integrate(y3, t, 0, 1);
+G : integrate(t^(p-1)*%e^(-t), t, 0, inf);
+wxplot2d([B, G], prng, opt);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+plot2d(1/(x^2) + 1, [x, 0, 100]);
+/* [wxMaxima: input   end   ] */
+
+/* Maxima can't load/batch files which end with a comment! */
+"Created with wxMaxima"$

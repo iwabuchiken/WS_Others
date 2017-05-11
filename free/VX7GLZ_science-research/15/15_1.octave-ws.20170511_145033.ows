@@ -1,0 +1,36 @@
+# Created by Octave 4.2.1, Thu May 11 14:56:23 2017 GMT <unknown@unknown>
+# name: a
+# type: scalar
+1
+
+
+# name: aa
+# type: scalar
+1
+
+
+# name: aaa
+# type: scalar
+234
+
+
+# name: ans
+# type: sq_string
+# elements: 1
+# length: 55
+C:\WORKS_2\WS\WS_Others\free\VX7GLZ_science-research\15
+
+
+# name: b
+# type: scalar
+2
+
+
+# name: f1
+# type: inline function
+# nargs: 1
+x
+0
+cos(x)
+
+
