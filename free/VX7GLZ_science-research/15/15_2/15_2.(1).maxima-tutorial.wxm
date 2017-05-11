@@ -1,0 +1,288 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 16.04.2 ] */
+
+/* [wxMaxima: input   start ] */
+p : 3; q : 3;
+f : t^(p-1) * (1-t)^(q-1);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+integrate(f, t, 0, 1);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+f2 : t^(x - 1) * %e^(-t);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+integrate(f2, t, 0, 2);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+float(%);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+map('gamma,[1,2,3,4,5,6,7,8,9]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+gamma(-3);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+integrate(f2, t, -1, 2);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+gamma(1);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+gamma(1/2);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+plot2d([discrete, [gamma(0.1), gamma(0.2)]]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+gamma(0.1);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+(0.1)!;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+(0.1 - 1)!;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+(-0.5)!;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+makelist(i + 3, i, 0.1, 10);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+makelist(gamma(i), i, 2, 5);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+sublist([1,2,3,4,5],evenp);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+sublist(makelist(i, i, 1, 10),evenp);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+sublist(makelist(i, i, 1, 10),oddp);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+ i:0$while i<5 do(i:i+1,print("i=", i));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+a : [];
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+cons(0, a);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+a : []; i:0$while i<5 do(i:i+1,print("i=", i), a : endcons(i/100, a)); a;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+a : cons(0, a);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+a;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+b : []; i:0$while i<5 do(i:i+1,print("i=", i), b : endcons(a[i]* 100, b)); b;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+c : makelist(random(10), 10);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+length(c);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+c : makelist(random(floor(%pi*100)), 10);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+p : floor(%pi*100);
+c : makelist(random(p), 10);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+p : floor(%pi*100);
+c : makelist(sin(random(p)/100), 10);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+c[1];
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+float(%);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+c;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+b : []; i:0$while i < 3 do (i:i + 1, print("i=", i), b : endcons(a[i]* 100, b)); b;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+b : []; i:0$while i < 3 do (
+    i:i + 1, 
+/*    print("i=", i), */
+    b : endcons(a[i]* 100, b),
+    j : 0,
+    while j < 3 do (
+        
+        j : j + 1,
+        /*print("j=", j)*/
+        k : 0,
+        while k < 50 do (
+        
+            k : k + 1,
+            
+            /*print("product = ", i + j + k)*/
+            print ("i=", i, "j=", j, "k=", k/100)
+        
+        )
+    
+    )
+);
+ b;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+a;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+fname : openw("result.dat");
+printf(fname, "~f ~f ~%", 0.3, 0.6);
+close(fname);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+a;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+printf(fname, "~f ~f ~%", 0.3, 0.6);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+write_data(a, "C:\WORKS_2\WS\WS_Others\free\VX7GLZ_science-research\15\15_2\a.data", 'csv);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+write_data(a, "C:/WORKS_2/WS/WS_Others/free/VX7GLZ_science-research/15/15_2/a.data", 'csv);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+d : [];
+b : []; i:0$while i < 3 do (
+    i:i + 1, 
+/*    print("i=", i), */
+    b : endcons(a[i]* 100, b),
+    j : 0,
+    while j < 3 do (
+        
+        j : j + 1,
+        /*print("j=", j)*/
+        k : 0,
+        while k < 50 do (
+        
+            k : k + 1,
+            
+            /*print("product = ", i + j + k)*/
+            /*print ("i=", i, "j=", j, "k=", k/100)*/
+            d : endcons([i,j,k/100], d)
+        
+        )
+    
+    )
+);
+length(d);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+write_data(d, "C:/WORKS_2/WS/WS_Others/free/VX7GLZ_science-research/15/15_2/d.data", 'csv);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+sum : 0;
+e : [];
+d : [];
+b : []; i:2$while i < 5 do (
+    i:i + 1, 
+/*    print("i=", i), */
+    b : endcons(a[i]* 100, b),
+    j : 2,
+    while j < 5 do (
+        
+        j : j + 1,
+        /*print("j=", j)*/
+        k : 1,
+        while k < 100 do (
+        
+            k : k + 1,
+            
+            /*print("product = ", i + j + k)*/
+            /*print ("i=", i, "j=", j, "k=", k/100)*/
+            d : endcons([i,j,k/100], d),
+            
+            /*sum : sum + (k/100)^(i-1) * (1 - k/100)^(j-1)*/
+            sum : sum + (k/10)^(i-1) * (1 - k/10)^(j-1)
+        
+        ),
+        
+        /*e : endcons(sum, e)*/
+        /*e : endcons([i, j, sum], e)*/
+        e : endcons([i, j, float(sum)], e)
+        
+    
+    )
+);
+length(e);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+e;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+filename(m) := simplode(["C:/WORKS_2/WS/WS_Others/free/VX7GLZ_science-research/15/15_2/", m]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+filename("aaa");
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+write_data(e, filename("e.data"), 'csv);
+/* [wxMaxima: input   end   ] */
+
+/* Maxima can't load/batch files which end with a comment! */
+"Created with wxMaxima"$
