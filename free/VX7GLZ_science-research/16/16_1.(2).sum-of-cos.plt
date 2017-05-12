@@ -47,58 +47,52 @@ if (exist("sequence") == 0 || sequence < 0) sequence = 0 #変数の初期化
 # params setup
 #
 ############################
-set size ratio 0.2
-set samples 256
-set xrange [0:15]
-set yrange [0:3]
-set trange [0:5*pi]
-set xtics 0, 2, 15
-set ytics 0, 1, 3
-set nokey
-set parametric
+set size ratio 1/2
+set samples 1024
+
+set xrange [-4*pi : 4*pi]
+set yrange [-30 : 40]
+
+set trange [-4*pi : 4*pi]
+
+set xtics -4*pi, pi/4, 4*pi
+#set ytics 0, 1, 3
+
+#set nokey
+#set parametric
 
 ########## grid ##########
-xtic_value = 1
-set xtics 0, xtic_value, 15
-
-ytic_value = 0.5
-set ytics 0, ytic_value, 3
 
 set grid lw 1
 
-set terminal jpeg  enhanced font "Times" 20 size 600, 240
+set terminal jpeg  enhanced font "Times" 20 size 600, 600
 set tics font 'Times,18'
 
 if (exist("n")==0 || n<0) n=0 #変数の初期化
-#outfile(n) = sprintf("f/%d.jpg",n+1000)  #出力ファイル名
+
 outfile(n) = sprintf("f-2/%d.jpg",n+1000)  #出力ファイル名
 
-#title(n) = sprintf("t = %d",n)  #タイトル名
-#title(n) = sprintf("t = %d (t = %f)",n, t)  #タイトル名
+title(n) = sprintf("t = %d",n)  #タイトル名
+
 
 unset label 
-#set label title(n)  font 'Times,20'  at 0 , 3.3 
-set output outfile(n)
-
-theta = pi/20 * n
-
-#title(n) = sprintf("t = %d / theta = %f",n, theta)  #タイトル名
-
-
-fx(t) = t<=theta ? t-sin(t) : 1/0
-fy(t) = t<=theta ? 1-cos(t) : 1/0
 
 ########## title ##########
-title(n) = sprintf("t = %d (t = %f / theta = %f)",n, t, theta)  #タイトル名
-#title(n) = sprintf("t = %d (t = %f / theta = %f / fx(t) = %f)",n, t, theta, fx(t))  #タイトル名   #=> 't' --> 'undefined value'
 set label title(n)  font 'Times,20'  at 0 , 3.3 
+
+
+########## output ##########
+time_label = "images_20170513_000508"
+
+set output sprintf("%s/16_1-1.%002d.gif", time_label, n)
+
 
 ########## plot ##########
 ### plot: cycloid, circle, point on the circumference
-plot\
-     fx(t),fy(t) w l,\
-     cos(t) + theta, sin(t)+1 w l ,\
-     fx(theta), fy(theta) with points pt 7 lc rgb "blue"
+
+#ref sum http://www.ss.scphys.kyoto-u.ac.jp/person/yonezawa/contents/program/gnuplot/sum.html
+#plot sum [i=1:n] sin(x * n)
+plot sum [i=1:n] cos(x * i)
 
 ### original
 #plot fx(t),fy(t) w l,\
@@ -117,7 +111,13 @@ plot\
 #     fx(theta), fy(theta) with points pt 7 lc rgb "blue"   #=> point on the circumference
 
 #if (n<100)  n=n+1; pause 0.1; reread
-if (n<100)  n=n+1; reread
+
+#wait = 0.5
+wait = 0.0
+
+n_max = 40
+
+if (n < n_max)  pause wait; n=n+1; reread
 n = 0
 
 ############################
@@ -130,9 +130,6 @@ n = 0
 #ref http://www.math.utk.edu/~vasili/refs/How-to/gnuplot.print.html
 #set terminal gif
 
-time_label = "20170424_132124"
-
-#set output sprintf("image_%s/17_1-1.%s.%002d.gif", time_label, time_label, sequence)
 
 
 ############################

@@ -118,10 +118,7 @@ plot\
 #     fx(theta), fy(theta) with points pt 7 lc rgb "blue"   #=> point on the circumference
 
 #if (n<100)  n=n+1; pause 0.1; reread
-
-wait = 0.1
-
-if (n<100)  pause wait; n=n+1; reread
+if (n<100)  n=n+1; reread
 n = 0
 
 ############################

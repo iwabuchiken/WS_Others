@@ -1,0 +1,67 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 16.04.2 ] */
+
+/* [wxMaxima: input   start ] */
+f : sin(x);
+g : cos(x);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+h : f - g;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+solve(h = 0, x);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+1/sqrt(2);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+float(%);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+solve(f = 0.7071, x);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+i : 0;
+while i < (%pi/2) do (
+
+    if sin(i) > 0.7 then break,
+    
+    i : i + 0.1,
+    
+    print("i=",i, " / ", "sin(i)=", sin(i))
+
+);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+sin(0.78);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+float(2*%pi);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+i;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+sin(1.5);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+float(%pi/2);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+float(%pi/2);
+/* [wxMaxima: input   end   ] */
+
+/* Maxima can't load/batch files which end with a comment! */
+"Created with wxMaxima"$
