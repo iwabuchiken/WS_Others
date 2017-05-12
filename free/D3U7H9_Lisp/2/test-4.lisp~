@@ -1,0 +1,13 @@
+(setq num (+ 4 5))
+(write num)
+(write-line "")
+
+(defmacro setTo10 (num)
+  (setq num 10)
+  (write-line "changing the value...")
+  (print num))
+
+(write-line "num is now ")
+(print num)
+
+
