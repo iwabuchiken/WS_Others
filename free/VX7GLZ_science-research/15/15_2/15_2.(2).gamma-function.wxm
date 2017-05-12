@@ -1,0 +1,69 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 16.04.2 ] */
+
+/* [wxMaxima: input   start ] */
+y: t^3 * %e^(-t);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+integrate(y, t, 0, 2);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+float(%);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+integrate(y, t, 0, 200);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+float(%);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+integrate(y, t, 0, inf);
+float(%);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+gamma(4);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+i : 3;
+y: t^(i - 1) * %e^(-t);
+g : integrate(y, t, 0, inf);
+float(g);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+i : -2.5;
+y: t^(i - 1) * %e^(-t);
+g : integrate(y, t, 0, inf);
+float(g);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+%i;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+z : 2 + %i;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+3^z;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+float(%);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+imag(3^z);
+/* [wxMaxima: input   end   ] */
+
+/* Maxima can't load/batch files which end with a comment! */
+"Created with wxMaxima"$

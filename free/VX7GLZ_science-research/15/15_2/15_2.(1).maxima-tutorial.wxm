@@ -199,7 +199,6 @@ write_data(a, "C:\WORKS_2\WS\WS_Others\free\VX7GLZ_science-research\15\15_2\a.da
 write_data(a, "C:/WORKS_2/WS/WS_Others/free/VX7GLZ_science-research/15/15_2/a.data", 'csv);
 /* [wxMaxima: input   end   ] */
 
-
 /* [wxMaxima: input   start ] */
 d : [];
 b : []; i:0$while i < 3 do (
@@ -273,6 +272,7 @@ e;
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: input   start ] */
+/* ref simplode http://maxima.sourceforge.net/docs/manual/de/maxima_73.html#SEC384 */ 
 filename(m) := simplode(["C:/WORKS_2/WS/WS_Others/free/VX7GLZ_science-research/15/15_2/", m]);
 /* [wxMaxima: input   end   ] */
 

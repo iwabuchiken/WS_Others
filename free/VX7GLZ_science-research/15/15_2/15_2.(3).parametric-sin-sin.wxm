@@ -1,0 +1,104 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 16.04.2 ] */
+
+/* [wxMaxima: input   start ] */
+wxplot2d([parametric, sin(x), cos(x), [x, -%pi, %pi]], [same_xy]);
+plot2d([parametric, sin(x), cos(x), [x, -%pi, %pi]], [same_xy]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+f1 : sin(x);
+f2 : cos(x);
+wxplot2d([parametric, f1, f2, [x, -%pi, %pi]], [same_xy]);
+plot2d([parametric, f1, f2, [x, -%pi, %pi]], [same_xy]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+f1 : sin(x);
+f2 : sin(x + 2);
+wxplot2d([parametric, f1, f2, [x, -%pi, %pi]], [same_xy]);
+plot2d([parametric, f1, f2, [x, -%pi, %pi]], [same_xy]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+f1 : sin(x);
+f2 : sin(x + %pi/4);
+wxplot2d([parametric, f1, f2, [x, -%pi, %pi]], [same_xy]);
+plot2d([parametric, f1, f2, [x, -%pi, %pi]], [same_xy]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+f2 : sin(x + %pi/2);
+wxplot2d([parametric, f1, f2, [x, -%pi, %pi]], [same_xy]);
+plot2d([parametric, f1, f2, [x, -%pi, %pi]], [same_xy]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+f1 : (sin(x))^2;
+f2 : (cos(x))^2;
+wxplot2d([parametric, f1, f2, [x, -%pi, %pi]], [same_xy]);
+plot2d([parametric, f1, f2, [x, -%pi, %pi]], [same_xy]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+xrng : [x, -%pi, %pi];
+wxplot2d([f1, f2], xrng);
+plot2d([f1, f2], xrng);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+f1 : (sin(x))^2;
+f2 : (cos(x))^2;
+wxplot2d([f1, f2], [x, -%pi, %pi], [same_xy]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+f1 : (sin(x + 2))^2;
+f2 : (cos(x))^2;
+wxplot2d([f1, f2], [x, -%pi, %pi], [same_xy]);
+wxplot2d([parametric, f1, f2, [x, -%pi, %pi], [same_xy]]);
+plot2d([parametric, f1, f2, [x, -%pi, %pi], [same_xy]]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+f1 : sin(x * 2);
+f2 : sin(x);
+wxplot2d([f1, f2], [x, -%pi, %pi], [same_xy]);
+wxplot2d([parametric, f1, f2, [x, -%pi, %pi], [same_xy]]);
+plot2d([parametric, f1, f2, [x, -%pi, %pi], [same_xy]]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+f1 : sin(x * 2);
+f2 : sin(x * 3);
+wxplot2d([f1, f2], [x, -%pi, %pi], [same_xy]);
+wxplot2d([parametric, f1, f2, [x, -%pi, %pi], [same_xy]]);
+plot2d([parametric, f1, f2, [x, -%pi, %pi], [same_xy]]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+f1 : sin(x * 2);
+f2 : sin(x * 4);
+wxplot2d([f1, f2], [x, -%pi, %pi], [same_xy]);
+wxplot2d([parametric, f1, f2, [x, -%pi, %pi], [same_xy]]);
+plot2d([parametric, f1, f2, [x, -%pi, %pi], [same_xy]]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+f1 : sin(x * 2);
+f2 : sin(x * 5);
+wxplot2d([f1, f2], [x, -%pi, %pi], [same_xy]);
+wxplot2d([parametric, f1, f2, [x, -%pi, %pi], [same_xy]]);
+plot2d([parametric, f1, f2, [x, -%pi, %pi], [same_xy]]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+f1 : sin(x * 2);
+f2 : sin(x * 6);
+wxplot2d([f1, f2], [x, -%pi, %pi], [same_xy]);
+wxplot2d([parametric, f1, f2, [x, -%pi, %pi], [same_xy]]);
+plot2d([parametric, f1, f2, [x, -%pi, %pi], [same_xy]]);
+/* [wxMaxima: input   end   ] */
+
+/* Maxima can't load/batch files which end with a comment! */
+"Created with wxMaxima"$

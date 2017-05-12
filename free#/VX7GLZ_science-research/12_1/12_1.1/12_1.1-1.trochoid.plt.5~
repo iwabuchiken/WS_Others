@@ -83,7 +83,7 @@ set ytics yrange_start, ytic_value, yrange_end
 
 set grid lw 1
 
-#set terminal jpeg  enhanced font "Times" 10 size 600, 240
+set terminal jpeg  enhanced font "Times" 10 size 600, 240
 #set terminal jpeg  enhanced font "Times" 20 size 600, 240
 #set tics font 'Times,18'
 set tics font 'Times,10'
@@ -103,7 +103,7 @@ outfile(n) = sprintf("%s/%d.jpg", dname_images, n+1000)  #出力ファイル名
 
 unset label 
 #set label title(n)  font 'Times,20'  at 0 , 3.3 
-#set output outfile(n)
+set output outfile(n)
 
 theta = pi/20 * n
 
