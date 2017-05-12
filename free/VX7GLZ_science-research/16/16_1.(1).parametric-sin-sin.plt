@@ -89,7 +89,8 @@ set ylabel font "Arial,10"
 
 
 
-dname_images = "images_20170512_125250"
+#dname_images = "images_20170512_125250"
+dname_images = "images_20170512_140353"
 
 #outfile(n) = sprintf("%s/%d.jpg", dname_images, n+1000)  #出力ファイル名
 outfile(n) = sprintf("%s/%d.jpg", dname_images, n*10 + 1000)  #出力ファイル名
@@ -118,12 +119,13 @@ str_title = "sin(ax), cos(ax)"
 ########## plot ##########
 ### plot: cycloid, circle, point on the circumference
 
-n_denomi = 10.0
+#n_denomi = 10.0
+n_denomi = 2.0
 n_max = 50
 
 #set title sprintf("%s @%s / %s", str_session, str_time, str_title)
 #set title sprintf("%s @%s / %s / trange = %d * pi - %d * pi", str_session, str_time, str_title, trange_start, trange_end)
-set title sprintf("%s @%s / %s \ntrange = %d * pi - %d * pi / n_denomi = %2.1f / n_max = %d", \
+set title sprintf("%s @%s / %s \ntrange = %d * pi ~ %d * pi / n_denomi = %2.1f / n_max = %d", \
      str_session, str_date, str_title, trange_start, trange_end, n_denomi, n_max)
 
 #set title sprintf("<%s %s / @%s / (a = %d, b = %d) / n = %d>", str_session, str_title, str_time, a, b, n)
@@ -137,9 +139,11 @@ set ylabel "cos(x * n)"
 
 #n = 3
 #plot sin(t * 3), cos(t * 3)   #=> plot shown
+#ref floor http://stackoverflow.com/questions/30329743/how-to-use-floor-function-in-gnuplot answered May 19 '15 at 16:00
 #plot sin(t * n), cos(t * n) lw (floor(n*10) % 4)   #=> w.
 #plot sin(t * n), cos(t * n) lt (floor(n*10) % 4)   #=> w.
-plot sin(t * n), cos(t * n) lc "blue"
+#plot sin(t), cos(t) lc "red", sin(t * n), cos(t * n) lc "blue"
+plot sin(t), cos(t) lc rgb "#ff5555" lw 1, sin(t * n), cos(t * n) lc "blue"
 
 #plot sin(t + count / 10), cos(t + count / 10)   #=> works; no change?
 #plot sin(t + count), cos(t + count)   #=> works; no change?
@@ -170,7 +174,7 @@ n = 0
 
 
 #ref http://www.math.utk.edu/~vasili/refs/How-to/gnuplot.print.html
-#set terminal gif
+#setterminal gif
 
 time_label = "20170424_132124"
 
@@ -193,4 +197,3 @@ time_label = "20170424_132124"
 #sequence = sequence_init
 
 
-+
