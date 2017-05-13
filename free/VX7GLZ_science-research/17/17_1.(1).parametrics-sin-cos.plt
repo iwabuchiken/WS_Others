@@ -64,23 +64,30 @@ set parametric
 
 #n_denomi = 10.0
 n_denomi = 30.0
+#n_max = 100
 n_max = 50
-wait = 0.1
+#wait = 0.1
+wait = 0.0
 
 ########## grid ##########
 
 set grid lw 1
 
-#set terminal jpeg  enhanced font "Times" 20 size 600, 240
+set terminal jpeg  enhanced font "Times" 20 size 600, 600
+
 set tics font 'Times,18'
 
 if (exist("n")==0 || n<0) n=0 #変数の初期化
 
-outfile(n) = sprintf("f-2/%d.jpg",n+1000)  #出力ファイル名
+#outfile(n) = sprintf("f-2/%d.jpg",n+1000)  #出力ファイル名
+dname_images = "images_20170513_193556"
+
+#outfile(n) = sprintf("%s/%d.jpg", dname_images, n+1000)  #出力ファイル名
+outfile(n) = sprintf("%s/%d.jpg", dname_images, n*10 + 1000)  #出力ファイル名
 
 unset label 
 
-#set output outfile(n)
+set output outfile(n)
 
 theta = pi/20 * n
 
