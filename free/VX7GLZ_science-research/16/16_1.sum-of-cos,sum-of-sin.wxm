@@ -1,0 +1,79 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 16.04.2 ] */
+
+/* [wxMaxima: input   start ] */
+f : sin(x);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+diff(f, x);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+f2 : sin(x) + cos(x);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+diff(f2, x);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+f3 : sin(x*2);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+diff(f3, x);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+h : sin(x) + sin(x*2) + sin(x*3);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+diff(h, x);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+xrng : [x, -2*%pi, 2*%pi];
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+plot2d([sin(x), sin(x*2), h], xrng);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+g : cos(x) + cos(x*2) + cos(x*3);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+plot2d(g, xrng);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+plot2d([h, g], xrng);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* ref sum http://d.hatena.ne.jp/jurupapa/20110408/1302287578 */
+a : 20;
+xrng : [x, -6*%pi, 6*%pi];
+h2 : sum(sin(x*n), n, 1, a);
+g2 : sum(cos(x*n), n, 1, a);
+plot2d([h2, g2], xrng);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+plot2d([h2, g2], xrng);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+a : 20;
+xrng : [x, -4*%pi, 4*%pi];
+h2 : sum(sin(x*n), n, 1, a);
+h3 : sum(abs(sin(x*n)), n, 1, a);
+g2 : sum(cos(x*n), n, 1, a);
+plot2d([h2, h3], xrng);
+/* [wxMaxima: input   end   ] */
+
+/* Maxima can't load/batch files which end with a comment! */
+"Created with wxMaxima"$
