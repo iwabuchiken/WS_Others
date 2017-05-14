@@ -1,0 +1,70 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 16.04.2 ] */
+
+/* [wxMaxima: input   start ] */
+plot3d(sin(x)^n, [x, -%pi, %pi], [n, 0.1, 1]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+plot2d(gamma(x), [x, 0.1, 6]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+plot3d(gamma(x)*gamma(y), [x, 0.1, 6], [y, 0.1, 6]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+plot3d([gamma(x)*gamma(y)/(gamma(x+y)), [x, 0.1, 6], [y, 0.1, 6]]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+plot3d([gamma(x)*gamma(y)/(gamma(x+y)), gamma(x)*gamma(y), [x, 0.1, 6], [y, 0.1, 6]]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+plot3d(gamma(x+y), [x, 0.1, 6], [y, 0.1, 6]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+f: m*n/(m+n);
+plot3d(f, [m, 0.1,6], [n,0.1,6]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+plot3d(m*n, [m, 0.1,6], [n,0.1,6]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+plot3d([m*n,m*n/(m+n), [m, 0.1,6], [n,0.1,6]]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+plot3d([m+n,m*n/(m+n), [m, 0.1,6], [n,0.1,6]]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+limit((m*6)/(m+6), m, inf);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+limit((m*6)/(m+6), m, 0);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+limit(m/(m+n), m, inf);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+plot2d([m, m+4], [m, 0, 10]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+plot2d([m, m+4, m/(m+4)], [m, 0, 10]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+plot2d((m*6)/(m+6), [m, 0, 100]);
+/* [wxMaxima: input   end   ] */
+
+/* Maxima can't load/batch files which end with a comment! */
+"Created with wxMaxima"$
