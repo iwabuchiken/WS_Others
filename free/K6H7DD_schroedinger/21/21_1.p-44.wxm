@@ -30,6 +30,7 @@ plot3d((p*x)^(p*x), [x, -2.5, 2.5],[p, 0.1, 2]
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: input   start ] */
+kill(x);
 end : 5;
 wxplot3d((p*x)^(p*x), [x, -2.5, end],[p, 0.1, end]
      , [gnuplot_preamble, "set zrange [0 : 10]"]
