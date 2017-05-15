@@ -2,35 +2,41 @@
 
 	<?php 
 
-// 		foreach ($_SERVER as $elem) {
+		require 'libs.php';
 		
-// 			echo $elem;
-// 			echo "<br>"; echo "<br>";
-			
-			
-			
-// 		}//foreach ($_SERVER as $elem)
+// 		$ary_tmp = Libs::get_InitialMatrix(5, 5);
 		
-// 		echo $_SERVER['SERVER_ADDR'];
-		//ref http://qiita.com/tsujimomo/items/c293d15e34646a826266
-// 		echo $_SERVER["REQUEST_URI"];
-// 		echo "<br>"; echo "<br>";
+// 		foreach ($ary_tmp as $entry) {
 		
-// 		echo dirname($_SERVER["REQUEST_URI"]);
-// 		echo "<br>"; echo "<br>";
+// 			foreach ($entry as $cell) {
+			
+// 				echo $cell;
+				
+// 				echo "<br>";
+				
+				
+				
+// 			}//foreach ($entry as $cell)
+			
+// 			;
+			
+// 		}//foreach ($ary_tmp as $entry)
 		
 		
 	
 // 		$size = [5, 5];
 		$size = array(5, 5);
 	
+		$ary_tmp = Libs::get_InitialMatrix($size[0], $size[1]);
+
 		for ($i = 0; $i < $size[0]; $i++) {
 			
 			echo "<tr>";
 			
 			for ($j = 0; $j < $size[1]; $j++) {
 				
-				$num = rand(0, 1);
+				$num = $ary_tmp[$i][$j];
+// 				$num = rand(0, 1);
 				
 				if ($num % 2 == 0) {
 // 				if (($i + $j) % 2 == 0) {
