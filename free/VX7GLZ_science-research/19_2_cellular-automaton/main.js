@@ -98,3 +98,9 @@ function update_table() {
 	
 }
 
+//ref http://stackoverflow.com/questions/7652342/how-to-print-the-following-multi-dimensional-array-in-java-script answered Oct 4 '11 at 18:40
+function console_test() {
+	
+	console.log("missed the particulars of the loops, fixed");
+	
+}

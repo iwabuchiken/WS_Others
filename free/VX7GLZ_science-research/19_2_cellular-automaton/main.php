@@ -48,11 +48,47 @@ C:\WORKS_2\WS\WS_Others\free\VX7GLZ_science-research
 <title>automaton</title>
 
 
+
 </head>
 <body>
 
+	<!-- ref https://techacademy.jp/magazine/5537 -->
+	<script>
+
+// 		var id = self.setInterval(update_table, 1000);
+//       var count = 0;
+//       var countup = function(){
+//         console.log(count++);
+//       } 
+
+//       setInterval(countup, 1000);
+//       var id = setInterval(countup, 1000);
+//       var id = self.setInterval(countup, 1000);
+//       var id = self.setInterval("countup", 1000);
+      
+    </script>
+
+	<!-- ref http://stackoverflow.com/questions/3138756/calling-a-function-every-60-seconds answered Jun 29 '10 at 7:44 -->
+	<script>
+	
+// 		var interval = self.setInterval(update_table(), 1000);
+// 		var int=self.setInterval(update_table(), 1000);
+// 		var int=self.setInterval(update_table(), 60000);
+		
+	</script>
+
 	<input type="button" value="abc" id="btn_update" onclick="update_table();">
 	
+	<?php echo "<br>"; echo "<br>";
+	
+	?>
+	
+	<!-- ref http://stackoverflow.com/questions/3138756/calling-a-function-every-60-seconds answered Jun 29 '10 at 7:44 -->
+	<!-- Stop Button -->
+	<a href="#" onclick="alert('stop'); window.clearInterval(id);return false;">Stop</a>
+	<!-- <a href="#" onclick="window.clearInterval(id);return false;">Stop</a> -->
+	<!-- <a href="#" onclick="window.clearInterval(id);return false;">Stop</a> -->
+	<!-- <a href="#" onclick="window.clearInterval(countup);return false;">Stop</a> -->
 	<?php echo "<br>"; echo "<br>";
 	
 	?>
