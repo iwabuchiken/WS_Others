@@ -55,6 +55,27 @@ C:\WORKS_2\WS\WS_Others\free\VX7GLZ_science-research
 	<!-- ref https://techacademy.jp/magazine/5537 -->
 	<script>
 
+		//ref https://sites.google.com/site/jqueryjavascript/setintervaltoclearintervalno-shii-fang
+		var testTimer;
+	
+		function startTimer(){
+
+			$("div#div_message").text("Starting...");
+			
+			testTimer=setInterval(update_table , 1000);
+			
+		}
+	
+		function stopTimer(){
+			
+			clearInterval(testTimer);
+
+			$("div#div_message").text("Stopped.");
+		
+		}
+
+// 		startTimer();
+	
 // 		var id = self.setInterval(update_table, 1000);
 //       var count = 0;
 //       var countup = function(){
@@ -77,22 +98,35 @@ C:\WORKS_2\WS\WS_Others\free\VX7GLZ_science-research
 		
 	</script>
 
-	<input type="button" value="abc" id="btn_update" onclick="update_table();">
+	<!-- <input type="button" value="abc" id="btn_update" onclick="update_table();"> -->
+	<input type="button" value="abc" id="btn_update" onclick="startTimer();">
 	
-	<?php echo "<br>"; echo "<br>";
+	&nbsp;&nbsp;&nbsp;
+	
+	<?php //echo "<br>"; echo "<br>";
 	
 	?>
 	
 	<!-- ref http://stackoverflow.com/questions/3138756/calling-a-function-every-60-seconds answered Jun 29 '10 at 7:44 -->
 	<!-- Stop Button -->
-	<a href="#" onclick="alert('stop'); window.clearInterval(id);return false;">Stop</a>
+	<a href="#" onclick="stopTimer();">Stop</a><!-- works -->
+	<!-- <a href="#" onclick="alert('stop'); window.clearInterval(id);return false;">Stop</a> -->
 	<!-- <a href="#" onclick="window.clearInterval(id);return false;">Stop</a> -->
 	<!-- <a href="#" onclick="window.clearInterval(id);return false;">Stop</a> -->
 	<!-- <a href="#" onclick="window.clearInterval(countup);return false;">Stop</a> -->
-	<?php echo "<br>"; echo "<br>";
+	<?php 
+		
+// 		echo "<br>"; echo "<br>";
+		echo "<br>";
 	
 	?>
 
+	<div id="div_message"></div>
+	
+
+	
+	<hr>
+	
 	<div id="div_main">
 	
 		<table border="1" id="table_main">
