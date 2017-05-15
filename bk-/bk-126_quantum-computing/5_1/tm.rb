@@ -114,6 +114,20 @@ def aux_add_changed(str_Target, aryof_index_changed)
   
 end#aux_add_head_mark(str_Target, aryof_index_changed)
 
+def add_aux(str_Target, aryOf_Index_Changed, loc_Head)
+
+  str_current_aux = aux_add_head_mark(str_Target, loc_Head)
+  
+  str_current_aux = aux_add_changed(str_current_aux, aryOf_Index_Changed)
+
+#  print "[#{File.basename(__FILE__)}:#{__LINE__}] index ---> processed: "
+#  p str_current_aux
+  
+  return str_current_aux
+  
+end#add_aux(str_Target, aryOf_Index_Changed, loc_Head)
+
+
 def exec_1_step(str_Target, aryof_index_changed, loc_Head, cmd)
 
   print "[#{File.basename(__FILE__)}:#{__LINE__}] cmd => "
@@ -262,20 +276,11 @@ def exec_1_step(str_Target, aryof_index_changed, loc_Head, cmd)
   end#if (command_current[2] == )
   
   
-  ##### report: str_current_aux
-  str_current_aux = aux_add_head_mark(str_Target, loc_Head)
-  
-  print "[#{File.basename(__FILE__)}:#{__LINE__}] head ---> processed: "
-  p str_current_aux
-  
-  str_current_aux = aux_add_changed(str_current_aux, aryof_index_changed)
-  print "[#{File.basename(__FILE__)}:#{__LINE__}] index ---> processed: "
-  p str_current_aux
-  
-  
-#  p aux_add_head_mark(str_current, loc_Head)
-#  p str_current
-  
+#  ##### report: str_current_aux
+#  str_current_aux = add_aux(str_Target, aryof_index_changed, loc_Head)
+#
+#  print "[#{File.basename(__FILE__)}:#{__LINE__}] index ---> processed: "
+#  p str_current_aux
   
       
   puts "[#{File.basename(__FILE__)}:#{__LINE__}] done"
@@ -290,7 +295,7 @@ def exec_1_step(str_Target, aryof_index_changed, loc_Head, cmd)
   
 end#exec_1_step(str_Target, aryof_index_changed, loc_Head)
   
-	def exec_V2
+def exec_V2
 
   ##### command set
   cmd = [
@@ -325,6 +330,10 @@ end#exec_1_step(str_Target, aryof_index_changed, loc_Head)
   
   p aryOf_Index_Changed
 
+  ##### history
+  aryOf_Histories = Array.new()
+  
+  aryOf_Histories << add_aux(str_Current, aryOf_Index_Changed, loc_Head)
   
   ################################
   #	
@@ -335,7 +344,16 @@ end#exec_1_step(str_Target, aryof_index_changed, loc_Head)
 #  exec_1_step(str_current, aryof_index_changed, loc_Head, cmd[0])
   str_Current, aryOf_Index_Changed, loc_Head = \
     exec_1_step(str_Current, aryOf_Index_Changed, loc_Head, cmd[0])
+
+  ##### report: str_current_aux
+  str_current_aux = add_aux(str_Current, aryOf_Index_Changed, loc_Head)
+  
+  print "[#{File.basename(__FILE__)}:#{__LINE__}] index ---> processed: "
+  p str_current_aux
     
+  ##### add : history
+  aryOf_Histories << str_current_aux
+        
   ################################
   #	
   #	report
@@ -371,7 +389,25 @@ end#exec_1_step(str_Target, aryof_index_changed, loc_Head)
   
   p loc_Head
   
+  ##### report: str_current_aux
+  str_current_aux = add_aux(str_Current, aryOf_Index_Changed, loc_Head)
+  
+  print "[#{File.basename(__FILE__)}:#{__LINE__}] index ---> processed: "
+  p str_current_aux
     
+  ##### add : history
+  aryOf_Histories << str_current_aux
+
+  ##### report : histories
+  puts "[#{File.basename(__FILE__)}:#{__LINE__}] histories => "
+  
+  aryOf_Histories.each {|elem|
+
+    p elem
+      
+  }
+  
+      
 end#exec_V2
 
 def exec
