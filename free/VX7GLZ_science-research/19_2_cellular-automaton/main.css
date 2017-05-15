@@ -1,0 +1,56 @@
+@CHARSET "UTF-8";
+
+td.td_even {
+	
+	color : black;
+	background-color: blue;
+	
+	text-align: center;
+	vertical-align: center;
+	
+	width: 50px;
+	height: 50px;
+	
+	
+	font-size: 100%;
+	
+}
+
+td.td_odd {
+	
+	color : black;
+	background-color: red;
+	
+	text-align: center;
+	vertical-align: center;
+	
+	width: 50px;
+	height: 50px;
+	
+	
+	font-size: 100%;
+	
+}
+
+input#btn_update {
+	
+	width: 100px;
+	height: 50px;
+	
+	font-size: 150%;
+	
+}
+
+table#table_main {
+	
+	align: center;
+	
+}
+
+div#div_main {
+	
+	width: 100%;
+	
+	/*ref C:\WORKS_2\WS\WS_Lollipop_server_files\root\stylesheet\main.css */
+	margin-left: 200px;
+}
