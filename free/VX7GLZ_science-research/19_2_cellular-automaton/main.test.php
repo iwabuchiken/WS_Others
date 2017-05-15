@@ -53,62 +53,20 @@ C:\WORKS_2\WS\WS_Others\free\VX7GLZ_science-research
 
 	<input type="button" value="abc" id="btn_update" onclick="update_table();">
 	
-	<?php echo "<br>"; echo "<br>";
-	
-	?>
 
 	<div id="div_main">
 	
 		<table border="1" id="table_main">
-		
+
 			<?php 
-			
-// 				$size = [5, 5];
+						
 				$size = array(5, 5);
-			
-				for ($i = 0; $i < $size[0]; $i++) {
-					
-					echo "<tr>";
-					
-					for ($j = 0; $j < $size[1]; $j++) {
-						
-						if ($i * $j % 2 == 0) {
-						
-							echo "<td class='td_even'>";
+// 				$size = [5, 5];
 							
-							echo $i * $j;
-							
-							echo "</td>";
-						
-						} else {
-						
-							echo "<td class='td_odd'>";
-								
-							echo $i * $j;
-								
-							echo "</td>";
-							
-						}//if ($i * $j / 2 == 0)
-						
-						
-						
-// 						echo "<td>";
-						
-// 							echo $i * $j;
-						
-// 						echo "</td>";
-					}
-				
-				
-					echo "</tr>";
-					
-				}
-			
-			
 			?>
 		
 		</table>
-
-	</div>
 	
+	
+	</div>	
 </body>

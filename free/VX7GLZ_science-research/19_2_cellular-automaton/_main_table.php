@@ -21,7 +21,8 @@
 		
 		
 	
-		$size = [5, 5];
+// 		$size = [5, 5];
+		$size = array(5, 5);
 	
 		for ($i = 0; $i < $size[0]; $i++) {
 			
@@ -29,11 +30,15 @@
 			
 			for ($j = 0; $j < $size[1]; $j++) {
 				
-				if (($i + $j) % 2 == 0) {
+				$num = rand(0, 1);
+				
+				if ($num % 2 == 0) {
+// 				if (($i + $j) % 2 == 0) {
 				
 					echo "<td class='td_even'>";
 						
-					echo $i + $j;
+					echo $num;
+// 					echo $i + $j;
 						
 					echo "</td>";
 				
@@ -41,7 +46,8 @@
 				
 					echo "<td class='td_odd'>";
 				
-					echo $i + $j;
+					echo $num;
+// 					echo $i + $j;
 				
 					echo "</td>";
 						
