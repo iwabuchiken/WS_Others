@@ -48,6 +48,82 @@ function show_message() {
 
 function update_table() {
 	
+	/***********
+	 * test
+	 **************/
+//	var obj = $("table#table_main");
+	var obj = $("table#table_main tr");
+	
+//	alert(table);
+	//ref http://stackoverflow.com/questions/10314338/get-name-of-object-or-class-in-javascript
+//	alert(obj.constructor.name);	//=> 'r'
+	//ref length http://chaika.hatenablog.com/entry/2014/08/07/103459
+//	alert(obj.length);	//=> '5'
+//	alert(obj[0]);	//=> '[object HTMLTableRowElement]'
+//	alert(obj[0].length);	//=> 'undefined'
+//	alert(obj[0].text());	//=> no display
+//	alert("obj[0].html() => " + obj[0].html());	//=> no window
+//	alert(obj);
+	//ref http://uhyohyo.net/javascript/2_8.html
+//	alert(obj[0].item(0));	//=> no window
+//	alert(obj[0].cells);	//=> '[object HTMLCollection]'
+//	alert(obj[0].cells.length);	//=> '5'
+//	alert(obj[0].cells.item(0));	//=> '[object HTMLTableCellElement]'
+//	alert(obj[0].cells.item(0).html());	//=> no window
+	//ref http://stackoverflow.com/questions/4253558/how-to-get-the-html-table-particullar-cell-value-using-javascript answered Nov 23 '10 at 7:34
+//	alert(obj[0].cells.item(0).innerText);	//=> '0'
+//	alert(obj[1].cells.item(3).innerText);	//=> '0'
+
+	var ary = [];
+	
+	for (var i = 0; i < obj.length; i++) {
+		
+		var ary_tmp = [];
+		
+		var row = obj[i];
+		
+		var len_cells = row.cells.length;
+		
+		for (var j = 0; j < len_cells; j++) {
+	
+			//ref push https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Array
+			ary_tmp.push(row.cells.item(j).innerText);
+			
+		}
+		
+		ary.push(ary_tmp);
+		
+	}
+	
+	
+//	var ary = [
+//		
+//		[0,1,2,3],
+//		[4,5,6,7],
+//	
+//	];
+	
+//	alert(
+//			ary[0] + "\n" + ary[1] + "\n"
+//			
+//			+ ary[2] + "\n" + ary[3] + "\n"
+//			
+//			+ ary[4]
+//	
+//	
+//	);	//=> 0,1,2,3
+									//   4,5,6,7
+//	alert(ary[0] + "\n" + ary[1]);	//=> 0,1,2,3
+//	//   4,5,6,7
+//	alert(ary);
+//	alert("abc\ndef");
+	
+	
+	
+//	return;
+	
+	//] end test
+	
 	var hostname = window.location.hostname;
 	
 //	alert(hostname);

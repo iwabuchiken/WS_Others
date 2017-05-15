@@ -5,6 +5,9 @@ C:\WORKS_2\WS\WS_Others\free\VX7GLZ_science-research\19_2_cellular-automaton
 C:\WORKS_2\WS\WS_Others\free\VX7GLZ_science-research
 
 /WS/WS_Others/free/VX7GLZ_science-research/19_2_cellular-automaton
+http://benfranklin.chips.jp/WS/WS_Others/free/VX7GLZ_science-research/19_2_cellular-automaton/
+
+http://localhost/WS_Others/free/VX7GLZ_science-research/19_2_cellular-automaton/
 
  -->
 
