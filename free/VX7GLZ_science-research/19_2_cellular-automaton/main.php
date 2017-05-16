@@ -61,24 +61,24 @@ http://localhost/WS_Others/free/VX7GLZ_science-research/19_2_cellular-automaton/
 	<!-- ref https://techacademy.jp/magazine/5537 -->
 	<script>
 
-		//ref https://sites.google.com/site/jqueryjavascript/setintervaltoclearintervalno-shii-fang
-		var testTimer;
+// 		//ref https://sites.google.com/site/jqueryjavascript/setintervaltoclearintervalno-shii-fang
+// 		var testTimer;
 	
-		function startTimer(){
+// 		function startTimer(){
 
-			$("div#div_message").text("Starting...");
+// 			$("div#div_message").text("Starting...");
 			
-			testTimer=setInterval(update_table , 1000);
+// 			testTimer=setInterval(update_table , 1000);
 			
-		}
+// 		}
 	
-		function stopTimer(){
+// 		function stopTimer(){
 			
-			clearInterval(testTimer);
+// 			clearInterval(testTimer);
 
-			$("div#div_message").text("Stopped.");
+// 			$("div#div_message").text("Stopped.");
 		
-		}
+// 		}
 
     </script>
 
@@ -107,8 +107,8 @@ http://localhost/WS_Others/free/VX7GLZ_science-research/19_2_cellular-automaton/
 	
 	?>
 
-	<div id="div_message"></div>
-	<div id="div_message_2"></div>
+	<div id="div_message">message 1</div>
+	<div id="div_message_2">message 2</div>
 	
 
 	
@@ -121,15 +121,17 @@ http://localhost/WS_Others/free/VX7GLZ_science-research/19_2_cellular-automaton/
 			<?php 
 			
 				$size = array(5, 5);
-			
-// 				$matrix = Libs::get_InitialMatrix($size[0], $size[1]);
-				$matrix = array(
 				
-					array(0,1,1,1,0),
-					array(1,1,0,1,0),
-					array(1,0,0,0,0),
-					array(1,0,1,0,0),
-					array(0,1,1,1,1)
+				$matrix = Libs::get_InitialMatrix($size[0], $size[1]);
+			
+// // 				$matrix = Libs::get_InitialMatrix($size[0], $size[1]);
+// 				$matrix = array(
+				
+// 					array(0,1,1,1,0),
+// 					array(1,1,0,1,0),
+// 					array(1,0,0,0,0),
+// 					array(1,0,1,0,0),
+// 					array(0,1,1,1,1)
 
 // 					array(1	,1	,0	,1	,0),
 // 					array(1	,0	,0	,1	,0),
@@ -137,7 +139,7 @@ http://localhost/WS_Others/free/VX7GLZ_science-research/19_2_cellular-automaton/
 // 					array(1	,0	,1	,0	,0),
 // 					array(0	,1	,1	,1	,0)
 				
-				);
+// 				);
 				
 				for ($i = 0; $i < $size[0]; $i++) {
 					

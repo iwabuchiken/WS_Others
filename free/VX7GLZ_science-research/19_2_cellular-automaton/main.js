@@ -1,5 +1,37 @@
-// ref global variable http://qiita.com/kenju/items/c7fad62a12cc2809b507
-total = 0;
+//ref global variable http://qiita.com/kenju/items/c7fad62a12cc2809b507
+total = 0;	// Write this code before "testTimer" declaration code. Otherwise, "total += 1"
+			//	line won't be processed.
+
+//ref https://sites.google.com/site/jqueryjavascript/setintervaltoclearintervalno-shii-fang
+testTimer;
+
+
+//		var testTimer;
+	
+function startTimer(){
+
+//	alert("start timer");
+
+	$("div#div_message").text("Starting...");
+	
+	testTimer = setInterval(update_table , 1000);
+	
+}
+
+function stopTimer(){
+	
+	clearInterval(testTimer);
+
+	$("div#div_message").text("Stopped.");
+
+}
+
+
+
+
+
+//// ref global variable http://qiita.com/kenju/items/c7fad62a12cc2809b507
+//total = 0;
 
 function show_message() {
 	
@@ -48,6 +80,31 @@ function show_message() {
 
 	
 }
+
+/*
+ * @return
+ * true		any element in the ary is 1 then ---> return true
+ */
+function validate_AllDead(ary) {
+	
+	var x = ary.length;
+	var y = ary[0].length;
+	
+//	var judge = false;
+	
+	for (var i = 0; i < x; i++) {
+		
+		for (var j = 0; j < y; j++) {
+			
+			if (ary[i][j] == 1) return true;
+			
+		}
+	}
+	
+	// return --> default
+	return false;
+	
+}//validate_AllDead(ary)
 
 function update_table() {
 	
@@ -117,6 +174,26 @@ function update_table() {
 	var lenOf_Array_Rows = ary.length;
 	var lenOf_Array_Columns = ary[0].length;
 	
+	/*
+	 * validate: all dead?
+	 */
+	var res = validate_AllDead(ary);
+	
+	if (res == false) {
+		
+//		alert("all dead");
+//		alert("all dead ==> stopping the timer");
+		
+		// stop
+//		stopTimer();
+		clearInterval(testTimer);
+		
+		$("div#div_message").text("Stopped. (All dead)");
+//		$("div#div_message_2").text("All dead.");
+		
+		return;
+		
+	}
 	
 	var hostname = window.location.hostname;
 	
@@ -151,7 +228,10 @@ function update_table() {
 		
 	}).done(function(data, status, xhr) {
 		
-//		alert(data);
+		
+//		alert("ajax ==> done");
+		
+		total += 1;
 		
 		//ref remove http://www.buildinsider.net/web/jqueryref/007
 //		$("div#div_main").removeAttribute('id').prepend(data);
@@ -159,10 +239,16 @@ function update_table() {
 //		$("div#div_main").prepend(data);
 		$("div#div_main").html(data);
 		
+//		alert("div_main => updated");
+		
 		// set message ---> count
-		total += 1;
+//		total += 1;
+		
+//		alert("total => incremeted");
 		
 		$("div#div_message_2").text("(" + total + ")");
+		
+//		alert("total => updated");
 		
 	}).fail(function(xhr, status, error) {
 		
