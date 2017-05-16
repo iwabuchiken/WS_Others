@@ -4,6 +4,7 @@ C:\WORKS_2\WS\WS_Others\free\VX7GLZ_science-research\19_2_cellular-automaton\mai
 C:\WORKS_2\WS\WS_Others\free\VX7GLZ_science-research\19_2_cellular-automaton
 C:\WORKS_2\WS\WS_Others\free\VX7GLZ_science-research
 
+/WS/WS_Others/free/VX7GLZ_science-research
 /WS/WS_Others/free/VX7GLZ_science-research/19_2_cellular-automaton
 http://benfranklin.chips.jp/WS/WS_Others/free/VX7GLZ_science-research/19_2_cellular-automaton/
 
@@ -77,31 +78,14 @@ http://localhost/WS_Others/free/VX7GLZ_science-research/19_2_cellular-automaton/
 		
 		}
 
-// 		startTimer();
-	
-// 		var id = self.setInterval(update_table, 1000);
-//       var count = 0;
-//       var countup = function(){
-//         console.log(count++);
-//       } 
-
-//       setInterval(countup, 1000);
-//       var id = setInterval(countup, 1000);
-//       var id = self.setInterval(countup, 1000);
-//       var id = self.setInterval("countup", 1000);
-      
     </script>
 
 	<!-- ref http://stackoverflow.com/questions/3138756/calling-a-function-every-60-seconds answered Jun 29 '10 at 7:44 -->
 	<script>
 	
-// 		var interval = self.setInterval(update_table(), 1000);
-// 		var int=self.setInterval(update_table(), 1000);
-// 		var int=self.setInterval(update_table(), 60000);
-		
 	</script>
 
-	<!-- <input type="button" value="abc" id="btn_update" onclick="update_table();"> -->
+	<input type="button" value="update_table" id="btn_update" onclick="update_table();">
 	<input type="button" value="abc" id="btn_update" onclick="startTimer();">
 	
 	&nbsp;&nbsp;&nbsp;
@@ -113,10 +97,7 @@ http://localhost/WS_Others/free/VX7GLZ_science-research/19_2_cellular-automaton/
 	<!-- ref http://stackoverflow.com/questions/3138756/calling-a-function-every-60-seconds answered Jun 29 '10 at 7:44 -->
 	<!-- Stop Button -->
 	<a href="#" onclick="stopTimer();">Stop</a><!-- works -->
-	<!-- <a href="#" onclick="alert('stop'); window.clearInterval(id);return false;">Stop</a> -->
-	<!-- <a href="#" onclick="window.clearInterval(id);return false;">Stop</a> -->
-	<!-- <a href="#" onclick="window.clearInterval(id);return false;">Stop</a> -->
-	<!-- <a href="#" onclick="window.clearInterval(countup);return false;">Stop</a> -->
+	
 	<?php 
 		
 // 		echo "<br>"; echo "<br>";

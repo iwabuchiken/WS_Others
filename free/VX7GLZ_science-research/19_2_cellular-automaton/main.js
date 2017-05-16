@@ -88,6 +88,7 @@ function update_table() {
 	
 			//ref push https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Array
 			ary_tmp.push(row.cells.item(j).innerText);
+//			ary.push(row.cells.item(j).innerText);
 			
 		}
 		
@@ -95,66 +96,50 @@ function update_table() {
 		
 	}
 	
-	
-//	var ary = [
-//		
-//		[0,1,2,3],
-//		[4,5,6,7],
-//	
-//	];
+//	alert("ary.length => " + ary.length);
 	
 //	alert(
 //			ary[0] + "\n" + ary[1] + "\n"
 //			
 //			+ ary[2] + "\n" + ary[3] + "\n"
 //			
-//			+ ary[4]
+////			+ ary[5] + "\n" + ary[6] + "\n"
+////			+ ary[7] + "\n" + ary[8] + "\n"
 //	
 //	
 //	);	//=> 0,1,2,3
-									//   4,5,6,7
-//	alert(ary[0] + "\n" + ary[1]);	//=> 0,1,2,3
-//	//   4,5,6,7
-//	alert(ary);
-//	alert("abc\ndef");
 	
+	var lenOf_Array_Rows = ary.length;
+	var lenOf_Array_Columns = ary[0].length;
 	
-	
-//	return;
-	
-	//] end test
 	
 	var hostname = window.location.hostname;
-	
-//	alert(hostname);
 	
 	var url;
 	
 	if (hostname == "benfranklin.chips.jp") {
 		
 		url = "/WS/WS_Others/free/VX7GLZ_science-research/19_2_cellular-automaton/_main_table.php";
-//		url = "WS/WS_Others/free/VX7GLZ_science-research/19_2_cellular-automaton/_main_table.php";
-//		url = "/cake_apps/Cake_NR5/keywords/add_KW__Genre_Changed";
 		
 	} else {
 	
 		url = "/WS_Others/free/VX7GLZ_science-research/19_2_cellular-automaton/_main_table.php";
-//		url = "/Eclipse_Luna/Cake_NR5/keywords/add_KW__Genre_Changed";
-//		url = "/Cake_NR5/keywords/add_KW__Genre_Changed";
 	
 	}
 
-//	alert("url => '" + url + "'");
-	
-//	var url = "http://localhost/WS_Others/free/VX7GLZ_science-research/19_2_cellular-automaton/_main_table.php";
-	
 	//ref C:\WORKS_2\WS\Eclipse_Luna\Cake_IFM11\app\webroot\js\main.js
 	$.ajax({
 		
 		url: url,
 		type: "GET",
 		//REF http://stackoverflow.com/questions/1916309/pass-multiple-parameters-to-jquery-ajax-call answered Dec 16 '09 at 17:37
-//	    data: {id: id},
+	    data: {
+	    		ary: ary, 
+	    		lenOf_Array_Rows : lenOf_Array_Rows, 
+	    		lenOf_Array_Columns : lenOf_Array_Columns
+	    },
+//	    data: {ary: ary},
+//	    data: {ary: ary_tmp},
 //	    data: {memos: memos, image_id: image_id},
 		
 		timeout: 10000

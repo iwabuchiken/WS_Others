@@ -3,73 +3,177 @@
 	<?php 
 
 		require 'libs.php';
+
+		//refe http://php.net/manual/ja/reserved.variables.get.php
+// 		echo $_GET["ary"];
+// 		echo get_class($_GET["ary"]);
+// 		echo count($_GET["ary"]);
 		
-// 		$ary_tmp = Libs::get_InitialMatrix(5, 5);
+		$ary = $_GET["ary"];
+		$lenOf_Array_Rows = $_GET["lenOf_Array_Rows"];
+		$lenOf_Array_Columns = $_GET["lenOf_Array_Columns"];
 		
-// 		foreach ($ary_tmp as $entry) {
+		$msg = "";
 		
-// 			foreach ($entry as $cell) {
+// 		echo "ary[count(\$ary) - 1] => ".$ary[count($ary) - 1];
+// 		echo "ary[3] => ".$ary[3];
+// 		echo $ary[3][3]."(lenOf_Array_Rows => $lenOf_Array_Rows)";
+		
+// 		foreach ($ary as $row) {
+		
+// 			foreach ($row as $cell) {
 			
-// 				echo $cell;
+// 				$msg .= $cell;
 				
-// 				echo "<br>";
-				
-				
-				
-// 			}//foreach ($entry as $cell)
+// 			}//foreach ($row as $cell)
 			
 // 			;
 			
-// 		}//foreach ($ary_tmp as $entry)
+// 		}//foreach ($ary as $row)
+
+		function set_Matrix($size, $ary_tmp) {
+
+			for ($i = 0; $i < $size[0]; $i++) {
+					
+				echo "<tr>";
+					
+				for ($j = 0; $j < $size[1]; $j++) {
+			
+					$num = $ary_tmp[$i][$j];
+					// 				$num = rand(0, 1);
+			
+					if ($num % 2 == 0) {
+						// 				if (($i + $j) % 2 == 0) {
+			
+						echo "<td class='td_even'>";
+			
+						echo $num;
+						// 					echo $i + $j;
+			
+						echo "</td>";
+			
+					} else {
+			
+						echo "<td class='td_odd'>";
+			
+						echo $num;
+						// 					echo $i + $j;
+			
+						echo "</td>";
+			
+					}//if ($i * $j / 2 == 0)
+						
+						// 				echo "<td>";
+			
+						// 					echo $i + $j;
+			
+						// 				echo "</td>";
+				}
+			
+			
+				echo "</tr>";
+					
+			}
+				
+		}//function set_Matrix($size, $ary_tmp)
+		
+		function set_Matrix_tmp($size, $ary_tmp) {
+
+			for ($i = 0; $i < $size[0]; $i++) {
+					
+				echo "<tr>";
+					
+				for ($j = 0; $j < $size[1]; $j++) {
+			
+					$num = $ary_tmp[$i][$j] + 1;
+// 					$num = $ary_tmp[$i][$j];
+					// 				$num = rand(0, 1);
+			
+					if ($num % 2 == 0) {
+						// 				if (($i + $j) % 2 == 0) {
+			
+						echo "<td class='td_even'>";
+			
+						echo $num;
+						// 					echo $i + $j;
+			
+						echo "</td>";
+			
+					} else {
+			
+						echo "<td class='td_odd'>";
+			
+						echo $num;
+						// 					echo $i + $j;
+			
+						echo "</td>";
+			
+					}//if ($i * $j / 2 == 0)
+						
+						// 				echo "<td>";
+			
+						// 					echo $i + $j;
+			
+						// 				echo "</td>";
+				}
+			
+			
+				echo "</tr>";
+					
+			}
+				
+		}//function set_Matrix_tmp($size, $ary_tmp)
 		
 		
-	
-// 		$size = [5, 5];
 		$size = array(5, 5);
 	
 		$ary_tmp = Libs::get_InitialMatrix($size[0], $size[1]);
 
-		for ($i = 0; $i < $size[0]; $i++) {
+		set_Matrix_tmp($size, $ary);
+// 		set_Matrix($size, $ary);
+// 		set_Matrix($size, $ary_tmp);
+		
+// 		for ($i = 0; $i < $size[0]; $i++) {
 			
-			echo "<tr>";
+// 			echo "<tr>";
 			
-			for ($j = 0; $j < $size[1]; $j++) {
+// 			for ($j = 0; $j < $size[1]; $j++) {
 				
-				$num = $ary_tmp[$i][$j];
-// 				$num = rand(0, 1);
+// 				$num = $ary_tmp[$i][$j];
+// // 				$num = rand(0, 1);
 				
-				if ($num % 2 == 0) {
-// 				if (($i + $j) % 2 == 0) {
+// 				if ($num % 2 == 0) {
+// // 				if (($i + $j) % 2 == 0) {
 				
-					echo "<td class='td_even'>";
+// 					echo "<td class='td_even'>";
 						
-					echo $num;
-// 					echo $i + $j;
+// 					echo $num;
+// // 					echo $i + $j;
 						
-					echo "</td>";
+// 					echo "</td>";
 				
-				} else {
+// 				} else {
 				
-					echo "<td class='td_odd'>";
+// 					echo "<td class='td_odd'>";
 				
-					echo $num;
-// 					echo $i + $j;
+// 					echo $num;
+// // 					echo $i + $j;
 				
-					echo "</td>";
+// 					echo "</td>";
 						
-				}//if ($i * $j / 2 == 0)
+// 				}//if ($i * $j / 2 == 0)
 					
-// 				echo "<td>";
+// // 				echo "<td>";
 				
-// 					echo $i + $j;
+// // 					echo $i + $j;
 				
-// 				echo "</td>";
-			}
+// // 				echo "</td>";
+// 			}
 		
 		
-			echo "</tr>";
+// 			echo "</tr>";
 			
-		}
+// 		}
 	
 	
 	?>
