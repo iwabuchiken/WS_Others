@@ -9,9 +9,12 @@
 // 		echo get_class($_GET["ary"]);
 // 		echo count($_GET["ary"]);
 		
-		$ary = $_GET["ary"];
-		$lenOf_Array_Rows = $_GET["lenOf_Array_Rows"];
-		$lenOf_Array_Columns = $_GET["lenOf_Array_Columns"];
+		$ary = $_POST["ary"];
+		$lenOf_Array_Rows = $_POST["lenOf_Array_Rows"];
+		$lenOf_Array_Columns = $_POST["lenOf_Array_Columns"];
+// 		$ary = $_GET["ary"];
+// 		$lenOf_Array_Rows = $_GET["lenOf_Array_Rows"];
+// 		$lenOf_Array_Columns = $_GET["lenOf_Array_Columns"];
 		
 		$msg = "";
 		
@@ -331,9 +334,10 @@
 				
 		}//function return_Html($matrix)
 
-		$size = array(5, 5);
+		$size = array(count($ary), count($ary[0]));
+// 		$size = array(5, 5);
 	
-		$ary_tmp = Libs::get_InitialMatrix($size[0], $size[1]);
+// 		$ary_tmp = Libs::get_InitialMatrix($size[0], $size[1]);
 
 		$matrix = set_Matrix_tmp_2($size, $ary);
 

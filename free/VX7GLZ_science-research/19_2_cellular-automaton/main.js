@@ -213,7 +213,8 @@ function update_table() {
 	$.ajax({
 		
 		url: url,
-		type: "GET",
+		type: "POST",
+//		type: "GET",
 		//REF http://stackoverflow.com/questions/1916309/pass-multiple-parameters-to-jquery-ajax-call answered Dec 16 '09 at 17:37
 	    data: {
 	    		ary: ary, 

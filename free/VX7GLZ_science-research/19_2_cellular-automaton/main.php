@@ -22,7 +22,8 @@ http://localhost/WS_Others/free/VX7GLZ_science-research/19_2_cellular-automaton/
 <!-- ref C:\WORKS_2\WS\WS_Others\free\VX7GLZ_science-research\13_threejs\13_1\sample (1)\index.html -->
 <!-- 	<meta name="viewport" content="width=device-width"> -->
 
-<meta name="viewport" content="minimum-scale=0.5">
+<!-- <meta name="viewport" content="minimum-scale=0.1"> -->
+<!-- <meta name="viewport" content="minimum-scale=0.5"> -->
 
 <?php 
 
@@ -120,7 +121,10 @@ http://localhost/WS_Others/free/VX7GLZ_science-research/19_2_cellular-automaton/
 		
 			<?php 
 			
-				$size = array(5, 5);
+				$size = array(30,30);
+// 				$size = array(15, 15);
+// 				$size = array(8, 8);
+// 				$size = array(5, 5);
 				
 				$matrix = Libs::get_InitialMatrix($size[0], $size[1]);
 			
