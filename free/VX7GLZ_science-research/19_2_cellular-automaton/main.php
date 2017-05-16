@@ -108,6 +108,7 @@ http://localhost/WS_Others/free/VX7GLZ_science-research/19_2_cellular-automaton/
 	?>
 
 	<div id="div_message"></div>
+	<div id="div_message_2"></div>
 	
 
 	
@@ -129,6 +130,13 @@ http://localhost/WS_Others/free/VX7GLZ_science-research/19_2_cellular-automaton/
 					array(1,0,0,0,0),
 					array(1,0,1,0,0),
 					array(0,1,1,1,1)
+
+// 					array(1	,1	,0	,1	,0),
+// 					array(1	,0	,0	,1	,0),
+// 					array(1	,0	,1	,0	,0),
+// 					array(1	,0	,1	,0	,0),
+// 					array(0	,1	,1	,1	,0)
+				
 				);
 				
 				for ($i = 0; $i < $size[0]; $i++) {

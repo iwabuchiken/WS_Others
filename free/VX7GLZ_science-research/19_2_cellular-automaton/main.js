@@ -1,3 +1,6 @@
+// ref global variable http://qiita.com/kenju/items/c7fad62a12cc2809b507
+total = 0;
+
 function show_message() {
 	
 	
@@ -103,6 +106,8 @@ function update_table() {
 //			
 //			+ ary[2] + "\n" + ary[3] + "\n"
 //			
+//			+ ary[4] + "\n"
+//			
 ////			+ ary[5] + "\n" + ary[6] + "\n"
 ////			+ ary[7] + "\n" + ary[8] + "\n"
 //	
@@ -148,7 +153,16 @@ function update_table() {
 		
 //		alert(data);
 		
+		//ref remove http://www.buildinsider.net/web/jqueryref/007
+//		$("div#div_main").removeAttribute('id').prepend(data);
+		//ref prepend http://api.jquery.com/prepend/
+//		$("div#div_main").prepend(data);
 		$("div#div_main").html(data);
+		
+		// set message ---> count
+		total += 1;
+		
+		$("div#div_message_2").text("(" + total + ")");
 		
 	}).fail(function(xhr, status, error) {
 		
