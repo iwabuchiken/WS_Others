@@ -26,6 +26,8 @@ http://localhost/WS_Others/free/VX7GLZ_science-research/19_2_cellular-automaton/
 
 <?php 
 
+	require 'libs.php';	
+
 	$dpath = dirname($_SERVER["REQUEST_URI"]);
 	
 	$fname_css = "main.css";
@@ -117,20 +119,31 @@ http://localhost/WS_Others/free/VX7GLZ_science-research/19_2_cellular-automaton/
 		
 			<?php 
 			
-// 				$size = [5, 5];
 				$size = array(5, 5);
 			
+// 				$matrix = Libs::get_InitialMatrix($size[0], $size[1]);
+				$matrix = array(
+				
+					array(0,1,1,1,0),
+					array(1,1,0,1,0),
+					array(1,0,0,0,0),
+					array(1,0,1,0,0),
+					array(0,1,1,1,1)
+				);
+				
 				for ($i = 0; $i < $size[0]; $i++) {
 					
 					echo "<tr>";
 					
 					for ($j = 0; $j < $size[1]; $j++) {
 						
-						if ($i * $j % 2 == 0) {
+						if ($matrix[$i][$j] == 0) {
+// 						if ($i * $j % 2 == 0) {
 						
 							echo "<td class='td_even'>";
 							
-							echo $i * $j;
+							echo $matrix[$i][$j];
+// 							echo $i * $j;
 							
 							echo "</td>";
 						
@@ -138,7 +151,9 @@ http://localhost/WS_Others/free/VX7GLZ_science-research/19_2_cellular-automaton/
 						
 							echo "<td class='td_odd'>";
 								
-							echo $i * $j;
+							echo $matrix[$i][$j];
+// 							echo 1;
+// 							echo $i * $j;
 								
 							echo "</td>";
 							
