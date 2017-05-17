@@ -1,0 +1,7 @@
+;ref http://www.geocities.jp/m_hiroi/xyzzy_lisp/abclisp04.html
+(loop
+   for x in '(a b c d e)
+
+     do (print x)
+
+)

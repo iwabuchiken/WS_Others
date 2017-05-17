@@ -1,0 +1,7 @@
+;; ref http://cl-cookbook.sourceforge.net/loop.html "The "return" action both stops the loop"
+
+(let ((s "alpha45"))
+  (loop for i from 0 below (length s)
+	for ch =  (char s i)
+	when (find ch "0123456789" :test #'eql)
+	return ch) )

@@ -1,0 +1,4 @@
+(defun msg
+    (print "message"))
+
+(msg)
