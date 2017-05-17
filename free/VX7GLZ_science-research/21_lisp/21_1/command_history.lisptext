@@ -1,0 +1,9 @@
+(setq aa "abc")
+(print aa)
+
+(setq fpath_dst "C:/WORKS_2/WS/WS_Others/free/VX7GLZ_science-research/21_lisp/21_1/test.data")
+
+(print fpath_dst)
+
+(with-open-file (stream fpath_dst :direction :output)
+	(format stream "Create a new source code file named main.lisp and type the following code in it."))

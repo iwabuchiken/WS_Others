@@ -1,0 +1,31 @@
+; SLIME 2011-02-04
+CL-USER> (sb-posix:getcwd)
+Invoking restart: Return to SLIME's top level.
+; Evaluation aborted on #<CCL::NO-SUCH-PACKAGE #x2100ADD92D>.
+CL-USER> (setq aa "abc")
+"abc"
+CL-USER> (print aa)
+
+"abc" 
+"abc"
+CL-USER> (let bb "def")
+Invoking restart: Kill this thread
+Invoking restart: Kill this thread
+Invoking restart: Kill this thread
+ CALL/FRAME
+Invoking restart: Continue from break.
+; Evaluation aborted on #<CCL::SIMPLE-PROGRAM-ERROR #x2100BA9B8D>.
+CL-USER> (let
+	     (bb "def"))
+Invoking restart: continue compilation ignoring this form
+Invoking restart: Retry SLIME REPL evaluation request.
+Invoking restart: Kill this thread
+; Evaluation aborted on #<CCL::COMPILE-TIME-PROGRAM-ERROR #x2100B3C87D>.
+CL-USER> (print aa)
+
+"abc" 
+"abc"
+CL-USER> (format t "message is ~a" aa)
+message is abc
+NIL
+CL-USER> 
