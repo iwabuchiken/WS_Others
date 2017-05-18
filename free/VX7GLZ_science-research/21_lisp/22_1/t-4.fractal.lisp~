@@ -1,0 +1,7 @@
+(setq L1 '(1 2 3 4 5))
+
+(setq L2 '(6 7 8 9 10))
+
+(write-line "L1")
+
+(mapcar #'+ L1 L2)
