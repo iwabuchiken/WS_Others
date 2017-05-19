@@ -1,0 +1,8 @@
+(terpri t)
+;;;;;;;;;;;; TINK-2 &key ;;;;;;;;;
+(print ";;;;;;;;;;;; TINK-2 &key ;;;;;;;;;;;;")
+(terpri t)
+
+; &key ‚ÌŽg—p—á
+((lambda (a &key b c) (list a b c)) 10)
+
