@@ -1,0 +1,5 @@
+(defun my-reverse (l &optional z)
+  (if (atom l)
+      z
+      (my-reverse (cdr l) (cons (car l) z))))
+
