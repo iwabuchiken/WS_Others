@@ -1,0 +1,72 @@
+; SLIME 2011-02-04
+CL-USER> (load "t-2.fractal.lisp")
+
+
+";;;;;;;;;;;; TINK-2 &key ;;;;;;;;;;;;" 
+(10 NIL NIL)
+(10 1 22)
+
+";;;;;;;;;;;; TINK-3 &optional ;;;;;;;;;;;;" 
+11
+
+";;;;;;;;;;;; SEG-1.TINK-1 (defun my-dev ;;;;;;;;;;;;" 
+
+
+"version 1.3" 
+L1 => (A B C D E)
+not atom : (A B C D E) / cdr = (B C D E) / car = A / (list (car)) = (A)
+not atom : (B C D E) / cdr = (C D E) / car = B / (list (car)) = (B)
+not atom : (C D E) / cdr = (D E) / car = C / (list (car)) = (C)
+not atom : (D E) / cdr = (E) / car = D / (list (car)) = (D)
+not atom : (E) / cdr = NIL / car = E / (list (car)) = (E)
+is atom : NIL
+(E D C B A) 
+#P"c:/WORKS_2/WS/WS_Others/free/VX7GLZ_science-research/21_lisp/23_1/t-2>.fractal.lisp"
+CL-USER> (setq l1 '(s c i e n c e))
+(S C I E N C E)
+CL-USER> (my-rev l1)
+not atom : (S C I E N C E) / cdr = (C I E N C E) / car = S / (list (car)) = (S)
+not atom : (C I E N C E) / cdr = (I E N C E) / car = C / (list (car)) = (C)
+not atom : (I E N C E) / cdr = (E N C E) / car = I / (list (car)) = (I)
+not atom : (E N C E) / cdr = (N C E) / car = E / (list (car)) = (E)
+not atom : (N C E) / cdr = (C E) / car = N / (list (car)) = (N)
+not atom : (C E) / cdr = (E) / car = C / (list (car)) = (C)
+not atom : (E) / cdr = NIL / car = E / (list (car)) = (E)
+is atom : NIL
+(E C N E I C S)
+CL-USER> (load "quicklisp.lisp")
+
+  ==== quicklisp quickstart 2015-01-28 loaded ====
+
+    To continue with installation, evaluate: (quicklisp-quickstart:install)
+
+    For installation options, evaluate: (quicklisp-quickstart:help)
+
+#P"c:/WORKS_2/WS/WS_Others/free/VX7GLZ_science-research/21_lisp/23_1/quicklisp.lisp"
+CL-USER> (quicklisp-quickstart:install)
+!!! Quicklisp has already been set up. !!!
+
+  ==== quicklisp installed ====
+
+    To load a system, use: (ql:quickload "system-name")
+
+    To find systems, use: (ql:system-apropos "term")
+
+    To load Quicklisp every time you start Lisp, use: (ql:add-to-init-file)
+
+    For more information, see http://www.quicklisp.org/beta/
+
+T
+CL-USER> (ql:add-to-init-file)
+I will append the following lines to #P"C:/Users/iwabuchiken/ccl-init.lisp":
+
+  ;;; The following lines added by ql:add-to-init-file:
+  #-quicklisp
+  (let ((quicklisp-init (merge-pathnames "/WORKS_2/Programs/lispbox-0.7/quicklisp/setup.lisp" (user-homedir-pathname))))
+    (when (probe-file quicklisp-init)
+      (load quicklisp-init)))
+
+Press Enter to continue.
+
+#P"C:/Users/iwabuchiken/ccl-init.lisp"
+CL-USER> 

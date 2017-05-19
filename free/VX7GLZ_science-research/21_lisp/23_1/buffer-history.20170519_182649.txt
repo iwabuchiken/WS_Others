@@ -1,0 +1,121 @@
+; SLIME 2011-02-04
+CL-USER> (ql:quickload "vecto")
+To load "vecto":
+  Load 1 ASDF system:
+    vecto
+; Loading "vecto"
+
+("vecto")
+CL-USER> (ql:system-apropos "vecto")
+#<SYSTEM adw-charting-vecto / adw-charting-20110110-http / quicklisp 2011-01-10>
+#<SYSTEM cl-vectors / cl-vectors-20101006-git / quicklisp 2011-01-10>
+#<SYSTEM lispbuilder-sdl-cl-vectors / lispbuilder-20110110-svn / quicklisp 2011-01-10>
+#<SYSTEM lispbuilder-sdl-cl-vectors-examples / lispbuilder-20110110-svn / quicklisp 2011-01-10>
+#<SYSTEM lispbuilder-sdl-vecto / lispbuilder-20110110-svn / quicklisp 2011-01-10>
+#<SYSTEM lispbuilder-sdl-vecto-examples / lispbuilder-20110110-svn / quicklisp 2011-01-10>
+#<SYSTEM sb-vector-io / sb-vector-io-20101207-git / quicklisp 2011-01-10>
+#<SYSTEM static-vectors / static-vectors-20101006-git / quicklisp 2011-01-10>
+#<SYSTEM vecto / vecto-1.4.3 / quicklisp 2011-01-10>
+NIL
+CL-USER> (ql:system-apropos "ext")
+#<SYSTEM arnesi.cl-ppcre-extras / arnesi-20101006-darcs / quicklisp 2011-01-10>
+#<SYSTEM arnesi.slime-extras / arnesi-20101006-darcs / quicklisp 2011-01-10>
+#<SYSTEM cl-glfw-opengl-apple_texture_range / cl-glfw-20110110-git / quicklisp 2011-01-10>
+#<SYSTEM cl-glfw-opengl-arb_blend_func_extended / cl-glfw-20110110-git / quicklisp 2011-01-10>
+#<SYSTEM cl-glfw-opengl-arb_multitexture / cl-glfw-20110110-git / quicklisp 2011-01-10>
+#<SYSTEM cl-glfw-opengl-arb_texture_buffer_object / cl-glfw-20110110-git / quicklisp 2011-01-10>
+#<SYSTEM cl-glfw-opengl-arb_texture_compression / cl-glfw-20110110-git / quicklisp 2011-01-10>
+#<SYSTEM cl-glfw-opengl-arb_texture_multisample / cl-glfw-20110110-git / quicklisp 2011-01-10>
+#<SYSTEM cl-glfw-opengl-ext_bindable_uniform / cl-glfw-20110110-git / quicklisp 2011-01-10>
+#<SYSTEM cl-glfw-opengl-ext_blend_color / cl-glfw-20110110-git / quicklisp 2011-01-10>
+#<SYSTEM cl-glfw-opengl-ext_blend_equation_separate / cl-glfw-20110110-git / quicklisp 2011-01-10>
+#<SYSTEM cl-glfw-opengl-ext_blend_func_separate / cl-glfw-20110110-git / quicklisp 2011-01-10>
+#<SYSTEM cl-glfw-opengl-ext_blend_minmax / cl-glfw-20110110-git / quicklisp 2011-01-10>
+#<SYSTEM cl-glfw-opengl-ext_color_subtable / cl-glfw-20110110-git / quicklisp 2011-01-10>
+#<SYSTEM cl-glfw-opengl-ext_compiled_vertex_array / cl-glfw-20110110-git / quicklisp 2011-01-10>
+#<SYSTEM cl-glfw-opengl-ext_convolution / cl-glfw-20110110-git / quicklisp 2011-01-10>
+#<SYSTEM cl-glfw-opengl-ext_coordinate_frame / cl-glfw-20110110-git / quicklisp 2011-01-10>
+#<SYSTEM cl-glfw-opengl-ext_copy_texture / cl-glfw-20110110-git / quicklisp 2011-01-10>
+#<SYSTEM cl-glfw-opengl-ext_cull_vertex / cl-glfw-20110110-git / quicklisp 2011-01-10>
+#<SYSTEM cl-glfw-opengl-ext_depth_bounds_test / cl-glfw-20110110-git / quicklisp 2011-01-10>
+#<SYSTEM cl-glfw-opengl-ext_direct_state_access / cl-glfw-20110110-git / quicklisp 2011-01-10>
+#<SYSTEM cl-glfw-opengl-ext_draw_buffers2 / cl-glfw-20110110-git / quicklisp 2011-01-10>
+#<SYSTEM cl-glfw-opengl-ext_draw_instanced / cl-glfw-20110110-git / quicklisp 2011-01-10>
+#<SYSTEM cl-glfw-opengl-ext_draw_range_elements / cl-glfw-20110110-git / quicklisp 2011-01-10>
+#<SYSTEM cl-glfw-opengl-ext_fog_coord / cl-glfw-20110110-git / quicklisp 2011-01-10>
+#<SYSTEM cl-glfw-opengl-ext_framebuffer_blit / cl-glfw-20110110-git / quicklisp 2011-01-10>
+#<SYSTEM cl-glfw-opengl-ext_framebuffer_multisample / cl-glfw-20110110-git / quicklisp 2011-01-10>
+#<SYSTEM cl-glfw-opengl-ext_framebuffer_object / cl-glfw-20110110-git / quicklisp 2011-01-10>
+#<SYSTEM cl-glfw-opengl-ext_geometry_shader4 / cl-glfw-20110110-git / quicklisp 2011-01-10>
+#<SYSTEM cl-glfw-opengl-ext_gpu_program_parameters / cl-glfw-20110110-git / quicklisp 2011-01-10>
+#<SYSTEM cl-glfw-opengl-ext_gpu_shader4 / cl-glfw-20110110-git / quicklisp 2011-01-10>
+#<SYSTEM cl-glfw-opengl-ext_histogram / cl-glfw-20110110-git / quicklisp 2011-01-10>
+#<SYSTEM cl-glfw-opengl-ext_index_func / cl-glfw-20110110-git / quicklisp 2011-01-10>
+#<SYSTEM cl-glfw-opengl-ext_index_material / cl-glfw-20110110-git / quicklisp 2011-01-10>
+#<SYSTEM cl-glfw-opengl-ext_light_texture / cl-glfw-20110110-git / quicklisp 2011-01-10>
+#<SYSTEM cl-glfw-opengl-ext_multi_draw_arrays / cl-glfw-20110110-git / quicklisp 2011-01-10>
+#<SYSTEM cl-glfw-opengl-ext_multisample / cl-glfw-20110110-git / quicklisp 2011-01-10>
+#<SYSTEM cl-glfw-opengl-ext_paletted_texture / cl-glfw-20110110-git / quicklisp 2011-01-10>
+#<SYSTEM cl-glfw-opengl-ext_pixel_transform / cl-glfw-20110110-git / quicklisp 2011-01-10>
+#<SYSTEM cl-glfw-opengl-ext_point_parameters / cl-glfw-20110110-git / quicklisp 2011-01-10>
+#<SYSTEM cl-glfw-opengl-ext_polygon_offset / cl-glfw-20110110-git / quicklisp 2011-01-10>
+#<SYSTEM cl-glfw-opengl-ext_provoking_vertex / cl-glfw-20110110-git / quicklisp 2011-01-10>
+#<SYSTEM cl-glfw-opengl-ext_secondary_color / cl-glfw-20110110-git / quicklisp 2011-01-10>
+#<SYSTEM cl-glfw-opengl-ext_separate_shader_objects / cl-glfw-20110110-git / quicklisp 2011-01-10>
+#<SYSTEM cl-glfw-opengl-ext_shader_image_load_store / cl-glfw-20110110-git / quicklisp 2011-01-10>
+#<SYSTEM cl-glfw-opengl-ext_stencil_clear_tag / cl-glfw-20110110-git / quicklisp 2011-01-10>
+#<SYSTEM cl-glfw-opengl-ext_stencil_two_side / cl-glfw-20110110-git / quicklisp 2011-01-10>
+#<SYSTEM cl-glfw-opengl-ext_subtexture / cl-glfw-20110110-git / quicklisp 2011-01-10>
+#<SYSTEM cl-glfw-opengl-ext_texture3d / cl-glfw-20110110-git / quicklisp 2011-01-10>
+#<SYSTEM cl-glfw-opengl-ext_texture_buffer_object / cl-glfw-20110110-git / quicklisp 2011-01-10>
+#<SYSTEM cl-glfw-opengl-ext_texture_integer / cl-glfw-20110110-git / quicklisp 2011-01-10>
+#<SYSTEM cl-glfw-opengl-ext_texture_object / cl-glfw-20110110-git / quicklisp 2011-01-10>
+#<SYSTEM cl-glfw-opengl-ext_texture_perturb_normal / cl-glfw-20110110-git / quicklisp 2011-01-10>
+#<SYSTEM cl-glfw-opengl-ext_timer_query / cl-glfw-20110110-git / quicklisp 2011-01-10>
+#<SYSTEM cl-glfw-opengl-ext_transform_feedback / cl-glfw-20110110-git / quicklisp 2011-01-10>
+#<SYSTEM cl-glfw-opengl-ext_vertex_array / cl-glfw-20110110-git / quicklisp 2011-01-10>
+#<SYSTEM cl-glfw-opengl-ext_vertex_attrib_64bit / cl-glfw-20110110-git / quicklisp 2011-01-10>
+#<SYSTEM cl-glfw-opengl-ext_vertex_shader / cl-glfw-20110110-git / quicklisp 2011-01-10>
+#<SYSTEM cl-glfw-opengl-ext_vertex_weighting / cl-glfw-20110110-git / quicklisp 2011-01-10>
+#<SYSTEM cl-glfw-opengl-nv_texture_barrier / cl-glfw-20110110-git / quicklisp 2011-01-10>
+#<SYSTEM cl-glfw-opengl-sgis_detail_texture / cl-glfw-20110110-git / quicklisp 2011-01-10>
+#<SYSTEM cl-glfw-opengl-sgis_pixel_texture / cl-glfw-20110110-git / quicklisp 2011-01-10>
+#<SYSTEM cl-glfw-opengl-sgis_sharpen_texture / cl-glfw-20110110-git / quicklisp 2011-01-10>
+#<SYSTEM cl-glfw-opengl-sgis_texture4d / cl-glfw-20110110-git / quicklisp 2011-01-10>
+#<SYSTEM cl-glfw-opengl-sgis_texture_color_mask / cl-glfw-20110110-git / quicklisp 2011-01-10>
+#<SYSTEM cl-glfw-opengl-sgis_texture_filter4 / cl-glfw-20110110-git / quicklisp 2011-01-10>
+#<SYSTEM cl-glfw-opengl-sgix_pixel_texture / cl-glfw-20110110-git / quicklisp 2011-01-10>
+#<SYSTEM contextl / contextl-20101006-darcs / quicklisp 2011-01-10>
+#<SYSTEM extensible-sequences / sequence-iterators-20101207-darcs / quicklisp 2011-01-10>
+#<SYSTEM extensible-sequences-test / sequence-iterators-20101207-darcs / quicklisp 2011-01-10>
+#<SYSTEM external-program / external-program_0.0.6 / quicklisp 2011-01-10>
+#<SYSTEM hu.dwim.def+contextl / hu.dwim.def-20110110-darcs / quicklisp 2011-01-10>
+#<SYSTEM hu.dwim.defclass-star+contextl / hu.dwim.defclass-star-20101107-darcs / quicklisp 2011-01-10>
+#<SYSTEM hu.dwim.defclass-star+hu.dwim.def+contextl / hu.dwim.defclass-star-20101107-darcs / quicklisp 2011-01-10>
+#<SYSTEM metacopy-test-with-contextl / metacopy-20101006-darcs / quicklisp 2011-01-10>
+#<SYSTEM metacopy-with-contextl / metacopy-20101006-darcs / quicklisp 2011-01-10>
+#<SYSTEM misc-extensions / misc-extensions-20101006-cvs / quicklisp 2011-01-10>
+NIL
+CL-USER> (print 2)
+
+2 
+2
+CL-USER> (print "hi")
+
+"hi" 
+"hi"
+CL-USER> (ql:quickload "split-sequence")
+To load "split-sequence":
+  Install 1 Quicklisp release:
+    split-sequence
+; Fetching #<URL "http://beta.quicklisp.org/archive/split-sequence/2010-10-06/split-sequence-20101006-http.tgz">
+; 2.54KB
+==================================================
+2,598 bytes in 0.00 seconds (507.42KB/sec)
+; Loading "split-sequence"
+[package split-sequence].
+("split-sequence")
+CL-USER> (split-sequence:SPLIT-SEQUENCE #\Space "A stitch in time saves nine.")
+("A" "stitch" "in" "time" "saves" "nine.")
+28
+CL-USER> 
