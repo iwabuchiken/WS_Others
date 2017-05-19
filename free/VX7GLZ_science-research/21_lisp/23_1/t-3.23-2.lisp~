@@ -1,0 +1,5 @@
+(terpri t)
+;;;;;;;;;;;; EXE-1 my-rev-sub ;;;;;;;;;
+(print ";;;;;;;;;;;; EXE-1 my-rev-sub ;;;;;;;;;;;;")
+(terpri t)
+
