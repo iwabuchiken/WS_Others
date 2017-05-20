@@ -5,3 +5,6 @@ airplane(jet_plane).
 airplane(helicopter).
 
 superperson(taro).
+
+square(X,Y) :- Y is X * X.
+
