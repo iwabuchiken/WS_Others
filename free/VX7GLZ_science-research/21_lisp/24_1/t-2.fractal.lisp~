@@ -1,0 +1,2 @@
+(setq *WARN-ON-FLOATING-POINT-CONTAGION* nil)
+
