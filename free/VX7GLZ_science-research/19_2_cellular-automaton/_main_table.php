@@ -12,27 +12,16 @@
 		$ary = $_POST["ary"];
 		$lenOf_Array_Rows = $_POST["lenOf_Array_Rows"];
 		$lenOf_Array_Columns = $_POST["lenOf_Array_Columns"];
-// 		$ary = $_GET["ary"];
-// 		$lenOf_Array_Rows = $_GET["lenOf_Array_Rows"];
-// 		$lenOf_Array_Columns = $_GET["lenOf_Array_Columns"];
+		
+		$block_X = $_POST["block_X"];
+		$block_Y = $_POST["block_Y"];
+		
+		//debug
+// 		echo "block_X => $block_X";
 		
 		$msg = "";
 		
-// 		echo "ary[count(\$ary) - 1] => ".$ary[count($ary) - 1];
-// 		echo "ary[3] => ".$ary[3];
-// 		echo $ary[3][3]."(lenOf_Array_Rows => $lenOf_Array_Rows)";
-		
-// 		foreach ($ary as $row) {
-		
-// 			foreach ($row as $cell) {
 			
-// 				$msg .= $cell;
-				
-// 			}//foreach ($row as $cell)
-			
-// 			;
-			
-// 		}//foreach ($ary as $row)
 /*
  * @return
  * 0

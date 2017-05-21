@@ -1,9 +1,27 @@
+//////ref C:\WORKS_2\WS\Eclipse_Luna\Cake_NR5\app\webroot\js\main.js
+//$(document).ready(function(){
+//	
+//	alert("ready");
+//	
+//});
+
+////test
+//alert("ready!!");
+
+
 //ref global variable http://qiita.com/kenju/items/c7fad62a12cc2809b507
 total = 0;	// Write this code before "testTimer" declaration code. Otherwise, "total += 1"
 			//	line won't be processed.
 
+////test
+//alert("js");
+
 //ref https://sites.google.com/site/jqueryjavascript/setintervaltoclearintervalno-shii-fang
-testTimer;
+//testTimer;
+testTimer = null;
+
+////test
+//alert("js");
 
 
 //		var testTimer;
@@ -108,32 +126,15 @@ function validate_AllDead(ary) {
 
 function update_table() {
 	
+	//test
+//	alert("update");
+	
 	/***********
 	 * test
 	 **************/
 //	var obj = $("table#table_main");
 	var obj = $("table#table_main tr");
 	
-//	alert(table);
-	//ref http://stackoverflow.com/questions/10314338/get-name-of-object-or-class-in-javascript
-//	alert(obj.constructor.name);	//=> 'r'
-	//ref length http://chaika.hatenablog.com/entry/2014/08/07/103459
-//	alert(obj.length);	//=> '5'
-//	alert(obj[0]);	//=> '[object HTMLTableRowElement]'
-//	alert(obj[0].length);	//=> 'undefined'
-//	alert(obj[0].text());	//=> no display
-//	alert("obj[0].html() => " + obj[0].html());	//=> no window
-//	alert(obj);
-	//ref http://uhyohyo.net/javascript/2_8.html
-//	alert(obj[0].item(0));	//=> no window
-//	alert(obj[0].cells);	//=> '[object HTMLCollection]'
-//	alert(obj[0].cells.length);	//=> '5'
-//	alert(obj[0].cells.item(0));	//=> '[object HTMLTableCellElement]'
-//	alert(obj[0].cells.item(0).html());	//=> no window
-	//ref http://stackoverflow.com/questions/4253558/how-to-get-the-html-table-particullar-cell-value-using-javascript answered Nov 23 '10 at 7:34
-//	alert(obj[0].cells.item(0).innerText);	//=> '0'
-//	alert(obj[1].cells.item(3).innerText);	//=> '0'
-
 	var ary = [];
 	
 	for (var i = 0; i < obj.length; i++) {
@@ -156,23 +157,30 @@ function update_table() {
 		
 	}
 	
-//	alert("ary.length => " + ary.length);
-	
-//	alert(
-//			ary[0] + "\n" + ary[1] + "\n"
-//			
-//			+ ary[2] + "\n" + ary[3] + "\n"
-//			
-//			+ ary[4] + "\n"
-//			
-////			+ ary[5] + "\n" + ary[6] + "\n"
-////			+ ary[7] + "\n" + ary[8] + "\n"
-//	
-//	
-//	);	//=> 0,1,2,3
-	
 	var lenOf_Array_Rows = ary.length;
 	var lenOf_Array_Columns = ary[0].length;
+	
+	var block_X = $("input#init_X").val();
+	var block_Y = $("input#init_Y").val();
+
+	var valueOf_Default_Init_X = 4;
+	var valueOf_Default_Init_Y = 3;
+	
+	if (block_X == "") {
+		
+		$("input#init_X").val(valueOf_Default_Init_X);
+		
+		block_X = valueOf_Default_Init_X;
+		
+	}
+		
+	if (block_Y == "") {
+		
+		$("input#init_Y").val(valueOf_Default_Init_Y);
+		
+		block_Y = valueOf_Default_Init_Y;
+		
+	}
 	
 	/*
 	 * validate: all dead?
@@ -219,7 +227,9 @@ function update_table() {
 	    data: {
 	    		ary: ary, 
 	    		lenOf_Array_Rows : lenOf_Array_Rows, 
-	    		lenOf_Array_Columns : lenOf_Array_Columns
+	    		lenOf_Array_Columns : lenOf_Array_Columns,
+	    		block_X : block_X,
+	    		block_Y : block_Y
 	    },
 //	    data: {ary: ary},
 //	    data: {ary: ary_tmp},
@@ -266,3 +276,77 @@ function console_test() {
 	console.log("missed the particulars of the loops, fixed");
 	
 }
+
+////ref C:\WORKS_2\WS\Eclipse_Luna\Cake_NR5\app\webroot\js\main.js
+// NOTICE : this main.js file needs to be included AFTER jquery is included.
+// 	=> otherwise, the browser console says :
+		//Uncaught ReferenceError: $ is not defined
+		//at main.js:294
+		//(anonymous) @ main.js:294
+		// ref http://stackoverflow.com/questions/6085964/document-ready-not-working "answered May 22 '11 at 4:14"	
+$(document).ready(function(){
+	
+//	alert("document -> ready");
+	
+	$('#select_initial').change(function(){
+		
+//		alert("changed");
+		
+    	//REF http://stackoverflow.com/questions/10659097/jquery-get-selected-option-from-dropdown answered May 18 '12 at 20:14
+    	var id = $('#select_initial').find(":selected").val();
+    	
+    	var hostname = window.location.hostname;
+    	
+    	var url = "";
+    	
+    	if (hostname == "localhost") {
+
+    		url = "http://localhost/WS_Others/free/VX7GLZ_science-research/19_2_cellular-automaton/main.php?select_initial=" + id;
+    			
+		} else {
+			
+			url = "http://benfranklin.chips.jp/WS/WS_Others/free/VX7GLZ_science-research/19_2_cellular-automaton/main.php?select_initial=" + id;
+
+		}
+
+    	// init_X, init_Y
+    	var block_X = $("input#init_X").val();
+    	var block_Y = $("input#init_Y").val();
+//    	var block_X = $("input#input_X").text();
+    	
+//    	alert("block_X => '" + block_X + "'");
+    	
+    	var valueOf_Default_Init_X = 4;
+    	var valueOf_Default_Init_Y = 3;
+    	
+    	if (block_X == "") {
+    		
+    		$("input#init_X").val(valueOf_Default_Init_X);
+    		
+    		block_X = valueOf_Default_Init_X;
+    		
+    	}
+    		
+    	if (block_Y == "") {
+    		
+    		$("input#init_Y").val(valueOf_Default_Init_Y);
+    		
+    		block_Y = valueOf_Default_Init_Y;
+    		
+    	}
+
+//    	alert("onchange => block_X " + block_X + " / " + "block_Y " + block_Y);
+    	
+    	// update url
+    	url = url + "&" + "block_X=" + block_X
+    			+ "&" + "block_Y=" + block_Y;
+    	
+//    	alert("url => '" + url + "'");
+    	
+    	//REF https://developer.mozilla.org/en-US/docs/Web/API/window.location "Basic Example"
+    	location.assign(url);
+
+	});//$('#genre').change(function(){
+	
+	
+});//$(document).ready(function(){
