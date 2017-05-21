@@ -1,0 +1,16 @@
+?- insert_at(3, x, [a,b,c,d],Z).
+Z = [a, b, x, c, d] .
+
+?- split_string("a.b.c", ".", "",L).
+L = ["a", "b", "c"].
+
+?- insert_at(3, x, split_string("a.b.c", ".", "",L),Z).
+false.
+
+?- split_string("as.bs.cs", ".", "",L).
+L = ["as", "bs", "cs"].
+
+?- split_string("as.bs.cs", ".", "s",L).
+L = ["a", "b", "c"].
+
+?- 
