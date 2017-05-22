@@ -160,9 +160,6 @@ function update_table() {
 	var lenOf_Array_Rows = ary.length;
 	var lenOf_Array_Columns = ary[0].length;
 	
-	//debug
-	alert("lenOf_Array_Rows => " + lenOf_Array_Rows);
-	
 	var block_X = $("input#init_X").val();
 	var block_Y = $("input#init_Y").val();
 
@@ -220,9 +217,6 @@ function update_table() {
 	
 	}
 
-	//debug
-	alert("url => " + url);
-	
 	//ref C:\WORKS_2\WS\Eclipse_Luna\Cake_IFM11\app\webroot\js\main.js
 	$.ajax({
 		
@@ -282,6 +276,46 @@ function console_test() {
 	console.log("missed the particulars of the loops, fixed");
 	
 }
+
+function change_Cell_Status(x, y) {
+	
+//	alert("changing cell status for => " + x + " / " + y);
+	
+	var td = $("td#cell_" + x + "x" + y);
+	
+//	var status = td.val();	//=> blank
+	//ref html() http://stackoverflow.com/questions/376081/how-to-get-a-table-cell-value-using-jquery "answered Dec 17 '08 at 21:39"
+	var status = td.html();	//=> '1', '0'
+	
+//	alert("status => " + status + " / " + "status + 1 => " + (status + 1));
+//	alert("status => " + status + " / " + "status + 1 => " + (parseInt(status) + 1));
+	
+	var status_new = parseInt(status) == 1 ? 0 : 1;
+	
+	// change cell status
+	// ref parseInt https://www.w3schools.com/jsref/jsref_parseint.asp
+	td.html(status_new);
+//	td.html(parseInt(status) == 1 ? "0" : "1");
+	
+	// cell attribute
+	td.attr("class", status_new == 1 ? "td_odd" : "td_even");
+//	td.attr("class", parseInt(status) == 1 ? "td_even" : "td_odd");
+	
+//	//debug
+//	alert("td => " + (td == null ? "null" : td));
+//	
+//	alert("status => " + (status == null ? "null" : (status == "" ? "blank" : status)));
+	
+	
+	
+	
+//	alert("td => " + td);
+	
+//	alert("cell " + x + "/" + y + " => status is " + status);
+	
+	
+}//function change_Cell_Status(x, y) {
+
 
 ////ref C:\WORKS_2\WS\Eclipse_Luna\Cake_NR5\app\webroot\js\main.js
 // NOTICE : this main.js file needs to be included AFTER jquery is included.

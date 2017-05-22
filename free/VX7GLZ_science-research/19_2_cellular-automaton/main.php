@@ -41,8 +41,6 @@ http://localhost/WS_Others/free/VX7GLZ_science-research/19_2_cellular-automaton/
 	if (!class_exists('Libs')) {
 		require_once 'libs.php';
 	}
-
-	require_once 'partials/_main_table_main.php';
 	
 
 	$dpath = dirname($_SERVER["REQUEST_URI"]);
@@ -78,6 +76,27 @@ http://localhost/WS_Others/free/VX7GLZ_science-research/19_2_cellular-automaton/
 	<!-- ref https://techacademy.jp/magazine/5537 -->
 	<script>
 
+// 		//ref https://sites.google.com/site/jqueryjavascript/setintervaltoclearintervalno-shii-fang
+// 		var testTimer;
+	
+// 		function startTimer(){
+
+// 			$("div#div_message").text("Starting...");
+			
+// 			testTimer=setInterval(update_table , 1000);
+			
+// 		}
+	
+// 		function stopTimer(){
+			
+// 			clearInterval(testTimer);
+
+// 			$("div#div_message").text("Stopped.");
+		
+// 		}
+
+    </script>
+
 	<!-- ref http://stackoverflow.com/questions/3138756/calling-a-function-every-60-seconds answered Jun 29 '10 at 7:44 -->
 	<script>
 	
@@ -108,6 +127,10 @@ http://localhost/WS_Others/free/VX7GLZ_science-research/19_2_cellular-automaton/
 				array("block_4x3", "block_4x3"),
 				array(Cons::$pattern_Stick_4x1, Cons::$pattern_Stick_4x1),
 				array(Cons::$pattern_Block_XY, Cons::$pattern_Block_XY),
+// 				array(Cons::pattern_Stick_4x1, Cons::pattern_Stick_4x1),
+
+// 				array("basic", 0),
+// 				array("block_4x3", 1),
 		);
 	
 	?>
@@ -210,69 +233,67 @@ http://localhost/WS_Others/free/VX7GLZ_science-research/19_2_cellular-automaton/
 	
 	<div id="div_main">
 	
-		<?php 
-		
-			show_table($select_initial, $block_X, $block_Y);
-		
-		?>
-	
-	
-<!-- 		<table border="1" id="table_main"> -->
+		<table border="1" id="table_main">
 		
 			<?php 
 			
-// 				$size = array(30,30);
-// // 				$size = array(15, 15);
-// // 				$size = array(8, 8);
-// // 				$size = array(5, 5);
+				$size = array(30,30);
+// 				$size = array(15, 15);
+// 				$size = array(8, 8);
+// 				$size = array(5, 5);
 				
-// 				if (isset($select_initial)) {
+				if (isset($select_initial)) {
 				
-// 					$matrix = Libs::get_InitialMatrix__Patterns(
-// 										$size[0], $size[1], $select_initial,
-// 										$block_X, $block_Y);
-// // 										$size[0], $size[1], $select_initial);
+					$matrix = Libs::get_InitialMatrix__Patterns(
+										$size[0], $size[1], $select_initial,
+										$block_X, $block_Y);
+// 										$size[0], $size[1], $select_initial);
 					
-// 				} else {//if (isset($select_initial))
+				} else {//if (isset($select_initial))
 					
-// 					$matrix = Libs::get_InitialMatrix($size[0], $size[1]);
+					$matrix = Libs::get_InitialMatrix($size[0], $size[1]);
 					
-// 				}
+				}
 				
-// 				for ($i = 0; $i < $size[0]; $i++) {
+				for ($i = 0; $i < $size[0]; $i++) {
 					
-// 					echo "<tr>";
+					echo "<tr>";
 					
-// 					for ($j = 0; $j < $size[1]; $j++) {
+					for ($j = 0; $j < $size[1]; $j++) {
 						
-// 						if ($matrix[$i][$j] == 0) {
-// // 						if ($i * $j % 2 == 0) {
+						if ($matrix[$i][$j] == 0) {
+// 						if ($i * $j % 2 == 0) {
 						
+							echo "<td class='td_even' id=\"cell_$i"."x"."$j\" 
+										onclick=\"change_Cell_Status($i,$j);\">";
+// 										onclick=\"alert('$i,$j');change_Cell_Status($i,$j);\">";
 // 							echo "<td class='td_even'>";
 							
-// 							echo $matrix[$i][$j];
+							echo $matrix[$i][$j];
 							
-// 							echo "</td>";
+							echo "</td>";
 						
-// 						} else {
+						} else {
 						
+							echo "<td class='td_odd' id=\"cell_$i"."x"."$j\" 
+										onclick=\"change_Cell_Status($i,$j);\">";
 // 							echo "<td class='td_odd'>";
 								
-// 							echo $matrix[$i][$j];
+							echo $matrix[$i][$j];
 								
-// 							echo "</td>";
+							echo "</td>";
 							
-// 						}//if ($i * $j / 2 == 0)
+						}//if ($i * $j / 2 == 0)
 						
-// 					}
+					}
 				
-// 					echo "</tr>";
+					echo "</tr>";
 					
-// 				}
+				}
 			
-// 			?>
+			?>
 		
-<!-- 		</table> -->
+		</table>
 
 	</div>
 	
