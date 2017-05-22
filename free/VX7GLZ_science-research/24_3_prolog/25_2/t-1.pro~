@@ -1,0 +1,31 @@
+my_length([], 0).
+my_length([X|Xs], N ) :-
+        my_length(Xs, N1),
+        write("X is "),write(X),write(" / "),
+        write("Xs is "),write(Xs),write(" / "),
+%!        format("~a", X),
+        N is N1 + 1,
+        write("N is "),write(N),write("\n").
+
+
+        %! ?- my_length([1,2,3,4],N).
+        %! X is 4 / Xs is [] / N is 1
+        %! X is 3 / Xs is [4] / N is 2
+        %! X is 2 / Xs is [3,4] / N is 3
+        %! X is 1 / Xs is [2,3,4] / N is 4
+        %! N = 4.
+
+
+%! ;; my_increment(1, 1).
+%! ;; my_increment(X, N) :-
+%! ;;    my_increment(X - 1, N1),
+%! ;;    N is N1 + 1.
+
+my_append([],Xs,Xs).
+my_append([X|Ls], Ys, [X|Zs]) :-
+      write("yes").
+%!       my_append(Ls, Ys, Zs).
+%!       my_append(Ls, Ys, Zs),
+%!       write("X is "),write(X),write("\n").
+%!       write("returning...\n"),
+%!       write("Zs is "),write(Zs).
