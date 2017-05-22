@@ -160,6 +160,9 @@ function update_table() {
 	var lenOf_Array_Rows = ary.length;
 	var lenOf_Array_Columns = ary[0].length;
 	
+	//debug
+	alert("lenOf_Array_Rows => " + lenOf_Array_Rows);
+	
 	var block_X = $("input#init_X").val();
 	var block_Y = $("input#init_Y").val();
 
@@ -217,6 +220,9 @@ function update_table() {
 	
 	}
 
+	//debug
+	alert("url => " + url);
+	
 	//ref C:\WORKS_2\WS\Eclipse_Luna\Cake_IFM11\app\webroot\js\main.js
 	$.ajax({
 		

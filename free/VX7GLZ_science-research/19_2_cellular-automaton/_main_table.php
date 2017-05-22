@@ -291,7 +291,9 @@
 					if ($num % 2 == 0) {
 						// 				if (($i + $j) % 2 == 0) {
 							
-						echo "<td class='td_even'>";
+// 						echo "<td class='td_even'>";
+						echo "<td class='td_even' id='cell_$i"."x"."$j' onclick='alert(\"$i,$j\");>";
+
 							
 						echo $num;
 						// 					echo $i + $j;
@@ -300,7 +302,8 @@
 							
 					} else {
 							
-						echo "<td class='td_odd'>";
+						echo "<td class='td_odd' id='cell_$i"."x"."$j' onclick='alert(\"$i,$j\");>";
+// 						echo "<td class='td_odd'>";
 							
 						echo $num;
 						// 					echo $i + $j;
