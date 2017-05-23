@@ -102,7 +102,10 @@ save_sines_then(Start,Tick,Handle) :-
     .
 
 save_sines_else :-
-    write("Start is less than 0").
+    write("Start is less than 0"),
+    write("\n"),
+    !
+    .
 
 save_sines(Start, Tick, Handle) :-
     (   Start >= 0
