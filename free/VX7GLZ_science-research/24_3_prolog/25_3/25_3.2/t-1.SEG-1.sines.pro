@@ -8,7 +8,7 @@ sines(Start,Tick) :-
     sines(Y,Tick)
     .
 
-sines_to_file_then(Start,Tick, Handle) :-
+sines_to_file_then(Start,_, Handle) :-
 %    Start >= 0,
     X is sin(Start),
 
@@ -97,7 +97,8 @@ ite(X) :-
 save_sines_then(Start,Tick,Handle) :-
     X is sin(Start),
 %    format('sin(~5f) = ~5f~n', [Start, X]),
-    format(Handle, 'sin(~5f) = ~5f~n', [Start, X]),
+%    format(Handle, 'sin(~5f) = ~5f~n', [Start, X]),
+    format(Handle, '~5f~t~5f~n', [Start, X]),
     save_sines(Start - Tick, Tick, Handle)
     .
 
