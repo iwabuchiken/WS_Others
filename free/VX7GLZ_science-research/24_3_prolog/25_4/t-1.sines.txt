@@ -1,0 +1,12 @@
+C:\WORKS_2\Programs\gnuplot_4.6.7\bin
+
+
+C:/WORKS_2/WS/WS_Others/free/VX7GLZ_science-research/24_3_prolog/25_4
+
+C:\WORKS_2\Programs\gnuplot_4.6.7\bin\gnuplot.exe  -e "fpath='C:/WORKS_2/WS/WS_Others/free/VX7GLZ_science-research/24_3_prolog/25_4/sines.pi~-pi.(3).dat'" C:\WORKS_2\WS\WS_Others\free\VX7GLZ_science-research\24_3_prolog\25_4\plot-data.plt
+
+
+C:\\WORKS_2\\Programs\\gnuplot_4.6.7\\bin\\gnuplot.exe  -e \"fpath=\'C:/WORKS_2/WS/WS_Others/free/VX7GLZ_science-research/24_3_prolog/25_4/sines.pi~-pi.(3).dat\'\" C:\\WORKS_2\\WS\\WS_Others\\free\\VX7GLZ_science-research\\24_3_prolog\\25_4\\plot-data.plt
+
+
+C:\\WORKS_2\\Programs\\gnuplot_4.6.7\\bin\\wgnuplot.exe  -e \"fpath=\'C:/WORKS_2/WS/WS_Others/free/VX7GLZ_science-research/24_3_prolog/25_4/sines.pi~-pi.(3).dat\'\" C:\\WORKS_2\\WS\\WS_Others\\free\\VX7GLZ_science-research\\24_3_prolog\\25_4\\plot-data.plt
