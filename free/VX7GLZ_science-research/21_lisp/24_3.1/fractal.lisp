@@ -149,7 +149,11 @@
 (defun dragon (ls0 n &optional (i 0) ini)
   (if (= i n)
       (plot-c/dragon "Dragon" ls0 ini n)
-    (let ((ls0a (if (= i 0) (l2v ls0)  ls0)))
+    (let (
+	  (ls0a
+	   (if (= i 0) (l2v ls0)  ls0);if
+		);ls0a
+	  );let(
       (labels ((drep (rls0 c0 rls1 j)
 		 (if rls0
 		     (let* ((even (evenp (+ i j)))
@@ -169,7 +173,7 @@
 (defun plot-hilbert (ls ini n)
   (with-open-file (out *fractal-data-file* :direction :output)
     (dolist (gr ls)
-      (dolist (v gr)
+-      (dolist (v gr)
         (format out "~A ~A~%" (v-x v) (v-y v)))))
   (with-open-file (out *fractal-plot-file* :direction :output)
     (let* ((c (v* (apply 'v+ ini) 0.25))

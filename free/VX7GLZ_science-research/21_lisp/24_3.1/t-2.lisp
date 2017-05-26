@@ -92,6 +92,68 @@
   (make-v :x (apply '- (mapcar #'v-x  argvs))
 	  :y (apply '- (mapcar #'v-y  argvs))))
 
+      ;;;;;;;;;;;;;;;; TEST : Section : 8 ;;;;;;;;;;;;;;;;;;;;;;
+;;; making a dragon curve, (dragon '((x1 y1) (x2 y2)) n)
+(defun dragon (ls0 n &optional (i 0) ini)
+  ;;debug
+  (print "--------------- ls0")
+  (print "ls0 =>")
+  (print ls0)   ;=> ((1 1) (10 10))
+  (terpri t)
+
+  ;; (print "ini =>")
+  ;; (print ini)   ;=> NIL
+
+  ;; (print "(car ls0) =>")
+  ;; (print (car ls0))   ;=> (1 1)
+
+  ;; (print "(car (car ls0))=>")
+  ;; (print (car (car ls0)))   ;=> 1
+
+  ;; (print "(car (car (car ls0))) =>")
+  ;; (print (car (car (car ls0))))  ;=> *** - CAR: 1 is not a list
+
+  (if (= i n)
+      (plot-c/dragon "Dragon" ls0 ini n)
+    (let (
+	  (ls0a
+	   (if
+	    (= i 0)
+	    (l2v ls0)
+	    ls0
+	       );if
+	    );ls0a   ;; "'((x1 y1)(x2 y2))" ;ref http://www.shido.info/lisp/fractal.html "ƒhƒ‰ƒSƒ“‹Èü‚ð•`‚©‚¹‚é"
+	  );let(
+      
+      ;;debug
+      (print "ls0a =>")
+      (print ls0a)   ;=> (#S(V :X 1 :Y 1) #S(V :X 10 :Y 10))
+
+      );let
+    
+    ;; ;;debug
+    ;; (print "ls0a =>")
+    ;; (print ls0a)
+
+
+    );if
+
+    ;; ;;debug
+    ;; (print "ls0a =>")
+    ;; (print ls0a)
+
+  ;; debug : l2v
+  (print "(l2v ls0) =>")
+  (print (l2v ls0))   ;=> (#S(V :X 1 :Y 1) #S(V :X 10 :Y 10))
+
+  
+);defun
+
+;;;convert initial input to a list of structure v
+(defun l2v (ls0)
+  (let (ls1)
+    (dolist (c0 ls0 (nreverse ls1))
+      (push (make-v :x (first c0) :y (second c0)) ls1))))
 
 
 ;;;;;;;;;;;;;;;;;;;;;; SANDBOX ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -133,8 +195,6 @@
 ;  (print (v1-x v1))
   (print (v-x v1))
 
-  
-  
 );defun
 
 ;(exec_test)
