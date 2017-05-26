@@ -53,4 +53,27 @@
   (gplot line)
   (gplot "replot"))
 
+
+      ;;;;;;;;;;;;;;;; TEST : Section : 5 ;;;;;;;;;;;;;;;;;;;;;;
+
+;;; output to png format, give fname without extension                (mark 3f)
+(defun png (fname)
+  (with-open-file (out "2png.plt" :direction :output)
+    (if (system::getenv "GDFONTPATH")
+	(format out "set terminal png font \"~A\" ~A size 800, 600~%" *png-font-type* *png-font-size*)
+      (format out "set terminal png size 800, 600~%"))
+    (format out "set output \"~A.png\"~%" fname)
+    (format out "replot~%"))
+  (gplot "load \"2png.plt\"")
+  (end-plot)
+  (format t "png => generated : ~A~%" fname)
+  );defun
+
+;;; end gnuplot                                                        (mark 3g)
+(defun end-plot ()
+  (gplot "exit"))
+
+
+;(gplot "set xrange[-2*pi:2*pi]; plot sin(x)")
+
 (print "done")
