@@ -73,6 +73,36 @@
 (defun end-plot ()
   (gplot "exit"))
 
+      ;;;;;;;;;;;;;;;; TEST : Section : 6 ;;;;;;;;;;;;;;;;;;;;;;
+;;;multiplication or inner product 
+(defun v* (v0 n)
+    (make-v :x (* (v-x v0) n)
+	    :y (* (v-y v0) n)))
+
+;;;;;;;;;;;;;;;;;;;;;; SANDBOX ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(defun exec_test()
+    ;(print "Executing test...")
+  (setq v1 (make-v))
+  (print "v1 =>")
+  (print v1)
+  
+  ;;; set slot values
+  (setf (slot-value v1 'x) 6.73)
+  (setf (slot-value v1 'y) 2.21)
+  (print "v1 is now =>")
+  (print v1)
+
+  ;;; v*
+  (setq v2 (v* v1 3.11));setq
+  (print "---------- setq v2 (v* v1 3.11)");setq
+
+  (print "v2 => ")
+  (print v2)
+  
+);defun
+
+;(exec_test)
+
 
 ;(gplot "set xrange[-2*pi:2*pi]; plot sin(x)")
 
