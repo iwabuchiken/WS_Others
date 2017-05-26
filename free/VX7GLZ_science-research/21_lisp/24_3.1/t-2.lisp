@@ -95,11 +95,11 @@
       ;;;;;;;;;;;;;;;; TEST : Section : 8 ;;;;;;;;;;;;;;;;;;;;;;
 ;;; making a dragon curve, (dragon '((x1 y1) (x2 y2)) n)
 (defun dragon (ls0 n &optional (i 0) ini)
-  ;;debug
-  (print "--------------- ls0")
-  (print "ls0 =>")
-  (print ls0)   ;=> ((1 1) (10 10))
-  (terpri t)
+  ;; ;;debug
+  ;; (print "--------------- ls0")
+  ;; (print "ls0 =>")
+  ;; (print ls0)   ;=> ((1 1) (10 10))
+  ;; (terpri t)
 
   ;; (print "ini =>")
   ;; (print ini)   ;=> NIL
@@ -142,18 +142,45 @@
     ;; (print "ls0a =>")
     ;; (print ls0a)
 
-  ;; debug : l2v
-  (print "(l2v ls0) =>")
-  (print (l2v ls0))   ;=> (#S(V :X 1 :Y 1) #S(V :X 10 :Y 10))
-
+  ;; ;; debug : l2v
+  ;; (print "(l2v ls0) =>")
+  ;; (print (l2v ls0))   ;=> (#S(V :X 1 :Y 1) #S(V :X 10 :Y 10))
   
-);defun
+  
+);defun(dragon
 
 ;;;convert initial input to a list of structure v
 (defun l2v (ls0)
+  (print "------- l2v --------")
   (let (ls1)
-    (dolist (c0 ls0 (nreverse ls1))
-      (push (make-v :x (first c0) :y (second c0)) ls1))))
+    ;; debug
+    (print "ls0 =>")
+    (print ls0)
+    (print "ls1 =>")
+    (print ls1)
+
+    (dolist
+	(c0 ls0 (nreverse ls1));c0
+      (print "c0 =>")
+      (print c0)
+      
+      (push
+       (make-v
+	:x (first c0)
+	:y (second c0)
+	       );make-v
+       ls1
+       );push
+      ;; debug
+      (print "ls1 =>")
+      (print ls1)
+
+      );dolist
+    );let
+  ;; debug
+;  (print "----- Exiting l2v....")
+
+);(defun l2v (ls0)
 
 
 ;;;;;;;;;;;;;;;;;;;;;; SANDBOX ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -195,11 +222,81 @@
 ;  (print (v1-x v1))
   (print (v-x v1))
 
-);defun
+);(defun exec_test()
 
 ;(exec_test)
 
+;;;;;;;;;;;;;;;;;;;;;; SANDBOX : 2 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(defun test-1 ()
+	(print "test-1 -------------")
+	(let (
+	      (result 0)
+	      );let(
+	  (dolist
+	      (y '(a b c d e) result)
+	    (print y)
+	    (setq result (1+ result))
+	    );dolist
+	);let
+	
+)
+
+;(test-1)
+
 
 ;(gplot "set xrange[-2*pi:2*pi]; plot sin(x)")
+
+;;;;;;;;;;;;;;;;;;;;;; SANDBOX : 3 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(defun my4th (ls)
+  (let (result (count 0));(
+    (dolist (x ls result)
+      ;; (print "x =>")(print x)
+      ;; (print "count =>")(print count)
+;      (if (= count 4)
+      (if (= count 3)
+	  (progn
+;	    (print "count is => 3!")
+	    (setq result x)
+;	    (return)
+	    (return x)
+	    );progn
+
+      	  (progn
+      	    (setq count (1+ count))
+;	    (print "count is now => ")(print count)
+      	    );progn
+      	  );if
+
+      );dolist
+    );let
+  
+);(defun my4th (ls)
+
+(defun myNth (ls n)
+  (let (result (count 1));(
+    (dolist (x ls result)
+      ;; (print "x =>")(print x)
+      ;; (print "count =>")(print count)
+;      (if (= count 4)
+;      (if (= count 3)
+      (if (= count n)
+	  (progn
+;	    (print "count is => 3!")
+	    (setq result x)
+;	    (return)
+	    (return x)
+	    );progn
+
+      	  (progn
+      	    (setq count (1+ count))
+;	    (print "count is now => ")(print count)
+      	    );progn
+      	  );if
+
+      );dolist
+    );let
+  
+);(defun my4th (ls)
+
 
 (print "done")
