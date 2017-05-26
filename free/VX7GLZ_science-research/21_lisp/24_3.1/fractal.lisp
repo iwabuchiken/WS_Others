@@ -32,8 +32,7 @@
       (unless (equal dir dir1)
 	(setq dir dir1)
 	(format gp "cd \'~A\'~%" (string-right-trim "\\" (format nil "~A" dir)))
-	(force-output gp));unless
-      );let
+	(force-output gp)));let
     (when (stringp s)
       (format gp "~A~%" s)                                           ;(mark 3c)
       (force-output gp)
