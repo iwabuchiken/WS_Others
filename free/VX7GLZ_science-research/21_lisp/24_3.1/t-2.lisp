@@ -79,12 +79,31 @@
     (make-v :x (* (v-x v0) n)
 	    :y (* (v-y v0) n)))
 
+
+      ;;;;;;;;;;;;;;;; TEST : Section : 7 ;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;; functions for 2D vectors  ;;;;;;;;;;;;;;;;;;;;;;;       (mark 4)
+;;; add vectors
+(defun v+ (&rest argvs)
+  (make-v :x (apply '+ (mapcar #'v-x  argvs))
+	  :y (apply '+ (mapcar #'v-y  argvs))))
+
+;;; subtract vectors
+(defun v- (&rest argvs)
+  (make-v :x (apply '- (mapcar #'v-x  argvs))
+	  :y (apply '- (mapcar #'v-y  argvs))))
+
+
+
 ;;;;;;;;;;;;;;;;;;;;;; SANDBOX ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (defun exec_test()
     ;(print "Executing test...")
   (setq v1 (make-v))
   (print "v1 =>")
   (print v1)
+
+;;   (print "v1-x =>")
+;; ;  (print v1-x)   ;=> *** - EXEC_TEST: variable V1-X has no value
+;;   (print (v1-x v1))
   
   ;;; set slot values
   (setf (slot-value v1 'x) 6.73)
@@ -98,6 +117,23 @@
 
   (print "v2 => ")
   (print v2)
+
+  ;;; v-
+  (print "---------- setq vminus (v- v1 v2)")
+  (setq vminus (v- v1 v2))
+
+  (print "vminus =>")
+  (print vminus)
+
+;  (print (mapcar #'v-x '(v1 v2)))   ;=> *** - SYSTEM::%STRUCTURE-REF: V1 is not a structure of type V
+;  (print (mapcar #'v-x 'v1 v2))   ;=> *** - MAPCAR: A proper list must not end with V1
+;  (print (mapcar #'v-x (v1 v2)))   ;=> *** - FUNCALL: undefined function V1
+  (print "v1-x =>")
+;  (print v1-x)   ;=> *** - EXEC_TEST: variable V1-X has no value
+;  (print (v1-x v1))
+  (print (v-x v1))
+
+  
   
 );defun
 
