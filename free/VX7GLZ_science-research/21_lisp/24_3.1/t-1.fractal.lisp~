@@ -1,0 +1,2 @@
+(or gp
+    (setq gp (make-pipe-output-stream *gnuplot* :buffered t))
