@@ -213,7 +213,13 @@
 
 (defun e1 (ls0 n &optional (i 0) ini)
   (if (= i n)
-      (plot-c/dragon "Dragon" ls0 ini n)
+      (progn
+	(print "i == n")
+	(print "ls0 =>")
+	(print ls0)
+	(terpri t)
+      );progn
+;      (plot-c/dragon "Dragon" ls0 ini n)
     (let
 	(
 	 (ls0a
@@ -255,17 +261,17 @@
 ;; 	 (setq l1 (list (car ls0a) (car (cdr ls0a))))   ;=> (#S(V :X 1 :Y 3) #S(V :X 5 :Y 10))
 ;; 	 (print l1)
 
-	 (terpri t)
-	 (setq l1-mapcar (mapcar #'v-x l1))
-	 (print "(mapcar #'v-x l1) =>")
-	 (print l1-mapcar)   ;=> (1 5)
-	 (terpri t)
+	 ;; (terpri t)
+	 ;; (setq l1-mapcar (mapcar #'v-x l1))
+	 ;; (print "(mapcar #'v-x l1) =>")
+	 ;; (print l1-mapcar)   ;=> (1 5)
+	 ;; (terpri t)
 
-	 (terpri t)
-	 (setq l1-mapcar (mapcar #'v-x ls0a))
-	 (print "(mapcar #'v-x ls0a) =>")
-	 (print l1-mapcar)   ;=> (1 5)
-	 (terpri t)
+	 ;; (terpri t)
+	 ;; (setq l1-mapcar (mapcar #'v-x ls0a))
+	 ;; (print "(mapcar #'v-x ls0a) =>")
+	 ;; (print l1-mapcar)   ;=> (1 5)
+	 ;; (terpri t)
 
       (labels (
 	       (drep (rls0 c0 rls1 j)
@@ -293,7 +299,8 @@
 		   );if
 		 );drep
 	       );labels (
-      	(dragon
+      	(e1
+;      	(dragon
       	 (drep
       	  (cdr ls0a)   ; rls0
       	  (car ls0a)   ; c0
@@ -314,4 +321,33 @@
   
 );defun
                               
+;; ref http://jtra.cz/stuff/lisp/sclr/labels.html
+(defun e2 ()
+  (labels
+      ((fact2x (x)
+	 (fact (* 2 x));fact
+	   );fact2x
+	   (fact (x)
+	     (if
+	      (< x 2)
+	      1
+	      (* x (fact (1- x)));(*
+		 );if
+	     );fact
+       );labels(
+    (fact2x 3)
+  );labels
+  );defun e2
 
+(defun e3 ()
+  (labels
+      ((msg (x)
+	 ;(print x));msg
+	 (add-string x));msg
+       (add-string (x)
+	 (format t "~a and y~%" x));add-string
+       );labels(
+    (msg "abc");msg   ;=> 'abc and y'
+    );labels
+  
+);defun e3
