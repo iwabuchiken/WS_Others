@@ -1,0 +1,67 @@
+[] 2017/05/29 14:39:10
+
+ケージ ‘MatrixModels’ は無事に展開され、MD5 サムもチェックされました 
+ パッケージ ‘sandwich’ は無事に展開され、MD5 サムもチェックされました 
+ パッケージ ‘colorspace’ は無事に展開され、MD5 サムもチェックされました 
+ パッケージ ‘Hmisc’ は無事に展開され、MD5 サムもチェックされました 
+ パッケージ ‘e1071’ は無事に展開され、MD5 サムもチェックされました 
+ パッケージ ‘readxl’ は無事に展開され、MD5 サムもチェックされました 
+ パッケージ ‘pbkrtest’ は無事に展開され、MD5 サムもチェックされました 
+ パッケージ ‘quantreg’ は無事に展開され、MD5 サムもチェックされました 
+ パッケージ ‘RcmdrMisc’ は無事に展開され、MD5 サムもチェックされました 
+ パッケージ ‘car’ は無事に展開され、MD5 サムもチェックされました 
+ パッケージ ‘tcltk2’ は無事に展開され、MD5 サムもチェックされました 
+ パッケージ ‘abind’ は無事に展開され、MD5 サムもチェックされました 
+ パッケージ ‘relimp’ は無事に展開され、MD5 サムもチェックされました 
+ パッケージ ‘Rcmdr’ は無事に展開され、MD5 サムもチェックされました 
+
+ ダウンロードされたパッケージは、以下にあります 
+        C:\Users\iwabuchiken\AppData\Local\Temp\Rtmp2LLrBp\downloaded_packages 
+> ース版は後者です
+
+
+------------------------------------------ 2017/05/29 15:37:41
+> install.packages("dplyr")
+Warning in install.packages :
+  cannot open URL 'http://www.stats.ox.ac.uk/pub/RWin/src/contrib/PACKAGES.rds': HTTP status was '404 Not Found'
+also installing the dependencies ‘assertthat’, ‘DBI’, ‘BH’
+
+Warning in install.packages :
+  cannot open URL 'http://www.stats.ox.ac.uk/pub/RWin/bin/windows/contrib/3.4/PACKAGES.rds': HTTP status was '404 Not Found'
+trying URL 'https://cran.rstudio.com/bin/windows/contrib/3.4/assertthat_0.2.0.zip'
+Content type 'application/zip' length 43628 bytes (42 KB)
+downloaded 42 KB
+
+trying URL 'https://cran.rstudio.com/bin/windows/contrib/3.4/DBI_0.6-1.zip'
+Content type 'application/zip' length 745913 bytes (728 KB)
+downloaded 728 KB
+
+trying URL 'https://cran.rstudio.com/bin/windows/contrib/3.4/BH_1.62.0-1.zip'
+Content type 'application/zip' length 16150325 bytes (15.4 MB)
+downloaded 15.4 MB
+
+trying URL 'https://cran.rstudio.com/bin/windows/contrib/3.4/dplyr_0.5.0.zip'
+Content type 'application/zip' length 2556287 bytes (2.4 MB)
+downloaded 2.4 MB
+
+package ‘assertthat’ successfully unpacked and MD5 sums checked
+package ‘DBI’ successfully unpacked and MD5 sums checked
+package ‘BH’ successfully unpacked and MD5 sums checked
+package ‘dplyr’ successfully unpacked and MD5 sums checked
+
+The downloaded binary packages are in
+	C:\Users\iwabuchiken\AppData\Local\Temp\RtmpgD56rO\downloaded_packages
+	
+--------------------------------------- 2017/05/29 15:38:36
+> library(dplyr)
+
+ 次のパッケージを付け加えます: ‘dplyr’ 
+
+ 以下のオブジェクトは ‘package:stats’ からマスクされています: 
+
+     filter, lag 
+
+ 以下のオブジェクトは ‘package:base’ からマスクされています: 
+
+     intersect, setdiff, setequal, union 	
+=============== EOF ===============
