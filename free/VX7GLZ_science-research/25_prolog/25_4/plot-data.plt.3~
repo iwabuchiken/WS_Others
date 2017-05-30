@@ -2,5 +2,4 @@
 #plot "sines.pi~-pi.(3).dat" u 1:2
 plot fpath u 1:2
 
-#pause 1.0
-pause -1 "any key"
+pause 1.0

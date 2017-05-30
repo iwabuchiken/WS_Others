@@ -153,6 +153,10 @@ save_sines_exec_2(Start,Tick,End,Fpath) :-
  * ref http://qiita.com/1024jp/items/f0ccbab6422a6a64e130
 plot_data('C:/WORKS_2/WS/WS_Others/free/VX7GLZ_science-research/24_3_prolog/25_4/sines.pi~-pi.(3).dat',
 'C:\\WORKS_2\\WS\\WS_Others\\free\\VX7GLZ_science-research\\24_3_prolog\\25_4\\plot-data.plt').
+
+plot_data('C:\\WORKS_2\\WS\\WS_Others\\free\\VX7GLZ_science-research\\25_prolog\\25_4\\sines.pi~-pi.(3).dat','C:\\WORKS_2\\WS\\WS_Others\\free\\VX7GLZ_science-research\\25_prolog\\25_4\\plot-data.plt').
+
+
 * *
  */
 plot_data(DataFilepath, SourceFilePath) :-
