@@ -1,0 +1,13 @@
+﻿#include @"TaskWindow\ancestorDialog\ancestorDialog.ph"
+
+#requires @"TaskWindow\ancestorDialog\ancestorDialog.dlg"
+% privately used packages
+#include @"pfc\vpi\vpi.ph"
+#include @"pfc\resourceIdentifiers.ph"
+
+% private interfaces
+
+% private classes
+
+% implementations
+#include @"TaskWindow\ancestorDialog\ancestorDialog.pro"
