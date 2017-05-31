@@ -86,6 +86,15 @@ clauses
 predicates
     onFileOpen : window::menuItemListener.
 clauses
+    onFileOpen(_Source, _MenuTag) :-
+    Filename = vpiCommonDialogs::getFileName(
+        "*.txt", ["Family data files (*.txt)","*.txt","All files", "*.*"],
+        "Load family database",
+        [], ".", _),
+    ! ,
+    reconsult(Filename),
+    stdIO::writef("Database % loaded\n", Filename).
+
     onFileOpen(_Source, _MenuTag).
 
 % This code is maintained automatically, do not update it manually. 13:28:53-31.5.2017
