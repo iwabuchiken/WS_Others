@@ -1,0 +1,5 @@
+set xrange[-pi*3:pi*3]
+set grid lw 2
+
+plot sin(x), sin(x*510/500.0), sin(x*520/500.0)
+
