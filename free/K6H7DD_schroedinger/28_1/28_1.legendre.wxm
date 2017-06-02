@@ -1,0 +1,80 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 16.04.2 ] */
+
+/* [wxMaxima: input   start ] */
+
+f1 : sin(a) / a;
+arange : [a, -%pi, %pi];
+wxplot2d([f1, sin(a)], arange);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+f1 : sin(a) / a;
+arange : [a, -%pi, %pi];
+wxplot2d([f1, sin(a), a], arange);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+f1 : sin(a) / a;
+n : 2;
+arange : [a, -%pi * n, %pi * n];
+opt : [gnuplot_preamble, "set yrange[-3:3]"];
+wxplot2d([f1, sin(a), a], arange, opt);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+f1 : sin(a) / a;
+n : 50;
+arange : [a, -%pi * n, %pi * n];
+opt : [gnuplot_preamble, "set yrange[-3:3]"];
+wxplot2d([f1, sin(a), a], arange, opt);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+f1 : sin(a) / a;
+n : 50;
+arange : [a, -%pi * n, %pi * n];
+opt : [gnuplot_preamble, "set yrange[-3:3]"];
+wxplot2d([f1, a], arange, opt);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+f1 : sin(a) / a;
+n : 50;
+arange : [a, -%pi * n, %pi * n];
+opt : [gnuplot_preamble, "set yrange[-3:3]"];
+wxplot2d([f1, f1*sin(a), a], arange, opt);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+legendre_p(3,x);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+wxplot2d(legendre_p(3,x), [x, -1,1]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+a : 2;
+wxplot2d(legendre_p(a,x), [x, -1,1]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+a : 4;
+wxplot2d(legendre_p(a,x), [x, -1,1]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+g1 : (1/(2^n*n!));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+g1 : (1/(2^n*n!));;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+wxplot2d(g1, [n, 1, 4]);
+/* [wxMaxima: input   end   ] */
+
+/* Maxima can't load/batch files which end with a comment! */
+"Created with wxMaxima"$
