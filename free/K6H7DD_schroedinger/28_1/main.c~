@@ -1,0 +1,83 @@
+/*
+ * file : C:\WORKS_2\WS\WS_Others\free\K6H7DD_schroedinger\28_1\main.c
+ * at : 2017/06/02 18:13:21
+ * in project : res free# / K6H7DD 28#2 / シュレーディンガー方程式 / 20170602_180556
+ *
+ * <usage>
+pushd C:\WORKS_2\WS\WS_Others\free\K6H7DD_schroedinger\28_1
+gcc main.c -o main.exe
+main.exe
+
+ *
+ */
+
+#include "include/utils.h"
+
+//void generate_Solutions() {
+//
+//	double psy_0 = 0.0;
+//	double f_0 = 0.1;
+//
+//	double V;	// potential energy
+//
+//	double E = 2.6760079;	// Energy of the electron
+//
+//	float tick = 0.1;
+//
+//	int max = 20;	// x coordinate where psy gets to be zero
+//
+////	double psys[200];
+////	double psys[(int)(max / 0.1)];
+//
+//
+//
+////	double data[10][2];
+////	double data[(int)(max / tick)][2];
+////
+////	printf("[%s:%d] data size => %d\n",
+////			basename(__FILE__, '\\'), __LINE__, sizeof(data) / sizeof(double));
+//
+//
+//	// loop
+//	int i;	// iteration
+//
+//	for (i = 0.1; i < max; i = i + tick) {
+//
+//		// V : potential energy
+//		if (i < 5 || i >= 15) {
+//
+//			V = 50.0;
+//
+//		} else {//if (i < 5 || i >= 15)
+//
+//			V = 0.0;
+//
+//		}//if (i < 5 || i >= 15)
+//
+//
+//
+//	}//for (i = 0; i < 20; ++i) {
+//
+//
+//	//debug
+//	printf("[%s:%d] generate_Solutions() ---> done\n", basename(__FILE__, '\\'), __LINE__);
+//
+//
+//}//generate_Solutions()
+//
+int main(int argc, char *argv[]) {
+
+	/********************************************************
+	 *
+	 * operations
+	 *
+	*********************************************************/
+//	generate_Solutions();
+
+	printf("[%s:%d] yes, done\n", basename(__FILE__, '\\'), __LINE__);
+//	printf("[%s:%d] done\n", __FILE__, __LINE__);
+
+
+	return 0;
+
+}
