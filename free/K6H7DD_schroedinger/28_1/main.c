@@ -5,8 +5,10 @@
  *
  * <usage>
 pushd C:\WORKS_2\WS\WS_Others\free\K6H7DD_schroedinger\28_1\data
+pushd C:\WORKS_2\WS\WS_Others\free\K6H7DD_schroedinger\28_1
 gcc main.c -o main.exe
 main.exe
+main.exe 2.6760079
 
 ## gnuplot
 cd "C:/WORKS_2/WS/WS_Others/free/K6H7DD_schroedinger/28_1/data"
@@ -15,6 +17,11 @@ plot "psys_fs.20170602_220219.dat" u 1, "psys_fs.20170602_220219.dat" u 2
 fname = "psys_fs.20170602_220759.E-2.6660079.dat"
 fname = "psys_fs.20170602_221926.E-2.7215891.dat"
 plot fname u 1 with lines lw 1, fname u 2 with lines lw 1
+
+load "C:/WORKS_2/WS/WS_Others/free/K6H7DD_schroedinger/28_1/shooting-method.plt"
+
+### xyzzy
+C:\WORKS_2\Programs\freeware\xyzzy\xyzzy C:\WORKS_2\WS\WS_Others\free\K6H7DD_schroedinger\28_1\shooting-method.plt
 
  *
  */

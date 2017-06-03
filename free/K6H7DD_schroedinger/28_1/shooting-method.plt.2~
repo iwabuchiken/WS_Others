@@ -4,10 +4,9 @@ set yrange[-15:40]
 set grid lw 2
 
 #e = 2.67
-#e = 2.6760079
+e = 2.6760079
 
-#fname = sprintf("level-1.E-%1.7f.dat", e)
-#fname = "data/psys_fs.20170603_232202.E-2.6760079.dat"
+fname = sprintf("level-1.E-%1.7f.dat", e)
 
 set title fname
 
