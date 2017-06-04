@@ -14,6 +14,7 @@ gp.py -E2.721589094 --PLOT_GO --SAVE_IMAGE_GO
 
 #ref http://blog1.erp2py.com/2010/10/pythonpath.html
 import sys
+from sympy.functions.combinatorial.numbers import nP
 sys.path.append('.')
 #ref https://stackoverflow.com/questions/714881/how-to-include-external-python-code-to-use-in-other-files
 from libs import *
@@ -81,11 +82,11 @@ def location(depth=0):
 	@param E ---> "gp.py -E2.72159" ==> 'psys[199] = 0.018659'
 '''
 #ref 'False' https://www.codecademy.com/en/forum_questions/509f1eaedc99f2a6050000c0 "Pickles123"
-def plot_PsysData(psys, fs, E, width, dpath, output = False, tick=0.1):
+def psysData_Plot(psys, fs, E, width, dpath, output = False, tick=0.1):
 # def plot_PsysData(psys, fs, E, width, output = False, tick=0.1):
 # def plot_PsysData(psys, fs, E, width, output = false):
 
-	print "[%s:%d] plot_PsysData(psys, fs)" % (thisfile(), linenum())
+	print "[%s:%d] psysData_Plot(psys, fs)" % (thisfile(), linenum())
 
 	x = np.arange(0, width, tick)
 # 	x = np.arange(0, 20, 0.1)
@@ -107,36 +108,36 @@ def plot_PsysData(psys, fs, E, width, dpath, output = False, tick=0.1):
 	pyplot.plot(x, psys)
 # 	pyplot.show()
 
-	'''
-	output
-	'''
+# 	'''
+# 	output
+# 	'''
+# # 	if output == True :
+# 		
+# # 	filename = "data/psy_fs.%s.E-%2.9f.psys-%3.6f.png" % \
+# # 			(get_TimeLabel_Now(mili=True), E, psys[len(psys) - 1])
+# 	file_path = "%s/psy_fs.E-%2.9f_psys-%3.6f_width-%3d_tick-%2.2f.png" % \
+# 			(dpath, E, psys[len(psys) - 1], width, tick)
+# # 		filename = "data/psy_fs.%s.E-%2.9f.png" % (get_TimeLabel_Now(), E)
+# # 		filename = "data/psy_fs.%s.E-%2.9f.dat" % (get_TimeLabel_Now(), E)
+# 		
+# 	print "[%s:%d] file path => %s" % (thisfile(), linenum(), file_path)
+# # 	print "[%s:%d] filename => %s" % (thisfile(), linenum(), filename)
+# 
+# 	# basename
+# 	file_name = os.path.basename(file_path)
+# 	
+# 	print "[%s:%d] file_name => %s" % (thisfile(), linenum(), file_name)
+	
+
+# 	# dir path
+# 	#ref http://www.gesource.jp/programming/python/code/0009.html
+# 	os.makedirs(dpath)
+
 # 	if output == True :
-		
-# 	filename = "data/psy_fs.%s.E-%2.9f.psys-%3.6f.png" % \
-# 			(get_TimeLabel_Now(mili=True), E, psys[len(psys) - 1])
-	file_path = "%s/psy_fs.E-%2.9f_psys-%3.6f_width-%3d_tick-%2.2f.png" % \
-			(dpath, E, psys[len(psys) - 1], width, tick)
-# 		filename = "data/psy_fs.%s.E-%2.9f.png" % (get_TimeLabel_Now(), E)
-# 		filename = "data/psy_fs.%s.E-%2.9f.dat" % (get_TimeLabel_Now(), E)
-		
-	print "[%s:%d] file path => %s" % (thisfile(), linenum(), file_path)
-# 	print "[%s:%d] filename => %s" % (thisfile(), linenum(), filename)
-
-	# basename
-	file_name = os.path.basename(file_path)
-	
-	print "[%s:%d] file_name => %s" % (thisfile(), linenum(), file_name)
-	
-
-	# dir path
-	#ref http://www.gesource.jp/programming/python/code/0009.html
-	os.makedirs(dpath)
-
-	if output == True :
-		
-		pyplot.savefig(file_path)
-		
-		print "[%s:%d] file => saved : '%s'" % (thisfile(), linenum(), file_path)
+# 		
+# 		pyplot.savefig(file_path)
+# 		
+# 		print "[%s:%d] file => saved : '%s'" % (thisfile(), linenum(), file_path)
 
 		
 	#ref http://qiita.com/irs/items/cd1556c568887ff2bdd7
@@ -155,7 +156,67 @@ def plot_PsysData(psys, fs, E, width, dpath, output = False, tick=0.1):
 # 		pyplot.show()
 	
 
-#]]def plot_PsysData(psys, fs, E, width, output = false):
+#]]def psysData_Plot(psys, fs, E, width, output = false):
+
+# def plot_PsysData(psys, fs, E, width, output = False, tick=0.1):
+def psysData_SaveImage(psys, fs, E, width, dpath, output = False, tick=0.1, suffix=None):
+# def psysData_SaveImage(psys, fs, E, width, dpath, output = False, tick=0.1):
+# def plot_PsysData(psys, fs, E, width, output = false):
+
+	print "[%s:%d] psysData_Plot(psys, fs)" % (thisfile(), linenum())
+
+	x = np.arange(0, width, tick)
+
+	#ref https://stackoverflow.com/questions/8209568/how-do-i-draw-a-grid-onto-a-plot-in-python "answered Nov 21 '11 at 11:00"
+	fig = pyplot.figure()
+	ax = fig.gca()
+	ax.set_xticks(np.arange(0, 20, 5))
+# 		ax.set_xticks(numpy.arange(0, 1, 0.1))
+	ax.set_yticks(np.arange(0, 40, 5))
+# 	ax.set_yticks(np.arange(0, 1., 0.1))
+	
+	pyplot.grid()
+	
+	pyplot.title("Psys : E=%2.9f" % E)
+
+	pyplot.plot(x, psys)
+
+	'''
+	output
+	'''
+	if suffix != None :
+		file_path = "%s/psy_fs.(%d).E-%2.9f_psys-%3.6f_width-%3d_tick-%2.2f.png" % \
+				(dpath, suffix, E, psys[len(psys) - 1], width, tick)
+	else :
+		file_path = "%s/psy_fs.E-%2.9f_psys-%3.6f_width-%3d_tick-%2.2f.png" % \
+				(dpath, E, psys[len(psys) - 1], width, tick)
+		
+	print "[%s:%d] file path => %s" % (thisfile(), linenum(), file_path)
+
+	# basename
+	file_name = os.path.basename(file_path)
+	
+	print "[%s:%d] file_name => %s" % (thisfile(), linenum(), file_name)
+	
+	# dir path
+	#ref http://www.gesource.jp/programming/python/code/0009.html
+	#ref https://stackoverflow.com/questions/273192/how-can-i-create-a-directory-if-it-does-not-exist "answered Nov 7 '08 at 19:06"
+	if not os.path.exists(dpath):
+		
+		os.makedirs(dpath)
+
+	pyplot.savefig(file_path)
+		
+	print "[%s:%d] file => saved : '%s'" % (thisfile(), linenum(), file_path)
+		
+		
+	# clear the figure
+	#ref https://stackoverflow.com/questions/8213522/when-to-use-cla-clf-or-close-for-clearing-a-plot-in-matplotlib "answered Nov 22 '11 at 14:54"
+	pyplot.clf()
+ 	
+	pyplot.close()
+		
+#]]def psysData_SaveImage(psys, fs, E, width, output = false):
 
 
 def calculate(E = 2.6660079, V_ceiling = 50.0, tick	= 0.1, width	= 20):
@@ -222,7 +283,7 @@ def calculate(E = 2.6660079, V_ceiling = 50.0, tick	= 0.1, width	= 20):
 	
 #]]def calculate():
 
-def exec_shooting(E, width_, tick_, dpath, flag_Plot = False, flag_SaveImage = False,):
+def exec_shooting(E, width_, tick_, dpath, flag_Plot = False, flag_SaveImage = False, suffix_=None):
 # def exec_shooting(E, width_, tick_, flag_Plot = False, flag_SaveImage = False):
 	
 	psys, fs = calculate(E, tick=tick_, width=width_)
@@ -235,15 +296,25 @@ def exec_shooting(E, width_, tick_, dpath, flag_Plot = False, flag_SaveImage = F
 		 (thisfile(), linenum(), len(psys) - 1, psys[len(psys) - 1])
 
 	'''
+	Save image
+	'''
+	if flag_SaveImage == True :
+		
+		psysData_SaveImage(psys, fs, E, width_, dpath, output=True, tick=tick_, suffix=suffix_)
+# 		psysData_SaveImage(psys, fs, E, width_, dpath, output=True, tick=tick_)
+# 		psysData_SaveImage(psys, fs, E, width_, dpath, output=True, tick=tick_)
+# 		psysData_SaveImage(psys, fs, E, width, dpath, output=True, tick=tick_)
+		
+	'''
 	Plot
 	'''
 	if flag_Plot == True :
 		#plot_PsysData(psys, fs, E, width, output = False)
 		output_ = False
+# 		
+# 		if flag_SaveImage == True : output_ = True
 		
-		if flag_SaveImage == True : output_ = True
-		
-		plot_PsysData(psys, fs, E, width_, dpath, output = output_, tick=tick_)
+		psysData_Plot(psys, fs, E, width_, dpath, output = output_, tick=tick_)
 # 		plot_PsysData(psys, fs, E, width_, output = output_, tick=tick_)
 	
 	
@@ -359,7 +430,7 @@ def shooting():
 		
 		if flag_SaveImage == True : output_ = True
 		
-		plot_PsysData(psys, fs, E, width_, output = output_, tick=tick_)
+		psysData_Plot(psys, fs, E, width_, output = output_, tick=tick_)
 # 		plot_PsysData(psys, fs, E, width_, output = True, tick=tick_)
 	# 	plot_PsysData(psys, fs, E, width_, output = False, tick=tick_)
 
@@ -495,9 +566,144 @@ def shooting_2():
 
 #]]def shooting_2():
 	
+def shooting_3():
+
+	#ref https://www.tutorialspoint.com/python/python_command_line_arguments.htm
+# 	print sys.argv
+# 	print sys.argv[1:]
+
+	# variables
+	E = None
+	
+	flag_Plot = False
+	flag_SaveImage = False
+
+	#test
+	opts = get_opt(sys.argv[1:])
+	
+	print "[%s:%d] opts => " % (thisfile(), linenum()), opts
+
+	if len(opts) > 0 :
+		
+		for elem in opts :
+			
+			if elem[0] == '-E' :
+				
+				#ref https://stackoverflow.com/questions/455612/limiting-floats-to-two-decimal-points "answered Jun 30 '11 at 18:53"
+				E = round(float(elem[1]), 9)
+# 				E = float(elem[1])
+				
+				print "[%s:%d] E is now => %.9f" % (thisfile(), linenum(), E)
+# 				print "[%s:%d] E is now => %f" % (thisfile(), linenum(), E)
+
+			elif elem[0] == 'PLOT_GO' :
+				
+				flag_Plot = True
+	
+			elif elem[0] == 'SAVE_IMAGE_GO' :
+				
+				flag_SaveImage = True
+	
+			
+	
+# 	try:
+# 		
+# 		print "[%s:%d] getopt => calling..." % (thisfile(), linenum())
+# 
+# 		opts, args = getopt.getopt(sys.argv[1:],"Ei:o:",["ifile=","ofile="])
+# # 		opts, args = getopt.getopt(sys.argv[1:],"hi:o:",["ifile=","ofile="])
+# # 		opts, args = getopt.getopt(argv,"hi:o:",["ifile=","ofile="])
+# 
+# 		#debug
+# 		print opts
+# 
+# 	except getopt.GetoptError:
+# 		print 'test.py -i <inputfile> -o <outputfile>'
+# 		sys.exit(2)
+
+	# put value to E
+	if E == None : E = 2.676
+
+# 	print "[%s:%d] passing E value => %f" % (thisfile(), linenum(), E)
+	
+	width_ = 20
+	
+	tick_ = 0.1
+
+	# dir path
+	dpath = "images/images_%s" % get_TimeLabel_Now()
+
+	print "[%s:%d] dpath => %s" % (thisfile(), linenum(), dpath)
+	
+	
+
+	'''
+	Exec : shooting
+	'''
+	offsets = np.arange(0, 9, 0.1)
+# 	offsets = np.arange(0, 2, 0.1)
+
+	count = 1
+	
+	for n in offsets :
+		
+		exec_shooting(\
+				E + n, width_, tick_, dpath, \
+				flag_Plot, flag_SaveImage, suffix_=count)
+# 		exec_shooting(E + n, width_, tick_, dpath, flag_Plot, flag_SaveImage)
+		
+		count += 1
+	
+# 	exec_shooting(E, width_, tick_, flag_Plot, flag_SaveImage)
+# 	exec_shooting(E, width_, tick_, dpath, flag_Plot, flag_SaveImage)
+
+
+# 	psys, fs = calculate(E, tick=tick_, width=width_)
+# # 	psys, fs = calculate(E, tick=0.1, width=width_)
+# # 	psys, fs = calculate(E, tick=0.1)
+# # 	psys, fs = calculate(E, tick=0.2)
+# # 	psys, fs = calculate(tick=0.2, E = 2.676)
+# # 	psys, fs = calculate(tick=0.2)
+# # 	psys, fs = calculate()
+# 	
+# # 	#debug
+# # 	a = 10
+# # 	max_num = len(psys)
+# #  	
+# # 	for i in range(max_num - a, max_num) :
+# # # 	for i in range(max_num - 1 - a, max_num - 1) :
+# # # 	for i in range(max_num / 2, max_num / 2 + 10) :
+# #  		
+# # 		#ref multiline https://stackoverflow.com/questions/53162/how-can-i-do-a-line-break-line-continuation-in-python "answered Sep 9 '08 at 23:52"
+# # 		print "[%s:%d] psys[%d] = %f / fs[%d] = %f" \
+# # 				% (thisfile(), linenum(), i, psys[i], i, fs[i])
+# 
+# 	#ref multiline comment https://stackoverflow.com/questions/7696924/way-to-create-multiline-comments-in-python ""answered Oct 8 '11 at 12:58
+# 	'''
+# 	report ==> last index value
+# 	'''
+# 	print "[%s:%d] psys[%d] = %f" %\
+# 		 (thisfile(), linenum(), len(psys) - 1, psys[len(psys) - 1])
+# 
+# 	'''
+# 	Plot
+# 	'''
+# 	if flag_Plot == True :
+# 		#plot_PsysData(psys, fs, E, width, output = False)
+# 		output_ = False
+# 		
+# 		if flag_SaveImage == True : output_ = True
+# 		
+# 		plot_PsysData(psys, fs, E, width_, output = output_, tick=tick_)
+# 		plot_PsysData(psys, fs, E, width_, output = True, tick=tick_)
+	# 	plot_PsysData(psys, fs, E, width_, output = False, tick=tick_)
+
+#]]def shooting_3():
+	
 if __name__ == '__main__':
 	
-	shooting_2()
+	shooting_3()
+# 	shooting_2()
 # 	shooting()
 	
 # 	#debug
