@@ -108,7 +108,8 @@ def plot_PsysData(psys, fs, E, width, output = False, tick=0.1):
 	'''
 # 	if output == True :
 		
-	filename = "data/psy_fs.%s.E-%2.9f.png" % (get_TimeLabel_Now(mili=True), E)
+	filename = "data/psy_fs.%s.E-%2.9f.psys-%3.6f.png" % \
+			(get_TimeLabel_Now(mili=True), E, psys[len(psys) - 1])
 # 		filename = "data/psy_fs.%s.E-%2.9f.png" % (get_TimeLabel_Now(), E)
 # 		filename = "data/psy_fs.%s.E-%2.9f.dat" % (get_TimeLabel_Now(), E)
 		
