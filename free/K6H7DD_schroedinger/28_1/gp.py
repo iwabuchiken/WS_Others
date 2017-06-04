@@ -3,7 +3,6 @@
 
 #ref http://blog1.erp2py.com/2010/10/pythonpath.html
 import sys
-from sympy.logic.boolalg import false
 sys.path.append('.')
 #ref https://stackoverflow.com/questions/714881/how-to-include-external-python-code-to-use-in-other-files
 from libs import *
@@ -33,9 +32,9 @@ import inspect
 #gp.p('myfigure.png')
 
 ##ref http://programming-study.com/technology/python-matplotlib/#matplotlib-2
-import math
-import numpy as np
-from matplotlib import pyplot
+#import math
+#import numpy as np
+#from matplotlib import pyplot
 #
 #
 #
@@ -68,9 +67,6 @@ def location(depth=0):
 # 	print "line"
 
 def calculate(E = 2.6660079, V_ceiling = 50.0, tick	= 0.1, width	= 20):
-
-	print "[%s:%d] E => %f" % (thisfile(), linenum(), E)
-
 
 # 	E		= 2.6660079		# energy of an electron
 # 	tick	= 0.1
@@ -134,28 +130,6 @@ def calculate(E = 2.6660079, V_ceiling = 50.0, tick	= 0.1, width	= 20):
 	
 #]]def calculate():
 
-def plot_PsysData(psys, fs, E, width, output = false):
-	
-	print "[%s:%d] plot_PsysData(psys, fs)" % (thisfile(), linenum())
-
-	#ref https://docs.scipy.org/doc/numpy/reference/generated/numpy.linspace.html
-	x = np.arange(0, 20, 0.1)
-	
-	print "[%s:%d] len(x) => %d" % (thisfile(), linenum(), len(x))
-
-# 	x = np.linspace(0, 20, len(psys))
-	y = np.sin(x)
-
-# 	pyplot.plot(x, y)
-	pyplot.plot(x, psys)
-	pyplot.show()
-	
-# 	filename = "-E2.721589094"
-# 	pyplot.savefig(filename)
-	
-#]]plot_PsysData(psys, fs)	
-	
-
 def shooting():
 
 	#ref https://www.tutorialspoint.com/python/python_command_line_arguments.htm
@@ -168,30 +142,74 @@ def shooting():
 	#test
 	opts = get_opt(sys.argv[1:])
 	
+# 	print opts
+	
+	
+	
 	if len(opts) > 0 :
 		
+# 		print opts[0][1], " ", "is ", opts[0][1] * 2	#=> '2.68   is  2.682.68'
+# # 		print opts[0][1]
+# 		print float(opts[0][1]), " ", "is ", float(opts[0][1]) * 2	#=> '2.68   is  5.36'
+# # 		print float(opts[0][1])
+	
 		for elem in opts :
 			
 			if elem[0] == '-E' :
 				
-# 				E = round(float(elem[1]), 9)
-# 				E = round(float(elem[1]), 7)
-				E = float(elem[1])
+				E = round(float(elem[1]), 9)
+# 				E = float(elem[1])
 				
-				print "[%s:%d] E is now => %f" % (thisfile(), linenum(), E)
+				print "[%s:%d] E is now => %.9f" % (thisfile(), linenum(), E)
+# 				print "[%s:%d] E is now => %f" % (thisfile(), linenum(), E)
 	
-	##]if len(opts) > 0 :
+			
+# 			print elem
+			
+# 			for key, val in elem :
+# 				
+# 				print "[%s:%d] key => %s" % (thisfile(), linenum(), key)
 	
+	
+# 	try:
+# 		
+# 		print "[%s:%d] getopt => calling..." % (thisfile(), linenum())
+# 
+# 		opts, args = getopt.getopt(sys.argv[1:],"Ei:o:",["ifile=","ofile="])
+# # 		opts, args = getopt.getopt(sys.argv[1:],"hi:o:",["ifile=","ofile="])
+# # 		opts, args = getopt.getopt(argv,"hi:o:",["ifile=","ofile="])
+# 
+# 		#debug
+# 		print opts
+# 
+# 	except getopt.GetoptError:
+# 		print 'test.py -i <inputfile> -o <outputfile>'
+# 		sys.exit(2)
+
 	# put value to E
 	if E == None : E = 2.676
 
-	'''
-	Calculate
-	'''
-	width = 20
+# 	print "[%s:%d] passing E value => %f" % (thisfile(), linenum(), E)
 	
-	psys, fs = calculate(E, width, tick=0.1)
+
+	psys, fs = calculate(E, tick=0.1)
+# 	psys, fs = calculate(E, tick=0.2)
+# 	psys, fs = calculate(tick=0.2, E = 2.676)
+# 	psys, fs = calculate(tick=0.2)
+# 	psys, fs = calculate()
 	
+# 	#debug
+# 	a = 10
+# 	max_num = len(psys)
+#  	
+# 	for i in range(max_num - a, max_num) :
+# # 	for i in range(max_num - 1 - a, max_num - 1) :
+# # 	for i in range(max_num / 2, max_num / 2 + 10) :
+#  		
+# 		#ref multiline https://stackoverflow.com/questions/53162/how-can-i-do-a-line-break-line-continuation-in-python "answered Sep 9 '08 at 23:52"
+# 		print "[%s:%d] psys[%d] = %f / fs[%d] = %f" \
+# 				% (thisfile(), linenum(), i, psys[i], i, fs[i])
+
 	#ref multiline comment https://stackoverflow.com/questions/7696924/way-to-create-multiline-comments-in-python ""answered Oct 8 '11 at 12:58
 	'''
 	report ==> last index value
@@ -199,13 +217,99 @@ def shooting():
 	print "[%s:%d] psys[%d] = %f" %\
 		 (thisfile(), linenum(), len(psys) - 1, psys[len(psys) - 1])
 
-	'''
-	generate : data file
-	'''
-# 	plot_PsysData(psys, fs)
-# 	plot_PsysData(psys, fs, E, width, output = false)
 
-#]]def shooting()
+# 	E		= 2.6660079		# energy of an electron
+# 	tick	= 0.1
+# 	width	= 20
+# 	max_num		= int(width / tick)
+# # 	max		= width / tick
+# 	
+# 	V = 0.0		# potential energy
+# 	
+# 	print "E = %f" % E
+# 	
+# 	psys = [None] * max_num
+# 	fs = [None] * max_num
+# # 	psys = [max_num]
+# # 	fs = [max_num]
+# 	
+# 	print "[%s:%d] max_num = %d" % (thisfile(), linenum(), max_num)
+# 	
+# 	# initial values
+# 	psy_0 = 0.0;
+# 	f_0 = 0.1;
+# 	
+# 	psy_cur	= 0.0;
+# 	f_cur	= 0.0;
+# 
+# 	psy_prev = psy_0;
+# 	f_prev = f_0;
+# 
+# 	h2_2m = 38.14;
+# 
+# 	
+# 	psys[0] = psy_0
+# 	fs[0] = f_0
+# 	
+# # 	print "[%s:%d] meesge" % location()
+# 	
+# 	# iterate
+# # 	for i in range(1, max_num - 1, 1):
+# 	for i in range(1, max_num, 1):
+# # 	for i = 1; i <= max; i ++:
+# 		
+# 		if i * tick < 5 or i * tick >= 15 : V = 50.0
+# 		else : V = 0.0
+# 
+# 		psy_cur = tick * f_prev + psy_prev
+# 
+# 		f_cur = -1 * tick * psy_prev * (E - V) / h2_2m + f_prev
+# 
+# # 		#debug
+# # 		print "[%s:%d] i = %d" % (thisfile(), linenum(), i)
+# 
+# 
+# 		psys[i]	= psy_cur
+# 		fs[i]	= f_cur
+# 
+# 		# update prev
+# 		psy_prev	= psy_cur
+# 		f_prev		= f_cur
+# 
+# 		
+# # 		// V : potential energy
+# # 		if (i * tick < 5 || i * tick >= 15) V = 50.0;
+# # 		else V = 0.0;
+# # 
+# # 		// calc
+# # 		psy_cur = tick * f_prev + psy_prev;
+# # 
+# # 		f_cur = -1 * tick * psy_prev * (E - V) / h2_2m + f_prev;
+# # 
+# # 		psys[i]	= psy_cur;
+# # 		fs[i]	= f_cur;
+# # 
+# # //		printf("[%s:%d] psy_cur = %2.7f / f_cur = %2.7f\n",
+# # //				basename(__FILE__, '\\'), __LINE__, psy_cur, f_cur);
+# # 
+# # 
+# # 		// update prev
+# # 		psy_prev	= psy_cur;
+# # 		f_prev		= f_cur;
+# # 
+# # 	}//for (i = 0; i < 20; ++i) {
+# 	#]] for
+# 
+# # 	#debug
+# # 	a = 10
+# # 	
+# # 	for i in range(max_num - 1 - a, max_num - 1) :
+# # # 	for i in range(max_num / 2, max_num / 2 + 10) :
+# # 		
+# # 		print "[%s:%d] psys[%d] = %f" % (thisfile(), linenum(), i, psys[i])
+# 
+# 	# return
+# 	return (psys, fs)
 	
 if __name__ == '__main__':
 	
