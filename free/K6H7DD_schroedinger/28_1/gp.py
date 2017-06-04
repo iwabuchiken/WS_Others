@@ -1,3 +1,11 @@
+'''
+<Usage>
+gp.py -E2.721589094 --PLOT_GO --SAVE_GO
+
+gp.py -E2.721589094 --PLOT_GO --SAVE_IMAGE_GO
+
+'''
+
 #ref https://pypi.python.org/pypi/PyGnuplot
 # pushd C:\WORKS_2\WS\WS_Others\free\K6H7DD_schroedinger\28_1
 
@@ -80,22 +88,52 @@ def plot_PsysData(psys, fs, E, width, output = False, tick=0.1):
 	
 # 	print "[%s:%d] x => " % (thisfile(), linenum()), x
 
+	#ref https://stackoverflow.com/questions/8209568/how-do-i-draw-a-grid-onto-a-plot-in-python "answered Nov 21 '11 at 11:00"
+	fig = pyplot.figure()
+	ax = fig.gca()
+	ax.set_xticks(np.arange(0, 20, 5))
+# 		ax.set_xticks(numpy.arange(0, 1, 0.1))
+	ax.set_yticks(np.arange(0, 40, 5))
+# 	ax.set_yticks(np.arange(0, 1., 0.1))
+	
+	pyplot.grid()
+	
+	pyplot.title("Psys : E=%2.9f" % E)
+
 	pyplot.plot(x, psys)
 # 	pyplot.show()
 
 	'''
 	output
 	'''
-	if output == True :
+# 	if output == True :
 		
-		filename = "data/psy_fs.%s.E-%2.9f.png" % (get_TimeLabel_Now(), E)
+	filename = "data/psy_fs.%s.E-%2.9f.png" % (get_TimeLabel_Now(mili=True), E)
+# 		filename = "data/psy_fs.%s.E-%2.9f.png" % (get_TimeLabel_Now(), E)
 # 		filename = "data/psy_fs.%s.E-%2.9f.dat" % (get_TimeLabel_Now(), E)
 		
-		print "[%s:%d] filename => %s" % (thisfile(), linenum(), filename)
+	print "[%s:%d] filename => %s" % (thisfile(), linenum(), filename)
 
-# 		pyplot.savefig(filename)
+	if output == True :
+		pyplot.savefig(filename)
 		
-		pyplot.show()
+		print "[%s:%d] file => saved : '%s'" % (thisfile(), linenum(), filename)
+
+		
+	#ref http://qiita.com/irs/items/cd1556c568887ff2bdd7
+# 		pyplot.grid(which='major',color='gray',linestyle='*')
+# 		pyplot.grid(which='minor',color='black',linestyle='-')
+
+# 		fig = pyplot.figure()
+# 		ax = fig.gca()
+# 		ax.set_xticks(np.arange(0, 20, 1))
+# # 		ax.set_xticks(numpy.arange(0, 1, 0.1))
+# 		ax.set_yticks(np.arange(0, 1., 0.1))
+# 		
+# 		pyplot.grid()
+	
+	pyplot.show(True)
+# 		pyplot.show()
 	
 
 #]]def plot_PsysData(psys, fs, E, width, output = false):
@@ -173,10 +211,16 @@ def shooting():
 
 	# variables
 	E = None
+	
+	flag_Plot = False
+
+	flag_SaveImage = False
 
 	#test
 	opts = get_opt(sys.argv[1:])
 	
+	print "[%s:%d] opts => " % (thisfile(), linenum()), opts
+
 # 	print opts
 	
 	
@@ -198,14 +242,16 @@ def shooting():
 				
 				print "[%s:%d] E is now => %.9f" % (thisfile(), linenum(), E)
 # 				print "[%s:%d] E is now => %f" % (thisfile(), linenum(), E)
+
+			elif elem[0] == 'PLOT_GO' :
+				
+				flag_Plot = True
+	
+			elif elem[0] == 'SAVE_IMAGE_GO' :
+				
+				flag_SaveImage = True
 	
 			
-# 			print elem
-			
-# 			for key, val in elem :
-# 				
-# 				print "[%s:%d] key => %s" % (thisfile(), linenum(), key)
-	
 	
 # 	try:
 # 		
@@ -261,9 +307,15 @@ def shooting():
 	'''
 	Plot
 	'''
-	#plot_PsysData(psys, fs, E, width, output = False)
-	plot_PsysData(psys, fs, E, width_, output = True, tick=tick_)
-# 	plot_PsysData(psys, fs, E, width_, output = False, tick=tick_)
+	if flag_Plot == True :
+		#plot_PsysData(psys, fs, E, width, output = False)
+		output_ = False
+		
+		if flag_SaveImage == True : output_ = True
+		
+		plot_PsysData(psys, fs, E, width_, output = output_, tick=tick_)
+# 		plot_PsysData(psys, fs, E, width_, output = True, tick=tick_)
+	# 	plot_PsysData(psys, fs, E, width_, output = False, tick=tick_)
 
 # 	E		= 2.6660079		# energy of an electron
 # 	tick	= 0.1
@@ -360,10 +412,11 @@ def shooting():
 	
 if __name__ == '__main__':
 	
-# 	shooting()
+	shooting()
 	
-	
-	
+# 	#debug
+# 	print "[%s:%d] time label => %s" % (thisfile(), linenum(), get_TimeLabel_Now(string_type="serial", mili=True))
+		
 
 else:
 	print "no"
