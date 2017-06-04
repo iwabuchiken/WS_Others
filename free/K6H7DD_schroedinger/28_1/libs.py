@@ -1,6 +1,10 @@
 import inspect
 import os
 
+#ref https://stackoverflow.com/questions/415511/how-to-get-current-time-in-python "answered Jan 6 '09 at 4:59"
+from time import gmtime, strftime, localtime, time
+from __builtin__ import str
+
 def linenum(depth=0):
 #     print "line"
     
@@ -42,3 +46,26 @@ def get_opt(arg_ary):
             result.append(('-E', elem[2:]))
     
     return result
+
+'''
+    @param string_type
+            serial    "20160604_1934"
+'''
+def get_TimeLabel_Now(string_type="serial", mili=False):
+# def get_TimeLabel_Now(string_type="serial"):
+    
+    t = time()
+    
+    str = strftime("%Y%m%d_%H%M%S", localtime())
+    
+#     if mili == True :
+#         
+#         str += 
+    
+    return str
+    
+    #ref https://stackoverflow.com/questions/415511/how-to-get-current-time-in-python "answered Jan 6 '09 at 4:59"
+#     return strftime("%Y%m%d_%H%M%S", localtime())
+#     return strftime("%Y%m%d_%H%M%S", gmtime())
+    
+#]]get_TimeLabel_Now():

@@ -69,17 +69,34 @@ def location(depth=0):
 '''
 	@param E ---> "gp.py -E2.72159" ==> 'psys[199] = 0.018659'
 '''
-def plot_PsysData(psys, fs, E, width, output = False):
+#ref 'False' https://www.codecademy.com/en/forum_questions/509f1eaedc99f2a6050000c0 "Pickles123"
+def plot_PsysData(psys, fs, E, width, output = False, tick=0.1):
 # def plot_PsysData(psys, fs, E, width, output = false):
 
 	print "[%s:%d] plot_PsysData(psys, fs)" % (thisfile(), linenum())
 
-	x = np.arange(0, 20, 0.1)
+	x = np.arange(0, width, tick)
+# 	x = np.arange(0, 20, 0.1)
 	
-	print "[%s:%d] x => " % (thisfile(), linenum()), x
+# 	print "[%s:%d] x => " % (thisfile(), linenum()), x
 
 	pyplot.plot(x, psys)
-	pyplot.show()
+# 	pyplot.show()
+
+	'''
+	output
+	'''
+	if output == True :
+		
+		filename = "data/psy_fs.%s.E-%2.9f.png" % (get_TimeLabel_Now(), E)
+# 		filename = "data/psy_fs.%s.E-%2.9f.dat" % (get_TimeLabel_Now(), E)
+		
+		print "[%s:%d] filename => %s" % (thisfile(), linenum(), filename)
+
+# 		pyplot.savefig(filename)
+		
+		pyplot.show()
+	
 
 #]]def plot_PsysData(psys, fs, E, width, output = false):
 
@@ -175,6 +192,7 @@ def shooting():
 			
 			if elem[0] == '-E' :
 				
+				#ref https://stackoverflow.com/questions/455612/limiting-floats-to-two-decimal-points "answered Jun 30 '11 at 18:53"
 				E = round(float(elem[1]), 9)
 # 				E = float(elem[1])
 				
@@ -210,8 +228,11 @@ def shooting():
 # 	print "[%s:%d] passing E value => %f" % (thisfile(), linenum(), E)
 	
 	width_ = 20
+	
+	tick_ = 0.1
 
-	psys, fs = calculate(E, tick=0.1, width=width_)
+	psys, fs = calculate(E, tick=tick_, width=width_)
+# 	psys, fs = calculate(E, tick=0.1, width=width_)
 # 	psys, fs = calculate(E, tick=0.1)
 # 	psys, fs = calculate(E, tick=0.2)
 # 	psys, fs = calculate(tick=0.2, E = 2.676)
@@ -241,7 +262,8 @@ def shooting():
 	Plot
 	'''
 	#plot_PsysData(psys, fs, E, width, output = False)
-	plot_PsysData(psys, fs, E, width_, output = False)
+	plot_PsysData(psys, fs, E, width_, output = True, tick=tick_)
+# 	plot_PsysData(psys, fs, E, width_, output = False, tick=tick_)
 
 # 	E		= 2.6660079		# energy of an electron
 # 	tick	= 0.1
@@ -338,17 +360,9 @@ def shooting():
 	
 if __name__ == '__main__':
 	
-	shooting()
+# 	shooting()
 	
-# 	#test
-# #	__line__()
-# 	num = linenum()
-# 	print num
-# 	
-# 	name = thisfile()
-# # 	name = _file()
-# 	
-# 	print name
+	
 	
 
 else:
