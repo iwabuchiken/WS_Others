@@ -1,4 +1,5 @@
 #ref https://pypi.python.org/pypi/PyGnuplot
+# pushd C:\WORKS_2\WS\WS_Others\free\K6H7DD_schroedinger\28_1
 
 #ref http://blog1.erp2py.com/2010/10/pythonpath.html
 import sys
@@ -8,7 +9,7 @@ from libs import *
 # import libs
 
 import getopt
-
+import os
 import inspect
 
 #import PyGnuplot as gp
@@ -75,7 +76,7 @@ def calculate(E = 2.6660079, V_ceiling = 50.0, tick	= 0.1, width	= 20):
 	
 	V = 0.0		# potential energy
 	
-	print "E = %f" % E
+# 	print "E = %f" % E
 	
 	psys = [None] * max_num
 	fs = [None] * max_num
@@ -131,19 +132,89 @@ def calculate(E = 2.6660079, V_ceiling = 50.0, tick	= 0.1, width	= 20):
 
 def shooting():
 
-	psys, fs = calculate(tick=0.2, E = 2.676)
+	#ref https://www.tutorialspoint.com/python/python_command_line_arguments.htm
+# 	print sys.argv
+# 	print sys.argv[1:]
+
+	# variables
+	E = None
+
+	#test
+	opts = get_opt(sys.argv[1:])
+	
+# 	print opts
+	
+	
+	
+	if len(opts) > 0 :
+		
+# 		print opts[0][1], " ", "is ", opts[0][1] * 2	#=> '2.68   is  2.682.68'
+# # 		print opts[0][1]
+# 		print float(opts[0][1]), " ", "is ", float(opts[0][1]) * 2	#=> '2.68   is  5.36'
+# # 		print float(opts[0][1])
+	
+		for elem in opts :
+			
+			if elem[0] == '-E' :
+				
+				E = float(elem[1])
+				
+				print "[%s:%d] E is now => %f" % (thisfile(), linenum(), E)
+	
+			
+# 			print elem
+			
+# 			for key, val in elem :
+# 				
+# 				print "[%s:%d] key => %s" % (thisfile(), linenum(), key)
+	
+	
+# 	try:
+# 		
+# 		print "[%s:%d] getopt => calling..." % (thisfile(), linenum())
+# 
+# 		opts, args = getopt.getopt(sys.argv[1:],"Ei:o:",["ifile=","ofile="])
+# # 		opts, args = getopt.getopt(sys.argv[1:],"hi:o:",["ifile=","ofile="])
+# # 		opts, args = getopt.getopt(argv,"hi:o:",["ifile=","ofile="])
+# 
+# 		#debug
+# 		print opts
+# 
+# 	except getopt.GetoptError:
+# 		print 'test.py -i <inputfile> -o <outputfile>'
+# 		sys.exit(2)
+
+	# put value to E
+	if E == None : E = 2.676
+
+# 	print "[%s:%d] passing E value => %f" % (thisfile(), linenum(), E)
+	
+
+	psys, fs = calculate(E, tick=0.1)
+# 	psys, fs = calculate(E, tick=0.2)
+# 	psys, fs = calculate(tick=0.2, E = 2.676)
 # 	psys, fs = calculate(tick=0.2)
 # 	psys, fs = calculate()
 	
-	#debug
-	a = 10
-	max_num = len(psys)
- 	
-	for i in range(max_num - 1 - a, max_num - 1) :
-# 	for i in range(max_num / 2, max_num / 2 + 10) :
- 		
-		print "[%s:%d] psys[%d] = %f" % (thisfile(), linenum(), i, psys[i])
-	
+# 	#debug
+# 	a = 10
+# 	max_num = len(psys)
+#  	
+# 	for i in range(max_num - a, max_num) :
+# # 	for i in range(max_num - 1 - a, max_num - 1) :
+# # 	for i in range(max_num / 2, max_num / 2 + 10) :
+#  		
+# 		#ref multiline https://stackoverflow.com/questions/53162/how-can-i-do-a-line-break-line-continuation-in-python "answered Sep 9 '08 at 23:52"
+# 		print "[%s:%d] psys[%d] = %f / fs[%d] = %f" \
+# 				% (thisfile(), linenum(), i, psys[i], i, fs[i])
+
+	#ref multiline comment https://stackoverflow.com/questions/7696924/way-to-create-multiline-comments-in-python ""answered Oct 8 '11 at 12:58
+	'''
+	report ==> last index value
+	'''
+	print "[%s:%d] psys[%d] = %f" %\
+		 (thisfile(), linenum(), len(psys) - 1, psys[len(psys) - 1])
+
 
 # 	E		= 2.6660079		# energy of an electron
 # 	tick	= 0.1
@@ -242,15 +313,15 @@ if __name__ == '__main__':
 	
 	shooting()
 	
-	#test
-#	__line__()
-	num = linenum()
-	print num
-	
-	name = thisfile()
-# 	name = _file()
-	
-	print name
+# 	#test
+# #	__line__()
+# 	num = linenum()
+# 	print num
+# 	
+# 	name = thisfile()
+# # 	name = _file()
+# 	
+# 	print name
 	
 
 else:
