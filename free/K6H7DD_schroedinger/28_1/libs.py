@@ -75,7 +75,7 @@ def get_TimeLabel_Now(string_type="serial", mili=False):
     if mili == True :
 
         #ref decimal value https://stackoverflow.com/questions/30090072/get-decimal-part-of-a-float-number-in-python "answered May 7 '15 at 1:56"          
-        str = "%s_%d" % (str, int(t % 1 * 1000))
+        str = "%s_%03d" % (str, int(t % 1 * 1000))
     
     return str
     
