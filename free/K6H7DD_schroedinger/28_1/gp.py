@@ -32,9 +32,9 @@ import inspect
 #gp.p('myfigure.png')
 
 ##ref http://programming-study.com/technology/python-matplotlib/#matplotlib-2
-#import math
-#import numpy as np
-#from matplotlib import pyplot
+import math
+import numpy as np
+from matplotlib import pyplot
 #
 #
 #
@@ -66,6 +66,33 @@ def location(depth=0):
 # def linenum():
 # 	print "line"
 
+def plot_PsysData(psys, fs, E, width, output = False):
+# def plot_PsysData(psys, fs, E, width, output = false):
+	
+	print "[%s:%d] plot_PsysData(psys, fs)" % (thisfile(), linenum())
+
+	#ref https://docs.scipy.org/doc/numpy/reference/generated/numpy.linspace.html
+	#ref http://qiita.com/supersaiakujin/items/4410efe5dc81982ef208
+	x = np.arange(0, 20, 0.1)
+	
+	print "[%s:%d] len(x) => %d" % (thisfile(), linenum(), len(x))
+
+# 	x = np.linspace(0, 20, len(psys))
+	y = np.sin(x)
+
+# 	print psys
+
+# 	pyplot.plot(x, y)
+
+# 	pyplot.plot(x, psys)
+# 	pyplot.show()
+	
+# 	filename = "-E2.721589094"
+# 	pyplot.savefig(filename)
+	
+#]]plot_PsysData(psys, fs)	
+
+
 def calculate(E = 2.6660079, V_ceiling = 50.0, tick	= 0.1, width	= 20):
 
 # 	E		= 2.6660079		# energy of an electron
@@ -83,7 +110,8 @@ def calculate(E = 2.6660079, V_ceiling = 50.0, tick	= 0.1, width	= 20):
 # 	psys = [max_num]
 # 	fs = [max_num]
 	
-	print "[%s:%d] max_num = %d" % (thisfile(), linenum(), max_num)
+# 	print "[%s:%d] max_num = %d / width = %d / tick = %f" % \
+# 			(thisfile(), linenum(), max_num, width, tick)
 	
 	# initial values
 	psy_0 = 0.0;
@@ -103,6 +131,9 @@ def calculate(E = 2.6660079, V_ceiling = 50.0, tick	= 0.1, width	= 20):
 	fs[0] = f_0
 	
 # 	print "[%s:%d] meesge" % location()
+
+# 	print "[%s:%d] max_num = %d" % (thisfile(), linenum(), max_num)
+	
 	
 	# iterate
 # 	for i in range(1, max_num - 1, 1):
@@ -119,6 +150,10 @@ def calculate(E = 2.6660079, V_ceiling = 50.0, tick	= 0.1, width	= 20):
 
 		psys[i]	= psy_cur
 		fs[i]	= f_cur
+
+# 		#debug
+# 		print "[%s:%d] psys[%d] = %f" % (thisfile(), linenum(), i, psys[i])
+
 
 		# update prev
 		psy_prev	= psy_cur
@@ -144,7 +179,8 @@ def shooting():
 	
 # 	print opts
 	
-	
+	tick = 0.1
+	width = 20
 	
 	if len(opts) > 0 :
 		
@@ -192,7 +228,8 @@ def shooting():
 # 	print "[%s:%d] passing E value => %f" % (thisfile(), linenum(), E)
 	
 
-	psys, fs = calculate(E, tick=0.1)
+	psys, fs = calculate(E=E, tick=tick, width=width)
+# 	psys, fs = calculate(E, tick=0.1)
 # 	psys, fs = calculate(E, tick=0.2)
 # 	psys, fs = calculate(tick=0.2, E = 2.676)
 # 	psys, fs = calculate(tick=0.2)
@@ -217,6 +254,8 @@ def shooting():
 	print "[%s:%d] psys[%d] = %f" %\
 		 (thisfile(), linenum(), len(psys) - 1, psys[len(psys) - 1])
 
+	plot_PsysData(psys, fs, E, width, output = False)
+# 	plot_PsysData(psys, fs, E, width, output = false)
 
 # 	E		= 2.6660079		# energy of an electron
 # 	tick	= 0.1
