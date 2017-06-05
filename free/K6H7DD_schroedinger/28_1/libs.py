@@ -45,6 +45,18 @@ def get_opt(arg_ary):
             #ref slice http://www.pythonweb.jp/tutorial/string/index11.html
             result.append(('-E', elem[2:]))
     
+        elif elem.startswith('-s') and len(elem) > 2 :
+            
+            result.append(('-s', elem[2:]))
+    
+        elif elem.startswith('-e') and len(elem) > 2 :
+            
+            result.append(('-e', elem[2:]))
+    
+        elif elem.startswith('-t') and len(elem) > 2 :
+            
+            result.append(('-t', elem[2:]))
+    
         elif elem.startswith('--') and len(elem) > 2 :
             
             if elem == '--PLOT_GO' :

@@ -7,6 +7,12 @@ gp.py -E2.721589094 --PLOT_GO --SAVE_GO
 
 gp.py -E2.721589094 --PLOT_GO --SAVE_IMAGE_GO
 
+### session : 31#1
+pushd C:\WORKS_2\WS\WS_Others\free\K6H7DD_schroedinger\28_1
+gp.py -E2.721589094 --PLOT_GO --SAVE_IMAGE_GO -s10.62 -e 10.92 -t0.01
+gp.py -E2.721589094 --PLOT_GO --SAVE_IMAGE_GO -s10.62 -e 10.92 -t0.001
+gp.py -E2.721589094 --PLOT_GO --SAVE_IMAGE_GO -s10.62 -e 10.92 -t0.001
+
 '''
 
 #ref https://pypi.python.org/pypi/PyGnuplot
@@ -170,10 +176,14 @@ def psysData_SaveImage(psys, fs, E, width, dpath, output = False, tick=0.1, suff
 	#ref https://stackoverflow.com/questions/8209568/how-do-i-draw-a-grid-onto-a-plot-in-python "answered Nov 21 '11 at 11:00"
 	fig = pyplot.figure()
 	ax = fig.gca()
-	ax.set_xticks(np.arange(0, 20, 5))
+	ax.set_xticks(np.arange(0, 20, 2.5))
+# 	ax.set_xticks(np.arange(0, 20, 5))
 # 		ax.set_xticks(numpy.arange(0, 1, 0.1))
-	ax.set_yticks(np.arange(0, 40, 5))
+	ax.set_yticks(np.arange(-400, 400, 5))
+# 	ax.set_yticks(np.arange(0, 40, 5))
 # 	ax.set_yticks(np.arange(0, 1., 0.1))
+
+	ax.set_ylim([-50, 50])
 	
 	pyplot.grid()
 	
@@ -185,10 +195,12 @@ def psysData_SaveImage(psys, fs, E, width, dpath, output = False, tick=0.1, suff
 	output
 	'''
 	if suffix != None :
-		file_path = "%s/psy_fs.(%d).E-%2.9f_psys-%3.6f_width-%3d_tick-%2.2f.png" % \
+# 		file_path = "%s/psy_fs.(%d).E-%2.9f_psys-%3.6f_width-%3d_tick-%2.2f.png" % \
+		file_path = "%s/psy_fs.(%d).E-%2.9f_psys-%3.6f_width-%3d_tick-%2.3f.png" % \
 				(dpath, suffix, E, psys[len(psys) - 1], width, tick)
 	else :
-		file_path = "%s/psy_fs.E-%2.9f_psys-%3.6f_width-%3d_tick-%2.2f.png" % \
+# 		file_path = "%s/psy_fs.E-%2.9f_psys-%3.6f_width-%3d_tick-%2.2f.png" % \
+		file_path = "%s/psy_fs.E-%2.9f_psys-%3.6f_width-%3d_tick-%2.3f.png" % \
 				(dpath, E, psys[len(psys) - 1], width, tick)
 		
 	print "[%s:%d] file path => %s" % (thisfile(), linenum(), file_path)
@@ -653,56 +665,133 @@ def shooting_3():
 # 		exec_shooting(E + n, width_, tick_, dpath, flag_Plot, flag_SaveImage)
 		
 		count += 1
+
+#]]def shooting_3():
 	
-# 	exec_shooting(E, width_, tick_, flag_Plot, flag_SaveImage)
-# 	exec_shooting(E, width_, tick_, dpath, flag_Plot, flag_SaveImage)
+def shooting_4():
 
+	#ref https://www.tutorialspoint.com/python/python_command_line_arguments.htm
+# 	print sys.argv
+# 	print sys.argv[1:]
 
-# 	psys, fs = calculate(E, tick=tick_, width=width_)
-# # 	psys, fs = calculate(E, tick=0.1, width=width_)
-# # 	psys, fs = calculate(E, tick=0.1)
-# # 	psys, fs = calculate(E, tick=0.2)
-# # 	psys, fs = calculate(tick=0.2, E = 2.676)
-# # 	psys, fs = calculate(tick=0.2)
-# # 	psys, fs = calculate()
-# 	
-# # 	#debug
-# # 	a = 10
-# # 	max_num = len(psys)
-# #  	
-# # 	for i in range(max_num - a, max_num) :
-# # # 	for i in range(max_num - 1 - a, max_num - 1) :
-# # # 	for i in range(max_num / 2, max_num / 2 + 10) :
-# #  		
-# # 		#ref multiline https://stackoverflow.com/questions/53162/how-can-i-do-a-line-break-line-continuation-in-python "answered Sep 9 '08 at 23:52"
-# # 		print "[%s:%d] psys[%d] = %f / fs[%d] = %f" \
-# # 				% (thisfile(), linenum(), i, psys[i], i, fs[i])
-# 
-# 	#ref multiline comment https://stackoverflow.com/questions/7696924/way-to-create-multiline-comments-in-python ""answered Oct 8 '11 at 12:58
-# 	'''
-# 	report ==> last index value
-# 	'''
-# 	print "[%s:%d] psys[%d] = %f" %\
-# 		 (thisfile(), linenum(), len(psys) - 1, psys[len(psys) - 1])
-# 
-# 	'''
-# 	Plot
-# 	'''
-# 	if flag_Plot == True :
-# 		#plot_PsysData(psys, fs, E, width, output = False)
-# 		output_ = False
-# 		
-# 		if flag_SaveImage == True : output_ = True
-# 		
-# 		plot_PsysData(psys, fs, E, width_, output = output_, tick=tick_)
-# 		plot_PsysData(psys, fs, E, width_, output = True, tick=tick_)
-	# 	plot_PsysData(psys, fs, E, width_, output = False, tick=tick_)
+	# variables
+	E = None
+	
+	start = None
+	end = None
+	tick_ = None
+	
+	flag_Plot = False
+	flag_SaveImage = False
+
+	#test
+	opts = get_opt(sys.argv[1:])
+	
+	print "[%s:%d] opts => " % (thisfile(), linenum()), opts
+
+	if len(opts) > 0 :
+		
+		for elem in opts :
+			
+			if elem[0] == '-E' :
+				
+				#ref https://stackoverflow.com/questions/455612/limiting-floats-to-two-decimal-points "answered Jun 30 '11 at 18:53"
+				E = round(float(elem[1]), 9)
+# 				E = float(elem[1])
+				
+				print "[%s:%d] E is now => %.9f" % (thisfile(), linenum(), E)
+# 				print "[%s:%d] E is now => %f" % (thisfile(), linenum(), E)
+
+			elif elem[0] == '-s' :
+				
+				start = round(float(elem[1]), 9)
+				
+			elif elem[0] == '-e' :
+				
+				end = round(float(elem[1]), 9)
+				
+			elif elem[0] == '-t' :
+				
+				tick_ = round(float(elem[1]), 3)
+# 				tick_ = round(float(elem[1]), 2)
+				
+			elif elem[0] == 'PLOT_GO' :
+				
+				flag_Plot = True
+	
+			elif elem[0] == 'SAVE_IMAGE_GO' :
+				
+				flag_SaveImage = True
+	
+			
+	
+	# put value to E
+# 	if E == None : E = 2.676
+# 	if E == None : E = 10.62
+
+	'''
+	Defaults
+	'''	
+	if start == None : start = 10.62
+	if end == None : end = 10.92
+	if tick_ == None : tick_ = 0.001
+
+	'''
+	E ---> set to 'start'
+	'''
+	E = start
+
+	'''
+	width, directory path
+	'''
+	width_ = 20
+	
+# 	tick_ = 0.1
+
+	# dir path
+	dpath = "images/images_%s" % get_TimeLabel_Now()
+
+	print "[%s:%d] dpath => %s" % (thisfile(), linenum(), dpath)
+	
+	'''
+	Exec : shooting
+	'''
+	
+# 	#debug
+# 	print "[%s:%d] start = %2.9f / end = %2.9f / tick = %1.2f" \
+# 			% (thisfile(), linenum(), \
+# 			start, end, tick_)
+
+	
+	offsets = np.arange(0, end - start, tick_)
+# 	offsets = np.arange(0, 2, 0.1)
+
+# 	#debug
+# 	print offsets
+
+	count = 1
+	
+	#debug
+	print "[%s:%d] start = %2.9f / end = %2.9f / tick = %1.2f / offsets = %d" \
+			% (thisfile(), linenum(), \
+			start, end, tick_, len(offsets))
+
+	
+	for n in offsets :
+ 		
+		exec_shooting(\
+				E + n, width_, tick_, dpath, \
+				flag_Plot, flag_SaveImage, suffix_=count)
+# 		exec_shooting(E + n, width_, tick_, dpath, flag_Plot, flag_SaveImage)
+ 		
+		count += 1
 
 #]]def shooting_3():
 	
 if __name__ == '__main__':
 	
-	shooting_3()
+	shooting_4()
+# 	shooting_3()
 # 	shooting_2()
 # 	shooting()
 	
