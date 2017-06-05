@@ -13,6 +13,10 @@ gp.py -E2.721589094 --PLOT_GO --SAVE_IMAGE_GO -s10.62 -e 10.92 -t0.01
 gp.py -E2.721589094 --PLOT_GO --SAVE_IMAGE_GO -s10.62 -e 10.92 -t0.001
 gp.py -E2.721589094 --PLOT_GO --SAVE_IMAGE_GO -s10.62 -e 10.92 -t0.001
 
+### session : 31#2
+gp.py -E2.721589094 --PLOT_GO --SAVE_IMAGE_GO -s10.62 -e 10.92 -t0.001 -V70.0
+gp.py -E2.721589094 --PLOT_GO --SAVE_IMAGE_GO -s10.62 -e 10.92 -t0.001 -V50.0
+
 '''
 
 #ref https://pypi.python.org/pypi/PyGnuplot
@@ -165,7 +169,8 @@ def psysData_Plot(psys, fs, E, width, dpath, output = False, tick=0.1):
 #]]def psysData_Plot(psys, fs, E, width, output = false):
 
 # def plot_PsysData(psys, fs, E, width, output = False, tick=0.1):
-def psysData_SaveImage(psys, fs, E, width, dpath, output = False, tick=0.1, suffix=None):
+def psysData_SaveImage\
+(psys, fs, E, width, dpath, V_ceiling_ = 50.0, output = False, tick=0.1, suffix=None):
 # def psysData_SaveImage(psys, fs, E, width, dpath, output = False, tick=0.1):
 # def plot_PsysData(psys, fs, E, width, output = false):
 
@@ -196,8 +201,9 @@ def psysData_SaveImage(psys, fs, E, width, dpath, output = False, tick=0.1, suff
 	'''
 	if suffix != None :
 # 		file_path = "%s/psy_fs.(%d).E-%2.9f_psys-%3.6f_width-%3d_tick-%2.2f.png" % \
-		file_path = "%s/psy_fs.(%d).E-%2.9f_psys-%3.6f_width-%3d_tick-%2.3f.png" % \
-				(dpath, suffix, E, psys[len(psys) - 1], width, tick)
+# 		file_path = "%s/psy_fs.(%d).E-%2.9f_psys-%3.6f_width-%3d_tick-%2.3f.png" % \
+		file_path = "%s/psy_fs.(%d).E-%2.9f_psys-%3.6f_width-%3d_tick-%2.3f_V-%3.1f.png" % \
+				(dpath, suffix, E, psys[len(psys) - 1], width, tick, V_ceiling_)
 	else :
 # 		file_path = "%s/psy_fs.E-%2.9f_psys-%3.6f_width-%3d_tick-%2.2f.png" % \
 		file_path = "%s/psy_fs.E-%2.9f_psys-%3.6f_width-%3d_tick-%2.3f.png" % \
@@ -317,6 +323,44 @@ def exec_shooting(E, width_, tick_, dpath, flag_Plot = False, flag_SaveImage = F
 # 		psysData_SaveImage(psys, fs, E, width_, dpath, output=True, tick=tick_)
 # 		psysData_SaveImage(psys, fs, E, width, dpath, output=True, tick=tick_)
 		
+	'''
+	Plot
+	'''
+	if flag_Plot == True :
+		#plot_PsysData(psys, fs, E, width, output = False)
+		output_ = False
+# 		
+# 		if flag_SaveImage == True : output_ = True
+		
+		psysData_Plot(psys, fs, E, width_, dpath, output = output_, tick=tick_)
+# 		plot_PsysData(psys, fs, E, width_, output = output_, tick=tick_)
+	
+	
+#]]def exec_shooting():
+	
+def exec_shooting__Shoot_5\
+(E, width_, tick_, dpath, V_ceiling_ = 50.0, flag_Plot = False, \
+	flag_SaveImage = False, suffix_=None):
+# def exec_shooting(E, width_, tick_, flag_Plot = False, flag_SaveImage = False):
+	
+	psys, fs = calculate(E, V_ceiling=V_ceiling_, tick=tick_, width=width_)
+# 	psys, fs = calculate(E, tick=tick_, width=width_)
+	
+	#ref multiline comment https://stackoverflow.com/questions/7696924/way-to-create-multiline-comments-in-python ""answered Oct 8 '11 at 12:58
+	'''
+	report ==> last index value
+	'''
+	print "[%s:%d] psys[%d] = %f" %\
+		 (thisfile(), linenum(), len(psys) - 1, psys[len(psys) - 1])
+
+	'''
+	Save image
+	'''
+	if flag_SaveImage == True :
+		
+		psysData_SaveImage(\
+				psys, fs, E, width_, dpath, output=True, tick=tick_, suffix=suffix_)
+
 	'''
 	Plot
 	'''
@@ -786,11 +830,153 @@ def shooting_4():
  		
 		count += 1
 
-#]]def shooting_3():
+#]]def shooting_4():
+	
+'''
+def shooting_5():
+
+	1. Change V value
+	2. E value ---> constant to 50.0
+'''
+def shooting_5():
+
+	#ref https://www.tutorialspoint.com/python/python_command_line_arguments.htm
+# 	print sys.argv
+# 	print sys.argv[1:]
+
+	# variables
+	E = None
+	
+	start = None
+	end = None
+	tick_ = None
+	V_ = None
+	
+	flag_Plot_ = False
+	flag_SaveImage_ = False
+
+	#test
+	opts = get_opt(sys.argv[1:])
+	
+	print "[%s:%d] opts => " % (thisfile(), linenum()), opts
+
+	if len(opts) > 0 :
+		
+		for elem in opts :
+			
+			if elem[0] == '-E' :
+				
+				#ref https://stackoverflow.com/questions/455612/limiting-floats-to-two-decimal-points "answered Jun 30 '11 at 18:53"
+				E = round(float(elem[1]), 9)
+# 				E = float(elem[1])
+				
+				print "[%s:%d] E is now => %.9f" % (thisfile(), linenum(), E)
+# 				print "[%s:%d] E is now => %f" % (thisfile(), linenum(), E)
+
+			elif elem[0] == '-s' :
+				
+				start = round(float(elem[1]), 9)
+				
+			elif elem[0] == '-e' :
+				
+				end = round(float(elem[1]), 9)
+				
+			elif elem[0] == '-t' :
+				
+				tick_ = round(float(elem[1]), 3)
+# 				tick_ = round(float(elem[1]), 2)
+				
+			elif elem[0] == '-V' :
+				
+				V_ = round(float(elem[1]), 3)
+# 				tick_ = round(float(elem[1]), 2)
+				
+			elif elem[0] == 'PLOT_GO' :
+				
+				flag_Plot_ = True
+	
+			elif elem[0] == 'SAVE_IMAGE_GO' :
+				
+				flag_SaveImage_ = True
+	
+			
+	
+	# put value to E
+# 	if E == None : E = 2.676
+# 	if E == None : E = 10.62
+
+	'''
+	Defaults
+	'''	
+	if start == None : start = 10.62
+	if end == None : end = 10.92
+	if tick_ == None : tick_ = 0.001
+	if V_ == None : V_ = 50.0
+
+	'''
+	E ---> set to 'start'
+	'''
+	E = start
+
+	'''
+	width, directory path
+	'''
+	width_ = 20
+	
+# 	tick_ = 0.1
+
+	# dir path
+	dpath = "images/images_%s" % get_TimeLabel_Now()
+
+	print "[%s:%d] dpath => %s" % (thisfile(), linenum(), dpath)
+	
+	'''
+	Exec : shooting
+	'''
+	
+# 	#debug
+# 	print "[%s:%d] start = %2.9f / end = %2.9f / tick = %1.2f" \
+# 			% (thisfile(), linenum(), \
+# 			start, end, tick_)
+
+	
+	offsets = np.arange(0, end - start, tick_)
+# 	offsets = np.arange(0, 2, 0.1)
+
+# 	#debug
+# 	print offsets
+
+	count = 1
+	
+	#debug
+	print "[%s:%d] start = %2.9f / end = %2.9f / tick = %1.2f / offsets = %d" \
+			% (thisfile(), linenum(), \
+			start, end, tick_, len(offsets))
+
+
+	### set E
+	E = 50.0
+	
+	for n in offsets :
+	
+		# 		def exec_shooting__Shoot_5\
+		# (E, width_, tick_, dpath, V_ceiling_ = 50.0, flag_Plot = False, \
+		# 	flag_SaveImage = False, suffix_=None)
+		exec_shooting__Shoot_5(\
+# 				E + n, width_, tick_, dpath, \
+				E, width_, tick_, dpath, \
+				flag_Plot=flag_Plot_, flag_SaveImage=flag_SaveImage_, V_ceiling_=(V_+n), suffix_=count)
+# 				flag_Plot=flag_Plot_, flag_SaveImage=flag_SaveImage_, V_ceiling_=V_, suffix_=count)
+# 				V_ceiling=V_, flag_Plot, flag_SaveImage, suffix_=count)
+# 		exec_shooting(E + n, width_, tick_, dpath, flag_Plot, flag_SaveImage)
+ 		
+		count += 1
+#]]def shooting_5():
 	
 if __name__ == '__main__':
 	
-	shooting_4()
+	shooting_5()
+# 	shooting_4()
 # 	shooting_3()
 # 	shooting_2()
 # 	shooting()

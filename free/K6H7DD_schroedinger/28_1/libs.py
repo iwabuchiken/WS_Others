@@ -57,6 +57,10 @@ def get_opt(arg_ary):
             
             result.append(('-t', elem[2:]))
     
+        elif elem.startswith('-V') and len(elem) > 2 :
+            
+            result.append(('-V', elem[2:]))
+    
         elif elem.startswith('--') and len(elem) > 2 :
             
             if elem == '--PLOT_GO' :
