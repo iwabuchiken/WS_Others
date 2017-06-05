@@ -16,7 +16,8 @@ gp.py -E2.721589094 --PLOT_GO --SAVE_IMAGE_GO -s10.62 -e 10.92 -t0.001
 ### session : 31#2
 gp.py -E2.721589094 --PLOT_GO --SAVE_IMAGE_GO -s10.62 -e 10.92 -t0.001 -V70.0
 gp.py -E2.721589094 --PLOT_GO --SAVE_IMAGE_GO -s10.62 -e 10.92 -t0.001 -V50.0
-
+gp.py -E2.721589094 --SAVE_IMAGE_GO -s0.0 -e10.0 -t0.1 -V50.0
+gp.py -E2.721589094 --PLOT_GO -s0.0 -e10.0 -t0.1 -V50.0
 '''
 
 #ref https://pypi.python.org/pypi/PyGnuplot
@@ -169,6 +170,87 @@ def psysData_Plot(psys, fs, E, width, dpath, output = False, tick=0.1):
 #]]def psysData_Plot(psys, fs, E, width, output = false):
 
 # def plot_PsysData(psys, fs, E, width, output = False, tick=0.1):
+
+def psysData_Plot__Shoot_6\
+(psys, fs, E, width, dpath, V_ceiling_=50.0, output = False, tick=0.1):
+# def plot_PsysData(psys, fs, E, width, output = False, tick=0.1):
+# def plot_PsysData(psys, fs, E, width, output = false):
+
+	print "[%s:%d] psysData_Plot(psys, fs)" % (thisfile(), linenum())
+
+	x = np.arange(0, width, tick)
+# 	x = np.arange(0, 20, 0.1)
+	
+# 	print "[%s:%d] x => " % (thisfile(), linenum()), x
+
+	#ref https://stackoverflow.com/questions/8209568/how-do-i-draw-a-grid-onto-a-plot-in-python "answered Nov 21 '11 at 11:00"
+	fig = pyplot.figure()
+	ax = fig.gca()
+	ax.set_xticks(np.arange(0, 20, 5))
+# 		ax.set_xticks(numpy.arange(0, 1, 0.1))
+	ax.set_yticks(np.arange(0, 40, 5))
+# 	ax.set_yticks(np.arange(0, 1., 0.1))
+	
+	pyplot.grid()
+	
+# 	pyplot.title("Psys : E=%2.9f" % E)
+	pyplot.title("Psys : E=%2.9f\nV=%2.1f" % (E, V_ceiling_))
+
+	pyplot.plot(x, psys)
+# 	pyplot.show()
+
+# 	'''
+# 	output
+# 	'''
+# # 	if output == True :
+# 		
+# # 	filename = "data/psy_fs.%s.E-%2.9f.psys-%3.6f.png" % \
+# # 			(get_TimeLabel_Now(mili=True), E, psys[len(psys) - 1])
+# 	file_path = "%s/psy_fs.E-%2.9f_psys-%3.6f_width-%3d_tick-%2.2f.png" % \
+# 			(dpath, E, psys[len(psys) - 1], width, tick)
+# # 		filename = "data/psy_fs.%s.E-%2.9f.png" % (get_TimeLabel_Now(), E)
+# # 		filename = "data/psy_fs.%s.E-%2.9f.dat" % (get_TimeLabel_Now(), E)
+# 		
+# 	print "[%s:%d] file path => %s" % (thisfile(), linenum(), file_path)
+# # 	print "[%s:%d] filename => %s" % (thisfile(), linenum(), filename)
+# 
+# 	# basename
+# 	file_name = os.path.basename(file_path)
+# 	
+# 	print "[%s:%d] file_name => %s" % (thisfile(), linenum(), file_name)
+	
+
+# 	# dir path
+# 	#ref http://www.gesource.jp/programming/python/code/0009.html
+# 	os.makedirs(dpath)
+
+# 	if output == True :
+# 		
+# 		pyplot.savefig(file_path)
+# 		
+# 		print "[%s:%d] file => saved : '%s'" % (thisfile(), linenum(), file_path)
+
+		
+	#ref http://qiita.com/irs/items/cd1556c568887ff2bdd7
+# 		pyplot.grid(which='major',color='gray',linestyle='*')
+# 		pyplot.grid(which='minor',color='black',linestyle='-')
+
+# 		fig = pyplot.figure()
+# 		ax = fig.gca()
+# 		ax.set_xticks(np.arange(0, 20, 1))
+# # 		ax.set_xticks(numpy.arange(0, 1, 0.1))
+# 		ax.set_yticks(np.arange(0, 1., 0.1))
+# 		
+# 		pyplot.grid()
+	
+	pyplot.show(True)
+# 		pyplot.show()
+	
+
+#]]def psysData_Plot(psys, fs, E, width, output = false):
+
+# def plot_PsysData(psys, fs, E, width, output = False, tick=0.1):
+
 def psysData_SaveImage\
 (psys, fs, E, width, dpath, V_ceiling_ = 50.0, output = False, tick=0.1, suffix=None):
 # def psysData_SaveImage(psys, fs, E, width, dpath, output = False, tick=0.1):
@@ -192,7 +274,8 @@ def psysData_SaveImage\
 	
 	pyplot.grid()
 	
-	pyplot.title("Psys : E=%2.9f" % E)
+	pyplot.title("Psys : E=%2.9f\nV=%2.1f" % (E, V_ceiling_))
+# 	pyplot.title("Psys : E=%2.9f" % E)
 
 	pyplot.plot(x, psys)
 
@@ -207,6 +290,74 @@ def psysData_SaveImage\
 	else :
 # 		file_path = "%s/psy_fs.E-%2.9f_psys-%3.6f_width-%3d_tick-%2.2f.png" % \
 		file_path = "%s/psy_fs.E-%2.9f_psys-%3.6f_width-%3d_tick-%2.3f.png" % \
+				(dpath, E, psys[len(psys) - 1], width, tick)
+		
+	print "[%s:%d] file path => %s" % (thisfile(), linenum(), file_path)
+
+	# basename
+	file_name = os.path.basename(file_path)
+	
+	print "[%s:%d] file_name => %s" % (thisfile(), linenum(), file_name)
+	
+	# dir path
+	#ref http://www.gesource.jp/programming/python/code/0009.html
+	#ref https://stackoverflow.com/questions/273192/how-can-i-create-a-directory-if-it-does-not-exist "answered Nov 7 '08 at 19:06"
+	if not os.path.exists(dpath):
+		
+		os.makedirs(dpath)
+
+	pyplot.savefig(file_path)
+		
+	print "[%s:%d] file => saved : '%s'" % (thisfile(), linenum(), file_path)
+		
+		
+	# clear the figure
+	#ref https://stackoverflow.com/questions/8213522/when-to-use-cla-clf-or-close-for-clearing-a-plot-in-matplotlib "answered Nov 22 '11 at 14:54"
+	pyplot.clf()
+ 	
+	pyplot.close()
+		
+#]]def psysData_SaveImage(psys, fs, E, width, output = false):
+
+def psysData_SaveImage__Shoot_6\
+(psys, fs, E, width, dpath, V_ceiling_ = 50.0, output = False, tick=0.1, suffix=None):
+# def psysData_SaveImage(psys, fs, E, width, dpath, output = False, tick=0.1):
+# def plot_PsysData(psys, fs, E, width, output = false):
+
+	print "[%s:%d] psysData_Plot(psys, fs)" % (thisfile(), linenum())
+
+	x = np.arange(0, width, tick)
+
+	#ref https://stackoverflow.com/questions/8209568/how-do-i-draw-a-grid-onto-a-plot-in-python "answered Nov 21 '11 at 11:00"
+	fig = pyplot.figure()
+	ax = fig.gca()
+	ax.set_xticks(np.arange(0, 20, 2.5))
+# 	ax.set_xticks(np.arange(0, 20, 5))
+# 		ax.set_xticks(numpy.arange(0, 1, 0.1))
+	ax.set_yticks(np.arange(-400, 400, 5))
+# 	ax.set_yticks(np.arange(0, 40, 5))
+# 	ax.set_yticks(np.arange(0, 1., 0.1))
+
+	ax.set_ylim([-50, 50])
+	
+	pyplot.grid()
+	
+	pyplot.title("Psys : E=%2.9f\nV=%2.1f" % (E, V_ceiling_))
+# 	pyplot.title("Psys : E=%2.9f" % E)
+
+	pyplot.plot(x, psys)
+
+	'''
+	output
+	'''
+	if suffix != None :
+# 		file_path = "%s/psy_fs.(%d).E-%2.9f_psys-%3.6f_width-%3d_tick-%2.2f.png" % \
+# 		file_path = "%s/psy_fs.(%d).E-%2.9f_psys-%3.6f_width-%3d_tick-%2.3f.png" % \
+		file_path = "%s/psy_fs.(%d).E-%2.9f_psys-%3.6f_width-%3d_tick-%2.3f_V-%3.1f.png" % \
+				(dpath, suffix, E, psys[len(psys) - 1], width, tick, V_ceiling_)
+	else :
+# 		file_path = "%s/psy_fs.E-%2.9f_psys-%3.6f_width-%3d_tick-%2.2f.png" % \
+		file_path = "%s/psy_fs.E-%2.9f_psys-%3.6f_width-%3d_tick-%2.3f_V-%3.1f.png" % \
 				(dpath, E, psys[len(psys) - 1], width, tick)
 		
 	print "[%s:%d] file path => %s" % (thisfile(), linenum(), file_path)
@@ -257,6 +408,7 @@ def calculate(E = 2.6660079, V_ceiling = 50.0, tick	= 0.1, width	= 20):
 	print "[%s:%d] max_num = %d" % (thisfile(), linenum(), max_num)
 	
 	# initial values
+# 	psy_0 = 100.0;
 	psy_0 = 0.0;
 	f_0 = 0.1;
 	
@@ -375,6 +527,48 @@ def exec_shooting__Shoot_5\
 	
 	
 #]]def exec_shooting():
+	
+def exec_shooting__Shoot_6\
+(E, width_, tick_, dpath, V_ceiling_ = 50.0, flag_Plot = False, \
+	flag_SaveImage = False, suffix_=None):
+# def exec_shooting(E, width_, tick_, flag_Plot = False, flag_SaveImage = False):
+	
+	psys, fs = calculate(E, V_ceiling=V_ceiling_, tick=tick_, width=width_)
+# 	psys, fs = calculate(E, tick=tick_, width=width_)
+	
+	#ref multiline comment https://stackoverflow.com/questions/7696924/way-to-create-multiline-comments-in-python ""answered Oct 8 '11 at 12:58
+	'''
+	report ==> last index value
+	'''
+	print "[%s:%d] psys[%d] = %f" %\
+		 (thisfile(), linenum(), len(psys) - 1, psys[len(psys) - 1])
+
+	'''
+	Save image
+	'''
+	if flag_SaveImage == True :
+		
+		psysData_SaveImage__Shoot_6(\
+				psys, fs, E, width_, dpath, \
+				V_ceiling_=V_ceiling_, output=True, tick=tick_, suffix=suffix_)
+# 		psysData_SaveImage(\
+# 				psys, fs, E, width_, dpath, output=True, tick=tick_, suffix=suffix_)
+
+	'''
+	Plot
+	'''
+	if flag_Plot == True :
+		#plot_PsysData(psys, fs, E, width, output = False)
+		output_ = False
+# 		
+# 		if flag_SaveImage == True : output_ = True
+		
+		psysData_Plot__Shoot_6(\
+					psys, fs, E, width_, dpath, \
+					V_ceiling_=V_ceiling_, output = output_, tick=tick_)
+# 		psysData_Plot(psys, fs, E, width_, dpath, output = output_, tick=tick_)
+# 		plot_PsysData(psys, fs, E, width_, output = output_, tick=tick_)
+#]]def exec_shooting__Shoot_6
 	
 def shooting():
 
@@ -972,10 +1166,168 @@ def shooting_5():
  		
 		count += 1
 #]]def shooting_5():
+
+'''
+gp.py -E2.721589094 --SAVE_IMAGE_GO -s0.0 -e10.0 -t0.1 -V50.0
+'''	
+def shooting_6():
+
+	#ref https://www.tutorialspoint.com/python/python_command_line_arguments.htm
+# 	print sys.argv
+# 	print sys.argv[1:]
+
+	# variables
+	E = None
+	
+	start = None
+	end = None
+	tick_ = None
+	V_ = None
+	
+	flag_Plot_ = False
+	flag_SaveImage_ = False
+
+	#test
+	opts = get_opt(sys.argv[1:])
+	
+	print "[%s:%d] opts => " % (thisfile(), linenum()), opts
+
+	if len(opts) > 0 :
+		
+		for elem in opts :
+			
+			if elem[0] == '-E' :
+				
+				#ref https://stackoverflow.com/questions/455612/limiting-floats-to-two-decimal-points "answered Jun 30 '11 at 18:53"
+				E = round(float(elem[1]), 9)
+# 				E = float(elem[1])
+				
+				print "[%s:%d] E is now => %.9f" % (thisfile(), linenum(), E)
+# 				print "[%s:%d] E is now => %f" % (thisfile(), linenum(), E)
+
+			elif elem[0] == '-s' :
+				
+				start = round(float(elem[1]), 9)
+				
+			elif elem[0] == '-e' :
+				
+				end = round(float(elem[1]), 9)
+				
+			elif elem[0] == '-t' :
+				
+				tick_ = round(float(elem[1]), 3)
+# 				tick_ = round(float(elem[1]), 2)
+				
+			elif elem[0] == '-V' :
+				
+				V_ = round(float(elem[1]), 3)
+# 				tick_ = round(float(elem[1]), 2)
+				
+			elif elem[0] == 'PLOT_GO' :
+				
+				flag_Plot_ = True
+	
+			elif elem[0] == 'SAVE_IMAGE_GO' :
+				
+				flag_SaveImage_ = True
+	
+			
+	
+	# put value to E
+# 	if E == None : E = 2.676
+# 	if E == None : E = 10.62
+
+	'''
+	Defaults
+	'''	
+	if start == None : start = 10.62
+	if end == None : end = 10.92
+	if tick_ == None : tick_ = 0.001
+	if V_ == None : V_ = 50.0
+
+# 	'''
+# 	E ---> set to 'start'
+# 	'''
+# 	E = start
+
+	'''
+	width, directory path
+	'''
+	width_ = 20
+	
+# 	tick_ = 0.1
+
+	# dir path
+	dpath = "images/images_%s" % get_TimeLabel_Now()
+
+	print "[%s:%d] dpath => %s" % (thisfile(), linenum(), dpath)
+	
+	'''
+	Exec : shooting
+	'''
+	
+# 	#debug
+# 	print "[%s:%d] start = %2.9f / end = %2.9f / tick = %1.2f" \
+# 			% (thisfile(), linenum(), \
+# 			start, end, tick_)
+
+	
+	offsets = np.arange(0, end - start, tick_)
+# 	offsets = np.arange(0, 2, 0.1)
+
+# 	#debug
+# 	print offsets
+
+	count = 1
+	
+	#debug
+	print "[%s:%d] start = %2.9f / end = %2.9f / tick = %1.2f / offsets = %d" \
+			% (thisfile(), linenum(), \
+			start, end, tick_, len(offsets))
+
+
+	### set E
+# 	E = 50.0
+
+# 	for n in offsets :
+	# 	exec_shooting__Shoot_5(\
+	n = 0
+	exec_shooting__Shoot_6(\
+			E, width_, tick_, dpath, \
+			flag_Plot=flag_Plot_, flag_SaveImage=flag_SaveImage_, \
+			V_ceiling_ = (V_ + n), suffix_=count)
+# 				V_ceiling_=V_, suffix_=count)
+# 		count += 1
+
+# 	for n in offsets :
+# 	# 	exec_shooting__Shoot_5(\
+# 		exec_shooting__Shoot_6(\
+# 				E, width_, tick_, dpath, \
+# 				flag_Plot=flag_Plot_, flag_SaveImage=flag_SaveImage_, \
+# 				V_ceiling_ = (V_ + n), suffix_=count)
+# # 				V_ceiling_=V_, suffix_=count)
+# 		count += 1
+	
+# 	for n in offsets :
+# 	
+# 		# 		def exec_shooting__Shoot_5\
+# 		# (E, width_, tick_, dpath, V_ceiling_ = 50.0, flag_Plot = False, \
+# 		# 	flag_SaveImage = False, suffix_=None)
+# 		exec_shooting__Shoot_5(\
+# # 				E + n, width_, tick_, dpath, \
+# 				E, width_, tick_, dpath, \
+# 				flag_Plot=flag_Plot_, flag_SaveImage=flag_SaveImage_, V_ceiling_=(V_+n), suffix_=count)
+# # 				flag_Plot=flag_Plot_, flag_SaveImage=flag_SaveImage_, V_ceiling_=V_, suffix_=count)
+# # 				V_ceiling=V_, flag_Plot, flag_SaveImage, suffix_=count)
+# # 		exec_shooting(E + n, width_, tick_, dpath, flag_Plot, flag_SaveImage)
+#  		
+# 		count += 1
+#]]def shooting_6():
 	
 if __name__ == '__main__':
 	
-	shooting_5()
+	shooting_6()
+# 	shooting_5()
 # 	shooting_4()
 # 	shooting_3()
 # 	shooting_2()
