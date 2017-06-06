@@ -1,0 +1,220 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 16.04.2 ] */
+
+/* [wxMaxima: input   start ] */
+xrng : [x, -%pi, %pi];
+f1 : x;
+f2 : sin(x);
+wxplot2d([f1, f2], xrng);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+wxplot2d([f1, f2, f2*f1], xrng);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+f3 : sin(x*2);
+fs : [f1, f2, f3];
+wxplot2d(fs, xrng);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+fs : [f1, f2, f1*f2];
+wxplot2d(fs, xrng);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+fs : [f1, f2, f1*f2, f3];
+wxplot2d(fs, xrng);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+fs : [f1, f2, f1*f2, f3, f1*f2*f3];
+wxplot2d(fs, xrng);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+integrate(f1*f2*f3, x, -%pi, %pi);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+a : 10;
+xrng : [x, -%pi*a, %pi*a];
+wxplot2d(fs, xrng);
+plot2d(fs, xrng);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+f4 : cos(x);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+a : 3;
+xrng : [x, -%pi*a, %pi*a];
+fs : [x, sin(x), f4];
+wxplot2d(fs, xrng);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+integrate(f4, x, -%pi, %pi);
+integrate(f4, x, 0, %pi*1/2);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+f5 : integrate(cos(x), x, 0, m);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+f5 : integrate(cos(x)*x, x, 0, m);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+wxplot2d(f5, [m, 0, %pi]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+wxplot2d(f5, [m, 0, %pi*10]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+wxplot2d(f5, [m, 0, %pi*100]);
+plot2d(f5, [m, 0, %pi*100]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+wxplot2d([f5, abs(f5)], [m, 0, %pi*100]);
+plot2d([f5, abs(f5)], [m, 0, %pi*100]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+f6 : x*sin(x);
+fs2 : [f6];
+a : 10;
+xrng : [x, -%pi*a, %pi*a];
+wxplot2d(fs2, xrng);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+f6 : x*sin(x);
+fs2 : [f6, f6+cos(x)];
+a : 10;
+xrng : [x, -%pi*a, %pi*a];
+wxplot2d(fs2, xrng);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+f6 : x*sin(x);
+fs2 : [f6+cos(x)];
+a : 10;
+xrng : [x, -%pi*a, %pi*a];
+wxplot2d(fs2, xrng);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+f6 : x*sin(x);
+fs2 : [f6+cos(x)-1];
+a : 10;
+xrng : [x, -%pi*a, %pi*a];
+wxplot2d(fs2, xrng);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+f6 : x*sin(x);
+fs2 : [f6+cos(x)-1, abs(f6+cos(x)-1)];
+a : 10;
+xrng : [x, -%pi*a, %pi*a];
+wxplot2d(fs2, xrng);
+plot2d(fs2, xrng);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+f6 : x*sin(x);
+fs2 : [f6+cos(x)-1, abs(f6+cos(x)-1)];
+a : 50;
+xrng : [x, -%pi*a, %pi*a];
+wxplot2d(fs2, xrng);
+plot2d(fs2, xrng);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* no '-1' term */
+f6 : x*sin(x);
+fs2 : [f6+cos(x), abs(f6+cos(x))];
+a : 50;
+xrng : [x, -%pi*a, %pi*a];
+wxplot2d(fs2, xrng);
+plot2d(fs2, xrng);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* reset */
+f1 : cos(x);
+a : 2;
+xrng : [x, -%pi*a, %pi*a];
+f2 : cos(x)*x;
+f3 : cos(x)*x*sin(x);
+fs : [x, f1, f2, f3];
+wxplot2d(fs, xrng);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+integrate(f3, x, -%pi, %pi);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+wxplot2d(cos(x)*x*sin(x), xrng);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+f : cos(x) * x * sin(x);
+integrate(f, x, -%pi, %pi);
+wxplot2d(f, xrng);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+f : cos(x) * x * cos(x);
+integrate(f, x, -%pi, %pi);
+wxplot2d(f, xrng);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+f : cos(x) * x * cos(x*2);
+integrate(f, x, -%pi, %pi);
+wxplot2d(f, xrng);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+f : sin(x) * x * sin(x*2);
+integrate(f, x, -%pi, %pi);
+wxplot2d(f, xrng);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+f : cos(x) * x * sin(x);
+integrate(f, x, -%pi, %pi);
+a : 1;
+xrng : [x, -%pi*a, %pi*a];
+wxplot2d([f, cos(x), x, sin(x), cos(x)*x], xrng);
+plot2d([f, cos(x), x, sin(x), cos(x)*x], xrng);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+f : integrate(cos(x)*x*sin(x), x, -m, m);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+wxplot2d(f, [m, 0, %pi*10]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+f : integrate(cos(x), x, -m, m);
+wxplot2d(f, [m, 0, %pi*10]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+f : integrate(sin(x), x, -m, m);
+wxplot2d(f, [m, 0, %pi*10]);
+/* [wxMaxima: input   end   ] */
+
+/* Maxima can't load/batch files which end with a comment! */
+"Created with wxMaxima"$
