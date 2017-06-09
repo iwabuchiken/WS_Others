@@ -1,0 +1,164 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 16.04.2 ] */
+
+/* [wxMaxima: input   start ] */
+a : 3;
+wxplot2d([sin(x), sin(x/2)], [x, -%pi*a,%pi*a]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+a : 6;
+f1 : sin(x);
+f2 : sin(x/2);
+fs : [f1, f2];
+wxplot2d(fs, [x, -%pi*a,%pi*a]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* plot : 2 */
+a : 6;
+f1 : sin(x);
+f2 : sin(x/2);
+fs : [f1, f2];
+wxplot2d(fs, [x, -%pi*a,%pi*a]);
+plot2d(fs, [x, -%pi*a,%pi*a]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* plot : 2.1 */
+a : 6;
+f1 : sin(x);
+f2 : sin(x/2);
+f3 : sin(x/2)^2;
+fs : [f2, f3];
+wxplot2d(fs, [x, -%pi*a,%pi*a]);
+plot2d(fs, [x, -%pi*a,%pi*a]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* plot : 2.2 */
+a : 6;
+cons : 2.4263;
+f1 : sin(x);
+f2 : sin(x/2);
+f3 : sin(x/2)^2;
+f4 : sin(x/2)^2 * cons;
+fs : [f2, f3, f4];
+wxplot2d(fs, [x, -%pi*a,%pi*a]);
+plot2d(fs, [x, -%pi*a,%pi*a]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+2.4263*2;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+sin(%pi/6/2)^2; float(%);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+%* 4.8526;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* plot : 3 */
+c : 10;
+m : 1;
+ratio : 1 - 10^(-3);
+vrng : [v, 0, c * ratio];
+E : m^2*c^4 / sqrt((1 - v^2 / c^2));
+wxplot2d(E, vrng);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+taylor(si(x), x, 0, 5);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+x : 1;
+a : 3;
+x^a / a!;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+x : 1;
+a : 4;
+x^a / a!;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+x : 1;
+a : 5;
+x^a / a!;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+x : 1;
+a : 3;
+x^a / a!; float(%);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+x : 1;
+a : 4;
+x^a / a!; float(%);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+x : 1;
+a : 5;
+x^a / a!; float(%);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* plot : 4 */
+kill(x);
+kill(a); a : 4;
+xrng : [x, -%pi*a, %pi*a];
+f : x - x^3/3!;
+wxplot2d([-x^3/3!, f], xrng);
+plot2d([-x^3/3!, f], xrng);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* plot : 4.1 */
+kill(x);
+kill(a); a : 2;
+xrng : [x, -%pi*a, %pi*a];
+f : x - x^3/3! + x^5/5!;
+opt : [gnuplot_preamble, "set yrange[-3:3]"];
+wxplot2d([-x^3/3!, f], xrng, opt);
+plot2d([-x^3/3!, f], xrng, opt);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* plot : 4.2 */
+kill(x);
+kill(a); a : 2;
+xrng : [x, -%pi*a, %pi*a];
+f1 : x; f3 : -x^3 / 3!; f5 : x^5 / 5!;
+fs_3 : f1 + f3;
+fs_5 : f1 + f3 + f5;
+fs : [fs_3, fs_5];
+opt : [gnuplot_preamble, "set yrange[-3:3]"];
+wxplot2d(fs, xrng, opt);
+plot2d(fs, xrng, opt);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* plot : 4.3 */
+kill(x);
+kill(a); a : 2;
+xrng : [x, -%pi*a, %pi*a];
+f1 : x; f3 : -x^3 / 3!; f5 : x^5 / 5!; f7 : -x^7 / 7!;
+fs_3 : f1 + f3;
+fs_5 : f1 + f3 + f5;
+fs_7 : f1 + f3 + f5 + f7;
+fs : [fs_3, fs_5, fs_7];
+opt : [gnuplot_preamble, "set yrange[-3:3]"];
+wxplot2d(fs, xrng, opt);
+plot2d(fs, xrng, opt);
+/* [wxMaxima: input   end   ] */
+
+/* Maxima can't load/batch files which end with a comment! */
+"Created with wxMaxima"$

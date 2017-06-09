@@ -1,0 +1,23 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 16.04.2 ] */
+
+/* [wxMaxima: input   start ] */
+v : 10;
+h : 6.6261 * 10^(-34);
+rng : [a, 0.01, 3];
+E : h * (v / a);
+opt : [gnuplot_preamble, "set yrange[0:3*10^(-31)]"];
+/*wxplot2d(E, rng, opt);*/
+wxplot2d(E, rng);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+v : 100000;
+h : 6.6261 * 10^(-34);
+rng : [a, 0.01, 3];
+E : h * (v / a);
+wxplot2d(E, rng);
+/* [wxMaxima: input   end   ] */
+
+/* Maxima can't load/batch files which end with a comment! */
+"Created with wxMaxima"$
