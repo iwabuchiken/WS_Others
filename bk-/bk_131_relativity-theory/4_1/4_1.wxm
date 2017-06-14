@@ -1,0 +1,197 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 16.04.2 ] */
+
+/* [wxMaxima: input   start ] */
+c : 10;
+V : c * 0.2;
+Q : sqrt(V^2/c^4/(1-(V^2/c^2)));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+c : 10;
+V : c * a;
+arng : [a, 0, 0.2];
+Q : sqrt(V^2/c^4/(1-(V^2/c^2)));
+wxplot2d(Q, arng);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+c : 10;
+V : c * a;
+arng : [a, 0, 0.6];
+Q : sqrt(V^2/c^4/(1-(V^2/c^2)));
+wxplot2d(Q, arng);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+c : 10;
+V : c * a;
+arng : [a, 0, 0.9];
+Q : sqrt(V^2/c^4/(1-(V^2/c^2)));
+wxplot2d(Q, arng);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+c : 10;
+V : c * a;
+arng : [a, 0, 0.99];
+Q : sqrt(V^2/c^4/(1-(V^2/c^2)));
+wxplot2d(Q, arng);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+c : 10;
+V : c * a;
+arng : [a, 0, 1 - 10^(-1)];
+Q : sqrt(V^2/c^4/(1-(V^2/c^2)));
+wxplot2d(Q, arng);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+c : 10;
+V : c * a;
+brng : [b, -1, -2];
+arng : [a, 0, 1 - 10^(-b)];
+Q : sqrt(V^2/c^4/(1-(V^2/c^2)));
+wxplot3d(Q, arng, brng);
+plot3d(Q, arng, brng);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+c : 10;
+V : c * a;
+b : 2;
+arng : [a, 0, 1 - 10^(-b)];
+Q : sqrt(V^2/c^4/(1-(V^2/c^2)));
+wxplot2d(Q, arng);
+plot2d(Q, arng);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+c : 10;
+V : c * a;
+b : 3;
+arng : [a, 0, 1 - 10^(-b)];
+Q : sqrt(V^2/c^4/(1-(V^2/c^2)));
+wxplot2d(Q, arng);
+plot2d(Q, arng);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+kill(c);
+crng : [c, 1, 10];
+arng : [a, 0, 0.5];
+Q : sqrt(a^2/(c^2*(1-a^2)));
+wxplot3d(Q, crng, arng);
+plot3d(Q, crng, arng);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+crng : [c, 1, 10];
+arng : [a, 0, 0.5];
+Q : sqrt(a^2/(c^2*(1 + a^2)));
+wxplot3d(Q, crng, arng);
+plot3d(Q, crng, arng);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+crng : [c, 1, 10];
+arng : [a, 0, 0.9];
+Q : sqrt(a^2/(c^2*(1 - a^2)));
+wxplot3d(Q, crng, arng);
+plot3d(Q, crng, arng);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+crng : [c, 1, 10];
+arng : [a, 0, 0.9];
+Q : sqrt(a^2/(c^2*(1 + a^2)));
+wxplot3d(Q, crng, arng);
+plot3d(Q, crng, arng);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+c : 1;
+Q : sqrt(a^2/(c^2*(1 + a^2)));
+limit(Q, a, inf);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+c : 1;
+Q : sqrt(a^2/(c^2*(1 - a^2)));
+limit(Q, a, 1);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+limit(x^2 / (1 + x^2), x, inf);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+limit(x^2 / (1 - x^2), x, inf);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+limit(2 * x^2 / (1 - x^2), x, inf);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+limit(x^2 / (1 * 2 - x^2), x, inf);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+limit(x^2 / (1 - x^2 * 2), x, inf);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+mrng : [m, 1, 5];
+nrng : [n, 1, 5];
+xrng : [x, 0, 10];
+f : 2 * x ^ 2 / (1 - x^2 * n);
+opt : [grid, 50, 50];
+wxplot3d(f, xrng, nrng, opt, [gnuplot_preamble, "set zrange[-100:100]"]);
+plot3d(f, xrng, nrng, opt, [gnuplot_preamble, "set zrange[-100:100]"]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+arng : [a, 0, (1 - 10^(-2))];
+c : 10;
+A : 1/(sqrt(1-(a^2)));
+wxplot2d(A, arng);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+arng : [a, 0, (1 - 10^(-2))];
+c : 10;
+A : 1/(sqrt(1-(a^2)));
+wxplot2d([A, a^2], arng);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+a : 0.9; 1/(sqrt(1-(a^2))); a^2; kill(a);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+arng : [a, 0, (1 - 10^(-5))];
+c : 10;
+A : 1/(sqrt(1-(a^2)));
+wxplot2d([A, 5 * a^2, 100 * a^2], arng);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+betha_rng : [betha, 0, 0.9999];
+gamma : 1 / sqrt(1 - betha^2);
+wxplot2d(gamma, betha_rng);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+t : 5;
+xrng : [x, 0, 5];
+y : (1 / sqrt(1 - betha^2)) * (-1 * betha / 10 * x + t);
+opt_zrng : [gnuplot_preamble, "set zrange[0:100]"];
+wxplot3d(y, betha_rng, xrng, opt_zrng);
+plot3d(y, betha_rng, xrng, opt_zrng);
+/* [wxMaxima: input   end   ] */
+
+
+/* Maxima can't load/batch files which end with a comment! */
+"Created with wxMaxima"$

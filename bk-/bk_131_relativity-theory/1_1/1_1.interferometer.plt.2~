@@ -1,0 +1,11 @@
+if (exist("n") == 0 || n < 0) n = 1 #•Ï”‚Ì‰Šú‰»
+
+a = 3
+set xrange[-pi*a:pi*a]; set yrange[-a : a]
+
+set grid lw 1
+
+unset key
+
+set sample 500
+
