@@ -1,0 +1,178 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 16.04.2 ] */
+
+/* [wxMaxima: input   start ] */
+/* plot : 1 */
+c : 30;
+V1_rng : [V1, 0, c * (1 - 10^-2)];
+V2_rng : [V2, 0, c * (1 - 10^-2)];
+f : (V1 + V2) / (1 + V1 * V2 / c);
+opt_zrng : [gnuplot_preamble, "set zrange[0:30]"];
+opt_grid : [grid, 50, 50];
+wxplot3d(f, V1_rng, V2_rng, opt_zrng, opt_grid);
+plot3d(f, V1_rng, V2_rng, opt_zrng, opt_grid);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+f;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+limit(f, V2, 0.9);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* plot : 2 */
+f2 : 1 + V1 * V2 / c;
+opt_zrng : [gnuplot_preamble, "set zrange[0:50]"];
+opt_grid : [grid, 50, 50];
+wxplot3d(f2, V1_rng, V2_rng, opt_zrng, opt_grid);
+plot3d(f2, V1_rng, V2_rng, opt_zrng, opt_grid);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* plot : 2.1 */
+V2 : 0.5;
+f3 : 1 + V1 * V2 / c;
+opt_zrng : [gnuplot_preamble, "set zrange[0:50]"];
+opt_grid : [grid, 50, 50];
+diff(V2, V1);
+wxplot2d(f3, V1_rng, opt_grid);
+plot2d(f3, V1_rng, opt_grid);
+kill(V2);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* plot : 2.2 */
+f3 : 1 + V1 * V2 / c;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+diff(f3, V1);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* plot : 3 --> http://gkerns.people.ysu.edu/maxima/maximaintro/maximaintro.pdf 'Let’s take a look at a plot.
+' */
+
+ f(x,y) := (x^2 - y^2)^2;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+load(draw);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+draw3d(explicit(f(x,y), x, -3, 3, y, -3, 3));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+draw3d(enhanced3d = true, explicit(f(x,y), x, -3, 3, y, -3, 3));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+diff(f(x,y), x);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+ diff(diff(f(x,y), x), x);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* plot : 4 */
+xrng : [x, 0, 30];
+f4 : 2 * x / (1 + x);
+wxplot2d(f4, xrng);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* plot : 5 */
+f2 : 1 + V1 * V2 / c^2;
+opt_zrng : [gnuplot_preamble, "set zrange[0:2]"];
+opt_grid : [grid, 50, 50];
+wxplot3d(f2, V1_rng, V2_rng, opt_zrng, opt_grid);
+plot3d(f2, V1_rng, V2_rng, opt_zrng, opt_grid);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* plot : 6 */
+V_rng : [V, 0, c * (1 - 10^-2)];
+f5 : 1 + V * V / c^2;
+
+opt_grid : [grid, 50, 50];
+wxplot2d(f5, V_rng, opt_grid);
+plot2d(f5, V_rng, opt_grid);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+c;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* plot : 7 */
+V_rng : [V, 0, c * (1 - 10^-2)];
+f6 : 2 * V / (1 + V * V / c^2);
+
+opt_grid : [grid, 50, 50];
+wxplot2d(f6, V_rng, opt_grid);
+plot2d(f6, V_rng, opt_grid);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* plot : 7.1 */
+V_rng : [V, 0, c * (1 - 10^-2)];
+f6 : 2 * V / (1 + V * V / c^2);
+
+opt_grid : [grid, 50, 50];
+wxplot2d([f6, diff(f6, V)], V_rng, opt_grid);
+plot2d([f6, diff(f6, V)], V_rng, opt_grid);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* plot : 7.2 */
+V_rng : [V, 0, c * (1 - 10^-2)];
+f6 : 2 * V / (1 + V * V / c^2);
+
+opt_grid : [grid, 50, 50];
+wxplot2d([diff(f6, V)], V_rng, opt_grid);
+plot2d([diff(f6, V)], V_rng, opt_grid);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* plot : 7.3 */
+/*V_rng : [V, 0, c * (1 - 10^-2)];*/
+V_rng : [V, 0, c];
+f6 : 2 * V / (1 + V * V / c^2);
+
+opt_grid : [grid, 50, 50];
+wxplot2d([diff(f6, V), diff(diff(f6, V), V)], V_rng, opt_grid);
+plot2d([diff(f6, V), diff(diff(f6, V), V)], V_rng, opt_grid);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* plot : 7.4 */
+/*V_rng : [V, 0, c * (1 - 10^-2)];*/
+V_rng : [V, 0, c];
+f6 : 2 * V / (1 + V * V / c^2);
+opt_yrng : [gnuplot_preamble, "set yrange[0:0.5]"];
+opt_grid : [grid, 50, 50];
+wxplot2d([diff(f6, V), diff(diff(f6, V), V), diff(diff(diff(f6, V), V), V)], V_rng, opt_grid);
+plot2d([diff(f6, V), diff(diff(f6, V), V), diff(diff(diff(f6, V), V), V)], V_rng, opt_grid);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* plot : 7.5 */
+/*V_rng : [V, 0, c * (1 - 10^-2)];*/
+V_rng : [V, 0, c];
+f6 : 2 * V / (1 + V * V / c^2);
+f6_d1 : diff(f6, V);
+f6_d2 : diff(f6_d1, V);
+f6_d3 : diff(f6_d2, V);
+opt_yrng : [gnuplot_preamble, "set yrange[-0.1:0.1]"];
+opt_grid : [grid, 50, 50];
+wxplot2d([f6_d1, f6_d2, f6_d3], V_rng, opt_grid, opt_yrng);
+plot2d([f6_d1, f6_d2, f6_d3], V_rng, opt_grid, opt_yrng);
+/* [wxMaxima: input   end   ] */
+
+/* Maxima can't load/batch files which end with a comment! */
+"Created with wxMaxima"$
