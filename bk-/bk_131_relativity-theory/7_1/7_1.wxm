@@ -1,0 +1,129 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 16.04.2 ] */
+
+/* [wxMaxima: input   start ] */
+/* plot : 1 */
+c : 30;
+Vrng : [V, 0, c];
+fa : 1 - V / c;
+fb : sqrt(1 - (V / c) ^ 2);
+f : fa / fb;
+wxplot2d(f, Vrng);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* plot : 2 */
+c : 30;
+Vrng : [V, 0, c];
+fa : 1 - V / c;
+fb : sqrt(1 - (V / c) ^ 2);
+f : fa / fb;
+f_d1 : diff(f, V);
+f_d2 : diff(f_d1, V);
+f_d3 : diff(f_d2, V);
+opt_yrng : [gnuplot_preamble, "set yrange[-0.05:0.01]"];
+wxplot2d([f_d1, f_d2, f_d3], Vrng, opt_yrng);
+plot2d([f_d1, f_d2, f_d3], Vrng, opt_yrng);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+f_d3;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+solve(f_d3 = 0, V);
+solve(f_d2 = 0, V);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* plot : 3 */
+V : c / 2;
+fa : 1 - V / c;
+fb : sqrt(1 - (V / c) ^ 2);
+f : fa / fb;
+float(%);
+kill(V);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* plot : 4 */
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+fa : 1 - V / c;
+fb : sqrt(1 - (V / c) ^ 2);
+f : fa / fb;
+f_d1 : diff(f, V);
+solve(f_d1 - (c / 2) = 0, V);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* plot : 5 */
+c : 30;
+Vrng : [V, 0, c];
+fa : 1 - V / c;
+fb : sqrt(1 - (V / c) ^ 2);
+f : fa / fb;
+f_d1 : diff(f, V);
+f_d2 : diff(f_d1, V);
+f_d3 : diff(f_d2, V);
+opt_yrng : [gnuplot_preamble, "set yrange[-0.001:0.001]"];
+fs : [f_d2, f_d3];
+wxplot2d(fs, Vrng, opt_yrng);
+plot2d(fs, Vrng, opt_yrng);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* plot : 6 */
+c : 30;
+Vrng : [V, -10, c * (1 - 10^-2)];
+fa : 1 - V / c;
+fb : sqrt(1 - (V / c) ^ 2);
+f : fa / fb;
+opt_yrng : [gnuplot_preamble, "set yrange[-5:5]"];
+wxplot2d([1 / fb, 1 / (1 - V), 1 / (1 - V^2)], Vrng, opt_yrng);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* plot : 6.1 */
+c : 30;
+Vrng : [V, -10, c * (1 - 10^-2)];
+fa : 1 - V / c;
+fb : sqrt(1 - (V / c) ^ 2);
+f : fa / fb;
+opt_yrng : [gnuplot_preamble, "set yrange[-5:5]"];
+wxplot2d([1 / fb, 1 / (1 - V), 1 / (1 - V^2), 1 / (1 - V^3)], Vrng, opt_yrng);
+plot2d([1 / fb, 1 / (1 - V), 1 / (1 - V^2), 1 / (1 - V^3)], Vrng, opt_yrng);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* plot : 6.2 */
+c : 30;
+Vrng : [V, -10, c * (1 - 10^-2)];
+fa : 1 - V / c;
+fb : sqrt(1 - (V / c) ^ 2);
+f : fa / fb;
+opt_yrng : [gnuplot_preamble, "set yrange[-5:5]"];
+wxplot2d([1 / fb, 1 / (1 - V), 1 / (1 - V^2), 1 / (1 - V^3)], Vrng, opt_yrng);
+plot2d([1 / fb, 1 / (1 - V), 1 / (1 - V^2), 1 / (1 - V^3), 1 / (1 - V^4)], Vrng, opt_yrng);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* plot : 7 */
+(6/40)^2;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+1 - %;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+sqrt(%);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+float(%);
+/* [wxMaxima: input   end   ] */
+
+/* Maxima can't load/batch files which end with a comment! */
+"Created with wxMaxima"$
