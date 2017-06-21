@@ -18,13 +18,40 @@ $(document).ready(function(){
 
 var count = 0;
 
+var color_string = "";
+
 var timer = setInterval(function(){
 	
 //	  ctx.fillStyle="#ffffff";//消去時の色
 	  ctx.fillStyle="#fff";//消去時の色
 	  ctx.clearRect(0,0,300,300);//消す
 //	  ctx.fillStyle="#ff0000";//塗りつぶし色を赤に
-	  ctx.fillStyle="#f00";//塗りつぶし色を赤に
+	  
+//	  ctx.fillStyle="#f00";//塗りつぶし色を赤に
+//	  ctx.fillStyle="#ff00" + count;//塗りつぶし色を赤に
+	  
+	  //ref https://stackoverflow.com/questions/57803/how-to-convert-decimal-to-hex-in-javascript
+	  
+	  var element = Math.floor(count * 5 % 256.0).toString(16);
+//	  var element = Math.floor(count * 10 / 256.0).toString(16);
+//	  var element = count.toString(16);
+	  
+	  $('#message_area').html(element);
+	  
+	  if (element.length == 1) {
+		  
+		  element = "0" + element;
+		  
+	  }
+	  
+	  color_string = "#ff00" + element;
+//	  color_string = "#ff00" + count.toString(16);
+	  
+//	  $('#message_area').html(color_string + "(len = " + color_string.length + ")");
+	  
+	  ctx.fillStyle= color_string;
+//	  ctx.fillStyle="#ff00" + count.toString(16);//塗りつぶし色を赤に
+	  
 	  ctx.fillRect(30+count,30+count,30,30);
 	  count++;
 	  if(count>200){
