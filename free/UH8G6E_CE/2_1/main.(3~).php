@@ -62,6 +62,10 @@ http://localhost/WS_Others/free/UH8G6E_CE/2_1/main.php
 	
 yes
 
+<button onclick="stop_Count();" id="stop">Stop</button>
+<!-- ref disabled http://qiita.com/pugiemonn/items/5db6fb8fd8a303406b17 -->
+<button onclick="start_Count();" id="start" disabled="true">Start</button>
+
 </body>
 
 </html>
