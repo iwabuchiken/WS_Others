@@ -31,7 +31,7 @@ var timer = setInterval(function(){
 //	  ctx.fillStyle="#ff00" + count;//塗りつぶし色を赤に
 	  
 	  //ref https://stackoverflow.com/questions/57803/how-to-convert-decimal-to-hex-in-javascript
-	  
+	  //ref floor https://www.w3schools.com/jsref/jsref_floor.asp
 	  var element = Math.floor(count * 5 % 256.0).toString(16);
 //	  var element = Math.floor(count * 10 / 256.0).toString(16);
 //	  var element = count.toString(16);
