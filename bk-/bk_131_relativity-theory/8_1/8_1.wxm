@@ -1,0 +1,47 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 16.04.2 ] */
+
+/* [wxMaxima: input   start ] */
+/* plot : 1 */
+c : 30;
+vrng : [V, 10^(-2), 0.9 * c];
+betha : V / c;
+f1 : 1 / betha;
+f2 : betha;
+fs : [f1, f2];
+opt_yrng : [gnuplot_preamble, "set yrange[0:5]"];
+wxplot2d(fs, vrng, opt_yrng);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* plot : 2 */
+c : 30;
+vrng : [V, 10^(-2), (1 - 10^-2) * c];
+betha : V / c;
+f1 : 1 / betha;
+f2 : betha;
+fs : [f1, f2, f1 - f2];
+opt_yrng : [gnuplot_preamble, "set yrange[0:4]"];
+wxplot2d(fs, vrng, opt_yrng);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+solve(f1 - f2 * 2 = 0, V);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* plot : 2.1 */
+c : 30;
+vrng : [V, - (1 - 10^-2) * c, (1 - 10^-2) * c];
+/*vrng : [V, - (1 - 10^-2) * c, -10^-2];*/
+betha : V / c;
+f1 : 1 / betha;
+f2 : betha;
+fs : [f1, f2, f1 - f2];
+opt_yrng : [gnuplot_preamble, "set yrange[-4:4]"];
+
+wxplot2d(fs, vrng, opt_yrng);
+/* [wxMaxima: input   end   ] */
+
+/* Maxima can't load/batch files which end with a comment! */
+"Created with wxMaxima"$
