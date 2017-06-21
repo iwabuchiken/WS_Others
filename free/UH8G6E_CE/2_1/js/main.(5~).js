@@ -6,7 +6,9 @@
 var unit = 100,
     canvas, context, canvas2, context2,
     height, width, xAxis, yAxis,
-    draw;
+    draw
+    , timeout = 20
+    ;
 
 var interval = 500;
 
@@ -62,14 +64,22 @@ draw = function () {
 	
     // Set styles for animated graphics
     context.save();
+
     context.strokeStyle = '#00f';
     context.fillStyle = '#fff';
     context.lineWidth = 2;
 
     // Draw the sine curve at time draw.t, as well as the circle.
     context.beginPath();
+    
     drawSine(draw.t);
+    
+    context.strokeStyle = '#f00';
+    context.stroke();
+    context.strokeStyle = '#00f';
+    
     drawCircle();
+    
     context.stroke();
 
 //     Draw the arrow at time t in its own path.
@@ -85,12 +95,14 @@ draw = function () {
     // Update the time and draw again
     draw.seconds = draw.seconds - .007;
     draw.t = draw.seconds*Math.PI;
-    setTimeout(draw, 35);
+    
+    setTimeout(draw, timeout);
+//    setTimeout(draw, 35);
     
 //    //debug
-    //ref 
+    //ref https://stackoverflow.com/questions/5113374/javascript-check-if-variable-exists-is-defined-initialized 'answered Feb 6 '09 at 4:56'
 //    alert((typeof variable !== 'undefined') ? draw.t : "draw.t => undefiend");
-//    $('#message_area').html(draw.t);
+    $('#message_area').html(draw.t);
 
 };//draw = function () {
 
@@ -113,21 +125,57 @@ function drawAxes() {
 
 function drawSine(t) {
 
+	//ref https://stackoverflow.com/questions/11895807/why-cant-i-draw-two-lines-of-varying-colors-in-my-html5-canvas 'answered Aug 10 '12 at 5:20'
+	/***************************
+		begin path
+	 ***************************/
+	context.beginPath();
+	
     // Set the initial x and y, starting at 0,0 and translating to the origin on
     // the canvas.
     var x = t;
     var y = Math.sin(x);
     context.moveTo(yAxis, unit*y+xAxis);
     
+    /***************************
+		line color : prep
+	 ***************************/
+//    var tmp_StrokeStyle = context.strokeStyle;
+//    var tmp_FillStyle = context.fillStyle;
+//    var tmp_LineWidth = context.lineWidth;
+
+//    context.strokeStyle = '#f00';
+//    context.fillStyle = '#fff';
+//    context.lineWidth = 2;
+    
+    /***************************
+		draw line
+	 ***************************/
     // Loop to draw segments
     for (i = yAxis; i <= width; i += 10) {
         x = t+(-yAxis+i)/unit;
         y = Math.sin(x);
+        
         context.lineTo(i, unit*y+xAxis);
+        
     }
+    
+    /***************************
+		line color : restore
+	 ***************************/
+//	context.strokeStyle = '#00f';
+//	context.fillStyle = tmp_FillStyle;
+//	context.lineWidth = tmp_LineWidth;
+	
 }
 
 function drawCircle() {
+	
+	/***************************
+		begin path
+	 ***************************/
+	context.beginPath();
+	
     context.moveTo(yAxis+unit, xAxis);
     context.arc(yAxis, xAxis, unit, 0, 2*Math.PI, false);
 }
