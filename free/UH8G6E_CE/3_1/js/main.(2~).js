@@ -167,12 +167,14 @@ function _init_2_5() {
     setCanvasSize();
 
 
-    var clickPoint = {
+//    var clickPoint = {
+    clickPoint = {
         x: 0,
         y: 0
     };
 
-    var Particle = function(scale, color, speed) {
+//    var Particle = function(scale, color, speed) {
+    	Particle = function(scale, color, speed) {
         this.scale = scale; //大きさ
         this.color = color; //色
         this.speed = speed; //速度
@@ -193,16 +195,21 @@ function _init_2_5() {
     };
 
     Particle.prototype.update = function() {
+    	
+    	console.log("updating...");
+    	
         this.position.x += (clickPoint.x - this.position.x) / this.speed;
         this.position.y += (clickPoint.y - this.position.y) / this.speed;
 
         this.draw();
     };
 
-    var particle = new Particle(7, '#D0A000', 20);
+    particle = new Particle(7, '#D0A000', 20);
+//    var particle = new Particle(7, '#D0A000', 20);
 
     //test
-    draw(ctx, particle);
+    draw();
+//    draw(ctx, particle);
 //    draw("abcde");
 //    draw();
     
@@ -308,7 +315,10 @@ function init() {
 //draw = function() {
 //draw = function(msg) {
 		//draw(ctx, particle);
-draw = function(ctx, particle) {
+//draw = function(ctx, particle) {
+draw = function() {
+	
+	console.log("draw ---> defined");
 	
 //	console.log("ctx => " + ctx);
 
@@ -316,6 +326,7 @@ draw = function(ctx, particle) {
 	
 	particle.update();
 
+	setTimeout(draw, timeout);
 //	setTimeout(draw(ctx, particle), timeout);
 	
 	
