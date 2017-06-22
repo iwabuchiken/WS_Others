@@ -1,0 +1,63 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 16.04.2 ] */
+
+/* [wxMaxima: input   start ] */
+/* plot : 1 */
+xrng : [x, 0, 5];
+L : 2;
+ct : sqrt(x^2 - L^2);
+wxplot2d(ct, xrng);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* plot : 2 */
+xrng : [x, 0, 5];
+kill(L);
+Lrng : [L, 0, 5];
+ct : sqrt(x^2 - L^2);
+opt_grid : [grid, 50, 50];
+wxplot3d([ct, xrng, Lrng], opt_grid);
+plot3d([ct, xrng, Lrng], opt_grid);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* plot : 3 */
+brng : [betha, 0, 0.9];
+y : - betha / sqrt(1 - betha^2);
+wxplot2d(y, brng);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+                                               
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* plot : 3.1 */
+brng : [betha, 0, 0.9];
+y : - betha / sqrt(1 - betha^2);
+y_d1 : diff(y, betha);
+fs : [y_d1];
+wxplot2d(fs, brng);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* plot : 3.2 */
+brng : [betha, 0, 0.9];
+y : - betha / sqrt(1 - betha^2);
+y_d1 : diff(y, betha);
+y_d2 : diff(y_d1, betha);
+opt_rng : [gnuplot_preamble, "set yrange[-5:0]"];
+fs : [y_d1, y_d2];
+wxplot2d(fs, brng, opt_rng);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+solve(y_d1 - y_d2 = 0, betha);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+float(%);
+/* [wxMaxima: input   end   ] */
+
+/* Maxima can't load/batch files which end with a comment! */
+"Created with wxMaxima"$
