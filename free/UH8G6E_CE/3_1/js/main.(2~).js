@@ -1,7 +1,10 @@
 var canvas;
 var ctx;
 
-var timeout = 1000;
+var timeout = 1;
+//var timeout = 10;
+//var timeout = 100;
+//var timeout = 1000;
 
 var Particle;
 
@@ -186,7 +189,7 @@ function _init_2_5() {
 
     Particle.prototype.draw = function() {
     	
-    	console.log("drawing...");
+//    	console.log("drawing...");
     	
         ctx.beginPath();
         ctx.arc(this.position.x, this.position.y, this.scale, 0, 2*Math.PI, false);
@@ -196,7 +199,7 @@ function _init_2_5() {
 
     Particle.prototype.update = function() {
     	
-    	console.log("updating...");
+//    	console.log("updating...");
     	
         this.position.x += (clickPoint.x - this.position.x) / this.speed;
         this.position.y += (clickPoint.y - this.position.y) / this.speed;
@@ -318,7 +321,7 @@ function init() {
 //draw = function(ctx, particle) {
 draw = function() {
 	
-	console.log("draw ---> defined");
+//	console.log("draw ---> defined");
 	
 //	console.log("ctx => " + ctx);
 
