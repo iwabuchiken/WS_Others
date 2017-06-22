@@ -2,9 +2,6 @@
 
 http://localhost/WS_Others/free/UH8G6E_CE/2_1/main.php 
 
-C:\WORKS_2\WS\WS_Others\free\UH8G6E_CE
-/WS/WS_Others/free/UH8G6E_CE/
-
 -->
 <!doctype html>
 <head>
@@ -12,7 +9,7 @@ C:\WORKS_2\WS\WS_Others\free\UH8G6E_CE
 	<meta name="author" content="" />
 	<meta name="viewport" content="width=device-width">
 	
-	<title>3</title>
+	<title>3_1 (1)</title>
 
 
 	<!-- https://code.jquery.com/jquery/ -->
@@ -34,27 +31,35 @@ C:\WORKS_2\WS\WS_Others\free\UH8G6E_CE
 		$dpath_JavaScript = "";
 		$dpath_StyleSheet = "";
 		
+		$dpath_ProjectRoot = "";
+		
+		$session_name = "3_1";
+		
 		if ($hostname == "iwabuchiken-PC") {
 				
-			$dpath_JavaScript = "/WS_Others/free/UH8G6E_CE/2_1/js";
+			$dpath_JavaScript = "/WS_Others/free/UH8G6E_CE/$session_name/js";
 
-			$dpath_StyleSheet = "/WS_Others/free/UH8G6E_CE/2_1/css";
+			$dpath_StyleSheet = "/WS_Others/free/UH8G6E_CE/$session_name/css";
+			
+			$dpath_ProjectRoot = "/WS_Others/free/UH8G6E_CE";
 				
 		} else {
 				
-			$dpath_JavaScript ="/WS/WS_Others/free/UH8G6E_CE/2_1/js";
+			$dpath_JavaScript ="/WS/WS_Others/free/UH8G6E_CE/$session_name/js";
 			
-			$dpath_StyleSheet = "/WS/WS_Others/free/UH8G6E_CE/2_1/css";
+			$dpath_StyleSheet = "/WS/WS_Others/free/UH8G6E_CE/$session_name/css";
 		
+			$dpath_ProjectRoot = "/WS/WS_Others/free/UH8G6E_CE";
+			
 		}//if ($hostname == "iwabuchiken-PC")
 		
 		// js file path
-		$fname_JS = "main.(5~).js";
+		$fname_JS = "main.(1~).js";
 		
 		$fpath_JS = "$dpath_JavaScript/$fname_JS";
 	
 		// css file path
-		$fname_CSS = "main.(5~).css";
+		$fname_CSS = "main.(1~).css";
 		
 		$fpath_CSS = "$dpath_StyleSheet/$fname_CSS";
 	
@@ -89,6 +94,14 @@ yes
 <button onclick="stop_Count();" id="stop">Stop</button>
 <!-- ref disabled http://qiita.com/pugiemonn/items/5db6fb8fd8a303406b17 -->
 <button onclick="start_Count();" id="start" disabled="true">Start</button>
+
+<hr>
+<a
+	href="<?php echo $dpath_ProjectRoot; ?>"
+	target="_blank"
+	>
+	project root
+</a>
 
 </body>
 

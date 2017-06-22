@@ -7,6 +7,7 @@ var unit = 100,
     canvas, context, canvas2, context2,
     height, width, xAxis, yAxis,
     draw
+//    , timeout = 10
     , timeout = 20
     ;
 
@@ -52,6 +53,13 @@ function init() {
 
 draw = function () {
 	
+	/***************************
+		unit
+	 ***************************/
+	//ref random https://syncer.jp/javascript-reverse-reference/create-random-number
+//	unit = 80 + Math.floor( Math.random() * 50 );	//=> works.
+//	unit = 100 + Math.floor( Math.random() * 20 ) + 5;
+	
 //	alert("draw => starting...");
 	
     // Clear the canvas
@@ -74,23 +82,18 @@ draw = function () {
     
     drawSine(draw.t);
     
+//    context.strokeStyle = '#ff0';
     context.strokeStyle = '#f00';
     context.stroke();
     context.strokeStyle = '#00f';
     
     drawCircle();
-
-
+    
     context.stroke();
 
 //     Draw the arrow at time t in its own path.
     drawArrow(draw.t);
 
-//    context.strokeStyle = '#0f0';
-//    context.stroke();
-//    context.strokeStyle = '#00f';
-//
-    
     // Restore original styles
     context.restore();
     
@@ -127,6 +130,20 @@ function drawAxes() {
     // Draw X axis tick at PI
     context.moveTo(yAxis+Math.PI*unit, xAxis+5);
     context.lineTo(yAxis+Math.PI*unit, xAxis-5);
+
+    //test
+    // Draw support lines
+    //ref https://www.w3schools.com/tags/canvas_moveto.asp
+    context.moveTo(0, xAxis -unit);
+    context.lineTo(width, xAxis -unit);
+    
+    context.moveTo(0, xAxis + unit);
+    context.lineTo(width, xAxis + unit);
+    
+//    context.moveTo(0, xAxis);
+//    context.lineTo(width, xAxis + 10);
+//    context.lineTo(width, xAxis);
+    
 }
 
 function drawSine(t) {
@@ -187,53 +204,50 @@ function drawCircle() {
 }
 
 function drawArrow(t) {
+    
+    // Cache position of arrow on the circle
+    var x = yAxis+unit*Math.cos(t);
+    var y = xAxis+unit*Math.sin(t);
+    
+    // Draw the arrow line
+    context.beginPath();
+    context.moveTo(yAxis, xAxis);
+    context.lineTo(x, y);
+    
+    //test
+    context.strokeStyle = '#0f0';
+    context.stroke();
+    context.strokeStyle = '#00f';
 
-	//ref https://stackoverflow.com/questions/11895807/why-cant-i-draw-two-lines-of-varying-colors-in-my-html5-canvas 'answered Aug 10 '12 at 5:20'
-	/***************************
-		begin path
-	 ***************************/
-	context.beginPath();
-
-	// Cache position of arrow on the circle
-	var x = yAxis+unit*Math.cos(t);
-	var y = xAxis+unit*Math.sin(t);
-
-	// Draw the arrow line
-	context.beginPath();
-	
-	//test
-	context.strokeStyle = '#0f0';
-	
-	context.moveTo(yAxis, xAxis);
-	context.lineTo(x, y);
-
-//	context.strokeStyle = '#0f0';
-	context.stroke();
-	
-	//test
-	context.strokeStyle = '#00f';
-
+    
 //    context.stroke();
     
     // Draw the arrow bead
-	context.beginPath();
-	context.arc(x, y, 5, 0, 2*Math.PI, false);
-	context.fill();
-	context.stroke();
-	
-	// Draw dashed line to yAxis
-	context.beginPath();
-	var direction = (Math.cos(t) < 0) ? 1 : -1;
-	var start = (direction==-1) ? -5 : 0;
-	for (var i = x;  direction*i < direction*yAxis-5; i = i+direction*10) {
-	    context.moveTo(i+direction*5, y);
-	    context.lineTo(i+direction*10, y);
-	}
-	context.stroke();
-	
-	// Draw yAxis bead
-	context.beginPath();
-	context.arc(yAxis, y, 5, 0, 2*Math.PI, false);
-	context.fill();
-	context.stroke();
+    context.beginPath();
+    context.arc(x, y, 5, 0, 2*Math.PI, false);
+    context.fill();
+    context.stroke();
+    
+    // Draw dashed line to yAxis
+    context.beginPath();
+    var direction = (Math.cos(t) < 0) ? 1 : -1;
+    var start = (direction==-1) ? -5 : 0;
+    for (var i = x;  direction*i < direction*yAxis-5; i = i+direction*10) {
+        context.moveTo(i+direction*5, y);
+        context.lineTo(i+direction*10, y);
+    }
+    
+    //test
+    context.strokeStyle = '#f0f';
+    context.stroke();
+    context.strokeStyle = '#00f';
+
+    
+//    context.stroke();
+    
+    // Draw yAxis bead
+    context.beginPath();
+    context.arc(yAxis, y, 5, 0, 2*Math.PI, false);
+    context.fill();
+    context.stroke();
 }

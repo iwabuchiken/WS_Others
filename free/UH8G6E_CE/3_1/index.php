@@ -10,7 +10,7 @@
 
 <meta name="viewport" content="minimum-scale=0.5">
 
-<title>UH8G6E_CE</title>
+<title>UH8G6E_CE 2_1</title>
 
 
 </head>
@@ -109,19 +109,5 @@ if ($res == 1) {
 	//echo `whoami`;
 	
 ?>
-
-<hr>
-<a href="http://localhost/WS_Others/free/UH8G6E_CE/"
-	target="_blank"
-	>
-	local</a>
-	
-<br>
-
-<a href="http://benfranklin.chips.jp/WS/WS_Others/free/UH8G6E_CE/"
-	target="_blank"
-	>
-	remote</a>
-
 
 </body>
