@@ -2,6 +2,9 @@
 
 http://localhost/WS_Others/free/UH8G6E_CE/2_1/main.php 
 
+C:\WORKS_2\WS\WS_Others\free\
+/WS/WS_Others/free/UH8G6E_CE/
+
 -->
 <?php 
 

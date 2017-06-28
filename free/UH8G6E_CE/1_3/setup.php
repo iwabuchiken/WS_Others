@@ -7,6 +7,8 @@ http://localhost/WS_Others/free/UH8G6E_CE/2_1/main.php
 
 	$session = "4_1";
 	$version = "1~";
+	
+	$fname_JS_2 = "main.(3~).js";
 
 ?>
 
@@ -46,6 +48,9 @@ http://localhost/WS_Others/free/UH8G6E_CE/2_1/main.php
 		$fname_JS = "main.($version).js";
 		
 		$fpath_JS = "$dpath_JavaScript/$fname_JS";
+
+		// ref http://symfoware.blog68.fc2.com/blog-entry-1958.html
+		$fpath_JS_2 = "$dpath_JavaScript/$fname_JS_2";
 	
 		// css file path
 		$fname_CSS = "main.($version).css";
