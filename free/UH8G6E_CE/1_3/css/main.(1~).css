@@ -13,6 +13,14 @@ canvas#canvas-container {
  
  	background	: #ffffaa;
  	
+ 	/* ref http://www.tagindex.com/stylesheet/text_font/color.html */
  	color		: blue;
  
  }
+ 
+/* ref https://stackoverflow.com/questions/1664785/resize-html5-canvas-to-fit-window 'answered Jun 20 '10 at 6:43' */
+ html, body {
+  width:  100%;
+  height: 100%;
+  margin: 5px;
+}

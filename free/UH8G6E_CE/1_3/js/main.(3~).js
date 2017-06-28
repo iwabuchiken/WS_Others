@@ -2,7 +2,7 @@
  * ref http://symfoware.blog68.fc2.com/blog-entry-1958.html
  */
 
-alert("js starting...");
+//alert("js starting...");
 
 window.onload = function() {
 	
@@ -14,6 +14,7 @@ window.onload = function() {
     var reacts = [];
     
     var imageObj = new Image();
+    
     imageObj.onload = function() {
     	
         canvas.width = window.innerWidth / 2;
@@ -23,6 +24,8 @@ window.onload = function() {
 //      canvas.height = imageObj.height / 2;
 //      canvas.height = imageObj.height;
 
+     
+     
     	
 //        canvas.width = imageObj.width;
 //        canvas.height = imageObj.height;
@@ -65,12 +68,35 @@ window.onload = function() {
     };
     
     function draw() {
-        context.drawImage(imageObj, 0, 0);
+    	
+    	alert(
+    			"canvas : width => " + canvas.width
+    			+ " / "
+    			+ "height => " + canvas.height
+    			
+    			+ " || "
+    			
+    			+ "window : width => " + window.innerWidth
+    			+ " / "
+    			+ "window : height => " + window.innerHeight
+    			
+    			
+//    			"image file : width => " + imageObj.width
+//    			+ " / "
+//    			+ "height => " + imageObj.height
+		);
+    	
+    	// ref http://www.html5.jp/canvas/how6.html '画像をトリミングしてみましょう'
+    	context.drawImage(imageObj, 0, 0, canvas.width, canvas.height);
+//        context.drawImage(imageObj, 0, 0, this.width, this.height);
+//        context.drawImage(imageObj, 0, 0);
+        
         context.lineWidth = 5;
         context.strokeStyle = "rgb(255, 0, 0)";
         reacts.forEach(function(rect) {
             context.strokeRect(rect.startX, rect.startY, rect.endX, rect.endY);
         });
+        
     };
     
     function onKeyUp (e) {
