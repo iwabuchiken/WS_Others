@@ -2,7 +2,7 @@
  * ref http://symfoware.blog68.fc2.com/blog-entry-1958.html
  */
 
-//alert("js starting...");
+alert("js starting...");
 
 window.onload = function() {
 	
@@ -15,8 +15,18 @@ window.onload = function() {
     
     var imageObj = new Image();
     imageObj.onload = function() {
-        canvas.width = imageObj.width;
-        canvas.height = imageObj.height;
+    	
+        canvas.width = window.innerWidth / 2;
+//      canvas.width = window.innerWidth;;
+//      canvas.width = imageObj.width;
+     canvas.height = window.innerHeight / 2;
+//      canvas.height = imageObj.height / 2;
+//      canvas.height = imageObj.height;
+
+    	
+//        canvas.width = imageObj.width;
+//        canvas.height = imageObj.height;
+    	
         draw();
     };
     imageObj.src = 'http://benfranklin.chips.jp/cake_apps/images/ifm11/2014-08-12_12-17-13_686.jpg';

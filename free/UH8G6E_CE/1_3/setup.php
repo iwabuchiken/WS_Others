@@ -5,7 +5,8 @@ http://localhost/WS_Others/free/UH8G6E_CE/2_1/main.php
 -->
 <?php 
 
-	$session = "4_1";
+	$session = "1_3";
+// 	$session = "4_1";
 	$version = "1~";
 	
 	$fname_JS_2 = "main.(3~).js";
