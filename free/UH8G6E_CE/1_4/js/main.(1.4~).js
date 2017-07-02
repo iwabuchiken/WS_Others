@@ -71,7 +71,8 @@ function window_OnLoad() {
     
     imageObj.onload = function() {
     	
-        canvas.width = window.innerWidth / 2;
+//        canvas.width = window.innerWidth / 2;
+        canvas.width = window.innerWidth;
 //      canvas.width = window.innerWidth;;
 //      canvas.width = imageObj.width;
      canvas.height = window.innerHeight / 2;
