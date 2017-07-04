@@ -1,0 +1,54 @@
+@CHARSET "UTF-8";
+#canvas_area {
+        background:#999;
+ }
+ 
+canvas#canvas-container {
+	
+        background	: #ffffaa;
+        
+ }
+ 
+ div#div_message {
+ 
+ 	background	: #ffffaa;
+ 	
+ 	/* ref http://www.tagindex.com/stylesheet/text_font/color.html */
+ 	color		: blue;
+ 
+ }
+ 
+ input#ipt_Image_File_URL {
+ 
+ 	background	: LightCyan;
+ 	
+ 	width	: 50%;
+ 	
+ 	height	: 30px;
+ 	
+ 	size	: 30px;
+ 
+ }/* input#ipt_Image_File_URL */
+ 
+ button#btn_Image_File_URL {
+ 
+ 	background-color	: LightCyan;
+ 	/*
+ 	width	: 40px;
+ 	*/
+ 	font-size	: 25px;
+ 
+ 	border-radius: 5px;
+ 	
+ 	padding		:	5px;
+ 	
+ 	
+ 	
+ }/* input#ipt_Image_File_URL */
+ 
+/* ref https://stackoverflow.com/questions/1664785/resize-html5-canvas-to-fit-window 'answered Jun 20 '10 at 6:43' */
+ html, body {
+  width:  100%;
+  height: 100%;
+  margin: 5px;
+}
