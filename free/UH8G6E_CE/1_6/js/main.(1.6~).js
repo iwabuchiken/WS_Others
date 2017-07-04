@@ -190,21 +190,52 @@ function get_Image() {
 	
 }//get_Image()
 
+var canvas = null;
+var context = null;
+var reacts = null;
+var imageFile_WH_Resized = null;
+var imageObj = null;
+var canvas_Height_Ratio = 0.8;
+var size_Canvas = null;
+
+function draw() {
+	
+//	context.drawImage(imageObj, 0, 0, 100, 100);
+	context.drawImage(imageObj, 0, 0, imageFile_WH_Resized[0], imageFile_WH_Resized[1]);
+	
+    context.lineWidth = 5;
+    context.strokeStyle = "rgb(255, 0, 0)";
+    
+    reacts.forEach(
+    		function(rect) {
+    	
+            	context.strokeRect(rect.startX, rect.startY, rect.endX, rect.endY);
+            
+        	}//reacts.forEach(function(rect) {
+    		
+    );//reacts.forEach(
+    
+};//function draw() {
 
 function window_OnLoad() {
 
 //	//debug
 //	alert("starting...");
 	
-    var canvas = document.getElementById('drowing');
-    var context = canvas.getContext('2d');
-    var reacts = [];
+    canvas = document.getElementById('drowing');
+//    var canvas = document.getElementById('drowing');
+    context = canvas.getContext('2d');
+//    var context = canvas.getContext('2d');
+    reacts = [];
+//    var reacts = [];
     
-    var imageFile_WH_Resized = null;
+    imageFile_WH_Resized = null;
+//    var imageFile_WH_Resized = null;
     	
-    var imageObj = new Image();
+    imageObj = new Image();
+//    var imageObj = new Image();
     
-    var canvas_Height_Ratio = 0.8;
+//    var canvas_Height_Ratio = 0.8;
     
     imageObj.onload = function() {
     	
@@ -217,7 +248,8 @@ function window_OnLoad() {
 //      canvas.height = imageObj.height / 2;
 //      canvas.height = imageObj.height;
 
-     var size_Canvas = [canvas.width, canvas.height];
+     size_Canvas = [canvas.width, canvas.height];
+//     var size_Canvas = [canvas.width, canvas.height];
      
 	     //test
 	//     alert("imageObj.height => " + imageObj.height);	//=> 3264
@@ -263,24 +295,24 @@ function window_OnLoad() {
         canvas.removeEventListener ("mousemove", onMouseMove, false);
     };
     
-    function draw() {
-    	
-//    	context.drawImage(imageObj, 0, 0, 100, 100);
-    	context.drawImage(imageObj, 0, 0, imageFile_WH_Resized[0], imageFile_WH_Resized[1]);
-    	
-        context.lineWidth = 5;
-        context.strokeStyle = "rgb(255, 0, 0)";
-        
-        reacts.forEach(
-        		function(rect) {
-        	
-	            	context.strokeRect(rect.startX, rect.startY, rect.endX, rect.endY);
-	            
-	        	}//reacts.forEach(function(rect) {
-        		
-        );//reacts.forEach(
-        
-    };//function draw() {
+//    function draw() {
+//    	
+////    	context.drawImage(imageObj, 0, 0, 100, 100);
+//    	context.drawImage(imageObj, 0, 0, imageFile_WH_Resized[0], imageFile_WH_Resized[1]);
+//    	
+//        context.lineWidth = 5;
+//        context.strokeStyle = "rgb(255, 0, 0)";
+//        
+//        reacts.forEach(
+//        		function(rect) {
+//        	
+//	            	context.strokeRect(rect.startX, rect.startY, rect.endX, rect.endY);
+//	            
+//	        	}//reacts.forEach(function(rect) {
+//        		
+//        );//reacts.forEach(
+//        
+//    };//function draw() {
     
     function onKeyUp (e) {
         switch(e.key) {
