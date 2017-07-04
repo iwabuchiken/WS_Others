@@ -186,7 +186,18 @@ function get_Image() {
 	
 	var url = $('input#ipt_Image_File_URL').val();
 	
-	alert("url => " + url);
+//	alert("url => " + url);
+	
+	// set : new url
+	imageObj.src = url;
+
+	/***************************
+		change : button color
+	 ***************************/
+	$('button#btn_Image_File_URL').css("background-color", "yellow");
+	
+	// draw
+	draw();
 	
 }//get_Image()
 
@@ -198,12 +209,16 @@ var imageObj = null;
 var canvas_Height_Ratio = 0.8;
 var size_Canvas = null;
 
+var context_Line_Width = 1;
+//var context_Line_Width = 2;
+
 function draw() {
 	
 //	context.drawImage(imageObj, 0, 0, 100, 100);
 	context.drawImage(imageObj, 0, 0, imageFile_WH_Resized[0], imageFile_WH_Resized[1]);
 	
-    context.lineWidth = 5;
+    context.lineWidth = context_Line_Width;
+//    context.lineWidth = 5;
     context.strokeStyle = "rgb(255, 0, 0)";
     
     reacts.forEach(
@@ -214,7 +229,12 @@ function draw() {
         	}//reacts.forEach(function(rect) {
     		
     );//reacts.forEach(
-    
+
+	/***************************
+		change : button color
+	 ***************************/
+	$('button#btn_Image_File_URL').css("background-color", "LightCyan");
+
 };//function draw() {
 
 function window_OnLoad() {
@@ -284,7 +304,10 @@ function window_OnLoad() {
         draw();
         _rectangle.endY = e.layerY - _rectangle.startY;
         _rectangle.endX = e.layerX - _rectangle.startX;
-        context.lineWidth = 5;
+        
+        context.lineWidth = context_Line_Width;
+//        context.lineWidth = 5;
+        
         context.strokeStyle = "rgb(255, 0, 0)";
         context.strokeRect (_rectangle.startX, _rectangle.startY, _rectangle.endX, _rectangle.endY);
     };
