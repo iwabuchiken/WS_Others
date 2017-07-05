@@ -206,6 +206,8 @@ var context = null;
 var reacts = null;
 var imageFile_WH_Resized = null;
 var imageObj = null;
+//var canvas_Height_Ratio = 1.0;
+//var canvas_Height_Ratio = 2.0;
 var canvas_Height_Ratio = 0.8;
 var size_Canvas = null;
 
@@ -214,6 +216,10 @@ var context_Line_Width = 1;
 
 var line_Color__Red = "rgb(255, 0, 0)";
 var line_Color__Yellow = "rgb(255, 255, 0)";
+
+var numOf_Grid_Lines = 5;
+
+var dflt_Image_URL = 'http://benfranklin.chips.jp/cake_apps/images/ifm11/2014-08-12_12-17-13_686.jpg';
 
 function draw() {
 	
@@ -231,11 +237,35 @@ function draw() {
             	context.strokeRect(rect.startX, rect.startY, rect.endX, rect.endY);
             
             	//test
+            	var tick_X = Math.floor(rect.endX / numOf_Grid_Lines);
+            	
+            	var tick_Y = Math.floor(rect.endY / numOf_Grid_Lines);
+            	
+//            	alert("tick X => " + tick_X 
+//            			+ " / "
+//            			+ "tick Y => " + tick_Y
+//            	);
+            	
             	context.beginPath();
-            	context.moveTo(rect.startX, rect.startY);
+            	
+            	for (var int = 1; int < numOf_Grid_Lines; int++) {
+//            		for (var int = 1; int < 4; int++) {
+					
+            		context.moveTo(rect.startX + tick_X * int, rect.startY);
+                	context.lineTo(rect.startX + tick_X * int, rect.startY + rect.endY);	//
+                	
+                	context.moveTo(rect.startX, rect.startY + tick_Y * int);
+                	context.lineTo(rect.startX + rect.endX, rect.startY + tick_Y * int);	//
+                	
+				}
+            	
+//            	context.moveTo(rect.startX + tick_X, rect.startY);
+//            	context.lineTo(rect.startX + tick_X, rect.startY + rect.endY);	// 
+            	
+//            	context.moveTo(rect.startX, rect.startY);
 //            	context.lineTo(100, 100);
 //            	context.lineTo(rect.endX, rect.endY);	// n.w.
-            	context.lineTo(rect.startX + rect.endX, rect.startY + rect.endY);	// 
+//            	context.lineTo(rect.startX + rect.endX, rect.startY + rect.endY);	// 
             	
             	
 //            	context.closePath();
@@ -299,7 +329,8 @@ function _window_OnLoad__Setup() {
       
   };
 	
-  imageObj.src = 'http://benfranklin.chips.jp/cake_apps/images/ifm11/2014-08-12_12-17-13_686.jpg';
+  imageObj.src = dflt_Image_URL;
+//  imageObj.src = 'http://benfranklin.chips.jp/cake_apps/images/ifm11/2014-08-12_12-17-13_686.jpg';
   
 }//function _window_OnLoad__Setup() {
 

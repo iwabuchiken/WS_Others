@@ -38,6 +38,7 @@ C:\WORKS_2\WS\WS_Others\free\UH8G6E_CE\
 		
 </head>
 <body>
+
 	
 	<div id="div_message">
 		
@@ -58,19 +59,24 @@ C:\WORKS_2\WS\WS_Others\free\UH8G6E_CE\
 <!--         <canvas id="drowing" class="drowing" width="50%" height="0"></canvas> -->
         <canvas id="drowing" class="drowing" width="0" height="0"></canvas>
     </div>
+
+	<div>    
+	    <input type="text" 
+			 
+			id="ipt_Image_File_URL">
+	    
+	    <button id="btn_Image_File_URL"
+	    	onclick="get_Image();"
+	    	>
+	    	Go
+	    </button>
+    </div>
+
     <div>
         <div>zキーで最新の矩形を削除</div>
     </div>
-    
-    <input type="text" 
-		 
-		id="ipt_Image_File_URL">
-    
-    <button id="btn_Image_File_URL"
-    	onclick="get_Image();"
-    	>
-    	Go
-    </button>
+
+<hr>
     
     <?php 
     
