@@ -228,6 +228,7 @@ function draw() {
 	
     context.lineWidth = context_Line_Width;
 //    context.lineWidth = 5;
+    //ref http://www.html5.jp/canvas/how3.html
     context.strokeStyle = line_Color__Red;
 //    context.strokeStyle = "rgb(255, 0, 0)";
     

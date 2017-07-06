@@ -1,0 +1,82 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 16.04.2 ] */
+
+/* [wxMaxima: input   start ] */
+x1_rng : [x1, 0, 5];
+x0 : sqrt(x1^2);
+wxplot2d(x0, x1_rng);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+x1_rng : [x1, 0, 5];
+x0 : - sqrt(x1^2);
+wxplot2d(x0, x1_rng);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+x1_rng : [x1, -5, 5];
+x0 : sqrt(x1^2);
+wxplot2d(x0, x1_rng);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+x1_rng : [x1, -5, 5];
+x0 : sqrt(x1^2);
+wxplot2d(x0, x1_rng);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+a : 2;
+x1_rng : [x1, -a, a];
+x0 : sqrt(x1^2 + 1);
+opt_yrng : [gnuplot_preamble, "set yrange[0:3]"];
+wxplot2d(x0, x1_rng, opt_yrng);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+a : 2;
+x1_rng : [x1, -a, a];
+x0 : - sqrt(x1^2 + 1);
+opt_yrng : [gnuplot_preamble, "set yrange[-3:0]"];
+wxplot2d(x0, x1_rng, opt_yrng);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+a : 3;
+x1_rng : [x1, -a, a];
+x0 : sqrt(x1^2 - 1);
+opt_yrng : [gnuplot_preamble, "set yrange[0:3]"];
+wxplot2d(x0, x1_rng, opt_yrng);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+a : 3;
+x1_rng : [x1, -a, a];
+x0 : - sqrt(x1^2 - 1);
+opt_yrng : [gnuplot_preamble, "set yrange[-3:0]"];
+wxplot2d(x0, x1_rng, opt_yrng);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* plot 2 */
+wxplot2d(sqrt(x1 - 1), [x1, 0, 20]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+wxplot2d(sqrt(x1 + 1), [x1, 0, 20]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+wxplot2d(sqrt(x1^2 + 1), [x1, 0, 20]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+wxplot2d(sqrt(x1^2 - 1), [x1, 0, 20]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+wxplot2d([sqrt(x1^2 - 1), sqrt(x1^2 + 1)], [x1, 0, 20]);
+/* [wxMaxima: input   end   ] */
+
+/* Maxima can't load/batch files which end with a comment! */
+"Created with wxMaxima"$
