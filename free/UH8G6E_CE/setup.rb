@@ -2,6 +2,7 @@
 
 pushd C:\WORKS_2\WS\WS_Others\free\UH8G6E_CE\
 setup.rb
+setup.rb 1_7 1_8
 
 C:\WORKS_2\WS\WS_Others\free\UH8G6E_CE\setup.rb
 
