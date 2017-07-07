@@ -418,7 +418,8 @@ function onMouseDown (e) {
 
 	    // set values
 	    $('input#ipt_Main_Range_Start_X').val(e.clientX);
-//	    $('input#ipt_Main_Range_Start_X').text(e.clientX);
+	    
+	    $('input#ipt_Main_Range_Start_Y').val(e.clientY);
 	    
 	    console.log("value set !! => Start X : " + e.clientX);
 
@@ -432,6 +433,8 @@ function onMouseDown (e) {
 
 	    // set values
 	    $('input#ipt_Main_Range_End_X').val(e.clientX);
+	    
+	    $('input#ipt_Main_Range_End_Y').val(e.clientY);
 	    
 	    console.log("value set !! => End X : " + e.clientX);
 
