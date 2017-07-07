@@ -1,7 +1,9 @@
 =begin
 
-pushd C:\WORKS_2\WS\WS_Others\free\UH8G6E_CE\
 setup.rb
+
+pushd C:\WORKS_2\WS\WS_Others\free\UH8G6E_CE\
+setup.rb 1_8 1_9
 setup.rb 1_7 1_8
 
 C:\WORKS_2\WS\WS_Others\free\UH8G6E_CE\setup.rb
