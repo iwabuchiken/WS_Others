@@ -403,29 +403,42 @@ function onMouseDown (e) {
     //test
     console.log("selection => started !! (global function)");
     
-    // set values
-    $('input#ipt_Main_Range_Start_X').val(e.clientX);
-//    $('input#ipt_Main_Range_Start_X').text(e.clientX);
-    
-    console.log("value set !! => Start X : " + e.clientX);
+//    // set values
+//    $('input#ipt_Main_Range_Start_X').val(e.clientX);
+////    $('input#ipt_Main_Range_Start_X').text(e.clientX);
+//    
+//    console.log("value set !! => Start X : " + e.clientX);
     
 //    alert("selection => started !!");
 //    alert("selection => started");
-//    if (flag_Canvas_Click_Start == 1) {
-//
+    if (flag_Canvas_Click_Start == 1) {
+
 //		alert("first click");
-//		
-//		// update
-//		flag_Canvas_Click_Start = flag_Canvas_Click_Start * (-1);
-//
-//	} else {
-//
+		console.log("first click");
+
+	    // set values
+	    $('input#ipt_Main_Range_Start_X').val(e.clientX);
+//	    $('input#ipt_Main_Range_Start_X').text(e.clientX);
+	    
+	    console.log("value set !! => Start X : " + e.clientX);
+
+		// update
+		flag_Canvas_Click_Start = flag_Canvas_Click_Start * (-1);
+
+	} else {
+
 //		alert("second click");
-//
-//		// update
-//		flag_Canvas_Click_Start = flag_Canvas_Click_Start * (-1);
-//
-//	}//if (flag_Canvas_Click_Start == 1)
+		console.log("second click");
+
+	    // set values
+	    $('input#ipt_Main_Range_End_X').val(e.clientX);
+	    
+	    console.log("value set !! => End X : " + e.clientX);
+
+		// update
+		flag_Canvas_Click_Start = flag_Canvas_Click_Start * (-1);
+
+	}//if (flag_Canvas_Click_Start == 1)
 	
     
 };
