@@ -441,6 +441,24 @@ function onMouseDown (e) {
 		// update
 		flag_Canvas_Click_Start = flag_Canvas_Click_Start * (-1);
 
+		/***************************
+			add : rectangle
+		 ***************************/
+		var _rectangle_Tmp = createRect();
+		
+		// set values
+		//ref https://www.w3schools.com/jsref/jsref_parseint.asp
+		_rectangle_Tmp.startX = parseInt($('input#ipt_Main_Range_Start_X').val());
+		_rectangle_Tmp.startY = parseInt($('input#ipt_Main_Range_Start_Y').val());
+		
+		_rectangle_Tmp.endX = parseInt($('input#ipt_Main_Range_End_X').val()) - _rectangle_Tmp.startX;
+		_rectangle_Tmp.endY = parseInt($('input#ipt_Main_Range_End_Y').val()) - _rectangle_Tmp.startY;
+
+		// push
+		reacts.push(_rectangle_Tmp);
+		
+		draw();
+		
 	}//if (flag_Canvas_Click_Start == 1)
 	
     
