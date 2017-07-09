@@ -1,0 +1,10 @@
+set xrange [0:pi]
+set yrange [0:2*pi]
+
+set samples 100
+set isosamples 100
+set pm3d depthorder
+
+set table "table2.dat"
+splot 0
+unset table
