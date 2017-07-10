@@ -4,7 +4,7 @@
 	
 	<button id="btn_Main_Clear_One_Rects" onclick="bt_Clear_One_Rects();">Clear One</button>
 	
-	<button id="btn_Main_Toggle_Grid" onclick="toggle_Grid();">Toggle Grid</button>
+	<button id="btn_Main_Toggle_Grid" onclick="toggle_Grid();" disabled>Toggle Grid</button>
 
 </div>
 

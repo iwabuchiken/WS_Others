@@ -249,15 +249,37 @@ function bt_Clear_All_Rects() {
 //	reacts.pop();
 	
 	draw();
-	
+
+	/***************************
+		button 'toggle' : able
+	 ***************************/
+	//ref http://qiita.com/pugiemonn/items/5db6fb8fd8a303406b17
+	$('button#btn_Main_Toggle_Grid').prop("disabled", true);
+
 }//bt_Clear_All_Rects()
 
 function bt_Clear_One_Rects() {
 	
 	reacts.pop();
 	
-	draw();
+//	alert("reacts => " + reacts.length);
 	
+	draw();
+
+	/***************************
+		button 'toggle' : able
+	 ***************************/
+	var lenOf_Reacts = reacts.length;
+	
+	if (lenOf_Reacts < 1) {
+
+		$('button#btn_Main_Toggle_Grid').prop("disabled", true);
+
+	}//if (lenOf_Reacts < 1) {
+
+//	$('button#btn_Main_Toggle_Grid').prop("disabled", true);
+	
+
 }//bt_Clear_One_Rects()
 
 function _draw_Grid(rect, numOf_Grid_Lines_2) {
@@ -387,13 +409,13 @@ function toggle_Grid() {
 	
 	if (flag_Draw_Grid == 1) {
 
-		console.log("flag_Draw_Grid => changing to 0");
+//		console.log("flag_Draw_Grid => changing to 0");
 		
 		flag_Draw_Grid = 0;
 		
 	} else {
 
-		console.log("flag_Draw_Grid => changing to 1");
+//		console.log("flag_Draw_Grid => changing to 1");
 		
 		flag_Draw_Grid = 1;
 		
@@ -453,18 +475,18 @@ function _window_OnLoad__Setup() {
   
 }//function _window_OnLoad__Setup() {
 
-function onMouseMove (e) {
-    draw();
-    _rectangle.endY = e.layerY - _rectangle.startY;
-    _rectangle.endX = e.layerX - _rectangle.startX;
-    
-    context.lineWidth = context_Line_Width;
-//    context.lineWidth = 5;
-    
-    context.strokeStyle = "rgb(255, 0, 0)";
-    context.strokeRect (_rectangle.startX, _rectangle.startY, _rectangle.endX, _rectangle.endY);
-};
-
+//function onMouseMove (e) {
+//    draw();
+//    _rectangle.endY = e.layerY - _rectangle.startY;
+//    _rectangle.endX = e.layerX - _rectangle.startX;
+//    
+//    context.lineWidth = context_Line_Width;
+////    context.lineWidth = 5;
+//    
+//    context.strokeStyle = "rgb(255, 0, 0)";
+//    context.strokeRect (_rectangle.startX, _rectangle.startY, _rectangle.endX, _rectangle.endY);
+//};
+//
 function _setup_Grid(e) {
 
     if (flag_Canvas_Click_Start == 1) {
@@ -520,6 +542,11 @@ function _setup_Grid(e) {
 		reacts.push(_rectangle_Tmp);
 		
 		draw();
+
+		/***************************
+			button 'toggle' : able
+		 ***************************/
+		$('button#btn_Main_Toggle_Grid').prop("disabled", false);
 		
 	}//if (flag_Canvas_Click_Start == 1)
 
@@ -528,7 +555,7 @@ function _setup_Grid(e) {
 function onMouseDown (e) {
     _rectangle.startY = e.clientY;
     _rectangle.startX = e.clientX;
-    canvas.addEventListener ("mousemove", onMouseMove, false);
+//    canvas.addEventListener ("mousemove", onMouseMove, false);
     
     //test
     console.log("selection => started !! (global function)");
@@ -598,31 +625,31 @@ function onMouseDown (e) {
     
 };
 
-function onMouseUp (e) {
-	
-    reacts.push(_rectangle);
-    
-//    //debug
-//    alert("rectangle => " + _rectangle);
-    
-    draw();
-    
-    _rectangle = createRect();
-    
-    canvas.removeEventListener ("mousemove", onMouseMove, false);
-
-    //test
-    console.log("selection => ended");
-//    alert("selection => ended");
-
-};
-
+//function onMouseUp (e) {
+//	
+//    reacts.push(_rectangle);
+//    
+////    //debug
+////    alert("rectangle => " + _rectangle);
+//    
+//    draw();
+//    
+//    _rectangle = createRect();
+//    
+//    canvas.removeEventListener ("mousemove", onMouseMove, false);
+//
+//    //test
+//    console.log("selection => ended");
+////    alert("selection => ended");
+//
+//};
+//
 function window_OnLoad() {
 
 	_window_OnLoad__Setup();
 	
     canvas.addEventListener("mousedown", onMouseDown, false);
-    canvas.addEventListener("mouseup" , onMouseUp , false);
+//    canvas.addEventListener("mouseup" , onMouseUp , false);
     window.addEventListener("keyup" , onKeyUp , false);
     
 //    function onMouseUp (e) {
