@@ -88,5 +88,22 @@
 		</td>
 		
 	</tr>
+
+	<tr>
+	
+		<td>
+			Grid interval
+		</td>
+	
+		<td>
+
+			<input 
+			type="text" 
+			id="ipt_Main_Grid_Interval"
+			class="ipt_Main_Range"
+				>
+		
+		</td>
+	</tr>
 	
 </table>

@@ -285,7 +285,26 @@ function bt_Clear_One_Rects() {
 function _draw_Grid_2__Y(rect, numOf_Grid_Lines_2) {
 	
 	//test
-	var tick = 20;
+//	var tick = 20;
+
+	var interval = $('input#ipt_Main_Grid_Interval').val();
+	
+	var tick = null;
+	
+	if (interval == '') {
+		
+		tick = 20;
+		
+	} else 	if (parseInt(interval) < 1) {
+
+		tick = 20;
+
+	} else {
+
+		tick = parseInt(interval);
+
+	}//if (parseInt(interval) < 1)
+
 	
 	var numOf_Grids_X = Math.floor(rect.endX / tick);
 //	var numOf_Grids_Y = Math.floor(rect.endY / tick);
@@ -366,7 +385,34 @@ function _draw_Grid_2__Y(rect, numOf_Grid_Lines_2) {
 function _draw_Grid_2(rect, numOf_Grid_Lines_2) {
 
 	//test
-	var tick = 20;
+	var interval = $('input#ipt_Main_Grid_Interval').val();
+	
+//	alert("interval * 2 => " + interval * 2);
+//	alert("interval => " + interval);
+//	alert("interval => " + (interval == '' ? "blank" : interval));
+//	
+//	alert("interval => " + (interval == '0' ? "char '0'" : interval));
+//	
+	
+	var tick = null;
+	
+	if (interval == '') {
+		
+		tick = 20;
+		
+	} else 	if (parseInt(interval) < 1) {
+
+		tick = 20;
+
+	} else {
+
+		tick = parseInt(interval);
+
+	}//if (parseInt(interval) < 1)
+	
+	
+//	var tick = interval;
+//	var tick = 20;
 	
 	var numOf_Grids_Y = Math.floor(rect.endY / tick);
 	
