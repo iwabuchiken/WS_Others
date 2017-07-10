@@ -3,6 +3,7 @@
 setup.rb
 
 pushd C:\WORKS_2\WS\WS_Others\free\UH8G6E_CE\
+setup.rb 1_10 1_11
 setup.rb 1_9 1_10
 setup.rb 1_8 1_9
 setup.rb 1_7 1_8

@@ -44,25 +44,25 @@ C:\WORKS_2\WS\WS_Others\free\UH8G6E_CE\
 
 	<script type="text/javascript">
 
-		window.addEventListener("load", function () {
+// 		window.addEventListener("load", function () {
 			 
-			    //仮想物理実験室オブジェクトの生成
-			    PHYSICS.physLab = new PHYSICS.PhysLab({
-			        //必須パラメータ
-			        frameID : "canvas-frame", //額縁を表す要素のid名
-			    });
+// 			    //仮想物理実験室オブジェクトの生成
+// 			    PHYSICS.physLab = new PHYSICS.PhysLab({
+// 			        //必須パラメータ
+// 			        frameID : "canvas-frame", //額縁を表す要素のid名
+// 			    });
 			 
-			    // 軸オブジェクトの準備
-			    PHYSICS.physLab.objects[ 0 ] = new PHYSICS.Axis( );
+// 			    // 軸オブジェクトの準備
+// 			    PHYSICS.physLab.objects[ 0 ] = new PHYSICS.Axis( );
 
-// 				alert("lab starting...");
+// // 				alert("lab starting...");
 				 
-			    //仮想物理実験室のスタートメソッドの実行
-			    PHYSICS.physLab.startLab();
+// 			    //仮想物理実験室のスタートメソッドの実行
+// 			    PHYSICS.physLab.startLab();
 
 			    
-			}//function () {
-		);
+// 			}//function () {
+// 		);
 
 	</script>
 		
