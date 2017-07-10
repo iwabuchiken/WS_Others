@@ -225,7 +225,7 @@ var context_Line_Width = 1;
 
 var line_Color__Red = "rgb(255, 0, 0)";
 var line_Color__Yellow = "rgb(255, 255, 0)";
-var line_Color__Gray_150 = "rgb(150, 150, 150)";
+var line_Color__Gray_180 = "rgb(180, 180, 180)";
 
 var numOf_Grid_Lines = 5;
 
@@ -282,9 +282,98 @@ function bt_Clear_One_Rects() {
 
 }//bt_Clear_One_Rects()
 
-function _draw_Grid(rect, numOf_Grid_Lines_2) {
+function _draw_Grid_2__Y(rect, numOf_Grid_Lines_2) {
+	
+	//test
+	var tick = 20;
+	
+	var numOf_Grids_X = Math.floor(rect.endX / tick);
+//	var numOf_Grids_Y = Math.floor(rect.endY / tick);
+	
+	console.log("numOf_Grids_X => " + numOf_Grids_X);
+	console.log("rect.endY => " + rect.endY);
+	console.log("tick => " + tick);
+	
+	var alternate = 1;
+	
+	for (var i = 1; i <= numOf_Grids_X; i++) {
+//		for (var i = 1; i < numOf_Grids; i++) {
+
+		/***************************
+			line coordinates
+		 ***************************/
+//		console.log("beginning path...");
+		
+		context.beginPath();
+		
+		context.moveTo(rect.startX, 			rect.startY + tick * i);
+		context.lineTo(rect.startX + rect.endX,	rect.startY + tick * i);	//
+
+//		console.log("moveTo = " + rect.startX + "," + (rect.startY + tick * i));
+//		console.log("lineTo = " + (rect.startX + rect.endX) + "," + (rect.startY + tick * i));
+
+		context.moveTo(rect.startX + tick * i, rect.startY);
+    	context.lineTo(rect.startX + tick * i, rect.startY + rect.endY);	//
+
+    	/***************************
+			draw grids
+		 ***************************/
+		// color
+		if (alternate == 1) {
+	
+//			console.log("alternate => 1 !!!!");
+			
+	    	context.strokeStyle = line_Color__Yellow;
+	    	
+	    	context.stroke();
+	
+	    	// color : reset
+	    	context.strokeStyle = line_Color__Red;
+	
+	    	// update : alternate
+	    	alternate = alternate * (-1);
+	    	
+		} else {
+	
+//			console.log("alternate => -1");
+			
+	//		context.strokeStyle = line_Color__Yellow;
+	    	context.strokeStyle = line_Color__Red;
+	//    	context.strokeStyle = line_Color__Gray_180;
+	    	
+	    	context.stroke();
+	
+	    	// color : reset
+	    	context.strokeStyle = line_Color__Red;
+	
+	    	// update : alternate
+	    	alternate = alternate * (-1);
+	
+		}//if (alternate == 1)
+		
+//    	context.strokeStyle = line_Color__Gray_180;
+////    	context.strokeStyle = line_Color__Yellow;
+//    	
+//    	context.stroke();
+//
+//    	// color : reset
+//    	context.strokeStyle = line_Color__Red;
+
+	}//for (var i = 0; i < numOf_Grids; i++)
+	
+}//function _draw_Grid_2__Y(rect, numOf_Grid_Lines_2) {
+
+function _draw_Grid_2(rect, numOf_Grid_Lines_2) {
 
 	//test
+	var tick = 20;
+	
+	var numOf_Grids_Y = Math.floor(rect.endY / tick);
+	
+	console.log("numOf_Grids_Y => " + numOf_Grids_Y);
+	console.log("rect.endY => " + rect.endY);
+	console.log("tick => " + tick);
+	
 	var tick_X = Math.floor(rect.endX / numOf_Grid_Lines);
 	
 	var tick_Y = Math.floor(rect.endY / numOf_Grid_Lines);
@@ -292,74 +381,214 @@ function _draw_Grid(rect, numOf_Grid_Lines_2) {
 	
 	var alternate = 1;
 	
-	for (var int = 1; int < numOf_Grid_Lines_2; int++) {
-//		for (var int = 1; int < 4; int++) {
+	for (var i = 1; i <= numOf_Grids_Y; i++) {
+//		for (var i = 1; i < numOf_Grids; i++) {
+
+		/***************************
+			line coordinates
+		 ***************************/
+//		console.log("beginning path...");
 		
 		context.beginPath();
 		
-		context.moveTo(rect.startX + tick_X * int, rect.startY);
-    	context.lineTo(rect.startX + tick_X * int, rect.startY + rect.endY);	//
+		context.moveTo(rect.startX, 			rect.startY + tick * i);
+		context.lineTo(rect.startX + rect.endX,	rect.startY + tick * i);	//
 
-//    	context.strokeStyle = line_Color__Yellow;
-//    	
-//    	context.stroke();
-//
-//    	// color : reset
-//    	context.strokeStyle = line_Color__Red;
+		console.log("moveTo = " + rect.startX + "," + (rect.startY + tick * i));
+		console.log("lineTo = " + (rect.startX + rect.endX) + "," + (rect.startY + tick * i));
+		
+//		context.moveTo(rect.startX + tick * i, rect.startY);
+//    	context.lineTo(rect.startX + tick * i, rect.startY + rect.endY);	//
 
-    	context.moveTo(rect.startX, 			rect.startY + tick_Y * int);
-    	context.lineTo(rect.startX + rect.endX,	rect.startY + tick_Y * int);	//
-
-//    	// color : reset
-//    	context.strokeStyle = line_Color__Red;
-//    	
-//    	context.stroke();
-//
-//    	context.strokeStyle = line_Color__Yellow;
-    	
-    	
-    	// color
-    	if (alternate == 1) {
-
-    		console.log("alternate => 1");
-    		
-        	context.strokeStyle = line_Color__Yellow;
-        	
-        	context.stroke();
-
-        	// color : reset
-        	context.strokeStyle = line_Color__Red;
-
-        	// update : alternate
-        	alternate = alternate * (-1);
-        	
-		} else {
-
-			console.log("alternate => -1");
+    	/***************************
+			draw grids
+		 ***************************/
+		// color
+		if (alternate == 1) {
+	
+//			console.log("alternate => 1 !!!!");
 			
-//			context.strokeStyle = line_Color__Yellow;
-        	context.strokeStyle = line_Color__Red;
-//        	context.strokeStyle = line_Color__Gray_150;
-        	
-        	context.stroke();
-
-        	// color : reset
-        	context.strokeStyle = line_Color__Red;
-
-        	// update : alternate
-        	alternate = alternate * (-1);
-
+	    	context.strokeStyle = line_Color__Yellow;
+	    	
+	    	context.stroke();
+	
+	    	// color : reset
+	    	context.strokeStyle = line_Color__Red;
+	
+	    	// update : alternate
+	    	alternate = alternate * (-1);
+	    	
+		} else {
+	
+//			console.log("alternate => -1");
+			
+	//		context.strokeStyle = line_Color__Yellow;
+	    	context.strokeStyle = line_Color__Red;
+	//    	context.strokeStyle = line_Color__Gray_180;
+	    	
+	    	context.stroke();
+	
+	    	// color : reset
+	    	context.strokeStyle = line_Color__Red;
+	
+	    	// update : alternate
+	    	alternate = alternate * (-1);
+	
 		}//if (alternate == 1)
 		
-    	
-//    	context.strokeStyle = line_Color__Yellow;
+//    	context.strokeStyle = line_Color__Gray_180;
+////    	context.strokeStyle = line_Color__Yellow;
 //    	
 //    	context.stroke();
 //
 //    	// color : reset
 //    	context.strokeStyle = line_Color__Red;
 
-	}
+	}//for (var i = 0; i < numOf_Grids; i++)
+	
+	/***************************
+		grid : Y
+	 ***************************/
+	_draw_Grid_2__Y(rect, numOf_Grid_Lines_2);
+	
+	
+////	// reset flag
+////	alternate = 1;
+////	
+//	for (var int = 1; int < numOf_Grid_Lines_2; int++) {
+////		for (var int = 1; int < 4; int++) {
+//		
+//		/***************************
+//			line coordinates
+//		 ***************************/
+//		context.beginPath();
+//		
+//		context.moveTo(rect.startX + tick_X * int, rect.startY);
+//    	context.lineTo(rect.startX + tick_X * int, rect.startY + rect.endY);	//
+//
+////    	context.moveTo(rect.startX, 			rect.startY + tick_Y * int);
+////    	context.lineTo(rect.startX + rect.endX,	rect.startY + tick_Y * int);	//
+//
+//    	/***************************
+//			draw grids
+//		 ***************************/
+//    	// color
+//    	if (alternate == 1) {
+//
+////    		console.log("alternate => 1 !!!!");
+//    		
+//        	context.strokeStyle = line_Color__Yellow;
+//        	
+//        	context.stroke();
+//
+//        	// color : reset
+//        	context.strokeStyle = line_Color__Red;
+//
+//        	// update : alternate
+//        	alternate = alternate * (-1);
+//        	
+//		} else {
+//
+////			console.log("alternate => -1");
+//			
+////			context.strokeStyle = line_Color__Yellow;
+//        	context.strokeStyle = line_Color__Red;
+////        	context.strokeStyle = line_Color__Gray_180;
+//        	
+//        	context.stroke();
+//
+//        	// color : reset
+//        	context.strokeStyle = line_Color__Red;
+//
+//        	// update : alternate
+//        	alternate = alternate * (-1);
+//
+//		}//if (alternate == 1)
+//    	
+//	}
+
+}//function _draw_Grid_2(rect, numOf_Grid_Lines_2) {
+
+function _draw_Grid(rect, numOf_Grid_Lines_2) {
+
+	_draw_Grid_2(rect, numOf_Grid_Lines_2);
+	
+//	//test
+//	var tick_X = Math.floor(rect.endX / numOf_Grid_Lines);
+//	
+//	var tick_Y = Math.floor(rect.endY / numOf_Grid_Lines);
+//
+//	
+//	var alternate = 1;
+//	
+//	for (var int = 1; int < numOf_Grid_Lines_2; int++) {
+////		for (var int = 1; int < 4; int++) {
+//		
+//		context.beginPath();
+//		
+//		context.moveTo(rect.startX + tick_X * int, rect.startY);
+//    	context.lineTo(rect.startX + tick_X * int, rect.startY + rect.endY);	//
+//
+////    	context.strokeStyle = line_Color__Yellow;
+////    	
+////    	context.stroke();
+////
+////    	// color : reset
+////    	context.strokeStyle = line_Color__Red;
+//
+//    	context.moveTo(rect.startX, 			rect.startY + tick_Y * int);
+//    	context.lineTo(rect.startX + rect.endX,	rect.startY + tick_Y * int);	//
+//
+////    	// color : reset
+////    	context.strokeStyle = line_Color__Red;
+////    	
+////    	context.stroke();
+////
+////    	context.strokeStyle = line_Color__Yellow;
+//    	
+//    	
+//    	// color
+//    	if (alternate == 1) {
+//
+//    		console.log("alternate => 1");
+//    		
+//        	context.strokeStyle = line_Color__Yellow;
+//        	
+//        	context.stroke();
+//
+//        	// color : reset
+//        	context.strokeStyle = line_Color__Red;
+//
+//        	// update : alternate
+//        	alternate = alternate * (-1);
+//        	
+//		} else {
+//
+//			console.log("alternate => -1");
+//			
+////			context.strokeStyle = line_Color__Yellow;
+//        	context.strokeStyle = line_Color__Red;
+////        	context.strokeStyle = line_Color__Gray_150;
+//        	
+//        	context.stroke();
+//
+//        	// color : reset
+//        	context.strokeStyle = line_Color__Red;
+//
+//        	// update : alternate
+//        	alternate = alternate * (-1);
+//
+//		}//if (alternate == 1)
+//		
+//    	
+////    	context.strokeStyle = line_Color__Yellow;
+////    	
+////    	context.stroke();
+////
+////    	// color : reset
+////    	context.strokeStyle = line_Color__Red;
+//
+//	}
 
 }//function _draw_Grid() {
 
@@ -475,18 +704,6 @@ function _window_OnLoad__Setup() {
   
 }//function _window_OnLoad__Setup() {
 
-//function onMouseMove (e) {
-//    draw();
-//    _rectangle.endY = e.layerY - _rectangle.startY;
-//    _rectangle.endX = e.layerX - _rectangle.startX;
-//    
-//    context.lineWidth = context_Line_Width;
-////    context.lineWidth = 5;
-//    
-//    context.strokeStyle = "rgb(255, 0, 0)";
-//    context.strokeRect (_rectangle.startX, _rectangle.startY, _rectangle.endX, _rectangle.endY);
-//};
-//
 function _setup_Grid(e) {
 
     if (flag_Canvas_Click_Start == 1) {
@@ -625,25 +842,7 @@ function onMouseDown (e) {
     
 };
 
-//function onMouseUp (e) {
-//	
-//    reacts.push(_rectangle);
-//    
-////    //debug
-////    alert("rectangle => " + _rectangle);
-//    
-//    draw();
-//    
-//    _rectangle = createRect();
-//    
-//    canvas.removeEventListener ("mousemove", onMouseMove, false);
-//
-//    //test
-//    console.log("selection => ended");
-////    alert("selection => ended");
-//
-//};
-//
+
 function window_OnLoad() {
 
 	_window_OnLoad__Setup();
