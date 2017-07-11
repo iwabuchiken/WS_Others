@@ -348,6 +348,16 @@ function bt_Canvas_Zoom_In() {
 	
 	draw();
 	
+	/***************************
+		'toggle' button
+	 ***************************/
+	//ref http://qiita.com/pugiemonn/items/5db6fb8fd8a303406b17
+	$('button#btn_Main_Toggle_Grid').prop("disabled", true);
+	
+	$('button#btn_Main_Toggle_Grid').css("background-color", "DarkOrange");
+
+	
+	
 //    console.log(
 //    		"canvas.w = " + canvas.width
 //    		+ " / "
@@ -369,6 +379,59 @@ function bt_Canvas_Zoom_In() {
 //    draw_Zoomed(start_X, start_Y, w, h, 0, 0, resized[0], resized[1]);	//=> w.
     
 }//bt_Canvas_Zoom_In()
+
+function bt_Canvas_Clear_Zoom_In() {
+	
+	/***************************
+		- init params
+		- clear canvas
+		- draw
+	 ***************************/
+	/***************************
+		init params
+	 ***************************/
+	imageFile_WH_Resized = get_ImageObj_WH_Resized(canvas, imageObj);
+	 
+	sx = 0; sy = 0;
+	
+	sw = imageObj.width; sh = imageObj.height;
+	
+	dx = 0; dy = 0;
+
+	dw = imageFile_WH_Resized[0];
+	 
+	dh = imageFile_WH_Resized[1];
+
+	/***************************
+		clear canvas
+	 ***************************/
+	//ref https://stackoverflow.com/questions/2142535/how-to-clear-the-canvas-for-redrawing 'answered Jan 26 '10 at 20:52'
+	context.clearRect(0, 0, canvas.width, canvas.height);
+
+	
+	/***************************
+		clear rects
+	 ***************************/
+	reacts = [];
+	
+	/***************************
+		'toggle' button
+		- disable
+		- change bg color
+	 ***************************/
+	//ref http://qiita.com/pugiemonn/items/5db6fb8fd8a303406b17
+	$('button#btn_Main_Toggle_Grid').prop("disabled", true);
+	
+	$('button#btn_Main_Toggle_Grid').css("background-color", "DarkOrange");
+
+	
+	/***************************
+		draw
+	 ***************************/
+	draw();
+
+	
+}//btn_Main_Clear_Zoom_In
 
 function _draw_Grid_2__Y(rect, numOf_Grid_Lines_2) {
 	
