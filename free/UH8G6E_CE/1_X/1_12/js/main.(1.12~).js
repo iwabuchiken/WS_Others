@@ -198,6 +198,8 @@ var _rectangle = null;
 
 var ratio_Final = null;
 
+var sx = null, sy = null, sw = null, sh = null, dx = null, dy = null, dw = null, dh = null;
+
 /***************************
 	flags
  ***************************/
@@ -884,6 +886,11 @@ function draw() {
 	
 //	context.drawImage(imageObj, 0, 0, 100, 100);
 	context.drawImage(imageObj, 0, 0, imageFile_WH_Resized[0], imageFile_WH_Resized[1]);
+//	context.drawImage(imageObj, sx, sy, imageFile_WH_Resized[0], imageFile_WH_Resized[1]);	//=> w.
+//	context.drawImage(imageObj, sx, sy, sw, sh);	//=> w.
+//	context.drawImage(imageObj, sx, sy, sw, sh, 0, 0, );
+
+//	context.drawImage(imageObj, sx, sy, sw, sh, dx, dy, dw, dh);
 	
     context.lineWidth = context_Line_Width;
 //    context.lineWidth = 5;
@@ -948,6 +955,13 @@ function toggle_Grid() {
 
 function _window_OnLoad__Setup() {
 
+	/***************************
+		var : drawimage()
+	 ***************************/
+	sx = 0; sy = 0;
+	
+	dx = 0; dy = 0;
+	
     canvas = document.getElementById('drowing');
 //  var canvas = document.getElementById('drowing');
   context = canvas.getContext('2d');
@@ -980,8 +994,12 @@ function _window_OnLoad__Setup() {
 	     //test
 	//     alert("imageObj.height => " + imageObj.height);	//=> 3264
 	     
-	     imageFile_WH_Resized = get_ImageObj_WH_Resized(canvas, imageObj);
+     imageFile_WH_Resized = get_ImageObj_WH_Resized(canvas, imageObj);
    
+     sw = imageFile_WH_Resized[0];
+     
+     sh = imageFile_WH_Resized[1];
+     
       draw();
       
   };
