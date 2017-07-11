@@ -17,162 +17,6 @@ C:\WORKS_2\WS\WS_Others\free\UH8G6E_CE\
  * ref http://symfoware.blog68.fc2.com/blog-entry-1958.html
  */
 
-//alert("js starting...");
-
-///***************************
-//	@param
-//		(4, 5)	=> [4, 0]
-//		(5, 4)	=> [4, 1]
-// ***************************/
-//function smaller(x, y) {
-//	
-//	if (x <= y) {
-////		if (x >= y) {
-//
-//		return [x, 0];
-//
-//	} else {
-//
-//		return [y, 1];;
-//
-//	}//if (x >= y)
-//	
-//}//function smaller(x, y) {
-//
-///***************************
-//	@param
-//		[4, 5]	=> [4, 0]
-//		[5, 4]	=> [4, 1]
-// ***************************/
-//function smaller_InArray(aryOf_Two_Numbers) {
-//	
-//	/***************************
-//		validate
-//	 ***************************/
-//	if (aryOf_Two_Numbers.length < 1) {
-//
-//		//alert("smaller_InArray : array size less than 1");
-//		
-//		return null;
-//
-//	}//if (aryOf_Two_Numbers.length) {
-//
-//	/***************************
-//		operations
-//	 ***************************/
-//	if (aryOf_Two_Numbers[0] <= aryOf_Two_Numbers[1]) {
-////		if (aryOf_Two_Numbers[0] >= aryOf_Two_Numbers[1]) {
-//		
-//		return [aryOf_Two_Numbers[0], 0];
-//		
-//	} else {
-//		
-//		return [aryOf_Two_Numbers[1], 1];;
-//		
-//	}//if (x >= y)
-//	
-//}//function smaller(x, y) {
-//
-//function get_ImageObj_WH_Resized(canvas, imageObj) {
-//
-//	var size_Canvas = [canvas.width, canvas.height];
-//	
-//	var size_Image = [imageObj.width, imageObj.height];
-//	
-//	/***************************
-//		resize
-//	 ***************************/
-//	var ratio_W = size_Canvas[0] / size_Image[0] * 1.0;
-//	var ratio_H = size_Canvas[1] / size_Image[1] * 1.0;
-//	
-//	// calc
-//	var ratio_Final = 0.0;
-//	aa
-//	if (ratio_W <= ratio_H) {
-//
-//		ratio_Final = ratio_W;
-//
-//	} else {
-//
-//		ratio_Final = ratio_H;
-//
-//	}//if (ratio_W >= ratio_H)
-//
-//	var resized = [
-//		
-//		Math.floor(size_Image[0] * ratio_Final),
-//		
-//		Math.floor(size_Image[1] * ratio_Final)
-//		
-//	];
-//	
-//	/***************************
-//		return
-//	 ***************************/
-//	return resized;
-//	
-//}//get_WH_Resized(canvas, imageObj)
-//
-//function get_ImageObj_WH_Resized__2(canvas, target_W, target_H) {
-//	
-//	var size_Canvas = [canvas.width, canvas.height];
-//	
-//	var size_Image = [target_W, target_H];
-////	var size_Image = [imageObj.width, imageObj.height];
-//	
-//	/***************************
-//		resize
-//	 ***************************/
-//	var ratio_W = size_Canvas[0] / size_Image[0] * 1.0;
-//	var ratio_H = size_Canvas[1] / size_Image[1] * 1.0;
-//	
-//	// calc
-//	var ratio_Final = 0.0;
-//	
-//	if (ratio_W <= ratio_H) {
-//		
-//		ratio_Final = ratio_W;
-//		
-//	} else {
-//		
-//		ratio_Final = ratio_H;
-//		
-//	}//if (ratio_W >= ratio_H)
-//	
-//	var resized = [
-//		
-//		Math.floor(size_Image[0] * ratio_Final),
-//		
-//		Math.floor(size_Image[1] * ratio_Final)
-//		
-//		];
-//	
-//	/***************************
-//		return
-//	 ***************************/
-//	return resized;
-//	
-//}//get_WH_Resized(canvas, imageObj)
-//
-//function get_Image() {
-//	
-//	var url = $('input#ipt_Image_File_URL').val();
-//	
-////	alert("url => " + url);
-//	
-//	// set : new url
-//	imageObj.src = url;
-//
-//	/***************************
-//		change : button color
-//	 ***************************/
-//	$('button#btn_Image_File_URL').css("background-color", "yellow");
-//	
-//	// draw
-//	draw();
-//	
-//}//get_Image()
-//
 var canvas = null;
 var context = null;
 var reacts = null;
@@ -451,33 +295,78 @@ function bt_Canvas_Zoom_In() {
     		+ "h = " + h
     );
     
-    var resized = get_ImageObj_WH_Resized__2(canvas, w, h);
+//    // update : resized
+//    imageFile_WH_Resized = get_ImageObj_WH_Resized__2(canvas, w, h);
+//    var resized = get_ImageObj_WH_Resized__2(canvas, w, h);
     
-    console.log(
-    		"canvas.w = " + canvas.width
-    		+ " / "
-    		+ "canvas.h = " + canvas.height
-    );
+	/***************************
+		update : others
+	***************************/
+    var ratio_Reverse = 1 / ratio_Final;
     
-    console.log(
-    		"resized.w = " + resized[0]
-    		+ " / "
-    		+ "resized.h = " + resized[1]
-    );
+	sx = Math.floor(start_X * ratio_Reverse);
+	sy = Math.floor(start_Y * ratio_Reverse);
+//	sx = start_X;
+//	sy = start_Y;
+//	Math.floor(sx * ratio_Reverse), Math.floor(sy * ratio_Reverse), 
+////	sw * 10, sh * 10, 
+//	Math.floor(sw * (1 / ratio_Final)), Math.floor(sh * (1 / ratio_Final)), 
+	
+	sw = Math.floor(w * (1 / ratio_Final));
+	sh = Math.floor(h * (1 / ratio_Final));
+//	sw = w; 
+//	sh = h;
+//	Math.floor(sw * (1 / ratio_Final)), Math.floor(sh * (1 / ratio_Final))	
+	
+	dx = 0;
+	dy = 0;
+
+    // update : resized
+    imageFile_WH_Resized = get_ImageObj_WH_Resized__2(canvas, w, h);
+
+	dw = imageFile_WH_Resized[0];
+	 
+	dh = imageFile_WH_Resized[1];
     
-//    alert("w = " + w
+	/***************************
+		grid ---> remove all
+	 ***************************/
+	if (true) {
+
+		reacts = [];
+
+	}//if (true) {
+	
+	/***************************
+		draw
+	 ***************************/
+	// clear canvas
+	//ref https://stackoverflow.com/questions/2142535/how-to-clear-the-canvas-for-redrawing 'answered Jan 26 '10 at 20:52'
+	context.clearRect(0, 0, canvas.width, canvas.height);
+
+//	console.log("resizing...");
+	
+	draw();
+	
+//    console.log(
+//    		"canvas.w = " + canvas.width
 //    		+ " / "
-//    		+ "h = " + h
+//    		+ "canvas.h = " + canvas.height
+//    );
+//    
+//    console.log(
+//    		"resized.w = " + resized[0]
 //    		+ " / "
-//    		+ "resize.w = " + resized[0]
-//		    + " / "
-//		    + "resize.h = " + resized[1]
-//	);
+//    		+ "resized.h = " + resized[1]
+//    );
+    
+    
+    
     
     // zoom
 //    draw_Zoomed(0, 0, 300, 300, 0, 0, 300, 300);
 //    draw_Zoomed(0, 0, 100, 100, 0, 0, 300, 300);
-    draw_Zoomed(start_X, start_Y, w, h, 0, 0, resized[0], resized[1]);
+//    draw_Zoomed(start_X, start_Y, w, h, 0, 0, resized[0], resized[1]);	//=> w.
     
 }//bt_Canvas_Zoom_In()
 
@@ -639,8 +528,8 @@ function _draw_Grid_2(rect, numOf_Grid_Lines_2) {
 		context.moveTo(rect.startX, 			rect.startY + tick * i);
 		context.lineTo(rect.startX + rect.endX,	rect.startY + tick * i);	//
 
-		console.log("moveTo = " + rect.startX + "," + (rect.startY + tick * i));
-		console.log("lineTo = " + (rect.startX + rect.endX) + "," + (rect.startY + tick * i));
+//		console.log("moveTo = " + rect.startX + "," + (rect.startY + tick * i));
+//		console.log("lineTo = " + (rect.startX + rect.endX) + "," + (rect.startY + tick * i));
 		
 //		context.moveTo(rect.startX + tick * i, rect.startY);
 //    	context.lineTo(rect.startX + tick * i, rect.startY + rect.endY);	//
@@ -885,12 +774,15 @@ function draw_Zoomed(sx, sy, sw, sh, dx, dy, dw, dh) {
 function draw() {
 	
 //	context.drawImage(imageObj, 0, 0, 100, 100);
-	context.drawImage(imageObj, 0, 0, imageFile_WH_Resized[0], imageFile_WH_Resized[1]);
+//	context.drawImage(imageObj, 0, 0, imageFile_WH_Resized[0], imageFile_WH_Resized[1]);	//=> w.
 //	context.drawImage(imageObj, sx, sy, imageFile_WH_Resized[0], imageFile_WH_Resized[1]);	//=> w.
 //	context.drawImage(imageObj, sx, sy, sw, sh);	//=> w.
 //	context.drawImage(imageObj, sx, sy, sw, sh, 0, 0, );
 
-//	context.drawImage(imageObj, sx, sy, sw, sh, dx, dy, dw, dh);
+	context.drawImage(imageObj, sx, sy, sw, sh, dx, dy, dw, dh);
+	
+	console.log("drawImage() ---> using 9 params");
+	
 	
     context.lineWidth = context_Line_Width;
 //    context.lineWidth = 5;
@@ -955,63 +847,76 @@ function toggle_Grid() {
 
 function _window_OnLoad__Setup() {
 
+//	/***************************
+//		var : drawimage()
+//	 ***************************/
+//	sx = 0; sy = 0;
+//	
+//	dx = 0; dy = 0;
+	
+		canvas = document.getElementById('drowing');
+//	var canvas = document.getElementById('drowing');
+	context = canvas.getContext('2d');
+//	var context = canvas.getContext('2d');
+	reacts = [];
+//	var reacts = [];
+	
+	imageFile_WH_Resized = null;
+//	var imageFile_WH_Resized = null;
+		
+	imageObj = new Image();
+//	var imageObj = new Image();
+	
+//	var canvas_Height_Ratio = 0.8;
+	
+	imageObj.onload = function() {
+		
+//			canvas.width = window.innerWidth / 2;
+		canvas.width = window.innerWidth;
+//		canvas.width = window.innerWidth;;
+//		canvas.width = imageObj.width;
+		canvas.height = window.innerHeight * canvas_Height_Ratio;
+//	 canvas.height = window.innerHeight / 2;
+//		canvas.height = imageObj.height / 2;
+//		canvas.height = imageObj.height;
+
+		size_Canvas = [canvas.width, canvas.height];
+//	 var size_Canvas = [canvas.width, canvas.height];
+	 
+			 //test
+	//		 alert("imageObj.height => " + imageObj.height);	//=> 3264
+			 
+		imageFile_WH_Resized = get_ImageObj_WH_Resized(canvas, imageObj);
+	 
+//		 sw = imageFile_WH_Resized[0];
+//		 
+//		 sh = imageFile_WH_Resized[1];
+
+		 /***************************
+			init : drawImage coordinates
+		***************************/
+		sx = 0; sy = 0;
+		
+		sw = imageObj.width; sh = imageObj.height;
+		
+		dx = 0; dy = 0;
+
+		dw = imageFile_WH_Resized[0];
+		 
+		dh = imageFile_WH_Resized[1];
+
+		draw();
+			
+	};
+	
+	imageObj.src = dflt_Image_URL;
+//	imageObj.src = 'http://benfranklin.chips.jp/cake_apps/images/ifm11/2014-08-12_12-17-13_686.jpg';
+
 	/***************************
-		var : drawimage()
-	 ***************************/
-	sx = 0; sy = 0;
+		rectangle
+	***************************/
+	_rectangle = createRect();
 	
-	dx = 0; dy = 0;
-	
-    canvas = document.getElementById('drowing');
-//  var canvas = document.getElementById('drowing');
-  context = canvas.getContext('2d');
-//  var context = canvas.getContext('2d');
-  reacts = [];
-//  var reacts = [];
-  
-  imageFile_WH_Resized = null;
-//  var imageFile_WH_Resized = null;
-  	
-  imageObj = new Image();
-//  var imageObj = new Image();
-  
-//  var canvas_Height_Ratio = 0.8;
-  
-  imageObj.onload = function() {
-  	
-//      canvas.width = window.innerWidth / 2;
-      canvas.width = window.innerWidth;
-//    canvas.width = window.innerWidth;;
-//    canvas.width = imageObj.width;
-   canvas.height = window.innerHeight * canvas_Height_Ratio;
-//   canvas.height = window.innerHeight / 2;
-//    canvas.height = imageObj.height / 2;
-//    canvas.height = imageObj.height;
-
-   size_Canvas = [canvas.width, canvas.height];
-//   var size_Canvas = [canvas.width, canvas.height];
-   
-	     //test
-	//     alert("imageObj.height => " + imageObj.height);	//=> 3264
-	     
-     imageFile_WH_Resized = get_ImageObj_WH_Resized(canvas, imageObj);
-   
-     sw = imageFile_WH_Resized[0];
-     
-     sh = imageFile_WH_Resized[1];
-     
-      draw();
-      
-  };
-	
-  imageObj.src = dflt_Image_URL;
-//  imageObj.src = 'http://benfranklin.chips.jp/cake_apps/images/ifm11/2014-08-12_12-17-13_686.jpg';
-
-  /***************************
-	rectangle
- ***************************/
-  _rectangle = createRect();
-  
 }//function _window_OnLoad__Setup() {
 
 function _setup_Grid(e) {
@@ -1087,7 +992,7 @@ function onMouseDown (e) {
 //    canvas.addEventListener ("mousemove", onMouseMove, false);
     
     //test
-    console.log("selection => started !! (global function)");
+//    console.log("selection => started !! (global function)");
     
     /***************************
 		grid
