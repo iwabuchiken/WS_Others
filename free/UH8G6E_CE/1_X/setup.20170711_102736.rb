@@ -6,6 +6,7 @@ setup.rb
 pushd C:\WORKS_2\WS\WS_Others\free\UH8G6E_CE\
 
 pushd C:\WORKS_2\WS\WS_Others\free\UH8G6E_CE\1_X
+setup.20170711_102736.rb 1_12 1_13
 setup.20170711_102736.rb 1_11 1_12
 
 setup.rb 1_10 1_11
