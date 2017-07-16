@@ -34,6 +34,8 @@ var line_Color__Red = "rgb(255, 0, 0)";
 var line_Color__Yellow = "rgb(255, 255, 0)";
 var line_Color__Gray_180 = "rgb(180, 180, 180)";
 
+var line_Color__Blue = "rgb(145, 190, 255)";
+
 var numOf_Grid_Lines = 5;
 
 var dflt_Image_URL = 'http://benfranklin.chips.jp/cake_apps/images/ifm11/2014-08-12_12-17-13_686.jpg';
@@ -490,7 +492,9 @@ function _draw_Grid_2__Y(rect, numOf_Grid_Lines_2) {
 	
 	var alternate = 1;
 	
-	for (var i = 1; i <= numOf_Grids_X + 1; i++) {
+//	for (var i = 1; i < numOf_Grids_X; i++) {
+		for (var i = 1; i <= numOf_Grids_X; i++) {
+//		for (var i = 1; i <= numOf_Grids_X + 1; i++) {
 //		for (var i = 1; i <= numOf_Grids_X; i++) {
 //		for (var i = 1; i < numOf_Grids; i++) {
 
@@ -661,14 +665,92 @@ function _draw_Grid(rect, numOf_Grid_Lines_2) {
 	
 }//function _draw_Grid() {
 
-function _draw_Grid__Slanted__ToLeftDown(rect, tick) {
+function _draw_Grid__Slanted__ToLeftDown__2_LowerRight(rect, tick) {
+
+	/***************************
+		vars
+	 ***************************/
+	var numOf_Grids_X = Math.floor(rect.endX / tick);
+	var numOf_Grids_Y = Math.floor(rect.endY / tick);
+
+	var alternate = 1;
 	
-//	console.log("_draw_Grid__Slanted__ToLeftDown");
+	/***************************
+		main
+	 ***************************/
+//	for (var i = 0; i <= numOf_Grids_X + 2; i++) {
+	for (var i = 0; i <= numOf_Grids_X; i++) {
+	//	for (var i = 0; i < numOf_Grids_X + 1; i++) {
+		
+		/***************************
+			line coordinates
+		 ***************************/
+		context.beginPath();
+		
+		var sX = rect.startX + tick * i;
+		var sY = rect.startY + tick * (numOf_Grids_Y + 1);
+		
+		var eX = rect.startX + tick * (numOf_Grids_X + 1);
+		var eY = rect.startY + tick * (numOf_Grids_Y - (numOf_Grids_X - i));
+//		var eY = rect.startY + tick * (i + 1);
+//		var eY = rect.startY + tick * i;
+		
+		context.moveTo(sX,	sY);
+		context.lineTo(eX,	eY);	//
+		
+		/***************************
+			draw grids
+		 ***************************/
+		// color
+		if (alternate == 1) {
+			
+	//		console.log("alternate => 1 !!!!");
+			
+			context.strokeStyle = line_Color__Blue;
+	//    	context.strokeStyle = line_Color__Yellow;
+			
+			context.stroke();
+			
+			// color : reset
+			context.strokeStyle = line_Color__Red;
+			
+			// update : alternate
+			alternate = alternate * (-1);
+			
+		} else {
+			
+	//		console.log("alternate => -1");
+			
+			//		context.strokeStyle = line_Color__Yellow;
+	//    	context.strokeStyle = line_Color__Red;
+			context.strokeStyle = line_Color__Gray_180;
+			
+			context.stroke();
+			
+			// color : reset
+			context.strokeStyle = line_Color__Red;
+			
+			// update : alternate
+			alternate = alternate * (-1);
+			
+		}//if (alternate == 1)
+		
+	}//for (var i = 0; i < numOf_Grids; i++)
+	
+}//function _draw_Grid__Slanted__ToLeftDown__2_LowerRight(rect, tick) {
+
+function _draw_Grid__Slanted__ToLeftDown__1_Main(rect, tick) {
+
+//	console.log("_draw_Grid__Slanted__ToLeftDown__1_Main(rect, tick)");
 	
 	
 	var numOf_Grids_Y = Math.floor(rect.endY / tick);
 	
 	var alternate = 1;
+
+	/***************************
+		main
+	 ***************************/
 	
 //	for (var i = 1; i < numOf_Grids_Y; i++) {
 		for (var i = 1; i <= numOf_Grids_Y; i++) {
@@ -689,7 +771,8 @@ function _draw_Grid__Slanted__ToLeftDown(rect, tick) {
 	
 //			console.log("alternate => 1 !!!!");
 			
-			context.strokeStyle = line_Color__Gray_180;
+			context.strokeStyle = line_Color__Blue;
+//			context.strokeStyle = line_Color__Gray_180;
 //	    	context.strokeStyle = line_Color__Yellow;
 	    	
 	    	context.stroke();
@@ -720,7 +803,238 @@ function _draw_Grid__Slanted__ToLeftDown(rect, tick) {
 		
 	}//for (var i = 0; i < numOf_Grids; i++)
 	
+}//function _draw_Grid__Slanted__ToLeftDown__1_Main(rect, tick) {
+
+function _draw_Grid__Slanted__ToLeftDown(rect, tick) {
+	
+//	console.log("_draw_Grid__Slanted__ToLeftDown");
+	
+	
+	var numOf_Grids_Y = Math.floor(rect.endY / tick);
+	
+	var alternate = 1;
+
+	/***************************
+		main
+	 ***************************/
+	_draw_Grid__Slanted__ToLeftDown__1_Main(rect, tick);
+
+	/***************************
+		lower right
+	 ***************************/
+	_draw_Grid__Slanted__ToLeftDown__2_LowerRight(rect, tick);
+	
+	
+	
+////	for (var i = 1; i < numOf_Grids_Y; i++) {
+//		for (var i = 1; i <= numOf_Grids_Y; i++) {
+//
+//		/***************************
+//			line coordinates
+//		 ***************************/
+//		context.beginPath();
+//		
+//		context.moveTo(rect.startX + tick * i,	rect.startY);
+//		context.lineTo(rect.startX,				rect.startY + tick * i);	//
+//
+//    	/***************************
+//			draw grids
+//		 ***************************/
+//		// color
+//		if (alternate == 1) {
+//	
+////			console.log("alternate => 1 !!!!");
+//			
+//			context.strokeStyle = line_Color__Blue;
+////			context.strokeStyle = line_Color__Gray_180;
+////	    	context.strokeStyle = line_Color__Yellow;
+//	    	
+//	    	context.stroke();
+//	
+//	    	// color : reset
+//	    	context.strokeStyle = line_Color__Red;
+//	
+//	    	// update : alternate
+//	    	alternate = alternate * (-1);
+//	    	
+//		} else {
+//	
+////			console.log("alternate => -1");
+//			
+//	//		context.strokeStyle = line_Color__Yellow;
+////	    	context.strokeStyle = line_Color__Red;
+//	    	context.strokeStyle = line_Color__Gray_180;
+//	    	
+//	    	context.stroke();
+//	
+//	    	// color : reset
+//	    	context.strokeStyle = line_Color__Red;
+//	
+//	    	// update : alternate
+//	    	alternate = alternate * (-1);
+//	
+//		}//if (alternate == 1)
+//		
+//	}//for (var i = 0; i < numOf_Grids; i++)
+	
 }//function _draw_Grid__Slanted__ToLeftDown(rect) {
+
+function _draw_Grid__Slanted__ToRightDown__2_UpperRight
+(rect, tick, numOf_Grids_X, numOf_Grids_Y) {
+
+	/***************************
+		vars
+	 ***************************/
+	var alternate = 1;
+	
+	/***************************
+		main
+	 ***************************/
+	for (var i = 0; i <= numOf_Grids_X + 2; i++) {
+//		for (var i = 0; i <= numOf_Grids_X + 1; i++) {
+//		for (var i = 0; i < numOf_Grids_X + 1; i++) {
+		
+		/***************************
+			line coordinates
+		 ***************************/
+		context.beginPath();
+		
+		var sX = rect.startX + tick * i;
+		var sY = rect.startY;
+		
+		var eX = rect.startX + tick * (numOf_Grids_X);
+//		var eX = rect.startX + tick * (numOf_Grids_X + 1);
+//		var eX = rect.startX + tick * (numOf_Grids_X + i);
+//		var eX = rect.startX + tick * (i);
+//		var eY = rect.startY + tick * (numOf_Grids_X + 1 - i);
+		var eY = rect.startY + tick * (numOf_Grids_X - i);
+		
+		context.moveTo(sX,	sY);
+		context.lineTo(eX,	eY);	//
+		
+		/***************************
+			draw grids
+		 ***************************/
+		// color
+		if (alternate == 1) {
+			
+	//		console.log("alternate => 1 !!!!");
+			
+			context.strokeStyle = line_Color__Blue;
+	//    	context.strokeStyle = line_Color__Yellow;
+			
+			context.stroke();
+			
+			// color : reset
+			context.strokeStyle = line_Color__Red;
+			
+			// update : alternate
+			alternate = alternate * (-1);
+			
+		} else {
+			
+	//		console.log("alternate => -1");
+			
+			//		context.strokeStyle = line_Color__Yellow;
+	//    	context.strokeStyle = line_Color__Red;
+			context.strokeStyle = line_Color__Gray_180;
+			
+			context.stroke();
+			
+			// color : reset
+			context.strokeStyle = line_Color__Red;
+			
+			// update : alternate
+			alternate = alternate * (-1);
+			
+		}//if (alternate == 1)
+		
+	}//for (var i = 0; i < numOf_Grids; i++)
+	
+}//function _draw_Grid__Slanted__ToRightDown__2_UpperRight
+
+function _draw_Grid__Slanted__ToRightDown__1_Main
+(rect, tick, numOf_Grids_X, numOf_Grids_Y) {
+//	function _draw_Grid__Slanted__ToRightDown__1_Main(rect, tick) {
+	
+//	console.log("_draw_Grid__Slanted__ToRightDown__1_Main");
+
+	/***************************
+		vars
+	 ***************************/
+	var alternate = 1;
+	
+	/***************************
+		main
+	 ***************************/
+	//for (var i = 1; i < numOf_Grids_Y; i++) {
+	for (var i = 0; i < numOf_Grids_X + 1; i++) {
+	//	for (var i = 0; i < numOf_Grids_X; i++) {
+	//	for (var i = 0; i <= numOf_Grids_X; i++) {
+		
+		/***************************
+			line coordinates
+		 ***************************/
+		context.beginPath();
+		
+		var sX = rect.startX;
+		var sY = rect.startY + tick * i;
+	//	var eX = rect.startX + tick * (numOf_Grids_X + 1);
+		
+		var eX = rect.startX + tick * (numOf_Grids_X);
+		var eY = rect.startY + tick * (i + numOf_Grids_X);
+	//	var eY = rect.startY + tick * (i + 3 * 2);
+		
+		context.moveTo(sX,	sY);
+		context.lineTo(eX,	eY);	//
+	//	context.moveTo(rect.startX,				rect.startY + tick * i);
+	//	context.lineTo(rect.startX + tick * (numOf_Grids_X + 1),	rect.startY + tick * (i + 3 * 2));	//
+	//	context.lineTo(rect.startX + tick * (numOf_Grids_X + 1),	rect.startY + tick * (i + 3));	//
+	//	context.lineTo(rect.startX + tick * numOf_Grids_X,	rect.startY + tick * (i + 3));	//
+	//	context.lineTo(rect.startX + tick * numOf_Grids_X,	rect.startY + tick * (i + 9));	//
+	//	context.lineTo(rect.startX + rect.endX,	rect.startY + tick * (i + 9));	//
+	//	context.lineTo(rect.startX + rect.endX,	rect.startY + tick * (i + 3));	//
+		
+		/***************************
+			draw grids
+		 ***************************/
+		// color
+		if (alternate == 1) {
+			
+	//		console.log("alternate => 1 !!!!");
+			
+			context.strokeStyle = line_Color__Gray_180;
+	//    	context.strokeStyle = line_Color__Yellow;
+			
+			context.stroke();
+			
+			// color : reset
+			context.strokeStyle = line_Color__Red;
+			
+			// update : alternate
+			alternate = alternate * (-1);
+			
+		} else {
+			
+	//		console.log("alternate => -1");
+			
+			//		context.strokeStyle = line_Color__Yellow;
+	//    	context.strokeStyle = line_Color__Red;
+			context.strokeStyle = line_Color__Gray_180;
+			
+			context.stroke();
+			
+			// color : reset
+			context.strokeStyle = line_Color__Red;
+			
+			// update : alternate
+			alternate = alternate * (-1);
+			
+		}//if (alternate == 1)
+		
+	}//for (var i = 0; i < numOf_Grids; i++)
+	
+}//function _draw_Grid__Slanted__ToRightDown__1_Main(rect, tick) {
 
 function _draw_Grid__Slanted__ToRightDown(rect, tick) {
 	
@@ -736,71 +1050,82 @@ function _draw_Grid__Slanted__ToRightDown(rect, tick) {
 	
 	var alternate = 1;
 	
-//	for (var i = 1; i < numOf_Grids_Y; i++) {
-	for (var i = 0; i < numOf_Grids_X; i++) {
-//		for (var i = 0; i <= numOf_Grids_X; i++) {
-		
-		/***************************
-			line coordinates
-		 ***************************/
-		context.beginPath();
-		
-		var sX = rect.startX;
-		var sY = rect.startY + tick * i;
-//		var eX = rect.startX + tick * (numOf_Grids_X + 1);
-		
-		var eX = rect.startX + tick * (numOf_Grids_X);
-		var eY = rect.startY + tick * (i + numOf_Grids_X);
-//		var eY = rect.startY + tick * (i + 3 * 2);
-		
-		context.moveTo(sX,	sY);
-		context.lineTo(eX,	eY);	//
-//		context.moveTo(rect.startX,				rect.startY + tick * i);
-//		context.lineTo(rect.startX + tick * (numOf_Grids_X + 1),	rect.startY + tick * (i + 3 * 2));	//
-//		context.lineTo(rect.startX + tick * (numOf_Grids_X + 1),	rect.startY + tick * (i + 3));	//
-//		context.lineTo(rect.startX + tick * numOf_Grids_X,	rect.startY + tick * (i + 3));	//
-//		context.lineTo(rect.startX + tick * numOf_Grids_X,	rect.startY + tick * (i + 9));	//
-//		context.lineTo(rect.startX + rect.endX,	rect.startY + tick * (i + 9));	//
-//		context.lineTo(rect.startX + rect.endX,	rect.startY + tick * (i + 3));	//
-		
-		/***************************
-			draw grids
-		 ***************************/
-		// color
-		if (alternate == 1) {
-			
-//			console.log("alternate => 1 !!!!");
-			
-			context.strokeStyle = line_Color__Gray_180;
-//	    	context.strokeStyle = line_Color__Yellow;
-			
-			context.stroke();
-			
-			// color : reset
-			context.strokeStyle = line_Color__Red;
-			
-			// update : alternate
-			alternate = alternate * (-1);
-			
-		} else {
-			
-//			console.log("alternate => -1");
-			
-			//		context.strokeStyle = line_Color__Yellow;
-//	    	context.strokeStyle = line_Color__Red;
-			context.strokeStyle = line_Color__Gray_180;
-			
-			context.stroke();
-			
-			// color : reset
-			context.strokeStyle = line_Color__Red;
-			
-			// update : alternate
-			alternate = alternate * (-1);
-			
-		}//if (alternate == 1)
-		
-	}//for (var i = 0; i < numOf_Grids; i++)
+	/***************************
+		main
+	 ***************************/
+	_draw_Grid__Slanted__ToRightDown__1_Main(rect, tick, numOf_Grids_X, numOf_Grids_Y);
+
+	/***************************
+		upper right
+	 ***************************/
+	_draw_Grid__Slanted__ToRightDown__2_UpperRight(rect, tick, numOf_Grids_X, numOf_Grids_Y);
+	
+////	for (var i = 1; i < numOf_Grids_Y; i++) {
+//	for (var i = 0; i < numOf_Grids_X + 1; i++) {
+////		for (var i = 0; i < numOf_Grids_X; i++) {
+////		for (var i = 0; i <= numOf_Grids_X; i++) {
+//		
+//		/***************************
+//			line coordinates
+//		 ***************************/
+//		context.beginPath();
+//		
+//		var sX = rect.startX;
+//		var sY = rect.startY + tick * i;
+////		var eX = rect.startX + tick * (numOf_Grids_X + 1);
+//		
+//		var eX = rect.startX + tick * (numOf_Grids_X);
+//		var eY = rect.startY + tick * (i + numOf_Grids_X);
+////		var eY = rect.startY + tick * (i + 3 * 2);
+//		
+//		context.moveTo(sX,	sY);
+//		context.lineTo(eX,	eY);	//
+////		context.moveTo(rect.startX,				rect.startY + tick * i);
+////		context.lineTo(rect.startX + tick * (numOf_Grids_X + 1),	rect.startY + tick * (i + 3 * 2));	//
+////		context.lineTo(rect.startX + tick * (numOf_Grids_X + 1),	rect.startY + tick * (i + 3));	//
+////		context.lineTo(rect.startX + tick * numOf_Grids_X,	rect.startY + tick * (i + 3));	//
+////		context.lineTo(rect.startX + tick * numOf_Grids_X,	rect.startY + tick * (i + 9));	//
+////		context.lineTo(rect.startX + rect.endX,	rect.startY + tick * (i + 9));	//
+////		context.lineTo(rect.startX + rect.endX,	rect.startY + tick * (i + 3));	//
+//		
+//		/***************************
+//			draw grids
+//		 ***************************/
+//		// color
+//		if (alternate == 1) {
+//			
+////			console.log("alternate => 1 !!!!");
+//			
+//			context.strokeStyle = line_Color__Gray_180;
+////	    	context.strokeStyle = line_Color__Yellow;
+//			
+//			context.stroke();
+//			
+//			// color : reset
+//			context.strokeStyle = line_Color__Red;
+//			
+//			// update : alternate
+//			alternate = alternate * (-1);
+//			
+//		} else {
+//			
+////			console.log("alternate => -1");
+//			
+//			//		context.strokeStyle = line_Color__Yellow;
+////	    	context.strokeStyle = line_Color__Red;
+//			context.strokeStyle = line_Color__Gray_180;
+//			
+//			context.stroke();
+//			
+//			// color : reset
+//			context.strokeStyle = line_Color__Red;
+//			
+//			// update : alternate
+//			alternate = alternate * (-1);
+//			
+//		}//if (alternate == 1)
+//		
+//	}//for (var i = 0; i < numOf_Grids; i++)
 	
 }//function _draw_Grid__Slanted__ToRightDown(rect, tick) {
 
