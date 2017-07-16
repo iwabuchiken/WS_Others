@@ -1,0 +1,17 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 16.04.2 ] */
+
+/* [wxMaxima: input   start ] */
+c : 30;
+a : 0.2;
+V : c * a;
+trng : [t, 0, 10];
+p : V / c;
+f1 : sqrt((1 - p^2)) * c * t;
+fs : [f1];
+opt : [title, "s = ±sqrt(x^2 + y^2 + z^2 - c^2t^2)"];
+wxplot2d(fs, trng, opt);
+/* [wxMaxima: input   end   ] */
+
+/* Maxima can't load/batch files which end with a comment! */
+"Created with wxMaxima"$
