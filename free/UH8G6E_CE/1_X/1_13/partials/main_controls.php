@@ -127,6 +127,21 @@
 				>
 		
 		</td>
+		
+		<td>
+			Font size
+		</td>
+	
+		<td>
+
+			<input 
+			type="text" 
+			id="ipt_Main_Font_Size"
+			class="ipt_Main_Range"
+			
+				>
+		
+		</td>
 	</tr>
 	
 </table>

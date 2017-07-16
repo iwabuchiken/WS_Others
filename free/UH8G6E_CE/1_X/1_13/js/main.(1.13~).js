@@ -9,7 +9,7 @@ C:\WORKS_2\WS\WS_Others\free\
 C:\WORKS_2\WS\WS_Others\free\UH8G6E_CE\
 
 /WS/WS_Others/free/UH8G6E_CE/
-
+/WS/WS_Others/free/UH8G6E_CE/1_X
 
  */
 
@@ -1313,6 +1313,44 @@ function toggle_Grid_Slanted() {
 	
 }//function toggle_Grid_Slanted() {
 
+function _setup_Font_Size() {
+	
+	/***************************
+		input : font size
+	 ***************************/
+	var input_Font_Size = $('input#ipt_Main_Font_Size').val();
+	
+	/***************************
+		host
+	 ***************************/
+	var hostname = window.location.hostname;
+	
+	var url = "";
+	
+	var font_Size = '';
+	
+	if (hostname == "localhost") {
+		
+		font_Size = '25px';
+		
+	} else {//if (hostname == "localhost") {
+		
+		font_Size = '40px';
+		
+	}//if (hostname == "localhost") {
+	
+	/***************************
+		set : ipt_Image_File_URL
+	 ***************************/
+	$('input#ipt_Image_File_URL').css("font-size", font_Size);
+	
+	console.log("font_Size => " + font_Size);
+	
+	
+	
+	
+}//_setup_Font_Size()
+
 function _window_OnLoad__Setup() {
 
 //	/***************************
@@ -1377,15 +1415,41 @@ function _window_OnLoad__Setup() {
 			
 	};
 	
+	/***************************
+		set : image url
+	 ***************************/
+	var url = $('input#ipt_Image_File_URL').val();
+	
+	if (url == null || url == '') {
+
+
+	} else {//if (url == null || url == '') {
+
+		dflt_Image_URL = url;
+	
+	}//if (url == null || url == '') {
+	
+
+
+	
 	imageObj.src = dflt_Image_URL;
 //	imageObj.src = 'http://benfranklin.chips.jp/cake_apps/images/ifm11/2014-08-12_12-17-13_686.jpg';
 
+//	console.log("imageObj.src => " + imageObj.src);
+	
+	
 	/***************************
 		rectangle
 	***************************/
 	_rectangle = createRect();
 	
+	/***************************
+		setup : font size
+	 ***************************/
+	_setup_Font_Size();
+	
 }//function _window_OnLoad__Setup() {
+
 
 function _setup_Grid(e) {
 

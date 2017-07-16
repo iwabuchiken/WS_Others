@@ -29,12 +29,27 @@ canvas#canvas-container {
  
  	background	: LightCyan;
  	
+ 	margin	: 5px;
+ 	
  	width	: 50%;
  	
+ 	height	: 60px;
+ 	/*
  	height	: 30px;
- 	
+ 	*/
+ 	/*
+ 	text-size	: 60px;
+ 	*/
+ 	/*
+ 	ref http://kuroeveryday.blogspot.jp/2017/04/css-styling-html-forms.html
+ 	*/
+ 	font-size	: 40px;
+ 	/*
+ 	font-size	: 50;
+ 	*/
+ 	/*
  	size	: 30px;
- 
+ 	*/
  }/* input#ipt_Image_File_URL */
  
  input#ipt_Main_Range_Start_X {
@@ -75,8 +90,10 @@ canvas#canvas-container {
  	/*
  	width	: 40px;
  	*/
+ 	font-size	: 40px;
+ 	/*
  	font-size	: 25px;
- 
+ 	*/
  	border-radius: 5px;
  	
  	padding		:	5px;

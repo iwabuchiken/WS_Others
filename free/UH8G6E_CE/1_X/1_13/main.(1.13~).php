@@ -13,6 +13,20 @@ C:\WORKS_2\WS\WS_Others\free\UH8G6E_CE\
 	require 'setup.php';
 // 	require_once 'setup.php';
 
+	/*******************************
+		url
+	*******************************/
+	@$query_Url = $_GET['url'];
+	
+// 	echo "\$query_Url => '" . $query_Url . "'";
+
+	if ($query_Url == null || $query_Url == '') {
+	
+		$query_Url = 'http://benfranklin.chips.jp/cake_apps/images/ifm11/2014-08-12_12-17-13_686.jpg';
+	
+	}//if ($query_Url == null || $query_Url == '')
+
+	
 ?>
 
 <!DOCTYPE html>
@@ -63,13 +77,18 @@ C:\WORKS_2\WS\WS_Others\free\UH8G6E_CE\
 	<div>    
 	    <input type="text" 
 			 
-			id="ipt_Image_File_URL">
+			id="ipt_Image_File_URL"
+			
+			value="<?php echo $query_Url; ?>"
+			>
 	    
 	    <button id="btn_Image_File_URL"
 	    	onclick="get_Image();"
 	    	>
 	    	Go
 	    </button>
+	    
+	    <span id="dflt_Image_Url" hidden><?php echo $query_Url; ?></span>
     </div>
 
     <div>
