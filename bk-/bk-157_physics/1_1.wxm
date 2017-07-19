@@ -1,0 +1,48 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 16.04.2 ] */
+
+/* [wxMaxima: input   start ] */
+acos(0.3);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+acos(1);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+acos(0.5);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+%*180/%pi;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+float(%);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+a : 2.5;
+brng : [b, 3, 8];
+f : sqrt(1 - (a / b)^2);
+wxplot2d(f, brng);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+b : 8; f : sqrt(1 - (a / b)^2);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+kill(b);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+a : 2.5;
+brng : [b, 3, 8];
+f : sqrt(1 - (a / b)^2);
+f2 : acos(f);
+wxplot2d([f, f2], brng);
+/* [wxMaxima: input   end   ] */
+
+/* Maxima can't load/batch files which end with a comment! */
+"Created with wxMaxima"$

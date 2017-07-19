@@ -1,0 +1,60 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 16.04.2 ] */
+
+/* [wxMaxima: input   start ] */
+arng : [a, 1, 3];
+f1 : 1^a;
+fs : [f1];
+wxplot2d(fs, arng);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+1^(2.6);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+arng : [a, 0.1, 1];
+f1 : 1^a;
+fs : [f1];
+wxplot2d(fs, arng);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+f2 : (-1)^a;
+fs : [f1, f2];
+wxplot2d(fs, arng);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+brng : [b, 1, 3];
+f2 : (-1)^b;
+fs : [f1, f2];
+wxplot2d(fs, arng);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+(-1)^2.6;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+float(%);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+(-1)^(6/3);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+(-1)^(6/333);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+(-1)^(-1);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+(-1)^0;
+/* [wxMaxima: input   end   ] */
+
+/* Maxima can't load/batch files which end with a comment! */
+"Created with wxMaxima"$
