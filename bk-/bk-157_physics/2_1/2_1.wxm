@@ -1,0 +1,25 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 16.04.2 ] */
+
+/* [wxMaxima: input   start ] */
+h1 : 1;
+h2 : 1;
+delta_rng : [delta, -1 * %pi, 1 * %pi];
+f : abs(h1)^2 + abs(h2)^2 + 2 * abs(h1) * abs(h2) * cos(delta);
+fs : [f];
+wxplot2d(fs, delta_rng);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+h1 : 1;
+h2 : 1;
+delta_rng : [delta, -1 * %pi, 1 * %pi];
+f1 : abs(h1)^2;
+f2 : abs(h2)^2;
+f : f1 + f2 + 2 * abs(h1) * abs(h2) * cos(delta);
+fs : [f1, f2, f];
+wxplot2d(fs, delta_rng);
+/* [wxMaxima: input   end   ] */
+
+/* Maxima can't load/batch files which end with a comment! */
+"Created with wxMaxima"$

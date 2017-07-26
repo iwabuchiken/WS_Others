@@ -1,0 +1,14 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 16.04.2 ] */
+
+/* [wxMaxima: input   start ] */
+wt_rng : [wt, -2*%pi, 2*%pi];
+kr_rng : [kr, -2*%pi, 2*%pi];
+f : (cos(wt) + sin(wt)) * (cos(kr) * sin(kr));
+opt : [grid, 50, 50];
+wxplot3d(f, wt_rng, kr_rng, opt);
+plot3d(f, wt_rng, kr_rng, opt);
+/* [wxMaxima: input   end   ] */
+
+/* Maxima can't load/batch files which end with a comment! */
+"Created with wxMaxima"$
