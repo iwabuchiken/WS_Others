@@ -1,0 +1,18 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 16.04.2 ] */
+
+/* [wxMaxima: input   start ] */
+d_rng : [d, 0.1, 2];
+th_rng : [th, 0, 3 * %pi];
+f : 2 * d * sin(th);
+opt : [grid, 100, 100];
+wxplot3d(f, d_rng, th_rng, opt);
+plot3d(f, d_rng, th_rng, opt);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+¦
+/* [wxMaxima: input   end   ] */
+
+/* Maxima can't load/batch files which end with a comment! */
+"Created with wxMaxima"$
