@@ -1,0 +1,77 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 16.04.2 ] */
+
+/* [wxMaxima: input   start ] */
+/* plot : 1 */
+a : 10;
+b : a * q;
+q_rng : [q, 0, 1];
+f : (a - b) / (a + b);
+wxplot2d(f, q_rng);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+a : 10;
+b : a * q;
+q_rng : [q, 1, 2];
+f : (a - b) / (a + b);
+wxplot2d(f, q_rng);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+a : 10;
+b : a * q;
+q_rng : [q, 0, 2];
+f : (a - b) / (a + b);
+wxplot2d(f, q_rng);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+solve(f = 0.9, q);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+float(%);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+q : 0.05263157894736842;
+b : a * q;
+f : (a - b) / (a + b);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+q : 0.05;
+b : a * q;
+f : (a - b) / (a + b);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+kill(q);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+a : 10;
+b : a * q;
+q_rng : [q, 1, 2];
+f : (a - b) / (a + b);
+solve(f = 0.5, q);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+float(%);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* plot : 2 */
+a : 10;
+b : 1;
+q1_rng : [q1, 0.8, 0.95];
+f1 : (a - b) / (a + b);
+f2 : (a - b * q1) / (a + b * q1);
+fs : [f1, f2];
+wxplot2d(fs, q1_rng);
+/* [wxMaxima: input   end   ] */
+
+/* Maxima can't load/batch files which end with a comment! */
+"Created with wxMaxima"$

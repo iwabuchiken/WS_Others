@@ -1,23 +1,13 @@
 =begin
 
-file:	C:\WORKS_2\WS\WS_Others\free\UH8G6E_CE\1_X\setup.20170711_102736.rb
+file orig	: C:\WORKS_2\WS\WS_Others\free\UH8G6E_CE\1_X\setup.20170711_102736.rb
 
-ref : C:\WORKS_2\WS\WS_Others\free\UH8G6E_CE\setup.rb
-setup.rb
+file this	: C:\WORKS_2\WS\WS_Others\free\2R2TQN_AI\1_X\setup.20170711_102736.rb
 
-pushd C:\WORKS_2\WS\WS_Others\free\UH8G6E_CE\
+date		: 2017/08/03 06:45:02
 
-pushd C:\WORKS_2\WS\WS_Others\free\UH8G6E_CE\1_X
-setup.20170711_102736.rb 1_13 1_14
-
-setup.20170711_102736.rb 1_11 1_12
-
-setup.rb 1_10 1_11
-setup.rb 1_9 1_10
-setup.rb 1_8 1_9
-setup.rb 1_7 1_8
-
-C:\WORKS_2\WS\WS_Others\free\UH8G6E_CE\setup.rb
+pushd C:\WORKS_2\WS\WS_Others\free\2R2TQN_AI\1_X
+setup.20170711_102736.rb 1_1 1_2
 
 =end
 
