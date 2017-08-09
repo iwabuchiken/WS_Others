@@ -1,0 +1,29 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 16.04.2 ] */
+
+/* [wxMaxima: input   start ] */
+c : 7;
+b : c - a;
+a_rng : [a, 0, 7];
+f : b * a;
+wxplot2d(f, a_rng);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+diff(f, a);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+solve(% = 0, a);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+b : c - %; b * a;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+3.5^2;
+/* [wxMaxima: input   end   ] */
+
+/* Maxima can't load/batch files which end with a comment! */
+"Created with wxMaxima"$
