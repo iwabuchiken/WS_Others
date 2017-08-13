@@ -1,0 +1,399 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 16.04.2 ] */
+
+/* [wxMaxima: input   start ] */
+/* plot : 1 : C:\WORKS_2\WS\WS_Others\free\K6H7DD_schroedinger\23\23_1.(1).wxm */
+f : 2 * x + 3 * y;
+g : 4 * x + 5 * y;
+/*wxplot3d([parametric, f, g, [x, 0, %pi], [y, 0, %pi]]);*/
+;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+a : 2;
+b : 3;
+f : sin(a*x) * exp(-b * x);
+g : cos(a*x) * exp(-b * x);
+wxplot2d([parametric, f, g, [x, 0, %pi]]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* plot : 2 : https://vvcephei.wordpress.com/2009/04/23/plotting-parametric-3d-curves-in-maxima/ */
+wxplot3d([(1+cos(16*t))*cos(t), (1+cos(16*t))*sin(t), 1+cos(16*t)], 
+            [t,0,2*%pi], 
+            [y,-5,5], 
+            [grid,500,1], 
+            [gnuplot_pm3d,false]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* plot : 2.1 */
+wxplot3d([(1+cos(16*t))*cos(t), (1+cos(16*t))*sin(t), 1+cos(8*t)], 
+            [t,0,2*%pi], 
+            [y,-5,5], 
+            [grid,500,1], 
+            [gnuplot_pm3d,false]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* plot : 2.2 */
+wxplot3d([(1+cos(16*t))*cos(t), (1+cos(16*t))*sin(t), 1+cos(t)], 
+            [t,0,2*%pi], 
+            [y,-5,5], 
+            [grid,500,1], 
+            [gnuplot_pm3d,false]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* plot : 2.3 */
+wxplot3d([(1+cos(16*t))*cos(t), (1+cos(16*t))*sin(t), 1+cos(2*t)], 
+            [t,0,2*%pi], 
+            [y,-5,5], 
+            [grid,500,1], 
+            [gnuplot_pm3d,false]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+a : 3;
+wxplot3d([(1+cos(16*t))*cos(t), (1+cos(16*t))*sin(t), 1+cos(a * t)], 
+            [t,0,2*%pi], 
+            [y,-5,5], 
+            [grid,500,1], 
+            [gnuplot_pm3d,false]);
+plot3d([(1+cos(16*t))*cos(t), (1+cos(16*t))*sin(t), 1+cos(a * t)], 
+            [t,0,2*%pi], 
+            [y,-5,5], 
+            [grid,500,1], 
+            [gnuplot_pm3d,false]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+a : 4;
+wxplot3d([(1+cos(16*t))*cos(t), (1+cos(16*t))*sin(t), 1+cos(a * t)], 
+            [t,0,2*%pi], 
+            [y,-5,5], 
+            [grid,500,1], 
+            [gnuplot_pm3d,false]);
+plot3d([(1+cos(16*t))*cos(t), (1+cos(16*t))*sin(t), 1+cos(a * t)], 
+            [t,0,2*%pi], 
+            [y,-5,5], 
+            [grid,500,1], 
+            [gnuplot_pm3d,false]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+a : 5;
+wxplot3d([(1+cos(16*t))*cos(t), (1+cos(16*t))*sin(t), 1+cos(a * t)], 
+            [t,0,2*%pi], 
+            [y,-5,5], 
+            [grid,500,1], 
+            [gnuplot_pm3d,false]);
+plot3d([(1+cos(16*t))*cos(t), (1+cos(16*t))*sin(t), 1+cos(a * t)], 
+            [t,0,2*%pi], 
+            [y,-5,5], 
+            [grid,500,1], 
+            [gnuplot_pm3d,false]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* plot : 2.1 */
+plot3d(
+        [sqrt(1-0.25*cos(10*t)^2)*cos(t), 
+            sqrt(1-0.25*cos(10*t)^2)*sin(t), 
+            0.5*cos(10*t)], [t,0,2*%pi], 
+        [y,-5,5], [grid,500,1], [gnuplot_pm3d,false]);
+wxplot3d(
+        [sqrt(1-0.25*cos(10*t)^2)*cos(t), 
+            sqrt(1-0.25*cos(10*t)^2)*sin(t), 
+            0.5*cos(10*t)], [t,0,2*%pi], 
+        [y,-5,5], [grid,500,1], [gnuplot_pm3d,false]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+a : 2;
+wxplot3d(
+        [sqrt(1-0.25*cos(a *t)^2)*cos(t), 
+            sqrt(1-0.25*cos(10*t)^2)*sin(t), 
+            0.5*cos(10*t)], [t,0,2*%pi], 
+        [y,-5,5], [grid,500,1], [gnuplot_pm3d,false]);
+plot3d(
+        [sqrt(1-0.25*cos(a *t)^2)*cos(t), 
+            sqrt(1-0.25*cos(10*t)^2)*sin(t), 
+            0.5*cos(10*t)], [t,0,2*%pi], 
+        [y,-5,5], [grid,500,1], [gnuplot_pm3d,false]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+a : 3;
+wxplot3d(
+        [sqrt(1-0.25*cos(a *t)^2)*cos(t), 
+            sqrt(1-0.25*cos(10*t)^2)*sin(t), 
+            0.5*cos(10*t)], [t,0,2*%pi], 
+        [y,-5,5], [grid,500,1], [gnuplot_pm3d,false]);
+plot3d(
+        [sqrt(1-0.25*cos(a *t)^2)*cos(t), 
+            sqrt(1-0.25*cos(10*t)^2)*sin(t), 
+            0.5*cos(10*t)], [t,0,2*%pi], 
+        [y,-5,5], [grid,500,1], [gnuplot_pm3d,false]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+a : 6;
+wxplot3d(
+        [sqrt(1-0.25*cos(a *t)^2)*cos(t), 
+            sqrt(1-0.25*cos(10*t)^2)*sin(t), 
+            0.5*cos(10*t)], [t,0,2*%pi], 
+        [y,-5,5], [grid,500,1], [gnuplot_pm3d,false]);
+plot3d(
+        [sqrt(1-0.25*cos(a *t)^2)*cos(t), 
+            sqrt(1-0.25*cos(10*t)^2)*sin(t), 
+            0.5*cos(10*t)], [t,0,2*%pi], 
+        [y,-5,5], [grid,500,1], [gnuplot_pm3d,false]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* plot : 2.2 */
+a : 2;
+t_rng : [t, 0, %pi];
+f : sqrt(1-0.25*cos(a *t)^2);
+f2 : 0.25*cos(a *t);
+fs : [f, f2];
+wxplot2d(fs, t_rng);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* plot : 2.3 */
+a : 2;
+t_rng : [t, 0, %pi];
+f : sqrt(1-0.25*cos(a *t)^2);
+f2 : 0.25*cos(a *t);
+f3 : 0.25*cos(a *t)^2;
+fs : [f, f2, f3];
+wxplot2d(fs, t_rng);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* plot : 2.4 */
+a : 4;
+t_rng : [t, 0, %pi];
+f : sqrt(1-0.25*cos(a *t)^2);
+f2 : 0.25*cos(a *t);
+f3 : 0.25*cos(a *t)^2;
+f4 : 1 - 0.25*cos(a *t)^2;
+fs : [f, f2, f3, f4];
+wxplot2d(fs, t_rng);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* plot : 2.5 */
+a : 4;
+t_rng : [t, 0, %pi];
+f1 : cos(a *t);
+f2 : cos(a *t)^2;
+f3 : sqrt(cos(a *t));
+f4 : 1 - cos(a *t)^2;
+
+fs : [f1, f2, f4];
+
+wxplot2d(fs, t_rng);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* plot : 2.6 */
+a : 4;
+t_rng : [t, 0, %pi];
+f1 : cos(a *t);
+f2 : cos(a *t)^2;
+f3 : sqrt(cos(a *t));
+f4 : 1 - cos(a *t)^2;
+f5 : sqrt(1 - cos(a *t)^2);
+
+fs : [f2, f4, f5];
+
+wxplot2d(fs, t_rng);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* plot : 2.7 */
+a : 2;
+t_rng : [t, 0, %pi];
+
+f2 : cos(a *t)^2;
+
+f4 : 1 - cos(a *t)^2;
+f5 : sqrt(1 - cos(a *t)^2);
+
+fs : [f2, f4, f5];
+
+wxplot2d(fs, t_rng);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* plot : 2.8 */;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* plot : 2.8 */
+a : 2;
+t_rng : [t, 0, %pi];
+
+f2 : cos(a *t)^2;
+f3 : sqrt(cos(a *t)^2);
+
+f4 : 1 - cos(a *t)^2;
+f5 : sqrt(1 - cos(a *t)^2);
+
+fs : [f2, f3, f4, f5];
+
+wxplot2d(fs, t_rng);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* plot : 2.9 */
+a : 2;
+t_rng : [t, 0, %pi];
+
+f2 : cos(a *t)^2;
+f3 : sqrt(cos(a *t)^2);
+f4 : 1 - sqrt(cos(a *t)^2);
+
+fs : [f2, f3, f4];
+
+wxplot2d(fs, t_rng);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* plot 3 */
+a : 100;
+wxplot3d(
+        [sqrt(1-0.25*cos(a *t)^2)*cos(t), 
+            sqrt(1-0.25*cos(10*t)^2)*sin(t), 
+            0.5*cos(10*t)], [t,0,2*%pi], 
+        [y,-5,5], [grid,500,1], [gnuplot_pm3d,false]);
+plot3d(
+        [sqrt(1-0.25*cos(a *t)^2)*cos(t), 
+            sqrt(1-0.25*cos(10*t)^2)*sin(t), 
+            0.5*cos(10*t)], [t,0,2*%pi], 
+        [y,-5,5], [grid,500,1], [gnuplot_pm3d,false]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* plot 3 */
+a : 100;
+wxplot3d(
+        [sqrt(1-0.25*cos(a *t)^2)*cos(t), 
+            sqrt(1-0.25*cos(a * t)^2)*sin(t), 
+            0.5*cos(10*t)], [t,0,2*%pi], 
+        [y,-5,5], [grid,500,1], [gnuplot_pm3d,false]);
+plot3d(
+        [sqrt(1-0.25*cos(a *t)^2)*cos(t), 
+            sqrt(1-0.25*cos(a *t)^2)*sin(t), 
+            0.5*cos(10*t)], [t,0,2*%pi], 
+        [y,-5,5], [grid,500,1], [gnuplot_pm3d,false]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* plot 3.1 */
+a : 100;
+wxplot3d(
+        [cos(t), sin(t), 
+            0.5*cos(10*t)], [t,0,2*%pi], 
+        [y,-5,5], [grid,500,1], [gnuplot_pm3d,false]);
+plot3d(
+        [cos(t), sin(t), 
+            0.5*cos(10*t)], [t,0,2*%pi], 
+        [y,-5,5], [grid,500,1], [gnuplot_pm3d,false]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* plot 3.2 */
+a : 100;
+wxplot3d(
+        [cos(t), 
+            sin(t), 
+            cos(10*t)], [t,0,2*%pi], 
+        [y,-5,5], [grid,500,1], [gnuplot_pm3d,false]);
+plot3d(
+        [cos(t), 
+            sin(t), 
+            cos(10*t)], [t,0,2*%pi], 
+        [y,-5,5], [grid,500,1], [gnuplot_pm3d,false]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* plot 3.3 */
+a : 100;
+wxplot3d(
+        [cos(t), 
+            sin(t), 
+            cos(t)], [t,0,2*%pi], 
+        [y,-5,5], [grid,500,1], [gnuplot_pm3d,false]);
+plot3d(
+        [cos(t), 
+            sin(t), 
+            cos(t)], [t,0,2*%pi], 
+        [y,-5,5], [grid,500,1], [gnuplot_pm3d,false]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* plot 3.4 */
+a : 3;
+params : [cos(t), 
+            sin(t), 
+            cos(t * a)];
+yrng : [y,-1,1];
+wxplot3d(
+        params, [t,0,2*%pi], 
+        yrng, [grid,500,1], [gnuplot_pm3d,false]);
+plot3d(
+        params, [t,0,2*%pi], 
+        yrng, [grid,500,1], [gnuplot_pm3d,false]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* plot 3.5 */
+a : 3;
+params : [cos(t), 
+            sin(t), 
+            sqrt(cos(t * a))];
+yrng : [y,-1,1];
+wxplot3d(
+        params, [t,0,2*%pi], 
+        yrng, [grid,500,1], [gnuplot_pm3d,false]);
+plot3d(
+        params, [t,0,2*%pi], 
+        yrng, [grid,500,1], [gnuplot_pm3d,false]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* plot 3.6 */
+a : 3;
+params : [cos(t), 
+            sin(t), 
+            abs(cos(t * a))];
+yrng : [y,-1,1];
+wxplot3d(
+        params, [t,0,2*%pi], 
+        yrng, [grid,500,1], [gnuplot_pm3d,false]);
+plot3d(
+        params, [t,0,2*%pi], 
+        yrng, [grid,500,1], [gnuplot_pm3d,false]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* plot 3.7 */
+a : 2;
+params : [cos(t), 
+            sin(t), 
+            (cos(t * a))^2];
+yrng : [y,-1,1];
+wxplot3d(
+        params, [t,0,2*%pi], 
+        yrng, [grid,500,1], [gnuplot_pm3d,false]);
+plot3d(
+        params, [t,0,2*%pi], 
+        yrng, [grid,500,1], [gnuplot_pm3d,false]);
+/* [wxMaxima: input   end   ] */
+
+/* Maxima can't load/batch files which end with a comment! */
+"Created with wxMaxima"$
