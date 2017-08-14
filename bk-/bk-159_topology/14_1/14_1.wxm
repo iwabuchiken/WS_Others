@@ -5,8 +5,12 @@
 /* plot : 1 : C:\WORKS_2\WS\WS_Others\free\K6H7DD_schroedinger\23\23_1.(1).wxm */
 f : 2 * x + 3 * y;
 g : 4 * x + 5 * y;
+<<<<<<< HEAD
 /*wxplot3d([parametric, f, g, [x, 0, %pi], [y, 0, %pi]]);*/
 ;
+=======
+wxplot3d([parametric, f, g, [x, 0, %pi], [y, 0, %pi]]);
+>>>>>>> d241c8a28db4efc801f397884b56b85a35d2d1b8
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: input   start ] */
@@ -18,6 +22,10 @@ wxplot2d([parametric, f, g, [x, 0, %pi]]);
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: input   start ] */
+<<<<<<< HEAD
+=======
+
+>>>>>>> d241c8a28db4efc801f397884b56b85a35d2d1b8
 /* plot : 2 : https://vvcephei.wordpress.com/2009/04/23/plotting-parametric-3d-curves-in-maxima/ */
 wxplot3d([(1+cos(16*t))*cos(t), (1+cos(16*t))*sin(t), 1+cos(16*t)], 
             [t,0,2*%pi], 
@@ -60,11 +68,14 @@ wxplot3d([(1+cos(16*t))*cos(t), (1+cos(16*t))*sin(t), 1+cos(a * t)],
             [y,-5,5], 
             [grid,500,1], 
             [gnuplot_pm3d,false]);
+<<<<<<< HEAD
 plot3d([(1+cos(16*t))*cos(t), (1+cos(16*t))*sin(t), 1+cos(a * t)], 
             [t,0,2*%pi], 
             [y,-5,5], 
             [grid,500,1], 
             [gnuplot_pm3d,false]);
+=======
+>>>>>>> d241c8a28db4efc801f397884b56b85a35d2d1b8
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: input   start ] */
@@ -229,7 +240,11 @@ wxplot2d(fs, t_rng);
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: input   start ] */
+<<<<<<< HEAD
 /* plot : 2.8 */;
+=======
+/* plot : 2.8 */
+>>>>>>> d241c8a28db4efc801f397884b56b85a35d2d1b8
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: input   start ] */
@@ -262,6 +277,7 @@ fs : [f2, f3, f4];
 wxplot2d(fs, t_rng);
 /* [wxMaxima: input   end   ] */
 
+<<<<<<< HEAD
 /* [wxMaxima: input   start ] */
 /* plot 3 */
 a : 100;
@@ -395,5 +411,7 @@ plot3d(
         yrng, [grid,500,1], [gnuplot_pm3d,false]);
 /* [wxMaxima: input   end   ] */
 
+=======
+>>>>>>> d241c8a28db4efc801f397884b56b85a35d2d1b8
 /* Maxima can't load/batch files which end with a comment! */
 "Created with wxMaxima"$
