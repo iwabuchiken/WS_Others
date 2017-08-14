@@ -1,0 +1,84 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 16.04.2 ] */
+
+/* [wxMaxima: input   start ] */
+x : 2;
+a_rng : [a, 0, 2];
+f1 : x^a;
+wxplot2d(f1, a_rng);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+kill(x);
+a_rng : [a, 0, 2];
+x_rng : [x, 0.1, 1.5];
+f1 : x^a;
+opt : [grid, 50, 50];
+wxplot3d(f1, a_rng, x_rng, opt);
+plot3d(f1, a_rng, x_rng, opt);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+kill(x);
+a : 0.88;
+/*a_rng : [a, 0, 2];*/
+x_rng : [x, 0.1, 15000];
+f1 : x^a;
+opt : [grid, 50, 50];
+wxplot2d(f1, x_rng, opt);
+/*plot3d(f1, a_rng, x_rng, opt);*/;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+wxplot2d(sqrt(x), x_rng);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+kill(x);
+a : 0.5;
+/*a_rng : [a, 0, 2];*/
+x_rng : [x, 0, 10];
+f1 : x^a;
+opt : [grid, 50, 50];
+opt2 : [gnuplot_preamble, "set yrange[0:10]"];
+wxplot2d([f1, x], x_rng, opt, opt2);
+/*plot3d(f1, a_rng, x_rng, opt);*/;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* plot : 2 */
+g : 0.65;
+p_rng : [p, 0, 1];
+f1 : p^g;
+wxplot2d(f1, p_rng);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+g : 0.65;
+p_rng : [p, 0, 1];
+f1 : p^g;
+f2 : 1 - f1;
+f3 : f1 + f2;
+fs : [f1, f2, f3];
+opt : [grid, 50, 50];
+opt2 : [gnuplot_preamble, "set yrange[0:1]"];
+
+wxplot2d(fs, p_rng, opt, opt2);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+g : 0.65;
+p_rng : [p, 0, 1];
+f1 : p^g;
+f2 : 1 - f1;
+f3 : f1 + f2;
+f4 : (f1 + f2)^(1/g);
+fs : [f1, f2, f3, f4];
+opt : [grid, 50, 50];
+opt2 : [gnuplot_preamble, "set yrange[0:1]"];
+
+wxplot2d(fs, p_rng, opt, opt2);
+/* [wxMaxima: input   end   ] */
+
+/* Maxima can't load/batch files which end with a comment! */
+"Created with wxMaxima"$
