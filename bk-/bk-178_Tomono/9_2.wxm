@@ -1,0 +1,39 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 16.04.2 ] */
+
+/* [wxMaxima: input   start ] */
+/* plot : 1 */
+x : 1000;
+q_rng : [q, 0, 0.5];
+f1 : (x / 4) * (1 / (1 - 1.5 * q));
+wxplot2d(f1, q_rng);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+solve(f1 = 1000, q);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+q : 0; f1 : (x / 4) * (1 / (1 - 1.5 * q));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+kill(q);
+f1 : (x / 4) * (1 / (1 - 1.5 * q));
+solve(f1 = x * 0.5, q);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+solve(f1 = x * 0.53, q);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+float(%);
+/* [wxMaxima: input   end   ] */
+
+/* Maxima can't load/batch files which end with a comment! */
+"Created with wxMaxima"$
