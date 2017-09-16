@@ -1,0 +1,22 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 14.09.0 ] */
+
+/* [wxMaxima: input   start ] */
+1*6;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+t_rng : [t, 0, 100];
+f1 : (1 - t^2) / (1 + t^2);
+wxplot2d(f1, t_rng);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+t_rng : [t, 0, 100];
+f1 : (1 - t^2) / (1 + t^2);
+opt : [gnuplot_preamble, "set yrange[-1.5:0]"];
+wxplot2d(f1, t_rng, opt);
+/* [wxMaxima: input   end   ] */
+
+/* Maxima can't load/batch files which end with a comment! */
+"Created with wxMaxima"$
