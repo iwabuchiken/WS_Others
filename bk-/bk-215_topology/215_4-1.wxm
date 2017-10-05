@@ -1,0 +1,53 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 14.09.0 ] */
+
+/* [wxMaxima: input   start ] */
+x_rng : [x, 0, 3];
+n_rng : [n, 1, 7];
+f1 : x^(1/n);
+opt : [gnuplot_preamble, "yrange[0:10]"];
+wxplot3d(f1, x_rng, n_rng);
+plot3d(f1, x_rng, n_rng);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+f2 : x^(1/m);
+lim(f2, m, inf);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+f2 : 30^(1/m);
+limit(f2, m, inf);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+float(%);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+x : 10;
+n_rng : [n, 1, 7];
+f1 : x^(1/n);
+
+wxplot2d(f1, n_rng);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+x : 10;
+n_rng : [n, 1, 7];
+f1 : n^(1/x);
+f2 : n^(1/(x*2));
+fs : [f1, f2];
+wxplot2d(fs, n_rng);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+f1;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+limit(f1, n, inf);
+/* [wxMaxima: input   end   ] */
+
+/* Maxima can't load/batch files which end with a comment! */
+"Created with wxMaxima"$
