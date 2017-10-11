@@ -58,6 +58,8 @@ var flag_Draw_Grid__Slanted = 1;
 
 var flag_Draw_Circle = 0;
 
+var flag_Show_Links_EQs = 0;
+
 /******************************************************
 	funcs
 ******************************************************/

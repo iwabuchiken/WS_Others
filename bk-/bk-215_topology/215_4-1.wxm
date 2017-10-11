@@ -49,5 +49,37 @@ f1;
 limit(f1, n, inf);
 /* [wxMaxima: input   end   ] */
 
+/* [wxMaxima: input   start ] */
+x : 10;
+n_rng : [n, 1, 7];
+f1 : n^(1/x);
+f2 : n^(1/(x*2));
+fs : [f1, f2];
+opt : [gnuplot_preamble, "set xrange[0:10]"];
+wxplot2d(fs, n_rng, opt);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+kill(x);
+x_rng : [x, 0, 4];
+f1 : x^(1/5);
+f2 : x^(1/(5 * 2));
+f3 : x^(1/(5 * 3));
+fs : [f1, f2, f3, 1];
+opt : [gnuplot_preamble, "set yrange[0:2]"];
+wxplot2d(fs, x_rng, opt);
+plot2d(fs, x_rng, opt);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+x_rng : [x, 0, 1.5];
+n_rng : [n, 0, 2];
+f1 : x^(1/n);
+opt : [gnuplot_preamble, "set zrange[0:2]"];
+opt_grid : [grid, 50, 50];
+wxplot3d(f1, x_rng, n_rng, opt, opt_grid);
+plot3d(f1, x_rng, n_rng, opt, opt_grid);
+/* [wxMaxima: input   end   ] */
+
 /* Maxima can't load/batch files which end with a comment! */
 "Created with wxMaxima"$
