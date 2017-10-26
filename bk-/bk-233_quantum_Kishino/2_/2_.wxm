@@ -1,0 +1,198 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 14.09.0 ] */
+
+/* [wxMaxima: input   start ] */
+x_rng : [x, -3, 3];
+y : x^3;
+wxplot2d(y, x_rng);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+x_rng : [x, -3, 3];
+y : x^3 + x^2;
+wxplot2d(y, x_rng);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+x_rng : [x, -3, 3];
+y : x^3 - x * 4 + 6;
+wxplot2d(y, x_rng);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+x_rng : [x, -3, 3];
+y : x^3 - x * 4 + 6;
+y1 : diff(y, x);
+wxplot2d(y1, x_rng);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+solve(y=0, x);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+solve(y1 = 0, x);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+y2 : diff(y1, x);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+fs : [y1, y2];
+wxplot2d(fs, x_rng);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+x : 0;
+y : x^3 - x * 4 + 6;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+kill(x); y : x^3 - x * 4 + 6;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+fs : [y, y1, y2];
+wxplot2d(fs, x_rng);
+plot2d(fs, x_rng);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+solve(y1 - y2 = 0, x);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+g : x^4 - x*2;
+fs : [g];
+wxplot2d(fs, x_rng);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+g : x^4 + x^3 + x^2 - x*2 + 6;
+fs : [g];
+opt_y : [gnuplot_preamble, "set yrange[-5:20]"];
+wxplot2d(fs, x_rng, opt_y);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+g : x^4 - x^3 + x^2 + x * 5 - 2;
+fs : [g];
+opt_y : [gnuplot_preamble, "set yrange[-5:20]"];
+wxplot2d(fs, x_rng, opt_y);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+a : 5; b : 3;
+g : x^4 - x^3 + x ^ 2 * b + x * a - 2;
+fs : [g];
+opt_y : [gnuplot_preamble, "set yrange[-5:20]"];
+wxplot2d(fs, x_rng, opt_y);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+a : 5; b : 1; c : 6; d : 2;
+g : x^4 * d - x^3 * c + x ^ 2 * b + x * a - 2;
+fs : [g];
+opt_y : [gnuplot_preamble, "set yrange[-5:20]"];
+wxplot2d(fs, x_rng, opt_y);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+x_rng : [x, -2, 4];
+a : 5; b : 1; c : 6; d : 2;
+g : x^4 * d - x^3 * c + x ^ 2 * b + x * a - 2;
+g_1 : diff(g, x);
+fs : [g, g_1];
+opt_y : [gnuplot_preamble, "set yrange[-10:20]"];
+wxplot2d(fs, x_rng, opt_y);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+x_rng : [x, -2, 4];
+a : 5; b : 1; c : 6; d : 2;
+g : x^4 * d - x^3 * c + x ^ 2 * b + x * a - 2;
+g_1 : diff(g, x);
+g_2 : diff(g_1, x);
+fs : [g, g_1, g_2];
+opt_y : [gnuplot_preamble, "set yrange[-10:20]"];
+wxplot2d(fs, x_rng, opt_y);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+x_rng : [x, -2, 4];
+a : 5; b : 1; c : 6; d : 2;
+g : x^4 * d - x^3 * c + x ^ 2 * b + x * a - 2;
+g_1 : diff(g, x);
+g_2 : diff(g_1, x);
+g_3 : diff(g_2, x);
+gs_1 : g_1 - g_2;
+fs : [g, g_1, g_2, g_3, gs_1];
+opt_y : [gnuplot_preamble, "set yrange[-10:10]"];
+wxplot2d(fs, x_rng, opt_y);
+plot2d(fs, x_rng, opt_y);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* plot : 2 */
+kill(n);
+n : 400; c : 30; H : 1; kB : 1.38; T : 273;
+U : (8 * %pi * n) / (c ^ 3) * (H * n) * 1 / (%e^((H * n) / (kB * T) - 1));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+kill(n); 
+c : 30; H : 1; kB : 1.38; T : 373;
+U : (8 * %pi * n) / (c ^ 3) * (H * n) * 1 / (%e^((H * n) / (kB * T) - 1));
+n_rng : [n, 100, 1600];
+wxplot2d(U, n_rng);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+kill(n); kill(T);
+c : 3 * 10^8; H : 6.626 * 10^-34; kB : 1.38 * 10^-23;
+U : ((8 * %pi * n ^ 2) / (c ^ 3)) * (H * n) * 1 / (%e^((H * n) / (kB * T) - 1));
+n_rng : [n, 500 * 10 ^ -3, 1600 * 10 ^ -3]; T_rng : [T, 273, 1373];
+wxplot3d(U, n_rng, T_rng);
+plot3d(U, n_rng, T_rng);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* plot : 3 */
+kill(n);
+n_rng : [n, 0, 3];
+y : n ^ 2 / %e ^ n;
+wxplot2d(y, n_rng);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+y_1 : diff(y, n);
+wxplot2d(y_1, n_rng);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+solve(y_1 = 0, n);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+kill(n);
+n_rng : [n, 0, 3];
+a : 3;
+y : n ^ a / %e ^ n;
+y_1 : diff(y, n);
+solve(y_1 = 0, n);
+fs : [y, y_1];
+wxplot2d(fs, n_rng);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+n : 2;
+y : n ^ 2 / %e ^ n;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+float(%);
+/* [wxMaxima: input   end   ] */
+
+/* Maxima can't load/batch files which end with a comment! */
+"Created with wxMaxima"$
