@@ -1,0 +1,117 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 14.09.0 ] */
+
+/* [wxMaxima: input   start ] */
+/* plot : 1 */
+k_rng : [k, -2, 2];
+f1 : k^2;
+fs : [f1];
+opt_y : [gnuplot_preamble, "set yrange[-5:5]"];
+wxplot2d(fs, k_rng, opt_y);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+k_rng : [k, -1, 1];
+f1 : k^2;
+a : 1;
+f2 : tan(k * a / 2);
+fs : [f1, f2];
+opt_y : [gnuplot_preamble, "set yrange[-1:1]"];
+wxplot2d(fs, k_rng, opt_y);
+plot2d(fs, k_rng, opt_y);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+k_rng : [k, -1, 1];
+f1 : k^2;
+a : 1;
+f2 : (tan(k * a / 2)) ^ 2;
+fs : [f1, f2];
+opt_y : [gnuplot_preamble, "set yrange[-1:1]"];
+wxplot2d(fs, k_rng, opt_y);
+plot2d(fs, k_rng, opt_y);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+k_rng : [k, -1, 1];
+f1 : k^2;
+a : 1;
+f2 : (tan(k * a / 2)) ^ 2 + 1;
+fs : [f1, f2];
+opt_y : [gnuplot_preamble, "set yrange[-5:5]"];
+wxplot2d(fs, k_rng, opt_y);
+plot2d(fs, k_rng, opt_y);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+k_rng : [k, -2,2];
+f1 : k^2;
+a : 1;
+f2 : (tan(k * a / 2)) ^ 2 + 1;
+f3 : f1 * f2;
+fs : [f1, f2, f3];
+opt_y : [gnuplot_preamble, "set yrange[-5:5]"];
+wxplot2d(fs, k_rng, opt_y);
+plot2d(fs, k_rng, opt_y);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+solve(f2 - f1 = 0, k);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+solve(f1 * f2 = 1, k);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+solve(f1 * f2 = 2, k);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+wxplot2d(1 / (tan(k / 2) + 1), k_rng, opt_y);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+wxplot2d(1 / ((tan(k / 2))^2 + 1), k_rng, opt_y);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+wxplot2d(1 / ((tan(k / 2))^2 + 1), [k, -5, 5]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+wxplot2d([tan(x), (tan(x))^2], [x, -%pi*3, %pi*3], [gnuplot_preamble, "set yrange[-10:10]"]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+wxplot2d([tan(x), (tan(x))^2, 1 / ((tan(x))^2)], [x, -%pi*3, %pi*3], [gnuplot_preamble, "set yrange[-10:10]"]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+opt_y2 : [gnuplot_preamble, "set yrange[-10:10]"];
+fs2 : [tan(x), (tan(x))^2, 1 / ((tan(x))^2)];
+wxplot2d(fs2, [x, -%pi*3, %pi*3], opt_y2);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+opt_y2 : [gnuplot_preamble, "set yrange[-3:3]"];
+fs2 : [tan(x), (tan(x))^2, 1 / ((tan(x))^2), 1 / ((tan(x))^2 + 1)];
+wxplot2d(fs2, [x, -%pi*3, %pi*3], opt_y2);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+opt_y2 : [gnuplot_preamble, "set yrange[-3:3]"];
+fs2 : [(tan(x))^2, 1 / ((tan(x))^2), 1 / ((tan(x))^2 + 1)];
+wxplot2d(fs2, [x, -%pi*3, %pi*3], opt_y2);
+plot2d(fs2, [x, -%pi*3, %pi*3], opt_y2);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+opt_y2 : [gnuplot_preamble, "set yrange[-3:3]"];
+fs2 : [1 / ((tan(x))^2), 1 / ((tan(x))^2 + 1), (tan(x))^2 + 1];
+wxplot2d(fs2, [x, -%pi*3, %pi*3], opt_y2);
+plot2d(fs2, [x, -%pi*3, %pi*3], opt_y2);
+/* [wxMaxima: input   end   ] */
+
+/* Maxima can't load/batch files which end with a comment! */
+"Created with wxMaxima"$
