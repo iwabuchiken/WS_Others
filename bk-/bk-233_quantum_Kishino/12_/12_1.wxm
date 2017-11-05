@@ -1,0 +1,32 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 14.09.0 ] */
+
+/* [wxMaxima: input   start ] */
+x_rng : [x, -2,2];
+f1 : [%e^(-x)];
+wxplot2d(f1, x_rng);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+x_rng : [x, -2,2];
+f1 : [1 / %e^(-x)];
+wxplot2d(f1, x_rng);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+x_rng : [x, -2,2];
+f1 : [1 / %e^(-x) + x];
+wxplot2d(f1, x_rng);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+x_rng : [x, -2,2];
+f1 : 1 / %e^(-x) / 20;
+f2 : %e^(-x) / 10;
+fs : [f1, f2, f1 + f2];
+opt_y : [gnuplot_preamble, "set yrange[0:0.5]"];
+wxplot2d(fs, x_rng, opt_y);
+/* [wxMaxima: input   end   ] */
+
+/* Maxima can't load/batch files which end with a comment! */
+"Created with wxMaxima"$
