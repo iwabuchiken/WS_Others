@@ -1,0 +1,94 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 14.09.0 ] */
+
+/* [wxMaxima: input   start ] */
+load(distrib);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+binomial(0.1,10);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+binomial(0.3,10);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+n_rng : [n, 0.1, 0.8];
+f1 : binomial(n, 10);
+wxplot2d(f1, n_rng);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+n_rng : [n, 1, 5];
+p_rng : [p, 0, 1];
+f2 : std_binomial(1, p);
+f2_1 : std_binomial(3, p);
+f2_2 : std_binomial(5, p);
+fs : [f2, f2_1, f2_2];
+wxplot2d(fs, p_rng);
+/*
+wxplot3d(f2, n_rng, p_rng);
+plot3d(f2, n_rng, p_rng);
+*/;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+n_rng : [n, 1, 5];
+p_rng : [p, 0, 1];
+f2 : binomial(1, p);
+f2_1 : binomial(3, p);
+f2_2 : binomial(5, p);
+fs : [f2, f2_1, f2_2];
+wxplot2d(fs, p_rng);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+binomial(8, 1/6);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+%;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+binomial(8,5);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+binomial(8,7.7);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+points: [1, 2, 3];
+x: 42;
+wxplot2d('x^2, ['x, 1, 2], ['style, 'points]);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+n : 8;
+x_rng : [x, 1, 8];
+f1 : binomial(n, x);
+wxplot2d(f1, x_rng);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+x;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+kill(x);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+n : 8;
+x_rng : [x, 0, n];
+R : 1; N : 6;  /* N=number of numbers in a dice R=num of the number '1' */
+f1 : binomial(n, x);
+f2 : f1 * (1/6) ^ x * (5/6) ^ (n - x);
+wxplot2d(f2, x_rng);
+/* [wxMaxima: input   end   ] */
+
+/* Maxima can't load/batch files which end with a comment! */
+"Created with wxMaxima"$
