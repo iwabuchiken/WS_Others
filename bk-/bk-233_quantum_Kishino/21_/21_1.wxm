@@ -1,0 +1,337 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 14.09.0 ] */
+
+/* [wxMaxima: input   start ] */
+/*xsai_rng : [xsai, 0, 3];*/
+/*xsai : 3;*/
+l_rng : [l, 0, 3];
+f1 : xsai^l * %e^((-xsai^2)/2);
+wxplot3d([f1, l_rng, xsai_rng]);
+/*wxplot2d(f1, l_rng x);*/;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/*xsai_rng : [xsai, 0, 3];*/
+xsai : 3;
+l_rng : [l, 0, 3];
+f1 : xsai^l * %e^((-xsai^2)/2);
+/*wxplot3d([f1, l_rng, xsai_rng]);*/
+wxplot2d(f1, l_rng);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+kill(xsai);
+xsai_rng : [xsai, 0, 3];
+/*xsai : 3;*/
+l : 1.5;
+/*l_rng : [l, 0, 3];*/
+f1 : xsai^l * %e^((-xsai^2)/2);
+/*wxplot3d([f1, l_rng, xsai_rng]);*/
+/*wxplot2d(f1, l_rng);*/
+wxplot2d(f1, xsai_rng);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+kill(xsai);
+xsai_rng : [xsai, 0, 3];
+/*xsai : 3;*/
+l : 0;
+/*l_rng : [l, 0, 3];*/
+f1 : xsai^l * %e^((-xsai^2)/2);
+/*wxplot3d([f1, l_rng, xsai_rng]);*/
+/*wxplot2d(f1, l_rng);*/
+wxplot2d(f1, xsai_rng);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+xsai_rng : [xsai, 0, 3];
+/*xsai : 3;*/
+/*l : 0;*/
+l_rng : [l, 0, 3];
+f1 : xsai^l * %e^((-xsai^2)/2);
+wxplot3d([f1, xsai_rng, l_rng]);
+/*wxplot2d(f1, l_rng);*/
+/*wxplot2d(f1, xsai_rng);*/;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+kill(xsai);
+xsai_rng : [xsai, 0, 10];
+/*xsai : 3;*/
+l : 5;
+/*l_rng : [l, 0, 3];*/
+f1 : xsai^l * %e^((-xsai^2)/2);
+/*wxplot3d([f1, l_rng, xsai_rng]);*/
+/*wxplot2d(f1, l_rng);*/
+wxplot2d(f1, xsai_rng);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+x_rng : [x, 0, 3];
+f1 : %e^(-x);
+
+xsai : 3;
+f2 : xsai^x;
+
+f3 : f1 * f2;
+
+fs : [f1,f2, f3];
+
+opt_y : [gnuplot_preamble, "set yrange[0:2]"];
+
+wxplot2d(fs, x_rng, opt_y);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+x_rng : [x, 0, 3];
+f1 : %e^(-x);
+
+xsai : 2;
+f2 : xsai^x;
+
+f3 : f1 * f2;
+
+diff(f3, x);
+
+fs : [f1,f2, f3];
+
+opt_y : [gnuplot_preamble, "set yrange[0:2]"];
+
+wxplot2d(fs, x_rng, opt_y);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+x_rng : [x, 0, 3];
+f1 : %e^(-x^2);
+
+xsai : 2;
+f2 : xsai^x;
+
+f3 : f1 * f2;
+
+diff(f3, x);
+
+fs : [f1,f2, f3];
+
+opt_y : [gnuplot_preamble, "set yrange[0:2]"];
+
+wxplot2d(fs, x_rng, opt_y);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+x_rng : [x, 0, 3];
+f1 : %e^(-x^2);
+
+xsai : 5;
+f2 : xsai^x;
+
+f3 : f1 * f2;
+
+diff(f3, x);
+
+fs : [f1,f2, f3];
+
+opt_y : [gnuplot_preamble, "set yrange[0:2]"];
+
+wxplot2d(fs, x_rng, opt_y);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+x_rng : [x, 0, 3];
+f1 : %e^(-x^2);
+
+xsai : 5;
+f2 : xsai^x;
+
+f3 : f1 * f2;
+
+diff(f3, x);
+
+
+
+fs : [%e^(-x^2), %e^(-x^3), %e^(-x^4)];
+
+opt_y : [gnuplot_preamble, "set yrange[0:2]"];
+
+wxplot2d(fs, x_rng, opt_y);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+x_rng : [x, 0, 3];
+f1 : %e^(-x^2);
+
+xsai : 5;
+f2 : xsai^x;
+
+f3 : f1 * f2;
+
+diff(f3, x);
+
+
+
+/*fs : [%e^(-x^2) *f2, %e^(-x^3) *f2, %e^(-x^4) *f2, %e^(-x^5) *f2, , %e^(-x^6) *f2];*/
+
+fs : [%e^(-x^4) *f2, %e^(-x^5) *f2, %e^(-x^6) *f2];
+
+opt_y : [gnuplot_preamble, "set yrange[0:4]"];
+
+wxplot2d(fs, x_rng, opt_y);
+plot2d(fs, x_rng, opt_y);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+x_rng : [x, 0, 3];
+f1 : %e^(-x^2);
+
+xsai : 5;
+f2 : xsai^x;
+
+f3 : f1 * f2;
+
+diff(f3, x);
+
+
+
+/*fs : [%e^(-x^2) *f2, %e^(-x^3) *f2, %e^(-x^4) *f2, %e^(-x^5) *f2, , %e^(-x^6) *f2];*/
+
+fs : [%e^(-x) *f2, %e^(-x^2) *f2, %e^(-x^3) *f2];
+
+opt_y : [gnuplot_preamble, "set yrange[0:4]"];
+
+wxplot2d(fs, x_rng, opt_y);
+plot2d(fs, x_rng, opt_y);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+x_rng : [x, 0, 3];
+f1 : %e^(-x^2);
+
+xsai : 5;
+f2 : xsai^x;
+
+f3 : f1 * f2;
+
+/*diff(f3, x);*/
+
+
+
+/*fs : [%e^(-x^2) *f2, %e^(-x^3) *f2, %e^(-x^4) *f2, %e^(-x^5) *f2, , %e^(-x^6) *f2];*/
+
+fs : [%e^(-x^3) *f2, %e^(-x^4) *f2, %e^(-x^5) *f2, %e^(-x^6) *f2];
+
+opt_y : [gnuplot_preamble, "set yrange[0:4]"];
+
+/*solve(diff(%e^(-x^3) *f2, x) = 0, x);*/
+
+wxplot2d(fs, x_rng, opt_y);
+/*plot2d(fs, x_rng, opt_y);*/;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+x_rng : [x, 0, 3];
+f1 : %e^(-x^2);
+
+xsai : 5;
+f2 : xsai^x;
+
+f3 : f1 * f2;
+
+diff(f3, x);
+
+
+
+/*fs : [%e^(-x^2) *f2, %e^(-x^3) *f2, %e^(-x^4) *f2, %e^(-x^5) *f2, , %e^(-x^6) *f2];*/
+
+fs : [%e^(-x) *f2, %e^(-x^2) *f2, %e^(-x^3) *f2, %e^(-x^4) *f2, %e^(-x^5) *f2];
+
+opt_y : [gnuplot_preamble, "set yrange[0:4]"];
+
+wxplot2d(fs, x_rng, opt_y);
+plot2d(fs, x_rng, opt_y);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+kill(xsai);
+xsai_rng : [xsai, 0.1, 10];
+
+/*f1 : %e^((-xsai^2)/2);*/
+f1 : %e^((-xsai^2)/2);
+
+kill(l);
+l_rng : [l, 1, 5];
+
+/*xsai : 3;*/
+/*l : 5;*/
+f2 : xsai^l;
+
+f3 : f1 * f2;
+
+fs : [f1, f3];
+
+opt_y : [gnuplot_preamble, "set yrange[0:2]"];
+
+/*wxplot2d(fs, xsai_rng, opt_y);*/
+/*wxplot3d(fs, xsai_rng, l_rng, opt_y);*/
+/*wxplot3d([f1, f3, xsai_rng, l_rng], opt_y);*/
+wxplot3d(f3, xsai_rng, l_rng, opt_y);
+plot3d(f3, xsai_rng, l_rng, opt_y);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+kill(xsai);
+xsai_rng : [xsai, 0.1, 20];
+
+/*f1 : %e^((-xsai^2)/2);*/
+/*f1 : %e^((-xsai^2)/2);*/
+f1 : %e^((-xsai)/2);
+
+kill(l);
+l_rng : [l, 1, 5];
+
+/*xsai : 3;*/
+/*l : 5;*/
+f2 : xsai^l;
+
+f3 : f1 * f2;
+
+fs : [f1, f3];
+
+opt_y : [gnuplot_preamble, "set yrange[0:2]"];
+
+/*wxplot2d(fs, xsai_rng, opt_y);*/
+/*wxplot3d(fs, xsai_rng, l_rng, opt_y);*/
+/*wxplot3d([f1, f3, xsai_rng, l_rng], opt_y);*/
+wxplot3d(f3, xsai_rng, l_rng, opt_y);
+plot3d(f3, xsai_rng, l_rng, opt_y);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+kill(xsai);
+xsai_rng : [xsai, 0.1, 20];
+
+/*f1 : %e^((-xsai^2)/2);*/
+/*f1 : %e^((-xsai^2)/2);*/
+f1 : %e^((-xsai));
+
+kill(l);
+l_rng : [l, 1, 5];
+
+/*xsai : 3;*/
+/*l : 5;*/
+f2 : xsai^l;
+
+f3 : f1 * f2;
+
+fs : [f1, f3];
+
+opt_y : [gnuplot_preamble, "set yrange[0:2]"];
+
+/*wxplot2d(fs, xsai_rng, opt_y);*/
+/*wxplot3d(fs, xsai_rng, l_rng, opt_y);*/
+/*wxplot3d([f1, f3, xsai_rng, l_rng], opt_y);*/
+wxplot3d(f3, xsai_rng, l_rng, opt_y);
+plot3d(f3, xsai_rng, l_rng, opt_y);
+/* [wxMaxima: input   end   ] */
+
+/* Maxima can't load/batch files which end with a comment! */
+"Created with wxMaxima"$
