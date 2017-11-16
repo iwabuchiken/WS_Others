@@ -277,6 +277,7 @@ wxplot3d(f3, xsai_rng, l_rng, opt_y);
 plot3d(f3, xsai_rng, l_rng, opt_y);
 /* [wxMaxima: input   end   ] */
 
+<<<<<<< HEAD
 /* [wxMaxima: input   start ] */
 kill(xsai);
 xsai_rng : [xsai, 0.1, 20];
@@ -333,5 +334,7 @@ wxplot3d(f3, xsai_rng, l_rng, opt_y);
 plot3d(f3, xsai_rng, l_rng, opt_y);
 /* [wxMaxima: input   end   ] */
 
+=======
+>>>>>>> af3adcbd0809dd2b3d403f034016c8bd78bf48d0
 /* Maxima can't load/batch files which end with a comment! */
 "Created with wxMaxima"$
