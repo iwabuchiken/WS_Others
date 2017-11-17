@@ -1,0 +1,97 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 14.09.0 ] */
+
+/* [wxMaxima: input   start ] */
+gzai : 3;
+k_rng : [k, 0, 10];
+f1 : gzai^k * 1 / (k/2)!;
+wxplot2d(f1, k_rng);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+f1 : gzai^k;
+f2 : (k/2)!;
+fs : [f1, f2];
+opt_y : [gnuplot_preamble, "set yrange[0:1000]"];
+wxplot2d(fs, k_rng, opt_y);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+
+diff(f1, k);
+diff(f2, k);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+gzai : 1;
+f1 : gzai^k;
+f2 : (k/2)!;
+fs : [f1, f2];
+opt_y : [gnuplot_preamble, "set yrange[0:10]"];
+wxplot2d(fs, k_rng, opt_y);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+gzai : 1;
+f1 : gzai^k;
+f2 : (k/2)!;
+fs : [f1, f2];
+opt_y : [gnuplot_preamble, "set yrange[0:10]"];
+wxplot2d(fs, k_rng, opt_y);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+%e^(1/2);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+float(%);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+gzai : 1;
+f1 : gzai^k;
+f2 : (k/2)!;
+f3 : f1 / f2;
+
+fs : [f1, f2, f3];
+
+opt_y : [gnuplot_preamble, "set yrange[0:10]"];
+wxplot2d(fs, k_rng, opt_y);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+f3;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+integrate(f3, k, 0, 10);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+gzai : 1;
+k : 100;
+
+f1 : gzai^k;
+f2 : (k/2)!;
+f3 : f1 / f2;
+float(%);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+gzai : 3;
+kill(k);
+k_rng : [k, 0, 500];
+f1 : gzai^k;
+f2 : (k/2)!;
+f3 : f1 / f2;
+
+fs : [f1, f2, f3];
+
+opt_y : [gnuplot_preamble, "set yrange[0:1000]"];
+wxplot2d(fs, k_rng, opt_y);
+/* [wxMaxima: input   end   ] */
+
+/* Maxima can't load/batch files which end with a comment! */
+"Created with wxMaxima"$

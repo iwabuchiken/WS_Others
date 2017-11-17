@@ -277,7 +277,6 @@ wxplot3d(f3, xsai_rng, l_rng, opt_y);
 plot3d(f3, xsai_rng, l_rng, opt_y);
 /* [wxMaxima: input   end   ] */
 
-<<<<<<< HEAD
 /* [wxMaxima: input   start ] */
 kill(xsai);
 xsai_rng : [xsai, 0.1, 20];
@@ -334,7 +333,24 @@ wxplot3d(f3, xsai_rng, l_rng, opt_y);
 plot3d(f3, xsai_rng, l_rng, opt_y);
 /* [wxMaxima: input   end   ] */
 
-=======
->>>>>>> af3adcbd0809dd2b3d403f034016c8bd78bf48d0
+/* [wxMaxima: input   start ] */
+f1 : log(xsai) - xsai^2/2;
+solve(f1 = 0, xsai);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+float(%);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+xsai_rng : [xsai, 0.1, 3];
+l : 3;
+f1 : l * log(xsai);
+f2 : - xsai^2/2;
+fs : [f1, f2, f1 + f2];
+wxplot2d(fs, xsai_rng);
+solve(f1 + f2 = 0, xsai);
+/* [wxMaxima: input   end   ] */
+
 /* Maxima can't load/batch files which end with a comment! */
 "Created with wxMaxima"$
