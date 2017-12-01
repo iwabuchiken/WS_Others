@@ -45,5 +45,14 @@ wxplot3d([f1, f2,a_rng, c_rng]);
 /*wxplot2d([f1, f2], c_rng);*/;
 /* [wxMaxima: input   end   ] */
 
+/* [wxMaxima: input   start ] */
+/* plot : 2 */
+a : 5;
+c_rng : [c, 0, a];
+ipsiron : (a - c) / a;
+f1 : (1 - ipsiron)^2;
+wxplot2d(f1, c_rng);
+/* [wxMaxima: input   end   ] */
+
 /* Maxima can't load/batch files which end with a comment! */
 "Created with wxMaxima"$
