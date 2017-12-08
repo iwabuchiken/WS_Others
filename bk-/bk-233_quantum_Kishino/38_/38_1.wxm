@@ -1,0 +1,41 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 14.09.0 ] */
+
+/* [wxMaxima: input   start ] */
+/* plot : 1 */
+p : matrix([1,0,0]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+a1 : [0,-1      ,0       ,0,     0];
+a2 : [1,0,      -sqrt(2) ,0,     0];
+a3 : [0,sqrt(2),0,      -sqrt(3),0];
+a4 : [0,0,      sqrt(3),0,       -2];
+a5 : [0,0,      0,      2,       0];
+p : matrix(a1,a2,a3,a4,a5);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+p . p;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* plot : 2 */
+
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+b1 : [0,1      ,0       ,0		,0];
+b2 : [1,0		,sqrt(2),0		,0];
+b3 : [0,sqrt(2),0		,sqrt(3),0];
+b4 : [0,0		,sqrt(3),0		,2];
+b5 : [0,0		,0		,2		,0];
+q : matrix(b1,b2,b3,b4,b5);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+q . q;
+/* [wxMaxima: input   end   ] */
+
+/* Maxima can't load/batch files which end with a comment! */
+"Created with wxMaxima"$
