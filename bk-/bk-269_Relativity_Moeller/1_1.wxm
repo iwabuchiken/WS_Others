@@ -1,0 +1,19 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 14.09.0 ] */
+
+/* [wxMaxima: input   start ] */
+v : 5;
+u_rng : [u, 1, v];
+a : 1/2;
+theta_rng : [theta, 0, %pi / a];
+
+
+f1 : u * sqrt(1 - 2 * (v / u) * cos(theta) + (v^2 / u^2));
+fs : [f1];
+
+wxplot3d([f1, u_rng, theta_rng]);
+plot3d([f1, u_rng, theta_rng]);
+/* [wxMaxima: input   end   ] */
+
+/* Maxima can't load/batch files which end with a comment! */
+"Created with wxMaxima"$
