@@ -1,0 +1,95 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 14.09.0 ] */
+
+/* [wxMaxima: input   start ] */
+A : 1;
+nyu : 1;
+c : 3;
+L1 : c * 0.2;
+L2 : c * 0.1;
+t_rng : [t, 0, 3];
+F : nyu * (t - L1 / c);
+
+f1 : A * cos(2 * %pi * F);
+fs : [f1];
+
+wxplot2d(fs, t_rng);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+A : 1;
+nyu : 1;
+c : 3;
+L1 : c * 0.2;
+L2 : c * 0.1;
+t_rng : [t, 0, 3];
+
+F : nyu * (t - L1 / c);
+F2 : nyu * (t - L2 / c);
+
+f1 : A * cos(2 * %pi * F);
+f2 : A * cos(2 * %pi * F2);
+
+fs : [f1, f2];
+
+wxplot2d(fs, t_rng);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+A : 1;
+nyu : 1;
+c : 3;
+L1 : 0.1;
+L2 : 0.2;
+L3 : 0.3;
+
+t_rng : [t, 0, 3];
+
+F : nyu * (t - L1 / c);
+F2 : nyu * (t - L2 / c);
+F3 : nyu * (t - L3 / c);
+
+f1 : A * cos(2 * %pi * F);
+f2 : A * cos(2 * %pi * F2);
+f3 : A * cos(2 * %pi * F3);
+
+fs : [f1, f2, f3];
+
+wxplot2d(fs, t_rng);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+A : 1;
+nyu : 1;
+c : 30;
+
+L0 : 0;
+L1 : 1;
+L2 : 2;
+L3 : 3;
+
+t_rng : [t, 0, 3];
+
+F0 : nyu * (t - L0 / c);
+F : nyu * (t - L1 / c);
+F2 : nyu * (t - L2 / c);
+F3 : nyu * (t - L3 / c);
+
+f0 : A * cos(2 * %pi * F0);
+f1 : A * cos(2 * %pi * F);
+f2 : A * cos(2 * %pi * F2);
+f3 : A * cos(2 * %pi * F3);
+
+fs : [f1, f2, f3, f0];
+
+wxplot2d(fs, t_rng);
+plot2d(fs, t_rng);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+fs : [cos(2 * %pi * t), cos(2 * %pi * (t) + 1 )];
+wxplot2d(fs, t_rng);
+/* [wxMaxima: input   end   ] */
+
+/* Maxima can't load/batch files which end with a comment! */
+"Created with wxMaxima"$
