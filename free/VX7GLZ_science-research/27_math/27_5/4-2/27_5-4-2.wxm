@@ -1,0 +1,51 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 14.09.0 ] */
+
+/* [wxMaxima: input   start ] */
+x_rng : [x, 0, %pi * 10];
+f1 : (1/2) * (x - sin(x) * cos(x));
+
+fs : [f1];
+
+wxplot2d(fs, x_rng);
+plot2d(fs, x_rng);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+x_rng : [x, 0, %pi * 10];
+f1 : (1/2) * (x - sin(x) * cos(x));
+f2 : diff(f1, x);
+
+opt_y : [gnuplot_preamble, "set yrange[-1:20]"];
+fs : [f1, f2, (1/2) * x, sin(x) * cos(x)];
+
+wxplot2d(fs, x_rng, opt_y);
+plot2d(fs, x_rng, opt_y);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+x_rng : [x, 0, %pi * 10];
+f1 : (1/2) * (x - sin(x) * cos(x));
+f2 : diff(f1, x);
+
+opt_y : [gnuplot_preamble, "set yrange[-1:5]"];
+fs : [f1, f2, (1/2) * x, sin(x) * cos(x), 1];
+
+wxplot2d(fs, x_rng, opt_y);
+plot2d(fs, x_rng, opt_y);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+x_rng : [x, 0, %pi * 10];
+f1 : (1/2) * (x - sin(x) * cos(x));
+f2 : diff(f1, x);
+
+opt_y : [gnuplot_preamble, "set yrange[-1:5]"];
+fs : [f2, sin(x) * cos(x), 1, (sin(x))^2, sin(x)];
+
+wxplot2d(fs, x_rng, opt_y);
+plot2d(fs, x_rng, opt_y);
+/* [wxMaxima: input   end   ] */
+
+/* Maxima can't load/batch files which end with a comment! */
+"Created with wxMaxima"$
