@@ -1,0 +1,130 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 14.09.0 ] */
+
+/* [wxMaxima: input   start ] */
+x_rng : [x, %pi * (-3), %pi * 3];
+
+f1 : sin(x);
+
+fs : [f1];
+
+wxplot2d(fs, x_rng);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+a : 5;
+x_rng : [x, %pi * (-1 * a), %pi * a];
+
+f1 : sin(x);
+f2 : -1 * x * cos(x);
+
+fs : [f1, f2, f1 + f2];
+
+opt_y : [gnuplot_preamble, "set yrange[-10:10]"];
+wxplot2d(fs, x_rng, opt_y);
+plot2d(fs, x_rng, opt_y);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+a : 5;
+x_rng : [x, %pi * (-1 * a), %pi * a];
+
+f1 : sin(x);
+f2 : -1 * x * cos(x);
+
+fs : [f1 + f2, x * sin(x)];
+
+opt_y : [gnuplot_preamble, "set yrange[-10:10]"];
+wxplot2d(fs, x_rng, opt_y);
+plot2d(fs, x_rng, opt_y);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* plot : 2 */
+x_rng : [x, -3, 3];
+
+f1 : %e^x;
+f2 : x - 1;
+
+fs : [f1, f2];
+
+wxplot2d(fs, x_rng);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+x_rng : [x, -3, 3];
+
+f1 : %e^x;
+f2 : x - 1;
+
+diff(f1 * f2, x);
+
+fs : [f1, f2, f1 * f2, x * %e^x];
+
+opt_y : [gnuplot_preamble, "set yrange[-10:10]"];
+
+wxplot2d(fs, x_rng, opt_y);
+plot2d(fs, x_rng, opt_y);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+f1 * f2;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+diff(%, x);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+fs : [f1 * f2, diff(f1 * f2, x)];
+
+opt_y : [gnuplot_preamble, "set yrange[-10:10]"];
+
+wxplot2d(fs, x_rng, opt_y);
+plot2d(fs, x_rng, opt_y);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* plot : 3 */
+f1 : (%e^x - 1) / (x * %e^x);
+
+fs : [f1];
+
+wxplot2d(fs, x_rng);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+1/3 - (1/3) * (1/%e^3);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+float(%);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+a : 0.5;
+(1/a) * (1 - (1/%e^a));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+x_rng : [x, %pi * (-3), %pi * 3];
+f1 : 2 * x * sin(2 * x) + cos(2 * x);
+
+fs : [f1];
+
+wxplot2d(fs, x_rng);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+x_rng : [x, %pi * (-3), %pi * 3];
+
+f1 : 2 * x * sin(2 * x) + cos(2 * x);
+f2 : (1/2) * x * sin(2 * x) + (1/4) * cos(2 * x);
+
+fs : [f1, f2];
+
+wxplot2d(fs, x_rng);
+/* [wxMaxima: input   end   ] */
+
+/* Maxima can't load/batch files which end with a comment! */
+"Created with wxMaxima"$
