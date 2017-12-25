@@ -1,0 +1,146 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 14.09.0 ] */
+
+/* [wxMaxima: input   start ] */
+a : 2;
+x_rng : [x, 0, 3];
+
+f1 : %e^x;
+f2 : %e^x + a;
+
+f3 : f1 / f2;
+
+fs : [f1, f2];
+
+opt_y : [gnuplot_preamble, "set yrange[-1:20]"];
+
+wxplot2d(fs, x_rng, opt_y);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+a : 2;
+x_rng : [x, 0, 3];
+
+f1 : %e^x;
+f2 : %e^x + a;
+
+f3 : f1 / f2;
+
+fs : [f1, f2, f3];
+
+opt_y : [gnuplot_preamble, "set yrange[-1:20]"];
+
+wxplot2d(fs, x_rng, opt_y);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+a : 2; b : 2;
+
+x_rng : [x, 0, 10];
+
+f1 : %e^x;
+f2 : %e^x + a;
+
+f3 : f2 + b;
+
+f : f1 / f2;
+
+fs : [f1 / f2, f1 / f3];
+
+opt_y : [gnuplot_preamble, "set yrange[-1:2]"];
+
+wxplot2d(fs, x_rng, opt_y);
+plot2d(fs, x_rng, opt_y);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+a : 2; b : 2;
+
+x_rng : [x, 0, 10];
+
+f1 : %e^x;
+f2 : %e^x + a;
+
+f3 : f2 + b;
+
+f : f1 / f2;
+
+fs : [diff(f1 / f2, x), diff(f1 / f3, x)];
+
+opt_y : [gnuplot_preamble, "set yrange[-1:2]"];
+
+wxplot2d(fs, x_rng, opt_y);
+plot2d(fs, x_rng, opt_y);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+solve(diff(f1 / f2, x) = 0, x);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+diff(f1 / f2, x);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+solve(% = 0, x);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+solve(%e^x = -2, x);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+float(%);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+x_rng;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+f : 2 * %e^x / (%e^x + 2)^2;
+wxplot2d(f, x_rng);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+f_d : diff(f, x);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+solve(% = 0, x);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+float()
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+a : 40;
+f : a * %e^x / (%e^x + a)^2;
+wxplot2d(f, x_rng);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+a : 4;
+
+f1 : 2 * %e^x / (%e^x + 2)^2;
+f2 : 3 * %e^x / (%e^x + 3)^2;
+
+fs : [f1, f2];
+
+wxplot2d(fs, x_rng);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* plot : 3 */
+kill(a);
+a_rng : [a, 0, 100];
+
+f : a * %e^x / (%e^x + a)^2;
+
+wxplot3d(f, x_rng, a_rng);
+plot3d(f, x_rng, a_rng);
+/* [wxMaxima: input   end   ] */
+
+/* Maxima can't load/batch files which end with a comment! */
+"Created with wxMaxima"$
