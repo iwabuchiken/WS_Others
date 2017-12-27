@@ -1,0 +1,164 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 14.09.0 ] */
+
+/* [wxMaxima: input   start ] */
+/* plot :0 */
+x_rng : [x, 1, 5];
+
+a : 2;
+
+f1 : log(%e^x + a);
+
+fs : [f1];
+
+opt_y : [gnuplot_preamble, "set yrange[-10:10]"];
+
+wxplot2d(fs, x_rng, opt_y);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+x_rng : [x, 0.1, 5];
+
+a : 2;
+
+f1 : log(%e^x + a);
+
+fs : [f1];
+
+opt_y : [gnuplot_preamble, "set yrange[-10:10]"];
+
+wxplot2d(fs, x_rng, opt_y);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+x_rng : [x, 10^(-2), 5];
+
+a : 2;
+
+f1 : log(%e^x + a);
+
+fs : [f1];
+
+opt_y : [gnuplot_preamble, "set yrange[-10:10]"];
+
+wxplot2d(fs, x_rng, opt_y);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+x_rng : [x, -2 + 10^(-1), 5];
+
+a : 2;
+
+f1 : log(%e^x + a);
+f2 : log(x + a);
+
+fs : [f1, f2];
+
+opt_y : [gnuplot_preamble, "set yrange[-5:5]"];
+
+wxplot2d(fs, x_rng, opt_y);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* plot :1 */
+x_rng : [x, -5, 5];
+
+a : 2;
+
+f1 : log(%e^x + a);
+f2 : %e^x;
+
+fs : [f1, f2];
+
+opt_y : [gnuplot_preamble, "set yrange[-5:5]; set grid ytics lc rgb "#bbbbbb" lw 1 lt 0;"];
+
+
+wxplot2d(fs, x_rng, opt_y);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* plot : 1.1 */
+x_rng : [x, -5, 5];
+
+a : 2;
+
+f1 : log(%e^x + a);
+f2 : %e^x;
+
+fs : [f1, f2];
+
+opt_y : [gnuplot_preamble, "set grid ytics"];
+
+
+wxplot2d(fs, x_rng, [y, -2, 2], grid2d, [xtics, -4, 1, 4], [ytics, -2, 1, 2], [axes, solid], same_xy);
+plot2d(fs, x_rng, [y, -2, 2], grid2d, [xtics, -4, 1, 4], [ytics, -2, 1, 2], [axes, solid], same_xy);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* plot : 2.0 */
+x_rng : [x, -5, 10];
+
+a : 2;
+
+f1 : %e^x + a;
+f2 : %e^x;
+
+fs : [f1, f2, f2 / f1];
+
+opt_y : [gnuplot_preamble, "set yrange[-2:5]"];
+
+
+wxplot2d(fs, x_rng, grid2d, [axes, solid], opt_y, same_xy, [ytics, -2, 1, 5], [xtics, -5, 1, 10]);
+plot2d(fs, x_rng, grid2d, [axes, solid], opt_y, same_xy, [ytics, -2, 1, 5], [xtics, -5, 1, 10]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+f2;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* plot : 3.0 */
+x_rng : [x, -5, 10];
+
+a : 2;
+
+f1 : %e^x + a;
+f2 : %e^x;
+
+f3 : f2 / f1;
+f3_d : diff(f3, x);
+
+fs : [f1, f2, f3, f3_d];
+
+opt_y : [gnuplot_preamble, "set yrange[-1:1]"];
+
+
+wxplot2d(fs, x_rng, grid2d, [axes, solid], opt_y, [yx_ratio, 0.5], [ytics, -1, 1, 1], [xtics, -5, 1, 10]);
+plot2d(fs, x_rng, grid2d, [axes, solid], opt_y, [yx_ratio, 0.5], [ytics, -1, 1, 1], [xtics, -5, 1, 10]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* plot : 4.0 */
+x_rng : [x, -5, 10];
+
+a : 2;
+
+f1 : %e^x + a;
+f2 : %e^x;
+
+f3 : f2 / f1;
+f3_d : diff(f3, x);
+
+f3_dd : diff(f3_d, x);
+
+fs : [f1, f2, f3, f3_d, f3_dd];
+
+opt_y : [gnuplot_preamble, "set yrange[-1:1]"];
+
+
+wxplot2d(fs, x_rng, grid2d, [axes, solid], opt_y, [yx_ratio, 0.5], [ytics, -1, 1, 1], [xtics, -5, 1, 10]);
+plot2d(fs, x_rng, grid2d, [axes, solid], opt_y, [yx_ratio, 0.5], [ytics, -1, 1, 1], [xtics, -5, 1, 10]);
+/* [wxMaxima: input   end   ] */
+
+/* Maxima can't load/batch files which end with a comment! */
+"Created with wxMaxima"$
