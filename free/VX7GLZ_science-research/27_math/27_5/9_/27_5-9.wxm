@@ -1,0 +1,265 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 14.09.0 ] */
+
+/* [wxMaxima: input   start ] */
+/* plot : 1 */
+a : 2;
+x_rng : [x, -3, 6];
+
+f1 : %e^x;
+f2 : f1 + a;
+f3 : f1 / f2;
+
+fs : [f1, f2, f3];
+
+opt_y : [gnuplot_preamble, "set yrange[-1:2]"];
+xt : [xtics, -3, 1, 6];
+yt : [ytics, -1, 1, 2];
+ax : [axes, solid];
+
+
+wxplot2d(fs, x_rng, opt_y, ax, grid2d, xt, yt);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* plot : 2 */
+a : 2;
+x_rng : [x, -3, 6];
+
+f1 : %e^x;
+f2 : f1 + a;
+f3 : f1 / f2;
+
+print("f3_d");
+f3_d : diff(f3, x);
+print("f3_dd");
+f3_dd : diff(f3_d, x);
+
+print("f3_ddd");
+f3_ddd : diff(f3_dd, x);
+
+
+fs : [f3_d, f3_dd, f3_ddd];
+
+opt_y : [gnuplot_preamble, "set yrange[-0.5:0.5]"];
+xt : [xtics, -3, 1, 6];
+yt : [ytics, -0.5, 0.1, 0.5];
+ax : [axes, solid];
+
+
+wxplot2d(fs, x_rng, opt_y, ax, grid2d, xt, yt);
+plot2d(fs, x_rng, opt_y, ax, grid2d, xt, yt);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* plot : 3 */
+a : 2;
+x_rng : [x, -3, 6];
+
+f1 : %e^x;
+f2 : f1 + a;
+f3 : f1 / f2;
+
+print("f3_d");
+f3_d : diff(f3, x);
+print("f3_dd");
+f3_dd : diff(f3_d, x);
+
+print("f3_ddd");
+f3_ddd : diff(f3_dd, x);
+
+print("f3_dddd");
+f3_dddd : diff(f3_ddd, x);
+
+fs : [f3_d, f3_dd, f3_ddd, f3_dddd];
+
+opt_y : [gnuplot_preamble, "set yrange[-0.5:0.5]"];
+xt : [xtics, -3, 1, 6];
+yt : [ytics, -0.5, 0.1, 0.5];
+ax : [axes, solid];
+
+
+wxplot2d(fs, x_rng, opt_y, ax, grid2d, xt, yt);
+plot2d(fs, x_rng, opt_y, ax, grid2d, xt, yt);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* plot : 4 */
+a : 2;
+x_rng : [x, -3, 6];
+
+f1 : %e^x;
+f2 : f1 + a;
+f3 : f1 / f2;
+
+print("f3_d");
+f3_d : diff(f3, x);
+print("f3_dd");
+f3_dd : diff(f3_d, x);
+
+print("f3_ddd");
+f3_ddd : diff(f3_dd, x);
+
+print("f3_dddd");
+f3_dddd : diff(f3_ddd, x);
+
+print("f3_d5");
+f3_d5 : diff(f3_dddd, x);
+
+fs : [f3_d, f3_dd, f3_ddd, f3_dddd, f3_d5];
+
+opt_y : [gnuplot_preamble, "set yrange[-0.5:0.5]"];
+xt : [xtics, -3, 1, 6];
+yt : [ytics, -0.5, 0.1, 0.5];
+ax : [axes, solid];
+
+
+wxplot2d(fs, x_rng, opt_y, ax, grid2d, xt, yt);
+plot2d(fs, x_rng, opt_y, ax, grid2d, xt, yt);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* plot : 5 */
+a : 2;
+x_rng : [x, -3, 6];
+
+f1 : %e^x;
+f2 : f1 + a;
+f3 : f1 / f2;
+
+print("f3_d");
+f3_d : diff(f3, x);
+print("f3_dd");
+f3_dd : diff(f3_d, x);
+
+print("f3_ddd");
+f3_ddd : diff(f3_dd, x);
+
+print("f3_dddd");
+f3_dddd : diff(f3_ddd, x);
+
+print("f3_d5");
+f3_d5 : diff(f3_dddd, x);
+
+print("f3_d6");
+f3_d6 : diff(f3_d5, x);
+
+fs : [f3_d, f3_dd, f3_ddd, f3_dddd, f3_d5, f3_d6];
+
+opt_y : [gnuplot_preamble, "set yrange[-0.5:0.5]"];
+xt : [xtics, -3, 1, 6];
+yt : [ytics, -0.5, 0.1, 0.5];
+ax : [axes, solid];
+
+
+wxplot2d(fs, x_rng, opt_y, ax, grid2d, xt, yt);
+plot2d(fs, x_rng, opt_y, ax, grid2d, xt, yt);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* plot : 6 */
+a : 2;
+x_rng : [x, -3, 6];
+
+f1 : %e^x;
+f2 : f1 + a;
+f3 : f1 / f2;
+
+print("f3_d");
+f3_d : diff(f3, x);
+print("f3_dd");
+f3_dd : diff(f3_d, x);
+
+print("f3_ddd");
+f3_ddd : diff(f3_dd, x);
+
+print("f3_dddd");
+f3_dddd : diff(f3_ddd, x);
+
+print("f3_d5");
+f3_d5 : diff(f3_dddd, x);
+
+print("f3_d6");
+f3_d6 : diff(f3_d5, x);
+
+print("f3_d7");
+f3_d7 : diff(f3_d6, x);
+
+fs : [f3_d, f3_dd, f3_ddd, f3_dddd, f3_d5, f3_d6, f3_d7];
+
+opt_y : [gnuplot_preamble, "set yrange[-2:2]"];
+xt : [xtics, -3, 1, 6];
+yt : [ytics, -2, 0.1, 2];
+ax : [axes, solid];
+
+
+wxplot2d(fs, x_rng, opt_y, ax, grid2d, xt, yt);
+plot2d(fs, x_rng, opt_y, ax, grid2d, xt, yt);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* plot : 7 */
+a : 2;
+x_rng : [x, -3, 6];
+
+f1 : %e^x;
+f2 : f1 + a;
+f3 : f1 / f2;
+
+print("f3_d");
+f3_d : diff(f3, x);
+print("f3_dd");
+f3_dd : diff(f3_d, x);
+
+print("f3_ddd");
+f3_ddd : diff(f3_dd, x);
+
+print("f3_dddd");
+f3_dddd : diff(f3_ddd, x);
+
+print("f3_d5");
+f3_d5 : diff(f3_dddd, x);
+
+print("f3_d6");
+f3_d6 : diff(f3_d5, x);
+
+print("f3_d7");
+f3_d7 : diff(f3_d6, x);
+
+print("f3_d8");
+f3_d8 : diff(f3_d7, x);
+
+fs : [f3_d, f3_dd, f3_ddd, f3_dddd, f3_d5, f3_d6, f3_d7, f3_d8];
+
+opt_y : [gnuplot_preamble, "set yrange[-2:2]"];
+xt : [xtics, -3, 1, 6];
+yt : [ytics, -2, 0.1, 2];
+ax : [axes, solid];
+
+
+wxplot2d(fs, x_rng, opt_y, ax, grid2d, xt, yt);
+plot2d(fs, x_rng, opt_y, ax, grid2d, xt, yt);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+log(3) - log(1);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+float(%);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+log(2);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+float(%);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+log(4); float(%);
+/* [wxMaxima: input   end   ] */
+
+/* Maxima can't load/batch files which end with a comment! */
+"Created with wxMaxima"$
