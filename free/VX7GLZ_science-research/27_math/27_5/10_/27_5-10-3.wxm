@@ -1,0 +1,177 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 14.09.0 ] */
+
+/* [wxMaxima: input   start ] */
+/* plot : 1 */
+
+x_rng : [x, 0, 1];
+y_rng : [y, 0, 1];
+
+f1 : %e^(-x + y);
+
+fs : [f1];
+
+opt_y : [gnuplot_preamble, "set zrange[-1:3]"];
+xt : [xtics, 0, 0.1, 1];
+yt : [ytics, 0, 0.1, 1];
+ax : [axes, solid];
+
+
+wxplot3d([f1, x_rng, y_rng], opt_y, ax, grid2d, xt, yt);
+plot3d([f1, x_rng, y_rng], opt_y, ax, grid2d, xt, yt);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* plot : 2 */
+
+x_rng : [x, 0, 1];
+y_rng : [y, 0, 1];
+
+f1 : x^2 * y;
+
+fs : [f1];
+
+opt_y : [gnuplot_preamble, "set zrange[-1:3]"];
+xt : [xtics, 0, 0.1, 1];
+yt : [ytics, 0, 0.1, 1];
+ax : [axes, solid];
+
+
+wxplot3d([f1, x_rng, y_rng], opt_y, ax, grid2d, xt, yt);
+plot3d([f1, x_rng, y_rng], opt_y, ax, grid2d, xt, yt);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* plot : 3 */
+
+x_rng : [x, 0, %pi / 2];
+y_rng : [y, 0, %pi / 3];
+
+f1 : sin(x) * cos(y);
+
+fs : [f1];
+
+opt_y : [gnuplot_preamble, "set zrange[-1:1]"];
+xt : [xtics, 0, %pi / 36, %pi / 2];
+yt : [ytics, 0, %pi / 36, %pi / 3];
+ax : [axes, solid];
+
+
+wxplot3d([f1, x_rng, y_rng], opt_y, ax, grid2d, xt, yt);
+plot3d([f1, x_rng, y_rng], opt_y, ax, grid2d, xt, yt);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+wxplot2d(cos(y), [y, 0, %pi / 3]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+cos(%pi / 3);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* plot : 4 */
+
+x_rng : [x, 0, %pi];
+y_rng : [y, 0, 1];
+
+f1 : x * cos(x * y);
+
+fs : [f1];
+
+opt_y : [gnuplot_preamble, "set zrange[-3.5:3.5]"];
+xt : [xtics, 0, %pi / 18, %pi];
+yt : [ytics, 0, 1 / 10, 1];
+ax : [axes, solid];
+
+
+wxplot3d([f1, x_rng, y_rng], opt_y, ax, grid2d, xt, yt);
+plot3d([f1, x_rng, y_rng], opt_y, ax, grid2d, xt, yt);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+f(x) := (3*x)/(x^2 - 2*x + 4);
+lbfgs(-f(x), [x], [1.0], 1e-4, [-1,0]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+f(x, y) := x * cos(x * y);
+lbfgs(-f(x, y), [x], [1.0], 1e-4, [-1,0]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* ref https://stackoverflow.com/questions/29706610/how-to-find-the-maximum-and-minimum-of-a-function-using-maxima */
+/* plot : 5 */
+f(x) := (3*x)/(x^2 - 2*x + 4);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+diff (f(x), x);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+ratsimp (%);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+num (%);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+solve (%, x);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+f(x, y) := x * cos(x * y);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+diff_x : diff(f(x,y), x);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+diff_y : diff(f(x,y), y);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+diff_x + diff_y;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+num(%);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+solve(%, x);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+solve(%, y);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+solve(diff_x + diff_y = 0, x);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* plot : 6 */
+
+x_rng : [x, 0, 1];
+y_rng : [y, 0, 1];
+
+f1 : (x - y)^2;
+
+fs : [f1];
+
+opt_y : [gnuplot_preamble, "set zrange[-1:3]"];
+xt : [xtics, 0, 0.1, 1];
+yt : [ytics, 0, 0.1, 1];
+ax : [axes, solid];
+
+
+wxplot3d([f1, x_rng, y_rng], opt_y, ax, grid2d, xt, yt);
+plot3d([f1, x_rng, y_rng], opt_y, ax, grid2d, xt, yt);
+/* [wxMaxima: input   end   ] */
+
+/* Maxima can't load/batch files which end with a comment! */
+"Created with wxMaxima"$
