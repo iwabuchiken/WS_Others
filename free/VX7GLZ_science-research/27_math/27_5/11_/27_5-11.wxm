@@ -1,0 +1,24 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 14.09.0 ] */
+
+/* [wxMaxima: input   start ] */
+/* plot : 1 */
+
+x_rng : [x, -10, 10];
+
+f1 : (1/2) * x^3 + x^2;
+
+fs : [f1];
+
+opt_y : [gnuplot_preamble, "set yrange[-10:10]"];
+xt : [xtics, -10, 1, 10];
+yt : [ytics, -10, 1, 10];
+ax : [axes, solid];
+
+
+wxplot2d(fs, x_rng, opt_y, ax, grid2d, xt, yt);
+plot2d(fs, x_rng, opt_y, ax, grid2d, xt, yt);
+/* [wxMaxima: input   end   ] */
+
+/* Maxima can't load/batch files which end with a comment! */
+"Created with wxMaxima"$

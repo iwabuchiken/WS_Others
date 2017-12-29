@@ -1,0 +1,250 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 14.09.0 ] */
+
+/* [wxMaxima: input   start ] */
+/* plot : 1 */
+
+x_rng : [x, 0, %pi / 2];
+
+f1 : (1/2) * x^3 + x^2;
+
+fs : [sin(x), cos(x), tan(x)];
+
+opt_y : [gnuplot_preamble, "set yrange[0:5]"];
+xt : [xtics, 0, %pi / 16, %pi / 2];
+yt : [ytics, 0, 1, 5];
+ax : [axes, solid];
+
+
+wxplot2d(fs, x_rng, opt_y, ax, grid2d, xt, yt);
+plot2d(fs, x_rng, opt_y, ax, grid2d, xt, yt);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* plot : 2 */
+
+x_rng : [x, - %pi *3, %pi *3];
+
+f1 : sin(x) + cos(x);
+
+fs : [sin(x), cos(x), f1, sqrt(2)];
+
+opt_y : [gnuplot_preamble, "set yrange[-3:3]"];
+xt : [xtics, - %pi *3, %pi / 2, %pi *3];
+yt : [ytics, -3, 1, 3];
+ax : [axes, solid];
+
+
+wxplot2d(fs, x_rng, opt_y, ax, grid2d, xt, yt);
+plot2d(fs, x_rng, opt_y, ax, grid2d, xt, yt);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* plot : 3 */
+
+x_rng : [x, - %pi *3, %pi *3];
+y_rng : [y, - %pi *3, %pi *3];
+
+n_rng : [n, 0, %pi * 2];
+
+f1 : sin(x + y);
+
+fs : [sin(x), cos(x), f1, sqrt(2)];
+
+opt_z : [gnuplot_preamble, "set zrange[-2:2]"];
+
+xt : [xtics, - %pi *3, %pi / 2, %pi *3];
+yt : [ytics, - %pi *3, %pi / 2, %pi *3];
+
+ax : [axes, solid];
+
+
+wxplot3d([f1, x_rng, y_rng], opt_z, ax, grid2d, xt, yt, [grid, 50, 50]);
+plot3d([f1, x_rng, y_rng], opt_z, ax, grid2d, xt, yt, [grid, 50, 50]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* plot : 3.2 */
+
+x_rng : [x, 0, %pi * 2];
+
+
+f1 : - sin(2 * x) + sin(x);
+
+fs : [- sin(2 * x), sin(x), f1];
+
+opt_y : [gnuplot_preamble, "set yrange[-2:2]"];
+
+xt : [xtics, 0, %pi / 2, %pi * 2];
+yt : [ytics, -2, 0.5, 2];
+
+ax : [axes, solid];
+
+
+wxplot2d(fs, x_rng, opt_y, ax, grid2d, xt, yt);
+plot2d(fs, x_rng, opt_y, ax, grid2d, xt, yt);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+diff(sin(2*x), x);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+diff(%, x);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+diff(%, x);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+diff(%, x);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+diff(%, x);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+diff(%, x);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* plot : 3.3 */
+
+x_rng : [x, - 3 * %pi, %pi * 3];
+
+
+f1 : - sin(2 * x) + sin(x);
+
+fs : [- sin(2 * x), sin(x), f1];
+
+opt_y : [gnuplot_preamble, "set yrange[-2:2]"];
+
+xt : [xtics, -3 * %pi, %pi / 2, %pi * 3];
+yt : [ytics, -2, 0.5, 2];
+
+ax : [axes, solid];
+
+
+wxplot2d(fs, x_rng, opt_y, ax, grid2d, xt, yt);
+plot2d(fs, x_rng, opt_y, ax, grid2d, xt, yt);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+diff(-sin(2 * x) + sin(x), x);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+solve(% = 0, x);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+float(%);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+1 + sqrt(33);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+float(%);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+% / 8;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+sqrt(3) / 2;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+float(%);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+32.5417 / 360 * 2; float(%);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+cos(%pi / 5.54); float(%);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* plot : 3.4 */
+
+x_rng : [x, - 3 * %pi, %pi * 3];
+
+
+f1 : - sin(2 * x) + sin(x);
+
+f1_d : diff(f1, x);
+
+fs : [f1, f1_d];
+
+opt_y : [gnuplot_preamble, "set yrange[-3:3]"];
+
+xt : [xtics, -3 * %pi, %pi / 2, %pi * 3];
+yt : [ytics, -3, 0.5, 3];
+
+ax : [axes, solid];
+
+
+wxplot2d(fs, x_rng, opt_y, ax, grid2d, xt, yt);
+plot2d(fs, x_rng, opt_y, ax, grid2d, xt, yt);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* plot : 3.5 */
+
+x_rng : [x, - 3 * %pi, %pi * 3];
+
+
+f1 : - sin(2 * x) + sin(x);
+
+f1_d : diff(f1, x);
+f1_dd : diff(f1_d, x);
+
+fs : [f1, f1_d, f1_dd];
+
+opt_y : [gnuplot_preamble, "set yrange[-10:5]"];
+
+xt : [xtics, -3 * %pi, %pi / 2, %pi * 3];
+yt : [ytics, -10, 0.5, 5];
+
+ax : [axes, solid];
+
+
+wxplot2d(fs, x_rng, opt_y, ax, grid2d, xt, yt);
+plot2d(fs, x_rng, opt_y, ax, grid2d, xt, yt);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* plot : 3.6 */
+
+x_rng : [x, - 3 * %pi, %pi * 3];
+
+
+f1 : - sin(2 * x) + sin(x);
+
+f1_d : diff(f1, x);
+f1_dd : diff(f1_d, x);
+f1_ddd : diff(f1_dd, x);
+
+fs : [f1, f1_d, f1_dd, f1_ddd];
+
+opt_y : [gnuplot_preamble, "set yrange[-10:10]"];
+
+xt : [xtics, -3 * %pi, %pi / 2, %pi * 3];
+yt : [ytics, -10, 0.5, 10];
+
+ax : [axes, solid];
+
+
+wxplot2d(fs, x_rng, opt_y, ax, grid2d, xt, yt);
+plot2d(fs, x_rng, opt_y, ax, grid2d, xt, yt);
+/* [wxMaxima: input   end   ] */
+
+/* Maxima can't load/batch files which end with a comment! */
+"Created with wxMaxima"$
