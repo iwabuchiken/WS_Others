@@ -1,0 +1,247 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 14.09.0 ] */
+
+/* [wxMaxima: input   start ] */
+/* plot : 1 */
+/* ref http://www.geisya.or.jp/~mwm48961/kou2/mobile/parameter0_m.htm */
+x(t) := t - sin(t);
+y(t) := 1 - cos(t);
+
+t_rng : [t, 0, %pi * 4];
+
+wxplot2d([parametric, x(t), y(t), t_rng], same_xy);
+plot2d([parametric, x(t), y(t), t_rng], same_xy);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+makelist(i*%pi, i, 1, 5);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* plot : 1.1 */
+
+x(t) := t - sin(t);
+y(t) := 1 - cos(t);
+
+t_rng : [t, 0, %pi * 4];
+
+wxplot2d([parametric, x(t), y(t), t_rng], [nticks, 100], same_xy);
+plot2d([parametric, x(t), y(t), t_rng], [nticks, 100], same_xy);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* plot : 1.1 */
+/* ref http://maxima.sourceforge.net/docs/manual/maxima_12.html */
+x(t) := sin(t);
+y(t) := cos(t);
+
+t_rng : [t, 0, %pi * 2];
+
+x_ticks : [x, -1.5, 0.5, 1.5];
+
+wxplot2d([[parametric, x(t), y(t), t_rng], sin(x * 2)], [x, -sqrt(2), sqrt(2)], [nticks, 100], same_xy);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* plot : 1.1 */
+
+x(t) := sin(t);
+y(t) := cos(t);
+
+t_rng : [t, 0, %pi * 2];
+
+x_ticks : [x, -1.5, 0.5, 1.5];
+
+wxplot2d([[parametric, x(t), y(t), t_rng], sin(x * 2)], [x, -sqrt(2), sqrt(2)], [nticks, 100], x_ticks, same_xy);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* plot : 1.2-1 */
+
+x(t) := sin(t);
+y(t) := cos(t);
+
+t_rng : [t, 0, %pi * 2];
+
+x_ticks : [x, -1.5, 1.5];
+
+wxplot2d([[parametric, x(t), y(t), t_rng], sin(x * 2)], [x, -sqrt(2), sqrt(2)], [nticks, 100], x_ticks, same_xy);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* plot : 1.2-2 */
+
+x(t) := sin(t);
+y(t) := cos(t);
+
+t_rng : [t, 0, %pi * 2];
+
+x_ticks : [x, -1.5, 1.5];
+
+gnu : [gnuplot_preamble,"set size ratio -1"];
+
+/* ref http://www.austromath.at/daten/maxima/zusatz/Graphics_with_Maxima.pdf */
+para : [[parametric, x(t), y(t), t_rng], sin(x * 2)];
+
+wxplot2d(para, [x, -sqrt(2), sqrt(2)], gnu, [nticks, 100], x_ticks, same_xy);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* plot : 1.2-3 */
+
+x(t) := sin(t);
+y(t) := cos(t);
+
+t_rng : [t, 0, %pi * 2];
+
+x_ticks : [x, -1.5, 1.5];
+
+gnu : [gnuplot_preamble,"set size ratio -1"];
+
+nt : [nticks, 5];
+
+/* ref http://www.austromath.at/daten/maxima/zusatz/Graphics_with_Maxima.pdf */
+para : [[parametric, x(t), y(t), t_rng], sin(x * 2)];
+
+wxplot2d(para, [x, -sqrt(2), sqrt(2)], gnu, x_ticks, nt, same_xy);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* plot : 1.2-4 */
+
+x(t) := sin(t);
+y(t) := cos(t);
+
+t_rng : [t, 0, %pi * 2];
+
+x_ticks : [x, -1.5, 1.5];
+
+gnu : [gnuplot_preamble,"set size ratio -1"];
+
+/*ref http://www.johnlapeyre.com/qinf/qinf_html/maxima_html/maxima_8.html*/
+nt : [nticks, 5];
+
+/* ref http://www.austromath.at/daten/maxima/zusatz/Graphics_with_Maxima.pdf */
+para : [[parametric, x(t), y(t), t_rng, nt], sin(x * 2)];
+
+wxplot2d(para, [x, -sqrt(2), sqrt(2)], x_ticks, gnu, same_xy);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* plot : 1.3 */
+
+wxplot2d ([parametric, cos(t), sin(t), [t, -%pi*2, %pi*2],
+        [nticks, 8]], [x, -2, 2], [y, -1.5, 1.5])$
+wxplot2d ([x^3+2, [parametric, cos(t), sin(t), [t, -5, 5],
+        [nticks, 80]]], [x, -3, 3])$
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* plot : 3 */
+/* ref http://www.geisya.or.jp/~mwm48961/kou2/mobile/parameter0_m.htm */
+
+a : 1;
+
+x(t) := t - sin(t);
+y(t) := a - cos(t);
+
+t_rng : [t, 0, %pi * 4];
+
+xt : [xtics, 0, 1, 14];
+
+wxplot2d([parametric, x(t), y(t), t_rng, xt], xt, same_xy);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* plot : 3.1 */
+/* ref http://www.geisya.or.jp/~mwm48961/kou2/mobile/parameter0_m.htm */
+
+a : 6;
+
+x(t) := t - sin(t);
+y(t) := a - cos(t);
+
+t_rng : [t, 0, %pi * 4];
+
+xt : [xtics, 0, 1, %pi * 4];
+yt : [ytics, 0, 1, 7];
+
+wxplot2d([parametric, x(t), y(t), t_rng], xt, same_xy);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* plot : 3.1 */
+/* ref http://www.geisya.or.jp/~mwm48961/kou2/mobile/parameter0_m.htm */
+
+a : 20;
+
+x(t) := t - sin(t);
+y(t) := a - cos(t);
+
+t_rng : [t, 0, %pi * 4];
+
+xt : [xtics, 0, 1, %pi * 4];
+yt : [ytics, 0, 1, 7];
+
+wxplot2d([parametric, x(t), y(t), t_rng], xt, same_xy);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* plot : 3.1 */
+/* ref http://www.geisya.or.jp/~mwm48961/kou2/mobile/parameter0_m.htm */
+
+a : 1;
+b : 8;
+
+x(t) := t - sin(t * b);
+y(t) := a - cos(t * b);
+
+t_rng : [t, 0, %pi * 4];
+
+xt : [xtics, 0, 1, %pi * 4];
+yt : [ytics, 0, 1, 7];
+
+wxplot2d([parametric, x(t), y(t), t_rng], xt, same_xy);
+plot2d([parametric, x(t), y(t), t_rng], xt, same_xy);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* plot : 3.1 */
+/* ref http://www.geisya.or.jp/~mwm48961/kou2/mobile/parameter0_m.htm */
+
+a : 1;
+b : 2;
+
+x(t) := t - sin(t ^ b);
+y(t) := a - cos(t ^ b);
+
+t_rng : [t, 0, %pi * 4];
+
+xt : [xtics, 0, 1, %pi * 4];
+yt : [ytics, 0, 1, 7];
+
+wxplot2d([parametric, x(t), y(t), t_rng], xt, same_xy);
+plot2d([parametric, x(t), y(t), t_rng], xt, same_xy);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* plot : 3.2 */
+/* ref http://www.geisya.or.jp/~mwm48961/kou2/mobile/parameter0_m.htm */
+
+a : 1;
+b : 4;
+
+x(t) := t - sin(t) ^ b;
+y(t) := a - cos(t) ^ b;
+
+t_rng : [t, 0, %pi * 4];
+
+xt : [xtics, 0, 1, %pi * 4];
+yt : [ytics, 0, 1, 7];
+
+wxplot2d([parametric, x(t), y(t), t_rng], xt, same_xy);
+plot2d([parametric, x(t), y(t), t_rng], xt, same_xy);
+/* [wxMaxima: input   end   ] */
+
+/* Maxima can't load/batch files which end with a comment! */
+"Created with wxMaxima"$
