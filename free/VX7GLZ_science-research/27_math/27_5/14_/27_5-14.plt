@@ -28,16 +28,32 @@ if (exist("n")==0 || n<0) n=0 #•Ï”‚Ì‰Šú‰»
 ############################
 #
 # Variables
-#
+#+
 ############################
-xrange_start = 0
-xrange_end = pi * 4
+n_denomi = 2.0
+#n_max = 5
+#n_max = 20
+#n_max = 30
+n_max = 60
+
+#step = n / n_max * 1.0
+#step = n / 4.0
+#step = n / 10.0
+step = n / 10.0
+#step = pi * 4 / n_max
+
+xrange_start = pi * (-1)
+xrange_end = pi * 8
+#xrange_end = pi * 4
 #xrange_end = 15
 
 yrange_start = -0.5
 yrange_end = 2.5
 
-trange_end = pi * 4
+
+#trange_end = step * n
+trange_end = pi * 8
+#trange_end = pi * 4
 trange_start = 0
 
 xtic_value = pi / 2
@@ -50,13 +66,10 @@ dname_images = sprintf("images/images_20180101_061857")
 str_session = "16_1.(1)"
 str_time = time("%Y%m%d_%H%M%S")
 str_date = time("%Y%m%d")
-str_title = "sin(ax), cos(ax)"
-
-n_denomi = 2.0
-n_max = 1
+#str_title = "sin(ax), cos(ax)"
+str_title = sprintf("[cycloid] n = %d / x = t - sin(t + %.3f), y = 1 - cos(t))", n, step)
 
 wait = 0.0
-
 
 a = 1 + n / 10.0
 b = 1
@@ -69,8 +82,9 @@ set parametric
 # Set values
 #
 ############################
-
-set size ratio 1
+#ref https://stackoverflow.com/questions/5239294/how-to-set-equal-scales-length-in-gnuplot
+set size ratio -1
+#set size ratio 0.2
 
 set samples 256
 
@@ -117,19 +131,33 @@ set label title(n)  font 'Times,10'  at 0.5 , 1.5
 
 ########## plot ##########
 
-set title sprintf("[sin + sin] n = %d / sin(x), sin(x +  pi / 8.0 * %d)", n, n)
+set title str_title
+#set title sprintf("[cycloid] n = %d / x = t * %.3f - sin(t), y = 1 - cos(t))", n, step)
+#set title sprintf("[cycloid] n = %d / x = t * %d - sin(t), y = 1 - cos(t))", n, n)
 
 #set title sprintf("<%s %s / @%s / (a = %d, b = %d) / n = %d>", str_session, str_title, str_time, a, b, n)
 
-set xlabel "x = t - sint"
+x_label = sprintf("x = t * %f - sint", step)
+#x_label = sprintf("x = t * %d - sint", n)
+
+set xlabel x_label
+#set xlabel "x = t - sint"
 set ylabel "y = 1 - cost"
 
 pow = n / 3
 
-fx(t) = t - sin(t)
+fx(t) = t - sin(t + step)
+#fx(t) = t * step - sin(t)
+#fx(t) = t * n - sin(t)
+#fx(t) = t - sin(t)
 fy(t) = 1 - cos(t)
 
+#ref http://www.natural-science.or.jp/article/20101203165629.php
+theta = pi * 2 / n_max * n
+fx2(t) = t<=theta ? t-sin(t) : 1/0
+fy2(t) = t<=theta ? 1-cos(t) : 1/0
 
+#plot fx2(t), fy2(t) lc "blue" lw 1, fx2(theta), fy2(theta) with points pt 7 lc rgb "red"
 plot fx(t), fy(t) lc "blue" lw 1
 #plot sin(t), cos(t) lc rgb "#ff5555" lw 1
 
