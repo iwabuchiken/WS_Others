@@ -2,6 +2,7 @@
 /* [ Created with wxMaxima version 14.09.0 ] */
 
 /* [wxMaxima: input   start ] */
+/* plot : 1 */
 %pi - sin(2 * %pi);
 /* [wxMaxima: input   end   ] */
 
@@ -23,6 +24,47 @@ wxplot2d(fs, t_rng);
 
 /* [wxMaxima: input   start ] */
 float(%);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+/* plot : 2 */
+
+f3_d : diff(f3, t);
+
+f4 : 1 - cos(t);
+
+fs : [f1, f2, f3, f3_d];
+
+wxplot2d(fs, t_rng);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* plot : 3 */
+
+f3_d : diff(f3, t);
+
+f4 : 1 - cos(t);
+
+fs : [f1, f2, f3, f3_d];
+
+wxplot2d([[parametric, f3, f3_d, t_rng], 1 - cos(x)], [x, 0, %pi * 2], same_xy);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+diff(1 - cos(x), x);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* plot : 3.1 */
+
+f3_d : diff(f3, t);
+
+f4 : 1 - cos(t);
+
+fs : [f1, f2, f3, f3_d];
+
+wxplot2d([[parametric, f3, f3_d, t_rng], 1 - cos(x), sin(x), cos(x)], [x, 0, %pi * 2], same_xy);
 /* [wxMaxima: input   end   ] */
 
 /* Maxima can't load/batch files which end with a comment! */
