@@ -26,7 +26,6 @@ wxplot2d(fs, t_rng);
 float(%);
 /* [wxMaxima: input   end   ] */
 
-
 /* [wxMaxima: input   start ] */
 /* plot : 2 */
 
