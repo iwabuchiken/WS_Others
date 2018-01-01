@@ -1,0 +1,269 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 14.09.0 ] */
+
+/* [wxMaxima: input   start ] */
+t_rng : [t, 0, %pi * 2];
+
+f1 : t;
+f2 : sin(t);
+f3 : t - f2;
+
+fs : [f1, f2, f3];
+
+wxplot2d(fs, t_rng);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* plot : 2 */
+
+f3_d : diff(f3, t);
+
+f4 : 1 - cos(t);
+
+fs : [f1, f2, f3, f3_d];
+
+wxplot2d(fs, t_rng);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* plot : 3 */
+
+f3_d : diff(f3, t);
+
+f4 : 1 - cos(t);
+
+fs : [f1, f2, f3, f3_d];
+
+wxplot2d([[parametric, f3, f3_d, t_rng], 1 - cos(x)], [x, 0, %pi * 2], same_xy);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* plot : 3.1 */
+
+f3_d : diff(f3, t);
+
+f4 : 1 - cos(t);
+
+fs : [f1, f2, f3, f3_d];
+
+wxplot2d([[parametric, f3, f3_d, t_rng], 1 - cos(x), sin(x), cos(x)], [x, 0, %pi * 2], same_xy);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* plot : 4 */
+
+g1 : sin(t)^2 - 1;
+g1_d : diff(g1, t);
+
+gs : [g1, g1_d];
+
+wxplot2d([parametric, g1, g1_d, t_rng], same_xy);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* plot : 4.1 */
+
+g1 : sin(t)^3 - 1;
+g1_d : diff(g1, t);
+
+gs : [g1, g1_d];
+
+wxplot2d([parametric, g1, g1_d, t_rng], same_xy);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* plot : 4.2 */
+
+g1 : cos(t)^3 - 1;
+g1_d : diff(g1, t);
+
+gs : [g1, g1_d];
+
+wxplot2d([parametric, g1, g1_d, t_rng], same_xy);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* plot : 5 */
+
+g1 : sin(t)^3 - t;
+g1_d : diff(g1, t);
+
+gs : [g1, g1_d];
+
+wxplot2d([parametric, g1, g1_d, t_rng], same_xy);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* plot : 5.1 */
+
+g1 : sin(t)^2 - t;
+g1_d : diff(g1, t);
+
+gs : [g1, g1_d];
+
+wxplot2d([parametric, g1, g1_d, t_rng], same_xy);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* plot : 5.2 */
+
+g1 : sin(t) - t;
+g1_d : diff(g1, t);
+
+gs : [g1, g1_d];
+
+wxplot2d([parametric, g1, g1_d, t_rng], same_xy);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* plot : 5.3 */
+
+g1 : t - sin(t);
+g1_d : diff(g1, t);
+
+gs : [g1, g1_d];
+
+wxplot2d([parametric, g1, g1_d, t_rng], same_xy);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* plot : 5.4 */
+
+g1 : t - sin(t)^2;
+g1_d : diff(g1, t);
+
+gs : [g1, g1_d];
+
+wxplot2d([parametric, g1, g1_d, t_rng], same_xy);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* plot : 5.5 */
+
+g1 : t - sin(t)^3;
+g1_d : diff(g1, t);
+
+gs : [g1, g1_d];
+
+wxplot2d([parametric, g1, g1_d, t_rng], same_xy);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* plot : 5.2 */
+
+t_rng : [t, 0, %pi * 4];
+
+g1 : t - sin(t)^4;
+g1_d : diff(g1, t);
+
+gs : [g1, g1_d];
+
+wxplot2d([parametric, g1, g1_d, t_rng], same_xy);
+
+wxplot2d(gs,t_rng, same_xy);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* plot : 5.3 */
+
+t_rng : [t, 0, %pi * 4];
+
+g1 : sin(t) + cos(t);
+g1_d : diff(g1, t);
+
+gs : [g1, g1_d];
+
+wxplot2d([parametric, g1, g1_d, t_rng], same_xy);
+
+wxplot2d(gs,t_rng, same_xy);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* plot : 5.4 */
+
+t_rng : [t, 0, %pi * 4];
+
+g1 : sin(t)^2 + cos(t);
+g1_d : diff(g1, t);
+
+gs : [g1, g1_d];
+
+wxplot2d([parametric, g1, g1_d, t_rng], same_xy);
+
+wxplot2d(gs,t_rng, same_xy);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* plot : 5.5 */
+
+t_rng : [t, 0, %pi * 4];
+
+g1 : sin(t)^2 + cos(t)^2;
+g1_d : diff(g1, t);
+
+gs : [g1, g1_d, sin(t)^2, cos(t)^2, sin(t) + cos(t)];
+
+wxplot2d([parametric, g1, g1_d, t_rng], same_xy);
+
+wxplot2d(gs,t_rng, same_xy);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* plot : 5.6 */
+
+t_rng : [t, 0, %pi * 4];
+
+g2 : sin(t);
+g3 : cos(t);
+
+g1 : g2^3 + g3^3;
+g1_d : diff(g1, t);
+
+gs : [g1, g1_d, sin(t)^2, cos(t)^2, sin(t) + cos(t)];
+
+wxplot2d([parametric, g1, g1_d, t_rng], same_xy);
+
+wxplot2d(gs,t_rng, same_xy);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* plot : 5.7 */
+
+t_rng : [t, 0, %pi * 4];
+
+g2 : sin(t);
+g3 : cos(t);
+
+g1 : g2^5 + g3^5;
+g1_d : diff(g1, t);
+
+gs : [g1, g1_d, sin(t) + cos(t)];
+
+wxplot2d([parametric, g1, g1_d, t_rng], same_xy);
+
+wxplot2d(gs,t_rng, same_xy);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* plot : 5.7-2 */
+
+t_rng : [t, 0, %pi * 4];
+
+g2 : sin(t)^5;
+g3 : cos(t)^5;
+
+g1 : g2 + g3;
+g1_d : diff(g1, t);
+
+gs : [g1, g1_d, g2, g3];
+
+xt : [xtics, 0, %pi / 4, %pi * 4];
+
+wxplot2d([parametric, g1, g1_d, t_rng], same_xy);
+
+wxplot2d(gs,t_rng, grid2d, xt, same_xy);
+plot2d(gs,t_rng, grid2d, xt, same_xy);
+/* [wxMaxima: input   end   ] */
+
+/* Maxima can't load/batch files which end with a comment! */
+"Created with wxMaxima"$
