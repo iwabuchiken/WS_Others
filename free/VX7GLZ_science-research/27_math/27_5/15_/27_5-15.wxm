@@ -1,0 +1,285 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 14.09.0 ] */
+
+/* [wxMaxima: input   start ] */
+/* plot : 1 */
+t_rng : [t, 0, %pi * 2];
+
+f1 : t;
+f2 : sin(t);
+f3 : t - f2;
+
+fs : [f1, f2, f3];
+
+wxplot2d(fs, t_rng);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* plot :2 */
+/* ref http://maxima.sourceforge.net/docs/manual/maxima_12.html */
+
+wxplot2d ([discrete, makelist ( random(10), 200)]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* plot :2.1 */
+wxplot2d ([discrete, makelist ( random(10), 20), makelist ( random(10), 20)]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* plot :3 */
+with_stdout ("data.txt", for x:0 thru 10 do
+                             print (x, x^2, x^3));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* plot :3.1 */
+with_stdout ("C:\WORKS_2\WS\WS_Others\free\VX7GLZ_science-research\27_math\27_5\15_", for x:0 thru 10 do
+                             print (x, x^2, x^3));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+for x:0 thru 10 do
+                             print (x, x^2, x^3);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+printfile ("data.txt");
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* plot :3.1 */
+with_stdout ("C:/WORKS_2/WS/WS_Others/free/VX7GLZ_science-research/27_math/27_5/15_/data.2.txt", 
+    for x:0 thru 10 do print (x, x^2, x^3));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+fname : "C:/WORKS_2/WS/WS_Others/free/VX7GLZ_science-research/27_math/27_5/15_/data.2.txt";
+
+printfile(fname);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+fname : "C:/WORKS_2/WS/WS_Others/free/VX7GLZ_science-research/27_math/27_5/15_/data.3.txt";
+with_stdout(fname, print("yes"));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* plot :4 */
+
+fname : "abc.txt";
+dpath : "C:/WORKS_2/WS/WS_Others/free/VX7GLZ_science-research/27_math/27_5/15_/";
+fpath : concat(dpath, fname);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/*with_stdout (fpath, for x:0 thru 30 do
+                             print (x), [file_output_append, true]);*/
+with_stdout (fpath, for x:0 thru 60 do print (x));
+with_stdout (fpath, print ("\n"));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+file_output_append : true;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+with_stdout (fpath, print ("\\n"));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+fname : "data.txt";
+fpath : concat(dpath, fname);
+
+with_stdout (fpath, for x:0 thru 10 do
+                             print (x, x^2, x^3));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+data: read_matrix (fpath);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/*fname_2 : "data.(1).txt";
+fpath_2 : concat(dpath, fname_2);
+with_stdout(fpath_2, print(transpose(data)));*/
+
+plot2d ([discrete, transpose(data)[2], transpose(data)[3]], [style,points], [point_type,diamond], [color,red]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+fname_3 : "data-3.txt";
+fpath_3 : concat(dpath, fname_3);
+
+with_stdout (fpath_3, for x:0 thru 10 do
+                             print (x, x^2, x^3))$
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+data: read_matrix (fpath_3);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+plot2d ([discrete, transpose(data)[2], transpose(data)[3]], [style,points], [point_type,diamond], [color,red]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+fname_png : "sinx.png";
+dpath_png : concat(dpath, fname_png);
+
+plot2d(sin(x), [x, 0, %pi * 4], [png_file, dpath_png]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* save png file : ref http://math.stanford.edu/~paquin/MaximaBook.pdf */
+for a:0 thru 10 do (
+fname_png : concat("sin.(", a, ").png"),
+dpath_png : concat(dpath, fname_png),
+
+plot2d(sin(x * a), [x, 0, %pi * 4], [png_file, dpath_png])
+);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* plot :5 */
+plot2d ([discrete, [1], [2]], [style, points], [point_type, diamond]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+random(5.0);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+for a:0 thru 3 do (
+	x : random(10),
+	y : random(10),
+	
+	x_ : x + y,
+	y_ : x + y,
+	
+	fname_out : "x+y.(", a, ").png",
+	fpath_png : concat(dpath, fname_out),
+	
+	plot2d([discrete, [x, x_], [y, y_], [png_file, fpath_png]]),
+	
+	print(concat("out : ", fpath_png))
+	
+);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+print ("yes");
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* ref random http://maxima.sourceforge.net/docs/manual/maxima_10.html#SEC57 */
+for a:0 thru 3 do (
+		x : random(10),
+		y : random(10),
+		
+		x_ : x + y,
+		y_ : x + y,
+		
+		fname_out : concat("x+y.(", a, ").png"),
+		fpath_png : concat(dpath, fname_out),
+		
+		plot2d([discrete, [x, x_], [y, y_]], [png_file, fpath_png]),
+		
+		print(concat("out : ", fpath_png))
+	
+);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+for a:0 thru 3 do (
+		x : random(10),
+		y : random(10),
+		
+		x_ : x + y,
+		y_ : x + y,
+		
+		fname_out : concat("x+y.(", a, ").png"),
+		fpath_png : concat(dpath, fname_out),
+		
+		plot2d([discrete, [x, x_], [y, y_]], [png_file, fpath_png], [style, points], [point_type, diamond]),
+		
+		print(concat("out : ", fpath_png))
+	
+);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+for a:0 thru 10 do (
+		x : random(10),
+		y : random(10),
+		
+		x_ : x + y,
+		y_ : x + y,
+		
+		fname_out : concat("x+y.(", a, ").png"),
+		fpath_png : concat(dpath, fname_out),
+		
+		plot2d([discrete, [x, x_], [y, y_]], [png_file, fpath_png], [style, points], [point_type, diamond]),
+		
+		print(concat("out : ", fpath_png))
+	
+);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+dpath;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+fname : "test.txt";
+fpath : concat(dpath, fname);
+with_stdout(fpath, print("yes"));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+fname : "test.2.txt";
+fpath : concat(dpath, fname);
+
+msg : "yes";
+save(fpath, msg);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+msg : " whether file output functions append";
+stringout(fpath, msg);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+closefile();
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+msg : %pi * 2;
+stringout(fpath, msg);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+closefile(fpath);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+closefile();
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+stringout(fpath, "If the final component");
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+fname : "maxima_console_log.txt";
+fpath : concat(dpath, fname);
+
+writefile(fpath);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+closefile();
+/* [wxMaxima: input   end   ] */
+
+/* Maxima can't load/batch files which end with a comment! */
+"Created with wxMaxima"$

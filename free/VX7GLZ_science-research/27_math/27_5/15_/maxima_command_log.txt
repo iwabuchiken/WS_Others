@@ -1,0 +1,39 @@
+plot2d ([discrete, transpose(data)[2], transpose(data)[3]], [style,points], [point_type,diamond], [color,red])
+
+data: read_matrix (fpath_3)
+
+plot2d ([discrete, transpose(data)[2], transpose(data)[3]], [style,points], [point_type,diamond], [color,red])
+
+
+for a:0 thru 10 do (
+	x : random(10),
+	y : random(10),
+	
+	x_ : x + y,
+	y_ : x + y,
+	
+	fname_out : "x+y.(", a, ").png",
+	fpath_png : concat(dpath, fname_out),
+	
+	plot2d([discrete, [x, x_], [y, y_], [png_file, fpath_png]]),
+	
+	print(concat("out : ", fpath_png))
+	
+)
+
+for a:0 thru 10 do (
+		x : random(10),
+		y : random(10),
+		
+		x_ : x + y,
+		y_ : x + y,
+		
+		fname_out : concat("x+y.(", a, ").png"),
+		fpath_png : concat(dpath, fname_out),
+		
+		plot2d([discrete, [x, x_], [y, y_]], [png_file, fpath_png], [style, points], [point_type, diamond]),
+		
+		print(concat("out : ", fpath_png))
+	
+)
+
