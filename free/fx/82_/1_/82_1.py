@@ -12,17 +12,18 @@ from sympy.solvers.tests.test_constantsimp import C2
 
 sys.path.append('.')
 sys.path.append('..')
-# sys.path.append('C:/WORKS_2/WS/WS_Others/free/fx/82_')
+sys.path.append('C:/WORKS_2/WS/WS_Others/free/fx/82_')
 # sys.path.append('C:/WORKS_2/WS/WS_Others/free/fx/82_/libs')
-sys.path.append('C:/WORKS_2/WS/WS_Others/free/fx/82_/libs/')
+# sys.path.append('C:/WORKS_2/WS/WS_Others/free/fx/82_/libs/')
 
-import libfx
+# import libfx
 # import libs
-# from libs.libfx import *
+from libs.libfx import *
 # from libs.libfx import *
 # from libs import libs
 # from libs.libs import *
 # from libs import *
+# from libs import libfx
 
 
 import getopt
@@ -87,8 +88,9 @@ if __name__ == "__main__" :
     exec_prog()
 
     #test
-    libfx.test_func() # libfx.py
-#     test_func() # libfx.py
+#     libs.libfx.test_func() # libfx.py
+#     libfx.test_func() # libfx.py
+    test_func() # libfx.py
 
     #test
 #     print(os.environ['PYTHONPATH'].split(os.pathsep))
