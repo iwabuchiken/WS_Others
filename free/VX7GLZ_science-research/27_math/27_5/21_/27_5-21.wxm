@@ -1,0 +1,170 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 14.09.0 ] */
+
+/* [wxMaxima: input   start ] */
+A : matrix([3,2,1,0],[1,1,1,1],[2,2,3,4]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+determinant(A);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+determinant(matrix([1,1],[1,4]));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+n_rng : [n, 0, 5];
+f1 : determinant(matrix([1,1],[1,n]));
+
+wxplot2d(f1, n_rng);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+n_rng : [n, 0, 5];
+f1 : determinant(matrix([n,1],[1,n]));
+
+wxplot2d(f1, n_rng);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+a : 2; b : 2;
+n : 5;
+f2 : sum(i, i, 1, n);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+a : 2; b : 2; d : 2;
+n : 5;
+f2 : sum(a^(n - i) * b * d^(i - 1), i, 1, n);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+B : matrix([2,2],[0,2]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+B^^5;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+a : 2; b : 2; d : 2;
+kill(n);
+n_rng : [n, 1, 5];
+
+f2 : sum(a^(n - i) * b * d^(i - 1), i, 1, n);
+
+wxplot2d(f2, n_rng);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+m : 0.2;
+a : m; b : m; d : m;
+kill(n);
+n_rng : [n, 1, 5];
+
+f2 : sum(a^(n - i) * b * d^(i - 1), i, 1, n);
+
+wxplot2d(f2, n_rng);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+kill(n);
+
+f3 : (1/5)^n;
+
+fs : [f2, f3];
+
+wxplot2d(fs, n_rng);
+plot2d(fs, n_rng);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+kill(n);
+
+f3 : (1/5)^n;
+
+fs : [f2, f3, f3 / f2];
+
+wxplot2d(fs, n_rng);
+plot2d(fs, n_rng);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+kill(n);
+
+f3 : (1/5)^n;
+
+fs : [f2, f3, f3 / f2, diff(f3/f2, n)];
+
+wxplot2d(fs, n_rng);
+plot2d(fs, n_rng);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+kill(n);
+
+f3 : (1/5)^n;
+
+fs : [f2, f3, f3 / f2, diff(f3/f2, n), diff(diff(f3/f2, n), n)];
+
+wxplot2d(fs, n_rng);
+plot2d(fs, n_rng);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+n : 5;
+A : 1 / log(1/5);
+
+g1 : n * (1/5)^n * A - A^2 * (1/5)^n;
+float(%);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+float(%);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+n : 1;
+A : 1 / log(1/5);
+
+g1 : n * (1/5)^n * A - A^2 * (1/5)^n;
+float(%);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+-0.00111 - (-0.201);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+n : 5;
+g2_a : 1 / log(1/5) * (1/5)^n;
+float(%);
+
+n : 1;
+g2_b : 1 / log(1/5) * (1/5)^n;
+float(%);
+
+g2_a - g2_b; float(%);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+n : 1;
+g2 : 1 / log(1/5) * (1/5)^n;
+float(%);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+0.1240 / 0.19989;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+1 / (5 - log(1/5));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+float(%);
+/* [wxMaxima: input   end   ] */
+
+/* Maxima can't load/batch files which end with a comment! */
+"Created with wxMaxima"$
