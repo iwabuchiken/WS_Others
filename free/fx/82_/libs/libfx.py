@@ -512,6 +512,56 @@ def _get_HighLowDiffs__OC(target_Ary) :
     
 #/_get_HighLowDiffs__OC(target_Ary)
 
+'''###################
+    _get_HighLowDiffs__HL(target_Ary)
+    
+    Used by : get_HighLowDiffs(aryOf_BarDatas, id_Start, id_End)
+    
+    @param target_Ary: array of BarData instances
+    
+    @return: array of max, min and diff        
+    
+###################'''
+def _get_HighLowDiffs__HL(target_Ary) :
+    
+    max_Val     = 0.0
+    min_Val     = 0.0
+    diff_Val    = 0.0
+    
+    aryOf_HighLowDiff__HL = []
+
+    aryOf_Price_HighLow = [x.price_High for x in target_Ary]
+    
+    #ref extend https://stackoverflow.com/questions/10487278/how-to-declare-and-add-items-to-an-array-in-python
+    aryOf_Price_HighLow.extend([x.price_Low for x in target_Ary])
+    
+    print "[%s:%d] aryOf_Price_HighLow => %s" % \
+                (libs.thisfile(), libs.linenum(), aryOf_Price_HighLow)
+
+    '''###################
+        Calc data        
+    ###################'''
+    max_Val = max(aryOf_Price_HighLow)
+    min_Val = min(aryOf_Price_HighLow)
+    
+    #ref round https://stackoverflow.com/questions/17470883/rounding-to-two-decimal-places-in-python-2-7
+    diff_Val = round(max_Val - min_Val, 3)
+        
+    
+    '''###################
+        build data        
+    ###################'''
+    aryOf_HighLowDiff__HL.append(max_Val)
+    aryOf_HighLowDiff__HL.append(min_Val)
+    aryOf_HighLowDiff__HL.append(diff_Val)
+    
+    '''###################
+        return        
+    ###################'''
+    return aryOf_HighLowDiff__HL
+    
+#/_get_HighLowDiffs__OC(target_Ary)
+
 
 '''###################
     @param typeOf_Data: type of data to obtain
@@ -545,10 +595,20 @@ def get_HighLowDiffs(aryOf_BarDatas, id_Start, id_End) :
     ###################'''
     aryOf_HighLowDiff__OC = _get_HighLowDiffs__OC(target_Ary)
     
+    '''###################
+        high, low
+    ###################'''
+    aryOf_HighLowDiff__HL = _get_HighLowDiffs__HL(target_Ary)
+    
     '''######################################
         data : final product        
     ######################################'''
-    dict = {cons.LABEL_OC : aryOf_HighLowDiff__OC}
+    dict = {
+            cons.LABEL_OC : aryOf_HighLowDiff__OC,
+            
+            cons.LABEL_HL : aryOf_HighLowDiff__HL,
+            
+            }
     
     return dict
 #     return aryOf_HighLowDiff__OC

@@ -107,6 +107,8 @@ def exec_prog(): # upto : 20180108_122418
     
     print "[%s:%d] result[%s] => %s" % \
             (libs.thisfile(), libs.linenum(), cons.LABEL_OC, result[cons.LABEL_OC])
+    print "[%s:%d] result[%s] => %s" % \
+            (libs.thisfile(), libs.linenum(), cons.LABEL_HL, result[cons.LABEL_HL])
     print
     
     '''###################
