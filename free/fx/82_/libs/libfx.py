@@ -23,6 +23,8 @@ import libs
 import csv
 import sys
 
+import cons
+
 ###############################################
 
 def test_func():
@@ -349,10 +351,27 @@ def conv_CSVRows_2_BarDatas(result) :
             # '2017.12.30 06:00']    
             
         barData.no            = int(item[0])
+        
         barData.price_Open    = float(item[1])
         barData.price_High    = float(item[2])
         barData.price_Low     = float(item[3])
         barData.price_Close   = float(item[4])
+        
+        barData.rsi   = float(item[5])
+        barData.mfi   = float(item[6])
+        
+        barData.bb_2S   = float(item[7])
+        barData.bb_1S   = float(item[8])
+        barData.bb_Main   = float(item[9])
+        barData.bb_M1S   = float(item[10])
+        barData.bb_M2S   = float(item[11])
+        
+        barData.diff_OC   = float(item[12])
+        barData.diff_HL   = float(item[13])
+        
+        barData.dateTime        = item[14]
+        barData.dateTime_Local  = item[15]
+        
         
         # append
         aryOf_BarDatas.append(barData)
@@ -369,6 +388,10 @@ def conv_CSVRows_2_BarDatas(result) :
                 (libs.thisfile(), libs.linenum(), 0, aryOf_BarDatas[0].no)
     print "[%s:%d] aryOf_BarDatas[%d].price_Open => %.3f" % \
                 (libs.thisfile(), libs.linenum(), 0, aryOf_BarDatas[0].price_Open)
+    print "[%s:%d] aryOf_BarDatas[%d].diff_OC => %.3f" % \
+                (libs.thisfile(), libs.linenum(), 0, aryOf_BarDatas[0].diff_OC)
+                
+    print
     print "[%s:%d] aryOf_BarDatas[%d].id => %d" % \
                 (libs.thisfile(), libs.linenum(), 1, aryOf_BarDatas[1].no)
     print "[%s:%d] aryOf_BarDatas[%d].id => %d" % \
@@ -388,7 +411,8 @@ def conv_CSVRows_2_BarDatas(result) :
 #     print "[%s:%d] barData_0 => %s" % (libs.thisfile(), libs.linenum(), barData_0)
 #     print
     
-    return None
+    return aryOf_BarDatas
+#     return None
 
 #/def conv_CSVRows_2_BarDatas(result) :
 
@@ -396,10 +420,137 @@ class BarData :
     
 #     id = -1
     no = -1
+
     price_Open = -1.0
     price_High = -1.0
     price_Low = -1.0
     price_Close = -1.0
     
+    rsi      = -1.0
+    mfi      = -1.0
+    
+    bb_2S       = -1.0
+    bb_1S       = -1.0
+    bb_Main     = -1.0
+    bb_M1S       = -1.0
+    bb_M2S       = -1.0
+    
+    diff_OC       = -1.0
+    diff_HL       = -1.0
+    
+    dateTime        = ""
+    dateTime_Local  = ""
+    
+
+
+    
 #/class BarData :
 
+'''###################
+    _get_HighLowDiffs__OC(target_Ary)
+    
+    Used by : get_HighLowDiffs(aryOf_BarDatas, id_Start, id_End)
+    
+    @param target_Ary: array of BarData instances
+    
+    @return: array of max, min and diff        
+    
+###################'''
+def _get_HighLowDiffs__OC(target_Ary) :
+    
+    max_Val     = 0.0
+    min_Val     = 0.0
+    diff_Val    = 0.0
+    
+    aryOf_HighLowDiff__OC = []
+
+    aryOf_Price_OpenClose = [x.price_Open for x in target_Ary]
+    
+    #ref extend https://stackoverflow.com/questions/10487278/how-to-declare-and-add-items-to-an-array-in-python
+    aryOf_Price_OpenClose.extend([x.price_Close for x in target_Ary])
+#     aryOf_Price_Close = [x.price_Close for x in target_Ary]
+#     sum = [x for x.price_Open in target_Ary]
+    
+#     aryOf_Price_OpenClose = aryOf_Price_Open.extend(aryOf_Price_Close)
+    
+    print "[%s:%d] aryOf_Price_OpenClose => %s" % \
+                (libs.thisfile(), libs.linenum(), aryOf_Price_OpenClose)
+#     print "[%s:%d] sum => %s" % (libs.thisfile(), libs.linenum(), sum)
+
+    '''###################
+        Calc data        
+    ###################'''
+    max_Val = max(aryOf_Price_OpenClose)
+    min_Val = min(aryOf_Price_OpenClose)
+    
+    #ref round https://stackoverflow.com/questions/17470883/rounding-to-two-decimal-places-in-python-2-7
+    diff_Val = round(max_Val - min_Val, 3)
+#         max_OpenClose = max(aryOf_Price_OpenClose)
+#         min_OpenClose = min(aryOf_Price_OpenClose)
+#         diff_OpenClose = round(max_OpenClose - min_OpenClose, 3)
+        
+#     else : #/if typeOf_Data == "OpenClose"
+#         
+#         print "[%s:%d] Unknown data type => '%s'" % \
+#                     (libs.thisfile(), libs.linenum(), typeOf_Data)
+#                     
+#         return None
+                
+    #/if typeOf_Data == "OpenClose"
+    
+    '''###################
+        build data        
+    ###################'''
+    aryOf_HighLowDiff__OC.append(max_Val)
+    aryOf_HighLowDiff__OC.append(min_Val)
+    aryOf_HighLowDiff__OC.append(diff_Val)
+    
+    '''###################
+        return        
+    ###################'''
+    return aryOf_HighLowDiff__OC
+    
+#/_get_HighLowDiffs__OC(target_Ary)
+
+
+'''###################
+    @param typeOf_Data: type of data to obtain
+            e.g. "OpenClose"
+    @return: dict of max, min and diff
+            e.g. {'OC' : [112.677, 112.57, 0.107], 'HL' : [...], ...}
+###################'''
+def get_HighLowDiffs(aryOf_BarDatas, id_Start, id_End) :
+# def get_HighLowDiffs(aryOf_BarDatas, typeOf_Data, id_Start, id_End) :
+    
+    '''###################
+        prep : target array        
+    ###################'''
+    #ref slice https://www.pythoncentral.io/how-to-slice-listsarrays-and-tuples-in-python/
+    target_Ary = aryOf_BarDatas[id_Start : (id_End + 1)]
+    
+    '''###################
+        Vars        
+    ###################'''
+#     max_Val     = 0.0
+#     min_Val     = 0.0
+#     diff_Val    = 0.0
+#     
+#     aryOf_HighLowDiff__OC = []
+    
+    '''######################################
+        Dispatch
+    ######################################'''
+    '''###################
+        open, close
+    ###################'''
+    aryOf_HighLowDiff__OC = _get_HighLowDiffs__OC(target_Ary)
+    
+    '''######################################
+        data : final product        
+    ######################################'''
+    dict = {cons.LABEL_OC : aryOf_HighLowDiff__OC}
+    
+    return dict
+#     return aryOf_HighLowDiff__OC
+    
+#/get_HighLowDiffs(aryOf_BarDatas)

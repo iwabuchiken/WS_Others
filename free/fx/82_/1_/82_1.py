@@ -26,6 +26,7 @@ from libs import libs
 # from libs import *
 from libs import libfx
 
+from libs import cons
 
 import getopt
 import os
@@ -90,8 +91,23 @@ def exec_prog(): # upto : 20180108_122418
         return
     #/if aryOf_BarDatas == None
     
+    '''###################
+        get : high-lows        
+    ###################'''
+    id_Start = 1
+    id_End = 3
     
+#     typeOf_Data = cons.typeOf_Data_OPENCLOSE
+#     typeOf_Data = "OpenClose"
     
+    result = libfx.get_HighLowDiffs(aryOf_BarDatas, id_Start, id_End)
+#     result = libfx.get_HighLowDiffs(aryOf_BarDatas, typeOf_Data, id_Start, id_End)
+    
+    print "[%s:%d] result => %s" % (libs.thisfile(), libs.linenum(), result)
+    
+    print "[%s:%d] result[%s] => %s" % \
+            (libs.thisfile(), libs.linenum(), cons.LABEL_OC, result[cons.LABEL_OC])
+    print
     
     '''###################
         Report        
