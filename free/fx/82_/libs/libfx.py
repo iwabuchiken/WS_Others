@@ -312,6 +312,11 @@ def get_ChartData_CSV \
 ###################'''
 def conv_CSVRows_2_BarDatas(result) :
     
+    #debug
+    print
+    print "[%s:%d] conv_CSVRows_2_BarDatas : result[0] => %s" % (libs.thisfile(), libs.linenum(), result[0])
+    print
+    
 #     print "[%s:%d] result[0] => %s" % (libs.thisfile(), libs.linenum(), result[0])
 #     print
     
@@ -383,20 +388,20 @@ def conv_CSVRows_2_BarDatas(result) :
                 (libs.thisfile(), libs.linenum(), len(aryOf_BarDatas))
     print
     
-    #debug
-    print "[%s:%d] aryOf_BarDatas[%d].id => %d" % \
-                (libs.thisfile(), libs.linenum(), 0, aryOf_BarDatas[0].no)
-    print "[%s:%d] aryOf_BarDatas[%d].price_Open => %.3f" % \
-                (libs.thisfile(), libs.linenum(), 0, aryOf_BarDatas[0].price_Open)
-    print "[%s:%d] aryOf_BarDatas[%d].diff_OC => %.3f" % \
-                (libs.thisfile(), libs.linenum(), 0, aryOf_BarDatas[0].diff_OC)
-                
-    print
-    print "[%s:%d] aryOf_BarDatas[%d].id => %d" % \
-                (libs.thisfile(), libs.linenum(), 1, aryOf_BarDatas[1].no)
-    print "[%s:%d] aryOf_BarDatas[%d].id => %d" % \
-                (libs.thisfile(), libs.linenum(), 2, aryOf_BarDatas[2].no)
-    print
+#     #debug
+#     print "[%s:%d] aryOf_BarDatas[%d].id => %d" % \
+#                 (libs.thisfile(), libs.linenum(), 0, aryOf_BarDatas[0].no)
+#     print "[%s:%d] aryOf_BarDatas[%d].price_Open => %.3f" % \
+#                 (libs.thisfile(), libs.linenum(), 0, aryOf_BarDatas[0].price_Open)
+#     print "[%s:%d] aryOf_BarDatas[%d].diff_OC => %.3f" % \
+#                 (libs.thisfile(), libs.linenum(), 0, aryOf_BarDatas[0].diff_OC)
+#                 
+#     print
+#     print "[%s:%d] aryOf_BarDatas[%d].id => %d" % \
+#                 (libs.thisfile(), libs.linenum(), 1, aryOf_BarDatas[1].no)
+#     print "[%s:%d] aryOf_BarDatas[%d].id => %d" % \
+#                 (libs.thisfile(), libs.linenum(), 2, aryOf_BarDatas[2].no)
+#     print
     
     #test
 #     barData_0 = BarData()
@@ -441,9 +446,6 @@ class BarData :
     dateTime        = ""
     dateTime_Local  = ""
     
-
-
-    
 #/class BarData :
 
 '''###################
@@ -465,7 +467,13 @@ def _get_HighLowDiffs__OC(target_Ary) :
     aryOf_HighLowDiff__OC = []
 
     aryOf_Price_OpenClose = [x.price_Open for x in target_Ary]
-    
+
+#     print "[%s:%d] price open => %s" % \
+#                 (libs.thisfile(), libs.linenum(), aryOf_Price_OpenClose)
+#         
+#     print "[%s:%d] price close => %s" % \
+#                 (libs.thisfile(), libs.linenum(), [x.price_Close for x in target_Ary])
+        
     #ref extend https://stackoverflow.com/questions/10487278/how-to-declare-and-add-items-to-an-array-in-python
     aryOf_Price_OpenClose.extend([x.price_Close for x in target_Ary])
 #     aryOf_Price_Close = [x.price_Close for x in target_Ary]
@@ -473,8 +481,8 @@ def _get_HighLowDiffs__OC(target_Ary) :
     
 #     aryOf_Price_OpenClose = aryOf_Price_Open.extend(aryOf_Price_Close)
     
-    print "[%s:%d] aryOf_Price_OpenClose => %s" % \
-                (libs.thisfile(), libs.linenum(), aryOf_Price_OpenClose)
+#     print "[%s:%d] aryOf_Price_OpenClose => %s" % \
+#                 (libs.thisfile(), libs.linenum(), aryOf_Price_OpenClose)
 #     print "[%s:%d] sum => %s" % (libs.thisfile(), libs.linenum(), sum)
 
     '''###################
@@ -535,8 +543,8 @@ def _get_HighLowDiffs__HL(target_Ary) :
     #ref extend https://stackoverflow.com/questions/10487278/how-to-declare-and-add-items-to-an-array-in-python
     aryOf_Price_HighLow.extend([x.price_Low for x in target_Ary])
     
-    print "[%s:%d] aryOf_Price_HighLow => %s" % \
-                (libs.thisfile(), libs.linenum(), aryOf_Price_HighLow)
+#     print "[%s:%d] aryOf_Price_HighLow => %s" % \
+#                 (libs.thisfile(), libs.linenum(), aryOf_Price_HighLow)
 
     '''###################
         Calc data        
@@ -562,21 +570,399 @@ def _get_HighLowDiffs__HL(target_Ary) :
     
 #/_get_HighLowDiffs__OC(target_Ary)
 
+'''###################
+    _get_HighLowDiffs__HL(target_Ary)
+    
+    Used by : get_HighLowDiffs(aryOf_BarDatas, id_Start, id_End)
+    
+    @param target_Ary: array of BarData instances
+    
+    @return: array of max, min and diff        
+    
+###################'''
+def _get_HighLowDiffs__RSI(target_Ary) :
+    
+    max_Val     = 0.0
+    min_Val     = 0.0
+    diff_Val    = 0.0
+    
+    aryOf_HighLowDiff = []
+
+    aryOf_Price_HighLow = [x.rsi for x in target_Ary]
+    
+    #ref extend https://stackoverflow.com/questions/10487278/how-to-declare-and-add-items-to-an-array-in-python
+#     aryOf_Price_HighLow.extend([x.price_Low for x in target_Ary])
+    
+#     print "[%s:%d] aryOf_Price_HighLow => %s" % \
+#                 (libs.thisfile(), libs.linenum(), aryOf_Price_HighLow)
+
+    '''###################
+        Calc data        
+    ###################'''
+    max_Val = round(max(aryOf_Price_HighLow), cons.ROUND_RSI)
+    min_Val = round(min(aryOf_Price_HighLow), cons.ROUND_RSI)
+    
+    #ref round https://stackoverflow.com/questions/17470883/rounding-to-two-decimal-places-in-python-2-7
+    diff_Val = round(max_Val - min_Val, 3)
+        
+    
+    '''###################
+        build data        
+    ###################'''
+    aryOf_HighLowDiff.append(max_Val)
+    aryOf_HighLowDiff.append(min_Val)
+    aryOf_HighLowDiff.append(diff_Val)
+    
+    '''###################
+        return        
+    ###################'''
+    return aryOf_HighLowDiff
+    
+#/_get_HighLowDiffs__OC(target_Ary)
 
 '''###################
+    _get_HighLowDiffs__HL(target_Ary)
+    
+    Used by : get_HighLowDiffs(aryOf_BarDatas, id_Start, id_End)
+    
+    @param target_Ary: array of BarData instances
+    
+    @return: array of max, min and diff        
+    
+###################'''
+def _get_HighLowDiffs__MFI(target_Ary) :
+    
+    max_Val     = 0.0
+    min_Val     = 0.0
+    diff_Val    = 0.0
+    
+    aryOf_HighLowDiff = []
+
+    aryOf_Price_HighLow = [x.mfi for x in target_Ary]
+    
+    #ref extend https://stackoverflow.com/questions/10487278/how-to-declare-and-add-items-to-an-array-in-python
+#     aryOf_Price_HighLow.extend([x.price_Low for x in target_Ary])
+    
+#     print "[%s:%d] aryOf_Price_HighLow => %s" % \
+#                 (libs.thisfile(), libs.linenum(), aryOf_Price_HighLow)
+
+    '''###################
+        Calc data        
+    ###################'''
+    max_Val = round(max(aryOf_Price_HighLow), cons.ROUND_MFI)
+    min_Val = round(min(aryOf_Price_HighLow), cons.ROUND_MFI)
+    
+    #ref round https://stackoverflow.com/questions/17470883/rounding-to-two-decimal-places-in-python-2-7
+    diff_Val = round(max_Val - min_Val, 3)
+        
+    
+    '''###################
+        build data        
+    ###################'''
+    aryOf_HighLowDiff.append(max_Val)
+    aryOf_HighLowDiff.append(min_Val)
+    aryOf_HighLowDiff.append(diff_Val)
+    
+    '''###################
+        return        
+    ###################'''
+    return aryOf_HighLowDiff
+    
+#/_get_HighLowDiffs__OC(target_Ary)
+
+'''###################
+    _get_HighLowDiffs__HL(target_Ary)
+    
+    Used by : get_HighLowDiffs(aryOf_BarDatas, id_Start, id_End)
+    
+    @param target_Ary: array of BarData instances
+    
+    @return: array of max, min and diff        
+    
+###################'''
+def _get_HighLowDiffs__BB_Main(target_Ary) :
+    
+    max_Val     = 0.0
+    min_Val     = 0.0
+    diff_Val    = 0.0
+    
+    aryOf_HighLowDiff = []
+
+    aryOf_Price_HighLow = [x.bb_Main for x in target_Ary]
+    
+    #ref extend https://stackoverflow.com/questions/10487278/how-to-declare-and-add-items-to-an-array-in-python
+#     aryOf_Price_HighLow.extend([x.price_Low for x in target_Ary])
+    
+#     print "[%s:%d] aryOf_Price_HighLow => %s" % \
+#                 (libs.thisfile(), libs.linenum(), aryOf_Price_HighLow)
+
+    '''###################
+        Calc data        
+    ###################'''
+    max_Val = round(max(aryOf_Price_HighLow), cons.ROUND_BB)
+    min_Val = round(min(aryOf_Price_HighLow), cons.ROUND_BB)
+#     max_Val = max(aryOf_Price_HighLow)
+#     min_Val = min(aryOf_Price_HighLow)
+    
+    #ref round https://stackoverflow.com/questions/17470883/rounding-to-two-decimal-places-in-python-2-7
+    diff_Val = round(max_Val - min_Val, 3)
+        
+    
+    '''###################
+        build data        
+    ###################'''
+    aryOf_HighLowDiff.append(max_Val)
+    aryOf_HighLowDiff.append(min_Val)
+    aryOf_HighLowDiff.append(diff_Val)
+    
+    '''###################
+        return        
+    ###################'''
+    return aryOf_HighLowDiff
+    
+#/_get_HighLowDiffs__OC(target_Ary)
+
+'''###################
+    _get_HighLowDiffs__HL(target_Ary)
+    
+    Used by : get_HighLowDiffs(aryOf_BarDatas, id_Start, id_End)
+    
+    @param target_Ary: array of BarData instances
+    
+    @return: array of max, min and diff        
+    
+###################'''
+def _get_HighLowDiffs__BB_1S(target_Ary) :
+    
+    max_Val     = 0.0
+    min_Val     = 0.0
+    diff_Val    = 0.0
+    
+    aryOf_HighLowDiff = []
+
+    aryOf_Price_HighLow = [x.bb_1S for x in target_Ary]
+    
+    #ref extend https://stackoverflow.com/questions/10487278/how-to-declare-and-add-items-to-an-array-in-python
+#     aryOf_Price_HighLow.extend([x.price_Low for x in target_Ary])
+    
+#     print "[%s:%d] aryOf_Price_HighLow => %s" % \
+#                 (libs.thisfile(), libs.linenum(), aryOf_Price_HighLow)
+
+    '''###################
+        Calc data        
+    ###################'''
+    max_Val = round(max(aryOf_Price_HighLow), cons.ROUND_BB)
+    min_Val = round(min(aryOf_Price_HighLow), cons.ROUND_BB)
+    
+    #ref round https://stackoverflow.com/questions/17470883/rounding-to-two-decimal-places-in-python-2-7
+    diff_Val = round(max_Val - min_Val, 3)
+        
+    
+    '''###################
+        build data        
+    ###################'''
+    aryOf_HighLowDiff.append(max_Val)
+    aryOf_HighLowDiff.append(min_Val)
+    aryOf_HighLowDiff.append(diff_Val)
+    
+    '''###################
+        return        
+    ###################'''
+    return aryOf_HighLowDiff
+    
+#/_get_HighLowDiffs__OC(target_Ary)
+
+'''###################
+    _get_HighLowDiffs__HL(target_Ary)
+    
+    Used by : get_HighLowDiffs(aryOf_BarDatas, id_Start, id_End)
+    
+    @param target_Ary: array of BarData instances
+    
+    @return: array of max, min and diff        
+    
+###################'''
+def _get_HighLowDiffs__BB_M1S(target_Ary) :
+    
+    max_Val     = 0.0
+    min_Val     = 0.0
+    diff_Val    = 0.0
+    
+    aryOf_HighLowDiff = []
+
+    aryOf_Price_HighLow = [x.bb_M1S for x in target_Ary]
+    
+    #ref extend https://stackoverflow.com/questions/10487278/how-to-declare-and-add-items-to-an-array-in-python
+#     aryOf_Price_HighLow.extend([x.price_Low for x in target_Ary])
+    
+#     print "[%s:%d] aryOf_Price_HighLow => %s" % \
+#                 (libs.thisfile(), libs.linenum(), aryOf_Price_HighLow)
+
+    '''###################
+        Calc data        
+    ###################'''
+    max_Val = round(max(aryOf_Price_HighLow), cons.ROUND_BB)
+    min_Val = round(min(aryOf_Price_HighLow), cons.ROUND_BB)
+    
+    #ref round https://stackoverflow.com/questions/17470883/rounding-to-two-decimal-places-in-python-2-7
+    diff_Val = round(max_Val - min_Val, 3)
+        
+    
+    '''###################
+        build data        
+    ###################'''
+    aryOf_HighLowDiff.append(max_Val)
+    aryOf_HighLowDiff.append(min_Val)
+    aryOf_HighLowDiff.append(diff_Val)
+    
+    '''###################
+        return        
+    ###################'''
+    return aryOf_HighLowDiff
+    
+#/_get_HighLowDiffs__OC(target_Ary)
+
+'''###################
+    _get_HighLowDiffs__HL(target_Ary)
+    
+    Used by : get_HighLowDiffs(aryOf_BarDatas, id_Start, id_End)
+    
+    @param target_Ary: array of BarData instances
+    
+    @return: array of max, min and diff        
+    
+###################'''
+def _get_HighLowDiffs__BB_2S(target_Ary) :
+    
+    max_Val     = 0.0
+    min_Val     = 0.0
+    diff_Val    = 0.0
+    
+    aryOf_HighLowDiff = []
+
+    aryOf_Price_HighLow = [x.bb_2S for x in target_Ary]
+    
+    #ref extend https://stackoverflow.com/questions/10487278/how-to-declare-and-add-items-to-an-array-in-python
+#     aryOf_Price_HighLow.extend([x.price_Low for x in target_Ary])
+    
+#     print "[%s:%d] aryOf_Price_HighLow => %s" % \
+#                 (libs.thisfile(), libs.linenum(), aryOf_Price_HighLow)
+
+    '''###################
+        Calc data        
+    ###################'''
+    
+    max_Val = round(max(aryOf_Price_HighLow), cons.ROUND_BB)
+    min_Val = round(min(aryOf_Price_HighLow), cons.ROUND_BB)
+    
+    #ref round https://stackoverflow.com/questions/17470883/rounding-to-two-decimal-places-in-python-2-7
+    diff_Val = round(max_Val - min_Val, 3)
+        
+    
+    '''###################
+        build data        
+    ###################'''
+    aryOf_HighLowDiff.append(max_Val)
+    aryOf_HighLowDiff.append(min_Val)
+    aryOf_HighLowDiff.append(diff_Val)
+    
+    '''###################
+        return        
+    ###################'''
+    return aryOf_HighLowDiff
+    
+#/_get_HighLowDiffs__OC(target_Ary)
+
+'''###################
+    _get_HighLowDiffs__HL(target_Ary)
+    
+    Used by : get_HighLowDiffs(aryOf_BarDatas, id_Start, id_End)
+    
+    @param target_Ary: array of BarData instances
+    
+    @return: array of max, min and diff        
+    
+###################'''
+def _get_HighLowDiffs__BB_M2S(target_Ary) :
+    
+    max_Val     = 0.0
+    min_Val     = 0.0
+    diff_Val    = 0.0
+    
+    aryOf_HighLowDiff = []
+
+    aryOf_Price_HighLow = [x.bb_M2S for x in target_Ary]
+    
+    #ref extend https://stackoverflow.com/questions/10487278/how-to-declare-and-add-items-to-an-array-in-python
+#     aryOf_Price_HighLow.extend([x.price_Low for x in target_Ary])
+    
+#     print "[%s:%d] aryOf_Price_HighLow => %s" % \
+#                 (libs.thisfile(), libs.linenum(), aryOf_Price_HighLow)
+
+    '''###################
+        Calc data        
+    ###################'''
+    max_Val = round(max(aryOf_Price_HighLow), cons.ROUND_BB)
+    min_Val = round(min(aryOf_Price_HighLow), cons.ROUND_BB)
+    
+    #ref round https://stackoverflow.com/questions/17470883/rounding-to-two-decimal-places-in-python-2-7
+    diff_Val = round(max_Val - min_Val, 3)
+        
+    
+    '''###################
+        build data        
+    ###################'''
+    aryOf_HighLowDiff.append(max_Val)
+    aryOf_HighLowDiff.append(min_Val)
+    aryOf_HighLowDiff.append(diff_Val)
+    
+    '''###################
+        return        
+    ###################'''
+    return aryOf_HighLowDiff
+    
+#/_get_HighLowDiffs__OC(target_Ary)
+
+
+'''###################
+    get_HighLowDiffs(aryOf_BarDatas, id_Start, id_End)
+    
     @param typeOf_Data: type of data to obtain
             e.g. "OpenClose"
-    @return: dict of max, min and diff
+    @param id_Start: 'no' in csv file, starting from 1
+    
+    @return: dict of max, min and diff for each category
             e.g. {'OC' : [112.677, 112.57, 0.107], 'HL' : [...], ...}
+            e.g.
+            {'BB_M1S': [112.4789, 112.4699, 0.009],
+            'BB_Main': [112.5733, 112.5437, 0.03],
+            'RSI': [55.1223, 49.7157, 5.407],
+            'HL': [112.664, 112.529, 0.135],
+            'BB_2S': [112.7622, 112.6875, 0.075],
+            'MFI': [50.0162, 35.5028, 14.513],
+            'OC': [112.633, 112.544, 0.089],
+            'BB_1S': [112.6677, 112.6156, 0.052],
+            'BB_M2S': [112.3999, 112.3811, 0.019]}
+
 ###################'''
 def get_HighLowDiffs(aryOf_BarDatas, id_Start, id_End) :
 # def get_HighLowDiffs(aryOf_BarDatas, typeOf_Data, id_Start, id_End) :
     
     '''###################
-        prep : target array        
+        prep : target array
+        
+        if no.1 ~ 5
+            => [0:5] ---> index 0 thru 4
     ###################'''
+    
     #ref slice https://www.pythoncentral.io/how-to-slice-listsarrays-and-tuples-in-python/
-    target_Ary = aryOf_BarDatas[id_Start : (id_End + 1)]
+    target_Ary = aryOf_BarDatas[id_Start - 1 : (id_End)]
+#     target_Ary = aryOf_BarDatas[id_Start - 1 : (id_End + 1)]
+#     target_Ary = aryOf_BarDatas[id_Start : (id_End + 1)]
+    
+    #debug
+    print "[%s:%d] target_Ary => %s" % (libs.thisfile(), libs.linenum(), target_Ary)
+
     
     '''###################
         Vars        
@@ -600,13 +986,63 @@ def get_HighLowDiffs(aryOf_BarDatas, id_Start, id_End) :
     ###################'''
     aryOf_HighLowDiff__HL = _get_HighLowDiffs__HL(target_Ary)
     
+    '''###################
+        rsi
+    ###################'''
+    aryOf_HighLowDiff__RSI = _get_HighLowDiffs__RSI(target_Ary)
+    
+    '''###################
+        rsi
+    ###################'''
+    aryOf_HighLowDiff__MFI = _get_HighLowDiffs__MFI(target_Ary)
+    
+    '''###################
+        BB : main
+    ###################'''
+    aryOf_HighLowDiff__BB_Main = _get_HighLowDiffs__BB_Main(target_Ary)
+    
+    '''###################
+        BB : 1S
+    ###################'''
+    aryOf_HighLowDiff__BB_1S = _get_HighLowDiffs__BB_1S(target_Ary)
+    
+    '''###################
+        BB : M1S
+    ###################'''
+    aryOf_HighLowDiff__BB_M1S = _get_HighLowDiffs__BB_M1S(target_Ary)
+    
+    '''###################
+        BB : 2S
+    ###################'''
+    aryOf_HighLowDiff__BB_2S = _get_HighLowDiffs__BB_2S(target_Ary)
+    
+    '''###################
+        BB : M2S
+    ###################'''
+    aryOf_HighLowDiff__BB_M2S = _get_HighLowDiffs__BB_M2S(target_Ary)
+    
     '''######################################
         data : final product        
     ######################################'''
+    #ref dictionary https://www.tutorialspoint.com/python/python_dictionary.htm
     dict = {
             cons.LABEL_OC : aryOf_HighLowDiff__OC,
             
             cons.LABEL_HL : aryOf_HighLowDiff__HL,
+            
+            cons.LABEL_RSI : aryOf_HighLowDiff__RSI,
+            
+            cons.LABEL_MFI : aryOf_HighLowDiff__MFI,
+            
+            cons.LABEL_BB_MAIN : aryOf_HighLowDiff__BB_Main,
+            
+            cons.LABEL_BB_1S : aryOf_HighLowDiff__BB_1S,
+            
+            cons.LABEL_BB_M1S : aryOf_HighLowDiff__BB_M1S,
+            
+            cons.LABEL_BB_2S : aryOf_HighLowDiff__BB_2S,
+            
+            cons.LABEL_BB_M2S : aryOf_HighLowDiff__BB_M2S,
             
             }
     

@@ -52,9 +52,10 @@ def exec_prog(): # upto : 20180108_122418
     ######################################'''
     fname_In = "../data/49_11_file-io.USDJPY.Period-H1.Days-720.Bars-17280.20171231_233725.csv"    #=>
  
-    header_Length   = 3
-    skip_Header     = True
-#     skip_Header     = False
+    header_Length   = 2
+#     header_Length   = 3
+#     skip_Header     = True
+    skip_Header     = False
  
     result = libfx.get_ChartData_CSV(\
                     fname_In, header_Length, skip_Header)
@@ -74,13 +75,14 @@ def exec_prog(): # upto : 20180108_122418
     print "[%s:%d] CSV rows => %d" % (libs.thisfile(), libs.linenum(), len(result))
     print
     
-#     print "[%s:%d] row[%d] => %s" % (libs.thisfile(), libs.linenum(), 0, result[0])
-#     print
+    print "[%s:%d] row[%d] => %s" % (libs.thisfile(), libs.linenum(), 0, result[0])
+    print
     
     '''######################################
         Conv : CSV rows ---> array of BarData class instances        
     ######################################'''
-    aryOf_BarDatas = libfx.conv_CSVRows_2_BarDatas(result)
+#     aryOf_BarDatas = libfx.conv_CSVRows_2_BarDatas(result)
+    aryOf_BarDatas = libfx.conv_CSVRows_2_BarDatas(result[header_Length:])
     
     ### Validate
     if aryOf_BarDatas == None : #if aryOf_BarDatas == None
@@ -94,21 +96,22 @@ def exec_prog(): # upto : 20180108_122418
     '''###################
         get : high-lows        
     ###################'''
-    id_Start = 1
-    id_End = 3
+    id_Start = cons.HighLowDiff_ID_Start
+    id_End = cons.HighLowDiff_ID_End
     
 #     typeOf_Data = cons.typeOf_Data_OPENCLOSE
 #     typeOf_Data = "OpenClose"
     
-    result = libfx.get_HighLowDiffs(aryOf_BarDatas, id_Start, id_End)
+    result_HighLowDiffs = libfx.get_HighLowDiffs(aryOf_BarDatas, id_Start, id_End)
 #     result = libfx.get_HighLowDiffs(aryOf_BarDatas, typeOf_Data, id_Start, id_End)
     
-    print "[%s:%d] result => %s" % (libs.thisfile(), libs.linenum(), result)
+    print "[%s:%d] result => %s" % \
+            (libs.thisfile(), libs.linenum(), result_HighLowDiffs)
     
-    print "[%s:%d] result[%s] => %s" % \
-            (libs.thisfile(), libs.linenum(), cons.LABEL_OC, result[cons.LABEL_OC])
-    print "[%s:%d] result[%s] => %s" % \
-            (libs.thisfile(), libs.linenum(), cons.LABEL_HL, result[cons.LABEL_HL])
+#     print "[%s:%d] result[%s] => %s" % \
+#             (libs.thisfile(), libs.linenum(), cons.LABEL_OC, result_HighLowDiffs[cons.LABEL_OC])
+#     print "[%s:%d] result[%s] => %s" % \
+#             (libs.thisfile(), libs.linenum(), cons.LABEL_HL, result_HighLowDiffs[cons.LABEL_HL])
     print
     
     '''###################
