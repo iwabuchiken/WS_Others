@@ -1,0 +1,18 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 14.09.0 ] */
+
+/* [wxMaxima: input   start ] */
+/* section : 1 */
+P : matrix([a,b],[c,d]);
+M : matrix([k,0],[0,k]) ^^ n;
+P_ : invert(P);
+P . M . P_;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* section : 2 */
+solve(q^2 + q + (2/3), q);
+/* [wxMaxima: input   end   ] */
+
+/* Maxima can't load/batch files which end with a comment! */
+"Created with wxMaxima"$
