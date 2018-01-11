@@ -73,9 +73,13 @@ def exec_prog(): # upto : 20180109_161654
     ######################################'''
     #ref enum https://qiita.com/methane/items/8612bdefd8fa4238cc44
     #ref https://docs.python.org/3.5/library/enum.html
-    fname_In = cons.FPath.fname_In_CSV.value
+    fname_In = cons.FPath.dpath_In_CSV.value \
+            + "/" \
+            + cons.FPath.fname_In_CSV.value
+#     fname_In = cons.FPath.fpath_In_CSV.value
+#     fname_In = cons.FPath.fname_In_CSV.value
 #     fname_In = "../data/49_11_file-io.USDJPY.Period-H1.Days-720.Bars-17280.20171231_233725.csv"    #=>
- 
+    '''### ###''' 
     header_Length   = 2
 #     header_Length   = 3
 #     skip_Header     = True
@@ -122,8 +126,8 @@ def exec_prog(): # upto : 20180109_161654
     '''###################
         get : high-lows        
     ###################'''
-    id_Start = cons.HighLowDiff_ID_Start
-    id_End = cons.HighLowDiff_ID_End
+    id_Start = cons.BarData.HighLowDiff_ID_Start.value
+    id_End = cons.BarData.HighLowDiff_ID_End.value
     
 #     typeOf_Data = cons.typeOf_Data_OPENCLOSE
 #     typeOf_Data = "OpenClose"
@@ -141,7 +145,7 @@ def exec_prog(): # upto : 20180109_161654
     print()
     
     '''###################
-        add : meta info        
+        add : data        
     ###################'''
     whole_Data = {}
     
@@ -152,14 +156,196 @@ def exec_prog(): # upto : 20180109_161654
     print (whole_Data)
     
     '''###################
-        write to file        
+        build : meta info        
     ###################'''
     
     dictOf_MetaInfo = libfx.get_BarData_MetaInfo(fname_In, header_Length)
 
+    print()
     print ("[%s:%d] dictOf_MetaInfo => %s" % \
            (os.path.basename(libs.thisfile()), libs.linenum(), dictOf_MetaInfo))
+    print()
+
+    ### add : meta info
+    whole_Data['meta'] = dictOf_MetaInfo
     
+    '''###################
+        write to file        
+    ###################'''
+        #     [82_1.py:163] dictOf_MetaInfo => {'PAIR': 'USDJPY', 'PERIOD': 'H1', 'DAYS': '720
+        #     ', 'SHIFT': '1'}
+#     fname_Out_HighLowDiffs =  \
+    fpath_Out_HighLowDiffs =  \
+            cons.FPath.fpath_Out_HighLowDiff.value \
+            + "/" \
+            + "_HighLowDiff_." \
+            + cons.Label_ColNames.PAIR.value + "-" \
+                 + dictOf_MetaInfo[cons.Label_ColNames.PAIR.value] \
+            + "." \
+            + cons.Label_ColNames.PERIOD.value + "-" \
+                 + dictOf_MetaInfo[cons.Label_ColNames.PERIOD.value] \
+            + "." \
+            + cons.Label_ColNames.DAYS.value + "-" \
+                 + dictOf_MetaInfo[cons.Label_ColNames.DAYS.value] \
+            + "." \
+            + cons.Label_ColNames.SHIFT.value + "-" \
+                 + dictOf_MetaInfo[cons.Label_ColNames.SHIFT.value] \
+            + "." \
+            + libs.get_TimeLabel_Now() \
+            + ".csv"
+#             + ".txt"
+    
+    print ("[%s:%d] fname out => %s" % \
+           (os.path.basename(libs.thisfile()), libs.linenum(), fpath_Out_HighLowDiffs))
+    
+    ### write to file
+    f_Out = open(fpath_Out_HighLowDiffs, "w")
+    
+    '''###################
+        meta info        
+    ###################'''
+    f_Out.write(
+         
+        '\t'.join(
+                [cons.Label_ColNames.PAIR.value, \
+                 cons.Label_ColNames.PERIOD.value, \
+                 cons.Label_ColNames.DAYS.value, \
+                 cons.Label_ColNames.SHIFT.value, \
+                 
+                 "id_Start", \
+                 "id_End", \
+                 
+                 "source csv"
+                 ])
+
+        )
+    
+    f_Out.write('\n')
+
+    f_Out.write(
+
+        '\t'.join(
+                [
+                dictOf_MetaInfo[cons.Label_ColNames.PAIR.value], \
+                 dictOf_MetaInfo[cons.Label_ColNames.PERIOD.value], \
+                 dictOf_MetaInfo[cons.Label_ColNames.DAYS.value], \
+                 dictOf_MetaInfo[cons.Label_ColNames.SHIFT.value], \
+                 
+                 str(id_Start), \
+                 str(id_End), \
+                 
+                 cons.FPath.fname_In_CSV.value
+                 ])
+        )
+    
+    f_Out.write('\n')
+    
+    f_Out.write("\t\t\t\t" \
+                + aryOf_BarDatas[id_Start - 1].dateTime_Local \
+                + '\t' \
+                + aryOf_BarDatas[id_End - 1].dateTime_Local
+                )
+    f_Out.write('\n')
+    
+    '''###################
+        High, low, diff        
+    ###################'''
+#     f_Out.write('\t'.join([cons.BarData.LABEL_OC.value].extend(result_HighLowDiffs[cons.BarData.LABEL_OC.value])))
+#     tmp = [cons.BarData.LABEL_OC.value]
+#     tmp = result_HighLowDiffs[cons.BarData.LABEL_OC.value]
+#     tmp = [cons.BarData.LABEL_OC.value].extend(['aaa'])
+#     tmp = [cons.BarData.LABEL_OC.value] \
+#                 .extend(result_HighLowDiffs[cons.BarData.LABEL_OC.value])
+
+    ### OC
+    tmp = [cons.BarData.LABEL_OC.value]
+    tmp.extend(result_HighLowDiffs[cons.BarData.LABEL_OC.value])
+    f_Out.write('\t'.join([str(x) for x in tmp]))
+#     f_Out.write('\t'.join(tmp))
+    f_Out.write('\n')
+
+    ### HL
+    tmp = [cons.BarData.LABEL_HL.value]
+    tmp.extend(result_HighLowDiffs[cons.BarData.LABEL_HL.value])
+    f_Out.write('\t'.join([str(x) for x in tmp]))
+#     f_Out.write('\t'.join(tmp))
+    f_Out.write('\n')
+    
+    ### RSI
+    tmp = [cons.BarData.LABEL_RSI.value]
+    tmp.extend(result_HighLowDiffs[cons.BarData.LABEL_RSI.value])
+    f_Out.write('\t'.join([str(x) for x in tmp]))
+#     f_Out.write('\t'.join(tmp))
+    f_Out.write('\n')
+    
+    ### MFI
+    tmp = [cons.BarData.LABEL_MFI.value]
+    tmp.extend(result_HighLowDiffs[cons.BarData.LABEL_MFI.value])
+    f_Out.write('\t'.join([str(x) for x in tmp]))
+#     f_Out.write('\t'.join(tmp))
+    f_Out.write('\n')
+    
+    ### BB_MAIN
+    tmp = [cons.BarData.LABEL_BB_MAIN.value]
+    tmp.extend(result_HighLowDiffs[cons.BarData.LABEL_BB_MAIN.value])
+    f_Out.write('\t'.join([str(x) for x in tmp]))
+#     f_Out.write('\t'.join(tmp))
+    f_Out.write('\n')
+    
+    ### BB_1S
+    tmp = [cons.BarData.LABEL_BB_1S.value]
+    tmp.extend(result_HighLowDiffs[cons.BarData.LABEL_BB_1S.value])
+    f_Out.write('\t'.join([str(x) for x in tmp]))
+#     f_Out.write('\t'.join(tmp))
+    f_Out.write('\n')
+    
+    ### BB_2S
+    tmp = [cons.BarData.LABEL_BB_2S.value]
+    tmp.extend(result_HighLowDiffs[cons.BarData.LABEL_BB_2S.value])
+    f_Out.write('\t'.join([str(x) for x in tmp]))
+#     f_Out.write('\t'.join(tmp))
+    f_Out.write('\n')
+    
+    ### BB_M1S
+    tmp = [cons.BarData.LABEL_BB_M1S.value]
+    tmp.extend(result_HighLowDiffs[cons.BarData.LABEL_BB_M1S.value])
+    f_Out.write('\t'.join([str(x) for x in tmp]))
+#     f_Out.write('\t'.join(tmp))
+    f_Out.write('\n')
+    
+    ### BB_M2S
+    tmp = [cons.BarData.LABEL_BB_M2S.value]
+    tmp.extend(result_HighLowDiffs[cons.BarData.LABEL_BB_M2S.value])
+    f_Out.write('\t'.join([str(x) for x in tmp]))
+#     f_Out.write('\t'.join(tmp))
+    f_Out.write('\n')
+    
+#     print()
+#     print ("[%s:%d] OC data => " % (os.path.basename(libs.thisfile()), libs.linenum()))
+#     print(tmp)
+#     print()
+    
+    '''###################
+        file : close        
+    ###################'''
+    f_Out.close()
+    
+    print()
+    print ("[%s:%d] file closed => %s" % \
+           (os.path.basename(libs.thisfile()), libs.linenum(), fpath_Out_HighLowDiffs))
+    print()
+    
+    
+#     #test
+#     print()
+#     print ("[%s:%d] aryOf_BarDatas[id_Start(%d)] => %s" % \
+#            (os.path.basename(libs.thisfile()), libs.linenum(), 
+#                 id_Start, aryOf_BarDatas[id_Start]))
+#     
+#     print(aryOf_BarDatas[id_Start].dateTime_Local)
+# #     print(aryOf_BarDatas[id_Start])
+#     
+#     print()
     
     '''###################
         Report        
@@ -291,7 +477,6 @@ def exec_prog(): # upto : 20180109_161654
 #     print "[%s:%d] exec_prog => done" % (libs.thisfile(), libs.linenum())
 # 
 # #def exec_prog()
-
 '''
 <usage>
 '''

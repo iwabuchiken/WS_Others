@@ -609,8 +609,10 @@ def _get_HighLowDiffs__RSI(target_Ary) :
     '''###################
         Calc data        
     ###################'''
-    max_Val = round(max(aryOf_Price_HighLow), cons.ROUND_RSI)
-    min_Val = round(min(aryOf_Price_HighLow), cons.ROUND_RSI)
+    max_Val = round(max(aryOf_Price_HighLow), cons.BarData.ROUND_RSI.value)
+    min_Val = round(min(aryOf_Price_HighLow), cons.BarData.ROUND_RSI.value)
+#     max_Val = round(max(aryOf_Price_HighLow), cons.ROUND_RSI)
+#     min_Val = round(min(aryOf_Price_HighLow), cons.ROUND_RSI)
     
     #ref round https://stackoverflow.com/questions/17470883/rounding-to-two-decimal-places-in-python-2-7
     diff_Val = round(max_Val - min_Val, 3)
@@ -659,8 +661,8 @@ def _get_HighLowDiffs__MFI(target_Ary) :
     '''###################
         Calc data        
     ###################'''
-    max_Val = round(max(aryOf_Price_HighLow), cons.ROUND_MFI)
-    min_Val = round(min(aryOf_Price_HighLow), cons.ROUND_MFI)
+    max_Val = round(max(aryOf_Price_HighLow), cons.BarData.ROUND_MFI.value)
+    min_Val = round(min(aryOf_Price_HighLow), cons.BarData.ROUND_MFI.value)
     
     #ref round https://stackoverflow.com/questions/17470883/rounding-to-two-decimal-places-in-python-2-7
     diff_Val = round(max_Val - min_Val, 3)
@@ -709,8 +711,8 @@ def _get_HighLowDiffs__BB_Main(target_Ary) :
     '''###################
         Calc data        
     ###################'''
-    max_Val = round(max(aryOf_Price_HighLow), cons.ROUND_BB)
-    min_Val = round(min(aryOf_Price_HighLow), cons.ROUND_BB)
+    max_Val = round(max(aryOf_Price_HighLow), cons.BarData.ROUND_BB.value)
+    min_Val = round(min(aryOf_Price_HighLow), cons.BarData.ROUND_BB.value)
 #     max_Val = max(aryOf_Price_HighLow)
 #     min_Val = min(aryOf_Price_HighLow)
     
@@ -761,8 +763,8 @@ def _get_HighLowDiffs__BB_1S(target_Ary) :
     '''###################
         Calc data        
     ###################'''
-    max_Val = round(max(aryOf_Price_HighLow), cons.ROUND_BB)
-    min_Val = round(min(aryOf_Price_HighLow), cons.ROUND_BB)
+    max_Val = round(max(aryOf_Price_HighLow), cons.BarData.ROUND_BB.value)
+    min_Val = round(min(aryOf_Price_HighLow), cons.BarData.ROUND_BB.value)
     
     #ref round https://stackoverflow.com/questions/17470883/rounding-to-two-decimal-places-in-python-2-7
     diff_Val = round(max_Val - min_Val, 3)
@@ -811,8 +813,8 @@ def _get_HighLowDiffs__BB_M1S(target_Ary) :
     '''###################
         Calc data        
     ###################'''
-    max_Val = round(max(aryOf_Price_HighLow), cons.ROUND_BB)
-    min_Val = round(min(aryOf_Price_HighLow), cons.ROUND_BB)
+    max_Val = round(max(aryOf_Price_HighLow), cons.BarData.ROUND_BB.value)
+    min_Val = round(min(aryOf_Price_HighLow), cons.BarData.ROUND_BB.value)
     
     #ref round https://stackoverflow.com/questions/17470883/rounding-to-two-decimal-places-in-python-2-7
     diff_Val = round(max_Val - min_Val, 3)
@@ -862,8 +864,8 @@ def _get_HighLowDiffs__BB_2S(target_Ary) :
         Calc data        
     ###################'''
     
-    max_Val = round(max(aryOf_Price_HighLow), cons.ROUND_BB)
-    min_Val = round(min(aryOf_Price_HighLow), cons.ROUND_BB)
+    max_Val = round(max(aryOf_Price_HighLow), cons.BarData.ROUND_BB.value)
+    min_Val = round(min(aryOf_Price_HighLow), cons.BarData.ROUND_BB.value)
     
     #ref round https://stackoverflow.com/questions/17470883/rounding-to-two-decimal-places-in-python-2-7
     diff_Val = round(max_Val - min_Val, 3)
@@ -912,8 +914,8 @@ def _get_HighLowDiffs__BB_M2S(target_Ary) :
     '''###################
         Calc data        
     ###################'''
-    max_Val = round(max(aryOf_Price_HighLow), cons.ROUND_BB)
-    min_Val = round(min(aryOf_Price_HighLow), cons.ROUND_BB)
+    max_Val = round(max(aryOf_Price_HighLow), cons.BarData.ROUND_BB.value)
+    min_Val = round(min(aryOf_Price_HighLow), cons.BarData.ROUND_BB.value)
     
     #ref round https://stackoverflow.com/questions/17470883/rounding-to-two-decimal-places-in-python-2-7
     diff_Val = round(max_Val - min_Val, 3)
@@ -1036,23 +1038,23 @@ def get_HighLowDiffs(aryOf_BarDatas, id_Start, id_End) :
     ######################################'''
     #ref dictionary https://www.tutorialspoint.com/python/python_dictionary.htm
     dict = {
-            cons.LABEL_OC : aryOf_HighLowDiff__OC,
+            cons.BarData.LABEL_OC.value : aryOf_HighLowDiff__OC,
             
-            cons.LABEL_HL : aryOf_HighLowDiff__HL,
+            cons.BarData.LABEL_HL.value : aryOf_HighLowDiff__HL,
             
-            cons.LABEL_RSI : aryOf_HighLowDiff__RSI,
+            cons.BarData.LABEL_RSI.value : aryOf_HighLowDiff__RSI,
             
-            cons.LABEL_MFI : aryOf_HighLowDiff__MFI,
+            cons.BarData.LABEL_MFI.value : aryOf_HighLowDiff__MFI,
             
-            cons.LABEL_BB_MAIN : aryOf_HighLowDiff__BB_Main,
+            cons.BarData.LABEL_BB_MAIN.value : aryOf_HighLowDiff__BB_Main,
             
-            cons.LABEL_BB_1S : aryOf_HighLowDiff__BB_1S,
+            cons.BarData.LABEL_BB_1S.value : aryOf_HighLowDiff__BB_1S,
             
-            cons.LABEL_BB_M1S : aryOf_HighLowDiff__BB_M1S,
+            cons.BarData.LABEL_BB_M1S.value : aryOf_HighLowDiff__BB_M1S,
             
-            cons.LABEL_BB_2S : aryOf_HighLowDiff__BB_2S,
+            cons.BarData.LABEL_BB_2S.value : aryOf_HighLowDiff__BB_2S,
             
-            cons.LABEL_BB_M2S : aryOf_HighLowDiff__BB_M2S,
+            cons.BarData.LABEL_BB_M2S.value : aryOf_HighLowDiff__BB_M2S,
             
             }
     
@@ -1061,17 +1063,73 @@ def get_HighLowDiffs(aryOf_BarDatas, id_Start, id_End) :
     
 #/get_HighLowDiffs(aryOf_BarDatas)
 
-def get_BarData_MetaInfo(fname_In, header_Length) :
+def get_BarData_MetaInfo(fpath_In, header_Length) :
     
-    f_in = open(fname_In, 'r')
+    f_in = open(fpath_In, 'r')
     
     delim = ';'
     
-    reader = csv.reader(f, delimiter = delim)
+    reader = csv.reader(f_in, delimiter = delim)
+#     reader = csv.reader(f, delimiter = delim)
     
     aryOf_HeaderRows = []
     
+    # validate
+    if reader is None:
+#     if data_Csv is None:
+        
+        print ("[%s:%d] read lines => None" % (libs.thisfile(), libs.linenum()))
+        
+        return None
     
+    else:   # if reader is None:
+        
+        '''###################
+            read rows        
+        ###################'''
+        count = 0
+        
+        for row in reader : 
+
+            aryOf_HeaderRows.append(row)
+            
+            count += 1
+            
+            ### break
+            if count >= header_Length : break #if count >= header_Length
+
+            #/if count >= header_Length
+        
+    #/if reader is None:
     
+    '''###################
+        file : close
+    ###################'''
+    f_in.close()
     
+    print ("[%s:%d] file => closed : %s" % \
+                (libs.thisfile(), libs.linenum(), fpath_In))
+
+    print()
+    
+    print(aryOf_HeaderRows)
+            #     [['Pair=USDJPY', 'Period=H1', 'Days=720', 'Shift=1', 'Bars=17280', 'Time=2017123
+            #     1_233725'], ['no', 'Open', 'High', 'Low', 'Close', 'RSI', 'MFI', 'BB.2s', 'BB.1s
+            #     ', 'BB.main', 'BB.-1s', 'BB.-2s', 'Diff', 'High/Low', 'datetime']]
+            
+    '''###################
+        metainfo : build        
+    ###################'''
+    dict = {}
+    
+    dict[cons.Label_ColNames.PAIR.value] = aryOf_HeaderRows[0][0].split("=")[1]
+    dict[cons.Label_ColNames.PERIOD.value] = aryOf_HeaderRows[0][1].split("=")[1]
+    dict[cons.Label_ColNames.DAYS.value] = aryOf_HeaderRows[0][2].split("=")[1]
+    dict[cons.Label_ColNames.SHIFT.value] = aryOf_HeaderRows[0][3].split("=")[1]
+
+    '''###################
+        return        
+    ###################'''
+    return dict
+
 #/get_BarData_MetaInfo(fname_In)
