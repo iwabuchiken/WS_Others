@@ -1,0 +1,75 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 14.09.0 ] */
+
+/* [wxMaxima: input   start ] */
+P : matrix([2,1],[1,1]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+P_ : invert(P);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+M : matrix([4,0],[0,4]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+An : P*M*P_;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+M . P_;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+P . %;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+A : matrix([a,b],[c,d]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+invert(A);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+B: matrix([p,q],[r,s]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+A * B;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+A . B;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/*  section : 2 */
+P : matrix([a,1],[1,1]);
+lamda : 2; myu : 2;
+n : 2;
+
+P_ : invert(P);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+M : matrix([lamda,0],[0,myu]) ^^ 2;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+P . M . P_;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+expand(%);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/*  section : 3 */
+P;
+/* [wxMaxima: input   end   ] */
+
+/* Maxima can't load/batch files which end with a comment! */
+"Created with wxMaxima"$

@@ -1,3 +1,5 @@
+#!C:\WORKS_2\Programs\Python\Python_3.5.1\python.exe
+from enum import Enum
 
 TypeOf_Data_OpenClose   = "OpenClose"
 
@@ -24,3 +26,8 @@ HighLowDiff_ID_Start    = 1
 HighLowDiff_ID_End      = 5
 # HighLowDiff_ID_Start    = 195
 # HighLowDiff_ID_End      = 202
+
+class FPath(Enum):
+    
+    fname_In_CSV = "../data/49_11_file-io.USDJPY.Period-H1.Days-720.Bars-17280.20171231_233725.csv"
+    

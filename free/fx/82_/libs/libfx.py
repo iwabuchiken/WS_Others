@@ -1,3 +1,5 @@
+#!C:\WORKS_2\Programs\Python\Python_3.5.1\python.exe
+
 # -*- coding: utf-8 -*-
 '''
 C:\WORKS_2\WS\WS_Others\free\fx\82_\libs\libfx.py
@@ -9,7 +11,7 @@ import os
 
 #ref https://stackoverflow.com/questions/415511/how-to-get-current-time-in-python "answered Jan 6 '09 at 4:59"
 from time import gmtime, strftime, localtime, time
-from __builtin__ import str
+# from __builtin__ import str
 from sympy.physics.vector.printing import params
 from sympy.matrices.densetools import row
 from _ast import If
@@ -18,18 +20,20 @@ from _ast import If
 '''###################
     libs : C:\WORKS_2\WS\WS_Others\free\fx\82_\libs\libs.py
 ###################'''
-import libs
+from libs import libs
+# import libs
 
 import csv
 import sys
 
-import cons
+from libs import cons
+# import cons
 
 ###############################################
 
 def test_func():
     
-    print "[%s:%d] test_func()" % (thisfile(), linenum())
+    print ("[%s:%d] test_func()" % (thisfile(), linenum()))
     
 
 # def get_ChartData_CSV_Between(fname_In, id_Start, id_End):
@@ -47,7 +51,7 @@ def get_ChartData_CSV_Between \
     f = open(fname_In, 'rb')
 #     fin = open(fname_In, 'r')
     
-    print "[%s:%d] file => opened : %s" % (libs.thisfile(), libs.linenum(), fname_In)
+    print ("[%s:%d] file => opened : %s" % (libs.thisfile(), libs.linenum(), fname_In))
     
     '''###################
         file : read
@@ -55,8 +59,8 @@ def get_ChartData_CSV_Between \
     '''###################
         skip header
     ###################'''
-    print "[%s:%d] skip headers => %d lines" % \
-                    (libs.thisfile(), libs.linenum(), header_Length)
+    print ("[%s:%d] skip headers => %d lines" % \
+                    (libs.thisfile(), libs.linenum(), header_Length))
     
     #ref delimiter https://docs.python.org/3.5/library/csv.html
     delim = ';'
@@ -83,7 +87,7 @@ def get_ChartData_CSV_Between \
     if reader is None:
 #     if data_Csv is None:
         
-        print "[%s:%d] read lines => None" % (libs.thisfile(), libs.linenum())
+        print ("[%s:%d] read lines => None" % (libs.thisfile(), libs.linenum()))
         
         return None
     else:
@@ -106,7 +110,7 @@ def get_ChartData_CSV_Between \
             if count >= 2 : break
         
         print
-        print "[%s:%d] row =>" % (libs.thisfile(), libs.linenum())
+        print ("[%s:%d] row =>" % (libs.thisfile(), libs.linenum()))
         
         print
         for row in reader : 
@@ -166,8 +170,8 @@ def get_ChartData_CSV_Between \
     f.close()
 #     fin.close()
     
-    print "[%s:%d] file => closed : %s" % \
-                (libs.thisfile(), libs.linenum(), fname_In)
+    print ("[%s:%d] file => closed : %s" % \
+                (libs.thisfile(), libs.linenum(), fname_In))
 
     #ref None https://stackoverflow.com/questions/3289601/null-object-in-python
     return None
@@ -195,9 +199,10 @@ def get_ChartData_CSV \
 #     fname_In = "../data/49_11_file-io.USDJPY.Period-H1.Days-720.Bars-17280.20171231_233725.csv"    #=> 
     
     #ref csv open http://www.pythonforbeginners.com/systems-programming/using-the-csv-module-in-python/
-    f = open(fname_In, 'rb')
+    f = open(fname_In, 'r')
+#     f = open(fname_In, 'rb')
     
-    print "[%s:%d] file => opened : %s" % (libs.thisfile(), libs.linenum(), fname_In)
+    print ("[%s:%d] file => opened : %s" % (libs.thisfile(), libs.linenum(), fname_In))
     
     '''###################
         file : read
@@ -205,8 +210,8 @@ def get_ChartData_CSV \
     '''###################
         skip header
     ###################'''
-    print "[%s:%d] skip headers => %d lines" % \
-                    (libs.thisfile(), libs.linenum(), header_Length)
+    print ("[%s:%d] skip headers => %d lines" % \
+                    (libs.thisfile(), libs.linenum(), header_Length))
     
     #ref delimiter https://docs.python.org/3.5/library/csv.html
 #     delim = ';'
@@ -216,7 +221,7 @@ def get_ChartData_CSV \
     if reader is None:
 #     if data_Csv is None:
         
-        print "[%s:%d] read lines => None" % (libs.thisfile(), libs.linenum())
+        print ("[%s:%d] read lines => None" % (libs.thisfile(), libs.linenum()))
         
         return None
     
@@ -242,8 +247,8 @@ def get_ChartData_CSV \
                 
             #/for row in reader :
             
-            print "[%s:%d] header skipped => %d lines" % \
-                        (libs.thisfile(), libs.linenum(), header_Length)
+            print ("[%s:%d] header skipped => %d lines" % \
+                        (libs.thisfile(), libs.linenum(), header_Length))
             
         #/if skip_Header == True
 
@@ -255,6 +260,11 @@ def get_ChartData_CSV \
         count = 0
         
         for row in reader : 
+                        ### ERROR
+                        # File "..\libs\libfx.py", line 261, in get_ChartData_CSV
+                        #   for row in reader :
+                        # _csv.Error: iterator should return strings, not bytes (did you open the file in
+                        # text mode?)
 #             print(row)
             
 #             ['1', '112.679', '112.706', '112.646', '112.672', '44.91202147258796', '48.05020
@@ -292,8 +302,8 @@ def get_ChartData_CSV \
     ###################'''
     f.close()
     
-    print "[%s:%d] file => closed : %s" % \
-                (libs.thisfile(), libs.linenum(), fname_In)
+    print ("[%s:%d] file => closed : %s" % \
+                (libs.thisfile(), libs.linenum(), fname_In))
 
     #ref None https://stackoverflow.com/questions/3289601/null-object-in-python
 #     return None
@@ -312,17 +322,17 @@ def get_ChartData_CSV \
 ###################'''
 def conv_CSVRows_2_BarDatas(result) :
     
-    #debug
-    print
-    print "[%s:%d] conv_CSVRows_2_BarDatas : result[0] => %s" % (libs.thisfile(), libs.linenum(), result[0])
-    print
+#     #debug
+#     print
+#     print ("[%s:%d] conv_CSVRows_2_BarDatas : result[0] => %s" % (libs.thisfile(), libs.linenum(), result[0]))
+#     print
     
 #     print "[%s:%d] result[0] => %s" % (libs.thisfile(), libs.linenum(), result[0])
 #     print
     
     #debug
-    print "[%s:%d] len(result) => %d" % \
-                (libs.thisfile(), libs.linenum(), len(result))
+    print ("[%s:%d] len(result) => %d" % \
+                (libs.thisfile(), libs.linenum(), len(result)))
     print
     
     '''###################
@@ -384,8 +394,8 @@ def conv_CSVRows_2_BarDatas(result) :
     #/for item in result :
     
     #debug
-    print "[%s:%d] len(aryOf_BarDatas) => %d" % \
-                (libs.thisfile(), libs.linenum(), len(aryOf_BarDatas))
+    print ("[%s:%d] len(aryOf_BarDatas) => %d" % \
+                (libs.thisfile(), libs.linenum(), len(aryOf_BarDatas)))
     print
     
 #     #debug
@@ -960,8 +970,8 @@ def get_HighLowDiffs(aryOf_BarDatas, id_Start, id_End) :
 #     target_Ary = aryOf_BarDatas[id_Start - 1 : (id_End + 1)]
 #     target_Ary = aryOf_BarDatas[id_Start : (id_End + 1)]
     
-    #debug
-    print "[%s:%d] target_Ary => %s" % (libs.thisfile(), libs.linenum(), target_Ary)
+#     #debug
+#     print ("[%s:%d] target_Ary => %s" % (libs.thisfile(), libs.linenum(), target_Ary))
 
     
     '''###################
@@ -1050,3 +1060,18 @@ def get_HighLowDiffs(aryOf_BarDatas, id_Start, id_End) :
 #     return aryOf_HighLowDiff__OC
     
 #/get_HighLowDiffs(aryOf_BarDatas)
+
+def get_BarData_MetaInfo(fname_In, header_Length) :
+    
+    f_in = open(fname_In, 'r')
+    
+    delim = ';'
+    
+    reader = csv.reader(f, delimiter = delim)
+    
+    aryOf_HeaderRows = []
+    
+    
+    
+    
+#/get_BarData_MetaInfo(fname_In)
