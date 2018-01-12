@@ -47,7 +47,7 @@ def save_WaveFile(fname, binwave, comptype='NONE', compname='not compressed'):
     #ref http://maku77.github.io/python/create-directory.html
     if not os.path.exists(dpath) : 
         os.makedirs(dpath, True)
-        print "[%s:%d] dir created => '%s'" % (thisfile(), linenum(), dpath)
+        print("[%s:%d] dir created => '%s'" % (thisfile(), linenum(), dpath))
 
     
     
@@ -71,11 +71,11 @@ def save_WaveFile(fname, binwave, comptype='NONE', compname='not compressed'):
 def save_WaveFile__Class(wavefile, fname_dst = '', dpath_dst=''):
     
     #debug
-    print "[%s:%d] fname_dst = '%s' || dpath_dst = '%s'" \
-            % (thisfile(), linenum(), fname_dst, dpath_dst)
+    print("[%s:%d] fname_dst = '%s' || dpath_dst = '%s'" \
+            % (thisfile(), linenum(), fname_dst, dpath_dst))
             #=> fname_dst = 'audio' || dpath_dst = ''
     
-    print "[%s:%d] wavefile.fname => '%s'" % (thisfile(), linenum(), wavefile.fname)
+    print("[%s:%d] wavefile.fname => '%s'" % (thisfile(), linenum(), wavefile.fname))
             #=> 'test_2.sinewave-262.20170607_165720.wav'
 
     '''###################
@@ -104,7 +104,7 @@ def save_WaveFile__Class(wavefile, fname_dst = '', dpath_dst=''):
     fpath = "%s/%s" % (dpath, fname)
 
     #debug
-    print "[%s:%d] fpath => '%s'" % (thisfile(), linenum(), fpath)
+    print("[%s:%d] fpath => '%s'" % (thisfile(), linenum(), fpath))
     
 
     '''###################
@@ -282,7 +282,7 @@ def get_WaveFile__Sines (fname, A, f0, fs, length = 1.0, phase = 1.0, type = "si
             radians.append(radian)
     else :
         
-        print "[%s:%d] Unknown trig name => '%s'" % (thisfile(), linenum(), type)
+        print("[%s:%d] Unknown trig name => '%s'" % (thisfile(), linenum(), type))
         
         return None
     
@@ -336,7 +336,7 @@ def get_WaveFile__AnalogData (\
 #    plot(data[0:100]); show()
     # �o�C�i���ɕϊ�
     
-#     print "[%s:%d] len(bindata) => %d" % (thisfile(), linenum(), len(bindata))
+#     print("[%s:%d] len(bindata) => %d" % (thisfile(), linenum(), len(bindata)))
             #=> 8000
     
 #     bindata = struct.pack("i" * len(bindata), *bindata)  # list��*������ƈ����W�J�����
@@ -346,14 +346,14 @@ def get_WaveFile__AnalogData (\
     ###     => 'struct.error: short format requires SHRT_MIN <= number <= SHRT_MAX'
     bindata = struct.pack("h" * len(bindata), *bindata)  # list��*������ƈ����W�J�����
     
-#     print "[%s:%d] len(bindata)(packed)=> %d" % (thisfile(), linenum(), len(bindata))
+#     print("[%s:%d] len(bindata)(packed)=> %d" % (thisfile(), linenum(), len(bindata)))
             #=> 32000
     
 #     #debug
 #     for i in range(10) :
 #         
-#         print "[%s:%d] bindata[%d] => %s" % (thisfile(), linenum(), i, bindata[i])
-# #         print "[%s:%d] bindata[%d] => %.4f" % (thisfile(), linenum(), i, bindata[i])
+#         print("[%s:%d] bindata[%d] => %s" % (thisfile(), linenum(), i, bindata[i]))
+# #         print("[%s:%d] bindata[%d] => %.4f" % (thisfile(), linenum(), i, bindata[i]))
 
     
     '''###################
@@ -534,7 +534,7 @@ def data_Absolutize(wavefile, generate_new = False, fname = '') :
     ###################
     #    absolutize : analog    
     #####################
-    print "[%s:%d] len(wf.analogdata) => %d" % (thisfile(), linenum(), len(wf.analogdata))
+    print("[%s:%d] len(wf.analogdata) => %d" % (thisfile(), linenum(), len(wf.analogdata)))
                         
     length = len(wf.analogdata)
                         
@@ -599,7 +599,7 @@ def get_SineWF(A, f0, fs = 8000.0, phase=1.0, length=1.0, dpath = "audio", fname
     
 #     save_WaveFile__Class(wf, dpath_dst=dpath)
 
-#     print "[%s:%d] file saved => '%s'" % (thisfile(), linenum(), fname)
+#     print("[%s:%d] file saved => '%s'" % (thisfile(), linenum(), fname))
     
     return wf
     
@@ -612,7 +612,7 @@ def measure_Frequency(wavefile):
 #     error_band = 0.1
 #     error_band = 0.2
     
-    print "[%s:%d] start measuring..." % (thisfile(), linenum())
+    print("[%s:%d] start measuring..." % (thisfile(), linenum()))
             
     '''###################
         measure        
@@ -638,7 +638,7 @@ def measure_Frequency(wavefile):
         
         if elem > 0 and elem < min_current : min_current = elem
         
-    print "[%s:%d] min_current => %.4f" % (thisfile(), linenum(), min_current)
+    print("[%s:%d] min_current => %.4f" % (thisfile(), linenum(), min_current))
     
     '''###################
         experiment : 2nd 0-neighborhood minimum plus element        
@@ -652,7 +652,7 @@ def measure_Frequency(wavefile):
             and elem < min_second: \
             min_second = elem
         
-    print "[%s:%d] min_second => %.4f" % (thisfile(), linenum(), min_second)
+    print("[%s:%d] min_second => %.4f" % (thisfile(), linenum(), min_second))
         
     
     '''###################
@@ -667,14 +667,14 @@ def measure_Frequency(wavefile):
     
     for i in range(1, len(a) - 1) :
         
-#         print "[%s:%d] a[%d] = %d" % (thisfile(), linenum(), i, a[i])
+#         print("[%s:%d] a[%d] = %d" % (thisfile(), linenum(), i, a[i]))
         
         nex = a[i]
         
-#         print "[%s:%d] i = %d : curr = %.1f / nex = %.1f" \
-        print "[%s:%d] i = %d : curr = %.4f / nex = %.4f" \
-            % (thisfile(), linenum(), i, curr, nex)
-#         print "[%s:%d] i = %d : curr = %d / nex = %d" \
+#         print("[%s:%d] i = %d : curr = %.1f / nex = %.1f" \)
+        print("[%s:%d] i = %d : curr = %.4f / nex = %.4f" \
+            % (thisfile(), linenum(), i, curr, nex))
+#         print("[%s:%d] i = %d : curr = %d / nex = %d" \)
             
         
         # compare : 1
@@ -682,7 +682,7 @@ def measure_Frequency(wavefile):
 #         if curr + error_band >= nex and curr + error_band <= nex:
 #         if curr == nex :
             
-            print "[%s:%d] Detected : " % (thisfile(), linenum())
+            print("[%s:%d] Detected : " % (thisfile(), linenum()))
             
             index_detected = i
             
@@ -693,7 +693,7 @@ def measure_Frequency(wavefile):
                 
 #                 index_detected = i
                 
-                print "[%s:%d] Breaking the for loop..." % (thisfile(), linenum())
+                print("[%s:%d] Breaking the for loop..." % (thisfile(), linenum()))
                 
                 break
                 
@@ -708,11 +708,11 @@ def measure_Frequency(wavefile):
     
     freq = index_detected - 0
     
-    print "[%s:%d] Result : detected index = %d / length = %d - %d = %d" \
+    print("[%s:%d] Result : detected index = %d / length = %d - %d = %d" \
             "(f0 = %d)"\
             % (thisfile(), linenum(), \
                index_detected, index_detected, 0, \
-               freq, wavefile.basefreq)
+               freq, wavefile.basefreq))
 #                (index_detected - 0))
     
     
@@ -739,7 +739,7 @@ def measure_Frequency_2(wavefile):
 #     error_band = 0.1
 #     error_band = 0.2
     
-    print "[%s:%d] start measuring..." % (thisfile(), linenum())
+    print("[%s:%d] start measuring..." % (thisfile(), linenum()))
             
     '''###################
         measure        
@@ -757,7 +757,7 @@ def measure_Frequency_2(wavefile):
         
         if elem > 0 and elem < min_current : min_current = elem
         
-    print "[%s:%d] min_current => %.4f" % (thisfile(), linenum(), min_current)
+    print("[%s:%d] min_current => %.4f" % (thisfile(), linenum(), min_current))
     
     '''###################
         operations        
@@ -775,25 +775,25 @@ def measure_Frequency_2(wavefile):
     
     for i in range(1, len(a) - 1) :
         
-#         print "[%s:%d] a[%d] = %d" % (thisfile(), linenum(), i, a[i])
+#         print("[%s:%d] a[%d] = %d" % (thisfile(), linenum(), i, a[i]))
         
         nex = a[i]
         
-#         print "[%s:%d] i = %d : curr = %.1f / nex = %.1f" \
-#         print "[%s:%d] i = %d : curr = %.4f / nex = %.4f" \
+#         print("[%s:%d] i = %d : curr = %.1f / nex = %.1f" \)
+#         print("[%s:%d] i = %d : curr = %.4f / nex = %.4f" \)
 #             % (thisfile(), linenum(), i, curr, nex)
-#         print "[%s:%d] i = %d : curr = %d / nex = %d" \
+#         print("[%s:%d] i = %d : curr = %d / nex = %d" \)
             
         
         # compare : 1
         if curr > threshold and nex < threshold:
 #         if curr + error_band >= nex and curr - error_band <= nex:
             
-#             print "[%s:%d] Detected : " % (thisfile(), linenum())
-            print "[%s:%d] Detected : i = %d : curr = %.4f / nex = %.4f" \
-                    % (thisfile(), linenum(), i, curr, nex)
+#             print("[%s:%d] Detected : " % (thisfile(), linenum()))
+            print("[%s:%d] Detected : i = %d : curr = %.4f / nex = %.4f" \
+                    % (thisfile(), linenum(), i, curr, nex))
 #                     % (thisfile(), linenum())
-            #         print "[%s:%d] i = %d : curr = %.4f / nex = %.4f" \
+            #         print("[%s:%d] i = %d : curr = %.4f / nex = %.4f" \)
 #             % (thisfile(), linenum(), i, curr, nex)
             index_detected = i
             
@@ -806,7 +806,7 @@ def measure_Frequency_2(wavefile):
                 
 #                 index_detected = i
                 
-                print "[%s:%d] Breaking the for loop..." % (thisfile(), linenum())
+                print("[%s:%d] Breaking the for loop..." % (thisfile(), linenum()))
                 
                 break
                 
@@ -829,20 +829,20 @@ def measure_Frequency_2(wavefile):
     
     freq = index_detected - 0
     
-    print "[%s:%d] Result : detected index = %d / length = %d - %d = %d" \
+    print("[%s:%d] Result : detected index = %d / length = %d - %d = %d" \
             "(f0 = %d)"\
             % (thisfile(), linenum(), \
                index_detected, index_detected, 0, \
-               freq, wavefile.basefreq)
+               freq, wavefile.basefreq))
 #                (index_detected - 0))
 
-    print "[%s:%d] list of indexes detected =>" % (thisfile(), linenum())
+    print("[%s:%d] list of indexes detected =>" % (thisfile(), linenum()))
 
-    print listOf_DetectedIndexes
+    print(listOf_DetectedIndexes)
     
-    print "[%s:%d] diff of detected indexes => %d" % \
+    print("[%s:%d] diff of detected indexes => %d" % \
             (thisfile(), linenum(), \
-             (listOf_DetectedIndexes[1] - listOf_DetectedIndexes[0]))
+             (listOf_DetectedIndexes[1] - listOf_DetectedIndexes[0])))
         
     '''###################
         message        
@@ -871,11 +871,11 @@ def measure_Frequency_3(wavefile):
     analogdata = wavefile.analogdata
 
     #debug
-    print "[%s:%d] len(wavefile.analogdata) => %d" \
-            % (thisfile(), linenum(), len(wavefile.analogdata))
+    print("[%s:%d] len(wavefile.analogdata) => %d" \
+            % (thisfile(), linenum(), len(wavefile.analogdata)))
 
     
-    print "[%s:%d] start measuring..." % (thisfile(), linenum())
+    print("[%s:%d] start measuring..." % (thisfile(), linenum()))
             
     '''###################
         measure        
@@ -912,17 +912,17 @@ def measure_Frequency_3(wavefile):
     ### validate : curr is set
     if curr == None :
         
-        print "[%s:%d] Can't set a value for 'curr'; exiting..." % (thisfile(), linenum())
+        print("[%s:%d] Can't set a value for 'curr'; exiting..." % (thisfile(), linenum()))
         
         return -2
     
     else :
         
-        print "[%s:%d] 'curr' set with ==> %.4f" % (thisfile(), linenum(), curr)
+        print("[%s:%d] 'curr' set with ==> %.4f" % (thisfile(), linenum(), curr))
     
     
     #debug
-    print "[%s:%d] curr => %.4f" % (thisfile(), linenum(), curr)
+    print("[%s:%d] curr => %.4f" % (thisfile(), linenum(), curr))
             
     
     threshold = curr
@@ -941,8 +941,8 @@ def measure_Frequency_3(wavefile):
         # compare : 1
         if curr > threshold and nex < threshold:
             
-            print "[%s:%d] Detected : i = %d / curr = %.4f / nex = %.4f" \
-                    % (thisfile(), linenum(), i, curr, nex)
+            print("[%s:%d] Detected : i = %d / curr = %.4f / nex = %.4f" \
+                    % (thisfile(), linenum(), i, curr, nex))
             
             index_detected = i
             
@@ -952,7 +952,7 @@ def measure_Frequency_3(wavefile):
             
             if countOf_detections >= 2 :
                 
-                print "[%s:%d] Breaking the for loop..." % (thisfile(), linenum())
+                print("[%s:%d] Breaking the for loop..." % (thisfile(), linenum()))
                 
                 break
                 
@@ -974,33 +974,33 @@ def measure_Frequency_3(wavefile):
     
 #     freq = index_detected - 0
 #     
-#     print "[%s:%d] Result : detected index = %d / length = %d - %d = %d" \
+#     print("[%s:%d] Result : detected index = %d / length = %d - %d = %d" \)
 #             "(f0 = %d)"\
 #             % (thisfile(), linenum(), \
 #                index_detected, index_detected, 0, \
 #                freq, wavefile.basefreq)
 # #                (index_detected - 0))
 
-    print "[%s:%d] list of indexes detected =>" % (thisfile(), linenum())
+    print("[%s:%d] list of indexes detected =>" % (thisfile(), linenum()))
 
-    print listOf_DetectedIndexes
+    print(listOf_DetectedIndexes)
 
     '''###################
         validate        
     ###################'''
     if len(listOf_DetectedIndexes) < 2 :
         
-        print "[%s:%d] Detected indexes => less than 2" % (thisfile(), linenum())
+        print("[%s:%d] Detected indexes => less than 2" % (thisfile(), linenum()))
     
         return -1
 
     diff = (listOf_DetectedIndexes[1] - listOf_DetectedIndexes[0])
     
-    print "[%s:%d] diff of detected indexes => %d" % \
+    print("[%s:%d] diff of detected indexes => %d" % \
             (thisfile(), linenum(), \
-             diff)
+             diff))
         
-    print listOf_DetectedIndexes
+    print(listOf_DetectedIndexes)
     
     '''###################
         message        
@@ -1032,11 +1032,11 @@ def measure_Frequency_4(wavefile):
     analogdata = wavefile.analogdata
 
     #debug
-    print "[%s:%d] len(wavefile.analogdata) => %d" \
-            % (thisfile(), linenum(), len(wavefile.analogdata))
+    print("[%s:%d] len(wavefile.analogdata) => %d" \
+            % (thisfile(), linenum(), len(wavefile.analogdata)))
 
     
-    print "[%s:%d] start measuring..." % (thisfile(), linenum())
+    print("[%s:%d] start measuring..." % (thisfile(), linenum()))
             
     '''###################
         measure        
@@ -1076,16 +1076,16 @@ def measure_Frequency_4(wavefile):
     ### validate : curr is set
     if curr == None :
         
-        print "[%s:%d] Can't set a value for 'curr'; exiting..." \
-                        % (thisfile(), linenum())
+        print("[%s:%d] Can't set a value for 'curr'; exiting..." \
+                        % (thisfile(), linenum()))
         
         return -2
     
-    else : print "[%s:%d] 'curr' set with ==> %.4f" % (thisfile(), linenum(), curr)
+    else : print("[%s:%d] 'curr' set with ==> %.4f" % (thisfile(), linenum(), curr))
     
     
     #debug
-    print "[%s:%d] curr => %.4f" % (thisfile(), linenum(), curr)
+    print("[%s:%d] curr => %.4f" % (thisfile(), linenum(), curr))
             
     threshold = curr
     
@@ -1105,8 +1105,8 @@ def measure_Frequency_4(wavefile):
         # compare : 1
         if curr > threshold and nex < threshold:
             
-            print "[%s:%d] Detected : i = %d / curr = %.4f / nex = %.4f" \
-                    % (thisfile(), linenum(), i, curr, nex)
+            print("[%s:%d] Detected : i = %d / curr = %.4f / nex = %.4f" \
+                    % (thisfile(), linenum(), i, curr, nex))
             
             index_detected = i
             
@@ -1116,7 +1116,7 @@ def measure_Frequency_4(wavefile):
             
             if countOf_detections >= 2 :
                 
-                print "[%s:%d] Breaking the for loop..." % (thisfile(), linenum())
+                print("[%s:%d] Breaking the for loop..." % (thisfile(), linenum()))
                 
                 break
                 
@@ -1138,16 +1138,16 @@ def measure_Frequency_4(wavefile):
     
 #     freq = index_detected - 0
 #     
-#     print "[%s:%d] Result : detected index = %d / length = %d - %d = %d" \
+#     print("[%s:%d] Result : detected index = %d / length = %d - %d = %d" \)
 #             "(f0 = %d)"\
 #             % (thisfile(), linenum(), \
 #                index_detected, index_detected, 0, \
 #                freq, wavefile.basefreq)
 # #                (index_detected - 0))
 
-    print "[%s:%d] list of indexes detected =>" % (thisfile(), linenum())
+    print("[%s:%d] list of indexes detected =>" % (thisfile(), linenum()))
 
-    print listOf_DetectedIndexes
+    print(listOf_DetectedIndexes)
 
     # add to the result
     result['indexes'] = listOf_DetectedIndexes
@@ -1157,7 +1157,7 @@ def measure_Frequency_4(wavefile):
     ###################'''
     if len(listOf_DetectedIndexes) < 2 :
         
-        print "[%s:%d] Detected indexes => less than 2" % (thisfile(), linenum())
+        print("[%s:%d] Detected indexes => less than 2" % (thisfile(), linenum()))
     
         return -1
 
@@ -1166,11 +1166,11 @@ def measure_Frequency_4(wavefile):
     # add to the result
     result['freq'] = diff
     
-    print "[%s:%d] diff of detected indexes => %d" % \
+    print("[%s:%d] diff of detected indexes => %d" % \
             (thisfile(), linenum(), \
-             diff)
+             diff))
         
-    print listOf_DetectedIndexes
+    print(listOf_DetectedIndexes)
     
     '''###################
         return

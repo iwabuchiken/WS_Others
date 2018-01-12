@@ -3,23 +3,51 @@ import os
 
 #ref https://stackoverflow.com/questions/415511/how-to-get-current-time-in-python "answered Jan 6 '09 at 4:59"
 from time import gmtime, strftime, localtime, time
-from __builtin__ import str
-# from sympy.physics.vector.printing import params
+# from __builtin__ import str
+from sympy.physics.vector.printing import params
 
 def linenum(depth=0):
 #     print "line"
     
+    #ref https://stackoverflow.com/questions/6810999/how-to-determine-file-function-and-line-number 'answered Jul 25 '11 at 1:31'
+    callerframerecord = inspect.stack()[1]    # 0 represents this line
+                                        # 1 represents line at caller
+    frame = callerframerecord[0]
+    info = inspect.getframeinfo(frame)
+#     return info.filename                       # __FILE__     -> Test.py
+    #     print info.filename                       # __FILE__     -> Test.py
+    #     print info.function                       # __FUNCTION__ -> Main
+    #     print info.lineno                         # __LINE__     -> 13
+    return info.lineno                         # __LINE__     -> 13
+
+    
+    '''
     frame = inspect.currentframe(depth+1)
     return frame.f_lineno
+    
+    '''
 
 def thisfile(depth=0):
 # def _file(depth=0):
 #     print "line"
+
+    callerframerecord = inspect.stack()[1]    # 0 represents this line
+                                            # 1 represents line at caller
+    frame = callerframerecord[0]
+    info = inspect.getframeinfo(frame)
+    return info.filename                       # __FILE__     -> Test.py
+#     print info.filename                       # __FILE__     -> Test.py
+#     print info.function                       # __FUNCTION__ -> Main
+#     print info.lineno                         # __LINE__     -> 13
     
-    frame = inspect.currentframe(depth+1)
-    
-    return os.path.basename(frame.f_code.co_filename)
-#     return frame.f_code.co_filename
+    '''    
+        frame = inspect.currentframe(0)
+    #     frame = inspect.currentframe(depth+1)
+        
+        return os.path.basename(frame.f_code.co_filename)
+    #     return frame.f_code.co_filename
+    '''
+#/def thisfile(depth=0):
 
 def get_opt(arg_ary):
     
@@ -30,7 +58,7 @@ def get_opt(arg_ary):
     # validate
     if len(arg_ary) < 1 :
         
-        print "[%s:%d] no args" % (thisfile(), linenum())
+        print ("[%s:%d] no args" % (thisfile(), linenum()))
         
         return (None, None)
     
@@ -86,7 +114,7 @@ def get_opt_2(arg_ary, keychars):
     # validate
     if len(arg_ary) < 1 :
         
-        print "[%s:%d] no args" % (thisfile(), linenum())
+        print ("[%s:%d] no args" % (thisfile(), linenum()))
         
         return (None, None)
     

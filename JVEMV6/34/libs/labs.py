@@ -32,11 +32,11 @@ def test_Max_InThe_List():
     #ref max https://www.tutorialspoint.com/python/list_max.htm
     max_val = max(sines)
     
-    print "[%s:%d] max(sines) => %f" % (thisfile(), linenum(), max_val)
+    print("[%s:%d] max(sines) => %f" % (thisfile(), linenum(), max_val))
     
-    print "[%s:%d] max(sines_cosines) => %f" % (thisfile(), linenum(), max(sines_cosines))
+    print("[%s:%d] max(sines_cosines) => %f" % (thisfile(), linenum(), max(sines_cosines)))
     
-    print "[%s:%d] max(sines_times_cosines) => %f" % (thisfile(), linenum(), max(sines_times_cosines))
+    print("[%s:%d] max(sines_times_cosines) => %f" % (thisfile(), linenum(), max(sines_times_cosines)))
 
 def test_Addition_Sine_and_Sine():
     
@@ -47,8 +47,8 @@ def test_Addition_Sine_and_Sine():
     
     sines_sum = [sum(x) for x in zip(sines_1, sines_2)]
     
-    print "[%s:%d] max(sines_sum) => %f" % (thisfile(), linenum(), max(sines_sum))
-    print "[%s:%d] min(sines_sum) => %f" % (thisfile(), linenum(), min(sines_sum))
+    print("[%s:%d] max(sines_sum) => %f" % (thisfile(), linenum(), max(sines_sum)))
+    print("[%s:%d] min(sines_sum) => %f" % (thisfile(), linenum(), min(sines_sum)))
     
     
 #     plt.plot(sines_sum)

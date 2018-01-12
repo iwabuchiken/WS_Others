@@ -26,8 +26,12 @@ class BarData(Enum):
     
 #     HighLowDiff_ID_Start    = 1
 #     HighLowDiff_ID_End      = 5
-    HighLowDiff_ID_Start    = 195
-    HighLowDiff_ID_End      = 202
+#    HighLowDiff_ID_Start    = 195
+#    HighLowDiff_ID_End      = 202
+#    HighLowDiff_ID_Start    = 219	# 2017.12.18 13:00
+#    HighLowDiff_ID_End      = 226	# 2017.12.16 06:00
+    HighLowDiff_ID_Start    = 243	# 2017.12.15 13:00
+    HighLowDiff_ID_End      = 250	# 2017.12.15 06:00
 
 class FPath(Enum):
     
