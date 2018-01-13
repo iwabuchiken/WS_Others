@@ -29,6 +29,10 @@ import sys
 from libs import cons
 # import cons
 
+import copy
+
+import numpy
+
 ###############################################
 
 def test_func():
@@ -457,6 +461,7 @@ class BarData :
     dateTime_Local  = ""
     
 #/class BarData :
+
 
 '''###################
     _get_HighLowDiffs__OC(target_Ary)
@@ -1133,3 +1138,139 @@ def get_BarData_MetaInfo(fpath_In, header_Length) :
     return dict
 
 #/get_BarData_MetaInfo(fname_In)
+
+def get_AryOf_BarDatas_PatternMatched__RSI( # 20180113_175014
+        aryOf_BarDatas, 
+        numOf_Sequence, 
+        rangeOf_Flat, 
+        flag_UpDown) :
+    
+    '''###################
+        reverse data        
+    ###################'''
+    ary_Tmp = copy.deepcopy(aryOf_BarDatas)
+    
+    ary_Tmp.reverse()
+    
+    d = ary_Tmp[0]
+#     d = aryOf_BarDatas[0]
+    
+#     print()
+#     print ("[%s:%d] aryOf_BarDatas[0] => %s" % \
+#            (os.path.basename(libs.thisfile()), libs.linenum(), d))
+#     
+#     print("%s price=%.3f" % (d.dateTime_Local, d.price_Open))
+#     
+#     print()
+    
+    '''###################
+        processing        
+    ###################'''
+    cnt_In = 0
+    
+    aryOf_Matched = []
+    
+    for item in ary_Tmp :
+        
+        ### :j1
+        if cnt_In > (numOf_Sequence - 1) : #if cnt_In > numOf_Sequence
+#         if cnt_In > numOf_Sequence : #if cnt_In > numOf_Sequence
+    
+            print()
+            print ("[%s:%d] cnt_In => over numOf_Seg" % (os.path.basename(libs.thisfile()), libs.linenum()))
+            print()
+            
+            return None
+        
+        else :
+            
+            ### :j2
+            if cnt_In == 0 : #if cnt_In == 0
+                
+                print()
+                print ("[%s:%d] cnt_In => is 0" % \
+                       (os.path.basename(libs.thisfile()), libs.linenum()))
+                print()
+                
+                ### put item to ary
+                aryOf_Matched.append(item)
+                
+                print()
+                print ("[%s:%d] item appended => %d" % \
+                       (os.path.basename(libs.thisfile()), libs.linenum(), item.no))
+        
+                print()
+                
+                ### count
+                cnt_In += 1
+                
+                ### next item
+                continue
+                
+            else :
+                
+                d2 = aryOf_Matched[0]
+                
+                ### prep for if judgement
+                r1 = d2.rsi
+                
+                r2 = item.rsi
+                
+                diff_r1_r2 = r1 - r2
+                
+                #debug
+                print()
+                print ("[%s:%d] j2 =>" % (os.path.basename(libs.thisfile()), libs.linenum()))
+                
+                print("r1 => %.3f" % (r1))
+                print("r2 => %.3f" % (r2))
+                print("rangeOf_Flat / 2 => %.3f" % (rangeOf_Flat / 2))
+                print("numpy.absolute(diff_r1_r2) => %.3f" % (numpy.absolute(diff_r1_r2)))
+                
+                print()
+                
+                
+                ### :j3
+                if  numpy.absolute(diff_r1_r2) <= rangeOf_Flat / 2: #if math.
+                
+                   print() 
+                   print ("[%s:%d] less than half of range : %d" % \
+                          (os.path.basename(libs.thisfile()), libs.linenum(), 
+                           item.no))
+                    
+                   print() 
+                   
+                   return None
+                
+                else :
+                    
+                   print() 
+                   print ("[%s:%d] more than half of range : %d" % \
+                          (os.path.basename(libs.thisfile()), libs.linenum(), 
+                           item.no))
+                    
+                   print()
+                   
+                   return None
+                #/if math.
+                
+                
+            
+            
+                
+            #/if cnt_In == 0
+                    
+                    
+        
+        
+    #/if cnt_In > numOf_Sequence
+    
+    
+        
+    #/for item in ary_Tmp :
+    '''###################
+        return        
+    ###################'''
+    return None
+
+#/get_AryOf_BarDatas_PatternMatched__RSI

@@ -52,3 +52,17 @@ class Label_ColNames(Enum):
     DAYS    = 'DAYS'
     SHIFT   = 'SHIFT'
     
+
+class PatternMatch(Enum) :
+    
+    PATTERNMATCH_NUMOFSEQUENCE_RSI = 3  # USED IN : get_AryOf_BarDatas_PatternMatched__RSI
+    
+    RANGE_FLAT_RSI          = 1.0  # USED IN : get_AryOf_BarDatas_PatternMatched__RSI
+    
+    FLAG_UPDOWN_UP          = 1  # USED IN : get_AryOf_BarDatas_PatternMatched__RSI
+    
+    FLAG_UPDOWN_DOWN        = 0  # USED IN : get_AryOf_BarDatas_PatternMatched__RSI
+    
+    
+    
+    
