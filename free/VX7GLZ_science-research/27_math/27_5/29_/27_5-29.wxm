@@ -1,0 +1,113 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 14.09.0 ] */
+
+/* [wxMaxima: input   start ] */
+/* section : 1.1 */
+/* elem[2,1] ==> pow.3 */
+
+x : 1; y : 0;
+k : 2;
+
+P1 : matrix([x],[y]);
+
+t_rng : [t, 0, 5];
+
+n : 1;
+
+A : matrix([1,1]);
+
+/*P : matrix([1,0],[0,4 * n]);*/
+P : matrix([1,0],[0,4 * t]);
+A_ : P . A;
+
+opt_y : [gnuplot_preamble, "set yrange[-1.5:200]; set xrange[-50:50]"];
+
+wxplot2d([parametric, A_[1][1], A_[2][1], t_rng], opt_y, same_xy);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* section : 1.2 */
+/* elem[2,1] ==> pow.3 */
+
+x : 1; y : 0;
+k : 2;
+
+P1 : matrix([x],[y]);
+
+t_rng : [t, 0, 2];
+
+n : 2;
+
+A : matrix([1,1]);
+
+/*P : matrix([1,0],[0,4 * n]);*/
+P : matrix([1,0],[0,4 * t]);
+/*A_ : P . A;*/
+A_ : P^^n . A;
+
+opt_y : [gnuplot_preamble, "set yrange[-1.5:10]; set xrange[-10:10]"];
+
+wxplot2d([parametric, A_[1][1], A_[2][1], t_rng], opt_y, same_xy);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* section : 2 */
+
+x : 1; y : -1;
+
+
+A : matrix([x],[y]);
+
+f1 : cos(t);
+f2 : sin(t);
+
+P : matrix([1 * cos(t),2 * (-1) * sin(t)],[1 * sin(t),-1 * cos(t)]);
+
+t_rng : [t, 0, %pi * 2];
+
+A_ : P . A;
+
+opt_y : [gnuplot_preamble, "set yrange[-2:2]; set xrange[-3:3]"];
+
+wxplot2d([parametric, A_[1][1], A_[2][1], t_rng], opt_y, same_xy);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* section : 2.01 */
+
+x : 1; y : 1;
+
+
+A : matrix([x],[y]);
+
+f1 : cos(t);
+f2 : sin(t);
+
+P : matrix([1 * cos(t),2 * (-1) * sin(t)],[1 * sin(t),-1 * cos(t)]);
+
+t_rng : [t, 0, %pi * 2];
+
+A_ : P . A;
+
+opt_y : [gnuplot_preamble, "set yrange[-2:2]; set xrange[-3:3]"];
+
+wxplot2d([parametric, A_[1][1], A_[2][1], t_rng], opt_y, same_xy);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* section : 2 */
+
+t_rng : [t, -%pi * 2, %pi * 2];
+
+f1 : cos(t);
+f2 : sin(t);
+
+fs : [f1, f2, f2 + 2 * f1, f2 + (- f1)];
+
+opt_y : [gnuplot_preamble, "set yrange[-3:3]"];
+
+wxplot2d(fs, t_rng, opt_y, same_xy);
+/* [wxMaxima: input   end   ] */
+
+/* Maxima can't load/batch files which end with a comment! */
+"Created with wxMaxima"$

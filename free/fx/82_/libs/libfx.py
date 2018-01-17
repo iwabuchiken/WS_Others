@@ -1274,3 +1274,97 @@ def get_AryOf_BarDatas_PatternMatched__RSI( # 20180113_175014
     return None
 
 #/get_AryOf_BarDatas_PatternMatched__RSI
+
+'''###################
+    get_AryOf_BarDatas_PatternMatched__RSI__V2( # 20180116_100610
+    
+    @param numOf_Sequence: number of bars in the flat range
+    
+    @param rangeOf_Flat: range of the flat period (in JPY; e.g. 0.16 ---> 0.16 yen)
+    
+    @return: [matched_up], [matched_down]
+    
+###################'''
+def get_AryOf_BarDatas_PatternMatched__RSI__V2( # 20180116_100610
+        aryOf_BarDatas, 
+        numOf_Sequence, 
+        rangeOf_Flat) :
+
+    '''###################
+        vars        
+    ###################'''
+#     ary_Tmp = []
+    
+    ary_Matched_D = []
+    ary_Matched_U = []
+    ary_Matched_ALL = []
+    
+    flag_ALLIN = False
+    
+    lenOf_Data = len(aryOf_BarDatas)
+    
+    lenOf_FlatBars  = 4
+    
+    '''###################
+        reverse data        
+    ###################'''
+    ary_BarDatas_tmp = copy.deepcopy(aryOf_BarDatas)
+    
+    ary_BarDatas_tmp.reverse()
+    
+    '''######################################
+        loop        
+    ######################################'''
+    #debug
+    count = 0
+    cnt_Max = 8
+    
+    '''###################
+        for : i        
+    ###################'''
+    for i in range(lenOf_Data - lenOf_FlatBars):
+        
+        #debug
+        if count > cnt_Max : #if count > cnt_Max
+            
+            print()
+            print ("[%s:%d] debug breaking ..." % (os.path.basename(libs.thisfile()), libs.linenum()))
+
+            print()
+
+            return None
+            
+        #/if count > cnt_Max
+        
+        count += 1
+
+        ### get : base bar
+        d1 = ary_BarDatas_tmp[i]
+        
+        '''###################
+            for : j        
+        ###################'''
+        for j in range(lenOf_FlatBars): # range : 0 ~ 3
+
+            d2 = ary_BarDatas_tmp[j]
+            
+            '''###################
+                get : rsi values        
+            ###################'''
+            r1 = d1.rsi
+            r2 = d2.rsi
+            
+            diff = r1 - r2
+            
+        #/for j in range(lenOf_FlatBars:
+
+        
+    #/for i in range(lenOf_Data - lenOf_FlatBars):
+
+    
+    '''###################
+        return        
+    ###################'''
+    return None
+
+#/get_AryOf_BarDatas_PatternMatched__RSI__V2
