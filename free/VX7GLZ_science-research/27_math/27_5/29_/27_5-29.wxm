@@ -95,6 +95,72 @@ wxplot2d([parametric, A_[1][1], A_[2][1], t_rng], opt_y, same_xy);
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: input   start ] */
+/* section : 2.02 */
+
+x : -1; y : 1;
+
+
+A : matrix([x],[y]);
+
+f1 : cos(t);
+f2 : sin(t);
+
+P : matrix([1 * cos(t),2 * (-1) * sin(t)],[1 * sin(t),-1 * cos(t)]);
+
+t_rng : [t, 0, %pi * 2];
+
+A_ : P . A;
+
+opt_y : [gnuplot_preamble, "set yrange[-2:2]; set xrange[-3:3]"];
+
+wxplot2d([parametric, A_[1][1], A_[2][1], t_rng], opt_y, same_xy);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* section : 2.03 */
+
+x : -1; y : -1;
+
+
+A : matrix([x],[y]);
+
+f1 : cos(t);
+f2 : sin(t);
+
+P : matrix([1 * cos(t),2 * (-1) * sin(t)],[1 * sin(t),-1 * cos(t)]);
+
+t_rng : [t, 0, %pi * 2];
+
+A_ : P . A;
+
+opt_y : [gnuplot_preamble, "set yrange[-2:2]; set xrange[-3:3]"];
+
+wxplot2d([parametric, A_[1][1], A_[2][1], t_rng], opt_y, same_xy);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* section : 2.04 */
+
+x : 1.4; y : 1;
+
+
+A : matrix([x],[y]);
+
+f1 : cos(t);
+f2 : sin(t);
+
+P : matrix([1 * cos(t),2 * (-1) * sin(t)],[1 * sin(t),-1 * cos(t)]);
+
+t_rng : [t, 0, %pi * 2];
+
+A_ : P . A;
+
+opt_y : [gnuplot_preamble, "set yrange[-2:2]; set xrange[-3:3]"];
+
+wxplot2d([parametric, A_[1][1], A_[2][1], t_rng], opt_y, same_xy);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
 /* section : 2 */
 
 t_rng : [t, -%pi * 2, %pi * 2];
@@ -107,6 +173,28 @@ fs : [f1, f2, f2 + 2 * f1, f2 + (- f1)];
 opt_y : [gnuplot_preamble, "set yrange[-3:3]"];
 
 wxplot2d(fs, t_rng, opt_y, same_xy);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* section : 3 */
+
+x : 1.4; y : 1;
+
+
+A : matrix([x],[y]);
+
+f1 : cos(t);
+f2 : sin(t);
+
+P : matrix([1 * cos(t),2 * (-1) * sin(t)],[1 * sin(t),-1 * cos(t)]);
+
+t_rng : [t, 0, %pi * 2];
+
+A_ : P . A;
+
+opt_y : [gnuplot_preamble, "set yrange[-2:2]; set xrange[-3:3]"];
+
+wxplot2d([parametric, A_[1][1], A_[2][1], t_rng], opt_y, same_xy);
 /* [wxMaxima: input   end   ] */
 
 /* Maxima can't load/batch files which end with a comment! */

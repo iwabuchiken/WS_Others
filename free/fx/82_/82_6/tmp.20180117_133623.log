@@ -1,0 +1,16 @@
+[..\libs\libfx.py:209] file => opened : ../data/49_11_file-io.USDJPY.Period-H1.Days-720.Bars-17280.20171231_233725.csv
+[..\libs\libfx.py:218] skip headers => 2 lines
+[..\libs\libfx.py:310] file => closed : ../data/49_11_file-io.USDJPY.Period-H1.Days-720.Bars-17280.20171231_233725.csv
+
+[82_6.py:85] CSV rows => 722
+
+[82_6.py:88] row[0] => ['Pair=USDJPY', 'Period=H1', 'Days=720', 'Shift=1', 'Bars=17280', 'Time=20171231_233725']
+
+[..\libs\libfx.py:339] len(result) => 720
+[..\libs\libfx.py:402] len(aryOf_BarDatas) => 720
+
+[libfx.py:1331] debug breaking ...
+
+[82_6.py:124] exec_prog => done
+
+[82_6.py:219] all done

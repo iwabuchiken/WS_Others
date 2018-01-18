@@ -4,6 +4,10 @@
 '''
 C:\WORKS_2\WS\WS_Others\free\fx\82_\libs\libfx.py
 
+<log file operation>
+pushd C:\WORKS_2\WS\WS_Others\free\fx\82_\82_6
+cp_log.py
+
 '''
 
 import inspect
@@ -1325,6 +1329,13 @@ def get_AryOf_BarDatas_PatternMatched__RSI__V2( # 20180116_100610
     for i in range(lenOf_Data - lenOf_FlatBars):
         
         #debug
+        print()
+        print ("[%s:%d] loop i : %d ==================" % \
+               (os.path.basename(libs.thisfile()), libs.linenum(), i))
+    
+        print()
+        
+        #debug
         if count > cnt_Max : #if count > cnt_Max
             
             print()
@@ -1341,23 +1352,112 @@ def get_AryOf_BarDatas_PatternMatched__RSI__V2( # 20180116_100610
         ### get : base bar
         d1 = ary_BarDatas_tmp[i]
         
+        ### temp array
+        ary_Tmp = []
+        
         '''###################
             for : j        
         ###################'''
         for j in range(lenOf_FlatBars): # range : 0 ~ 3
 
-            d2 = ary_BarDatas_tmp[j]
+            d2 = ary_BarDatas_tmp[i + j]
+#             d2 = ary_BarDatas_tmp[j]
             
             '''###################
                 get : rsi values        
             ###################'''
-            r1 = d1.rsi
-            r2 = d2.rsi
+            r1 = d1.rsi # 3
+            r2 = d2.rsi # 3
             
-            diff = r1 - r2
+            diff = r1 - r2  # j1
+
+            '''###################
+                j1        
+            ###################'''
+            if numpy.abs(diff) <= (rangeOf_Flat / 2.0) : #if math.abs(diff) <= (rangeOf_Flat / 2.0)
+        
+                #debug
+                print()
+                print ("[%s:%d] diff: %.3f / (rangeOf_Flat / 2.0) : %.3f" % 
+                       (os.path.basename(libs.thisfile()), libs.linenum(), 
+                        diff, (rangeOf_Flat / 2.0)))
             
+                print()
+                
+                ### put the item to : ary_Tmp : 1-1
+                ary_Tmp.append(d2)
+                
+                #debug
+                print ("[%s:%d] ary_Tmp => %s" % \
+                       (os.path.basename(libs.thisfile()), libs.linenum(), ary_Tmp))
+        
+                print()
+                
+                ### flag : up # 1-2
+                flag_ALLIN = True
+                
+            else :  # j1.N
+                
+                #debug
+                print()
+                print ("[%s:%d] diff > (rangeOf_Flat / 2.0) *********" % 
+                       (os.path.basename(libs.thisfile()), libs.linenum()))
+            
+                print()
+            #/if math.abs(diff) <= (rangeOf_Flat / 2.0)
+                
+#                 ### clear : ary_Tmp
+#                 #ref https://stackoverflow.com/questions/3499233/erase-whole-array-python "answered Aug 17 '10 at 4:03"
+#                 ary_Tmp = []
+                
+                ### flag --> put down
+                flag_ALLIN = False
+                
+                ### out : from for.j
+                break
+        
+            ### j2 : next j?
         #/for j in range(lenOf_FlatBars:
 
+        '''###################
+            j3        
+        ###################'''
+        if flag_ALLIN == True : #if flag_ALLIN == True
+        
+            #debug
+            print()
+            print ("[%s:%d] flag_ALLIN => %s" % \
+                   (os.path.basename(libs.thisfile()), libs.linenum(), \
+                    flag_ALLIN))
+
+            print()
+            
+            ### flag ---> back to : False
+            flag_ALLIN = False
+        
+        else : #if flag_ALLIN == True
+        
+            #debug
+            print()
+            print ("[%s:%d] flag_ALLIN => %s ***************" % \
+                   (os.path.basename(libs.thisfile()), libs.linenum(), \
+                    flag_ALLIN))
+
+            print()
+            
+#             ### flag ---> back to : False
+#             flag_ALLIN = False
+        
+        #/if flag_ALLIN == True
+        
+        
+
+        '''###################
+            clear : ary_Tmp        
+        ###################'''
+        ### clear : ary_Tmp
+        #ref https://stackoverflow.com/questions/3499233/erase-whole-array-python "answered Aug 17 '10 at 4:03"
+        ary_Tmp = []
         
     #/for i in range(lenOf_Data - lenOf_FlatBars):
 

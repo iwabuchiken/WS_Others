@@ -1,0 +1,327 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 14.09.0 ] */
+
+/* [wxMaxima: input   start ] */
+/* section : 1 */
+
+A : matrix([3,-2],[-1,2]);
+
+P : matrix([1,2],[1,-1]);
+
+P_ : invert(P);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+A . P;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+P_ . %;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+% ^^ n;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+P . % . P_;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+expand(%);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* sec : 2 */
+
+A : matrix([2,6],[-1,-3]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+% ^^ 100;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* sec : 3 */
+
+a : 3; b : 5;
+
+f1 : (b^n - a^n) / (b - a);
+
+fs : [f1, n^2];
+
+n_rng : [n, 0, 2];
+
+opt_y : [gnuplot_preamble, "set yrange[0:2]"];
+
+tk_y : [ytics, 0, 0.5,2];
+
+wxplot2d(fs, n_rng, opt_y, same_xy, grid2d, tk_y);
+plot2d(fs, n_rng, opt_y, same_xy, grid2d, tk_y);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* sec : 3.2 */
+
+a : 2; b : 3;
+
+f1 : (b^n - a^n) / (b - a);
+
+fs : [f1, n^2];
+
+n_rng : [n, 0, 2];
+
+opt_y : [gnuplot_preamble, "set yrange[0:2]"];
+
+tk_y : [ytics, 0, 0.5,2];
+
+wxplot2d(fs, n_rng, opt_y, same_xy, grid2d, tk_y);
+plot2d(fs, n_rng, opt_y, same_xy, grid2d, tk_y);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* sec : 3.3 */
+
+a : 2; b : 4;
+
+f1 : (b^n - a^n) / (b - a);
+
+fs : [f1, n^2];
+
+n_rng : [n, 0, 2];
+
+opt_y : [gnuplot_preamble, "set yrange[0:2]"];
+
+tk_y : [ytics, 0, 0.5,2];
+
+wxplot2d(fs, n_rng, opt_y, same_xy, grid2d, tk_y);
+plot2d(fs, n_rng, opt_y, same_xy, grid2d, tk_y);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* sec : 3.5 */
+
+a : 2; b : 5;
+
+f1 : (b^n - a^n) / (b - a);
+
+fs : [f1, n^2];
+
+n_rng : [n, 0, 2];
+
+opt_y : [gnuplot_preamble, "set yrange[0:2]"];
+
+tk_y : [ytics, 0, 0.5,2];
+
+wxplot2d(fs, n_rng, opt_y, same_xy, grid2d, tk_y);
+plot2d(fs, n_rng, opt_y, same_xy, grid2d, tk_y);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* sec : 3.6 */
+
+a : 2; b : 6;
+
+f1 : (b^n - a^n) / (b - a);
+
+fs : [f1, n^2];
+
+n_rng : [n, 0, 2];
+
+opt_y : [gnuplot_preamble, "set yrange[0:2]"];
+
+tk_y : [ytics, 0, 0.5,2];
+
+wxplot2d(fs, n_rng, opt_y, same_xy, grid2d, tk_y);
+plot2d(fs, n_rng, opt_y, same_xy, grid2d, tk_y);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* sec : 3.7 */
+
+a : 2; b : 7;
+
+f1 : (b^n - a^n) / (b - a);
+
+fs : [f1, n^2];
+
+n_rng : [n, 0, 2];
+
+opt_y : [gnuplot_preamble, "set yrange[0:2]"];
+
+tk_y : [ytics, 0, 0.5,2];
+
+wxplot2d(fs, n_rng, opt_y, same_xy, grid2d, tk_y);
+plot2d(fs, n_rng, opt_y, same_xy, grid2d, tk_y);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* sec : 3.8 */
+
+a : 2; b : 15;
+
+f1 : (b^n - a^n) / (b - a);
+
+fs : [f1, n^2];
+
+n_rng : [n, 0, 2];
+
+opt_y : [gnuplot_preamble, "set yrange[0:2]"];
+
+tk_y : [ytics, 0, 0.5,2];
+
+wxplot2d(fs, n_rng, opt_y, same_xy, grid2d, tk_y);
+plot2d(fs, n_rng, opt_y, same_xy, grid2d, tk_y);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* sec : 3.9 */
+
+a : 2; b : 15;
+c : 2; d : 8;
+
+f1 : (b^n - a^n) / (b - a);
+f2 : (d^n - c^n) / (d - c);
+
+fs : [f1, f2, n^2];
+
+n_rng : [n, 0, 2];
+
+opt_y : [gnuplot_preamble, "set yrange[0:2]"];
+
+tk_y : [ytics, 0, 0.5,2];
+
+wxplot2d(fs, n_rng, opt_y, same_xy, grid2d, tk_y);
+plot2d(fs, n_rng, opt_y, same_xy, grid2d, tk_y);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* sec : 3.10 */
+
+a : 2; b : 15;
+c : 2; d : 8;
+
+f1 : (b^n - a^n) / (b - a);
+f2 : (d^n - c^n) / (d - c);
+
+fs : [diff(f1, n), diff(f2, n), n^2];
+
+n_rng : [n, 0, 2];
+
+opt_y : [gnuplot_preamble, "set yrange[0:2]"];
+
+tk_y : [ytics, 0, 0.5,2];
+
+wxplot2d(fs, n_rng, opt_y, same_xy, grid2d, tk_y);
+plot2d(fs, n_rng, opt_y, same_xy, grid2d, tk_y);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* sec : 3.11 */
+/* n range --> minus included */
+
+a : 2; b : 15;
+c : 2; d : 8;
+
+f1 : (b^n - a^n) / (b - a);
+f2 : (d^n - c^n) / (d - c);
+
+fs : [f1, f2, n^2];
+
+n_rng : [n, -5, 2];
+
+opt_y : [gnuplot_preamble, "set yrange[-1:1]"];
+
+tk_y : [ytics, 0, 0.5,2];
+
+wxplot2d(fs, n_rng, opt_y, same_xy, grid2d, tk_y);
+plot2d(fs, n_rng, opt_y, same_xy, grid2d, tk_y);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+limit(f1, n, -inf);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* sec : 3.12 */
+
+a : 2; b : 15;
+c : 2; d : 8;
+
+f1 : (b^n - a^n) / (b - a);
+f2 : (d^n - c^n) / (d - c);
+
+fs : [diff(f1, n), diff(f2, n), n^2];
+
+n_rng : [n, -20, 2];
+
+opt_y : [gnuplot_preamble, "set yrange[-1:1]"];
+
+tk_y : [ytics, 0, 0.5,2];
+
+wxplot2d(fs, n_rng, opt_y, same_xy, grid2d, tk_y);
+plot2d(fs, n_rng, opt_y, same_xy, grid2d, tk_y);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+f1;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+diff(f1,n);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* sec : 4.1 */
+
+kill(all);
+
+n : 2;
+a : 2;
+
+b_rng : [b, -5, 20];
+
+f1 : (1 / (b - a)) * log(b) * b^n;
+
+fs : [f1];
+
+opt_y : [gnuplot_preamble, "set yrange[-50:50]"];
+
+tk_y : [ytics, 0, 5,50];
+
+wxplot2d(fs, b_rng, opt_y, same_xy, grid2d, tk_y);
+plot2d(fs, b_rng, opt_y, same_xy, grid2d, tk_y);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* sec : 4.2 */
+
+kill(all);
+
+n : 3;
+a : 2;
+
+b_rng : [b, -5, 20];
+
+f1 : (1 / (b - a)) * log(b) * b^n;
+
+fs : [f1];
+
+opt_y : [gnuplot_preamble, "set yrange[-50:50]"];
+
+tk_y : [ytics, 0, 5,50];
+
+wxplot2d(fs, b_rng, opt_y, same_xy, grid2d, tk_y);
+plot2d(fs, b_rng, opt_y, same_xy, grid2d, tk_y);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+f1;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+solve(diff(f1, b) = 0, b);
+/* [wxMaxima: input   end   ] */
+
+/* Maxima can't load/batch files which end with a comment! */
+"Created with wxMaxima"$

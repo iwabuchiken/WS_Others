@@ -119,6 +119,16 @@ def exec_prog(): # from : 20180116_103908
                     rangeOf_Flat)
     
     '''###################
+        report        
+    ###################'''
+    print()
+    print ("[%s:%d] pattern matched => %s" % \
+           (os.path.basename(libs.thisfile()), libs.linenum(), 
+            aryOf_BarDatas_PatternMatched))
+                    
+    print()
+    
+    '''###################
         Report        
     ###################'''
     print ("[%s:%d] exec_prog => done" % (os.path.basename(libs.thisfile()), libs.linenum()))
