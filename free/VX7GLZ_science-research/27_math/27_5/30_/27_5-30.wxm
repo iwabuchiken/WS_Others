@@ -287,7 +287,7 @@ fs : [f1];
 
 opt_y : [gnuplot_preamble, "set yrange[-50:50]"];
 
-tk_y : [ytics, 0, 5,50];
+tk_y : [ytics, 0, 1,50];
 
 wxplot2d(fs, b_rng, opt_y, same_xy, grid2d, tk_y);
 plot2d(fs, b_rng, opt_y, same_xy, grid2d, tk_y);
@@ -322,6 +322,7 @@ f1;
 /* [wxMaxima: input   start ] */
 solve(diff(f1, b) = 0, b);
 /* [wxMaxima: input   end   ] */
+
 
 /* Maxima can't load/batch files which end with a comment! */
 "Created with wxMaxima"$

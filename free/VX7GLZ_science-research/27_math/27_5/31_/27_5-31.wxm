@@ -1,0 +1,101 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 14.09.0 ] */
+
+/* [wxMaxima: input   start ] */
+/* sec : 1.1 */
+
+kill(all);
+
+n : 2;
+a : 2;
+
+b_rng : [b, -5, 20];
+
+f1 : (1 / (b - a)) * log(b) * b^n;
+
+fs : [f1];
+
+opt_y : [gnuplot_preamble, "set yrange[-50:50]"];
+
+tk_y : [ytics, 0, 1,50];
+
+wxplot2d(fs, b_rng, opt_y, same_xy, grid2d, tk_y);
+plot2d(fs, b_rng, opt_y, same_xy, grid2d, tk_y);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* sec : 2 */
+
+kill(all);
+
+n : 2;
+a : 2;
+
+b_rng : [b, -5, 20];
+
+f1 : (1 / (b - a)) * log(b) * b^n;
+
+fs : [f1, diff(f1, b)];
+
+opt_y : [gnuplot_preamble, "set yrange[-50:50]"];
+
+tk_y : [ytics, 0, 1,50];
+
+wxplot2d(fs, b_rng, opt_y, same_xy, grid2d, tk_y);
+plot2d(fs, b_rng, opt_y, same_xy, grid2d, tk_y);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* sec : 3 */
+
+kill(all);
+
+n : 2;
+a : 2;
+
+b_rng : [b, -5, 20];
+
+f1 : (1 / (b - a)) * log(b) * b^n;
+f2 : diff(f1, b);
+f2_ : diff(f2, b);
+
+b : 0.68;
+
+f3_1 : b / (b - 2);
+f3_2 : 2 * b * log(b) / (b - 2);
+f3_3 : -1 * b^2 * log(b) / (b - 2)^2;
+
+f3 : f3_1 + f3_2 + f3_3;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+solve(x^2 = 3, x);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* sec : 3 */
+
+kill(all);
+
+n : 2;
+
+M : matrix([1], [1]);
+
+t_rng : [t, -5, 20];
+
+P : matrix([1 - t, -t],[t, 1 + t]);
+
+/*M_ : 2^n * P . M;*/
+M_ : P . M;
+
+opt_y : [gnuplot_preamble, "set yrange[-50:50]"];
+
+tk_y : [ytics, -5, 1,5];
+
+wxplot2d([parametric, M_[1][1], M_[2][1], t_rng], opt_y, same_xy, grid2d, tk_y);
+
+plot2d([parametric, M_[1][1], M_[2][1], t_rng], opt_y, same_xy, grid2d, tk_y);
+/* [wxMaxima: input   end   ] */
+
+/* Maxima can't load/batch files which end with a comment! */
+"Created with wxMaxima"$
