@@ -17,8 +17,12 @@ from time import gmtime, strftime, localtime, time
 
 from shutil import copyfile
 
+import getopt as go
+
 sys.path.append('.')
 sys.path.append('..')
+
+from libs import libs
 
 
 def linenum(depth=0):
@@ -87,11 +91,13 @@ def get_TimeLabel_Now(string_type="serial", mili=False):
     
 #]]get_TimeLabel_Now():
 
-def exec_prog():
+def exec_prog(label="nolabel"):
     
     fname_In = "tmp.log"
     
-    fname_Out = "tmp" + "." + get_TimeLabel_Now() + ".log"
+    fname_Out = "tmp" + "." \
+                + label + "." \
+                + get_TimeLabel_Now() + ".log"
     
     # rename
     # copy file
@@ -114,10 +120,33 @@ if __name__ == "__main__" :
     '''###################
         get options        
     ###################'''
+    result = libs.get_opt_2(sys.argv, "abc")
+    
+    print()
+    print(result)
+    print()
+    
+#     optlist, args = go.getopt(sys.argv[0:], "abcl:")
+#     optlist, args = go.getopt(sys.argv[1:], "abcl:")
+#     optlist, args = go.getopt(sys.argv, "abcl:")
+#     optlist, args = go.getopt(sys.argv, "l:")
+#     optlist, args = go.getopt(sys.argv, "l")
+#     opts = go.getopt(sys.argv, "l")
+#     opts = go.getopt(sys.argv, "l:")
+    
+#     #debug
+#     print("sys.argv")
+#     print(sys.argv)
+#     print()
+#     print(optlist)
+#     print(args)
+#     print(opts)
+    exit()
 
     '''###################
         evecute        
     ###################'''
+    
     exec_prog()
 
     print()

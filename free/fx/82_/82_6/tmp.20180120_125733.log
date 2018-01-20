@@ -1,0 +1,1491 @@
+[..\libs\libfx.py:213] file => opened : ../data/49_11_file-io.USDJPY.Period-H1.Days-720.Bars-17280.20171231_233725.csv
+[..\libs\libfx.py:222] skip headers => 2 lines
+[..\libs\libfx.py:314] file => closed : ../data/49_11_file-io.USDJPY.Period-H1.Days-720.Bars-17280.20171231_233725.csv
+
+[82_6.py:90] CSV rows => 722
+
+[82_6.py:93] row[0] => ['Pair=USDJPY', 'Period=H1', 'Days=720', 'Shift=1', 'Bars=17280', 'Time=20171231_233725']
+
+[..\libs\libfx.py:343] len(result) => 720
+[..\libs\libfx.py:406] len(aryOf_BarDatas) => 720
+
+[libfx.py:1335] loop i : 0 ==================
+
+
+[libfx.py:1383] diff: 0.000 / (rangeOf_Flat / 2.0) : 0.500
+
+[libfx.py:1393] ary_Tmp => [<libs.libfx.BarData object at 0x0000000007F969E8>]
+
+
+[libfx.py:1383] diff: -0.169 / (rangeOf_Flat / 2.0) : 0.500
+
+[libfx.py:1393] ary_Tmp => [<libs.libfx.BarData object at 0x0000000007F969E8>, <libs.libfx.BarData object at 0x0000000007F969B0>]
+
+
+[libfx.py:1405] diff > (rangeOf_Flat / 2.0) *********
+
+
+[libfx.py:1444] (i = 0 ) flag_ALLIN => False ***************
+
+
+[libfx.py:1335] loop i : 1 ==================
+
+
+[libfx.py:1383] diff: 0.000 / (rangeOf_Flat / 2.0) : 0.500
+
+[libfx.py:1393] ary_Tmp => [<libs.libfx.BarData object at 0x0000000007F969B0>]
+
+
+[libfx.py:1405] diff > (rangeOf_Flat / 2.0) *********
+
+
+[libfx.py:1444] (i = 1 ) flag_ALLIN => False ***************
+
+
+[libfx.py:1335] loop i : 2 ==================
+
+
+[libfx.py:1383] diff: 0.000 / (rangeOf_Flat / 2.0) : 0.500
+
+[libfx.py:1393] ary_Tmp => [<libs.libfx.BarData object at 0x0000000007F96978>]
+
+
+[libfx.py:1405] diff > (rangeOf_Flat / 2.0) *********
+
+
+[libfx.py:1444] (i = 2 ) flag_ALLIN => False ***************
+
+
+[libfx.py:1335] loop i : 3 ==================
+
+
+[libfx.py:1383] diff: 0.000 / (rangeOf_Flat / 2.0) : 0.500
+
+[libfx.py:1393] ary_Tmp => [<libs.libfx.BarData object at 0x0000000007F96940>]
+
+
+[libfx.py:1405] diff > (rangeOf_Flat / 2.0) *********
+
+
+[libfx.py:1444] (i = 3 ) flag_ALLIN => False ***************
+
+
+[libfx.py:1335] loop i : 4 ==================
+
+
+[libfx.py:1383] diff: 0.000 / (rangeOf_Flat / 2.0) : 0.500
+
+[libfx.py:1393] ary_Tmp => [<libs.libfx.BarData object at 0x0000000007F96908>]
+
+
+[libfx.py:1383] diff: -0.298 / (rangeOf_Flat / 2.0) : 0.500
+
+[libfx.py:1393] ary_Tmp => [<libs.libfx.BarData object at 0x0000000007F96908>, <libs.libfx.BarData object at 0x0000000007F968D0>]
+
+
+[libfx.py:1405] diff > (rangeOf_Flat / 2.0) *********
+
+
+[libfx.py:1444] (i = 4 ) flag_ALLIN => False ***************
+
+
+[libfx.py:1335] loop i : 5 ==================
+
+
+[libfx.py:1383] diff: 0.000 / (rangeOf_Flat / 2.0) : 0.500
+
+[libfx.py:1393] ary_Tmp => [<libs.libfx.BarData object at 0x0000000007F968D0>]
+
+
+[libfx.py:1405] diff > (rangeOf_Flat / 2.0) *********
+
+
+[libfx.py:1444] (i = 5 ) flag_ALLIN => False ***************
+
+
+[libfx.py:1335] loop i : 6 ==================
+
+
+[libfx.py:1383] diff: 0.000 / (rangeOf_Flat / 2.0) : 0.500
+
+[libfx.py:1393] ary_Tmp => [<libs.libfx.BarData object at 0x0000000007F96898>]
+
+
+[libfx.py:1405] diff > (rangeOf_Flat / 2.0) *********
+
+
+[libfx.py:1444] (i = 6 ) flag_ALLIN => False ***************
+
+
+[libfx.py:1335] loop i : 7 ==================
+
+
+[libfx.py:1383] diff: 0.000 / (rangeOf_Flat / 2.0) : 0.500
+
+[libfx.py:1393] ary_Tmp => [<libs.libfx.BarData object at 0x0000000007F96860>]
+
+
+[libfx.py:1405] diff > (rangeOf_Flat / 2.0) *********
+
+
+[libfx.py:1444] (i = 7 ) flag_ALLIN => False ***************
+
+
+[libfx.py:1335] loop i : 8 ==================
+
+
+[libfx.py:1383] diff: 0.000 / (rangeOf_Flat / 2.0) : 0.500
+
+[libfx.py:1393] ary_Tmp => [<libs.libfx.BarData object at 0x0000000007F96828>]
+
+
+[libfx.py:1405] diff > (rangeOf_Flat / 2.0) *********
+
+
+[libfx.py:1444] (i = 8 ) flag_ALLIN => False ***************
+
+
+[libfx.py:1335] loop i : 9 ==================
+
+
+[libfx.py:1383] diff: 0.000 / (rangeOf_Flat / 2.0) : 0.500
+
+[libfx.py:1393] ary_Tmp => [<libs.libfx.BarData object at 0x0000000007F967F0>]
+
+
+[libfx.py:1405] diff > (rangeOf_Flat / 2.0) *********
+
+
+[libfx.py:1444] (i = 9 ) flag_ALLIN => False ***************
+
+
+[libfx.py:1335] loop i : 10 ==================
+
+
+[libfx.py:1383] diff: 0.000 / (rangeOf_Flat / 2.0) : 0.500
+
+[libfx.py:1393] ary_Tmp => [<libs.libfx.BarData object at 0x0000000007F967B8>]
+
+
+[libfx.py:1405] diff > (rangeOf_Flat / 2.0) *********
+
+
+[libfx.py:1444] (i = 10 ) flag_ALLIN => False ***************
+
+
+[libfx.py:1335] loop i : 11 ==================
+
+
+[libfx.py:1383] diff: 0.000 / (rangeOf_Flat / 2.0) : 0.500
+
+[libfx.py:1393] ary_Tmp => [<libs.libfx.BarData object at 0x0000000007F96780>]
+
+
+[libfx.py:1405] diff > (rangeOf_Flat / 2.0) *********
+
+
+[libfx.py:1444] (i = 11 ) flag_ALLIN => False ***************
+
+
+[libfx.py:1335] loop i : 12 ==================
+
+
+[libfx.py:1383] diff: 0.000 / (rangeOf_Flat / 2.0) : 0.500
+
+[libfx.py:1393] ary_Tmp => [<libs.libfx.BarData object at 0x0000000007F96748>]
+
+
+[libfx.py:1405] diff > (rangeOf_Flat / 2.0) *********
+
+
+[libfx.py:1444] (i = 12 ) flag_ALLIN => False ***************
+
+
+[libfx.py:1335] loop i : 13 ==================
+
+
+[libfx.py:1383] diff: 0.000 / (rangeOf_Flat / 2.0) : 0.500
+
+[libfx.py:1393] ary_Tmp => [<libs.libfx.BarData object at 0x0000000007F96710>]
+
+
+[libfx.py:1405] diff > (rangeOf_Flat / 2.0) *********
+
+
+[libfx.py:1444] (i = 13 ) flag_ALLIN => False ***************
+
+
+[libfx.py:1335] loop i : 14 ==================
+
+
+[libfx.py:1383] diff: 0.000 / (rangeOf_Flat / 2.0) : 0.500
+
+[libfx.py:1393] ary_Tmp => [<libs.libfx.BarData object at 0x0000000007F966D8>]
+
+
+[libfx.py:1405] diff > (rangeOf_Flat / 2.0) *********
+
+
+[libfx.py:1444] (i = 14 ) flag_ALLIN => False ***************
+
+
+[libfx.py:1335] loop i : 15 ==================
+
+
+[libfx.py:1383] diff: 0.000 / (rangeOf_Flat / 2.0) : 0.500
+
+[libfx.py:1393] ary_Tmp => [<libs.libfx.BarData object at 0x0000000007F966A0>]
+
+
+[libfx.py:1405] diff > (rangeOf_Flat / 2.0) *********
+
+
+[libfx.py:1444] (i = 15 ) flag_ALLIN => False ***************
+
+
+[libfx.py:1335] loop i : 16 ==================
+
+
+[libfx.py:1383] diff: 0.000 / (rangeOf_Flat / 2.0) : 0.500
+
+[libfx.py:1393] ary_Tmp => [<libs.libfx.BarData object at 0x0000000007F96668>]
+
+
+[libfx.py:1405] diff > (rangeOf_Flat / 2.0) *********
+
+
+[libfx.py:1444] (i = 16 ) flag_ALLIN => False ***************
+
+
+[libfx.py:1335] loop i : 17 ==================
+
+
+[libfx.py:1383] diff: 0.000 / (rangeOf_Flat / 2.0) : 0.500
+
+[libfx.py:1393] ary_Tmp => [<libs.libfx.BarData object at 0x0000000007F96630>]
+
+
+[libfx.py:1405] diff > (rangeOf_Flat / 2.0) *********
+
+
+[libfx.py:1444] (i = 17 ) flag_ALLIN => False ***************
+
+
+[libfx.py:1335] loop i : 18 ==================
+
+
+[libfx.py:1383] diff: 0.000 / (rangeOf_Flat / 2.0) : 0.500
+
+[libfx.py:1393] ary_Tmp => [<libs.libfx.BarData object at 0x0000000007F965F8>]
+
+
+[libfx.py:1405] diff > (rangeOf_Flat / 2.0) *********
+
+
+[libfx.py:1444] (i = 18 ) flag_ALLIN => False ***************
+
+
+[libfx.py:1335] loop i : 19 ==================
+
+
+[libfx.py:1383] diff: 0.000 / (rangeOf_Flat / 2.0) : 0.500
+
+[libfx.py:1393] ary_Tmp => [<libs.libfx.BarData object at 0x0000000007F965C0>]
+
+
+[libfx.py:1405] diff > (rangeOf_Flat / 2.0) *********
+
+
+[libfx.py:1444] (i = 19 ) flag_ALLIN => False ***************
+
+
+[libfx.py:1335] loop i : 20 ==================
+
+
+[libfx.py:1383] diff: 0.000 / (rangeOf_Flat / 2.0) : 0.500
+
+[libfx.py:1393] ary_Tmp => [<libs.libfx.BarData object at 0x0000000007F96588>]
+
+
+[libfx.py:1383] diff: -0.460 / (rangeOf_Flat / 2.0) : 0.500
+
+[libfx.py:1393] ary_Tmp => [<libs.libfx.BarData object at 0x0000000007F96588>, <libs.libfx.BarData object at 0x0000000007F96550>]
+
+
+[libfx.py:1405] diff > (rangeOf_Flat / 2.0) *********
+
+
+[libfx.py:1444] (i = 20 ) flag_ALLIN => False ***************
+
+
+[libfx.py:1335] loop i : 21 ==================
+
+
+[libfx.py:1383] diff: 0.000 / (rangeOf_Flat / 2.0) : 0.500
+
+[libfx.py:1393] ary_Tmp => [<libs.libfx.BarData object at 0x0000000007F96550>]
+
+
+[libfx.py:1405] diff > (rangeOf_Flat / 2.0) *********
+
+
+[libfx.py:1444] (i = 21 ) flag_ALLIN => False ***************
+
+
+[libfx.py:1335] loop i : 22 ==================
+
+
+[libfx.py:1383] diff: 0.000 / (rangeOf_Flat / 2.0) : 0.500
+
+[libfx.py:1393] ary_Tmp => [<libs.libfx.BarData object at 0x0000000007F96518>]
+
+
+[libfx.py:1405] diff > (rangeOf_Flat / 2.0) *********
+
+
+[libfx.py:1444] (i = 22 ) flag_ALLIN => False ***************
+
+
+[libfx.py:1335] loop i : 23 ==================
+
+
+[libfx.py:1383] diff: 0.000 / (rangeOf_Flat / 2.0) : 0.500
+
+[libfx.py:1393] ary_Tmp => [<libs.libfx.BarData object at 0x0000000007F964E0>]
+
+
+[libfx.py:1405] diff > (rangeOf_Flat / 2.0) *********
+
+
+[libfx.py:1444] (i = 23 ) flag_ALLIN => False ***************
+
+
+[libfx.py:1335] loop i : 24 ==================
+
+
+[libfx.py:1383] diff: 0.000 / (rangeOf_Flat / 2.0) : 0.500
+
+[libfx.py:1393] ary_Tmp => [<libs.libfx.BarData object at 0x0000000007F964A8>]
+
+
+[libfx.py:1405] diff > (rangeOf_Flat / 2.0) *********
+
+
+[libfx.py:1444] (i = 24 ) flag_ALLIN => False ***************
+
+
+[libfx.py:1335] loop i : 25 ==================
+
+
+[libfx.py:1383] diff: 0.000 / (rangeOf_Flat / 2.0) : 0.500
+
+[libfx.py:1393] ary_Tmp => [<libs.libfx.BarData object at 0x0000000007F96470>]
+
+
+[libfx.py:1405] diff > (rangeOf_Flat / 2.0) *********
+
+
+[libfx.py:1444] (i = 25 ) flag_ALLIN => False ***************
+
+
+[libfx.py:1335] loop i : 26 ==================
+
+
+[libfx.py:1383] diff: 0.000 / (rangeOf_Flat / 2.0) : 0.500
+
+[libfx.py:1393] ary_Tmp => [<libs.libfx.BarData object at 0x0000000007F96438>]
+
+
+[libfx.py:1405] diff > (rangeOf_Flat / 2.0) *********
+
+
+[libfx.py:1444] (i = 26 ) flag_ALLIN => False ***************
+
+
+[libfx.py:1335] loop i : 27 ==================
+
+
+[libfx.py:1383] diff: 0.000 / (rangeOf_Flat / 2.0) : 0.500
+
+[libfx.py:1393] ary_Tmp => [<libs.libfx.BarData object at 0x0000000007F96400>]
+
+
+[libfx.py:1405] diff > (rangeOf_Flat / 2.0) *********
+
+
+[libfx.py:1444] (i = 27 ) flag_ALLIN => False ***************
+
+
+[libfx.py:1335] loop i : 28 ==================
+
+
+[libfx.py:1383] diff: 0.000 / (rangeOf_Flat / 2.0) : 0.500
+
+[libfx.py:1393] ary_Tmp => [<libs.libfx.BarData object at 0x0000000007F963C8>]
+
+
+[libfx.py:1405] diff > (rangeOf_Flat / 2.0) *********
+
+
+[libfx.py:1444] (i = 28 ) flag_ALLIN => False ***************
+
+
+[libfx.py:1335] loop i : 29 ==================
+
+
+[libfx.py:1383] diff: 0.000 / (rangeOf_Flat / 2.0) : 0.500
+
+[libfx.py:1393] ary_Tmp => [<libs.libfx.BarData object at 0x0000000007F96390>]
+
+
+[libfx.py:1405] diff > (rangeOf_Flat / 2.0) *********
+
+
+[libfx.py:1444] (i = 29 ) flag_ALLIN => False ***************
+
+
+[libfx.py:1335] loop i : 30 ==================
+
+
+[libfx.py:1383] diff: 0.000 / (rangeOf_Flat / 2.0) : 0.500
+
+[libfx.py:1393] ary_Tmp => [<libs.libfx.BarData object at 0x0000000007F96358>]
+
+
+[libfx.py:1405] diff > (rangeOf_Flat / 2.0) *********
+
+
+[libfx.py:1444] (i = 30 ) flag_ALLIN => False ***************
+
+
+[libfx.py:1335] loop i : 31 ==================
+
+
+[libfx.py:1383] diff: 0.000 / (rangeOf_Flat / 2.0) : 0.500
+
+[libfx.py:1393] ary_Tmp => [<libs.libfx.BarData object at 0x0000000007F96320>]
+
+
+[libfx.py:1405] diff > (rangeOf_Flat / 2.0) *********
+
+
+[libfx.py:1444] (i = 31 ) flag_ALLIN => False ***************
+
+
+[libfx.py:1335] loop i : 32 ==================
+
+
+[libfx.py:1383] diff: 0.000 / (rangeOf_Flat / 2.0) : 0.500
+
+[libfx.py:1393] ary_Tmp => [<libs.libfx.BarData object at 0x0000000007F962E8>]
+
+
+[libfx.py:1405] diff > (rangeOf_Flat / 2.0) *********
+
+
+[libfx.py:1444] (i = 32 ) flag_ALLIN => False ***************
+
+
+[libfx.py:1335] loop i : 33 ==================
+
+
+[libfx.py:1383] diff: 0.000 / (rangeOf_Flat / 2.0) : 0.500
+
+[libfx.py:1393] ary_Tmp => [<libs.libfx.BarData object at 0x0000000007F962B0>]
+
+
+[libfx.py:1405] diff > (rangeOf_Flat / 2.0) *********
+
+
+[libfx.py:1444] (i = 33 ) flag_ALLIN => False ***************
+
+
+[libfx.py:1335] loop i : 34 ==================
+
+
+[libfx.py:1383] diff: 0.000 / (rangeOf_Flat / 2.0) : 0.500
+
+[libfx.py:1393] ary_Tmp => [<libs.libfx.BarData object at 0x0000000007F96278>]
+
+
+[libfx.py:1405] diff > (rangeOf_Flat / 2.0) *********
+
+
+[libfx.py:1444] (i = 34 ) flag_ALLIN => False ***************
+
+
+[libfx.py:1335] loop i : 35 ==================
+
+
+[libfx.py:1383] diff: 0.000 / (rangeOf_Flat / 2.0) : 0.500
+
+[libfx.py:1393] ary_Tmp => [<libs.libfx.BarData object at 0x0000000007F96240>]
+
+
+[libfx.py:1405] diff > (rangeOf_Flat / 2.0) *********
+
+
+[libfx.py:1444] (i = 35 ) flag_ALLIN => False ***************
+
+
+[libfx.py:1335] loop i : 36 ==================
+
+
+[libfx.py:1383] diff: 0.000 / (rangeOf_Flat / 2.0) : 0.500
+
+[libfx.py:1393] ary_Tmp => [<libs.libfx.BarData object at 0x0000000007F96208>]
+
+
+[libfx.py:1405] diff > (rangeOf_Flat / 2.0) *********
+
+
+[libfx.py:1444] (i = 36 ) flag_ALLIN => False ***************
+
+
+[libfx.py:1335] loop i : 37 ==================
+
+
+[libfx.py:1383] diff: 0.000 / (rangeOf_Flat / 2.0) : 0.500
+
+[libfx.py:1393] ary_Tmp => [<libs.libfx.BarData object at 0x0000000007F961D0>]
+
+
+[libfx.py:1405] diff > (rangeOf_Flat / 2.0) *********
+
+
+[libfx.py:1444] (i = 37 ) flag_ALLIN => False ***************
+
+
+[libfx.py:1335] loop i : 38 ==================
+
+
+[libfx.py:1383] diff: 0.000 / (rangeOf_Flat / 2.0) : 0.500
+
+[libfx.py:1393] ary_Tmp => [<libs.libfx.BarData object at 0x0000000007F96198>]
+
+
+[libfx.py:1405] diff > (rangeOf_Flat / 2.0) *********
+
+
+[libfx.py:1444] (i = 38 ) flag_ALLIN => False ***************
+
+
+[libfx.py:1335] loop i : 39 ==================
+
+
+[libfx.py:1383] diff: 0.000 / (rangeOf_Flat / 2.0) : 0.500
+
+[libfx.py:1393] ary_Tmp => [<libs.libfx.BarData object at 0x0000000007F96160>]
+
+
+[libfx.py:1405] diff > (rangeOf_Flat / 2.0) *********
+
+
+[libfx.py:1444] (i = 39 ) flag_ALLIN => False ***************
+
+
+[libfx.py:1335] loop i : 40 ==================
+
+
+[libfx.py:1383] diff: 0.000 / (rangeOf_Flat / 2.0) : 0.500
+
+[libfx.py:1393] ary_Tmp => [<libs.libfx.BarData object at 0x0000000007F96128>]
+
+
+[libfx.py:1405] diff > (rangeOf_Flat / 2.0) *********
+
+
+[libfx.py:1444] (i = 40 ) flag_ALLIN => False ***************
+
+
+[libfx.py:1335] loop i : 41 ==================
+
+
+[libfx.py:1383] diff: 0.000 / (rangeOf_Flat / 2.0) : 0.500
+
+[libfx.py:1393] ary_Tmp => [<libs.libfx.BarData object at 0x0000000007F960F0>]
+
+
+[libfx.py:1405] diff > (rangeOf_Flat / 2.0) *********
+
+
+[libfx.py:1444] (i = 41 ) flag_ALLIN => False ***************
+
+
+[libfx.py:1335] loop i : 42 ==================
+
+
+[libfx.py:1383] diff: 0.000 / (rangeOf_Flat / 2.0) : 0.500
+
+[libfx.py:1393] ary_Tmp => [<libs.libfx.BarData object at 0x0000000007F960B8>]
+
+
+[libfx.py:1405] diff > (rangeOf_Flat / 2.0) *********
+
+
+[libfx.py:1444] (i = 42 ) flag_ALLIN => False ***************
+
+
+[libfx.py:1335] loop i : 43 ==================
+
+
+[libfx.py:1383] diff: 0.000 / (rangeOf_Flat / 2.0) : 0.500
+
+[libfx.py:1393] ary_Tmp => [<libs.libfx.BarData object at 0x0000000007F96080>]
+
+
+[libfx.py:1405] diff > (rangeOf_Flat / 2.0) *********
+
+
+[libfx.py:1444] (i = 43 ) flag_ALLIN => False ***************
+
+
+[libfx.py:1335] loop i : 44 ==================
+
+
+[libfx.py:1383] diff: 0.000 / (rangeOf_Flat / 2.0) : 0.500
+
+[libfx.py:1393] ary_Tmp => [<libs.libfx.BarData object at 0x0000000007F96048>]
+
+
+[libfx.py:1405] diff > (rangeOf_Flat / 2.0) *********
+
+
+[libfx.py:1444] (i = 44 ) flag_ALLIN => False ***************
+
+
+[libfx.py:1335] loop i : 45 ==================
+
+
+[libfx.py:1383] diff: 0.000 / (rangeOf_Flat / 2.0) : 0.500
+
+[libfx.py:1393] ary_Tmp => [<libs.libfx.BarData object at 0x0000000007F92FD0>]
+
+
+[libfx.py:1405] diff > (rangeOf_Flat / 2.0) *********
+
+
+[libfx.py:1444] (i = 45 ) flag_ALLIN => False ***************
+
+
+[libfx.py:1335] loop i : 46 ==================
+
+
+[libfx.py:1383] diff: 0.000 / (rangeOf_Flat / 2.0) : 0.500
+
+[libfx.py:1393] ary_Tmp => [<libs.libfx.BarData object at 0x0000000007F92F98>]
+
+
+[libfx.py:1405] diff > (rangeOf_Flat / 2.0) *********
+
+
+[libfx.py:1444] (i = 46 ) flag_ALLIN => False ***************
+
+
+[libfx.py:1335] loop i : 47 ==================
+
+
+[libfx.py:1383] diff: 0.000 / (rangeOf_Flat / 2.0) : 0.500
+
+[libfx.py:1393] ary_Tmp => [<libs.libfx.BarData object at 0x0000000007F92F60>]
+
+
+[libfx.py:1405] diff > (rangeOf_Flat / 2.0) *********
+
+
+[libfx.py:1444] (i = 47 ) flag_ALLIN => False ***************
+
+
+[libfx.py:1335] loop i : 48 ==================
+
+
+[libfx.py:1383] diff: 0.000 / (rangeOf_Flat / 2.0) : 0.500
+
+[libfx.py:1393] ary_Tmp => [<libs.libfx.BarData object at 0x0000000007F92F28>]
+
+
+[libfx.py:1405] diff > (rangeOf_Flat / 2.0) *********
+
+
+[libfx.py:1444] (i = 48 ) flag_ALLIN => False ***************
+
+
+[libfx.py:1335] loop i : 49 ==================
+
+
+[libfx.py:1383] diff: 0.000 / (rangeOf_Flat / 2.0) : 0.500
+
+[libfx.py:1393] ary_Tmp => [<libs.libfx.BarData object at 0x0000000007F92EF0>]
+
+
+[libfx.py:1405] diff > (rangeOf_Flat / 2.0) *********
+
+
+[libfx.py:1444] (i = 49 ) flag_ALLIN => False ***************
+
+
+[libfx.py:1335] loop i : 50 ==================
+
+
+[libfx.py:1383] diff: 0.000 / (rangeOf_Flat / 2.0) : 0.500
+
+[libfx.py:1393] ary_Tmp => [<libs.libfx.BarData object at 0x0000000007F92EB8>]
+
+
+[libfx.py:1405] diff > (rangeOf_Flat / 2.0) *********
+
+
+[libfx.py:1444] (i = 50 ) flag_ALLIN => False ***************
+
+
+[libfx.py:1335] loop i : 51 ==================
+
+
+[libfx.py:1383] diff: 0.000 / (rangeOf_Flat / 2.0) : 0.500
+
+[libfx.py:1393] ary_Tmp => [<libs.libfx.BarData object at 0x0000000007F92E80>]
+
+
+[libfx.py:1405] diff > (rangeOf_Flat / 2.0) *********
+
+
+[libfx.py:1444] (i = 51 ) flag_ALLIN => False ***************
+
+
+[libfx.py:1335] loop i : 52 ==================
+
+
+[libfx.py:1383] diff: 0.000 / (rangeOf_Flat / 2.0) : 0.500
+
+[libfx.py:1393] ary_Tmp => [<libs.libfx.BarData object at 0x0000000007F92E48>]
+
+
+[libfx.py:1383] diff: 0.260 / (rangeOf_Flat / 2.0) : 0.500
+
+[libfx.py:1393] ary_Tmp => [<libs.libfx.BarData object at 0x0000000007F92E48>, <libs.libfx.BarData object at 0x0000000007F92E10>]
+
+
+[libfx.py:1405] diff > (rangeOf_Flat / 2.0) *********
+
+
+[libfx.py:1444] (i = 52 ) flag_ALLIN => False ***************
+
+
+[libfx.py:1335] loop i : 53 ==================
+
+
+[libfx.py:1383] diff: 0.000 / (rangeOf_Flat / 2.0) : 0.500
+
+[libfx.py:1393] ary_Tmp => [<libs.libfx.BarData object at 0x0000000007F92E10>]
+
+
+[libfx.py:1405] diff > (rangeOf_Flat / 2.0) *********
+
+
+[libfx.py:1444] (i = 53 ) flag_ALLIN => False ***************
+
+
+[libfx.py:1335] loop i : 54 ==================
+
+
+[libfx.py:1383] diff: 0.000 / (rangeOf_Flat / 2.0) : 0.500
+
+[libfx.py:1393] ary_Tmp => [<libs.libfx.BarData object at 0x0000000007F92DD8>]
+
+
+[libfx.py:1405] diff > (rangeOf_Flat / 2.0) *********
+
+
+[libfx.py:1444] (i = 54 ) flag_ALLIN => False ***************
+
+
+[libfx.py:1335] loop i : 55 ==================
+
+
+[libfx.py:1383] diff: 0.000 / (rangeOf_Flat / 2.0) : 0.500
+
+[libfx.py:1393] ary_Tmp => [<libs.libfx.BarData object at 0x0000000007F92DA0>]
+
+
+[libfx.py:1405] diff > (rangeOf_Flat / 2.0) *********
+
+
+[libfx.py:1444] (i = 55 ) flag_ALLIN => False ***************
+
+
+[libfx.py:1335] loop i : 56 ==================
+
+
+[libfx.py:1383] diff: 0.000 / (rangeOf_Flat / 2.0) : 0.500
+
+[libfx.py:1393] ary_Tmp => [<libs.libfx.BarData object at 0x0000000007F92D68>]
+
+
+[libfx.py:1383] diff: 0.097 / (rangeOf_Flat / 2.0) : 0.500
+
+[libfx.py:1393] ary_Tmp => [<libs.libfx.BarData object at 0x0000000007F92D68>, <libs.libfx.BarData object at 0x0000000007F92D30>]
+
+
+[libfx.py:1405] diff > (rangeOf_Flat / 2.0) *********
+
+
+[libfx.py:1444] (i = 56 ) flag_ALLIN => False ***************
+
+
+[libfx.py:1335] loop i : 57 ==================
+
+
+[libfx.py:1383] diff: 0.000 / (rangeOf_Flat / 2.0) : 0.500
+
+[libfx.py:1393] ary_Tmp => [<libs.libfx.BarData object at 0x0000000007F92D30>]
+
+
+[libfx.py:1405] diff > (rangeOf_Flat / 2.0) *********
+
+
+[libfx.py:1444] (i = 57 ) flag_ALLIN => False ***************
+
+
+[libfx.py:1335] loop i : 58 ==================
+
+
+[libfx.py:1383] diff: 0.000 / (rangeOf_Flat / 2.0) : 0.500
+
+[libfx.py:1393] ary_Tmp => [<libs.libfx.BarData object at 0x0000000007F92CF8>]
+
+
+[libfx.py:1405] diff > (rangeOf_Flat / 2.0) *********
+
+
+[libfx.py:1444] (i = 58 ) flag_ALLIN => False ***************
+
+
+[libfx.py:1335] loop i : 59 ==================
+
+
+[libfx.py:1383] diff: 0.000 / (rangeOf_Flat / 2.0) : 0.500
+
+[libfx.py:1393] ary_Tmp => [<libs.libfx.BarData object at 0x0000000007F92CC0>]
+
+
+[libfx.py:1405] diff > (rangeOf_Flat / 2.0) *********
+
+
+[libfx.py:1444] (i = 59 ) flag_ALLIN => False ***************
+
+
+[libfx.py:1335] loop i : 60 ==================
+
+
+[libfx.py:1383] diff: 0.000 / (rangeOf_Flat / 2.0) : 0.500
+
+[libfx.py:1393] ary_Tmp => [<libs.libfx.BarData object at 0x0000000007F92C88>]
+
+
+[libfx.py:1405] diff > (rangeOf_Flat / 2.0) *********
+
+
+[libfx.py:1444] (i = 60 ) flag_ALLIN => False ***************
+
+
+[libfx.py:1335] loop i : 61 ==================
+
+
+[libfx.py:1383] diff: 0.000 / (rangeOf_Flat / 2.0) : 0.500
+
+[libfx.py:1393] ary_Tmp => [<libs.libfx.BarData object at 0x0000000007F92C50>]
+
+
+[libfx.py:1405] diff > (rangeOf_Flat / 2.0) *********
+
+
+[libfx.py:1444] (i = 61 ) flag_ALLIN => False ***************
+
+
+[libfx.py:1335] loop i : 62 ==================
+
+
+[libfx.py:1383] diff: 0.000 / (rangeOf_Flat / 2.0) : 0.500
+
+[libfx.py:1393] ary_Tmp => [<libs.libfx.BarData object at 0x0000000007F92C18>]
+
+
+[libfx.py:1405] diff > (rangeOf_Flat / 2.0) *********
+
+
+[libfx.py:1444] (i = 62 ) flag_ALLIN => False ***************
+
+
+[libfx.py:1335] loop i : 63 ==================
+
+
+[libfx.py:1383] diff: 0.000 / (rangeOf_Flat / 2.0) : 0.500
+
+[libfx.py:1393] ary_Tmp => [<libs.libfx.BarData object at 0x0000000007F92BE0>]
+
+
+[libfx.py:1405] diff > (rangeOf_Flat / 2.0) *********
+
+
+[libfx.py:1444] (i = 63 ) flag_ALLIN => False ***************
+
+
+[libfx.py:1335] loop i : 64 ==================
+
+
+[libfx.py:1383] diff: 0.000 / (rangeOf_Flat / 2.0) : 0.500
+
+[libfx.py:1393] ary_Tmp => [<libs.libfx.BarData object at 0x0000000007F92BA8>]
+
+
+[libfx.py:1405] diff > (rangeOf_Flat / 2.0) *********
+
+
+[libfx.py:1444] (i = 64 ) flag_ALLIN => False ***************
+
+
+[libfx.py:1335] loop i : 65 ==================
+
+
+[libfx.py:1383] diff: 0.000 / (rangeOf_Flat / 2.0) : 0.500
+
+[libfx.py:1393] ary_Tmp => [<libs.libfx.BarData object at 0x0000000007F92B70>]
+
+
+[libfx.py:1405] diff > (rangeOf_Flat / 2.0) *********
+
+
+[libfx.py:1444] (i = 65 ) flag_ALLIN => False ***************
+
+
+[libfx.py:1335] loop i : 66 ==================
+
+
+[libfx.py:1383] diff: 0.000 / (rangeOf_Flat / 2.0) : 0.500
+
+[libfx.py:1393] ary_Tmp => [<libs.libfx.BarData object at 0x0000000007F92B38>]
+
+
+[libfx.py:1405] diff > (rangeOf_Flat / 2.0) *********
+
+
+[libfx.py:1444] (i = 66 ) flag_ALLIN => False ***************
+
+
+[libfx.py:1335] loop i : 67 ==================
+
+
+[libfx.py:1383] diff: 0.000 / (rangeOf_Flat / 2.0) : 0.500
+
+[libfx.py:1393] ary_Tmp => [<libs.libfx.BarData object at 0x0000000007F92B00>]
+
+
+[libfx.py:1383] diff: 0.334 / (rangeOf_Flat / 2.0) : 0.500
+
+[libfx.py:1393] ary_Tmp => [<libs.libfx.BarData object at 0x0000000007F92B00>, <libs.libfx.BarData object at 0x0000000007F92AC8>]
+
+
+[libfx.py:1405] diff > (rangeOf_Flat / 2.0) *********
+
+
+[libfx.py:1444] (i = 67 ) flag_ALLIN => False ***************
+
+
+[libfx.py:1335] loop i : 68 ==================
+
+
+[libfx.py:1383] diff: 0.000 / (rangeOf_Flat / 2.0) : 0.500
+
+[libfx.py:1393] ary_Tmp => [<libs.libfx.BarData object at 0x0000000007F92AC8>]
+
+
+[libfx.py:1405] diff > (rangeOf_Flat / 2.0) *********
+
+
+[libfx.py:1444] (i = 68 ) flag_ALLIN => False ***************
+
+
+[libfx.py:1335] loop i : 69 ==================
+
+
+[libfx.py:1383] diff: 0.000 / (rangeOf_Flat / 2.0) : 0.500
+
+[libfx.py:1393] ary_Tmp => [<libs.libfx.BarData object at 0x0000000007F92A90>]
+
+
+[libfx.py:1405] diff > (rangeOf_Flat / 2.0) *********
+
+
+[libfx.py:1444] (i = 69 ) flag_ALLIN => False ***************
+
+
+[libfx.py:1335] loop i : 70 ==================
+
+
+[libfx.py:1383] diff: 0.000 / (rangeOf_Flat / 2.0) : 0.500
+
+[libfx.py:1393] ary_Tmp => [<libs.libfx.BarData object at 0x0000000007F92A58>]
+
+
+[libfx.py:1405] diff > (rangeOf_Flat / 2.0) *********
+
+
+[libfx.py:1444] (i = 70 ) flag_ALLIN => False ***************
+
+
+[libfx.py:1335] loop i : 71 ==================
+
+
+[libfx.py:1383] diff: 0.000 / (rangeOf_Flat / 2.0) : 0.500
+
+[libfx.py:1393] ary_Tmp => [<libs.libfx.BarData object at 0x0000000007F92A20>]
+
+
+[libfx.py:1405] diff > (rangeOf_Flat / 2.0) *********
+
+
+[libfx.py:1444] (i = 71 ) flag_ALLIN => False ***************
+
+
+[libfx.py:1335] loop i : 72 ==================
+
+
+[libfx.py:1383] diff: 0.000 / (rangeOf_Flat / 2.0) : 0.500
+
+[libfx.py:1393] ary_Tmp => [<libs.libfx.BarData object at 0x0000000007F929E8>]
+
+
+[libfx.py:1405] diff > (rangeOf_Flat / 2.0) *********
+
+
+[libfx.py:1444] (i = 72 ) flag_ALLIN => False ***************
+
+
+[libfx.py:1335] loop i : 73 ==================
+
+
+[libfx.py:1383] diff: 0.000 / (rangeOf_Flat / 2.0) : 0.500
+
+[libfx.py:1393] ary_Tmp => [<libs.libfx.BarData object at 0x0000000007F929B0>]
+
+
+[libfx.py:1405] diff > (rangeOf_Flat / 2.0) *********
+
+
+[libfx.py:1444] (i = 73 ) flag_ALLIN => False ***************
+
+
+[libfx.py:1335] loop i : 74 ==================
+
+
+[libfx.py:1383] diff: 0.000 / (rangeOf_Flat / 2.0) : 0.500
+
+[libfx.py:1393] ary_Tmp => [<libs.libfx.BarData object at 0x0000000007F92978>]
+
+
+[libfx.py:1405] diff > (rangeOf_Flat / 2.0) *********
+
+
+[libfx.py:1444] (i = 74 ) flag_ALLIN => False ***************
+
+
+[libfx.py:1335] loop i : 75 ==================
+
+
+[libfx.py:1383] diff: 0.000 / (rangeOf_Flat / 2.0) : 0.500
+
+[libfx.py:1393] ary_Tmp => [<libs.libfx.BarData object at 0x0000000007F92940>]
+
+
+[libfx.py:1405] diff > (rangeOf_Flat / 2.0) *********
+
+
+[libfx.py:1444] (i = 75 ) flag_ALLIN => False ***************
+
+
+[libfx.py:1335] loop i : 76 ==================
+
+
+[libfx.py:1383] diff: 0.000 / (rangeOf_Flat / 2.0) : 0.500
+
+[libfx.py:1393] ary_Tmp => [<libs.libfx.BarData object at 0x0000000007F92908>]
+
+
+[libfx.py:1383] diff: 0.275 / (rangeOf_Flat / 2.0) : 0.500
+
+[libfx.py:1393] ary_Tmp => [<libs.libfx.BarData object at 0x0000000007F92908>, <libs.libfx.BarData object at 0x0000000007F928D0>]
+
+
+[libfx.py:1405] diff > (rangeOf_Flat / 2.0) *********
+
+
+[libfx.py:1444] (i = 76 ) flag_ALLIN => False ***************
+
+
+[libfx.py:1335] loop i : 77 ==================
+
+
+[libfx.py:1383] diff: 0.000 / (rangeOf_Flat / 2.0) : 0.500
+
+[libfx.py:1393] ary_Tmp => [<libs.libfx.BarData object at 0x0000000007F928D0>]
+
+
+[libfx.py:1405] diff > (rangeOf_Flat / 2.0) *********
+
+
+[libfx.py:1444] (i = 77 ) flag_ALLIN => False ***************
+
+
+[libfx.py:1335] loop i : 78 ==================
+
+
+[libfx.py:1383] diff: 0.000 / (rangeOf_Flat / 2.0) : 0.500
+
+[libfx.py:1393] ary_Tmp => [<libs.libfx.BarData object at 0x0000000007F92898>]
+
+
+[libfx.py:1405] diff > (rangeOf_Flat / 2.0) *********
+
+
+[libfx.py:1444] (i = 78 ) flag_ALLIN => False ***************
+
+
+[libfx.py:1335] loop i : 79 ==================
+
+
+[libfx.py:1383] diff: 0.000 / (rangeOf_Flat / 2.0) : 0.500
+
+[libfx.py:1393] ary_Tmp => [<libs.libfx.BarData object at 0x0000000007F92860>]
+
+
+[libfx.py:1405] diff > (rangeOf_Flat / 2.0) *********
+
+
+[libfx.py:1444] (i = 79 ) flag_ALLIN => False ***************
+
+
+[libfx.py:1335] loop i : 80 ==================
+
+
+[libfx.py:1383] diff: 0.000 / (rangeOf_Flat / 2.0) : 0.500
+
+[libfx.py:1393] ary_Tmp => [<libs.libfx.BarData object at 0x0000000007F92828>]
+
+
+[libfx.py:1383] diff: -0.313 / (rangeOf_Flat / 2.0) : 0.500
+
+[libfx.py:1393] ary_Tmp => [<libs.libfx.BarData object at 0x0000000007F92828>, <libs.libfx.BarData object at 0x0000000007F927F0>]
+
+
+[libfx.py:1405] diff > (rangeOf_Flat / 2.0) *********
+
+
+[libfx.py:1444] (i = 80 ) flag_ALLIN => False ***************
+
+
+[libfx.py:1335] loop i : 81 ==================
+
+
+[libfx.py:1383] diff: 0.000 / (rangeOf_Flat / 2.0) : 0.500
+
+[libfx.py:1393] ary_Tmp => [<libs.libfx.BarData object at 0x0000000007F927F0>]
+
+
+[libfx.py:1405] diff > (rangeOf_Flat / 2.0) *********
+
+
+[libfx.py:1444] (i = 81 ) flag_ALLIN => False ***************
+
+
+[libfx.py:1335] loop i : 82 ==================
+
+
+[libfx.py:1383] diff: 0.000 / (rangeOf_Flat / 2.0) : 0.500
+
+[libfx.py:1393] ary_Tmp => [<libs.libfx.BarData object at 0x0000000007F927B8>]
+
+
+[libfx.py:1405] diff > (rangeOf_Flat / 2.0) *********
+
+
+[libfx.py:1444] (i = 82 ) flag_ALLIN => False ***************
+
+
+[libfx.py:1335] loop i : 83 ==================
+
+
+[libfx.py:1383] diff: 0.000 / (rangeOf_Flat / 2.0) : 0.500
+
+[libfx.py:1393] ary_Tmp => [<libs.libfx.BarData object at 0x0000000007F92780>]
+
+
+[libfx.py:1405] diff > (rangeOf_Flat / 2.0) *********
+
+
+[libfx.py:1444] (i = 83 ) flag_ALLIN => False ***************
+
+
+[libfx.py:1335] loop i : 84 ==================
+
+
+[libfx.py:1383] diff: 0.000 / (rangeOf_Flat / 2.0) : 0.500
+
+[libfx.py:1393] ary_Tmp => [<libs.libfx.BarData object at 0x0000000007F92748>]
+
+
+[libfx.py:1405] diff > (rangeOf_Flat / 2.0) *********
+
+
+[libfx.py:1444] (i = 84 ) flag_ALLIN => False ***************
+
+
+[libfx.py:1335] loop i : 85 ==================
+
+
+[libfx.py:1383] diff: 0.000 / (rangeOf_Flat / 2.0) : 0.500
+
+[libfx.py:1393] ary_Tmp => [<libs.libfx.BarData object at 0x0000000007F92710>]
+
+
+[libfx.py:1405] diff > (rangeOf_Flat / 2.0) *********
+
+
+[libfx.py:1444] (i = 85 ) flag_ALLIN => False ***************
+
+
+[libfx.py:1335] loop i : 86 ==================
+
+
+[libfx.py:1383] diff: 0.000 / (rangeOf_Flat / 2.0) : 0.500
+
+[libfx.py:1393] ary_Tmp => [<libs.libfx.BarData object at 0x0000000007F926D8>]
+
+
+[libfx.py:1405] diff > (rangeOf_Flat / 2.0) *********
+
+
+[libfx.py:1444] (i = 86 ) flag_ALLIN => False ***************
+
+
+[libfx.py:1335] loop i : 87 ==================
+
+
+[libfx.py:1383] diff: 0.000 / (rangeOf_Flat / 2.0) : 0.500
+
+[libfx.py:1393] ary_Tmp => [<libs.libfx.BarData object at 0x0000000007F926A0>]
+
+
+[libfx.py:1405] diff > (rangeOf_Flat / 2.0) *********
+
+
+[libfx.py:1444] (i = 87 ) flag_ALLIN => False ***************
+
+
+[libfx.py:1335] loop i : 88 ==================
+
+
+[libfx.py:1383] diff: 0.000 / (rangeOf_Flat / 2.0) : 0.500
+
+[libfx.py:1393] ary_Tmp => [<libs.libfx.BarData object at 0x0000000007F92668>]
+
+
+[libfx.py:1405] diff > (rangeOf_Flat / 2.0) *********
+
+
+[libfx.py:1444] (i = 88 ) flag_ALLIN => False ***************
+
+
+[libfx.py:1335] loop i : 89 ==================
+
+
+[libfx.py:1383] diff: 0.000 / (rangeOf_Flat / 2.0) : 0.500
+
+[libfx.py:1393] ary_Tmp => [<libs.libfx.BarData object at 0x0000000007F92630>]
+
+
+[libfx.py:1405] diff > (rangeOf_Flat / 2.0) *********
+
+
+[libfx.py:1444] (i = 89 ) flag_ALLIN => False ***************
+
+
+[libfx.py:1335] loop i : 90 ==================
+
+
+[libfx.py:1383] diff: 0.000 / (rangeOf_Flat / 2.0) : 0.500
+
+[libfx.py:1393] ary_Tmp => [<libs.libfx.BarData object at 0x0000000007F925F8>]
+
+
+[libfx.py:1405] diff > (rangeOf_Flat / 2.0) *********
+
+
+[libfx.py:1444] (i = 90 ) flag_ALLIN => False ***************
+
+
+[libfx.py:1335] loop i : 91 ==================
+
+
+[libfx.py:1383] diff: 0.000 / (rangeOf_Flat / 2.0) : 0.500
+
+[libfx.py:1393] ary_Tmp => [<libs.libfx.BarData object at 0x0000000007F925C0>]
+
+
+[libfx.py:1405] diff > (rangeOf_Flat / 2.0) *********
+
+
+[libfx.py:1444] (i = 91 ) flag_ALLIN => False ***************
+
+
+[libfx.py:1335] loop i : 92 ==================
+
+
+[libfx.py:1383] diff: 0.000 / (rangeOf_Flat / 2.0) : 0.500
+
+[libfx.py:1393] ary_Tmp => [<libs.libfx.BarData object at 0x0000000007F92588>]
+
+
+[libfx.py:1383] diff: 0.388 / (rangeOf_Flat / 2.0) : 0.500
+
+[libfx.py:1393] ary_Tmp => [<libs.libfx.BarData object at 0x0000000007F92588>, <libs.libfx.BarData object at 0x0000000007F92550>]
+
+
+[libfx.py:1383] diff: -0.199 / (rangeOf_Flat / 2.0) : 0.500
+
+[libfx.py:1393] ary_Tmp => [<libs.libfx.BarData object at 0x0000000007F92588>, <libs.libfx.BarData object at 0x0000000007F92550>, <libs.libfx.BarData object at 0x0000000007F92518>]
+
+
+[libfx.py:1405] diff > (rangeOf_Flat / 2.0) *********
+
+
+[libfx.py:1444] (i = 92 ) flag_ALLIN => False ***************
+
+
+[libfx.py:1335] loop i : 93 ==================
+
+
+[libfx.py:1383] diff: 0.000 / (rangeOf_Flat / 2.0) : 0.500
+
+[libfx.py:1393] ary_Tmp => [<libs.libfx.BarData object at 0x0000000007F92550>]
+
+
+[libfx.py:1405] diff > (rangeOf_Flat / 2.0) *********
+
+
+[libfx.py:1444] (i = 93 ) flag_ALLIN => False ***************
+
+
+[libfx.py:1335] loop i : 94 ==================
+
+
+[libfx.py:1383] diff: 0.000 / (rangeOf_Flat / 2.0) : 0.500
+
+[libfx.py:1393] ary_Tmp => [<libs.libfx.BarData object at 0x0000000007F92518>]
+
+
+[libfx.py:1405] diff > (rangeOf_Flat / 2.0) *********
+
+
+[libfx.py:1444] (i = 94 ) flag_ALLIN => False ***************
+
+
+[libfx.py:1335] loop i : 95 ==================
+
+
+[libfx.py:1383] diff: 0.000 / (rangeOf_Flat / 2.0) : 0.500
+
+[libfx.py:1393] ary_Tmp => [<libs.libfx.BarData object at 0x0000000007F924E0>]
+
+
+[libfx.py:1405] diff > (rangeOf_Flat / 2.0) *********
+
+
+[libfx.py:1444] (i = 95 ) flag_ALLIN => False ***************
+
+
+[libfx.py:1335] loop i : 96 ==================
+
+
+[libfx.py:1383] diff: 0.000 / (rangeOf_Flat / 2.0) : 0.500
+
+[libfx.py:1393] ary_Tmp => [<libs.libfx.BarData object at 0x0000000007F924A8>]
+
+
+[libfx.py:1405] diff > (rangeOf_Flat / 2.0) *********
+
+
+[libfx.py:1444] (i = 96 ) flag_ALLIN => False ***************
+
+
+[libfx.py:1335] loop i : 97 ==================
+
+
+[libfx.py:1383] diff: 0.000 / (rangeOf_Flat / 2.0) : 0.500
+
+[libfx.py:1393] ary_Tmp => [<libs.libfx.BarData object at 0x0000000007F92470>]
+
+
+[libfx.py:1405] diff > (rangeOf_Flat / 2.0) *********
+
+
+[libfx.py:1444] (i = 97 ) flag_ALLIN => False ***************
+
+
+[libfx.py:1335] loop i : 98 ==================
+
+
+[libfx.py:1383] diff: 0.000 / (rangeOf_Flat / 2.0) : 0.500
+
+[libfx.py:1393] ary_Tmp => [<libs.libfx.BarData object at 0x0000000007F92438>]
+
+
+[libfx.py:1383] diff: 0.110 / (rangeOf_Flat / 2.0) : 0.500
+
+[libfx.py:1393] ary_Tmp => [<libs.libfx.BarData object at 0x0000000007F92438>, <libs.libfx.BarData object at 0x0000000007F92400>]
+
+
+[libfx.py:1405] diff > (rangeOf_Flat / 2.0) *********
+
+
+[libfx.py:1444] (i = 98 ) flag_ALLIN => False ***************
+
+
+[libfx.py:1335] loop i : 99 ==================
+
+
+[libfx.py:1383] diff: 0.000 / (rangeOf_Flat / 2.0) : 0.500
+
+[libfx.py:1393] ary_Tmp => [<libs.libfx.BarData object at 0x0000000007F92400>]
+
+
+[libfx.py:1405] diff > (rangeOf_Flat / 2.0) *********
+
+
+[libfx.py:1444] (i = 99 ) flag_ALLIN => False ***************
+
+
+[libfx.py:1335] loop i : 100 ==================
+
+
+[libfx.py:1383] diff: 0.000 / (rangeOf_Flat / 2.0) : 0.500
+
+[libfx.py:1393] ary_Tmp => [<libs.libfx.BarData object at 0x0000000007F923C8>]
+
+
+[libfx.py:1405] diff > (rangeOf_Flat / 2.0) *********
+
+
+[libfx.py:1444] (i = 100 ) flag_ALLIN => False ***************
+
+
+[libfx.py:1335] loop i : 101 ==================
+
+
+[libfx.py:1343] debug breaking ...
+
+
+[82_6.py:131] pattern matched => None
+
+[82_6.py:139] exec_prog => done
+
+[82_6.py:234] all done

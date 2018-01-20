@@ -1321,7 +1321,8 @@ def get_AryOf_BarDatas_PatternMatched__RSI__V2( # 20180116_100610
     ######################################'''
     #debug
     count = 0
-    cnt_Max = 8
+    cnt_Max = 1000
+#     cnt_Max = 8
     
     '''###################
         for : i        
@@ -1426,9 +1427,9 @@ def get_AryOf_BarDatas_PatternMatched__RSI__V2( # 20180116_100610
         
             #debug
             print()
-            print ("[%s:%d] flag_ALLIN => %s" % \
+            print ("[%s:%d] (i = %d / '%s') flag_ALLIN => %s #################" % \
                    (os.path.basename(libs.thisfile()), libs.linenum(), \
-                    flag_ALLIN))
+                    i, d1.dateTime_Local, flag_ALLIN))
 
             print()
             
@@ -1439,9 +1440,9 @@ def get_AryOf_BarDatas_PatternMatched__RSI__V2( # 20180116_100610
         
             #debug
             print()
-            print ("[%s:%d] flag_ALLIN => %s ***************" % \
+            print ("[%s:%d] (i = %d ) flag_ALLIN => %s ***************" % \
                    (os.path.basename(libs.thisfile()), libs.linenum(), \
-                    flag_ALLIN))
+                    i, flag_ALLIN))
 
             print()
             
