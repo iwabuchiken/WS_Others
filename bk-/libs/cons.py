@@ -55,9 +55,6 @@ class Label_ColNames(Enum):
 
 class PatternMatch(Enum) :
     
-    '''###################
-        get_AryOf_BarDatas_PatternMatched__RSI__V2
-    ###################'''
     PATTERNMATCH_NUMOFSEQUENCE_RSI = 3  # USED IN : get_AryOf_BarDatas_PatternMatched__RSI
     
     RANGE_FLAT_RSI          = 1.0  # USED IN : get_AryOf_BarDatas_PatternMatched__RSI
@@ -66,9 +63,6 @@ class PatternMatch(Enum) :
     
     FLAG_UPDOWN_DOWN        = 0  # USED IN : get_AryOf_BarDatas_PatternMatched__RSI
     
-    '''###################
-        get_AryOf_BarDatas_PatternMatched__Body_UpDown()
-    ###################'''
-    VOLUMEOF_BODY       = 0.5   # JPY
+    
     
     

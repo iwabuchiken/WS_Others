@@ -1,0 +1,19 @@
+[..\libs\libfx.py:213] file => opened : ../data/49_11_file-io.USDJPY.Period-H1.Days-720.Bars-17280.20171231_233725.csv
+[..\libs\libfx.py:222] skip headers => 2 lines
+[..\libs\libfx.py:314] file => closed : ../data/49_11_file-io.USDJPY.Period-H1.Days-720.Bars-17280.20171231_233725.csv
+
+[82_10.py:92] CSV rows => 102
+
+[82_10.py:95] row[0] => ['Pair=USDJPY', 'Period=H1', 'Days=720', 'Shift=1', 'Bars=17280', 'Time=20171231_233725']
+
+[..\libs\libfx.py:343] len(result) => 100
+[..\libs\libfx.py:406] len(aryOf_BarDatas) => 100
+
+[libfx.py:1487] volumeOf_Body => 0.500 | aryOf_UpDownPattern => [1, 1, 1, 0]
+
+
+[82_10.py:133] aryOf_Matched_BarDatas => None
+
+[82_10.py:140] exec_prog => done
+
+[82_10.py:168] all done

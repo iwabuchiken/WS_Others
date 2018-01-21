@@ -103,24 +103,6 @@ def get_opt(arg_ary):
     
     return result
 
-'''###################
-    get_opt_2(arg_ary, keychars)
-    
-    at : 2018/01/22 07:28:58
-    
-    <Usage>
-    [Code]
-        arg_ary = sys.argv
-        keychars = "l"
-    
-        result = get_opt_2(arg_ary, keychars)
-    
-    [Console]
-        python ..\libs\cp_log.py -labcde
-    
-    @return: [('-l', 'abcde')]
-            
-###################'''
 def get_opt_2(arg_ary, keychars):
     
 #     print "[%s:%d] args =>" % (thisfile(), linenum())
@@ -141,22 +123,10 @@ def get_opt_2(arg_ary, keychars):
     # loop
     for elem in arg_ary :
         
-        print()
-        print ("[%s:%d] elem => %s" % (os.path.basename(thisfile()), linenum(), elem))
-        
-        print()
-        
-        
 #         print "[%s:%d] elem = '%s'" % (thisfile(), linenum(), elem)
             
         #ref list http://nekoyukimmm.hatenablog.com/entry/2015/10/01/223148
         for char in list(keychars) :
-            
-            print()
-            print ("[%s:%d] char => %c" % (os.path.basename(thisfile()), linenum(), char))
-            
-            print()
-            
             
 #             print "[%s:%d] elem = '%s' / char = '%c'" % (thisfile(), linenum(), elem, char)
             
@@ -166,17 +136,7 @@ def get_opt_2(arg_ary, keychars):
                     and not elem.startswith("--"):
 #             if elem.startswith(char) and len(elem) > 2 :
 #             if elem.startswith(char) and len(elem) > 2 :
-                
-                #debug
-                print ("[%s:%d] appending... : %s" % (os.path.basename(thisfile()), linenum(), elem))
-                print()
-                
-                if not '-' + char in [x[0] for x in result] : 
-                    result.append(('-' + char, elem[2:]))
-                    #debug
-                    print()
-                    print ("[%s:%d] appended => %s" % (os.path.basename(thisfile()), linenum(), ('-' + char, elem[2:])))
-        
+                if not '-' + char in [x[0] for x in result] : result.append(('-' + char, elem[2:]))
                 
 #                 print "[%s:%d] '-' + char : appended => '%s'" % (thisfile(), linenum(), elem[2:])
                 

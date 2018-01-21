@@ -1469,3 +1469,112 @@ def get_AryOf_BarDatas_PatternMatched__RSI__V2( # 20180116_100610
     return None
 
 #/get_AryOf_BarDatas_PatternMatched__RSI__V2
+
+'''###################
+    get_AryOf_BarDatas_PatternMatched__Body_UpDown
+    
+    @param aryOf_UpDownPattern: up for '1', down for '0'
+        e.g. [1,1,1,0]
+            
+###################'''
+
+def get_AryOf_BarDatas_PatternMatched__Body_UpDown \
+(aryOf_BarDatas, aryOf_UpDownPattern, volumeOf_Body) :
+    
+    ### report
+    print()
+    print ("[%s:%d] volumeOf_Body => %.3f | aryOf_UpDownPattern => %s" % \
+           (os.path.basename(libs.thisfile()), libs.linenum()
+            , volumeOf_Body, aryOf_UpDownPattern))
+    
+    print()
+    
+    '''###################
+        step : 1        
+    ###################'''
+    len1 = len(aryOf_BarDatas)
+    
+    len2 = len(aryOf_UpDownPattern)
+    
+    UPDOWN = 0  # down
+    
+    flag_IN = False
+    
+    ### debug
+    cnt = 0
+    cnt_Max = 1000
+    
+    '''###################
+        for : i        
+    ###################'''
+    for i in range(len1 - len2):
+        
+        ### debug
+        if cnt > cnt_Max : break
+            
+        #/if cnt > cnt_Max
+        
+        '''###################
+            prep : data        
+        ###################'''
+        d1 = aryOf_BarDatas[i]
+        
+        body = d1.price_High - d1.price_Low
+        
+        ### up, down
+        if body >= 0 : UPDOWN = 1
+            
+        #/if body >= 0
+        if not (UPDOWN == aryOf_UpDownPattern[0]) \
+            or not (body > volumeOf_Body)  : #if UPDOWN != aryOf_UpDownPattern[0] or body 
+
+            #debug
+            print()
+            print ("[%s:%d] NOT match => %s =========" % \
+                   (os.path.basename(libs.thisfile()), libs.linenum(), d1.dateTime_Local))
+            print()
+            
+            ### next i
+            continue
+        
+        else : #if UPDOWN != aryOf_UpDownPattern[0] or body 
+        
+            ### step : 1-1
+            flag_IN = True
+            
+            #debug
+            print()
+            print ("[%s:%d] MATCH => %s #################" % \
+                   (os.path.basename(libs.thisfile()), libs.linenum(), d1.dateTime_Local))
+            print()
+            
+            '''###################
+                for : j        
+            ###################'''
+            for j in range(len2):
+            
+                d2 = aryOf_BarDatas[i + j]
+                
+            #/for j in range(len2):
+
+                
+            
+        #/if UPDOWN != aryOf_UpDownPattern[0] or body 
+        
+        
+        
+        
+        '''###################
+            step : j : 1        
+        ###################'''
+
+        
+    #/for i in range(len1 - len2):
+
+    
+    
+    
+    return None
+    
+#/get_AryOf_BarDatas_PatternMatched__Body_UpDown(aryOf_BarDatas)
+
