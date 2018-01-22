@@ -115,7 +115,8 @@ def exec_prog__PatternMatch_Body_UpDown(): # from : 20180120_130551
     ###################'''
     volumeOf_Body = cons.PatternMatch.VOLUMEOF_BODY.value
     
-    aryOf_UpDownPattern = [1,1,1,0]
+    aryOf_UpDownPattern = cons.PatternMatch.UPDOWN_PATTERN.value
+#     aryOf_UpDownPattern = [1,1,1,0]
     
     ### pattern match
     aryOf_Matched_BarDatas = \

@@ -69,8 +69,17 @@ class PatternMatch(Enum) :
     '''###################
         get_AryOf_BarDatas_PatternMatched__Body_UpDown()
     ###################'''
-    VOLUMEOF_BODY       = 0.25   # JPY
+    VOLUMEOF_BODY       = 0.05   # JPY
 #     VOLUMEOF_BODY       = 0.1   # JPY
+#     VOLUMEOF_BODY       = 0.15   # JPY
+#     VOLUMEOF_BODY       = 0.20   # JPY
+#     VOLUMEOF_BODY       = 0.25   # JPY
+#     VOLUMEOF_BODY       = 0.30   # JPY
+#     VOLUMEOF_BODY       = 0.35   # JPY
+#     VOLUMEOF_BODY       = 0.40   # JPY
+#     VOLUMEOF_BODY       = 0.45   # JPY
 #     VOLUMEOF_BODY       = 0.5   # JPY
+    
+    UPDOWN_PATTERN      = [1,1,1,0]
     
     
