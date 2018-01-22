@@ -1500,6 +1500,9 @@ def get_AryOf_BarDatas_PatternMatched__Body_UpDown \
     
     flag_IN = False
     
+    ### counter : 'IN' entries
+    cntOf_IN = 0
+    
     ### debug
     cnt = 0
     cnt_Max = 1000
@@ -1519,19 +1522,29 @@ def get_AryOf_BarDatas_PatternMatched__Body_UpDown \
         ###################'''
         d1 = aryOf_BarDatas[i]
         
-        body = d1.price_High - d1.price_Low
+        body = d1.price_Close - d1.price_Open
+#         body = d1.price_High - d1.price_Low
         
         ### up, down
         if body >= 0 : UPDOWN = 1
-            
+        else : UPDOWN = 0
+        
+        '''###################
+            j : 1        
+        ###################'''
         #/if body >= 0
         if not (UPDOWN == aryOf_UpDownPattern[0]) \
             or not (body > volumeOf_Body)  : #if UPDOWN != aryOf_UpDownPattern[0] or body 
 
             #debug
             print()
-            print ("[%s:%d] NOT match => %s =========" % \
-                   (os.path.basename(libs.thisfile()), libs.linenum(), d1.dateTime_Local))
+            print ("[%s:%d] NOT match => %s ========= (diff = %.3f)" % \
+                   (os.path.basename(libs.thisfile()), libs.linenum()
+                    , d1.dateTime_Local
+                    , (d1.price_Close - d1.price_Open)
+                    ))
+#             print ("[%s:%d] NOT match => %s =========" % \
+#                    (os.path.basename(libs.thisfile()), libs.linenum(), d1.dateTime_Local))
             print()
             
             ### next i
@@ -1542,10 +1555,16 @@ def get_AryOf_BarDatas_PatternMatched__Body_UpDown \
             ### step : 1-1
             flag_IN = True
             
+            ### count
+            cntOf_IN += 1
+            
             #debug
             print()
-            print ("[%s:%d] MATCH => %s #################" % \
-                   (os.path.basename(libs.thisfile()), libs.linenum(), d1.dateTime_Local))
+            print ("[%s:%d] MATCH => %s ################# (diff = %.3f)" % \
+                   (os.path.basename(libs.thisfile()), libs.linenum()
+                    , d1.dateTime_Local
+                    , (d1.price_Close - d1.price_Open)
+                    ))
             print()
             
             '''###################
@@ -1570,7 +1589,22 @@ def get_AryOf_BarDatas_PatternMatched__Body_UpDown \
 
         
     #/for i in range(len1 - len2):
+    
+    '''###################
+        report : count        
+    ###################'''
+    ratio = 1.0 * cntOf_IN / len1
+    
+    print()
+    print ("[%s:%d] cntOf_IN => %d (total = %d / %.2f %%)" % \
+           (os.path.basename(libs.thisfile()), libs.linenum()
+            , cntOf_IN
+            , len1
+            , ratio * 100   # percentage
+            
+            ))
 
+    print()
     
     
     

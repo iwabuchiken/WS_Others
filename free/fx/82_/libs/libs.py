@@ -117,17 +117,15 @@ def get_opt(arg_ary):
     
     [Console]
         python ..\libs\cp_log.py -labcde
+        
+        ("python" command string ---> MUST)
     
     @return: [('-l', 'abcde')]
-            
+           
+    @param keychars: if None ---> ['a','b','c',...,'z','A','B',...,'Z']
 ###################'''
-def get_opt_2(arg_ary, keychars):
+def get_opt_2(arg_ary, keychars = None):
     
-#     print "[%s:%d] args =>" % (thisfile(), linenum())
-#       
-#     print arg_ary
-#      
-#     print list(keychars)
     
     # validate
     if len(arg_ary) < 1 :
@@ -136,15 +134,32 @@ def get_opt_2(arg_ary, keychars):
         
         return (None, None)
     
+    '''###################
+        validate : keychars        
+    ###################'''
+    if keychars == None : #if keychars == None
+
+        ab = "abcdefghijklmnopqrstuvwxyz"
+        
+        #ref https://stackoverflow.com/questions/4978787/how-to-split-a-string-into-array-of-characters
+        keychars = list(ab + ab.upper())
+        
+#         print()
+#         print ("[%s:%d] keychars => %s" % (os.path.basename(thisfile()), linenum(), keychars))
+    
+#         return None
+    #/if keychars == None
+    
     # return tuple
-    result = []
+    result = {}
+#     result = []
     # loop
     for elem in arg_ary :
         
-        print()
-        print ("[%s:%d] elem => %s" % (os.path.basename(thisfile()), linenum(), elem))
-        
-        print()
+#         print()
+#         print ("[%s:%d] elem => %s" % (os.path.basename(thisfile()), linenum(), elem))
+#         
+#         print()
         
         
 #         print "[%s:%d] elem = '%s'" % (thisfile(), linenum(), elem)
@@ -152,10 +167,10 @@ def get_opt_2(arg_ary, keychars):
         #ref list http://nekoyukimmm.hatenablog.com/entry/2015/10/01/223148
         for char in list(keychars) :
             
-            print()
-            print ("[%s:%d] char => %c" % (os.path.basename(thisfile()), linenum(), char))
-            
-            print()
+#             print()
+#             print ("[%s:%d] char => %c" % (os.path.basename(thisfile()), linenum(), char))
+#             
+#             print()
             
             
 #             print "[%s:%d] elem = '%s' / char = '%c'" % (thisfile(), linenum(), elem, char)
@@ -167,15 +182,17 @@ def get_opt_2(arg_ary, keychars):
 #             if elem.startswith(char) and len(elem) > 2 :
 #             if elem.startswith(char) and len(elem) > 2 :
                 
-                #debug
-                print ("[%s:%d] appending... : %s" % (os.path.basename(thisfile()), linenum(), elem))
-                print()
+#                 #debug
+#                 print ("[%s:%d] appending... : %s" % (os.path.basename(thisfile()), linenum(), elem))
+#                 print()
                 
                 if not '-' + char in [x[0] for x in result] : 
-                    result.append(('-' + char, elem[2:]))
-                    #debug
-                    print()
-                    print ("[%s:%d] appended => %s" % (os.path.basename(thisfile()), linenum(), ('-' + char, elem[2:])))
+                    
+                    result['-' + char] = elem[2:]
+#                     result.append(('-' + char, elem[2:]))
+#                     #debug
+#                     print()
+#                     print ("[%s:%d] appended => %s" % (os.path.basename(thisfile()), linenum(), ('-' + char, elem[2:])))
         
                 
 #                 print "[%s:%d] '-' + char : appended => '%s'" % (thisfile(), linenum(), elem[2:])
@@ -183,50 +200,9 @@ def get_opt_2(arg_ary, keychars):
             
             elif elem.startswith('--') and len(elem) > 2 :
                 
-                if not (elem[2:], '') in result : result.append((elem[2:], ''))
+                if not (elem[2:], '') in result : result[elem[2:]] = ''
+#                 if not (elem[2:], '') in result : result.append((elem[2:], ''))
              
-#                 print "[%s:%d] '--' : appended => '%s'" % (thisfile(), linenum(), elem[2:])
-             
-#             if elem == '--PLOT_GO' : result.append(('PLOT_GO', ''))
-                
-            #ref append https://stackoverflow.com/questions/1878470/add-tuple-to-list-of-tuples-in-python
-            #ref slice http://www.pythonweb.jp/tutorial/string/index11.html
-                
-                
-#         #ref https://www.tutorialspoint.com/python/string_startswith.htm
-#         if elem.startswith('-E') and len(elem) > 2 :
-#             
-#             #ref append https://stackoverflow.com/questions/1878470/add-tuple-to-list-of-tuples-in-python
-#             #ref slice http://www.pythonweb.jp/tutorial/string/index11.html
-#             result.append(('-E', elem[2:]))
-#     
-#         elif elem.startswith('-s') and len(elem) > 2 :
-#             
-#             result.append(('-s', elem[2:]))
-#     
-#         elif elem.startswith('-e') and len(elem) > 2 :
-#             
-#             result.append(('-e', elem[2:]))
-#     
-#         elif elem.startswith('-t') and len(elem) > 2 :
-#             
-#             result.append(('-t', elem[2:]))
-#     
-#         elif elem.startswith('-V') and len(elem) > 2 :
-#             
-#             result.append(('-V', elem[2:]))
-#     
-#         elif elem.startswith('--') and len(elem) > 2 :
-#             
-#             if elem == '--PLOT_GO' :
-#                 
-#                 result.append(('PLOT_GO', ''))
-# #                 result.append('PLOT_GO')
-#     
-#             elif elem == '--SAVE_IMAGE_GO' :
-#                 
-#                 result.append(('SAVE_IMAGE_GO', ''))
-    
     return result
 
 '''

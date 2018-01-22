@@ -92,7 +92,19 @@ def get_TimeLabel_Now(string_type="serial", mili=False):
     
 #]]get_TimeLabel_Now():
 
-def exec_prog(label="nolabel"):
+# def exec_prog(label="nolabel"):
+def exec_prog(label = None):
+    
+    '''###################
+        validate : label        
+    ###################'''
+    if label == None : #if label == None
+
+        label = "nolabel"
+        
+    #/if label == None
+    
+
     
     fname_In = "tmp.log"
     
@@ -124,8 +136,8 @@ if __name__ == "__main__" :
 #     args = sys.argv[0:]
     args = sys.argv
     
-    print(args)
-    print()
+#     print(args)
+#     print()
     
     ### validate : length
     if len(args) < 2 : #if len(args) < 2
@@ -141,22 +153,46 @@ if __name__ == "__main__" :
     '''###################
         get options        
     ###################'''
-    keychars = "l"
-    result = libs.get_opt_2(sys.argv, keychars)
+    keychars = None
+#     keychars = "lm"
+#     keychars = "l"
+    result = libs.get_opt_2(sys.argv)
+#     result = libs.get_opt_2(sys.argv, keychars)
 #     result = libs.get_opt_2(sys.argv, args[1])
 #     result = libs.get_opt_2(sys.argv, "abc")
      
-    print()
-    print(result)
-    print()
-     
-    exit()
+#     print()
+#     print(result)
+#     print()
+
+#     exit()
 
     '''###################
-        evecute        
+        get : label string        
     ###################'''
+    label = ""
     
-    exec_prog()
+    #ref in https://stackoverflow.com/questions/1323410/has-key-or-in "answered Aug 24 '09 at 22:11"
+    if '-l' in result : #if not result['-l'] == None
+#     if not result.has_key('-l') == None : #if not result['-l'] == None
+
+        label = result['-l']
+    
+    else : #if not result['-l'] == None
+    
+        label = None
+    
+    #/if not result['-l'] == None
+    
+    print()
+    print ("[%s:%d] label => '%s'" % \
+           (os.path.basename(libs.thisfile()), libs.linenum(), label))
+
+    '''###################
+        execute        
+    ###################'''
+    exec_prog(label)
+#     exec_prog()
 
     print()
     
