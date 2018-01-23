@@ -1,0 +1,26 @@
+[3, 2]
+
+[32_.py:96] n = 2
+prod = [4, 3]
+prod[0] = '4'
+
+[32_.py:96] n = 3
+prod = [5, 4]
+prod[0] = '5'
+
+[32_.py:96] n = 4
+prod = [6, 5]
+prod[0] = '6'
+
+[32_.py:96] n = 5
+prod = [7, 6]
+prod[0] = '7'
+
+[32_.py:96] n = 6
+prod = [8, 7]
+prod[0] = '8'
+
+[32_.py:112] test_1 => done
+[32_.py:178] exec_prog => done
+
+[32_.py:191] all done

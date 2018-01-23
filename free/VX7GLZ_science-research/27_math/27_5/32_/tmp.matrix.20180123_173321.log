@@ -1,0 +1,26 @@
+[2*x - y, x]
+
+[32_.py:93] n = 2
+prod = [3*x - 2*y, 2*x - y]
+prod[0] = '3*x - 2*y'
+
+[32_.py:93] n = 3
+prod = [4*x - 3*y, 3*x - 2*y]
+prod[0] = '4*x - 3*y'
+
+[32_.py:93] n = 4
+prod = [5*x - 4*y, 4*x - 3*y]
+prod[0] = '5*x - 4*y'
+
+[32_.py:93] n = 5
+prod = [6*x - 5*y, 5*x - 4*y]
+prod[0] = '6*x - 5*y'
+
+[32_.py:93] n = 6
+prod = [7*x - 6*y, 6*x - 5*y]
+prod[0] = '7*x - 6*y'
+
+[32_.py:109] test_1 => done
+[32_.py:123] exec_prog => done
+
+[32_.py:136] all done
