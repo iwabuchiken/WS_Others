@@ -75,7 +75,8 @@ def test_5__Numbering():
             
     tree = ET.parse(fpath)
     
-    tree = libmt.add_Numbering(tree)
+    tree = libmt.add_Numbering__Through(tree)
+#     tree = libmt.add_Numbering(tree)
     
 
     '''###################
@@ -97,7 +98,7 @@ def test_5__Numbering():
     '''###################
         save xml        
     ###################'''
-    label = "add-numbering"
+    label = "add-numbering-through"
     fpath_Out = "new.%s.%s.mm" % (label, libs.get_TimeLabel_Now())
     
     tree.write(fpath_Out)

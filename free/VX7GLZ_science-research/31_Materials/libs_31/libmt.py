@@ -223,6 +223,111 @@ def add_Number(node) :
     
 #/def _add_Numbering(tree) :
 
+def add_Number__Through(node, num_Str) :
+# def _add_Numbering(node) :
+    
+    #debug
+    print()
+    print ("[%s:%d] node.tag = '%s'\nnode.attrib = '%s'" % \
+           (os.path.basename(libs.thisfile()), libs.linenum(), node.tag, node.attrib))
+    
+    lenOf_Node = len(node)
+    
+    '''###################
+        has subnodes        
+    ###################'''
+    if lenOf_Node > 0 :
+        
+        '''###################
+            numbering : subnodes        
+        ###################'''
+        cnt = 0
+        
+        for i in range(lenOf_Node):
+#         for item in node:
+            '''###################
+                validate : 'node' node ?        
+            ###################'''
+            node_New = node[i]
+            
+            if node_New.tag == 'arrowlink' \
+                or  node_New.tag == 'attribute' \
+                or  node_New.tag == 'attribute_layout' :
+                              
+                continue
+            
+            #/if node_New.tag == 
+            
+            #debug
+            print()
+            print ("[%s:%d] node_New.tag = '%s'\nnode_New.attrib = '%s'" % \
+                   (os.path.basename(libs.thisfile()), libs.linenum()
+                    , node_New.tag, node_New.attrib))
+
+            
+            '''###################
+                exec numbering        
+            ###################'''
+            txt_Prev = node_New.get('TEXT')
+            
+            txt_New = ""
+            
+            if num_Str == "" : txt_New = "%d) %s" % (cnt + 1, txt_Prev)
+            else : txt_New = "%s-%d) %s" % (num_Str, cnt + 1, txt_Prev)
+
+#             txt_New = "%s-%d) %s" % (num_Str, cnt + 1, txt_Prev)
+            
+            node_New.set('TEXT', txt_New)
+            
+            ### increment
+            cnt += 1
+            
+#             '''###################
+#                 child nodes ?        
+#             ###################'''
+#             if len(node_New) > 0 : #if len(node[i]) > 0
+#             
+#                 _add_Numbering(node_New)
+
+    '''###################
+        further        
+    ###################'''
+    if lenOf_Node > 0 :
+        
+        cnt = 0
+        
+        for i in range(lenOf_Node):
+            
+            node_New = node[i]
+
+            '''###################
+                subnode has subnodes ?        
+            ###################'''
+            if len(node_New) > 0 : #if len(node_New) > 0
+                
+                ### num string
+                nun_Str_New = ""
+                
+                if num_Str == "" : num_str_New = str(cnt + 1)
+                else : num_str_New = num_Str + "-" + str(cnt + 1)
+                
+                ### recursive
+                add_Number__Through(node_New, num_str_New)
+#                 add_Number__Through(node_New, num_Str + "-" + str(cnt + 1))
+#                 add_Number(node_New)
+#                 _add_Numbering(node_New)
+
+                ### increment
+                cnt += 1
+            #if len(node_New) > 0
+            
+    '''###################
+        return        
+    ###################'''
+    return
+    
+#/add_Number__Through(node)
+
 def add_Numbering(tree) :
     '''###################
         root        
@@ -251,7 +356,7 @@ def add_Numbering(tree) :
     
 #/add_Numbering(tree)
 
-def add_Numbering__Through(node, num_Str):
+def add_Numbering__Through(tree):
     '''###################
         root        
     ###################'''
@@ -263,14 +368,10 @@ def add_Numbering__Through(node, num_Str):
     g1 = root[0]
     
     ### add number
-    add_Number(g1)
+    num_Str = ""
+#     num_Str = "0"
     
-#     for item in g1:
-#         
-#         add_Number(g1)
-#         _add_Numbering(g1)
-        
-    #/for item in g1:
+    add_Number__Through(g1, num_Str)
     
     '''###################
         return        
