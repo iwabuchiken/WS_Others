@@ -11,7 +11,11 @@ cp_log.py
 
 ref : http://aidiary.hatenablog.com/entry/20110607/1307449007
 
+pushd C:\WORKS_2\WS\WS_Others\free\VX7GLZ_science-research\31_Materials\1_
+python 1_1.3.py created > tmp.log && python C:\WORKS_2\WS\WS_Others\free\fx\82_\libs\cp_log.py -ladd-attrib-created
 
+pushd C:\WORKS_2\WS\WS_Others\free\VX7GLZ_science-research\31_Materials\1_
+python 1_1.3.py numbering > tmp.log && python C:\WORKS_2\WS\WS_Others\free\fx\82_\libs\cp_log.py -ladd-numbering-through
 
 '''
 
@@ -73,6 +77,14 @@ def test_5__Numbering():
             + "/" \
             + cons31.FPath.fname_In_XML.value
             
+    ### backup
+    fname_Out_Backup = "%s.copy.%s.mm" % (fpath, libs.get_TimeLabel_Now())
+                
+    copyfile(fpath, fname_Out_Backup)
+    
+    '''###################
+        parse        
+    ###################'''
     tree = ET.parse(fpath)
     
     tree = libmt.add_Numbering__Through(tree)
@@ -99,7 +111,8 @@ def test_5__Numbering():
         save xml        
     ###################'''
     label = "add-numbering-through"
-    fpath_Out = "new.%s.%s.mm" % (label, libs.get_TimeLabel_Now())
+    fpath_Out = fpath
+#     fpath_Out = "new.%s.%s.mm" % (label, libs.get_TimeLabel_Now())
     
     tree.write(fpath_Out)
     
@@ -120,6 +133,14 @@ def test_4():
             + "/" \
             + cons31.FPath.fname_In_XML.value
             
+    ### backup
+    fname_Out_Backup = "%s.copy.%s.mm" % (fpath, libs.get_TimeLabel_Now())
+                
+    copyfile(fpath, fname_Out_Backup)
+
+    '''###################
+        parse        
+    ###################'''
     tree = ET.parse(fpath)
     
     tree = libmt.add_Node_Attribute_Created(tree)
@@ -212,7 +233,8 @@ def test_4():
         save xml        
     ###################'''
     label = "add-attribute-CREATED"
-    fpath_Out = "new.%s.%s.mm" % (label, libs.get_TimeLabel_Now())
+    fpath_Out = fpath
+#     fpath_Out = "new.%s.%s.mm" % (label, libs.get_TimeLabel_Now())
     
     tree.write(fpath_Out)
     
@@ -426,7 +448,56 @@ def test_2():
 
 def exec_prog(): # from : 
     
-    test_5__Numbering()
+    '''###################
+        params        
+    ###################'''
+    args = sys.argv
+    
+    if len(args) < 2 : #if len(args) < 2
+
+        print()
+        print ("[%s:%d] param needed : len(args) = %d" % \
+               (os.path.basename(libs.thisfile()), libs.linenum(), len(args)))
+               
+        print()
+        print("<Usage> python 1_1.3.py <numbering|created>")
+        
+        return
+    
+    param = args[1]
+    
+    print()
+    print("param => %s" % (param))
+    
+
+    #/if len(args) < 2
+
+    '''###################
+        dispatch        
+    ###################'''
+    if param == "numbering" : #if param == "numbering"
+
+        test_5__Numbering()
+    
+    elif param == "created" : #if param == "numbering"
+        
+        test_4()
+        
+    else : #if param == "numbering"
+    
+        print()
+        print ("[%s:%d] unknown param => '%s'" % \
+               (os.path.basename(libs.thisfile()), libs.linenum(), param))
+    
+        print()
+    
+        return
+    
+    #/if param == "numbering"
+
+
+    
+#     test_5__Numbering()
 #     test_4()
 #     test_3()
 #     test_2()

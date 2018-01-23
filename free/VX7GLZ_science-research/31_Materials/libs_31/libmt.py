@@ -279,47 +279,58 @@ def add_Number__Through(node, num_Str) :
             
             node_New.set('TEXT', txt_New)
             
+            '''###################
+                child nodes ?        
+            ###################'''
+            if len(node_New) > 0 : #if len(node[i]) > 0
+             
+                ### num string
+                num_Str_New = ""
+                
+                if num_Str == "" : num_Str_New = "%d" % (cnt + 1)
+                else : num_Str_New = "%s-%d" % (num_Str, cnt + 1)
+                
+                ## recursive
+                add_Number__Through(node_New, num_Str_New)
+#                 _add_Numbering__(node_New)
+
+            '''###################
+                counter        
+            ###################'''
             ### increment
             cnt += 1
             
-#             '''###################
-#                 child nodes ?        
-#             ###################'''
-#             if len(node_New) > 0 : #if len(node[i]) > 0
+#     '''###################
+#         further        
+#     ###################'''
+#     if lenOf_Node > 0 :
+#         
+#         cnt = 0
+#         
+#         for i in range(lenOf_Node):
 #             
-#                 _add_Numbering(node_New)
-
-    '''###################
-        further        
-    ###################'''
-    if lenOf_Node > 0 :
-        
-        cnt = 0
-        
-        for i in range(lenOf_Node):
-            
-            node_New = node[i]
-
-            '''###################
-                subnode has subnodes ?        
-            ###################'''
-            if len(node_New) > 0 : #if len(node_New) > 0
-                
-                ### num string
-                nun_Str_New = ""
-                
-                if num_Str == "" : num_str_New = str(cnt + 1)
-                else : num_str_New = num_Str + "-" + str(cnt + 1)
-                
-                ### recursive
-                add_Number__Through(node_New, num_str_New)
-#                 add_Number__Through(node_New, num_Str + "-" + str(cnt + 1))
-#                 add_Number(node_New)
-#                 _add_Numbering(node_New)
-
-                ### increment
-                cnt += 1
-            #if len(node_New) > 0
+#             node_New = node[i]
+# 
+#             '''###################
+#                 subnode has subnodes ?        
+#             ###################'''
+#             if len(node_New) > 0 : #if len(node_New) > 0
+#                 
+#                 ### num string
+#                 nun_Str_New = ""
+#                 
+#                 if num_Str == "" : num_str_New = str(cnt + 1)
+#                 else : num_str_New = num_Str + "-" + str(cnt + 1)
+#                 
+#                 ### recursive
+#                 add_Number__Through(node_New, num_str_New)
+# #                 add_Number__Through(node_New, num_Str + "-" + str(cnt + 1))
+# #                 add_Number(node_New)
+# #                 _add_Numbering(node_New)
+# 
+#                 ### increment
+#                 cnt += 1
+#             #if len(node_New) > 0
             
     '''###################
         return        
