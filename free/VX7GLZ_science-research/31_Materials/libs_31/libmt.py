@@ -252,7 +252,11 @@ def add_Number__Through(node, num_Str) :
             
             if node_New.tag == 'arrowlink' \
                 or  node_New.tag == 'attribute' \
-                or  node_New.tag == 'attribute_layout' :
+                or  node_New.tag == 'attribute_layout' \
+                or  node_New.tag == 'cloud' \
+                or  node_New.tag == 'icon' \
+                or  node_New.tag == 'font' \
+                or  node_New.tag == 'linktarget' :
                               
                 continue
             
