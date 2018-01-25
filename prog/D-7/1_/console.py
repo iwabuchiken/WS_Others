@@ -73,6 +73,7 @@ django.get_version()
 
 '''
 ==================================== 2018/01/24 19:34:53
+
 pushd C:\WORKS_2\WS\WS_Others\prog\D-7\1_\TGDB
 env\Scripts\activate.bat
 
@@ -219,14 +220,50 @@ t = template.Template("We are learning {{ list.1 }}, but we love {{list.0}}")
 c = template.Context({'list': list})
 print(t.render(c))
 
+==================================== 2018/01/26 07:06:41
+pip install sympy
 
+        (env) C:\WORKS_2\WS\WS_Others\prog\D-7\1_\TGDB\django_project>pip install sympy
+        Collecting sympy
+        Collecting mpmath>=0.19 (from sympy)
+        Installing collected packages: mpmath, sympy
+        Successfully installed mpmath-1.0.0 sympy-1.1.1
 
+pushd C:\WORKS_2\WS\WS_Others\prog\D-7\1_\TGDB
+env\Scripts\activate.bat
 
+cd django_project
 
+pip install numpy
 
+        (env) C:\WORKS_2\WS\WS_Others\prog\D-7\1_\TGDB\django_project>pip install numpy
+        
+        Collecting numpy
+          Downloading numpy-1.14.0-cp35-none-win_amd64.whl (13.4MB)
+            100% |################################| 13.4MB 74kB/s 
+        Installing collected packages: numpy
+        Successfully installed numpy-1.14.0
 
+pip install matplotlib
 
-
+        (env) C:\WORKS_2\WS\WS_Others\prog\D-7\1_\TGDB\django_project>pip install matplotlib
+        
+        Collecting matplotlib
+        
+            100% |################################| 8.7MB 113kB/s 
+        Collecting pytz (from matplotlib)
+          Using cached pytz-2017.3-py2.py3-none-any.whl
+        Collecting pyparsing!=2.0.4,!=2.1.2,!=2.1.6,>=2.0.1 (from matplotlib)
+          Using cached pyparsing-2.2.0-py2.py3-none-any.whl
+        Collecting six>=1.10 (from matplotlib)
+          Using cached six-1.11.0-py2.py3-none-any.whl
+        Collecting python-dateutil>=2.1 (from matplotlib)
+          Using cached python_dateutil-2.6.1-py2.py3-none-any.whl
+        Collecting cycler>=0.10 (from matplotlib)
+          Using cached cycler-0.10.0-py2.py3-none-any.whl
+        Requirement already satisfied: numpy>=1.7.1 in c:\works_2\ws\ws_others\prog\d-7\1_\tgdb\env\lib\site-packages (from matplotlib)
+        Installing collected packages: pytz, pyparsing, six, python-dateutil, cycler, matplotlib
+        Successfully installed cycler-0.10.0 matplotlib-2.1.2 pyparsing-2.2.0 python-dateutil-2.6.1 pytz-2017.3 six-1.11.0
 
 
 
