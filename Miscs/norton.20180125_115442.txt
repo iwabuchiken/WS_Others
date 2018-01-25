@@ -1,0 +1,11 @@
+Norton Internet Security
+22.11.2.7
+3048, 3
+BucketID: CC1DC26B
+Windows 7 Home Premium
+7601.24000.amd64fre.win7sp1_ldr.171231-1547
+Norton Autofix Results: 1 item(s)
+Removal of - McAfee Security Scan Plus :: Skipped
+
+
+https://support.norton.com/sp/en/us/norton-internet-security/22.11.2.7/solutions/v63747322_EndUserProfile_en_us?abproduct=Norton+Internet+Security&abversion=22.11.2.7&actstat=activated&bucketid=CC1DC26B&buildname=Retail&conntype=10000000&coreservice=Startup+Type%3Aauto+State%3ARunning&cpu=AMD64+Family+21+Model+19+Stepping+1&datetime=01-25-2018+2%3A53%3A02+GMT&defbrowser=Chrome&dsfree=212.60&dstotal=396.04&eapenabled=false&endpointid=199C840A-3BD4-45A3-9B50-DAA0255DC5DB&entsrc=CED_Selfheal&env=prod&error=3&hbguid=199C840A-3BD4-45A3-9B50-DAA0255DC5DB&hcmode=false&heartbeatID=199C840A-3BD4-45A3-9B50-DAA0255DC5DB&ieversion=9.11.9600.18893&layout=Retail&layouttype=ESD&lic_attr=17059858&lic_type=16&memload=56&memtotal=2780&module=3048&os=windows&oslang=iso%3AJPN&oslocale=iso%3AJPN&osvers=6.1&osversion=6.1+7601.24000.amd64fre.win7sp1_ldr.171231-1547&partnerid=1000&partnername=&plang=sym%3AEN&plgid=2&plid=2&psn=XHXJ2JVH9823&puid=5039&remdays=224&sessionid=%7BFB240E8B-1998-4FBD-95DB-08F2FD0C694D%7D&skuf=20985775&skum=21356539&skup=20993357&spversion=1.0&sublength=360&subremaining=224&substatus=current&symskucurrent=20993357&symskumedia=21356539&utm_medium=product&utm_source=symc&vendorid=1000

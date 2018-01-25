@@ -32,7 +32,6 @@ python -m pip --version
 #ref https://overiq.com/django/1.10/installing-django/#activating-virtualenv
 
 pushd C:\WORKS_2\WS\WS_Others\prog\D-7\1_\TGDB
-
 env\Scripts\activate.bat
 
 pip list
@@ -72,11 +71,73 @@ django.get_version()
         # >>> django.get_version()
         # '1.10'
 
+'''
+==================================== 2018/01/24 19:34:53
+pushd C:\WORKS_2\WS\WS_Others\prog\D-7\1_\TGDB
+env\Scripts\activate.bat
+
+django-admin startproject django_project
+
+cd django_project
+
+python manage.py runserver
+
+        (env) C:\WORKS_2\WS\WS_Others\prog\D-7\1_\TGDB\django_project>python manage.py r
+        unserver
+        Performing system checks...
+        
+        System check identified no issues (0 silenced).
+        
+        You have 13 unapplied migration(s). Your project may not work properly until you
+         apply the migrations for app(s): admin, auth, contenttypes, sessions.
+        Run 'python manage.py migrate' to apply them.
+        January 24, 2018 - 19:38:25
+        Django version 1.10, using settings 'django_project.settings'
+        Starting development server at http://127.0.0.1:8000/
+        Quit the server with CTRL-BREAK.
 
 
+==================================== 2018/01/25 14:02:03
+pushd C:\WORKS_2\WS\WS_Others\prog\D-7\1_\TGDB
+cd django_project
+python manage.py migrate > migrate.log
 
+        (env) C:\WORKS_2\WS\WS_Others\prog\D-7\1_\TGDB\django_project>Operations to perform:
+          Apply all migrations: admin, auth, contenttypes, sessions
+        Running migrations:
+          Rendering model states... DONE
+          Applying contenttypes.0001_initial... OK
+          Applying auth.0001_initial... OK
+          Applying admin.0001_initial... OK
+          Applying admin.0002_logentry_remove_auto_add... OK
+          Applying contenttypes.0002_remove_content_type_name... OK
+          Applying auth.0002_alter_permission_name_max_length... OK
+          Applying auth.0003_alter_user_email_max_length... OK
+          Applying auth.0004_alter_user_username_opts... OK
+          Applying auth.0005_alter_user_last_login_null... OK
+          Applying auth.0006_require_contenttypes_0002... OK
+          Applying auth.0007_alter_validators_add_error_messages... OK
+          Applying auth.0008_alter_user_username_max_length... OK
+          Applying sessions.0001_initial... OK
 
+python manage.py runserver
 
+        Performing system checks...
+        
+        System check identified no issues (0 silenced).
+        January 25, 2018 - 14:02:59
+        Django version 1.10, using settings 'django_project.settings'
+        Starting development server at http://127.0.0.1:8000/
+        Quit the server with CTRL-BREAK.
 
+------------------------------------ 2018/01/25 14:08:41
+pushd C:\WORKS_2\WS\WS_Others\prog\D-7\1_\TGDB
+env\Scripts\activate.bat
 
+cd django_project
 
+python manage.py startapp blog
+
+python manage.py runserver
+
+'''
