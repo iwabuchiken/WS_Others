@@ -67,8 +67,8 @@ python
 import django
 django.get_version()
 
-        # >>> import django
-        # >>> django.get_version()
+        # import django
+        # django.get_version()
         # '1.10'
 
 '''
@@ -105,20 +105,20 @@ python manage.py migrate > migrate.log
         (env) C:\WORKS_2\WS\WS_Others\prog\D-7\1_\TGDB\django_project>Operations to perform:
           Apply all migrations: admin, auth, contenttypes, sessions
         Running migrations:
-          Rendering model states... DONE
-          Applying contenttypes.0001_initial... OK
-          Applying auth.0001_initial... OK
-          Applying admin.0001_initial... OK
-          Applying admin.0002_logentry_remove_auto_add... OK
-          Applying contenttypes.0002_remove_content_type_name... OK
-          Applying auth.0002_alter_permission_name_max_length... OK
-          Applying auth.0003_alter_user_email_max_length... OK
-          Applying auth.0004_alter_user_username_opts... OK
-          Applying auth.0005_alter_user_last_login_null... OK
-          Applying auth.0006_require_contenttypes_0002... OK
-          Applying auth.0007_alter_validators_add_error_messages... OK
-          Applying auth.0008_alter_user_username_max_length... OK
-          Applying sessions.0001_initial... OK
+          Rendering model statesDONE
+          Applying contenttypes.0001_initialOK
+          Applying auth.0001_initialOK
+          Applying admin.0001_initialOK
+          Applying admin.0002_logentry_remove_auto_addOK
+          Applying contenttypes.0002_remove_content_type_nameOK
+          Applying auth.0002_alter_permission_name_max_lengthOK
+          Applying auth.0003_alter_user_email_max_lengthOK
+          Applying auth.0004_alter_user_username_optsOK
+          Applying auth.0005_alter_user_last_login_nullOK
+          Applying auth.0006_require_contenttypes_0002OK
+          Applying auth.0007_alter_validators_add_error_messagesOK
+          Applying auth.0008_alter_user_username_max_lengthOK
+          Applying sessions.0001_initialOK
 
 python manage.py runserver
 
@@ -139,5 +139,102 @@ cd django_project
 python manage.py startapp blog
 
 python manage.py runserver
+
+------------------------------------ 
+pushd C:\WORKS_2\WS\WS_Others\prog\D-7\1_\TGDB
+env\Scripts\activate.bat
+
+cd django_project
+
+python manage.py shell
+
+from django import template
+t = template.Template("We are learning {{ name }}")
+c = template.Context({'name': 'Django'})
+print(t.render(c))
+
+c2 = template.Context({'name': 'a new web framework'})
+print(t.render(c2))
+
+c = template.Context()
+print(t.render(c))
+
+t2 = template.Template("We are learning {{ name }} with {{name}}")
+c2 = template.Context({'name': 'a new web framework'})
+print(t2.render(c2))
+
+t2 = template.Template("We are learning {{ name }} with {{name2}}")
+dic = {'name': 'a new web framework', 'name2': 'framework'}
+c2 = template.Context(dic)
+print(t2.render(c2))
+
+/------------------------------------ 2018/01/25 18:10:47
+------------------------------------ 
+framework = {
+'first': 'Django',
+'second': 'Laravel',
+'third': 'Spring',
+'fourth': 'CodeIgniter'
+}
+
+t = template.Template("We are learning {{ framework.first }}")
+c = template.Context({'framework': framework})
+print(t.render(c))
+
+------------------------------------ 
+import datetime
+now = datetime.datetime.now()
+now.day
+
+now.month
+
+now.year
+
+
+
+t = template.Template("Date is {{ now.day }}-{{ now.month }}-{{ now.year }}")
+c = template.Context({'now':now})
+print(t.render(c))
+
+name = "django"
+name.capitalize()
+
+name.upper()
+
+name
+
+
+t = template.Template("{{ var.capitalize }} learning {{ var.upper }}")
+c = template.Context({'var': name})
+print(t.render(c))
+
+def abc() : print("abc")
+c = template.Context({'now':now})
+t = template.Template("{{ var.capitalize }} learning {{ var.upper }}")
+
+
+list = ['Ruby on Rails', 'Django', 'Laravel']
+t = template.Template("We are learning {{ list.1 }} ")
+t = template.Template("We are learning {{ list.1 }}, but we love {{list.0}}")
+c = template.Context({'list': list})
+print(t.render(c))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 '''
