@@ -18,6 +18,10 @@ from blog import views
 
 urlpatterns = [
     
+    url(r'^exec_Numbering/$', views.exec_Numbering, name='exec_Numbering'),
+    
+    url(r'^mindmap_ops/$', views.mindmap_ops, name='mindmap_ops'),
+    
     url(r'^time/$', views.today_is, name='todays_time'),
     
     url(r'^$', views.index, name='blog_index'),

@@ -1,0 +1,59 @@
+=========================================== 20180126_131128
+[26/Jan/2018 13:03:56] "GET /blog/exec_Numbering/ HTTP/1.1" 200 1
+C:\WORKS_2\Programs\Python\Python_3.5.1\lib\site-packages\sympy\matrices\densetools.py:13: SymPyDeprecationWarning: 
+
+densetools has been deprecated since SymPy 1.1. See
+https://github.com/sympy/sympy/issues/12695 for more info.
+
+  deprecated_since_version="1.1").warn()
+
+param => numbering
+
+[libmt.py:232] node.tag = 'node'
+node.attrib = '{'CREATED': '1516673320328', 'MODIFIED': '1516744123680', 'ID': 'ID_275301847', 'TEXT': 'TEST'}'
+
+[libmt.py:268] node_New.tag = 'node'
+node_New.attrib = '{'BACKGROUND_COLOR': '#ffffff', 'MODIFIED': '1516744158492', 'ID': 'ID_89170984', 'TEXT': 'Materials', 'POSITION': 'right', 'CREATED': '1516530834781'}'
+
+[libmt.py:232] node.tag = 'node'
+node.attrib = '{'BACKGROUND_COLOR': '#ffffff', 'MODIFIED': '1516744158492', 'ID': 'ID_89170984', 'TEXT': '1) Materials', 'POSITION': 'right', 'CREATED': '1516530834781'}'
+
+[libmt.py:268] node_New.tag = 'node'
+node_New.attrib = '{'BACKGROUND_COLOR': '#ffffff', 'CREATED': '1516536919611', 'MODIFIED': '1516744158491', 'ID': 'ID_776380937', 'TEXT': 'catalytic'}'
+
+[libmt.py:268] node_New.tag = 'node'
+node_New.attrib = '{'BACKGROUND_COLOR': '#ffffff', 'CREATED': '1516536922763', 'MODIFIED': '1516744158491', 'ID': 'ID_648692082', 'TEXT': 'biomedical'}'
+
+[libmt.py:268] node_New.tag = 'node'
+node_New.attrib = '{'BACKGROUND_COLOR': '#ffffff', 'CREATED': '1516536930251', 'MODIFIED': '1516744158490', 'ID': 'ID_292921180', 'TEXT': 'photonic'}'
+
+[libmt.py:268] node_New.tag = 'node'
+node_New.attrib = '{'BACKGROUND_COLOR': '#ffffff', 'CREATED': '1516536935411', 'MODIFIED': '1516744158489', 'ID': 'ID_1694055485', 'TEXT': 'electronic'}'
+
+[libmt.py:268] node_New.tag = 'node'
+node_New.attrib = '{'POSITION': 'right', 'CREATED': '1516536909468', 'MODIFIED': '1516744123684', 'ID': 'ID_560561294', 'TEXT': 'Applications'}'
+
+[libmt.py:232] node.tag = 'node'
+node.attrib = '{'POSITION': 'right', 'CREATED': '1516536909468', 'MODIFIED': '1516744123684', 'ID': 'ID_560561294', 'TEXT': '2) Applications'}'
+
+[libmt.py:268] node_New.tag = 'node'
+node_New.attrib = '{'LINK': 'https://www.materialstoday.com/nanomaterials/news/novel-facets-of-colloidal-metal-nanocrystals/', 'CREATED': '1516537071171', 'MODIFIED': '1516744123686', 'ID': 'ID_1282561561', 'TEXT': ' nanocrystal facets'}'
+
+[libmt.py:232] node.tag = 'node'
+node.attrib = '{'LINK': 'https://www.materialstoday.com/nanomaterials/news/novel-facets-of-colloidal-metal-nanocrystals/', 'CREATED': '1516537071171', 'MODIFIED': '1516744123686', 'ID': 'ID_1282561561', 'TEXT': '2-1)  nanocrystal facets'}'
+
+[libmt.py:268] node_New.tag = 'node'
+node_New.attrib = '{'CREATED': '1516537085474', 'MODIFIED': '1516744123687', 'ID': 'ID_1284238321', 'TEXT': 'surface structures'}'
+
+[libmt.py:268] node_New.tag = 'node'
+node_New.attrib = '{'LINK': 'https://www.materialstoday.com/nanomaterials/news/novel-facets-of-colloidal-metal-nanocrystals/', 'CREATED': '1516537022467', 'MODIFIED': '1516744123688', 'ID': 'ID_1007266737', 'TEXT': 'nanocrystal seeds'}'
+
+[libmt.py:268] node_New.tag = 'node'
+node_New.attrib = '{'POSITION': 'right', 'CREATED': '1516536987948', 'MODIFIED': '1516744123689', 'ID': 'ID_490539521', 'TEXT': 'Substances'}'
+
+[libmt.py:268] node_New.tag = 'node'
+node_New.attrib = '{'POSITION': 'right', 'CREATED': '1516681966148', 'MODIFIED': '1516744174866', 'ID': 'ID_902941252', 'TEXT': 'Polymer'}'
+
+[1_1.3.py:124] mm => written : C:/WORKS_2/WS/FM_2_20171104_225946/Materials_Science/test.mm
+[1_1.3.py:597] exec_prog => done
+

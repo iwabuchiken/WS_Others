@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Current Time</title>
+
+    <!-- ref https://overiq.com/django/1.10/handling-static-content-in-django/#loading-static-files -->    
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans">
+    
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'blog/css/reset.css' %}">
+    
+    <link rel="stylesheet" href="{% static 'blog/css/style.css' %}">
+    
+    <link rel="stylesheet" href="{% static 'blog/css/main.css' %}">
+    
+    <script src="{% static 'blog/js/jquery.js' %}"></script>
+    
+    <script src="{% static 'blog/js/main.js' %}"></script>
+    
+</head>
+<body>
+
+    <table>
+    
+        <tr>
+            
+            <td>
+                1
+            </td>
+        
+            <td>
+                exec numbering
+            </td>
+        
+            <td>
+                
+                <a href="/blog/exec_Numbering/">GO</a>
+                
+                <!-- <button onclick="exec_Numbering();">GO</button> -->
+
+            </td>
+        
+        </tr>
+    
+    </table>
+
+</body>
+</html>

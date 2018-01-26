@@ -47,6 +47,9 @@ sys.path.append('.')
 sys.path.append('..')
 sys.path.append('C:/WORKS_2/WS/WS_Others/free/fx/82_')
 
+sys.path.append('C:/WORKS_2/WS/WS_Others/free/VX7GLZ_science-research/31_Materials/')
+
+
 from libs import libs
 from libs import libfx
 
