@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Current Time</title>
+</head>
+<body>
+
+    {# This is a comment #}
+
+    {# check the existence of now variable in the template using if tag #}
+
+    {% if now %}   
+        <p>Current date and time is {{ now }}</p>
+    {% else %}               
+        <p>now variable is not available</p>
+    {% endif %}
+
+    <p>Current scheme: {{ request.scheme }}</p>
+    
+    <p>request: {{ request }}</p>
+    
+    <!-- ref http://docs.python-requests.org/en/master/api/ -->
+    
+    <p>request.method: {{ request.method }}</p>
+    
+    <p>request.data: {{ request.data }}</p>
+    
+    <p>request.header: {{ request.header }}</p>
+
+</body>
+</html>

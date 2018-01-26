@@ -144,3 +144,8 @@ prog/D-7/1_/TGDB/env/Lib/*
 prog/D-7/1_/TGDB/env/Include/*
 prog/D-7/1_/TGDB/env/tcl/*
 prog/D-7/1_/TGDB/env/Scripts/*
+
+### 
+prog/D-7/1_/TGDB/django_project/*.txt
+prog/D-7/1_/TGDB/django_project/blog/data/*.txt
+prog/D-7/1_/TGDB/django_project/blog/*.txt
