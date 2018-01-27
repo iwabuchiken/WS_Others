@@ -60,6 +60,160 @@ import copy
 
 ###############################################
 
+def test_2_1():
+
+    '''###################
+        ops        
+    ###################'''
+    init_Val = 10
+    
+    a = [10 for x in range(10)]
+    b = [10 for x in range(10)]
+
+    # de-homogenize
+    #ref mean https://stackoverflow.com/questions/9039961/finding-the-average-of-a-list answered Jan 28 '12 at 3:59
+    a[-1] = 5
+    b[-1] = 5
+#     a[-1] = 9
+#     b[-1] = 9
+    
+    '''###################
+        write file        
+    ###################'''
+#     fname_Out = "data/pval.a-%d.%s.txt" % \
+    label = "test_2_1"
+    
+    fname_Out = "data/pval.%s.%s.txt" % \
+                    (
+                        label
+                        , libs.get_TimeLabel_Now()
+                     
+                     )
+#     fname_Out = "/data/pval.%s.txt" % (libs.get_TimeLabel_Now())
+    
+    fout = open(fname_Out, "w")
+    
+    '''###################
+        correl : basic        
+    ###################'''
+    msg = "[%s:%d] a=\n" % (os.path.basename(libs.thisfile()), libs.linenum())
+    fout.write(msg)
+#     fout.write("a=\n")
+    fout.write(','.join([str(x) for x in a]))
+#     fout.write(','.join(a))
+    fout.write('\n')
+    fout.write('\n')
+    
+    msg = "[%s:%d] b=\n" % (os.path.basename(libs.thisfile()), libs.linenum())
+    fout.write(msg)
+#     fout.write("b=\n")
+    fout.write(','.join([str(x) for x in b]))
+#     fout.write(','.join(b))
+    fout.write('\n')
+    fout.write('\n')
+    
+    '''###################
+        correl : basic        
+    ###################'''
+    lo_Final = []
+    
+    for i in range(10):
+        # tmp list
+        lo_Tmp = []
+        
+        ### copy a
+        #ref copy https://stackoverflow.com/questions/2612802/how-to-clone-or-copy-a-list answered Apr 10 '10 at 8:55
+        a_ = copy.copy(a)
+    
+        lo_Tmp.append(i)
+        
+        a1 = stats.pearsonr(a_, b)
+        
+        print()
+        print("[%s:%d] i => %d / a1 =>" % \
+            (os.path.basename(libs.thisfile()), libs.linenum()
+            ,i
+            ), file=sys.stderr)
+        print(a1)
+        print("a_ =>"); print(a_)
+        print("b =>"); print(b)
+        
+        a_[i] /= 2.0
+        
+        a2 = stats.pearsonr(a_, b)
+
+        print()
+        print("a1 => "); print(a1)
+        print("a_ =>"); print(a_)
+        print("b =>"); print(b)
+        
+        a_[i] = 0
+        
+        a3 = stats.pearsonr(a_, b)
+        
+        ### append
+        lo_Tmp.append(a1)
+        lo_Tmp.append(a2)
+        lo_Tmp.append(a3)
+        
+        #debug
+        print()
+        print("[%s:%d] lo_Tmp =>" % \
+            (os.path.basename(libs.thisfile()), libs.linenum()
+            
+            ), file=sys.stderr)
+        print(lo_Tmp)
+        
+        ### append
+        lo_Final.append(lo_Tmp)
+    
+    '''###################
+        write        
+    ###################'''
+    fout.write("index\t=1.0\t/2.0\t=0")
+    fout.write("\n")
+    
+    for item in lo_Final:
+    
+        #debug
+        print()
+        print("[%s:%d] item =>" % \
+            (os.path.basename(libs.thisfile()), libs.linenum()
+            
+            ), file=sys.stderr)
+        print(item)
+        
+#         print(item[0])
+#         print('\t')
+#         print('\n')
+        
+        fout.write("%d\t%.10f\t%.10f\t%.10f" % \
+#         fout.write("%d\t%.4f\t%.4f\t%.4f" % \
+              (
+                  item[0], item[1][0], item[2][0], item[3][0]
+              )
+              )
+#         print("%.4f %.4f %.4f" % (item[1][0], item[2][0], item[3][0]))
+        
+        fout.write('\n')
+    
+    '''###################
+        file : close        
+    ###################'''
+    fout.close()
+#     msg = "[%s:%d] \na[%d]\tcorrel" % \
+#                 (
+#                     os.path.basename(libs.thisfile()), libs.linenum()
+#                     , index_a
+#                 )
+#     fout.write(msg)
+#     
+#     fout.write('\n')
+#     fout.write('\n')
+    
+    return None
+#/def test_2_1(fout, a, b):    
+    
 def test_1_2(fout, a, b):
 
     '''###################
@@ -313,7 +467,8 @@ def test_1():
 def exec_prog(): # from : 20180116_103908
      
     ### test 2
-    test_1()
+    test_2_1()
+#     test_1()
      
 #     x = Symbol('x')
 #     y = Symbol('y')
