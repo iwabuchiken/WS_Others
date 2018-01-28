@@ -197,6 +197,50 @@ def _im_actions__Ops_2_0(): # /im/im_action
     
 #/def _im_actions__Ops_2_0(action)
 
+def _im_actions__Ops_1_2(action): # /im/im_action
+
+    print("[%s:%d] _im_actions__Ops_1_2()" % \
+        (os.path.basename(libs.thisfile()), libs.linenum()
+        
+        ), file=sys.stderr)
+    
+    #debug
+    print()
+    print("[%s:%d] action => '%s'" % \
+            (os.path.basename(libs.thisfile()), libs.linenum()
+            , action
+            ), file=sys.stderr)
+    
+    command = "C:\\WORKS_2\\WS\\WS_Cake_IFM11\\commands\\%s" % (action)
+#     command = action
+#     arg1 = "C:\\WORKS_2\\WS\\WS_Cake_IFM11\\commands\\3-1) add memo.txt"
+    
+    cmd_Full = [command]  #=> 
+#     cmd_Full = [command, arg1]  #=> 
+
+    #debug
+    print()
+    print("[%s:%d] cmd_Full =>" % \
+            (os.path.basename(libs.thisfile()), libs.linenum()
+            
+            ), file=sys.stderr)
+    print(cmd_Full)
+    
+    res = subprocess.call(cmd_Full)
+
+    print("[%s:%d] result (subprocess) =>" % \
+            (os.path.basename(libs.thisfile()), libs.linenum()
+            
+            ), file=sys.stderr)
+    
+    print(res)
+    
+    return None
+    
+#     None
+    
+#/_im_actions__Ops_1()
+
 def _im_actions__Ops_1(action): # /im/im_action
 
     print("[%s:%d] _im_actions__Ops_2_0()" % \
@@ -306,6 +350,21 @@ def _im_actions__Ops(action): # /im/im_action
         
         ## execute
         _im_actions__Ops_1(do_Commands[action])
+#         _im_actions__Ops_1(lo_Tmp[int(action)])
+#         _im_actions__Ops_1(lo_Tmp[action])
+#         _im_actions__Ops_1(action)
+        
+    elif action == cons_im.ImOp.OP_1_2.value : #if action == "2-0"
+#     if action == "2-0" : #if action == "2-0"
+             
+        print("[%s:%d] executing => %s" % \
+                     (os.path.basename(libs.thisfile()), libs.linenum()
+                     , action
+                     ), file=sys.stderr)
+        
+        
+        ## execute
+        _im_actions__Ops_1_2(do_Commands[action])
 #         _im_actions__Ops_1(lo_Tmp[int(action)])
 #         _im_actions__Ops_1(lo_Tmp[action])
 #         _im_actions__Ops_1(action)
