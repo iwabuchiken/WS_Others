@@ -4,7 +4,11 @@ from im import views
 
 urlpatterns = [
     
-    url(r'^$', views.index, name='im_index'),
+#     url(r'^$', views.index, name='im_index'),
 #     url(r'^$', views.index),
 
+    url(r'^index/$', views.index, name='im_index'),
+
+    url(r'^time/$', views.today_is, name='todays_time'),
+    
 ]
