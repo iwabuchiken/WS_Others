@@ -15,6 +15,7 @@ table#tbl_Im_Actions {
 	/*ref table border http://www.html.am/html-codes/tables/table-border.cfm*/
 	border     : 1px solid #aaaaaa;
 	
+	margin     : 10px;
 }
 
 table#tbl_Im_Actions tr th {

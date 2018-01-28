@@ -20,18 +20,16 @@
 </head>
     
 <body>
-
-    {# This is a comment #}
-
-    {# check the existence of now variable in the template using if tag #}
-
-    {% if now %}   
-        <p class="current_Scheme">Current date and time is ---> {{ now }}</p>
-    {% else %}               
-        <p>now variable is not available</p>
-    {% endif %}
     
     {% include 'im/partials/index_table.html' %}
 
+    <hr>
+    
+    <div id="index_Message_Area">
+    
+    
+    </div>
+    
+    
 </body>
 </html>

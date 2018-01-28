@@ -80,3 +80,52 @@ def today_is(request):
 #     return render('blog/datetime2.html', {'now': now })
 #     return render_to_response('blog/datetime2.html', {'now': now })
 #     return render_to_response('blog/datetime.html', {'now': now })
+
+def im_actions(request): # /im/im_action
+    
+    '''###################
+        get : params        
+    ###################'''
+    params = request.GET
+    
+    print("[%s:%d] params =>" % \
+            (os.path.basename(libs.thisfile()), libs.linenum()
+            
+            ), file=sys.stderr)
+    
+    print(params)
+    
+    #ref get https://stackoverflow.com/questions/5895588/django-multivaluedictkeyerror-error-how-do-i-deal-with-it answered May 5 '11 at 9:47
+    action = request.GET.get('action', False)
+#     action = request.GET['action']
+    
+    print("[%s:%d] action =>" % \
+            (os.path.basename(libs.thisfile()), libs.linenum()
+            
+            ), file=sys.stderr)
+    
+    print(action)
+    
+    now = datetime.datetime.now()
+    
+    ### message
+    if action == False : #if action == False
+    
+        message = "no actio param"
+    
+    else : #if action == False
+    
+        message = "action is => %s" % (action)
+    
+    #/if action == False
+    
+    dic = {'action' : action, "messsage" : message}
+    
+#     dic = {message : _message}
+    
+    return render(request, 'im/im_actions.html', dic)
+#     return render(request, 'im/im_actions.html', {'now': now })
+#     return render(request, 'im/im_action.html')
+    
+#Q/def im_action(request):
+    
