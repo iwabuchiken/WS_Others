@@ -8,7 +8,7 @@ function show_Message(msg) {
 
 function im_Action(_param) {
 	
-	alert(_param);
+	alert("!!param is => '" + _param + "'");
 	
 	/*
 	 * test
@@ -20,7 +20,8 @@ function im_Action(_param) {
 		
 		ref : C:\WORKS_2\WS\Eclipse_Luna\Cake_IFM11\app\webroot\js\main.js
 	 ***************************/
-	var _url = "http://127.0.0.1:8000/im/actions";
+	var _url = "http://127.0.0.1:8000/im/im_actions";
+//	var _url = "http://127.0.0.1:8000/im/actions";
 	
 	var _data = {action : _param};
 		
@@ -38,6 +39,8 @@ function im_Action(_param) {
 	}).done(function(data, status, xhr) {
 		
 		alert(data);
+		
+		$('div#index_Area__Result').html(data);
 		
 	}).fail(function(xhr, status, error) {
 		
