@@ -1,3 +1,5 @@
+{% load taglib_basic %}
+
 <table id="tbl_Im_Actions">
 
     <tr>
@@ -19,21 +21,33 @@
         </th>
     
     </tr>
+     
+    {% for item in lo_Commands %}
     
-    <tr>
+        <tr>
+        
+            <td>
+            
+                {{forloop.counter}}
+            
+            </td>
+            
+            <td>
+            
+                {{ item.1 }}
+                
+            </td>
+            
+            <td>
+            
+                <button onclick="im_Action('{{ item.0 }}')">GO</button>
+                
+            </td>
+            
+        </tr>
+        
+    {% endfor%}
     
-        <td>
-            1
-        </td>
-        
-        <td>
-            2-0) edit_memos.9-0.bat
-        </td>
-        
-        <td>
-            <button onclick="im_Action('2-0')">GO</button>
-        </td>
-        
-    </tr>
-
 </table>
+
+    
