@@ -17,18 +17,33 @@ from libs import libs
 from libs_31 import test_31
 
 ######################################## FUNCS
-def test_Request():
+# def test_Request():
+def test_Request(request):
     
     print("[%s:%d] %s" % \
             (os.path.basename(libs.thisfile()), libs.linenum()
-             , "this is.")
+             , "=================== @ test_Request")
             , file=sys.stderr)
 
     print(request, file=sys.stderr)
+    
+    '''###################
+        get params        
+    ###################'''
+    params = request.GET
+    
+    print("[%s:%d] params =>" % \
+            (os.path.basename(libs.thisfile()), libs.linenum()
+            
+            ), file=sys.stderr)
+    
+    print(params)
+    
 
 #/def test_Request():
 
 # Create your views here.
+#ref get request https://django.cowhite.com/blog/working-with-url-get-post-parameters-in-django/
 def index(request):
     now = datetime.datetime.now()
     
@@ -39,7 +54,8 @@ def index(request):
     html = t.render(c)
     
     ### test
-    test_Request()
+    test_Request(request)
+#     test_Request()
     
     return HttpResponse(html)
 #     return HttpResponse("Hello Django (new urls.py file)")
