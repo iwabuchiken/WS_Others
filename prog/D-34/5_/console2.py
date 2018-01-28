@@ -94,6 +94,10 @@ python manage.py migrate > migrate.log
 python manage.py startapp im
 
 
+### https://overiq.com/django/1.10/handling-static-content-in-django/
+http://127.0.0.1:8000/static/aaa.jpg
+http://127.0.0.1:8000/im/static/aaa.jpg    #=> Page not found (404)
+
 
 
 
