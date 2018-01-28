@@ -134,6 +134,50 @@ def today_is(request):
 #     return render_to_response('blog/datetime2.html', {'now': now })
 #     return render_to_response('blog/datetime.html', {'now': now })
 
+def _im_actions__Ops_5(action): # /im/im_action
+    
+    print("[%s:%d] _im_actions__Ops_5()" % \
+        (os.path.basename(libs.thisfile()), libs.linenum()
+        
+        ), file=sys.stderr)
+    
+    #debug
+    print()
+    print("[%s:%d] action => '%s'" % \
+            (os.path.basename(libs.thisfile()), libs.linenum()
+            , action
+            ), file=sys.stderr)
+    
+    command = "%s\\%s" % (cons_im.FPath.DPATH_CMD_LIB_OTHERS.value, action)
+#     command = action
+#     arg1 = "C:\\WORKS_2\\WS\\WS_Cake_IFM11\\commands\\3-1) add memo.txt"
+    
+    cmd_Full = [command]  #=> 
+#     cmd_Full = [command, arg1]  #=> 
+
+    #debug
+    print()
+    print("[%s:%d] cmd_Full =>" % \
+            (os.path.basename(libs.thisfile()), libs.linenum()
+            
+            ), file=sys.stderr)
+    print(cmd_Full)
+    
+    res = subprocess.call(cmd_Full)
+
+    print("[%s:%d] result (subprocess) =>" % \
+            (os.path.basename(libs.thisfile()), libs.linenum()
+            
+            ), file=sys.stderr)
+    
+    print(res)
+    
+    return None
+    
+#     None
+    
+#/_im_actions__Ops_5()
+
 def _im_actions__Ops_4(): # /im/im_action
     
     print("[%s:%d] _im_actions__Ops_4()" % \
@@ -390,6 +434,16 @@ def _im_actions__Ops(action): # /im/im_action
         ## execute
         _im_actions__Ops_4()
         
+    elif action == cons_im.ImOp.OP_5.value : #if action == "4"
+             
+        print("[%s:%d] executing => %s" % \
+                     (os.path.basename(libs.thisfile()), libs.linenum()
+                     , action
+                     ), file=sys.stderr)
+        
+        ## execute
+        _im_actions__Ops_5(do_Commands[action])
+        
     else : #if action == "2-0"
 
         print("[%s:%d] Unknown action => %s" % \
@@ -438,8 +492,15 @@ def im_actions(request): # /im/im_action
         message = "no action param"
     
     else : #if action == False
-    
+        
         message = "action is => %s" % (action)
+        
+        print()
+        print("[%s:%d] %s" % \
+        (os.path.basename(libs.thisfile()), libs.linenum()
+         , message
+        ), file=sys.stderr)
+
         
         ### operations
         _im_actions__Ops(action)

@@ -1,7 +1,6 @@
 #!C:\WORKS_2\Programs\Python\Python_3.5.1\python.exe
 from enum import Enum
 
-
 class ImOp(Enum):
     
     OP_0_1 = "0-1"      # 0-1) start xampp, filezilla, open folder, open files.bat
@@ -24,7 +23,8 @@ class ImOp(Enum):
 
         [OP_2_0, "2-0) edit_memos.9-0.bat"],
         [OP_4, "4) edit_memos.8.open-csv-file.bat - ショートカット"],
-        [OP_5, "5) edit_memos.3.insert-to-db.bat - ショートカット"],
+        [OP_5, "edit_memos.3.insert-to-db.bat"],
+#         [OP_5, "5) edit_memos.3.insert-to-db.bat - ショートカット"],
                
         [OP_7, "7) edit_memos.12.delete-image-files.bat - ショートカット"],
         [OP_8, "8) edit_memos.4.delete-photos.bat - ショートカット"],
@@ -65,3 +65,15 @@ class ImOp(Enum):
 #     }
     
 #/class ImOp(Enum):
+
+class FPath(Enum):
+    
+    '''###################
+        @USED
+        viwes :: _im_actions__Ops_4()
+                _im_actions__Ops_5(action)
+                
+    ###################'''
+    DPATH_CMD_LIB_OTHERS = "C:\\WORKS_2\\WS\\Eclipse_Luna\\Cake_IFM11\\lib\\others"
+    
+    
