@@ -21,6 +21,8 @@ from im.libs_im import cons_im
 
 import subprocess
 
+import copy
+
 ######################################## FUNCS
 # def test_Request():
 def test_Request(request):
@@ -195,6 +197,50 @@ def _im_actions__Ops_2_0(): # /im/im_action
     
 #/def _im_actions__Ops_2_0(action)
 
+def _im_actions__Ops_1(action): # /im/im_action
+
+    print("[%s:%d] _im_actions__Ops_2_0()" % \
+        (os.path.basename(libs.thisfile()), libs.linenum()
+        
+        ), file=sys.stderr)
+    
+    #debug
+    print()
+    print("[%s:%d] action => '%s'" % \
+            (os.path.basename(libs.thisfile()), libs.linenum()
+            , action
+            ), file=sys.stderr)
+    
+    command = "C:\\WORKS_2\\WS\\WS_Cake_IFM11\\commands\\%s" % (action)
+#     command = action
+#     arg1 = "C:\\WORKS_2\\WS\\WS_Cake_IFM11\\commands\\3-1) add memo.txt"
+    
+    cmd_Full = [command]  #=> 
+#     cmd_Full = [command, arg1]  #=> 
+
+    #debug
+    print()
+    print("[%s:%d] cmd_Full =>" % \
+            (os.path.basename(libs.thisfile()), libs.linenum()
+            
+            ), file=sys.stderr)
+    print(cmd_Full)
+    
+    res = subprocess.call(cmd_Full)
+
+    print("[%s:%d] result (subprocess) =>" % \
+            (os.path.basename(libs.thisfile()), libs.linenum()
+            
+            ), file=sys.stderr)
+    
+    print(res)
+    
+    return None
+    
+#     None
+    
+#/_im_actions__Ops_1()
+
 def _im_actions__Ops_0_1(): # /im/im_action
     
     print("[%s:%d] _im_actions__Ops_2_0()" % \
@@ -224,6 +270,18 @@ def _im_actions__Ops_0_1(): # /im/im_action
 def _im_actions__Ops(action): # /im/im_action
     
     '''###################
+        build : dict        
+    ###################'''
+    do_Commands = {}
+#     cons_im.ImOp.lo_Commands.value
+    
+    lo_Tmp = copy.deepcopy(cons_im.ImOp.lo_Commands.value)
+    
+    for item in lo_Tmp :
+        
+        do_Commands[item[0]] = item[1]
+    
+    '''###################
         dispatch        
     ###################'''
     if action == cons_im.ImOp.OP_0_1.value : #if action == "2-0"
@@ -235,7 +293,22 @@ def _im_actions__Ops(action): # /im/im_action
                      ), file=sys.stderr)
         
         ## execute
-        _im_actions__Ops_0_1()
+        _im_actions__Ops_0_1(do_Commands[action])
+        
+    elif action == cons_im.ImOp.OP_1.value : #if action == "2-0"
+#     if action == "2-0" : #if action == "2-0"
+             
+        print("[%s:%d] executing => %s" % \
+                     (os.path.basename(libs.thisfile()), libs.linenum()
+                     , action
+                     ), file=sys.stderr)
+        
+        
+        ## execute
+        _im_actions__Ops_1(do_Commands[action])
+#         _im_actions__Ops_1(lo_Tmp[int(action)])
+#         _im_actions__Ops_1(lo_Tmp[action])
+#         _im_actions__Ops_1(action)
         
     elif action == cons_im.ImOp.OP_2_0.value : #if action == "2-0"
 #     if action == "2-0" : #if action == "2-0"
