@@ -3,7 +3,8 @@ import os
 import sys
 
 if __name__ == "__main__":
-    os.environ.setdefault("DJANGO_SETTINGS_MODULE", "admin_MindMapFiles.settings")
+    os.environ.setdefault("DJANGO_SETTINGS_MODULE", "Admin_Projects.settings")
+#     os.environ.setdefault("DJANGO_SETTINGS_MODULE", "admin_MindMapFiles.settings")
 #     os.environ.setdefault("DJANGO_SETTINGS_MODULE", "admin_CakeIFM_11.settings")
     try:
         from django.core.management import execute_from_command_line

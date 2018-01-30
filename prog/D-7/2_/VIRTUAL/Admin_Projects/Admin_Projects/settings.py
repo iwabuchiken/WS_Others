@@ -50,7 +50,8 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'admin_MindMapFiles.urls'
+ROOT_URLCONF = 'Admin_Projects.urls'
+# ROOT_URLCONF = 'admin_MindMapFiles.urls'
 # ROOT_URLCONF = 'admin_CakeIFM_11.urls'
 
 TEMPLATES = [
@@ -69,7 +70,8 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'admin_MindMapFiles.wsgi.application'
+WSGI_APPLICATION = 'Admin_Projects.wsgi.application'
+# WSGI_APPLICATION = 'admin_MindMapFiles.wsgi.application'
 # WSGI_APPLICATION = 'admin_CakeIFM_11.wsgi.application'
 
 
