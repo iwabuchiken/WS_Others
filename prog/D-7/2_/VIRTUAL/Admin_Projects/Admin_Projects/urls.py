@@ -17,11 +17,11 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 
-from im import views
+from mm import views
 
 urlpatterns = [
     
-    url(r'^im/', include('im.urls')),
+    url(r'^mm/', include('mm.urls')),
 #     url(r'^$', views.index, name='im_index'),
 #     url(r'^$', views.index),
 

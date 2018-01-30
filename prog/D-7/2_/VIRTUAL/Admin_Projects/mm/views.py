@@ -17,7 +17,7 @@ sys.path.append('C:/WORKS_2/WS/WS_Others/free/VX7GLZ_science-research/31_Materia
 from libs import libs
 from libs_31 import test_31
 
-from im.libs_im import cons_im
+from im.libs_mm import cons_mm
 
 import subprocess
 
@@ -55,7 +55,7 @@ def index(request):
     now = datetime.datetime.now()
     
 #     t = template.Template("<html><body>Current date and time {{ now }}</body></html>")
-    t = template.loader.get_template('im/index.html')
+    t = template.loader.get_template('mm/index.html')
     
     c = template.Context({'now': now})
     html = t.render(c)
@@ -64,7 +64,7 @@ def index(request):
     message = "message"
     
     #ref sorted https://www.pythoncentral.io/how-to-sort-python-dictionaries-by-key-or-value/
-    lo_Commands = cons_im.ImOp.lo_Commands.value
+    lo_Commands = cons_mm.ImOp.lo_Commands.value
     
     #debug
     print()
@@ -72,7 +72,7 @@ def index(request):
     
     dic = {'action' : action, "message" : message, "lo_Commands" : lo_Commands}
     
-    return render(request, 'im/index.html', dic)
+    return render(request, 'mm/index.html', dic)
 
 #     return HttpResponse(html)
 # #     return HttpResponse("Hello Django (new urls.py file)")
@@ -92,7 +92,7 @@ def today_is(request):
     
 #     return HttpResponse(html)
 
-    return render(request, 'im/datetime2.html', {'now': now })
+    return render(request, 'mm/datetime2.html', {'now': now })
 #     return render(request, 'blog/datetime2.html', {'now': now })
 #     return render('blog/datetime2.html', {'now': now })
 #     return render_to_response('blog/datetime2.html', {'now': now })
@@ -112,7 +112,7 @@ def _im_actions__Ops_5(action): # /im/im_action
             , action
             ), file=sys.stderr)
     
-    command = "%s\\%s" % (cons_im.FPath.DPATH_CMD_LIB_OTHERS.value, action)
+    command = "%s\\%s" % (cons_mm.FPath.DPATH_CMD_LIB_OTHERS.value, action)
 #     command = action
 #     arg1 = "C:\\WORKS_2\\WS\\WS_Cake_IFM11\\commands\\3-1) add memo.txt"
     
@@ -327,7 +327,7 @@ def _im_actions__Ops(action): # /im/im_action
     do_Commands = {}
 #     cons_im.ImOp.lo_Commands.value
     
-    lo_Tmp = copy.deepcopy(cons_im.ImOp.lo_Commands.value)
+    lo_Tmp = copy.deepcopy(cons_mm.ImOp.lo_Commands.value)
     
     for item in lo_Tmp :
         
@@ -336,7 +336,7 @@ def _im_actions__Ops(action): # /im/im_action
     '''###################
         dispatch        
     ###################'''
-    if action == cons_im.ImOp.OP_0_1.value : #if action == "2-0"
+    if action == cons_mm.ImOp.OP_0_1.value : #if action == "2-0"
 #     if action == "2-0" : #if action == "2-0"
              
         print("[%s:%d] executing => %s" % \
@@ -347,7 +347,7 @@ def _im_actions__Ops(action): # /im/im_action
         ## execute
         _im_actions__Ops_0_1(do_Commands[action])
         
-    elif action == cons_im.ImOp.OP_1.value : #if action == "2-0"
+    elif action == cons_mm.ImOp.OP_1.value : #if action == "2-0"
 #     if action == "2-0" : #if action == "2-0"
              
         print("[%s:%d] executing => %s" % \
@@ -362,7 +362,7 @@ def _im_actions__Ops(action): # /im/im_action
 #         _im_actions__Ops_1(lo_Tmp[action])
 #         _im_actions__Ops_1(action)
         
-    elif action == cons_im.ImOp.OP_1_2.value : #if action == "2-0"
+    elif action == cons_mm.ImOp.OP_1_2.value : #if action == "2-0"
 #     if action == "2-0" : #if action == "2-0"
              
         print("[%s:%d] executing => %s" % \
@@ -377,7 +377,7 @@ def _im_actions__Ops(action): # /im/im_action
 #         _im_actions__Ops_1(lo_Tmp[action])
 #         _im_actions__Ops_1(action)
         
-    elif action == cons_im.ImOp.OP_2_0.value : #if action == "2-0"
+    elif action == cons_mm.ImOp.OP_2_0.value : #if action == "2-0"
 #     if action == "2-0" : #if action == "2-0"
              
         print("[%s:%d] executing => %s" % \
@@ -388,7 +388,7 @@ def _im_actions__Ops(action): # /im/im_action
         ## execute
         _im_actions__Ops_2_0()
         
-    elif action == cons_im.ImOp.OP_4.value : #if action == "4"
+    elif action == cons_mm.ImOp.OP_4.value : #if action == "4"
              
         print("[%s:%d] executing => %s" % \
                      (os.path.basename(libs.thisfile()), libs.linenum()
@@ -398,7 +398,7 @@ def _im_actions__Ops(action): # /im/im_action
         ## execute
         _im_actions__Ops_4()
         
-    elif action == cons_im.ImOp.OP_5.value : #if action == "4"
+    elif action == cons_mm.ImOp.OP_5.value : #if action == "4"
              
         print("[%s:%d] executing => %s" % \
                      (os.path.basename(libs.thisfile()), libs.linenum()
@@ -481,7 +481,7 @@ def im_actions(request): # /im/im_action
     
 #     dic = {message : _message}
     
-    return render(request, 'im/im_actions.html', dic)
+    return render(request, 'mm/im_actions.html', dic)
 #     return render(request, 'im/im_actions.html', {'now': now })
 #     return render(request, 'im/im_action.html')
     
