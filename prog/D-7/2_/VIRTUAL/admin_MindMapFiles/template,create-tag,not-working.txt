@@ -1,0 +1,161 @@
+<table id="tbl_Im_Actions">
+
+    <tr>
+        
+        <th>
+            No.
+        </th>
+            
+        <th>
+        
+            File
+            
+        </th>
+    
+        <th>
+        
+            Action
+        
+        </th>
+    
+    </tr>
+     
+    {% for item in lo_Commands.items %}
+    
+        <tr>
+        
+            <td>
+            
+                {{forloop.counter}}
+            
+            </td>
+
+            {% for first, second in item %}
+            <td>
+            
+                {{ second }}
+            
+            </td>
+        
+            <td>
+            
+                <button onclick="im_Action('{{ first }}')">GO</button>
+            
+            </td>
+            
+            {% endfor %}
+        
+        </tr>
+        
+    {% endfor%}
+    
+</table>
+
+
+
+=======================================================================
+{% load taglib_basic %}
+
+<table id="tbl_Im_Actions">
+
+    <tr>
+        
+        <th>
+            No.
+        </th>
+            
+        <th>
+        
+            File
+            
+        </th>
+    
+        <th>
+        
+            Action
+        
+        </th>
+    
+    </tr>
+     
+    {% for item in lo_Commands %}
+    
+        <tr>
+        
+            <td>
+            
+                {{forloop.counter}}
+            
+            </td>
+            
+            
+            {% for f in item %}
+            
+            <td>
+                
+                {{ f }} {{ access_index f 0}} 
+            
+            </td>
+            
+            
+		    {% endfor%}
+            
+        </tr>
+        
+    {% endfor%}
+    
+</table>
+
+    
+======================================================================
+{% load taglib_basic %}
+
+<table id="tbl_Im_Actions">
+
+    <tr>
+        
+        <th>
+            No.
+        </th>
+            
+        <th>
+        
+            File
+            
+        </th>
+    
+        <th>
+        
+            Action
+        
+        </th>
+    
+    </tr>
+     
+    {% for item in lo_Commands %}
+    
+        <tr>
+        
+            <td>
+            
+                {{forloop.counter}}
+            
+            </td>
+            
+            <td>
+            
+                {{ access_index item,0 }}
+                
+<!--                 TemplateSyntaxError at /im/index/
+Could not parse the remainder: ' item,0' from 'access_index item,0' -->
+            
+            </td>
+            
+        </tr>
+        
+    {% endfor%}
+    
+</table>
+
+    
+

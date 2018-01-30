@@ -60,53 +60,17 @@ def index(request):
     c = template.Context({'now': now})
     html = t.render(c)
     
-#     ### test
-#     test_Request(request)
-#     test_Request()
-    
     action = "action"
     message = "message"
     
     #ref sorted https://www.pythoncentral.io/how-to-sort-python-dictionaries-by-key-or-value/
-#     lo_Commands = cons_im.ImOp.lo_Commands
-#     lo_Commands = sorted(cons_im.ImOp.lo_Commands.value)
     lo_Commands = cons_im.ImOp.lo_Commands.value
     
     #debug
     print()
     print(lo_Commands)
     
-#     lo_Commands = cons_im.ImOp.lo_Commands.value
-    
-#     lo_Commands = {}
-    
-#     for item in sorted(cons_im.ImOp.lo_Commands.value) :
-#         
-#         lo_Commands[item] = cons_im.ImOp.lo_Commands.value[item]
-    
-    
-    
-#     sorted(lo_Commands)
-#     lo_Commands = sorted(lo_Commands)
-    
-#     lo_Commands = cons_im.ImOp.lo_Commands
-#     lo_Commands = [
-#         
-#             cons_im.ImOp.OP_0_1.value,
-#             cons_im.ImOp.OP_2_0.value,
-#             
-#             cons_im.ImOp.OP_4.value,
-#             cons_im.ImOp.OP_5.value,
-#             
-#             cons_im.ImOp.OP_7.value,
-#             cons_im.ImOp.OP_8.value,
-#         
-#         ]
-    
-    
     dic = {'action' : action, "message" : message, "lo_Commands" : lo_Commands}
-    
-#     dic = {message : _message}
     
     return render(request, 'im/index.html', dic)
 
@@ -133,184 +97,6 @@ def today_is(request):
 #     return render('blog/datetime2.html', {'now': now })
 #     return render_to_response('blog/datetime2.html', {'now': now })
 #     return render_to_response('blog/datetime.html', {'now': now })
-
-def _im_actions__Ops_9_1(action): # /im/im_action
-    
-    print("[%s:%d] _im_actions__Ops_9_1()" % \
-        (os.path.basename(libs.thisfile()), libs.linenum()
-        
-        ), file=sys.stderr)
-    
-    #debug
-    print()
-    print("[%s:%d] action => '%s'" % \
-            (os.path.basename(libs.thisfile()), libs.linenum()
-            , action
-            ), file=sys.stderr)
-    
-    command = "C:\\WORKS_2\\Programs\\sakura\\sakura.exe"
-#     command = "%s\\%s" % (cons_im.FPath.DPATH_CMD_LIB_WS_CAKE_IFM11.value, action)
-                # OSError: [WinError 193] %1 は有効な Win32 アプリケーションではありません。
-#     command = action
-    arg1 = "%s\\%s" % (cons_im.FPath.DPATH_CMD_LIB_WS_CAKE_IFM11.value, action)
-    
-#     cmd_Full = [command]  #=> 
-    cmd_Full = [command, arg1]  #=> 
-
-    #debug
-    print()
-    print("[%s:%d] cmd_Full =>" % \
-            (os.path.basename(libs.thisfile()), libs.linenum()
-            
-            ), file=sys.stderr)
-    print(cmd_Full)
-    
-    res = subprocess.call(cmd_Full)
-
-    print("[%s:%d] result (subprocess) =>" % \
-            (os.path.basename(libs.thisfile()), libs.linenum()
-            
-            ), file=sys.stderr)
-    
-    print(res)
-    
-    return None
-    
-#     None
-    
-#/def _im_actions__Ops_7(do_Commands[action])
-
-def _im_actions__Ops_9(action): # /im/im_action
-    
-    print("[%s:%d] _im_actions__Ops_8()" % \
-        (os.path.basename(libs.thisfile()), libs.linenum()
-        
-        ), file=sys.stderr)
-    
-    #debug
-    print()
-    print("[%s:%d] action => '%s'" % \
-            (os.path.basename(libs.thisfile()), libs.linenum()
-            , action
-            ), file=sys.stderr)
-    
-    command = "%s\\%s" % (cons_im.FPath.DPATH_CMD_LIB_OTHERS.value, action)
-#     command = action
-#     arg1 = "C:\\WORKS_2\\WS\\WS_Cake_IFM11\\commands\\3-1) add memo.txt"
-    
-    cmd_Full = [command]  #=> 
-#     cmd_Full = [command, arg1]  #=> 
-
-    #debug
-    print()
-    print("[%s:%d] cmd_Full =>" % \
-            (os.path.basename(libs.thisfile()), libs.linenum()
-            
-            ), file=sys.stderr)
-    print(cmd_Full)
-    
-    res = subprocess.call(cmd_Full)
-
-    print("[%s:%d] result (subprocess) =>" % \
-            (os.path.basename(libs.thisfile()), libs.linenum()
-            
-            ), file=sys.stderr)
-    
-    print(res)
-    
-    return None
-    
-#     None
-    
-#/def _im_actions__Ops_7(do_Commands[action])
-
-def _im_actions__Ops_8(action): # /im/im_action
-    
-    print("[%s:%d] _im_actions__Ops_8()" % \
-        (os.path.basename(libs.thisfile()), libs.linenum()
-        
-        ), file=sys.stderr)
-    
-    #debug
-    print()
-    print("[%s:%d] action => '%s'" % \
-            (os.path.basename(libs.thisfile()), libs.linenum()
-            , action
-            ), file=sys.stderr)
-    
-    command = "%s\\%s" % (cons_im.FPath.DPATH_CMD_LIB_OTHERS.value, action)
-#     command = action
-#     arg1 = "C:\\WORKS_2\\WS\\WS_Cake_IFM11\\commands\\3-1) add memo.txt"
-    
-    cmd_Full = [command]  #=> 
-#     cmd_Full = [command, arg1]  #=> 
-
-    #debug
-    print()
-    print("[%s:%d] cmd_Full =>" % \
-            (os.path.basename(libs.thisfile()), libs.linenum()
-            
-            ), file=sys.stderr)
-    print(cmd_Full)
-    
-    res = subprocess.call(cmd_Full)
-
-    print("[%s:%d] result (subprocess) =>" % \
-            (os.path.basename(libs.thisfile()), libs.linenum()
-            
-            ), file=sys.stderr)
-    
-    print(res)
-    
-    return None
-    
-#     None
-    
-#/def _im_actions__Ops_7(do_Commands[action])
-
-def _im_actions__Ops_7(action): # /im/im_action
-    
-    print("[%s:%d] _im_actions__Ops_5()" % \
-        (os.path.basename(libs.thisfile()), libs.linenum()
-        
-        ), file=sys.stderr)
-    
-    #debug
-    print()
-    print("[%s:%d] action => '%s'" % \
-            (os.path.basename(libs.thisfile()), libs.linenum()
-            , action
-            ), file=sys.stderr)
-    
-    command = "%s\\%s" % (cons_im.FPath.DPATH_CMD_LIB_OTHERS.value, action)
-#     command = action
-#     arg1 = "C:\\WORKS_2\\WS\\WS_Cake_IFM11\\commands\\3-1) add memo.txt"
-    
-    cmd_Full = [command]  #=> 
-#     cmd_Full = [command, arg1]  #=> 
-
-    #debug
-    print()
-    print("[%s:%d] cmd_Full =>" % \
-            (os.path.basename(libs.thisfile()), libs.linenum()
-            
-            ), file=sys.stderr)
-    print(cmd_Full)
-    
-    res = subprocess.call(cmd_Full)
-
-    print("[%s:%d] result (subprocess) =>" % \
-            (os.path.basename(libs.thisfile()), libs.linenum()
-            
-            ), file=sys.stderr)
-    
-    print(res)
-    
-    return None
-    
-#     None
-    
-#/def _im_actions__Ops_7(do_Commands[action])
 
 def _im_actions__Ops_5(action): # /im/im_action
     
@@ -384,22 +170,15 @@ def _im_actions__Ops_4(): # /im/im_action
     
 #/def _im_actions__Ops_2_0(action)
 
-# def _im_actions__Ops_2_0(): # /im/im_action
-def _im_actions__Ops_2_0(action): # /im/im_action
+def _im_actions__Ops_2_0(): # /im/im_action
     
     print("[%s:%d] _im_actions__Ops_2_0()" % \
         (os.path.basename(libs.thisfile()), libs.linenum()
         
         ), file=sys.stderr)
     
-    '''###################
-        build : command string        
-    ###################'''
-    command = "%s\\%s" % (cons_im.FPath.DPATH_CMD_LIB_WS_CAKE_IFM11.value, action)
-#     command = "C:\\WORKS_2\\Programs\\sakura\\sakura.exe"
-#     arg1 = "C:\\WORKS_2\\WS\\WS_Cake_IFM11\\commands\\3-1) add memo.txt"
-#     command = "C:\\WORKS_2\\Programs\\sakura\\sakura.exe"
-#     arg1 = "C:\\WORKS_2\\WS\\WS_Cake_IFM11\\commands\\3-1) add memo.txt"
+    command = "C:\\WORKS_2\\Programs\\sakura\\sakura.exe"
+    arg1 = "C:\\WORKS_2\\WS\\WS_Cake_IFM11\\commands\\3-1) add memo.txt"
 #     arg1 = "C:\\WORKS_2\\WS\\WS_Cake_IFM11\\commands\\\"3-1) add memo.txt\""
 #     command = "C:\\WORKS_2\\WS\\WS_Cake_IFM11\\commands\\\"3-1) add memo.txt\""
 #     command = "C:\\WORKS_2\\WS\\WS_Cake_IFM11\\commands\\'3-1) add memo.txt'"
@@ -407,19 +186,10 @@ def _im_actions__Ops_2_0(action): # /im/im_action
 #     command = "C:\\WORKS_2\\WS\\WS_Cake_IFM11\\commands\\test.bat"
 #     command = "'C:\\WORKS_2\\WS\\WS_Cake_IFM11\\commands\\test.bat'"
 #     command = "'C:\\WORKS_2\\WS\\WS_Cake_IFM11\\commands\\2-0) edit_memos.9-0.bat'"
-
-    print()
-    print("[%s:%d] _im_actions__Ops_2_0()" % \
-        (os.path.basename(libs.thisfile()), libs.linenum()
-        
-        ), file=sys.stderr)
     
-    cmd_Full = [command]  #=> 
-#     cmd_Full = [command, arg1]  #=> 
+#     cmd_Full = [command]  #=> 
+    cmd_Full = [command, arg1]  #=> 
     
-    '''###################
-        subprocess        
-    ###################'''
     res = subprocess.call(cmd_Full)
 
     print("[%s:%d] result (subprocess) =>" % \
@@ -523,16 +293,14 @@ def _im_actions__Ops_1(action): # /im/im_action
     
 #/_im_actions__Ops_1()
 
-# def _im_actions__Ops_0_1(): # /im/im_action
-def _im_actions__Ops_0_1(action): # /im/im_action
+def _im_actions__Ops_0_1(): # /im/im_action
     
-    print("[%s:%d] _im_actions__Ops_0_1()" % \
+    print("[%s:%d] _im_actions__Ops_2_0()" % \
         (os.path.basename(libs.thisfile()), libs.linenum()
         
         ), file=sys.stderr)
-
-    command = "%s\\%s" % (cons_im.FPath.DPATH_CMD_LIB_WS_CAKE_IFM11.value, action)
-#     command = "C:\\WORKS_2\\WS\\WS_Cake_IFM11\\commands\\0-1) start xampp, filezilla, open folder, open files.bat"
+    
+    command = "C:\\WORKS_2\\WS\\WS_Cake_IFM11\\commands\\0-1) start xampp, filezilla, open folder, open files.bat"
     cmd_Full = [command]  #=> 
 #     cmd_Full = [command, arg1]  #=> 
     
@@ -618,9 +386,7 @@ def _im_actions__Ops(action): # /im/im_action
                      ), file=sys.stderr)
         
         ## execute
-        _im_actions__Ops_2_0(do_Commands[action])
-#         _im_actions__Ops_2_0(action)
-#         _im_actions__Ops_2_0()
+        _im_actions__Ops_2_0()
         
     elif action == cons_im.ImOp.OP_4.value : #if action == "4"
              
@@ -641,46 +407,6 @@ def _im_actions__Ops(action): # /im/im_action
         
         ## execute
         _im_actions__Ops_5(do_Commands[action])
-        
-    elif action == cons_im.ImOp.OP_7.value : #if action == "4"
-             
-        print("[%s:%d] executing => %s" % \
-                     (os.path.basename(libs.thisfile()), libs.linenum()
-                     , action
-                     ), file=sys.stderr)
-        
-        ## execute
-        _im_actions__Ops_7(do_Commands[action])
-        
-    elif action == cons_im.ImOp.OP_8.value : #if action == "4"
-             
-        print("[%s:%d] executing => %s" % \
-                     (os.path.basename(libs.thisfile()), libs.linenum()
-                     , action
-                     ), file=sys.stderr)
-        
-        ## execute
-        _im_actions__Ops_8(do_Commands[action])
-        
-    elif action == cons_im.ImOp.OP_9.value : #if action == "4"
-             
-        print("[%s:%d] executing => %s" % \
-                     (os.path.basename(libs.thisfile()), libs.linenum()
-                     , action
-                     ), file=sys.stderr)
-        
-        ## execute
-        _im_actions__Ops_9(do_Commands[action])
-        
-    elif action == cons_im.ImOp.OP_9_1.value : #if action == "4"
-             
-        print("[%s:%d] executing => %s" % \
-                     (os.path.basename(libs.thisfile()), libs.linenum()
-                     , action
-                     ), file=sys.stderr)
-        
-        ## execute
-        _im_actions__Ops_9_1(do_Commands[action])
         
     else : #if action == "2-0"
 
