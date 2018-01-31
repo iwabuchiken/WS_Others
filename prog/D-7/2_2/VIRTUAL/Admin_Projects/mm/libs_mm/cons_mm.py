@@ -5,8 +5,10 @@ class ImOp(Enum):
     
     lo_Commands = [
         
-        [1, "Numbering"],
-        [2, "De-numbering"],
+        [0, "Numbering"],
+        [1, "De-numbering"],
+#         [1, "Numbering"],
+#         [2, "De-numbering"],
     
     ]
     
@@ -17,10 +19,7 @@ class FPath(Enum):
     
     '''###################
         @USED
-        viwes :: _im_actions__Ops_4()
-                _im_actions__Ops_5(action)
                 
     ###################'''
-    DPATH_CMD_LIB_OTHERS = "C:\\WORKS_2\\WS\\Eclipse_Luna\\Cake_IFM11\\lib\\others"
-    
+    DPATH_MM_PROJECTS   = "C:\WORKS_2\WS\FM_2_20171104_225946\Projects"
     

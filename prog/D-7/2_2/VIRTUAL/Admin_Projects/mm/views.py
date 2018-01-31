@@ -1,3 +1,14 @@
+'''###################
+    file : C:\WORKS_2\WS\WS_Others\prog\D-7\2_2\VIRTUAL\Admin_Projects\mm\views.py
+
+pushd C:\WORKS_2\WS\WS_Others\prog\D-7\2_2\VIRTUAL
+env\Scripts\activate.bat
+
+pushd C:\WORKS_2\WS\WS_Others\prog\D-7\2_2\VIRTUAL\Admin_Projects
+python manage.py runserver
+
+###################'''
+
 from django.http import HttpResponse
 
 from django.shortcuts import render
@@ -7,6 +18,7 @@ from django import template
 
 import os, sys
 from sympy.physics.units.dimensions import action
+from pip._vendor.requests.api import request
 
 sys.path.append('.')
 sys.path.append('..')
@@ -24,6 +36,64 @@ import subprocess
 
 import copy
 
+#ref https://stackoverflow.com/questions/3207219/how-do-i-list-all-files-of-a-directory
+from os import listdir
+from os.path import isfile, join
+
+
+################################## FUNCS
+def numbering(request):
+    
+    '''###################
+        var : list of files        
+    ###################'''
+    MAIN_DIR = cons_mm.FPath.DPATH_MM_PROJECTS.value
+    
+    mypath = MAIN_DIR
+    
+    #ref https://stackoverflow.com/questions/3207219/how-do-i-list-all-files-of-a-directory answered Jul 8 '10 at 21:01
+    lo_Files = [f for f in listdir(mypath) if isfile(join(mypath, f))]
+    
+    print()
+    print("[%s:%d] files => %s" % \
+            (os.path.basename(libs.thisfile()), libs.linenum()
+            , lo_Files
+            ), file=sys.stderr)
+    print()
+    
+    '''###################
+        sort list        
+    ###################'''
+    #ref sort https://stackoverflow.com/questions/4183506/python-list-sort-in-descending-order answered Nov 15 '10 at 10:42
+    lo_Files.sort(reverse=False)
+#     sorted(lo_Files, reverse = True)
+
+    print()
+    print("sorting...")
+    print("[%s:%d] files => %s" % \
+            (os.path.basename(libs.thisfile()), libs.linenum()
+            , lo_Files
+            ), file=sys.stderr)
+    print()
+    
+    '''###################
+        dict        
+    ###################'''
+    msg = "Where to store Django Templates?"
+    
+    dic = {
+        
+        "msg" : msg,
+        
+        "MAIN_DIR" : cons_mm.FPath.DPATH_MM_PROJECTS.value,
+        
+        "lo_Files" : lo_Files,
+        
+        }
+    
+    return render(request, 'mm/numbering.html', dic)
+    
+#/def numbering(request):
 
 def index(request):
 

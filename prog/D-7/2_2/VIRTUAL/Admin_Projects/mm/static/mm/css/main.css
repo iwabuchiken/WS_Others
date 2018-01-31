@@ -18,6 +18,17 @@ table#tbl_Im_Actions {
 	margin     : 10px;
 }
 
+tabletbl_Mm_Numbering_Actions {
+	
+	/*border     : 1;*/
+	/*border     : 1px solid black;*/
+	/* ref template for css files https://stackoverflow.com/questions/7900575/how-to-add-css-autocomplete-to-eclipse */
+	/*ref table border http://www.html.am/html-codes/tables/table-border.cfm*/
+	border     : 1px solid #aaaaaa;
+	
+	margin     : 10px;
+}
+
 table#tbl_Im_Actions tr th {
 	
 	/*ref https://www.w3schools.com/CSSref/pr_background-color.asp*/
@@ -42,3 +53,28 @@ table#tbl_Im_Actions tr td {
 	padding    : 5px;
 	
 }
+
+button.bt_Basic_1 {
+	
+	font-size: 30px;
+	background-color: yellow;
+	font-weight: bold;
+	
+	padding    : 5px;
+	
+	
+}
+
+input#ipt_Numbering_MainDir {
+	
+	height: 30px;
+    width:  250px;
+    
+    background: #81BEF7;
+    
+    margin-top: 20px
+	
+	
+}/*input#ipt_Numbering_MainDir {*/
+
+

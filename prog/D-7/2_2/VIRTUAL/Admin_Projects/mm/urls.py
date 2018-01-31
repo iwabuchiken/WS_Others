@@ -22,4 +22,6 @@ urlpatterns = [
 #     url(r'^$', views.index),
     url(r'^$', views.index, name='blog_index'),
     
+    url(r'^numbering/$', views.numbering, name='numbering'),
+    
 ]
