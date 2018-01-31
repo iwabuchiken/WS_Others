@@ -20,6 +20,7 @@ from django import template
 import os, sys
 from sympy.physics.units.dimensions import action
 from pip._vendor.requests.api import request
+from macpath import defpath
 
 sys.path.append('.')
 sys.path.append('..')
@@ -29,6 +30,7 @@ sys.path.append('C:/WORKS_2/WS/WS_Others/free/VX7GLZ_science-research/31_Materia
 
 from libs import libs
 from libs_31 import test_31
+from libs_31 import libmt
 
 from mm.libs_mm import cons_mm
 # from im.libs_mm import cons_mm
@@ -46,7 +48,42 @@ from django.views.decorators.cache import never_cache
 
 from pathlib import Path
 
+#from C:\WORKS_2\WS\WS_Others\free\VX7GLZ_science-research\31_Materials\1_\1_1.3.py
+import xml.etree.ElementTree as ET
+
 ################################## FUNCS
+def _exec_Numbering(dpath, fname):
+    
+    fpath = os.path.join(dpath, fname)
+    
+    tree = ET.parse(fpath)
+    
+    tree = libmt.add_Numbering__Through(tree)
+    
+    '''###################
+        save xml        
+    ###################'''
+    label = "add-numbering-through"
+    
+    fpath_Out = os.path.join(
+            dpath, 
+            fname + "." + libs.get_TimeLabel_Now() \
+            + "." \
+            + "mm"
+            
+        )
+#     fpath_Out = "new.%s.%s.mm" % (label, libs.get_TimeLabel_Now())
+    
+    tree.write(fpath_Out)
+    
+    print()
+    print ("[%s:%d] mm => written : %s" % \
+           (os.path.basename(libs.thisfile()), libs.linenum(), fpath_Out))
+
+    return None
+    
+#/ def exec_Numbering(fpath):
+    
 def exec_Numbering(request):
     
     '''###################
@@ -153,6 +190,12 @@ def exec_Numbering(request):
 #         ), file=sys.stderr)
 #     print()
         
+    '''###################
+        execute        
+    ###################'''
+    res = _exec_Numbering(dpath, fname)
+#     res = _exec_Numbering(fpath)
+    
     '''###################
         render : params not sufficient        
     ###################'''
