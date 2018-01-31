@@ -51,6 +51,12 @@ from pathlib import Path
 #from C:\WORKS_2\WS\WS_Others\free\VX7GLZ_science-research\31_Materials\1_\1_1.3.py
 import xml.etree.ElementTree as ET
 
+import time
+
+from os.path import splitext
+
+import glob
+
 ################################## FUNCS
 def _exec_Numbering(dpath, fname):
     
@@ -67,9 +73,10 @@ def _exec_Numbering(dpath, fname):
     
     fpath_Out = os.path.join(
             dpath, 
-            fname + "." + libs.get_TimeLabel_Now() \
-            + "." \
-            + "mm"
+            fname
+#             fname + "." + libs.get_TimeLabel_Now() \
+#             + "." \
+#             + "mm"
             
         )
 #     fpath_Out = "new.%s.%s.mm" % (label, libs.get_TimeLabel_Now())
@@ -95,6 +102,10 @@ def exec_Numbering(request):
     '''###################
         data        
     ###################'''
+    ### count time
+    #ref https://stackoverflow.com/questions/3620943/measuring-elapsed-time-with-the-time-module answered Sep 1 '10 at 18:22
+    time_Start = time.time()
+    
     if not dpath == False and not fname == False :
 #     if dpath == True or fname == True :
 #     if dpath == False or fname == False :
@@ -136,7 +147,11 @@ def exec_Numbering(request):
 
 
     
-    dic = {"msg" : msg, "dpath" : dpath, "fname" : fname}
+    dic = {cons_mm.ExecNumbering.DICKEY_MSG.value : msg,
+            cons_mm.ExecNumbering.DICKEY_DPATH.value : dpath, 
+            cons_mm.ExecNumbering.DICKEY_FNAME.value : fname,
+        }
+#     dic = {"msg" : msg, "dpath" : dpath, "fname" : fname}
 
     print()
     print("[%s:%d] dic => '%s'" % \
@@ -197,6 +212,16 @@ def exec_Numbering(request):
 #     res = _exec_Numbering(fpath)
     
     '''###################
+        time        
+    ###################'''
+    time_Elapsed = time.time() - time_Start
+    
+    ### add info
+    dic[cons_mm.ExecNumbering.DICKEY_MSG.value] += \
+        " (time : %02.3f sec)" % (time_Elapsed)
+#         " (time : %d)" % (time_Elapsed)
+    
+    '''###################
         render : params not sufficient        
     ###################'''
     
@@ -249,7 +274,19 @@ def numbering(request):
     mypath = MAIN_DIR
     
     #ref https://stackoverflow.com/questions/3207219/how-do-i-list-all-files-of-a-directory answered Jul 8 '10 at 21:01
-    lo_Files = [f for f in listdir(mypath) if isfile(join(mypath, f))]
+    dpath_Main = cons_mm.FPath.DPATH_MM_PROJECTS.value
+    
+    #ref glob https://stackoverflow.com/questions/2225564/get-a-filtered-list-of-files-in-a-directory
+    lo_Entries = glob.glob(dpath_Main + "\\" + "*.mm")
+#     lo_Entries = glob.glob('*.mm')
+#     lo_Entries = listdir(mypath)
+    
+    #ref splitext https://stackoverflow.com/questions/37896386/how-to-get-file-extension-correctly answered Jun 18 '16 at 11:29
+#     lo_Files = [f for f in lo_Entries if isfile(join(mypath, f)) and splitext(f)]
+#     lo_Files = [f for f in lo_Entries if isfile(join(mypath, f))]
+    lo_Files = [os.path.basename(f) for f in lo_Entries if isfile(join(mypath, f))]
+#     lo_Files = [f for f in lo_Entries if isfile(join(mypath, f))]
+#     lo_Files = [f for f in listdir(mypath) if isfile(join(mypath, f))]
     
     print()
     print("[%s:%d] files => %s" % \

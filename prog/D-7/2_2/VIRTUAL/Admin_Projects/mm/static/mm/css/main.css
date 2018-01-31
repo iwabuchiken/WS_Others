@@ -132,6 +132,20 @@ div#index_Display_Area {
 	
 }/*div#index_Display_Area {*/
 
+div#div_Numbering_Content {
+	
+	background     : white;
+	
+	/*ref https://stackoverflow.com/questions/17450861/add-scroll-bar-to-table-body */
+	overflow       :scroll;
+	
+	height         : 350px;
+	
+/*height         : 50%;*/
+	
+	
+}/*div#index_Display_Area {*/
+
 
 input#ipt_Numbering_MainDir {
 	
