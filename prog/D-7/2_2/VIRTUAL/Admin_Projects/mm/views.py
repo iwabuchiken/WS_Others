@@ -41,15 +41,135 @@ import copy
 from os import listdir
 from os.path import isfile, join
 
+#ref https://stackoverflow.com/questions/29304845/how-to-disable-cache-in-django-view
+from django.views.decorators.cache import never_cache
+
+from pathlib import Path
 
 ################################## FUNCS
+def exec_Numbering(request):
+    
+    '''###################
+        requests        
+    ###################'''
+    dpath = request.GET.get('dpath', False)
+    fname = request.GET.get('fname', False)
+    
+    '''###################
+        data        
+    ###################'''
+    if not dpath == False and not fname == False :
+#     if dpath == True or fname == True :
+#     if dpath == False or fname == False :
+        
+        msg = "params obtained"
+        
+    else :
+
+        msg = "params NOT enough"
+        
+        
+        dic = {
+            cons_mm.ExecNumbering.DICKEY_MSG.value : msg,
+            cons_mm.ExecNumbering.DICKEY_DPATH.value : dpath, 
+            cons_mm.ExecNumbering.DICKEY_FNAME.value : fname,
+                }
+#         dic = {"msg" : msg, "dpath" : dpath, "fname" : fname}
+
+        print()
+        print("[%s:%d] dic => '%s'" % \
+            (os.path.basename(libs.thisfile()), libs.linenum()
+            , dic
+            ), file=sys.stderr)
+        print()
+        
+        '''###################
+            render : params not sufficient        
+        ###################'''
+        return render(request, 'mm/exec_Numbering.html', dic)
+        
+#     msg = None if dpath == False or fname == False else "params obtained"
+    
+#     print()
+#     print("[%s:%d] msg => '%s'" % \
+#         (os.path.basename(libs.thisfile()), libs.linenum()
+#         , msg
+#         ), file=sys.stderr)
+#     print()
+
+
+    
+    dic = {"msg" : msg, "dpath" : dpath, "fname" : fname}
+
+    print()
+    print("[%s:%d] dic => '%s'" % \
+        (os.path.basename(libs.thisfile()), libs.linenum()
+        , dic
+        ), file=sys.stderr)
+    print()
+
+    
+    '''###################
+        exec numbering        
+    ###################'''
+    '''###################
+        validate : file exists        
+    ###################'''
+    fpath = os.path.join(dpath, fname)
+    
+    #ref https://stackoverflow.com/questions/82831/how-do-i-check-whether-a-file-exists-using-python answered Sep 17 '08 at 12:57
+    my_file = Path(fpath)
+    
+    if not my_file.is_file():
+
+        print()
+        print("[%s:%d] file NOT exists : '%s'" % \
+            (os.path.basename(libs.thisfile()), libs.linenum()
+            , fpath
+            ), file=sys.stderr)
+        print()
+        
+        dic[cons_mm.ExecNumbering.DICKEY_MSG.value] = \
+                    "File does NOT exist : %s" % (fpath)
+        
+        '''###################
+            render : params not sufficient        
+        ###################'''
+        
+        return render(request, 'mm/exec_Numbering.html', dic)
+    
+#     '''###################
+#         validate : file not used        
+#     ###################'''
+#    #ref https://stackoverflow.com/questions/7132861/building-full-path-filename-in-python answered Aug 20 '11 at 16:49
+#     fpath = os.path.join(dpath, fname)
+#     
+#     res = libs.is_Open(fpath)
+# 
+#     print()
+#     print("[%s:%d] file opened => '%s'" % \
+#         (os.path.basename(libs.thisfile()), libs.linenum()
+#         , res
+#         ), file=sys.stderr)
+#     print()
+        
+    '''###################
+        render : params not sufficient        
+    ###################'''
+    
+    return render(request, 'mm/exec_Numbering.html', dic)
+    
+#/def exec_Numbering(request):
+    
+
+    
+@never_cache
 def numbering(request):
     
     '''###################
         test        
     ###################'''
     ### referer
-    req = request
 #     req = HttpRequest()
     
 #     print()
@@ -75,7 +195,8 @@ def numbering(request):
     ###################'''
     referer_MM = "http://127.0.0.1:8000/mm/"
     
-    referer_Current = req.META.get('HTTP_REFERER')
+    referer_Current = request.META.get('HTTP_REFERER')
+#     referer_Current = req.META.get('HTTP_REFERER')
     
     '''###################
         var : list of files        

@@ -1,5 +1,6 @@
 import inspect
 import os
+import sys
 
 #ref https://stackoverflow.com/questions/415511/how-to-get-current-time-in-python "answered Jan 6 '09 at 4:59"
 from time import gmtime, strftime, localtime, time
@@ -231,3 +232,32 @@ def get_TimeLabel_Now(string_type="serial", mili=False):
 #     return strftime("%Y%m%d_%H%M%S", gmtime())
     
 #]]get_TimeLabel_Now():
+
+'''###################
+def is_Open(filepath):
+
+    2018/01/31 12:34:10
+    
+    @problem
+        - file being opened in Mindmanager app
+        - returns "True"
+###################'''
+def is_Open(filepath):
+
+    print()
+    print("[%s:%d] is_Open : '%s'" % \
+        (os.path.basename(thisfile()), linenum()
+        , filepath
+        ), file=sys.stderr)
+    print()
+
+    #ref https://stackoverflow.com/questions/37515574/how-to-check-if-a-file-is-already-opened-in-the-same-process answered May 29 '16 at 23:09    
+    if os.path.exists(filepath):
+#     if os.path.exists(file_name):
+        try:
+            os.rename(filepath, filepath + ".tmp") #can't rename an open file so an error will be thrown
+#             os.rename(filepath, filepath) #can't rename an open file so an error will be thrown
+            return False
+        except:
+            return True
+    raise NameError

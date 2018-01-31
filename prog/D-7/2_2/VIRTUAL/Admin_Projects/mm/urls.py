@@ -24,4 +24,6 @@ urlpatterns = [
     
     url(r'^numbering/$', views.numbering, name='numbering'),
     
+    url(r'^exec_Numbering/$', views.exec_Numbering, name='exec_Numbering'),
+    
 ]

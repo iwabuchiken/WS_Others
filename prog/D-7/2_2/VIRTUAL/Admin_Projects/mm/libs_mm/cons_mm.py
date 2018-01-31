@@ -23,3 +23,13 @@ class FPath(Enum):
     ###################'''
     DPATH_MM_PROJECTS   = "C:\WORKS_2\WS\FM_2_20171104_225946\Projects"
     
+class Numbering(Enum):
+    
+    ID_BT_EXEC_NUMBERING_0 = "bt_Exec_Numbering_0"
+    
+    
+class ExecNumbering(Enum):
+
+    DICKEY_MSG      = "msg"
+    DICKEY_DPATH      = "dpath"
+    DICKEY_FNAME      = "fname"
