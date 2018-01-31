@@ -113,11 +113,62 @@ button.bt_Numbering_List {
 	
 }
 
+button.bt_Numbering_List:hover {
+	
+	background-color: #3e8e41;
+	
+}
+
+button.bt_Numbering_List:active {
+	
+	/*ref https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_buttons_animate3*/
+
+	background-color: DarkKhaki;
+	
+	transform: translateY(4px);
+	
+	
+}
+
 button.bt_Index_List_Action {
 	
 	font-size: 30px;
 	background-color: green;
 	font-weight: bold;
+	
+	color      : white;
+	
+	padding    : 5px;
+	
+	
+}
+
+button.bt_Index_List_Action:hover {
+	
+	font-size: 30px;
+	background-color: DarkKhaki ;
+	font-weight: bold;
+	
+	
+	color      : white;
+	
+	padding    : 5px;
+	
+	
+}
+
+button.bt_Index_List_Action:active {
+	
+	font-size: 30px;
+	
+	/*ref color https://www.computerhope.com/htmcolor.htm */
+
+	background-color: MediumTurquoise;
+	font-weight: bold;
+	
+	box-shadow: 0 5px #666;
+	
+	transform: translateY(4px);
 	
 	color      : white;
 	

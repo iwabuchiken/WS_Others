@@ -104,9 +104,7 @@ function im_Action(_param) {
 
 }//function im_Action(param) {
 
-function mm_Index_LinkTo(_param) {
-	
-//	alert("!!param is => '" + _param + "'");
+function _mm_Index_LinkTo__0() {
 	
 	/***************************
 		message
@@ -116,10 +114,10 @@ function mm_Index_LinkTo(_param) {
 	var elem = $('div#index_Display_Area');
 	
 	elem.html(msg);
-//	$('div#index_Display_Area').html(msg);
+	//$('div#index_Display_Area').html(msg);
 	
 	elem.css("background", cname_Yellow);
-//	elem.css("background", "yellow");
+	//elem.css("background", "yellow");
 	
 	/***************************
 		ajax
@@ -127,25 +125,25 @@ function mm_Index_LinkTo(_param) {
 		ref : C:\WORKS_2\WS\Eclipse_Luna\Cake_IFM11\app\webroot\js\main.js
 	 ***************************/
 	var _url = "http://127.0.0.1:8000/mm/numbering/";
-//	var _url = "http://127.0.0.1:8000/im/im_actions";
-//	var _url = "http://127.0.0.1:8000/im/actions";
+	//var _url = "http://127.0.0.1:8000/im/im_actions";
+	//var _url = "http://127.0.0.1:8000/im/actions";
 	
-//	var _data = {action : _param};
+	//var _data = {action : _param};
 	
 	$.ajax({
 		
 		url: _url,
 		type: "GET",
 		//REF http://stackoverflow.com/questions/1916309/pass-multiple-parameters-to-jquery-ajax-call answered Dec 16 '09 at 17:37
-//	    data: {id: id},
-//	    data: {memos: memos, image_id: image_id},
-//		data: _data,
+	//    data: {id: id},
+	//    data: {memos: memos, image_id: image_id},
+	//	data: _data,
 		
 		timeout: 10000
 		
 	}).done(function(data, status, xhr) {
 		
-//		alert(data);
+	//	alert(data);
 		
 		$('div#index_Display_Area').html(data);
 		
@@ -163,6 +161,90 @@ function mm_Index_LinkTo(_param) {
 		$('div#index_Display_Area')
 			.css("background", cname_Red);
 	});
+	
+}//function _mm_Index_LinkTo__1() {
+
+function mm_Index_LinkTo(_param) {
+	
+//	alert("!!param is => '" + _param + "'");
+	/***************************
+		dispatch
+	 ***************************/
+	//ref https://www.w3schools.com/jsref/jsref_parseInt.asp
+	var index = parseInt(_param);
+	
+	if (index == 0) {
+		
+		_mm_Index_LinkTo__0();
+		
+	}
+	
+	else if (index == 0) {
+		
+		_mm_Index_LinkTo__1();
+		
+	} else {
+		
+		alert("unknown index => " + _param);
+		
+	}
+	
+	
+//	/***************************
+//		message
+//	 ***************************/
+//	var msg = "ajax starting...";
+//	
+//	var elem = $('div#index_Display_Area');
+//	
+//	elem.html(msg);
+////	$('div#index_Display_Area').html(msg);
+//	
+//	elem.css("background", cname_Yellow);
+////	elem.css("background", "yellow");
+//	
+//	/***************************
+//		ajax
+//		
+//		ref : C:\WORKS_2\WS\Eclipse_Luna\Cake_IFM11\app\webroot\js\main.js
+//	 ***************************/
+//	var _url = "http://127.0.0.1:8000/mm/numbering/";
+////	var _url = "http://127.0.0.1:8000/im/im_actions";
+////	var _url = "http://127.0.0.1:8000/im/actions";
+//	
+////	var _data = {action : _param};
+//	
+//	$.ajax({
+//		
+//		url: _url,
+//		type: "GET",
+//		//REF http://stackoverflow.com/questions/1916309/pass-multiple-parameters-to-jquery-ajax-call answered Dec 16 '09 at 17:37
+////	    data: {id: id},
+////	    data: {memos: memos, image_id: image_id},
+////		data: _data,
+//		
+//		timeout: 10000
+//		
+//	}).done(function(data, status, xhr) {
+//		
+////		alert(data);
+//		
+//		$('div#index_Display_Area').html(data);
+//		
+//		$('div#index_Display_Area')
+//				.css("background", cname_White);
+//		
+//	}).fail(function(xhr, status, error) {
+//		
+//		alert(xhr.status);
+//		
+//		var msg = "ajax returned error";
+//		
+//		$('div#index_Display_Area').html(msg);
+//		
+//		$('div#index_Display_Area')
+//			.css("background", cname_Red);
+//	});
 	
 }//function mm_Index_LinkTo(_param) {
 
@@ -188,7 +270,7 @@ function exec_Numbering(_param) {
 	 ***************************/
 	var _fname = _param;
 	
-	alert("file fullpath => '" + _dpath + "\\" + _fname + "'");
+//	alert("file fullpath => '" + _dpath + "\\" + _fname + "'");
 	
 	/***************************
 		data

@@ -284,6 +284,7 @@ def numbering(request):
     #ref splitext https://stackoverflow.com/questions/37896386/how-to-get-file-extension-correctly answered Jun 18 '16 at 11:29
 #     lo_Files = [f for f in lo_Entries if isfile(join(mypath, f)) and splitext(f)]
 #     lo_Files = [f for f in lo_Entries if isfile(join(mypath, f))]
+    #ref basename https://stackoverflow.com/questions/678236/how-to-get-the-filename-without-the-extension-from-a-path-in-python answered Mar 24 '09 at 16:43
     lo_Files = [os.path.basename(f) for f in lo_Entries if isfile(join(mypath, f))]
 #     lo_Files = [f for f in lo_Entries if isfile(join(mypath, f))]
 #     lo_Files = [f for f in listdir(mypath) if isfile(join(mypath, f))]
