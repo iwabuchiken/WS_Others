@@ -24,6 +24,10 @@ urlpatterns = [
     
     url(r'^numbering/$', views.numbering, name='numbering'),
     
+    url(r'^denumbering/$', views.denumbering, name='denumbering'),
+    
     url(r'^exec_Numbering/$', views.exec_Numbering, name='exec_Numbering'),
+    
+    url(r'^exec_DeNumbering/$', views.exec_DeNumbering, name='exec_DeNumbering'),
     
 ]

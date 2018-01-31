@@ -162,6 +162,67 @@ function _mm_Index_LinkTo__0() {
 			.css("background", cname_Red);
 	});
 	
+}//function _mm_Index_LinkTo__0() {
+
+function _mm_Index_LinkTo__1() {
+	
+	/***************************
+		message
+	 ***************************/
+	var msg = "ajax starting... param is '1'";
+	
+	var elem = $('div#index_Display_Area');
+	
+	elem.html(msg);
+	//$('div#index_Display_Area').html(msg);
+	
+	elem.css("background", cname_Yellow);
+	//elem.css("background", "yellow");
+	
+	/***************************
+		ajax
+		
+		ref : C:\WORKS_2\WS\Eclipse_Luna\Cake_IFM11\app\webroot\js\main.js
+	 ***************************/
+	var _url = "http://127.0.0.1:8000/mm/denumbering/";
+//	var _url = "http://127.0.0.1:8000/mm/numbering/";
+	//var _url = "http://127.0.0.1:8000/im/im_actions";
+	//var _url = "http://127.0.0.1:8000/im/actions";
+	
+	//var _data = {action : _param};
+	
+	$.ajax({
+		
+		url: _url,
+		type: "GET",
+		//REF http://stackoverflow.com/questions/1916309/pass-multiple-parameters-to-jquery-ajax-call answered Dec 16 '09 at 17:37
+		//    data: {id: id},
+		//    data: {memos: memos, image_id: image_id},
+		//	data: _data,
+		
+		timeout: 10000
+		
+	}).done(function(data, status, xhr) {
+		
+		//	alert(data);
+		
+		$('div#index_Display_Area').html(data);
+		
+		$('div#index_Display_Area')
+		.css("background", cname_White);
+		
+	}).fail(function(xhr, status, error) {
+		
+		alert(xhr.status);
+		
+		var msg = "ajax returned error";
+		
+		$('div#index_Display_Area').html(msg);
+		
+		$('div#index_Display_Area')
+		.css("background", cname_Red);
+	});
+	
 }//function _mm_Index_LinkTo__1() {
 
 function mm_Index_LinkTo(_param) {
@@ -179,7 +240,7 @@ function mm_Index_LinkTo(_param) {
 		
 	}
 	
-	else if (index == 0) {
+	else if (index == 1) {
 		
 		_mm_Index_LinkTo__1();
 		
@@ -324,6 +385,88 @@ function exec_Numbering(_param) {
 
 	});
 
+}//exec_Numbering
+
+function exec_DeNumbering(_param) {
+	
+	
+	/***************************
+		get : vars
+	 ***************************/
+	/***************************
+		dpath
+	 ***************************/
+	var elem = $('input#ipt_DeNumbering_MainDir');
+//	var elem = $('input#ipt_Numbering_MainDir');
+	
+	//ref val https://stackoverflow.com/questions/4088467/get-the-value-in-an-input-text-box answered Apr 9 '13 at 13:28
+	var _dpath = elem.val();
+	
+//	alert("dpath => " + dpath + "'");
+	
+	/***************************
+		fname
+	 ***************************/
+	var _fname = _param;
+	
+//	alert("file fullpath => '" + _dpath + "\\" + _fname + "'");
+	
+//	//debug
+//	return;
+	
+	/***************************
+		data
+	 ***************************/
+//	var _data = {action : _param};
+	var _data = {dpath : _dpath, fname : _fname};
+	
+	var _url = "http://127.0.0.1:8000/mm/exec_DeNumbering/";
+//	var _url = "http://127.0.0.1:8000/mm/exec_Numbering/";
+	
+	/***************************
+		background
+	 ***************************/
+	var elem = $('div#numbering_content_Message_Area');
+	
+	elem.css("background", cname_Yellow);
+//	elem.css("background", "yellow");
+	
+	/***************************
+		ajaxing
+	 ***************************/
+	$.ajax({
+		
+		url: _url,
+		type: "GET",
+		//REF http://stackoverflow.com/questions/1916309/pass-multiple-parameters-to-jquery-ajax-call answered Dec 16 '09 at 17:37
+//	    data: {id: id},
+//	    data: {memos: memos, image_id: image_id},
+		data: _data,
+		
+		timeout: 10000
+		
+	}).done(function(data, status, xhr) {
+		
+//		alert(data);
+		
+		$('div#numbering_content_Message_Area').html(data);
+		
+		$('div#numbering_content_Message_Area')
+		.css("background", cname_White);
+		
+	}).fail(function(xhr, status, error) {
+		
+		alert(xhr.status);
+		
+		var msg = "ajax returned error";
+		
+		$('div#index_Display_Area').html(msg);
+		
+		$('div#numbering_content_Message_Area')
+		.css("background", cname_Red);
+		
+	});
+	
 }//exec_Numbering
 
 function get_Timelabel_Now() {

@@ -91,6 +91,40 @@ def _exec_Numbering(dpath, fname):
     
 #/ def exec_Numbering(fpath):
     
+def _exec_DeNumbering(dpath, fname):
+    
+    fpath = os.path.join(dpath, fname)
+    
+#     tree = ET.parse(fpath)
+#     
+#     tree = libmt.add_Numbering__Through(tree)
+#     
+#     '''###################
+#         save xml        
+#     ###################'''
+#     label = "add-numbering-through"
+#     
+    fpath_Out = os.path.join(
+            dpath, 
+#             fname
+            fname + "." + libs.get_TimeLabel_Now() \
+            + "." \
+            + "mm"
+             
+        )
+# #     fpath_Out = "new.%s.%s.mm" % (label, libs.get_TimeLabel_Now())
+#     
+#     tree.write(fpath_Out)
+#     
+    print()
+#     print ("[%s:%d] mm => written : %s" % \
+    print ("[%s:%d] DeNumbering : %s" % \
+           (os.path.basename(libs.thisfile()), libs.linenum(), fpath_Out))
+
+    return None
+    
+#/ def exec_Numbering(fpath):
+    
 def exec_Numbering(request):
     
     '''###################
@@ -229,6 +263,132 @@ def exec_Numbering(request):
     
 #/def exec_Numbering(request):
     
+def exec_DeNumbering(request):
+    
+    '''###################
+        requests        
+    ###################'''
+    dpath = request.GET.get('dpath', False)
+    fname = request.GET.get('fname', False)
+    
+    '''###################
+        data        
+    ###################'''
+    ### count time
+    #ref https://stackoverflow.com/questions/3620943/measuring-elapsed-time-with-the-time-module answered Sep 1 '10 at 18:22
+    time_Start = time.time()
+    
+    if not dpath == False and not fname == False :
+#     if dpath == True or fname == True :
+#     if dpath == False or fname == False :
+        
+        msg = "params obtained"
+        
+    else :
+
+        msg = "params NOT enough"
+        
+        
+        dic = {
+            cons_mm.ExecNumbering.DICKEY_MSG.value : msg,
+            cons_mm.ExecNumbering.DICKEY_DPATH.value : dpath, 
+            cons_mm.ExecNumbering.DICKEY_FNAME.value : fname,
+                }
+#         dic = {"msg" : msg, "dpath" : dpath, "fname" : fname}
+
+        print()
+        print("[%s:%d] dic => '%s'" % \
+            (os.path.basename(libs.thisfile()), libs.linenum()
+            , dic
+            ), file=sys.stderr)
+        print()
+        
+        '''###################
+            render : params not sufficient        
+        ###################'''
+        return render(request, 'mm/exec_DeNumbering.html', dic)
+        
+#     msg = None if dpath == False or fname == False else "params obtained"
+    
+#     print()
+#     print("[%s:%d] msg => '%s'" % \
+#         (os.path.basename(libs.thisfile()), libs.linenum()
+#         , msg
+#         ), file=sys.stderr)
+#     print()
+
+
+    
+    dic = {cons_mm.ExecNumbering.DICKEY_MSG.value : msg,
+            cons_mm.ExecNumbering.DICKEY_DPATH.value : dpath, 
+            cons_mm.ExecNumbering.DICKEY_FNAME.value : fname,
+        }
+#     dic = {"msg" : msg, "dpath" : dpath, "fname" : fname}
+
+    print()
+    print("[%s:%d] dic => '%s'" % \
+        (os.path.basename(libs.thisfile()), libs.linenum()
+        , dic
+        ), file=sys.stderr)
+    print()
+
+    
+    '''###################
+        exec numbering        
+    ###################'''
+    '''###################
+        validate : file exists        
+    ###################'''
+    fpath = os.path.join(dpath, fname)
+    
+    #ref https://stackoverflow.com/questions/82831/how-do-i-check-whether-a-file-exists-using-python answered Sep 17 '08 at 12:57
+    my_file = Path(fpath)
+    
+    if not my_file.is_file():
+
+        print()
+        print("[%s:%d] file NOT exists : '%s'" % \
+            (os.path.basename(libs.thisfile()), libs.linenum()
+            , fpath
+            ), file=sys.stderr)
+        print()
+        
+        dic[cons_mm.ExecNumbering.DICKEY_MSG.value] = \
+                    "File does NOT exist : %s" % (fpath)
+        
+        '''###################
+            render : params not sufficient        
+        ###################'''
+        
+        return render(request, 'mm/exec_DeNumbering.html', dic)
+#         return render(request, 'mm/exec_Numbering.html', dic)
+    
+    '''###################
+        execute        
+    ###################'''
+    res = _exec_DeNumbering(dpath, fname)
+#     res = _exec_Numbering(dpath, fname)
+#     res = _exec_Numbering(fpath)
+    
+    '''###################
+        time        
+    ###################'''
+    time_Elapsed = time.time() - time_Start
+    
+    ### add info
+    dic[cons_mm.ExecNumbering.DICKEY_MSG.value] += \
+        " (time : %02.3f sec)" % (time_Elapsed)
+#         " (time : %d)" % (time_Elapsed)
+    
+    '''###################
+        render : params not sufficient        
+    ###################'''
+    
+    return render(request, 'mm/exec_DeNumbering.html', dic)
+#     return render(request, 'mm/exec_Numbering.html', dic)
+    
+#/def exec_Numbering(request):
+    
 
     
 @never_cache
@@ -336,6 +496,97 @@ def numbering(request):
     else : #if referer_Current == referer_MM
     
         return render(request, 'mm/numbering_full.html', dic)
+    
+def denumbering(request):
+    
+    '''###################
+        get : referer        
+    ###################'''
+    referer_MM = "http://127.0.0.1:8000/mm/"
+    
+    referer_Current = request.META.get('HTTP_REFERER')
+#     referer_Current = req.META.get('HTTP_REFERER')
+    
+    '''###################
+        var : list of files        
+    ###################'''
+    MAIN_DIR = cons_mm.FPath.DPATH_MM_PROJECTS.value
+    
+    mypath = MAIN_DIR
+    
+    #ref https://stackoverflow.com/questions/3207219/how-do-i-list-all-files-of-a-directory answered Jul 8 '10 at 21:01
+    dpath_Main = cons_mm.FPath.DPATH_MM_PROJECTS.value
+    
+    #ref glob https://stackoverflow.com/questions/2225564/get-a-filtered-list-of-files-in-a-directory
+    lo_Entries = glob.glob(dpath_Main + "\\" + "*.mm")
+#     lo_Entries = glob.glob('*.mm')
+#     lo_Entries = listdir(mypath)
+    
+    #ref splitext https://stackoverflow.com/questions/37896386/how-to-get-file-extension-correctly answered Jun 18 '16 at 11:29
+#     lo_Files = [f for f in lo_Entries if isfile(join(mypath, f)) and splitext(f)]
+#     lo_Files = [f for f in lo_Entries if isfile(join(mypath, f))]
+    #ref basename https://stackoverflow.com/questions/678236/how-to-get-the-filename-without-the-extension-from-a-path-in-python answered Mar 24 '09 at 16:43
+    lo_Files = [os.path.basename(f) for f in lo_Entries if isfile(join(mypath, f))]
+#     lo_Files = [f for f in lo_Entries if isfile(join(mypath, f))]
+#     lo_Files = [f for f in listdir(mypath) if isfile(join(mypath, f))]
+    
+    print()
+    print("[%s:%d] files => %s" % \
+            (os.path.basename(libs.thisfile()), libs.linenum()
+            , lo_Files
+            ), file=sys.stderr)
+    print()
+    
+    '''###################
+        sort list        
+    ###################'''
+    #ref sort https://stackoverflow.com/questions/4183506/python-list-sort-in-descending-order answered Nov 15 '10 at 10:42
+    lo_Files.sort(reverse=False)
+#     sorted(lo_Files, reverse = True)
+
+    print()
+    print("sorting...")
+    print("[%s:%d] files => %s" % \
+            (os.path.basename(libs.thisfile()), libs.linenum()
+            , lo_Files
+            ), file=sys.stderr)
+    print()
+    
+    '''###################
+        dict        
+    ###################'''
+    msg = "Where to store Django Templates?"
+    
+    dic = {
+        
+        "msg" : msg,
+        
+        "MAIN_DIR" : cons_mm.FPath.DPATH_MM_PROJECTS.value,
+        
+        "lo_Files" : lo_Files,
+        
+        }
+    
+    '''###################
+        render        
+    ###################'''
+    print()
+    print("[%s:%d] referer_Current => %s" % \
+            (os.path.basename(libs.thisfile()), libs.linenum()
+            , referer_Current
+            ), file=sys.stderr)
+    print()    
+    
+    
+    if referer_Current == referer_MM : #if referer_Current == referer_MM
+    
+        return render(request, 'mm/denumbering.html', dic)
+#         return render(request, 'mm/numbering.html', dic)
+    
+    else : #if referer_Current == referer_MM
+    
+        return render(request, 'mm/denumbering_full.html', dic)
+#         return render(request, 'mm/numbering_full.html', dic)
     
     #/if referer_Current == referer_MM
     
