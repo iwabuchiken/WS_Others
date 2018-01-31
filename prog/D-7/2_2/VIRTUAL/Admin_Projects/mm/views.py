@@ -57,6 +57,8 @@ from os.path import splitext
 
 import glob
 
+import re
+
 ################################## FUNCS
 def _exec_Numbering(dpath, fname):
     
@@ -90,10 +92,46 @@ def _exec_Numbering(dpath, fname):
     return None
     
 #/ def exec_Numbering(fpath):
-    
+
+'''###################
+    @return: 
+        -1    sys.exc_info()
+        0    cons_mm.RetVal.RET_OK.value
+###################'''
 def _exec_DeNumbering(dpath, fname):
     
     fpath = os.path.join(dpath, fname)
+    
+    '''###################
+        replace        
+    ###################'''
+    '''###################
+        file : open
+    ###################'''
+    fin = open(fpath, "r")
+    
+    content = fin.read()
+    
+    fin.close()
+    
+#     #debug
+#     print()
+#     print ("[%s:%d] len(content) : %d\ncontent[:20] = '%s'" % \
+#            (os.path.basename(libs.thisfile()), libs.linenum()
+#             , len(content)
+#             , content[:20]
+#             )
+#            
+#        )
+    
+    '''###################
+        replace
+    ###################'''
+    #ref https://stackoverflow.com/questions/16720541/python-string-replace-regular-expression answered May 23 '13 at 17:53
+    reg = re.compile("[\d\-]+\) ")
+    
+    content = reg.sub("", content)
+    
     
 #     tree = ET.parse(fpath)
 #     
@@ -106,24 +144,57 @@ def _exec_DeNumbering(dpath, fname):
 #     
     fpath_Out = os.path.join(
             dpath, 
-#             fname
-            fname + "." + libs.get_TimeLabel_Now() \
-            + "." \
-            + "mm"
+            fname
+#             fname + "." + libs.get_TimeLabel_Now() \
+#             + "." \
+#             + "mm"
              
         )
 # #     fpath_Out = "new.%s.%s.mm" % (label, libs.get_TimeLabel_Now())
 #     
 #     tree.write(fpath_Out)
-#     
+
+    '''###################
+        file : write        
+    ###################'''
+    try :
+        
+        fout = open(fpath_Out, "w")
+        
+        res = fout.write(content)
+        
+        fout.close()
+        
+    except :
+        
+        e = sys.exc_info()
+#         e = sys.exc_info()[0]
+        
+        print()
+        print ("[%s:%d] exception : %s" % \
+               (os.path.basename(libs.thisfile()), libs.linenum()
+                , e
+                )
+           )
+        
+        return e
+#         return -1
+    
     print()
 #     print ("[%s:%d] mm => written : %s" % \
-    print ("[%s:%d] DeNumbering : %s" % \
-           (os.path.basename(libs.thisfile()), libs.linenum(), fpath_Out))
+#     print ("[%s:%d] DeNumbering : %s" % \
+    print ("[%s:%d] file written : %s ( result = %s)" % \
+           (os.path.basename(libs.thisfile()), libs.linenum()
+            , fpath_Out
+            , res
+            )
+       )
 
-    return None
+    return cons_mm.RetVal.RET_OK.value
+#     return 0
+#     return None
     
-#/ def exec_Numbering(fpath):
+#/ def exec_DeNumbering(fpath):
     
 def exec_Numbering(request):
     
@@ -376,8 +447,23 @@ def exec_DeNumbering(request):
     time_Elapsed = time.time() - time_Start
     
     ### add info
-    dic[cons_mm.ExecNumbering.DICKEY_MSG.value] += \
+    if not res == cons_mm.RetVal.RET_OK.value : #if res == -1
+#     if res == -1 : #if res == -1
+
+        dic[cons_mm.ExecNumbering.DICKEY_MSG.value] = \
+            "EXCEPTION : %s" % (res[0])
+#             "EXCEPTION "
+#             "<font color='red'>EXCEPTION</font>"
+        
+    else :#/if res == -1
+        
+        dic[cons_mm.ExecNumbering.DICKEY_MSG.value] += \
         " (time : %02.3f sec)" % (time_Elapsed)
+        
+    #/#/if res == -1
+
+#     dic[cons_mm.ExecNumbering.DICKEY_MSG.value] += \
+#         " (time : %02.3f sec)" % (time_Elapsed)
 #         " (time : %d)" % (time_Elapsed)
     
     '''###################

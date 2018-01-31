@@ -35,4 +35,10 @@ class ExecNumbering(Enum):
     DICKEY_FNAME      = "fname"
 
 
+class RetVal(Enum):
+    
+    RET_OK      = "OK"
+    
+#/class RetVal(Enum):
+
 # C:\\WORKS_2\\WS\\FM_2_20171104_225946\\Projects

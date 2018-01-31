@@ -451,8 +451,29 @@ function exec_DeNumbering(_param) {
 		
 		$('div#numbering_content_Message_Area').html(data);
 		
-		$('div#numbering_content_Message_Area')
-		.css("background", cname_White);
+		/***************************
+			exception
+		 ***************************/
+		var substr = "EXCEPTION";
+		
+//		var res = (data.indexOf(substr) !== -1);
+		
+		if (data.indexOf(substr) !== -1) {
+			
+			alert("EXCEPTION");
+			
+			$('div#numbering_content_Message_Area')
+				.css("background", cname_Red);
+			
+		} else {
+			
+			$('div#numbering_content_Message_Area')
+				.css("background", cname_White);
+		}
+		
+		
+//		$('div#numbering_content_Message_Area')
+//			.css("background", cname_White);
 		
 	}).fail(function(xhr, status, error) {
 		
