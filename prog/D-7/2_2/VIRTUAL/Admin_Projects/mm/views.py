@@ -9,7 +9,8 @@ python manage.py runserver
 
 ###################'''
 
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpRequest
+# from django.http import HttpResponse
 
 from django.shortcuts import render
 
@@ -43,6 +44,38 @@ from os.path import isfile, join
 
 ################################## FUNCS
 def numbering(request):
+    
+    '''###################
+        test        
+    ###################'''
+    ### referer
+    req = request
+#     req = HttpRequest()
+    
+#     print()
+#     print("[%s:%d] req.META.get('REQUEST_METHOD ') => %s" % \
+#         (os.path.basename(libs.thisfile()), libs.linenum()
+#          #ref referer https://stackoverflow.com/questions/40627149/dict-object-has-no-attribute-http-referer answered Nov 16 '16 at 8:32
+#         , req.META.get('REQUEST_METHOD ')
+#         ), file=sys.stderr)
+#     print("[%s:%d] req.META.get('HTTP_REFERER') => %s" % \
+#         (os.path.basename(libs.thisfile()), libs.linenum()
+#          #ref referer https://stackoverflow.com/questions/40627149/dict-object-has-no-attribute-http-referer answered Nov 16 '16 at 8:32
+#         , req.META.get('HTTP_REFERER')
+#         ), file=sys.stderr)
+#     print("[%s:%d] req.META.get('HTTP_USER_AGENT') => %s" % \
+#         (os.path.basename(libs.thisfile()), libs.linenum()
+#          #ref referer https://stackoverflow.com/questions/40627149/dict-object-has-no-attribute-http-referer answered Nov 16 '16 at 8:32
+#         , req.META.get('HTTP_USER_AGENT')
+#         ), file=sys.stderr)
+#     print()
+    
+    '''###################
+        get : referer        
+    ###################'''
+    referer_MM = "http://127.0.0.1:8000/mm/"
+    
+    referer_Current = req.META.get('HTTP_REFERER')
     
     '''###################
         var : list of files        
@@ -91,7 +124,23 @@ def numbering(request):
         
         }
     
-    return render(request, 'mm/numbering.html', dic)
+    '''###################
+        render        
+    ###################'''
+    if referer_Current == referer_MM : #if referer_Current == referer_MM
+    
+        return render(request, 'mm/numbering.html', dic)
+    
+    else : #if referer_Current == referer_MM
+    
+        return render(request, 'mm/numbering_full.html', dic)
+    
+    #/if referer_Current == referer_MM
+    
+    
+    
+#     return render(request, 'mm/numbering.html', dic)
+#     return render(request, 'mm/numbering_full.html', dic)
     
 #/def numbering(request):
 

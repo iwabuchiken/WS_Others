@@ -65,11 +65,32 @@ button.bt_Basic_1 {
 	
 }
 
+button.bt_Index_List_Action {
+	
+	font-size: 30px;
+	background-color: green;
+	font-weight: bold;
+	
+	color      : white;
+	
+	padding    : 5px;
+	
+	
+}
+
+div#index_Display_Area {
+	
+	background     : white;
+	
+}/*div#index_Display_Area {*/
+
+
 input#ipt_Numbering_MainDir {
 	
 	height: 30px;
-    width:  250px;
-    
+    width:  350px;
+    /*width:  250px;*/
+
     background: #81BEF7;
     
     margin-top: 20px

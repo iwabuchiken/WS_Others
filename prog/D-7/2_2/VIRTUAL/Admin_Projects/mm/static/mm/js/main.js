@@ -1,5 +1,12 @@
 //alert("main.js");
 
+
+/***************************
+	constants
+ ***************************/
+var color_Dflt_index_Display_Area = "white";
+
+
 function show_Message(msg) {
 	
 	alert(msg);
@@ -52,7 +59,19 @@ function im_Action(_param) {
 
 function mm_Index_LinkTo(_param) {
 	
-	alert("!!param is => '" + _param + "'");
+//	alert("!!param is => '" + _param + "'");
+	
+	/***************************
+		message
+	 ***************************/
+	var msg = "ajax starting...";
+	
+	var elem = $('div#index_Display_Area');
+	
+	elem.html(msg);
+//	$('div#index_Display_Area').html(msg);
+	
+	elem.css("background", "yellow");
 	
 	/***************************
 		ajax
@@ -82,12 +101,32 @@ function mm_Index_LinkTo(_param) {
 		
 		$('div#index_Display_Area').html(data);
 		
+		$('div#index_Display_Area')
+				.css("background", color_Dflt_index_Display_Area);
+		
 	}).fail(function(xhr, status, error) {
 		
 		alert(xhr.status);
+		
+		var msg = "ajax returned error";
+		
+		$('div#index_Display_Area').html(msg);
 		
 	});
 	
 }//function mm_Index_LinkTo(_param) {
 
-
+function exec_Numbering(_param) {
+	
+	alert("_param => '" + _param + "'");
+	
+	/***************************
+		get : dpath
+	 ***************************/
+	var elem = $('input#ipt_Numbering_MainDir');
+	
+	var dpath = elem.val();
+	
+	alert("dpath => " + dpath + "'");
+	
+}//exec_Numbering
