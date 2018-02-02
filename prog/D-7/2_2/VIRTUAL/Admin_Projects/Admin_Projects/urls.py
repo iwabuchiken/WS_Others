@@ -23,6 +23,8 @@ urlpatterns = [
 #     url(r'^$', views.index),
     url(r'^mm/', include('mm.urls')),
     
+    url(r'^im/', include('im.urls')),
+    
     url(r'^admin/', admin.site.urls),
     
 ]

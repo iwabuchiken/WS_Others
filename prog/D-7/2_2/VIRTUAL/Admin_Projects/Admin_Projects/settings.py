@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     
     'mm',
     
+    'im',
+    
 ]
 
 MIDDLEWARE = [

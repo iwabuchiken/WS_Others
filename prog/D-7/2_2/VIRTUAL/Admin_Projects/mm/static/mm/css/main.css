@@ -52,6 +52,17 @@ table#tbl_Mm_Numbering_Actions {
 	margin     : 10px;
 }
 
+table#Layout_Links_Basic {
+	
+	/*border     : 1;*/
+	/*border     : 1px solid black;*/
+	/* ref template for css files https://stackoverflow.com/questions/7900575/how-to-add-css-autocomplete-to-eclipse */
+	/*ref table border http://www.html.am/html-codes/tables/table-border.cfm*/
+	border     : 1px solid #aaaaaa;
+	
+	margin     : 10px;
+}
+
 table#tbl_Im_Actions tr th {
 	
 	/*ref https://www.w3schools.com/CSSref/pr_background-color.asp*/
@@ -179,6 +190,59 @@ button.bt_Index_List_Action {
 	
 }
 
+a.a_Layout_Links_Basic {
+
+	color: Cornsilk ;
+	
+	/*color: #4e4e4e;*/
+
+	
+    /*color: #6e6e6e;*/
+    font: bold 20px Helvetica, Arial, sans-serif;
+    
+    text-decoration: none;
+    padding: 7px 12px;
+    position: relative;
+    display: inline-block;
+    text-shadow: 0 1px 0 #fff;
+    -webkit-transition: border-color .218s;
+    -moz-transition: border .218s;
+    -o-transition: border-color .218s;
+    transition: border-color .218s;
+    
+    background: CadetBlue ;
+    
+/*background: #81BEF7;*/
+    
+    border: solid 1px #86B404;
+    /*border: solid 1px #dcdcdc;*/
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    
+    margin-right: 20px;
+    cursor:pointer;
+	
+	target     : _blank;
+	
+	/*
+	font-size: 20px;
+	background-color: green;
+	font-weight: bold;
+	
+	color      : white;
+	
+	padding    : 5px;
+	
+	border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    
+    width       : 30px;
+	*/
+	
+}
+
 button.bt_Index_List_Action:hover {
 	
 	font-size: 30px;
@@ -216,6 +280,18 @@ button.bt_Index_List_Action:active {
 div#index_Display_Area {
 	
 	background     : white;
+	
+}/*div#index_Display_Area {*/
+
+div#layout_Links_Basic {
+	
+	background     : BurlyWood; 
+	
+	width          : 75%;
+	
+	min-height: 50px;
+	
+	margin         : 10px;
 	
 }/*div#index_Display_Area {*/
 
