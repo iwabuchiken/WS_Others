@@ -60,9 +60,71 @@ function show_Message(msg) {
 	
 }//function show_Message(msg) {
 
+/*
+ * https://stackoverflow.com/questions/5999209/how-to-get-the-background-color-code-of-an-element
+ * answered May 14 '11 at 2:37
+ */
+function hexc(colorval) {
+    var parts = colorval.match(/^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/);
+    delete(parts[0]);
+    for (var i = 1; i <= 3; ++i) {
+        parts[i] = parseInt(parts[i]).toString(16);
+        if (parts[i].length == 1) parts[i] = '0' + parts[i];
+    }
+    color = '#' + parts.join('');
+    
+    return color;
+}
+
 function im_Action(_param) {
 	
-	alert("!!param is => '" + _param + "'");
+//	alert("!!param is => '" + _param + "'");
+	
+	//debug
+	var td = $("td#td_Label_" + _param);
+//	var tmp = $("td#td_Label_" + _param).text();
+//	var tmp = $("td#td_Label_" + _param).html();
+//	alert("td !! => '" + tmp + "'");
+	
+	//test
+	var x = td.css('backgroundColor');
+//	var x = $(this).css('backgroundColor');
+	
+	var hex = hexc(x);
+	
+//	alert("bg-color => '" + x + "'"
+//			+ " / "
+//			+ "hex => '" + hex + "'"
+//	
+//	);
+	
+	/***************************
+		set : color
+	 ***************************/
+	var color_New = "";
+	
+	if (hex == "#ffffff") {
+
+		color_New = "#ffff00";
+
+	} else {
+
+		color_New = "#ffffff";
+
+	}//if (hex == "#ffffff")
+	
+	
+	td.css("background", color_New);
+//	td.css("background", cname_Yellow);
+	
+	/***************************
+		return : if set to white
+	 ***************************/
+	if (color_New == "#ffffff") {
+		
+		return;
+		
+	}
 	
 	/*
 	 * test
@@ -92,7 +154,7 @@ function im_Action(_param) {
 	    
 	}).done(function(data, status, xhr) {
 		
-		alert(data);
+//		alert(data);
 		
 		$('div#index_Area__Result').html(data);
 		

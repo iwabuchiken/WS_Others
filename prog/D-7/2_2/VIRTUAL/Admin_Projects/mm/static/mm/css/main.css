@@ -18,6 +18,33 @@ table#tbl_Im_Actions {
 	margin     : 10px;
 }
 
+table#tbl_Im_Actions__Header {
+	
+	/*border     : 1;*/
+	/*border     : 1px solid black;*/
+	/* ref template for css files https://stackoverflow.com/questions/7900575/how-to-add-css-autocomplete-to-eclipse */
+	/*ref table border http://www.html.am/html-codes/tables/table-border.cfm*/
+	border     : 1px solid #aaaaaa;
+	
+	margin     : 20px;
+}
+
+table#tbl_Im_Actions__Body {
+	
+	/*border     : 1;*/
+	/*border     : 1px solid black;*/
+	/* ref template for css files https://stackoverflow.com/questions/7900575/how-to-add-css-autocomplete-to-eclipse */
+	/*ref table border http://www.html.am/html-codes/tables/table-border.cfm*/
+	border     : 1px solid #aaaaaa;
+	
+	margin     : 20px;
+	
+	overflow       :scroll;
+    
+    height         : 100px;
+	
+}
+
 table#tbl_Mm_Numbering_Actions {
 	
 	/*border     : 1;*/
@@ -41,17 +68,6 @@ table#tbl_Mm_DeNumbering_Actions {
 }/*table#tbl_Mm_Numbering_Actions {*/
 
 
-table#tbl_Mm_Numbering_Actions {
-	
-	/*border     : 1;*/
-	/*border     : 1px solid black;*/
-	/* ref template for css files https://stackoverflow.com/questions/7900575/how-to-add-css-autocomplete-to-eclipse */
-	/*ref table border http://www.html.am/html-codes/tables/table-border.cfm*/
-	border     : 1px solid #aaaaaa;
-	
-	margin     : 10px;
-}
-
 table#Layout_Links_Basic {
 	
 	/*border     : 1;*/
@@ -67,6 +83,23 @@ table#tbl_Im_Actions tr th {
 	
 	/*ref https://www.w3schools.com/CSSref/pr_background-color.asp*/
 	background-color   : #22ffff;
+	
+	text-align     : center;
+	
+	border     : 1px solid #aaaaaa;
+	
+	padding    : 5px;
+	
+}
+
+table#tbl_Im_Actions__Header tr th {
+	
+	/*ref https://www.w3schools.com/CSSref/pr_background-color.asp*/
+	background-color   : #22ffff;
+	
+	width              : 100px;
+	
+    /*background-color   : #22ffff;*/
 	
 	text-align     : center;
 	
@@ -114,7 +147,19 @@ table#tbl_Im_Actions tr td {
 	
 }
 
-table#tbl_Mm_Numbering_Actions tr td {
+table#tbl_Im_Actions__Body tr td {
+	
+	background-color   : #ffffff;
+	
+	text-align     : left;
+	
+	border     : 1px solid #aaaaaa;
+	
+	padding    : 5px;
+	
+}
+
+table#tbl_Mm_Numbering_Actions__Body tr td {
 	
 	background-color   : #ffffff;
 	
@@ -137,6 +182,7 @@ table#tbl_Mm_DeNumbering_Actions tr td {
 	padding    : 5px;
 	
 }
+
 
 button.bt_Basic_1 {
 	
@@ -308,6 +354,36 @@ div#div_Numbering_Content {
 	
 	
 }/*div#index_Display_Area {*/
+
+div#div_Im_Actions__Body {
+	
+	background     : white;
+	
+	/*ref https://stackoverflow.com/questions/17450861/add-scroll-bar-to-table-body */
+	overflow       :scroll;
+	
+	height         : 450px;
+	
+/*height         : 50%;*/
+	
+	
+}/*div#div_Im_Actions__Body {*/
+
+div#div_IFM11_List_Main {
+	
+	background     : white;
+	
+	/*ref https://stackoverflow.com/questions/17450861/add-scroll-bar-to-table-body */
+	overflow       :scroll;
+	
+	height         : 450px;
+	
+	margin         : 20px;
+	
+/*height         : 50%;*/
+	
+	
+}/*div_IFM11_List_Main {*/
 
 
 input#ipt_Numbering_MainDir {

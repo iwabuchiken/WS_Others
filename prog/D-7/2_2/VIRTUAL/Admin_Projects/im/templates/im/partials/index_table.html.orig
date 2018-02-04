@@ -1,37 +1,29 @@
 {% load taglib_basic %}
 
 <!-- <div id="div_IFM11_List_Main"> -->
+<div id="div_IFM11_List_Main">
 
-<table id="tbl_Im_Actions__Header">
-
-        <tr>
-            
-            <th>
-                No.
-            </th>
-                
-            <th>
-            
-                File
-                
-            </th>
-        
-            <th>
-            
-                Action
-            
-            </th>
-        
-        </tr>
-
-
-</table>
-
-<div id="div_Im_Actions__Body">
-
-	<!-- <table id="tbl_Im_Actions"> -->
+	<table id="tbl_Im_Actions">
 	
-	<table id="tbl_Im_Actions__Body">
+	    <tr>
+	        
+	        <th>
+	            No.
+	        </th>
+	            
+	        <th>
+	        
+	            File
+	            
+	        </th>
+	    
+	        <th>
+	        
+	            Action
+	        
+	        </th>
+	    
+	    </tr>
 	     
 	    {% for item in lo_Commands %}
 	    
