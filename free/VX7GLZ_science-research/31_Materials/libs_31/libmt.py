@@ -17,6 +17,10 @@ sys.path.append('..')
 sys.path.append('C:/WORKS_2/WS/WS_Others/free/fx/82_')
 
 from libs import libs
+
+sys.path.append('C:/WORKS_2/WS/WS_Others/prog/D-7/2_2/VIRTUAL/Admin_Projects/mm')
+from libs_mm import cons_mm
+
 # import libs
 
 import csv
@@ -250,13 +254,17 @@ def add_Number__Through(node, num_Str) :
             ###################'''
             node_New = node[i]
             
-            if node_New.tag == 'arrowlink' \
-                or  node_New.tag == 'attribute' \
-                or  node_New.tag == 'attribute_layout' \
-                or  node_New.tag == 'cloud' \
-                or  node_New.tag == 'icon' \
-                or  node_New.tag == 'font' \
-                or  node_New.tag == 'linktarget' :
+            if node_New.tag in cons_mm.MM.MM_NUMBERING_OMIT_NODES.value \
+                or node_New.attrib['TEXT'] \
+                        in cons_mm.MM.MM_NUMBERING_OMIT_LABELS.value :
+#                 or node_New.tag in cons_mm.MM.MM_NUMBERING_OMIT_LABELS.value :
+#             if node_New.tag == 'arrowlink' \
+#                 or  node_New.tag == 'attribute' \
+#                 or  node_New.tag == 'attribute_layout' \
+#                 or  node_New.tag == 'cloud' \
+#                 or  node_New.tag == 'icon' \
+#                 or  node_New.tag == 'font' \
+#                 or  node_New.tag == 'linktarget' :
                               
                 continue
             
@@ -303,38 +311,6 @@ def add_Number__Through(node, num_Str) :
             ###################'''
             ### increment
             cnt += 1
-            
-#     '''###################
-#         further        
-#     ###################'''
-#     if lenOf_Node > 0 :
-#         
-#         cnt = 0
-#         
-#         for i in range(lenOf_Node):
-#             
-#             node_New = node[i]
-# 
-#             '''###################
-#                 subnode has subnodes ?        
-#             ###################'''
-#             if len(node_New) > 0 : #if len(node_New) > 0
-#                 
-#                 ### num string
-#                 nun_Str_New = ""
-#                 
-#                 if num_Str == "" : num_str_New = str(cnt + 1)
-#                 else : num_str_New = num_Str + "-" + str(cnt + 1)
-#                 
-#                 ### recursive
-#                 add_Number__Through(node_New, num_str_New)
-# #                 add_Number__Through(node_New, num_Str + "-" + str(cnt + 1))
-# #                 add_Number(node_New)
-# #                 _add_Numbering(node_New)
-# 
-#                 ### increment
-#                 cnt += 1
-#             #if len(node_New) > 0
             
     '''###################
         return        

@@ -355,6 +355,34 @@ div#div_Numbering_Content {
 	
 }/*div#index_Display_Area {*/
 
+div#div_DeNumbering_Content {
+	
+	background     : white;
+	
+	/*ref https://stackoverflow.com/questions/17450861/add-scroll-bar-to-table-body */
+	overflow       :scroll;
+	
+	height         : 350px;
+	
+/*height         : 50%;*/
+	
+	
+}/*div#div_DeNumbering_Content {*/
+
+div#div_DeNumbering_Content tr td {
+	
+    background-color   : #ffffff;
+    
+    text-align     : left;
+    
+    border     : 1px solid #aaaaaa;
+    
+    padding    : 5px;
+	
+    	
+	
+}/*div#div_DeNumbering_Content {*/
+
 div#div_Im_Actions__Body {
 	
 	background     : white;

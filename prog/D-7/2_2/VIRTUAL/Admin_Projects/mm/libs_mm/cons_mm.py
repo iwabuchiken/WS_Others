@@ -41,4 +41,32 @@ class RetVal(Enum):
     
 #/class RetVal(Enum):
 
+class MM(Enum):
+    
+    MM_NUMBERING_OMIT_NODES = [
+        
+        'arrowlink' ,
+        'attribute' ,
+        'attribute_layout' ,
+        'cloud' ,
+        'icon' ,
+        'font' ,
+        'linktarget'
+        
+    ]
+    
+    MM_NUMBERING_OMIT_LABELS = [
+        
+        "NEXT",
+        "DROP",
+        "ENOUGH",
+        
+        "HISTORY",
+        
+    ]
+        
+#/ class MM(Enum):
+    
+    
+    
 # C:\\WORKS_2\\WS\\FM_2_20171104_225946\\Projects

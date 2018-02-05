@@ -7,6 +7,9 @@ env\Scripts\activate.bat
 pushd C:\WORKS_2\WS\WS_Others\prog\D-7\2_2\VIRTUAL\Admin_Projects
 python manage.py runserver
 
+### libmt.py
+C:\WORKS_2\WS\WS_Others\free\VX7GLZ_science-research\31_Materials\libs_31\libmt.py
+
 ###################'''
 
 from django.http import HttpResponse, HttpRequest
