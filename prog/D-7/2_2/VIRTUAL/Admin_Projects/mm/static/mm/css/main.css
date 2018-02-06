@@ -171,6 +171,18 @@ table#tbl_Mm_Numbering_Actions__Body tr td {
 	
 }
 
+table#tbl_Mm_Numbering_Actions tr td {
+	
+	background-color   : #ffffff;
+	
+	text-align     : left;
+	
+	border     : 1px solid #aaaaaa;
+	
+	padding    : 5px;
+	
+}
+
 table#tbl_Mm_DeNumbering_Actions tr td {
 	
 	background-color   : #ffffff;
@@ -341,6 +353,20 @@ div#layout_Links_Basic {
 	
 }/*div#index_Display_Area {*/
 
+div#div_Title_BuildHistory {
+	
+	background     : BurlyWood; 
+	
+	min-height: 50px;
+	
+	width      : 50%;
+	
+	margin         : 10px;
+	
+	padding        : 5px;
+	
+}/*div#index_Display_Area {*/
+
 div#div_Numbering_Content {
 	
 	background     : white;
@@ -422,7 +448,11 @@ input#ipt_Numbering_MainDir {
 
     background: #81BEF7;
     
-    margin-top: 20px
+    margin-top: 10px;
+    
+    margin-left : 20px;
+    
+    padding     : 5px;
 	
 	
 }/*input#ipt_Numbering_MainDir {*/
@@ -435,8 +465,11 @@ input#ipt_DeNumbering_MainDir {
 
     background: #81BEF7;
     
-    margin-top: 20px
+    margin-top: 10px;
 	
+    margin-left : 20px;
+    
+    padding     : 5px;
 	
 }/*input#ipt_Numbering_MainDir {*/
 

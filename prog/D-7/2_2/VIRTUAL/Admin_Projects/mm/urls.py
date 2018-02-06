@@ -30,4 +30,8 @@ urlpatterns = [
     
     url(r'^exec_DeNumbering/$', views.exec_DeNumbering, name='exec_DeNumbering'),
     
+    url(r'^build_history/$', views.build_history, name='build_history'),
+    
+    url(r'^exec_BuildHistory/$', views.exec_BuildHistory, name='exec_BuildHistory'),
+    
 ]

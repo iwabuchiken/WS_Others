@@ -2,22 +2,22 @@
 
 	<div id = "div_Title_BuildHistory">
 	    
-	    DeNumbering
+	    Build history
 	
 	</div>
 	
 	<div>
 	
-	    <input value="{{ MAIN_DIR }}" id="ipt_DeNumbering_MainDir"/>
+	    <input value="{{ MAIN_DIR }}" id="ipt_Numbering_MainDir"/>
 	    
 	
 	</div>
 	
 	<!-- <div> -->
 
-	<div id="div_DeNumbering_Content">
+	<div id="div_Numbering_Content">
 	
-		<table id="tbl_Mm_DeNumbering_Actions">
+		<table id="tbl_Mm_Numbering_Actions">
 		
 		    <tr>
 		        
@@ -53,7 +53,7 @@
 		        <td>
 		        
 		            <button 
-			                onclick="exec_DeNumbering('{{ item }}')"
+			                onclick="exec_BuildHistory('{{ item }}')"
 			                class = "bt_Numbering_List"
 			                id = "{{ forloop.counter0 }}"
 		                >
