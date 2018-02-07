@@ -1,0 +1,33 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 14.09.0 ] */
+
+/* [wxMaxima: input   start ] */
+m_rng : [m, 0, 5];
+v_rng : [v, 0, 5];
+
+f1 : m * v^2 - (1/2) * m * v;
+
+fs : [f1];
+
+wxplot3d([f1, m_rng, v_rng]);
+plot3d([f1, m_rng, v_rng]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+m_rng : [m, 0, 5];
+v_rng : [v, -2, 2];
+
+f1 : m * v^2 - (1/2) * m * v;
+
+fs : [f1];
+
+opt_z : [gnuplot_preamble, "set zrange[-3:3]"];
+opt_grid : [grid, 30, 30];
+
+
+wxplot3d([f1, 0, m_rng, v_rng], opt_z, opt_grid);
+plot3d([f1, 0, m_rng, v_rng], opt_z, opt_grid);
+/* [wxMaxima: input   end   ] */
+
+/* Maxima can't load/batch files which end with a comment! */
+"Created with wxMaxima"$
