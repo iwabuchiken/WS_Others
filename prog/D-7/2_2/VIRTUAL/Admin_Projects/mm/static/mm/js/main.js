@@ -78,6 +78,48 @@ function hexc(colorval) {
 
 function im_Action(_param) {
 	
+	/***************************
+		validate : update date
+	 ***************************/
+	var _update;
+	
+	if (_param == "11-0") {
+
+		var tag_Date = $("input#ipt_IM_Update_Date");
+		
+		_update = tag_Date.val();
+//		var update = tag_Date.val();
+		
+		if (_update == "") {
+
+			alert("update ==> blank");
+
+			return;
+			
+		} else if (_update == null) {
+
+			alert("update ==> null");
+
+			return;
+			
+		} else {
+			
+//			alert("_update ==> '" + _update + "'");
+			
+		}//if (update == "")
+
+	}//if (_param == "11-0")
+		
+//	} else {//if (_param == "11-0")
+//		
+//		alert("_param ==> '" + _param + "'");
+//		
+//	}//if (_param == "11-0")
+	
+	
+	/***************************
+		operations
+	 ***************************/
 //	alert("!!param is => '" + _param + "'");
 	
 	//debug
@@ -139,7 +181,23 @@ function im_Action(_param) {
 	var _url = "http://127.0.0.1:8000/im/im_actions";
 //	var _url = "http://127.0.0.1:8000/im/actions";
 	
-	var _data = {action : _param};
+	/***************************
+		param
+	 ***************************/
+	var _data;
+	
+	if (_param == "11-0") {
+
+		_data = {action : _param, update : _update};
+
+	} else {
+
+		_data = {action : _param};
+
+	}//if (_param == "11-0")
+	
+	
+//		_data = {action : _param};
 		
 	$.ajax({
 		

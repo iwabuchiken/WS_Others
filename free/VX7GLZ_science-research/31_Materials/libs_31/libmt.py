@@ -7,6 +7,7 @@ import sys
 
 #ref https://stackoverflow.com/questions/415511/how-to-get-current-time-in-python "answered Jan 6 '09 at 4:59"
 from time import gmtime, strftime, localtime, time
+from platform import node
 # from compiler.future import tree
 
 '''###################
@@ -370,6 +371,123 @@ def add_Numbering__Through(tree):
     return tree
     
 #/add_Numbering__Through(node, num_Str)
+
+def _get_Histories(node, lo_Histories) :
+    
+    '''###################
+        validate : special node or text?        
+    ###################'''
+    if node.tag in cons_mm.MM.MM_NUMBERING_OMIT_NODES.value \
+                or node.attrib['TEXT'] \
+                        in cons_mm.MM.MM_NUMBERING_OMIT_LABELS.value :
+        
+        return
+    
+    '''###################
+        append : self        
+    ###################'''
+    lo_Histories.append(node)
+    
+    for subnode in node :
+        
+        
+        
+        _get_Histories(subnode, lo_Histories)
+    
+    #/for subnode in node :
+    
+#/_get_Histories(node)
+
+def build_History__Exec(node) :
+# def _add_Numbering(node) :
+    
+    #debug
+    print()
+    print ("[%s:%d] node.tag = '%s'\nnode.attrib = '%s'" % \
+           (os.path.basename(libs.thisfile()), libs.linenum(), node.tag, node.attrib))
+    
+    lenOf_Node = len(node)
+    
+    '''###################
+        history        
+    ###################'''
+    lo_Histories = []
+    
+    _get_Histories(node, lo_Histories)
+    
+    '''###################
+        return        
+    ###################'''
+    return lo_Histories
+    
+#/def build_History__Exec(node, num_Str) :
+
+
+def build_History(tree):
+    '''###################
+        root        
+    ###################'''
+    root = tree.getroot()
+    
+    '''###################
+        nodes : g-1        
+    ###################'''
+    g1 = root[0]
+    
+    ### add number
+#     num_Str = ""
+#     num_Str = "0"
+    
+    lo_Histories = build_History__Exec(g1)
+    
+    print()
+    print("[%s:%d] len(lo_Histories) => %d" % \
+        (os.path.basename(libs.thisfile()), libs.linenum()
+        , len(lo_Histories)
+        ), file=sys.stderr)
+    print()
+    
+#     print(lo_Histories)
+    for item in lo_Histories :
+        
+        print(item.tag + " / " \
+              + item.attrib['TEXT'] \
+              + " / " + item.attrib['MODIFIED'])
+#         print(item.tag + " / " + item.attrib['TEXT'])
+
+    #/for item in lo_Histories :
+    
+    '''###################
+        append : history        
+    ###################'''
+    ### remove subnodes
+    
+    for item in lo_Histories[1] :
+#     for item in lo_Histories[0] :
+        
+        print()
+        print("[%s:%d] subnode => removing : '%s'" % \
+                            (os.path.basename(libs.thisfile()), libs.linenum()
+                            , item.attrib['TEXT']
+                            ), file=sys.stderr)
+        print()
+        
+        ### remove
+        #ref https://stackoverflow.com/questions/14051422/how-do-i-remove-a-node-in-xml-using-elementtree-in-python answered Dec 27 '12 at 8:22
+        lo_Histories[1].remove(item)
+        
+    #/for item in lo_Histories[0] :
+    
+    
+#     g1.append(lo_Histories[0])
+#     g1.append(lo_Histories[1])
+    
+    '''###################
+        return        
+    ###################'''
+    return tree
+    
+#/build_History(node, num_Str)
 
 
 

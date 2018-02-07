@@ -27,6 +27,11 @@ table#tbl_Im_Actions__Header {
 	border     : 1px solid #aaaaaa;
 	
 	margin     : 20px;
+	
+	
+	/*float      : left;*/
+
+	
 }
 
 table#tbl_Im_Actions__Body {
@@ -353,6 +358,25 @@ div#layout_Links_Basic {
 	
 }/*div#index_Display_Area {*/
 
+div#div_IM_Update_Date {
+	
+	background     : Thistle; 
+	
+	width          : 200px;
+	
+	min-height: 50px;
+	
+	margin-right   : 200px;
+	margin-left    : 20px;
+	
+	/*ref float https://www.w3schools.com/CSSref/tryit.asp?filename=trycss_float*/
+
+	float          : right;
+	
+	padding        : 5px;
+	
+}/*div#index_Display_Area {*/
+
 div#div_Title_BuildHistory {
 	
 	background     : BurlyWood; 
@@ -419,6 +443,7 @@ div#div_Im_Actions__Body {
 	height         : 450px;
 	
 /*height         : 50%;*/
+
 	
 	
 }/*div#div_Im_Actions__Body {*/
@@ -453,6 +478,28 @@ input#ipt_Numbering_MainDir {
     margin-left : 20px;
     
     padding     : 5px;
+	
+	
+}/*input#ipt_Numbering_MainDir {*/
+
+input#ipt_IM_Update_Date {
+	
+	height: 30px;
+    width:  150px;
+    /*width:  250px;*/
+
+    /*ref color names https://html-color-codes.info/color-names/*/
+    background: LemonChiffon;
+    
+    margin-top: 10px;
+    
+    margin-left     : 20px;
+    margin-right    : 200px;
+    
+    padding     : 5px;
+	
+	/*float       : right;*/
+
 	
 	
 }/*input#ipt_Numbering_MainDir {*/

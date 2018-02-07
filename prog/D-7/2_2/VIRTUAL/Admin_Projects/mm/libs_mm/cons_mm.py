@@ -63,6 +63,8 @@ class MM(Enum):
         
         "HISTORY",
         
+        "ADMIN",
+        
     ]
         
 #/ class MM(Enum):

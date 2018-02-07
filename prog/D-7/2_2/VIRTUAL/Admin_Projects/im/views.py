@@ -23,6 +23,8 @@ import subprocess
 
 import copy
 
+import re
+
 ######################################## FUNCS
 # def test_Request():
 def test_Request(request):
@@ -251,7 +253,8 @@ def _im_actions__Ops_11_1(action): # /im/im_action
     
 #/def _im_actions__Ops_2_0(action)
 
-def _im_actions__Ops_11_0(action): # /im/im_action
+def _im_actions__Ops_11_0(action, request): # /im/im_action
+# def _im_actions__Ops_11_0(action): # /im/im_action
     
     print("[%s:%d] _im_actions__Ops_11_0()" % \
         (os.path.basename(libs.thisfile()), libs.linenum()
@@ -271,26 +274,65 @@ def _im_actions__Ops_11_0(action): # /im/im_action
 #     command = action
     arg1 = "%s\\%s" % (cons_im.FPath.DPATH_CMD_LIB_WS_CAKE_IFM11.value, action)
     
+    '''###################
+        file : read        
+    ###################'''
+    fin = open(arg1, "r")
+    
+    content = fin.read()
+    
+    fin.close()
+    
+    '''###################
+        time label        
+    ###################'''
+    #2018-02-01_16-39-38_000.jpg
+    time_Label_Orig = request.GET.get('update', False)
+    
+    print()
+    print("[%s:%d] time_Label_Orig => '%s'" % \
+        (os.path.basename(libs.thisfile()), libs.linenum()
+        , time_Label_Orig
+        ), file=sys.stderr)
+    print()
+    
+    '''###################
+        validate        
+    ###################'''
+    ### match
+    pat = "\d\d\d\d-\d\d-\d\d_\d\d-\d\d-\d\d_\d\d\d.jpg"
+    
+    comp = re.compile(pat)
+    
+    res = comp.match(time_Label_Orig)
+    
+#     if res == None : #if res == None
+#     
+#         return "No match"
+#         
+#     #/if res == None
+    
+    
 #     cmd_Full = [command]  #=> 
     cmd_Full = [command, arg1]  #=> 
-
+ 
     #debug
     print()
     print("[%s:%d] cmd_Full =>" % \
             (os.path.basename(libs.thisfile()), libs.linenum()
-            
+             
             ), file=sys.stderr)
     print(cmd_Full)
-    
+     
     res = subprocess.call(cmd_Full)
-
+ 
     print("[%s:%d] result (subprocess) =>" % \
             (os.path.basename(libs.thisfile()), libs.linenum()
-            
+             
             ), file=sys.stderr)
-    
-    print(res)
-    
+     
+#     print(res)
+     
     return None
     
 #     None
@@ -472,7 +514,7 @@ def _im_actions__Ops_9_1(action): # /im/im_action
             
             ), file=sys.stderr)
     
-    print(res)
+#     print(res)
     
     return None
     
@@ -851,7 +893,8 @@ def _im_actions__Ops_0_1(action): # /im/im_action
     
 #/def _im_actions__Ops_2_0(action)
 
-def _im_actions__Ops(action): # /im/im_action
+# def _im_actions__Ops(action): # /im/im_action
+def _im_actions__Ops(action, request): # /im/im_action
     
     '''###################
         build : dict        
@@ -860,6 +903,9 @@ def _im_actions__Ops(action): # /im/im_action
 #     cons_im.ImOp.lo_Commands.value
     
     lo_Tmp = copy.deepcopy(cons_im.ImOp.lo_Commands.value)
+    
+    # alert
+    alert = None
     
     for item in lo_Tmp :
         
@@ -1020,7 +1066,8 @@ def _im_actions__Ops(action): # /im/im_action
                      ), file=sys.stderr)
         
         ## execute
-        _im_actions__Ops_11_0(do_Commands[action])
+        alert = _im_actions__Ops_11_0(do_Commands[action], request)
+#         _im_actions__Ops_11_0(do_Commands[action])
         
     elif action == cons_im.ImOp.OP_11_1.value : #if action == "4"
              
@@ -1061,7 +1108,8 @@ def _im_actions__Ops(action): # /im/im_action
         
     #/if action == "2-0"
     
-    return None
+    return alert
+#     return None
     
 #/def _im_actions__Ops(request)
     
@@ -1095,6 +1143,9 @@ def im_actions(request): # /im/im_action
     ### message
 #     message = ""
     
+    ### alert message
+    alert = ""
+    
     if action == False : #if action == False
     
         message = "no action param"
@@ -1111,7 +1162,19 @@ def im_actions(request): # /im/im_action
 
         
         ### operations
-        _im_actions__Ops(action)
+#         if action == cons_im.ImOp.ACTION_UPDATE_DATE.value : #if action ==
+#              
+
+#             _im_actions__Ops(action, request)
+#         
+#         else : #if action == 
+        
+        alert = _im_actions__Ops(action, request)
+#         _im_actions__Ops(action)
+        
+        #/if action == 
+
+#         _im_actions__Ops(action)
     
     #/if action == False
     
@@ -1121,7 +1184,8 @@ def im_actions(request): # /im/im_action
             , message
             ), file=sys.stderr)
     
-    dic = {'action' : action, "message" : message}
+#     dic = {'action' : action, "message" : message}
+    dic = {'action' : action, "message" : message, "alert" : alert}
     
 #     dic = {message : _message}
     

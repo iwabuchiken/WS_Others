@@ -521,7 +521,7 @@ def exec_BuildHistory(request):
         '''###################
             render : params not sufficient        
         ###################'''
-        return render(request, 'mm/exec_DeNumbering.html', dic)
+        return render(request, 'mm/exec_BuildHistory.html', dic)
         
 #     msg = None if dpath == False or fname == False else "params obtained"
     
@@ -582,8 +582,8 @@ def exec_BuildHistory(request):
         execute        
     ###################'''
     #debgu
-    res = cons_mm.RetVal.RET_OK.value
-#     res = _exec_DeNumbering(dpath, fname)
+#     res = cons_mm.RetVal.RET_OK.value
+    res = _exec_BuildHistory(dpath, fname)
 # #     res = _exec_Numbering(dpath, fname)
 # #     res = _exec_Numbering(fpath)
     
@@ -820,6 +820,90 @@ def denumbering(request):
         return render(request, 'mm/denumbering_full.html', dic)
     
 #/def numbering(request):
+
+'''###################
+    @return: 
+        -1    sys.exc_info()
+        0    cons_mm.RetVal.RET_OK.value
+###################'''
+def _exec_BuildHistory(dpath, fname):
+    
+    fpath = os.path.join(dpath, fname)
+    
+    '''###################
+        replace        
+    ###################'''
+    '''###################
+        file : open
+    ###################'''
+    fin = open(fpath, "r")
+    
+    content = fin.read()
+    
+    fin.close()
+    
+    '''###################
+        history
+    ###################'''
+    tree = ET.parse(fpath)
+     
+    tree = libmt.build_History(tree)
+    
+    '''###################
+        save xml        
+    ###################'''
+    fpath_Out = os.path.join(
+            dpath, 
+#             fname
+            fname + "." + libs.get_TimeLabel_Now() \
+            + "." \
+            + "mm"
+             
+        )
+#     fpath_Out = "new.%s.%s.mm" % (label, libs.get_TimeLabel_Now())
+#     
+    tree.write(fpath_Out)
+
+#     '''###################
+#         file : write        
+#     ###################'''
+#     try :
+#         
+#         fout = open(fpath_Out, "w")
+#         
+#         res = fout.write(content)
+#         
+#         fout.close()
+#         
+#     except :
+#         
+#         e = sys.exc_info()
+# #         e = sys.exc_info()[0]
+#         
+#         print()
+#         print ("[%s:%d] exception : %s" % \
+#                (os.path.basename(libs.thisfile()), libs.linenum()
+#                 , e
+#                 )
+#            )
+#         
+#         return e
+#         return -1
+    
+    print()
+    print ("[%s:%d] file written : %s" % \
+#     print ("[%s:%d] file written : %s ( result = %d)" % \
+#     print ("[%s:%d] file written : %s ( result = %s)" % \
+           (os.path.basename(libs.thisfile()), libs.linenum()
+            , fpath_Out
+#             , res
+            )
+       )
+
+    return cons_mm.RetVal.RET_OK.value
+    
+#/ def exec_BuildHistory(fpath):
+    
 
 def build_history(request):
 
