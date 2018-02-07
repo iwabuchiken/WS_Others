@@ -649,7 +649,10 @@ def sort_Histories__Modified(lo_Histories):
             ), file=sys.stderr)
     
     #ref https://stackoverflow.com/questions/25338817/sorting-xml-in-python-etree
-    res = sorted(lo_Histories, key=lambda child: child.get("MODIFIED"))
+    #ref sorting https://docs.python.org/3.5/howto/sorting.html#sortinghowto
+    res = sorted(lo_Histories, key=lambda child: child.get("CREATED"), reverse=True)
+#     res = sorted(lo_Histories, key=lambda child: child.get("CREATED"))
+#     res = sorted(lo_Histories, key=lambda child: child.get("MODIFIED"))
 #     sorted(lo_Histories, key=lambda child: child.get(attr))
     
     print()
@@ -657,6 +660,8 @@ def sort_Histories__Modified(lo_Histories):
                 (os.path.basename(libs.thisfile()), libs.linenum()
                 , res
                 ), file=sys.stderr)
+    
+    return res
     
 #/def sort_Histories__Modified(lo_Histories):
 
@@ -699,12 +704,13 @@ def build_HISTORY_Branch(node, lo_Histories):
     '''###################
         histories --> sort        
     ###################'''
-    sort_Histories__Modified(lo_Histories)
+    lo_Histories_Modified = sort_Histories__Modified(lo_Histories)
     
     '''###################
         append        
     ###################'''
-    for item in lo_Histories:
+    for item in lo_Histories_Modified:
+#     for item in lo_Histories:
 
         his.append(item)
         
