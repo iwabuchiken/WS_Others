@@ -8,6 +8,7 @@ import sys
 #ref https://stackoverflow.com/questions/415511/how-to-get-current-time-in-python "answered Jan 6 '09 at 4:59"
 from time import gmtime, strftime, localtime, time
 from platform import node
+from uuid import _windll_getnode
 # from compiler.future import tree
 
 '''###################
@@ -372,6 +373,13 @@ def add_Numbering__Through(tree):
     
 #/add_Numbering__Through(node, num_Str)
 
+def get_Node_Self(node):
+    
+    
+    
+    return node
+#/def get_Node_Self(node):
+    
 def _get_Histories(node, lo_Histories) :
     
     '''###################
@@ -386,11 +394,16 @@ def _get_Histories(node, lo_Histories) :
     '''###################
         append : self        
     ###################'''
-    lo_Histories.append(node)
+    node_Copy = copy.deepcopy(node)
+   
+#     node_Self = node_Copy
+    node_Self = remove_Subnodes(node_Copy)
+#     node_Self = get_Node_Self(node_Copy)
+   
+    lo_Histories.append(node_Self)
+#     lo_Histories.append(node)
     
     for subnode in node :
-        
-        
         
         _get_Histories(subnode, lo_Histories)
     
@@ -422,6 +435,196 @@ def build_History__Exec(node) :
     
 #/def build_History__Exec(node, num_Str) :
 
+def _test_Remove_Subnodes(node):
+    
+    lenOf_Node = len(node)
+    
+    print()
+    print("[%s:%d] lenOf_Node => %d" % \
+            (os.path.basename(libs.thisfile()), libs.linenum()
+            , lenOf_Node
+            ), file=sys.stderr)
+
+    '''###################
+        remove        
+    ###################'''
+    node_Copy = copy.deepcopy(node)
+    
+    print()
+    print("[%s:%d] len(node_Copy) => %d (%s)" % \
+            (os.path.basename(libs.thisfile()), libs.linenum()
+            , len(node_Copy), node_Copy
+            ), file=sys.stderr)
+    
+    print()
+    print("[%s:%d] node[1] => %s" % \
+        (os.path.basename(libs.thisfile()), libs.linenum()
+        , node[1]
+        ), file=sys.stderr)
+    
+    print()
+    print("[%s:%d] node_Copy[1] => %s" % \
+        (os.path.basename(libs.thisfile()), libs.linenum()
+        , node_Copy[1]
+        ), file=sys.stderr)
+    
+    '''###################
+        build : list of target nodes        
+    ###################'''
+    lo_Target_Nodes = []
+    
+    for item in node_Copy:
+               
+       lo_Target_Nodes.append(item)
+       
+    #/for item in node_Copy:
+    
+    print()
+    print("[%s:%d] len(lo_Target_Nodes) => %d" % \
+        (os.path.basename(libs.thisfile()), libs.linenum()
+        , len(lo_Target_Nodes)
+        ), file=sys.stderr)
+
+    ### remove
+    for item in lo_Target_Nodes:
+
+        print()
+        print("[%s:%d] removing... => %s" % \
+            (os.path.basename(libs.thisfile()), libs.linenum()
+            , item
+            ), file=sys.stderr)
+
+        node_Copy.remove(item)
+        
+    #/for item in lo_Target_Nodes:
+
+    
+    
+#     for item in node:
+# 
+#         print()
+#         print("[%s:%d] removing item => %s" % \
+#             (os.path.basename(libs.thisfile()), libs.linenum()
+#             , item
+#             ), file=sys.stderr)
+#  
+#         node_Copy.remove(item)
+#         
+#     #/for item in node():
+
+    print()
+    print("[%s:%d] len(node_Copy) => %d (%s)" % \
+            (os.path.basename(libs.thisfile()), libs.linenum()
+            , len(node_Copy), node_Copy
+            ), file=sys.stderr)
+    
+    print(node_Copy.attrib)
+
+#     subnodes = node.findall('')
+#     
+#     print()
+#     print("[%s:%d] len(subnodes) => %d" % \
+#             (os.path.basename(libs.thisfile()), libs.linenum()
+#             , len(subnodes)
+#             ), file=sys.stderr)
+#/def _test_Remove_Subnodes(node):
+
+def remove_Subnodes(node):
+    
+#     lenOf_Node = len(node)
+#     
+#     print()
+#     print("[%s:%d] lenOf_Node => %d" % \
+#             (os.path.basename(libs.thisfile()), libs.linenum()
+#             , lenOf_Node
+#             ), file=sys.stderr)
+
+    '''###################
+        remove        
+    ###################'''
+    node_Copy = copy.deepcopy(node)
+    
+#     print()
+#     print("[%s:%d] len(node_Copy) => %d (%s)" % \
+#             (os.path.basename(libs.thisfile()), libs.linenum()
+#             , len(node_Copy), node_Copy
+#             ), file=sys.stderr)
+#     
+#     print()
+#     print("[%s:%d] node[1] => %s" % \
+#         (os.path.basename(libs.thisfile()), libs.linenum()
+#         , node[1]
+#         ), file=sys.stderr)
+#     
+#     print()
+#     print("[%s:%d] node_Copy[1] => %s" % \
+#         (os.path.basename(libs.thisfile()), libs.linenum()
+#         , node_Copy[1]
+#         ), file=sys.stderr)
+    
+    '''###################
+        build : list of target nodes        
+    ###################'''
+    lo_Target_Nodes = []
+    
+    for item in node_Copy:
+               
+       lo_Target_Nodes.append(item)
+       
+    #/for item in node_Copy:
+    
+#     print()
+#     print("[%s:%d] len(lo_Target_Nodes) => %d" % \
+#         (os.path.basename(libs.thisfile()), libs.linenum()
+#         , len(lo_Target_Nodes)
+#         ), file=sys.stderr)
+
+    ### remove
+    for item in lo_Target_Nodes:
+
+#         print()
+#         print("[%s:%d] removing... => %s" % \
+#             (os.path.basename(libs.thisfile()), libs.linenum()
+#             , item
+#             ), file=sys.stderr)
+
+        node_Copy.remove(item)
+        
+    #/for item in lo_Target_Nodes:
+
+    
+    
+#     for item in node:
+# 
+#         print()
+#         print("[%s:%d] removing item => %s" % \
+#             (os.path.basename(libs.thisfile()), libs.linenum()
+#             , item
+#             ), file=sys.stderr)
+#  
+#         node_Copy.remove(item)
+#         
+#     #/for item in node():
+
+#     print()
+#     print("[%s:%d] len(node_Copy) => %d (%s)" % \
+#             (os.path.basename(libs.thisfile()), libs.linenum()
+#             , len(node_Copy), node_Copy
+#             ), file=sys.stderr)
+#     
+#     print(node_Copy.attrib)
+
+#     subnodes = node.findall('')
+#     
+#     print()
+#     print("[%s:%d] len(subnodes) => %d" % \
+#             (os.path.basename(libs.thisfile()), libs.linenum()
+#             , len(subnodes)
+#             ), file=sys.stderr)
+
+    return node_Copy
+
+#/def _test_Remove_Subnodes(node):
 
 def build_History(tree):
     '''###################
@@ -452,7 +655,8 @@ def build_History(tree):
         
         print(item.tag + " / " \
               + item.attrib['TEXT'] \
-              + " / " + item.attrib['MODIFIED'])
+              + " / " + item.attrib['MODIFIED'] \
+              + " / len = " + str(len(item)))
 #         print(item.tag + " / " + item.attrib['TEXT'])
 
     #/for item in lo_Histories :
@@ -462,19 +666,32 @@ def build_History(tree):
     ###################'''
     ### remove subnodes
     
-    for item in lo_Histories[1] :
-#     for item in lo_Histories[0] :
-        
-        print()
-        print("[%s:%d] subnode => removing : '%s'" % \
-                            (os.path.basename(libs.thisfile()), libs.linenum()
-                            , item.attrib['TEXT']
-                            ), file=sys.stderr)
-        print()
+    print()
+    print("[%s:%d] showing '%s' (TEXT = '%s' / len = %d) :" % \
+            (os.path.basename(libs.thisfile()), libs.linenum()
+            , lo_Histories[1].tag
+            , lo_Histories[1].attrib['TEXT']
+            , len(lo_Histories[1])
+            ), file=sys.stderr)
+    
+#     for item in lo_Histories[1] :
+# #     for item in lo_Histories[0] :
+#         
+#         print()
+#         print("[%s:%d] item.tag => '%s'" % \
+#         (os.path.basename(libs.thisfile()), libs.linenum()
+#         , item.tag
+#         ), file=sys.stderr)
+# #         print("[%s:%d] subnode => removing : '%s'" % \
+# #                             (os.path.basename(libs.thisfile()), libs.linenum()
+# #                             , item.attrib
+# # #                             , item.attrib['TEXT']
+# #                             ), file=sys.stderr)
+#         print()
         
         ### remove
         #ref https://stackoverflow.com/questions/14051422/how-do-i-remove-a-node-in-xml-using-elementtree-in-python answered Dec 27 '12 at 8:22
-        lo_Histories[1].remove(item)
+#         lo_Histories[1].remove(item)
         
     #/for item in lo_Histories[0] :
     
@@ -482,6 +699,41 @@ def build_History(tree):
 #     g1.append(lo_Histories[0])
 #     g1.append(lo_Histories[1])
     
+    '''###################
+        experi : remove subnodes        
+    ###################'''
+#     _test_Remove_Subnodes(lo_Histories[1])
+        
+        
+#     cnt = 0
+#     
+#     for item in lo_Histories[1]:
+#         
+#         lo_Histories[1].remove(item)
+#         
+#         cnt += 1
+#         
+#     #/for item in lo_Histories[1]:
+#     
+#     print()
+#     print("[%s:%d] items --> removed : %d items (len(lo_Histories[1]) = %d)" % \
+#                     (os.path.basename(libs.thisfile()), libs.linenum()
+#                     , cnt
+#                     , len(lo_Histories[1])
+#                     ), file=sys.stderr)
+#     
+#     print()
+#     
+# #     for item in lo_Histories[1] :
+# #     
+# #         print()
+# #         print("[%s:%d] item.tag => '%s'" % \
+# #         (os.path.basename(libs.thisfile()), libs.linenum()
+# #         , item.tag
+# #         ), file=sys.stderr)
+# #         
+# #         print()
+
     '''###################
         return        
     ###################'''
