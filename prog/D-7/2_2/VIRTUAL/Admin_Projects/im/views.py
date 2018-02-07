@@ -25,6 +25,8 @@ import copy
 
 import re
 
+import clipboard
+
 ######################################## FUNCS
 # def test_Request():
 def test_Request(request):
@@ -281,6 +283,16 @@ def _im_actions__Ops_11_0(action, request): # /im/im_action
     
     content = fin.read()
     
+#     print()
+#     print("[%s:%d] content[:100] => '%s'" % \
+#             (os.path.basename(libs.thisfile()), libs.linenum()
+#             , content[:100]
+#             ), file=sys.stderr)
+#     print()
+    
+    
+#     C:\WORKS_2\t c2 
+    
     fin.close()
     
     '''###################
@@ -306,36 +318,117 @@ def _im_actions__Ops_11_0(action, request): # /im/im_action
     
     res = comp.match(time_Label_Orig)
     
-#     if res == None : #if res == None
-#     
-#         return "No match"
-#         
-#     #/if res == None
+    if res == None : #if res == None
+     
+        return "No match"
+         
+    #/if res == None
+
+    '''###################
+        build label        
+    ###################'''
+    #2018-02-01_16-39-38_000.jpg
+    #2018/02/05 12:06:15.000
+    tokens = time_Label_Orig.split(".") # 2018-02-01_16-39-38_000 jpg
     
+    tokens2 = tokens[0].split("_") # 2018-02-01 16-39-38 000
+#     tokens2 = tokens[0].split("_") # 2018-02-01 16-39-38_000
     
-#     cmd_Full = [command]  #=> 
-    cmd_Full = [command, arg1]  #=> 
- 
-    #debug
+#     print()
+#     print("[%s:%d] tokens2 => '%s'" % \
+#         (os.path.basename(libs.thisfile()), libs.linenum()
+#         , tokens2
+#         ), file=sys.stderr)
+    
+    # dates
+    dates = tokens2[0].split('-') # 2018 02 01
+    
+    label_Dates = "/".join(dates)
+#     label_Dates = dates.join("/")
+    
+    # time
+    times = tokens2[1].split("-") # 16 39 38
+#     times = tokens2[1].split("_") # 16-39-38 000
+    
     print()
-    print("[%s:%d] cmd_Full =>" % \
-            (os.path.basename(libs.thisfile()), libs.linenum()
-             
-            ), file=sys.stderr)
-    print(cmd_Full)
-     
-    res = subprocess.call(cmd_Full)
- 
-    print("[%s:%d] result (subprocess) =>" % \
-            (os.path.basename(libs.thisfile()), libs.linenum()
-             
-            ), file=sys.stderr)
-     
-#     print(res)
-     
-    return None
+    print("[%s:%d] times => '%s'" % \
+        (os.path.basename(libs.thisfile()), libs.linenum()
+        , times
+        ), file=sys.stderr)
     
-#     None
+#     times2 = times[0].split("-") # 16 39 38
+#     times2 = times.split("-") # 16 39 38
+    
+    label_Times = ":".join(times) + "." + tokens2[2] # 16:39:38.000
+#     label_Times = ":".join(times2) + "." + times[1]
+    
+    label_All = "%s %s" % (label_Dates, label_Times)
+    
+    print()
+    print("[%s:%d] label_All => '%s'" % \
+        (os.path.basename(libs.thisfile()), libs.linenum()
+        , label_All
+        ), file=sys.stderr)
+
+    '''###################
+        file : write        
+    ###################'''
+    fout = open(arg1, "w")
+    
+#     content = "C:\\WORKS_2\\t c2 %s\n\n%s\n\n%s" % \
+    content = "C:\\WORKS_2\\t c2 %s\n%s\n\n%s" % \
+                    (time_Label_Orig, label_All, content)
+#     content = "C:\\WORKS_2\\t c2 %s\n\n%s" % (time_Label_Orig, content)
+    
+    fout.write(content)
+    
+    fout.close()
+    
+    print()
+    print("[%s:%d] file ==> written : '%s'" % \
+        (os.path.basename(libs.thisfile()), libs.linenum()
+        , arg1
+        ), file=sys.stderr)
+    print()
+    
+    
+    '''###################
+        clipboard
+    ###################'''
+    clipboard.copy(label_All)
+    
+    print()
+    print("[%s:%d] clipboard ==> copied" % \
+        (os.path.basename(libs.thisfile()), libs.linenum()
+        
+        ), file=sys.stderr)
+    
+#     '''###################
+#         open file        
+#     ###################'''
+# #     cmd_Full = [command]  #=> 
+#     cmd_Full = [command, arg1]  #=> 
+#   
+#     #debug
+#     print()
+#     print("[%s:%d] cmd_Full =>" % \
+#             (os.path.basename(libs.thisfile()), libs.linenum()
+#               
+#             ), file=sys.stderr)
+#     print(cmd_Full)
+#       
+#     res = subprocess.call(cmd_Full)
+#   
+#     print("[%s:%d] result (subprocess) =>" % \
+#             (os.path.basename(libs.thisfile()), libs.linenum()
+#               
+#             ), file=sys.stderr)
+#       
+# #     print(res)
+     
+    return "Updated => %s" % (label_All)
+#     return "OK"
+#     return None
     
 #/def _im_actions__Ops_7(do_Commands[action])
 
