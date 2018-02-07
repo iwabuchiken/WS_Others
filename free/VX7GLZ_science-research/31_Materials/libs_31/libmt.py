@@ -9,6 +9,7 @@ import sys
 from time import gmtime, strftime, localtime, time
 from platform import node
 from uuid import _windll_getnode
+from matplotlib.pyplot import hist
 # from compiler.future import tree
 
 '''###################
@@ -399,6 +400,14 @@ def _get_Histories(node, lo_Histories) :
 #     node_Self = node_Copy
     node_Self = remove_Subnodes(node_Copy)
 #     node_Self = get_Node_Self(node_Copy)
+    
+    ### modify ID
+    id_Orig = node_Self.attrib['ID']
+    
+    id_New = id_Orig + "." + "COPY"
+    
+    node_Self.attrib['ID'] = id_New
+   
    
     lo_Histories.append(node_Self)
 #     lo_Histories.append(node)
@@ -626,6 +635,85 @@ def remove_Subnodes(node):
 
 #/def _test_Remove_Subnodes(node):
 
+'''###################
+    @return: 
+        -1    find 'HISTORY' tag ==> returned None
+        0    histories ==> appended
+###################'''
+def sort_Histories__Modified(lo_Histories):
+    
+    print()
+    print("[%s:%d] before sorted ---> %s" % \
+            (os.path.basename(libs.thisfile()), libs.linenum()
+            , lo_Histories
+            ), file=sys.stderr)
+    
+    #ref https://stackoverflow.com/questions/25338817/sorting-xml-in-python-etree
+    res = sorted(lo_Histories, key=lambda child: child.get("MODIFIED"))
+#     sorted(lo_Histories, key=lambda child: child.get(attr))
+    
+    print()
+    print("[%s:%d] sorted ---> %s" % \
+                (os.path.basename(libs.thisfile()), libs.linenum()
+                , res
+                ), file=sys.stderr)
+    
+#/def sort_Histories__Modified(lo_Histories):
+
+def build_HISTORY_Branch(node, lo_Histories):
+    
+    #ref find https://stackoverflow.com/questions/27810825/find-all-nodes-by-attribute-in-xml-using-python-2 answered Jan 7 '15 at 3:14
+    his = node.find('./*[@TEXT="HISTORY"]')
+#     his = node.find('./*[@TEXT="HISTORY"')
+    
+    print()
+    print("[%s:%d] node.find('./*[@TEXT=\"HISTORY\"]') => '%s'" % \
+                (os.path.basename(libs.thisfile()), libs.linenum()
+                , his
+                ), file=sys.stderr)
+            #     libmt.py:636] node.find('./*[@TEXT="HISTORY"]') => '<Element 'node' at 0x000000
+            # 009399D18>'
+            
+    '''###################
+        validate        
+    ###################'''
+    if his == None : #if his == None
+                              
+        print()
+        print("[%s:%d] find 'HISTORY' tag ==> returned None" % \
+        (os.path.basename(libs.thisfile()), libs.linenum()
+        
+        ), file=sys.stderr)
+        
+        return -1
+    
+    else:
+        
+        print()
+        print("[%s:%d] len(his) => %d" % \
+        (os.path.basename(libs.thisfile()), libs.linenum()
+        , len(his)
+        ), file=sys.stderr)
+    #/if his == None
+    
+    '''###################
+        histories --> sort        
+    ###################'''
+    sort_Histories__Modified(lo_Histories)
+    
+    '''###################
+        append        
+    ###################'''
+    for item in lo_Histories:
+
+        his.append(item)
+        
+    #/for item in lo_Histories:
+
+                              
+            
+#/ def build_HISTORY_Branch(tree, lo_Histories):
+
 def build_History(tree):
     '''###################
         root        
@@ -734,6 +822,11 @@ def build_History(tree):
 # #         
 # #         print()
 
+    '''###################
+        build : HISTORY branch        
+    ###################'''
+    build_HISTORY_Branch(g1, lo_Histories)
+    
     '''###################
         return        
     ###################'''
