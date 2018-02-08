@@ -648,7 +648,7 @@ def sort_Histories__Modified(lo_Histories):
             , lo_Histories
             ), file=sys.stderr)
     
-    #ref https://stackoverflow.com/questions/25338817/sorting-xml-in-python-etree
+    #ref https://stackoverflow.com/questions/25338817/sorting-xml-in-python-etree answered Aug 16 '14 at 11:29
     #ref sorting https://docs.python.org/3.5/howto/sorting.html#sortinghowto
     res = sorted(lo_Histories, key=lambda child: child.get("CREATED"), reverse=True)
 #     res = sorted(lo_Histories, key=lambda child: child.get("CREATED"))

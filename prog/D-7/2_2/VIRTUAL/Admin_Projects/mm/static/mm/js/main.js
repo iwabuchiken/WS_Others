@@ -704,3 +704,28 @@ function get_Timelabel_Now() {
 	return datetime;
 	
 }
+
+function mm_Index_GO() {
+	
+	/***************************
+		get selected
+	 ***************************/
+	//ref selection https://learn.jquery.com/using-jquery-core/faq/how-do-i-get-the-text-value-of-a-selected-option/
+	//ref get value, not text https://stackoverflow.com/questions/13089944/jquery-get-selected-option-value-not-the-text-but-the-attribute-value Selvakumar Arumugam
+	var selection = $( "#select_MM_Actions option:selected" );
+//	var selection = $( "#select_MM_Actions option:selected" ).text();
+	
+	var text = selection.text();
+	
+	var value = selection.val();
+	
+//	alert("text => '" + text + "'" + " / " + "val = " + value);
+
+	/***************************
+		dispatch
+	 ***************************/
+	mm_Index_LinkTo(value);
+	
+}//mm_Index_GO()
+
+

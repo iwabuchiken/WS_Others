@@ -1,0 +1,80 @@
+{% load taglib_basic %}
+
+<table id="tbl_Im_Actions">
+
+    <tr>
+        
+        <th>
+            No.
+        </th>
+            
+        <th>
+        
+            Commands
+            
+        </th>
+    
+        <th>
+        
+            Action
+        
+        </th>
+    
+    </tr>
+     
+    {% for item in lo_Commands %}
+    
+        <tr>
+        
+            <td>
+            
+                {{forloop.counter}}
+            
+            </td>
+            
+            <td>
+            
+                {{ item.1 }}
+                
+            </td>
+            
+            <td>
+            
+                <button 
+                        onclick="mm_Index_LinkTo('{{ item.0 }}')"
+                        class = "bt_Index_List_Action"
+                        >
+                     GO
+                </button>
+                
+            </td>
+            
+        </tr>
+        
+    {% endfor%}
+    
+</table>
+
+<div id="div_MM_Actions">
+
+    <!-- ref https://stackoverflow.com/questions/1392706/django-template-how-to-make-a-dropdown-box-with-the-predefined-value-selected -->
+    <select name="mm_action" id="select_MM_Actions">
+    
+       {% for item in lo_Commands %}
+       
+        <option value="{{ item.0 }}" class="opt_MM_Actions">{{ item.1 }}</option>
+    
+       {% endfor %}
+       
+     </select>
+     
+     <button 
+             onclick="mm_Index_GO()"
+             class = "bt_Index_List_Action"
+             >
+          GO
+     </button>
+
+</div>
+
+    

@@ -520,4 +520,13 @@ input#ipt_DeNumbering_MainDir {
 	
 }/*input#ipt_Numbering_MainDir {*/
 
+select#select_MM_Actions {
+	
+	font-size: 20px;
+	
+	background: #81BEF7;
+	
+	margin-left    : 20px;
+	
+}
 
