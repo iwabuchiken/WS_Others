@@ -852,14 +852,16 @@ def _exec_BuildHistory(dpath, fname):
     '''###################
         save xml        
     ###################'''
-    fpath_Out = os.path.join(
-            dpath, 
-#             fname
-            fname + "." + libs.get_TimeLabel_Now() \
-            + "." \
-            + "mm"
-             
-        )
+    fpath_Out = fpath
+#     fpath_Out = os.path.join(
+#             dpath, 
+# #             fname
+#             fname + "." + libs.get_TimeLabel_Now() \
+#             + "." \
+#             + "mm"
+#              
+#         )
+
 #     fpath_Out = "new.%s.%s.mm" % (label, libs.get_TimeLabel_Now())
 #     
     tree.write(fpath_Out)
@@ -938,12 +940,12 @@ def build_history(request):
 #     lo_Files = [f for f in lo_Entries if isfile(join(mypath, f))]
 #     lo_Files = [f for f in listdir(mypath) if isfile(join(mypath, f))]
     
-    print()
-    print("[%s:%d] files => %s" % \
-            (os.path.basename(libs.thisfile()), libs.linenum()
-            , lo_Files
-            ), file=sys.stderr)
-    print()
+#     print()
+#     print("[%s:%d] files => %s" % \
+#             (os.path.basename(libs.thisfile()), libs.linenum()
+#             , lo_Files
+#             ), file=sys.stderr)
+#     print()
     
     
     '''###################
@@ -953,13 +955,13 @@ def build_history(request):
     lo_Files.sort(reverse=False)
 #     sorted(lo_Files, reverse = True)
 
-    print()
-    print("sorting...")
-    print("[%s:%d] files => %s" % \
-            (os.path.basename(libs.thisfile()), libs.linenum()
-            , lo_Files
-            ), file=sys.stderr)
-    print()
+#     print()
+#     print("sorting...")
+#     print("[%s:%d] files => %s" % \
+#             (os.path.basename(libs.thisfile()), libs.linenum()
+#             , lo_Files
+#             ), file=sys.stderr)
+#     print()
     
     '''###################
         dict        

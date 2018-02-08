@@ -707,6 +707,7 @@ def groupize_HISTORY_Entries(lo_Histories_Modified, sizeOf_Group):
 #                     + "LINK=\"Projects.mm\" MODIFIED=\"%s\" " #=> workds
         str_Node = "<node CREATED=\"%s\" ID=\"ID_%s\" " \
                     + "MODIFIED=\"%s\"  "\
+                    + "FOLDED=\"true\"  "\
                     + "TEXT=\"%s\"></node>" #=> 
 #                     + "LINK=\"Projects.mm\" MODIFIED=\"%s\"  "\
         
@@ -740,11 +741,11 @@ def groupize_HISTORY_Entries(lo_Histories_Modified, sizeOf_Group):
 
     
     #debug
-    print()
-    print("[%s:%d] lo_Histories_Modified_Groupized[1] => %s" % \
-        (os.path.basename(libs.thisfile()), libs.linenum()
-        , lo_Histories_Modified_Groupized[1]
-        ), file=sys.stderr)
+#    print()
+#    print("[%s:%d] lo_Histories_Modified_Groupized[1] => %s" % \
+#        (os.path.basename(libs.thisfile()), libs.linenum()
+#        , lo_Histories_Modified_Groupized[1]
+#        ), file=sys.stderr)
 
     '''###################
         test        
@@ -856,6 +857,12 @@ def build_HISTORY_Branch(node, lo_Histories):
     
     lo_Histories_Modified_Groupized = \
                 groupize_HISTORY_Entries(lo_Histories_Modified, sizeOf_Group)
+    
+    '''###################
+        HISTORY ---> folded        
+    ###################'''
+    #FOLDED="true"
+    his.attrib['FOLDED'] = "true"
     
     '''###################
         append        
