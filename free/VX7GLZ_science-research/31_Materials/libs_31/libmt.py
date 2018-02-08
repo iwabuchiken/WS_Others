@@ -10,6 +10,7 @@ from time import gmtime, strftime, localtime, time
 from platform import node
 from uuid import _windll_getnode
 from matplotlib.pyplot import hist
+from _ctypes import sizeof
 # from compiler.future import tree
 
 '''###################
@@ -42,6 +43,12 @@ import numpy
 import xml.etree.ElementTree as ET
 
 import datetime
+
+from random import randint
+
+import time
+
+import math
 
 ################################################### funcs
 def add_Created(node):
@@ -642,11 +649,11 @@ def remove_Subnodes(node):
 ###################'''
 def sort_Histories__Modified(lo_Histories):
     
-    print()
-    print("[%s:%d] before sorted ---> %s" % \
-            (os.path.basename(libs.thisfile()), libs.linenum()
-            , lo_Histories
-            ), file=sys.stderr)
+#     print()
+#     print("[%s:%d] before sorted ---> %s" % \
+#             (os.path.basename(libs.thisfile()), libs.linenum()
+#             , lo_Histories
+#             ), file=sys.stderr)
     
     #ref https://stackoverflow.com/questions/25338817/sorting-xml-in-python-etree answered Aug 16 '14 at 11:29
     #ref sorting https://docs.python.org/3.5/howto/sorting.html#sortinghowto
@@ -655,16 +662,155 @@ def sort_Histories__Modified(lo_Histories):
 #     res = sorted(lo_Histories, key=lambda child: child.get("MODIFIED"))
 #     sorted(lo_Histories, key=lambda child: child.get(attr))
     
-    print()
-    print("[%s:%d] sorted ---> %s" % \
-                (os.path.basename(libs.thisfile()), libs.linenum()
-                , res
-                ), file=sys.stderr)
-    
+#     print()
+#     print("[%s:%d] sorted ---> %s" % \
+#                 (os.path.basename(libs.thisfile()), libs.linenum()
+#                 , res
+#                 ), file=sys.stderr)
+     
     return res
     
 #/def sort_Histories__Modified(lo_Histories):
 
+def groupize_HISTORY_Entries(lo_Histories_Modified, sizeOf_Group):
+    
+    lo_Histories_Modified_Groupized = []
+    
+#     index = 0
+    
+    '''###################
+        prep : group header nodes        
+    ###################'''
+    sizeOf_Histories = len(lo_Histories_Modified)
+    
+    for item in range(math.ceil(sizeOf_Histories / sizeOf_Group)):
+#     for item in range(int(sizeOf_Histories / sizeOf_Group)):
+
+        #ref millseconds https://stackoverflow.com/questions/5998245/get-current-time-in-milliseconds-in-python answered May 13 '11 at 22:21
+#         millsec = int(round(time.time() * 1000))
+        mill_Seconds = str(int(round(time.time() * 1000)))
+        
+#         millsec = str(millsec)
+        
+        #ref random int https://stackoverflow.com/questions/3996904/generate-random-integers-between-0-and-9 answered Oct 22 '10 at 12:51
+        id = "00000" + "".join([str(randint(0,9)) for x in range(5)])
+
+#         str_Node = "<node CREATED=\"%s\"" \    #=> workds
+#                     % (mill_Seconds)
+#         str_Node = "<node CREATED=\"%s\" ID=\"ID_%s\" " \    #=> works
+#                     % (mill_Seconds, id)
+
+#         str_Node = "<node CREATED=\"%s\" ID=\"ID_%s\" " \    #=> not working
+#                 + "LINK=\"Projects.mm\" MODIFIED=\"%s\" " \
+#                     % (mill_Seconds, id, mill_Seconds)
+#         str_Node = "<node CREATED=\"%s\" ID=\"ID_%s\" " \
+#                     + "LINK=\"Projects.mm\" MODIFIED=\"%s\" " #=> workds
+        str_Node = "<node CREATED=\"%s\" ID=\"ID_%s\" " \
+                    + "MODIFIED=\"%s\"  "\
+                    + "TEXT=\"%s\"></node>" #=> 
+#                     + "LINK=\"Projects.mm\" MODIFIED=\"%s\"  "\
+        
+        text_Node = str_Node % (mill_Seconds, id, mill_Seconds, str(item + 1))
+#         text_Node = str_Node % (mill_Seconds, id, mill_Seconds, str(item))
+
+#         str_Node = "<node CREATED=\"%s\" ID=\"ID_%s\" " \
+#                 + "LINK=\"Projects.mm\" MODIFIED=\"%s\" " \
+#                 + "TEXT=\"%s\"></node>" \
+#                     % (mill_Seconds, id, mill_Seconds, str(item))
+                    
+        print()
+        print("[%s:%d] header node => '%s'" % \
+        (os.path.basename(libs.thisfile()), libs.linenum()
+        , text_Node
+#         , str_Node
+        ), file=sys.stderr)
+        
+        '''###################
+            append header node to the list        
+        ###################'''
+        node_Header = ET.fromstring(text_Node)
+        
+        print()
+        print("[%s:%d] node_Header => %s" % \
+        (os.path.basename(libs.thisfile()), libs.linenum()
+        , node_Header
+        ), file=sys.stderr)
+        
+        lo_Histories_Modified_Groupized.append(node_Header)
+
+    
+    #debug
+    print()
+    print("[%s:%d] lo_Histories_Modified_Groupized[1] => %s" % \
+        (os.path.basename(libs.thisfile()), libs.linenum()
+        , lo_Histories_Modified_Groupized[1]
+        ), file=sys.stderr)
+
+    '''###################
+        test        
+    ###################'''
+#     lo_Histories_Modified_Groupized[1].append()
+
+    '''###################
+        append : history items to headers        
+    ###################'''
+    index = 0
+    
+    cnt = 0
+    
+    for item in lo_Histories_Modified:
+#     for item in lo_Histories_Modified_Groupized:
+      
+        ### judge : entires in one group
+#         if len(lo_Histories_Modified_Groupized[index]) \
+#                 % sizeOf_Group == 0 : #if len(lo_Histories_Modified_Groupized) % sizeOf_Group
+ 
+        if not cnt == 0 and cnt % sizeOf_Group == 0 : #if cnt % sizeOf_Group == 0
+             
+               index += 1
+                 
+           #/if cnt % sizeOf_Group == 0
+             
+             
+#             index += 1
+          
+        ### append
+        lo_Histories_Modified_Groupized[index].append(item)
+          
+        cnt += 1
+         
+    #/for item in lo_Histories_Modified_Groupized:
+
+#/for item in range(int(sizeOf_Histories / sizeOf_Group)):
+
+    
+#     str_Node = "<node CREATED=\"1517542212333\" ID=\"ID_232518330.COPY\" LINK=\"Projects.mm\" MODIFIED=\"1517542358887\" TEXT=\"Dessins\"></node>"
+#     
+#     node_New = ET.fromstring(str_Node)
+    
+#     for item in lo_Histories_Modified:
+    
+#         ### judge : entires in one group
+#         if len(lo_Histories_Modified_Groupized[index]) \
+#                 % sizeOf_Group == 0 : #if len(lo_Histories_Modified_Groupized) % sizeOf_Group
+#         
+#             index += 1
+#             
+#         #/if len(lo_Histories_Modified_Groupized) % sizeOf_Group
+#         
+#         lo_Histories_Modified_Groupized[index].append(item)
+#         
+#     #/for item in lo_Histories_Modified:
+# 
+    return lo_Histories_Modified_Groupized
+    
+#/def groupize_HISTORY_Entries(lo_Histories_Modified):
+
+'''###################
+    Ops
+    1. nodes in the list ---> group-ize by 10 (or, any number given from the template)
+    2. append groups to ---> "HISTORY" node        
+###################'''
 def build_HISTORY_Branch(node, lo_Histories):
     
     #ref find https://stackoverflow.com/questions/27810825/find-all-nodes-by-attribute-in-xml-using-python-2 answered Jan 7 '15 at 3:14
@@ -706,10 +852,16 @@ def build_HISTORY_Branch(node, lo_Histories):
     ###################'''
     lo_Histories_Modified = sort_Histories__Modified(lo_Histories)
     
+    sizeOf_Group = 10
+    
+    lo_Histories_Modified_Groupized = \
+                groupize_HISTORY_Entries(lo_Histories_Modified, sizeOf_Group)
+    
     '''###################
         append        
     ###################'''
-    for item in lo_Histories_Modified:
+    for item in lo_Histories_Modified_Groupized:
+#     for item in lo_Histories_Modified:
 #     for item in lo_Histories:
 
         his.append(item)
@@ -768,66 +920,6 @@ def build_History(tree):
             , len(lo_Histories[1])
             ), file=sys.stderr)
     
-#     for item in lo_Histories[1] :
-# #     for item in lo_Histories[0] :
-#         
-#         print()
-#         print("[%s:%d] item.tag => '%s'" % \
-#         (os.path.basename(libs.thisfile()), libs.linenum()
-#         , item.tag
-#         ), file=sys.stderr)
-# #         print("[%s:%d] subnode => removing : '%s'" % \
-# #                             (os.path.basename(libs.thisfile()), libs.linenum()
-# #                             , item.attrib
-# # #                             , item.attrib['TEXT']
-# #                             ), file=sys.stderr)
-#         print()
-        
-        ### remove
-        #ref https://stackoverflow.com/questions/14051422/how-do-i-remove-a-node-in-xml-using-elementtree-in-python answered Dec 27 '12 at 8:22
-#         lo_Histories[1].remove(item)
-        
-    #/for item in lo_Histories[0] :
-    
-    
-#     g1.append(lo_Histories[0])
-#     g1.append(lo_Histories[1])
-    
-    '''###################
-        experi : remove subnodes        
-    ###################'''
-#     _test_Remove_Subnodes(lo_Histories[1])
-        
-        
-#     cnt = 0
-#     
-#     for item in lo_Histories[1]:
-#         
-#         lo_Histories[1].remove(item)
-#         
-#         cnt += 1
-#         
-#     #/for item in lo_Histories[1]:
-#     
-#     print()
-#     print("[%s:%d] items --> removed : %d items (len(lo_Histories[1]) = %d)" % \
-#                     (os.path.basename(libs.thisfile()), libs.linenum()
-#                     , cnt
-#                     , len(lo_Histories[1])
-#                     ), file=sys.stderr)
-#     
-#     print()
-#     
-# #     for item in lo_Histories[1] :
-# #     
-# #         print()
-# #         print("[%s:%d] item.tag => '%s'" % \
-# #         (os.path.basename(libs.thisfile()), libs.linenum()
-# #         , item.tag
-# #         ), file=sys.stderr)
-# #         
-# #         print()
-
     '''###################
         build : HISTORY branch        
     ###################'''

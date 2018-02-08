@@ -212,6 +212,19 @@ button.bt_Basic_1 {
 	
 }
 
+button.bt_Basic_2_Size20 {
+	
+	font-size: 20px;
+	
+	background-color: yellow;
+	
+	font-weight: bold;
+	
+	padding    : 5px;
+	
+	
+}
+
 button.bt_Numbering_List {
 	
 	font-size: 30px;
@@ -391,6 +404,62 @@ div#div_IM_Update_Date {
 	
 }/*div#index_Display_Area {*/
 
+div#div_MM_BuildHistory_SortKey {
+	
+	background     : DarkKhaki; 
+	
+	width          : 200px;
+	
+	min-height: 50px;
+	
+	margin-right   : 200px;
+	margin-left    : 20px;
+	
+	/*ref float https://www.w3schools.com/CSSref/tryit.asp?filename=trycss_float*/
+
+/*  float          : right;*/
+
+	
+	padding        : 5px;
+	
+}/*div#index_Display_Area {*/
+
+div#div_MM_BuildHistory_NumOfHistories {
+	
+	background     : DarkKhaki; 
+	
+	width          : 200px;
+	
+	min-height: 50px;
+	
+	margin-right   : 200px;
+	margin-left    : 20px;
+	
+	/*ref float https://www.w3schools.com/CSSref/tryit.asp?filename=trycss_float*/
+
+	padding        : 5px;
+	
+}/*div#div_MM_BuildHistory_NumOfHistories {*/
+
+div#div_MM_BuildHistory_Options {
+	
+	background     : #dddddd; 
+	
+	width          : 200px;
+	
+	min-height: 50px;
+	
+	margin-right   : 200px;
+	margin-left    : 20px;
+	
+	/*ref float https://www.w3schools.com/CSSref/tryit.asp?filename=trycss_float*/
+
+	float          : right;
+	
+	padding        : 5px;
+	
+}/*div#div_MM_BuildHistory_Options {*/
+
 div#div_Title_BuildHistory {
 	
 	background     : BurlyWood; 
@@ -517,6 +586,76 @@ input#ipt_IM_Update_Date {
 	
 	
 }/*input#ipt_Numbering_MainDir {*/
+
+input#ipt_MM_BuildHistory_SortKey {
+	
+	height: 30px;
+    width:  150px;
+    /*width:  250px;*/
+
+    /*ref color names https://html-color-codes.info/color-names/*/
+    background: LemonChiffon;
+    
+    margin-top: 10px;
+    
+    margin-left     : 20px;
+    margin-right    : 200px;
+    
+    padding     : 5px;
+	
+	/*float       : right;*/
+
+	color      : blue;
+	
+	/*ref font bold https://www.w3schools.com/csSref/tryit.asp?filename=trycss_font-weight*/
+
+	font-weight       : bold;
+	
+	/*font-family        : Times,  sans-serif;*/
+
+      font-family        : "Times New Roman", Times,  monospace;
+/*      font-family        : "Times New Roman", Times,  sans-serif;*/
+
+    font-size       : 20px;
+
+
+	
+}/*input#ipt_MM_BuildHistory_SortKey {*/
+
+input#ipt_MM_BuildHistory_NumOfHistories {
+	
+	height: 30px;
+    width:  150px;
+    /*width:  250px;*/
+
+    /*ref color names https://html-color-codes.info/color-names/*/
+    background: LemonChiffon;
+    
+    margin-top: 10px;
+    
+    margin-left     : 20px;
+    margin-right    : 200px;
+    
+    padding     : 5px;
+	
+	/*float       : right;*/
+
+	color      : blue;
+	
+	/*ref font bold https://www.w3schools.com/csSref/tryit.asp?filename=trycss_font-weight*/
+
+	font-weight       : bold;
+	
+	/*font-family        : Times,  sans-serif;*/
+
+      font-family        : "Times New Roman", Times,  monospace;
+/*      font-family        : "Times New Roman", Times,  sans-serif;*/
+
+    font-size       : 20px;
+
+
+	
+}/*input#ipt_MM_BuildHistory_NumOfHistories {*/
 
 input#ipt_DeNumbering_MainDir {
 	
