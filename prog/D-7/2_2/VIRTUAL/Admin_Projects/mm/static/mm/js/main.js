@@ -345,6 +345,65 @@ function _mm_Index_LinkTo__1() {
 	
 }//function _mm_Index_LinkTo__1() {
 
+function _mm_Index_LinkTo__2() {
+	
+	/***************************
+		message
+	 ***************************/
+	var msg = "ajax starting... param is '1'";
+	
+	var elem = $('div#index_Display_Area');
+	
+	elem.html(msg);
+	//$('div#index_Display_Area').html(msg);
+	
+	elem.css("background", cname_Yellow);
+	//elem.css("background", "yellow");
+	
+	/***************************
+		ajax
+		
+		ref : C:\WORKS_2\WS\Eclipse_Luna\Cake_IFM11\app\webroot\js\main.js
+	 ***************************/
+	var _url = "http://127.0.0.1:8000/mm/build_history/";
+//	var _url = "http://127.0.0.1:8000/mm/denumbering/";
+	
+	//var _data = {action : _param};
+	
+	$.ajax({
+		
+		url: _url,
+		type: "GET",
+		//REF http://stackoverflow.com/questions/1916309/pass-multiple-parameters-to-jquery-ajax-call answered Dec 16 '09 at 17:37
+		//    data: {id: id},
+		//    data: {memos: memos, image_id: image_id},
+		//	data: _data,
+		
+		timeout: 10000
+		
+	}).done(function(data, status, xhr) {
+		
+		//	alert(data);
+		
+		$('div#index_Display_Area').html(data);
+		
+		$('div#index_Display_Area')
+		.css("background", cname_White);
+		
+	}).fail(function(xhr, status, error) {
+		
+		alert(xhr.status);
+		
+		var msg = "ajax returned error";
+		
+		$('div#index_Display_Area').html(msg);
+		
+		$('div#index_Display_Area')
+		.css("background", cname_Red);
+	});
+	
+}//_mm_Index_LinkTo__2()
+
 function mm_Index_LinkTo(_param) {
 	
 //	alert("!!param is => '" + _param + "'");
@@ -354,16 +413,20 @@ function mm_Index_LinkTo(_param) {
 	//ref https://www.w3schools.com/jsref/jsref_parseInt.asp
 	var index = parseInt(_param);
 	
-	if (index == 0) {
+	if (index == 0) {	//[0, "Numbering"]
 		
 		_mm_Index_LinkTo__0();
 		
 	}
 	
-	else if (index == 1) {
+	else if (index == 1) {	//[1, "De-numbering"]
 		
 		_mm_Index_LinkTo__1();
 		
+	} else if (index == 2) {	//[2, "Build history"]
+			
+		_mm_Index_LinkTo__2();
+			
 	} else {
 		
 		alert("unknown index => " + _param);

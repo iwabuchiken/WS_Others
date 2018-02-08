@@ -7,8 +7,11 @@ class ImOp(Enum):
         
         [0, "Numbering"],
         [1, "De-numbering"],
+        [2, "Build history"],
+        
 #         [1, "Numbering"],
 #         [2, "De-numbering"],
+
     
     ]
     
