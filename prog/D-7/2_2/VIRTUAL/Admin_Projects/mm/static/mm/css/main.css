@@ -358,6 +358,20 @@ div#layout_Links_Basic {
 	
 }/*div#index_Display_Area {*/
 
+div#div_MM_Actions {
+	
+	background     : LightSalmon; 
+	
+	width          : 40%;
+
+	min-height: 50px;
+	
+	margin         : 10px;
+	
+	padding        : 10px;
+	
+}/*div#div_MM_Actions {*/
+
 div#div_IM_Update_Date {
 	
 	background     : Thistle; 
@@ -524,9 +538,15 @@ select#select_MM_Actions {
 	
 	font-size: 20px;
 	
-	background: #81BEF7;
+	background: LemonChiffon;
 	
 	margin-left    : 20px;
+	
+	margin-right    : 20px;
+	
+	padding        : 5px;
+	
+	
 	
 }
 
