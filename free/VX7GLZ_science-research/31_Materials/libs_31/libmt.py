@@ -642,6 +642,36 @@ def remove_Subnodes(node):
 
 #/def _test_Remove_Subnodes(node):
 
+def remove_Subnodes__Self(node):
+    
+
+    '''###################
+        remove        
+    ###################'''
+    lo_Target_Nodes = []
+    
+#     node_Copy = copy.deepcopy(node)
+    for item in node:
+        
+        lo_Target_Nodes.append(item)
+        
+    #/for item in node:
+    
+    ### remove
+#     for item in node_Copy:
+    for item in lo_Target_Nodes:
+
+
+        node.remove(item)
+#         node_Copy.remove(item)
+        
+    #/for item in lo_Target_Nodes:
+
+    return node
+#     return node_Copy
+
+#/def _test_Remove_Subnodes(node):
+
 '''###################
     @return: 
         -1    find 'HISTORY' tag ==> returned None
@@ -863,7 +893,90 @@ def build_HISTORY_Branch(node, lo_Histories):
     ###################'''
     #FOLDED="true"
     his.attrib['FOLDED'] = "true"
+
+    '''###################
+        remove existing nodes        
+    ###################'''
+    print()
+    print("[%s:%d] len(his) => %d" % \
+        (os.path.basename(libs.thisfile()), libs.linenum()
+        , len(his)
+        ), file=sys.stderr)
+
+    print()
+    print("[%s:%d] removing..." % \
+        (os.path.basename(libs.thisfile()), libs.linenum()
+        
+        ), file=sys.stderr)
+
+    remove_Subnodes__Self(his)
+
+    print()
+    print("[%s:%d] len(his) is now => %d" % \
+        (os.path.basename(libs.thisfile()), libs.linenum()
+        , len(his)
+        ), file=sys.stderr)
+        
+#     print()
+#     print("[%s:%d] len(his) => %d" % \
+#         (os.path.basename(libs.thisfile()), libs.linenum()
+#         , len(his)
+#         ), file=sys.stderr)
+#     
+#     print()
+#     print("[%s:%d] his[1] => %s" % \
+#         (os.path.basename(libs.thisfile()), libs.linenum()
+#         , his[1]
+#         ), file=sys.stderr)
     
+# #     his = remove_Subnodes(his)
+#     lenOf_His = len(his)
+#     
+#     for index in range(lenOf_His):
+#         
+#         print()
+#         print("[%s:%d] his[%d].attrib => %s" % \
+#         (os.path.basename(libs.thisfile()), libs.linenum()
+#         , index, his[index].attrib
+#         ), file=sys.stderr)
+#         
+#         print()
+#         print("[%s:%d] removing his[%d] => %s" % \
+#             (os.path.basename(libs.thisfile()), libs.linenum()
+#             , index, his[index]
+#             ), file=sys.stderr)
+#      
+#         his.remove(his[0])
+# #         his.remove(his[index])
+#  
+#         print()
+#         print("[%s:%d] removed his[%d] => %s" % \
+#             (os.path.basename(libs.thisfile()), libs.linenum()
+#             , index, his[index]
+#             ), file=sys.stderr)        
+#         
+#         print()
+#         print("[%s:%d] len(his) is now => %s" % \
+#             (os.path.basename(libs.thisfile()), libs.linenum()
+#             , len(his)
+#             ), file=sys.stderr)        
+        
+    #/for index in range(lenOf_His):
+
+    
+#     for item in his:
+#                
+#         his.remove(item)
+#         
+#     #/for item in his:
+
+
+    print()
+    print("[%s:%d] len(his) => %d" % \
+        (os.path.basename(libs.thisfile()), libs.linenum()
+        , len(his)
+        ), file=sys.stderr)
+        
     '''###################
         append        
     ###################'''
