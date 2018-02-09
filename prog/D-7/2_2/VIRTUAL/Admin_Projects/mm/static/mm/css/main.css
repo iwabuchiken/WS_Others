@@ -225,6 +225,22 @@ button.bt_Basic_2_Size20 {
 	
 }
 
+button.bt_Basic_2_Size20:hover {
+    
+    background-color: #3e8e41;
+    
+}
+
+button.bt_Basic_2_Size20:active {
+    
+    /*ref active https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_buttons_animate3*/
+
+    background-color: #6ebe71;
+    
+}
+
+
+
 button.bt_Numbering_List {
 	
 	font-size: 30px;
