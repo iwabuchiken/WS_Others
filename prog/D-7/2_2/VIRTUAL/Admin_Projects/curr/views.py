@@ -57,7 +57,27 @@ def updown_patterns(request):
     dic = {}
 #     dic = {'action' : action, "message" : message}
     
-    return render(request, 'curr/updown_patterns.html', dic)
+    '''###################
+        get : referer        
+    ###################'''
+    referer_MM = "http://127.0.0.1:8000/curr/"
+    
+    referer_Current = request.META.get('HTTP_REFERER')
+
+
+    '''###################
+        render        
+    ###################'''
+    if referer_Current == referer_MM : #if referer_Current == referer_MM
+    
+        return render(request, 'curr/updown_patterns.html.html', dic)
+#         return render(request, 'mm/numbering.html', dic)
+        
+    else : #if referer_Current == referer_MM
+
+        return render(request, 'curr/updown_patterns_full.html', dic)
+
+#     return render(request, 'curr/updown_patterns.html', dic)
 
     
 #/def updown_patterns(request):
