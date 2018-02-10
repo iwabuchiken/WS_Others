@@ -42,6 +42,8 @@ INSTALLED_APPS = [
     
     'im',
     
+    'curr',
+    
 ]
 
 MIDDLEWARE = [
