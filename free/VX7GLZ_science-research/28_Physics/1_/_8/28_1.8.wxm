@@ -1,0 +1,51 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 14.09.0 ] */
+
+/* [wxMaxima: input   start ] */
+m : 5;
+
+M_rng : [M, 0, 20];
+
+f1 : m * M / (m + M);
+
+wxplot2d(f1, M_rng);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+limit(f1, M, inf);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+kill(m);
+
+M_rng : [M, 0, 20];
+
+f1 : m * M / (m + M);
+
+limit(f1, M, inf);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+m : 5;
+
+M_rng : [M, 0, 5];
+
+f1 : m * M / (m + M);
+
+wxplot2d(f1, M_rng);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+kill(m);
+
+m_rng : [m, 0, 5];
+M_rng : [M, 0, 5];
+
+f1 : m * M / (m + M);
+
+wxplot3d(f1, M_rng, m_rng);
+plot3d(f1, M_rng, m_rng);
+/* [wxMaxima: input   end   ] */
+
+/* Maxima can't load/batch files which end with a comment! */
+"Created with wxMaxima"$
