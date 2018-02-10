@@ -21,5 +21,7 @@ urlpatterns = [
     
     url(r'^$', views.index, name='curr_index'),
     
+    url(r'^updown_patterns/$', views.updown_patterns, name='updown_patterns'),
+    
     
 ]

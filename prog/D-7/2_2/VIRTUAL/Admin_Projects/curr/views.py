@@ -52,13 +52,25 @@ import re
 '''######################################
     funcs        
 ######################################'''
+def updown_patterns(request):
+
+    dic = {}
+#     dic = {'action' : action, "message" : message}
+    
+    return render(request, 'curr/updown_patterns.html', dic)
+
+    
+#/def updown_patterns(request):
+    
+    
 def index(request):
 
 
     action = "action"
     message = "message"
     
-    lo_Commands = cons_mm.ImOp.lo_Commands.value
+    lo_Commands = cons_mm.CURROp.lo_Commands.value
+#     lo_Commands = cons_mm.ImOp.lo_Commands.value
     
     #debug
     print()
@@ -71,3 +83,5 @@ def index(request):
 
     
 #     return HttpResponse("Hello Django")
+
+

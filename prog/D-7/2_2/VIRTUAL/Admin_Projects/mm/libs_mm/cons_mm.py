@@ -18,6 +18,18 @@ class ImOp(Enum):
     
 #/class ImOp(Enum):
 
+class CURROp(Enum):
+    
+    lo_Commands = [
+        
+        [0, "Updown patterns"],
+        [1, "Correlations"],
+    
+    ]
+    
+    
+#/class ImOp(Enum):
+
 class FPath(Enum):
     
     '''###################
