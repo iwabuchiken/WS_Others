@@ -408,10 +408,34 @@ def _get_Histories(node, lo_Histories) :
     node_Self = remove_Subnodes(node_Copy)
 #     node_Self = get_Node_Self(node_Copy)
     
-    ### modify ID
-    id_Orig = node_Self.attrib['ID']
+    #debug
+    print()
+    print("[%s:%d] node_Self.attrib => %s" % \
+              (os.path.basename(libs.thisfile()), libs.linenum()
+              , node_Self.attrib
+              ), file=sys.stderr)
+
     
-    id_New = id_Orig + "." + "COPY"
+    ### modify ID
+    if 'ID' in node_Self.attrib : #if 'ID' in node_Self.attrib
+                         
+        id_Orig = node_Self.attrib['ID']
+         
+        id_New = id_Orig + "." + "COPY"
+         
+    else:#/if 'ID' in node_Self.attrib
+        
+        #ref millseconds https://stackoverflow.com/questions/5998245/get-current-time-in-milliseconds-in-python
+        mill = int(round(time.time() * 1000))
+        
+        id_New = "ID_%s" % (str(mill)[-11:-1])
+        
+    #/if 'ID' in node_Self.attrib
+                         
+                         
+#     id_Orig = node_Self.attrib['ID']
+#     
+#     id_New = id_Orig + "." + "COPY"
     
     node_Self.attrib['ID'] = id_New
    
