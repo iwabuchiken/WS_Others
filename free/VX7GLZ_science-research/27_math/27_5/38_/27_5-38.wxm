@@ -29,6 +29,7 @@ E : matrix([1,0],[0,1]);
 A^^2 -7 * A + 6 * E;
 /* [wxMaxima: input   end   ] */
 
+<<<<<<< HEAD
 /* [wxMaxima: input   start ] */
 /* sec : 3 */
 
@@ -69,5 +70,7 @@ E : matrix([1,0], [0,1]);
 A^^2 - 8 * A + 6 * E;
 /* [wxMaxima: input   end   ] */
 
+=======
+>>>>>>> 33f39d90acc39ded8f252e08c15bb6d17fb6f503
 /* Maxima can't load/batch files which end with a comment! */
 "Created with wxMaxima"$
