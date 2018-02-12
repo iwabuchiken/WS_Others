@@ -877,4 +877,409 @@ function mm_Index_GO() {
 	
 }//mm_Index_GO()
 
+/***************************
+	<option value="0" class="opt_MM_Actions">Updown patterns</option>
+ ***************************/
+function _curr_Index_LinkTo__0() {
+	
+	/***************************
+		message
+	 ***************************/
+	var msg = "ajax starting...";
+	
+	var elem = $('div#index_Display_Area');
+	
+	elem.html(msg);
+	//$('div#index_Display_Area').html(msg);
+	
+	elem.css("background", cname_Yellow);
+	//elem.css("background", "yellow");
+	
+	/***************************
+		ajax
+		
+		ref : C:\WORKS_2\WS\Eclipse_Luna\Cake_IFM11\app\webroot\js\main.js
+	 ***************************/
+	var _url = "http://127.0.0.1:8000/curr/updown_patterns/";
+	//var _data = {action : _param};
+	
+	$.ajax({
+		
+		url: _url,
+		type: "GET",
+		//REF http://stackoverflow.com/questions/1916309/pass-multiple-parameters-to-jquery-ajax-call answered Dec 16 '09 at 17:37
+	//    data: {id: id},
+	//    data: {memos: memos, image_id: image_id},
+	//	data: _data,
+		
+		timeout: 10000
+		
+	}).done(function(data, status, xhr) {
+		
+	//	alert(data);
+		
+		$('div#index_Display_Area').html(data);
+		
+		$('div#index_Display_Area')
+				.css("background", cname_White);
+		
+	}).fail(function(xhr, status, error) {
+		
+		alert(xhr.status);
+		
+		var msg = "ajax returned error";
+		
+		$('div#index_Display_Area').html(msg);
+		
+		$('div#index_Display_Area')
+			.css("background", cname_Red);
+	});
+	
+}//function _curr_Index_LinkTo__0() {
 
+function _curr_Index_LinkTo__1() {
+	
+	/***************************
+		message
+	 ***************************/
+	var msg = "ajax starting...";
+	
+	var elem = $('div#index_Display_Area');
+	
+	elem.html(msg);
+	//$('div#index_Display_Area').html(msg);
+	
+	elem.css("background", cname_Yellow);
+	//elem.css("background", "yellow");
+	
+	/***************************
+		ajax
+		
+		ref : C:\WORKS_2\WS\Eclipse_Luna\Cake_IFM11\app\webroot\js\main.js
+	 ***************************/
+	var _url = "http://127.0.0.1:8000/curr/correlations/";
+	//var _data = {action : _param};
+	
+	$.ajax({
+		
+		url: _url,
+		type: "GET",
+		//REF http://stackoverflow.com/questions/1916309/pass-multiple-parameters-to-jquery-ajax-call answered Dec 16 '09 at 17:37
+	//    data: {id: id},
+	//    data: {memos: memos, image_id: image_id},
+	//	data: _data,
+		
+		timeout: 10000
+		
+	}).done(function(data, status, xhr) {
+		
+	//	alert(data);
+		
+		$('div#index_Display_Area').html(data);
+		
+		$('div#index_Display_Area')
+				.css("background", cname_White);
+		
+	}).fail(function(xhr, status, error) {
+		
+		alert(xhr.status);
+		
+		var msg = "ajax returned error";
+		
+		$('div#index_Display_Area').html(msg);
+		
+		$('div#index_Display_Area')
+			.css("background", cname_Red);
+	});
+	
+}//function _curr_Index_LinkTo__1() {
+
+function _curr_Index_LinkTo__2() {
+	
+	/***************************
+		message
+	 ***************************/
+	var msg = "ajax starting... param is '1'";
+	
+	var elem = $('div#index_Display_Area');
+	
+	elem.html(msg);
+	//$('div#index_Display_Area').html(msg);
+	
+	elem.css("background", cname_Yellow);
+	//elem.css("background", "yellow");
+	
+	/***************************
+		ajax
+		
+		ref : C:\WORKS_2\WS\Eclipse_Luna\Cake_IFM11\app\webroot\js\main.js
+	 ***************************/
+	var _url = "http://127.0.0.1:8000/mm/build_history/";
+//	var _url = "http://127.0.0.1:8000/mm/denumbering/";
+	
+	//var _data = {action : _param};
+	
+	$.ajax({
+		
+		url: _url,
+		type: "GET",
+		//REF http://stackoverflow.com/questions/1916309/pass-multiple-parameters-to-jquery-ajax-call answered Dec 16 '09 at 17:37
+		//    data: {id: id},
+		//    data: {memos: memos, image_id: image_id},
+		//	data: _data,
+		
+		timeout: 10000
+		
+	}).done(function(data, status, xhr) {
+		
+		//	alert(data);
+		
+		$('div#index_Display_Area').html(data);
+		
+		$('div#index_Display_Area')
+		.css("background", cname_White);
+		
+	}).fail(function(xhr, status, error) {
+		
+		alert(xhr.status);
+		
+		var msg = "ajax returned error";
+		
+		$('div#index_Display_Area').html(msg);
+		
+		$('div#index_Display_Area')
+		.css("background", cname_Red);
+	});
+	
+}//_curr_Index_LinkTo__2()
+
+function curr_Index_LinkTo(_param) {
+	
+//	alert("!!param is => '" + _param + "'");
+	/***************************
+		dispatch
+	 ***************************/
+	//ref https://www.w3schools.com/jsref/jsref_parseInt.asp
+	var index = parseInt(_param);
+	
+	if (index == 0) {	//[0, "Numbering"]
+		
+		_curr_Index_LinkTo__0();
+		
+	}
+	
+	else if (index == 1) {	//[1, "De-numbering"]
+		
+		_curr_Index_LinkTo__1();
+		
+	} else if (index == 2) {	//[2, "Build history"]
+			
+		_curr_Index_LinkTo__2();
+			
+	} else {
+		
+		alert("unknown index => " + _param);
+		
+	}
+	
+	
+//	/***************************
+//		message
+//	 ***************************/
+//	var msg = "ajax starting...";
+//	
+//	var elem = $('div#index_Display_Area');
+//	
+//	elem.html(msg);
+////	$('div#index_Display_Area').html(msg);
+//	
+//	elem.css("background", cname_Yellow);
+////	elem.css("background", "yellow");
+//	
+//	/***************************
+//		ajax
+//		
+//		ref : C:\WORKS_2\WS\Eclipse_Luna\Cake_IFM11\app\webroot\js\main.js
+//	 ***************************/
+//	var _url = "http://127.0.0.1:8000/mm/numbering/";
+////	var _url = "http://127.0.0.1:8000/im/im_actions";
+////	var _url = "http://127.0.0.1:8000/im/actions";
+//	
+////	var _data = {action : _param};
+//	
+//	$.ajax({
+//		
+//		url: _url,
+//		type: "GET",
+//		//REF http://stackoverflow.com/questions/1916309/pass-multiple-parameters-to-jquery-ajax-call answered Dec 16 '09 at 17:37
+////	    data: {id: id},
+////	    data: {memos: memos, image_id: image_id},
+////		data: _data,
+//		
+//		timeout: 10000
+//		
+//	}).done(function(data, status, xhr) {
+//		
+////		alert(data);
+//		
+//		$('div#index_Display_Area').html(data);
+//		
+//		$('div#index_Display_Area')
+//				.css("background", cname_White);
+//		
+//	}).fail(function(xhr, status, error) {
+//		
+//		alert(xhr.status);
+//		
+//		var msg = "ajax returned error";
+//		
+//		$('div#index_Display_Area').html(msg);
+//		
+//		$('div#index_Display_Area')
+//			.css("background", cname_Red);
+//	});
+	
+}//function mm_Index_LinkTo(_param) {
+
+function curr_Index_GO() {
+	
+//	alert("curr index");
+	
+	var selection = $( "#select_Curr_Actions option:selected" );
+//	var selection = $( "#select_MM_Actions option:selected" ).text();
+	
+	var text = selection.text();
+	
+	var value = selection.val();
+
+//	//debug
+//	alert("text => '" + text + "'" + " / " + "val = " + value);
+
+	/***************************
+		dispatch
+	 ***************************/
+	curr_Index_LinkTo(value);
+
+}
+
+function curr_Updown_GO() {
+
+//	alert("updown GO");
+
+	/***************************
+		message
+	 ***************************/
+	var msg = "ajax starting...";
+	
+	var elem = $('div#index_Message_Area');
+	
+	elem.html(msg);
+	//$('div#index_Display_Area').html(msg);
+	
+	elem.css("background", cname_Yellow);
+	//elem.css("background", "yellow");
+	
+	/***************************
+		ajax
+		
+		ref : C:\WORKS_2\WS\Eclipse_Luna\Cake_IFM11\app\webroot\js\main.js
+	 ***************************/
+	var _url = "http://127.0.0.1:8000/curr/exec_updown_patterns/";
+	//var _data = {action : _param};
+	
+	$.ajax({
+		
+		url: _url,
+		type: "GET",
+		//REF http://stackoverflow.com/questions/1916309/pass-multiple-parameters-to-jquery-ajax-call answered Dec 16 '09 at 17:37
+	//    data: {id: id},
+	//    data: {memos: memos, image_id: image_id},
+	//	data: _data,
+		
+		timeout: 10000
+		
+	}).done(function(data, status, xhr) {
+		
+	//	alert(data);
+		
+		var tag = $('div#index_Area__Result');
+		
+		tag.html(data);
+		
+		tag
+				.css("background", cname_White);
+		
+	}).fail(function(xhr, status, error) {
+		
+		alert(xhr.status);
+		
+		var msg = "ajax returned error";
+
+		var tag = $('div#index_Area__Result');
+
+		tag.html(msg);
+		
+		tag.css("background", cname_Red);
+	});
+}
+
+function curr_Correl_GO() {
+
+	/***************************
+		message
+	 ***************************/
+	var msg = "ajax starting... (curr_Correl_GO)";
+	
+	var elem = $('div#index_Message_Area');
+	
+	elem.html(msg);
+	//$('div#index_Display_Area').html(msg);
+	
+	elem.css("background", cname_Yellow);
+	//elem.css("background", "yellow");
+	
+	/***************************
+		ajax
+		
+		ref : C:\WORKS_2\WS\Eclipse_Luna\Cake_IFM11\app\webroot\js\main.js
+	 ***************************/
+	var _url = "http://127.0.0.1:8000/curr/exec_correlations/";
+	//var _data = {action : _param};
+	
+	$.ajax({
+		
+		url: _url,
+		type: "GET",
+		//REF http://stackoverflow.com/questions/1916309/pass-multiple-parameters-to-jquery-ajax-call answered Dec 16 '09 at 17:37
+	//    data: {id: id},
+	//    data: {memos: memos, image_id: image_id},
+	//	data: _data,
+		
+		timeout: 10000
+		
+	}).done(function(data, status, xhr) {
+		
+	//	alert(data);
+		
+		var tag = $('div#index_Area__Result');
+		
+		tag.html(data);
+		
+		tag
+				.css("background", cname_White);
+		
+	}).fail(function(xhr, status, error) {
+		
+		alert(xhr.status + " / " + error);
+//		alert(xhr.status);
+		
+		var msg = "ajax returned error";
+	
+		var tag = $('div#index_Area__Result');
+	
+		tag.html(msg);
+		
+		tag.css("background", cname_Red);
+	});
+
+}

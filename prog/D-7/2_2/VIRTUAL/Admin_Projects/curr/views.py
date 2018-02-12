@@ -52,6 +52,61 @@ import re
 '''######################################
     funcs        
 ######################################'''
+
+def exec_correlations(request):
+    
+    '''###################
+        time        
+    ###################'''
+    time_Start = time.time()
+    
+    '''###################
+        time        
+    ###################'''
+    time_Elapsed = time.time() - time_Start
+    
+    message = "done (time : %02.3f sec)" % (time_Elapsed)
+
+    dic = {"msg" : message}
+    
+#     print()
+#     print("[%s:%d] rendering..." % \
+#         (os.path.basename(libs.thisfile()), libs.linenum()
+#         
+#         ), file=sys.stderr)
+    
+    return render(request, 'curr/exec_correlations.html', dic)
+    
+#/def exec_correlations(request):
+    
+def correlations(request):
+    
+    dic = {}
+    
+    return render(request, 'curr/correlations.html', dic)
+    
+#/def correlations(request):
+    
+def exec_updown_patterns(request):
+    
+    '''###################
+        time        
+    ###################'''
+    time_Start = time.time()
+    
+    '''###################
+        time        
+    ###################'''
+    time_Elapsed = time.time() - time_Start
+    
+    message = "done (time : %02.3f sec)" % (time_Elapsed)
+
+    dic = {"msg" : message}
+    
+    return render(request, 'curr/exec_updown_patterns.html', dic)
+    
+#/def exec_updown_patterns(request):
+
 def updown_patterns(request):
 
     dic = {}
@@ -70,10 +125,22 @@ def updown_patterns(request):
     ###################'''
     if referer_Current == referer_MM : #if referer_Current == referer_MM
     
-        return render(request, 'curr/updown_patterns.html.html', dic)
+        print()
+        print("[%s:%d] referer_Current == referer_MM (current = %s / referer = %s" % \
+                (os.path.basename(libs.thisfile()), libs.linenum()
+                ,referer_Current, referer_MM
+                ), file=sys.stderr)
+    
+        return render(request, 'curr/updown_patterns.html', dic)
 #         return render(request, 'mm/numbering.html', dic)
         
     else : #if referer_Current == referer_MM
+
+        print()
+        print("[%s:%d] referer_Current <> referer_MM (current = %s / referer = %s" % \
+                (os.path.basename(libs.thisfile()), libs.linenum()
+                ,referer_Current, referer_MM
+                ), file=sys.stderr)
 
         return render(request, 'curr/updown_patterns_full.html', dic)
 

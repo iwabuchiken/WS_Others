@@ -23,5 +23,11 @@ urlpatterns = [
     
     url(r'^updown_patterns/$', views.updown_patterns, name='updown_patterns'),
     
+    url(r'^exec_updown_patterns/$', views.exec_updown_patterns, name='exec_updown_patterns'),
+    
+    url(r'^correlations/$', views.correlations, name='correlations'),
+    
+    url(r'^exec_correlations/$', views.exec_correlations, name='exec_correlations'),
+    
     
 ]

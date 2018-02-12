@@ -387,6 +387,30 @@ div#layout_Links_Basic {
 	
 }/*div#index_Display_Area {*/
 
+div#index_Message_Area {
+	
+	margin     : 10px;
+	
+	padding     : 10px;
+	
+}
+
+div#index_Area__Result {
+	
+	margin     : 10px;
+	
+	padding     : 10px;
+	
+}
+
+div#index_Display_Area {
+	
+	margin     : 10px;
+	
+	padding     : 10px;
+	
+}
+
 div#div_MM_Actions {
 	
 	background     : LightSalmon; 
@@ -705,3 +729,31 @@ select#select_MM_Actions {
 	
 }
 
+select#select_Curr_Actions {
+	
+	font-size: 20px;
+	
+	background: LemonChiffon;
+	
+	margin-left    : 20px;
+	
+	margin-right    : 20px;
+	
+	padding        : 5px;
+	
+	
+	
+}
+
+label.lbl_Curr_UpdownPatterns {
+	
+	background: Gold;
+	/*background: LemonChiffon;*/
+	
+	display    : block;
+	
+	width      : 200px;
+	
+	padding    : 5px;
+	
+}
