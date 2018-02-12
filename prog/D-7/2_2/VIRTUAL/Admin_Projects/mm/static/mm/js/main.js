@@ -8,6 +8,7 @@
 var cname_White = "white";
 var cname_Red = "red";
 var cname_Yellow = "yellow";
+var cname_LightBlue = "LightBlue";
 
 var className_BT_Numbering_List = "bt_Numbering_List";
 
@@ -83,7 +84,9 @@ function im_Action(_param) {
 	 ***************************/
 	var _update;
 	
-	if (_param == "11-0") {
+	if ((_param == "11-0") ||
+		(_param == "10-1")) {
+//		if (_param == "11-0") {
 
 		var tag_Date = $("input#ipt_IM_Update_Date");
 		
@@ -186,7 +189,10 @@ function im_Action(_param) {
 	 ***************************/
 	var _data;
 	
-	if (_param == "11-0") {
+	//ref multiple conditions https://stackoverflow.com/questions/8710442/how-to-specify-multiple-conditions-in-an-if-statement-in-javascript answered Jan 3 '12 at 9:58
+	if ((_param == "11-0") || 
+			(_param == "10-1")) {
+//		if (_param == "11-0") {
 
 		_data = {action : _param, update : _update};
 
@@ -196,6 +202,8 @@ function im_Action(_param) {
 
 	}//if (_param == "11-0")
 	
+//	//debug
+//	alert("data => '" + _data + "'");
 	
 //		_data = {action : _param};
 		
@@ -211,10 +219,88 @@ function im_Action(_param) {
 	    timeout: 10000
 	    
 	}).done(function(data, status, xhr) {
+
+		/***************************
+			exception
+		 ***************************/
+		var substr = "total_data";
+//		var substr = "doesn't";
 		
 //		alert(data);
 		
-		$('div#index_Area__Result').html(data);
+	//	var res = (data.indexOf(substr) !== -1);
+		
+		//ref substring https://stackoverflow.com/questions/1789945/how-to-check-whether-a-string-contains-a-substring-in-javascript
+//		if (data.indexOf(substr) == -1) {
+		if (data.includes(substr)) {	// detected
+//			if (data.indexOf(substr) !== -1) {	// detected
+			
+			//debug
+			console.log("'doesn't' ==> detected");
+			
+//			alert(data);
+			
+			var tag = $('div#index_Area__Result');
+			
+			$('div#index_Area__Result')
+				.css("background", cname_Red);
+
+//			tag
+//			.animate({background : "red"}, 500)
+//			.animate({background : "yellow"}, 500)
+//			.animate({background : "white"}, 500)
+			
+			;
+
+			$('div#index_Area__Result').html(data);
+			
+//			//ref
+//			tag
+//				.animate({background : "red"}, 500)
+//				.animate({background : "yellow"}, 500)
+//				.animate({background : "white"}, 500)
+//				
+//				;
+			
+			//ref fadein/out https://stackoverflow.com/questions/275931/how-do-you-make-an-element-flash-in-jquery answered Feb 1 '12 at 14:19
+			tag
+				.fadeIn(200).fadeOut(200)
+				.fadeIn(200).fadeOut(200)
+				
+				.fadeIn(200).fadeOut(200)
+				.fadeIn(200).fadeOut(200)
+				
+				.fadeIn(200).fadeOut(200)
+				.fadeIn(200).fadeOut(200)
+				
+				.fadeIn(200);
+			
+		} else {
+			
+			var tag = $('div#index_Area__Result');
+			
+			$('div#index_Area__Result')
+				.css("background", cname_LightBlue);
+//			.css("background", cname_White);
+
+			$('div#index_Area__Result').html(data);
+
+			tag
+				.fadeIn(200).fadeOut(200)
+				.fadeIn(200).fadeOut(200)
+				
+//				.fadeIn(200).fadeOut(200)
+//				.fadeIn(200).fadeOut(200)
+//				
+//				.fadeIn(200).fadeOut(200)
+//				.fadeIn(200).fadeOut(200)
+				
+				.fadeIn(200);
+
+		}
+
+		
+//		$('div#index_Area__Result').html(data);
 		
 	}).fail(function(xhr, status, error) {
 		

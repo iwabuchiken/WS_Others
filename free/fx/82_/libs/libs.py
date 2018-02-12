@@ -217,13 +217,36 @@ def get_TimeLabel_Now(string_type="serial", mili=False):
     
 #     str = strftime("%Y%m%d_%H%M%S", t)
 #     str = strftime("%Y%m%d_%H%M%S", localtime())
-    str = strftime("%Y%m%d_%H%M%S", localtime(t))
+
+    '''###################
+        build string        
+    ###################'''
+    if string_type == "serial" : #if string_type == "serial"
+    
+        str = strftime("%Y%m%d_%H%M%S", localtime(t))
+    
+    else : #if string_type == "serial"
+    
+        str = strftime("%Y/%m/%d %H:%M:%S", localtime(t))
+    
+    #/if string_type == "serial"
+    
+    
+#     str = strftime("%Y%m%d_%H%M%S", localtime(t))
     
     #ref https://stackoverflow.com/questions/5998245/get-current-time-in-milliseconds-in-python "answered May 13 '11 at 22:21"
     if mili == True :
 
+        if string_type == "serial" : #if string_type == "serial"
+            
+            str = "%s_%03d" % (str, int(t % 1 * 1000))
+        
+        else : #if string_type == "serial"
+        
+            str = "%s.%03d" % (str, int(t % 1 * 1000))
+
         #ref decimal value https://stackoverflow.com/questions/30090072/get-decimal-part-of-a-float-number-in-python "answered May 7 '15 at 1:56"          
-        str = "%s_%03d" % (str, int(t % 1 * 1000))
+#         str = "%s_%03d" % (str, int(t % 1 * 1000))
     
     return str
     

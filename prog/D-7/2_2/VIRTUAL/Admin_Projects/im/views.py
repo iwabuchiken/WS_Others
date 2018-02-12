@@ -27,6 +27,8 @@ import re
 
 import clipboard
 
+import time
+
 ######################################## FUNCS
 # def test_Request():
 def test_Request(request):
@@ -477,8 +479,8 @@ def _im_actions__Ops_11(action): # /im/im_action
 #/def _im_actions__Ops_7(do_Commands[action])
 
 
-def _im_actions__Ops_10_1(action): # /im/im_action
-    
+def _im_actions__Ops_10_1__TEST(action, request): # /im/im_action
+
     print("[%s:%d] _im_actions__Ops_10_1()" % \
         (os.path.basename(libs.thisfile()), libs.linenum()
         
@@ -491,33 +493,137 @@ def _im_actions__Ops_10_1(action): # /im/im_action
             , action
             ), file=sys.stderr)
     
-    command = "C:\\WORKS_2\\Programs\\sakura\\sakura.exe"
-#     command = "%s\\%s" % (cons_im.FPath.DPATH_CMD_LIB_WS_CAKE_IFM11.value, action)
-                # OSError: [WinError 193] %1 は有効な Win32 アプリケーションではありません。
-#     command = action
     arg1 = "%s\\%s" % (cons_im.FPath.DPATH_CMD_LIB_WS_CAKE_IFM11.value, action)
     
-#     cmd_Full = [command]  #=> 
-    cmd_Full = [command, arg1]  #=> 
-
-    #debug
+    '''###################
+        file : read        
+    ###################'''
+    fin = open(arg1, "r")
+    
+    content = fin.read()
+    
+    fin.close()
+    
+    '''###################
+        time label        
+    ###################'''
+    #2018-02-01_16-39-38_000.jpg
+    str_AddData = request.GET.get('update', False)
+    
     print()
-    print("[%s:%d] cmd_Full =>" % \
-            (os.path.basename(libs.thisfile()), libs.linenum()
-            
-            ), file=sys.stderr)
-    print(cmd_Full)
+    print("[%s:%d] add data => '%s'" % \
+        (os.path.basename(libs.thisfile()), libs.linenum()
+        , str_AddData
+        ), file=sys.stderr)
+    print()
     
-    res = subprocess.call(cmd_Full)
+    '''###################
+        validate        
+    ###################'''
+    ### match
+    res = str_AddData.startswith("\t'total_data'")
+     
+    if res == False : #if res == None
+        
+        print()
+        print("[%s:%d] Input ==> doesn't start with \"\t'total_data'\" => '%s'" % \
+            (os.path.basename(libs.thisfile()), libs.linenum()
+            , str_AddData
+            ), file=sys.stderr)
+      
+        return "Input ==> doesn't start with \"\t'total_data'\""
+          
+    #/if res == None
 
-    print("[%s:%d] result (subprocess) =>" % \
-            (os.path.basename(libs.thisfile()), libs.linenum()
+    '''###################
+        build content
+    ###################'''
+    str_AddData = str_AddData.replace(',', ',\n')
             
-            ), file=sys.stderr)
+
+    '''###################
+        time label
+    ###################'''
+    time_Label = libs.get_TimeLabel_Now(string_type = "formatted")
     
-    print(res)
+    '''###################
+        file : write        
+    ###################'''
+    fout = open(arg1, "w")
     
-    return None
+#     content = "### %s\n%s\n%s\n" % \
+#     content = "### %s\n%s\n%s\n\n" % \
+    content = "### %s\n%s\n\n%s" % \
+                    (time_Label, str_AddData, content)
+#     content = "C:\\WORKS_2\\t c2 %s\n%s\n\n%s" % \
+#                     (time_Label_Orig, label_All, content)
+#     content = "C:\\WORKS_2\\t c2 %s\n\n%s\n\n%s" % \
+#     content = "C:\\WORKS_2\\t c2 %s\n\n%s" % (time_Label_Orig, content)
+    
+    fout.write(content)
+    fout.write("\n")
+    #test
+    fout.write("done\n")
+    
+    fout.close()
+    
+    print()
+    print("[%s:%d] file ==> written : '%s'" % \
+        (os.path.basename(libs.thisfile()), libs.linenum()
+        , arg1
+        ), file=sys.stderr)
+    print()
+    
+    return "Done"
+
+#/def _im_actions__Ops_10_1__TEST(action): # /im/im_action
+    
+def _im_actions__Ops_10_1(action, request): # /im/im_action
+# def _im_actions__Ops_10_1(action): # /im/im_action
+    
+    alert = _im_actions__Ops_10_1__TEST(action, request)
+    
+#     print("[%s:%d] _im_actions__Ops_10_1()" % \
+#         (os.path.basename(libs.thisfile()), libs.linenum()
+#         
+#         ), file=sys.stderr)
+#     
+#     #debug
+#     print()
+#     print("[%s:%d] action => '%s'" % \
+#             (os.path.basename(libs.thisfile()), libs.linenum()
+#             , action
+#             ), file=sys.stderr)
+#     
+#     command = "C:\\WORKS_2\\Programs\\sakura\\sakura.exe"
+# #     command = "%s\\%s" % (cons_im.FPath.DPATH_CMD_LIB_WS_CAKE_IFM11.value, action)
+#                 # OSError: [WinError 193] %1 は有効な Win32 アプリケーションではありません。
+# #     command = action
+#     arg1 = "%s\\%s" % (cons_im.FPath.DPATH_CMD_LIB_WS_CAKE_IFM11.value, action)
+#     
+# #     cmd_Full = [command]  #=> 
+#     cmd_Full = [command, arg1]  #=> 
+# 
+#     #debug
+#     print()
+#     print("[%s:%d] cmd_Full =>" % \
+#             (os.path.basename(libs.thisfile()), libs.linenum()
+#             
+#             ), file=sys.stderr)
+#     print(cmd_Full)
+#     
+#     res = subprocess.call(cmd_Full)
+# 
+#     print("[%s:%d] result (subprocess) =>" % \
+#             (os.path.basename(libs.thisfile()), libs.linenum()
+#             
+#             ), file=sys.stderr)
+#     
+#     print(res)
+    
+    return alert
+#     return "Done"
+#     return None
     
 #     None
     
@@ -1139,7 +1245,8 @@ def _im_actions__Ops(action, request): # /im/im_action
                      ), file=sys.stderr)
         
         ## execute
-        _im_actions__Ops_10_1(do_Commands[action])
+        alert = _im_actions__Ops_10_1(do_Commands[action], request)
+#         _im_actions__Ops_10_1(do_Commands[action])
         
     elif action == cons_im.ImOp.OP_11.value : #if action == "4"
              
@@ -1208,6 +1315,8 @@ def _im_actions__Ops(action, request): # /im/im_action
     
 def im_actions(request): # /im/im_action
     
+    time_Start = time.time()
+    
     '''###################
         get : params        
     ###################'''
@@ -1270,6 +1379,14 @@ def im_actions(request): # /im/im_action
 #         _im_actions__Ops(action)
     
     #/if action == False
+    
+    '''###################
+        time        
+    ###################'''
+    time_Elapsed = time.time() - time_Start
+
+    alert = "%s (time : %02.3f sec)" % (alert, time_Elapsed)
+#     alert = alert + " (time : %02.3f sec)" % (time_Elapsed)
     
     #debug
     print("[%s:%d] message => '%s'" % \
