@@ -15,6 +15,7 @@ cp_log.py
 
 import inspect
 import os
+import sys
 
 #ref https://stackoverflow.com/questions/415511/how-to-get-current-time-in-python "answered Jan 6 '09 at 4:59"
 from time import gmtime, strftime, localtime, time
@@ -1622,4 +1623,87 @@ def get_AryOf_BarDatas_PatternMatched__Body_UpDown \
     return None
     
 #/get_AryOf_BarDatas_PatternMatched__Body_UpDown(aryOf_BarDatas)
+
+def pattern_Match__Body_Updown \
+(lo_BarDatas, lo_Updowns, threshHold_Up, threshHold_Down):
+    
+    len1 = len(lo_BarDatas)
+    
+    len2 = len(lo_Updowns)
+    
+    lo_Temp = []
+    
+    lo_Matched = []
+    
+    '''###################
+        loop : for: i        
+    ###################'''
+    # body volume ---> more than threshHold
+    # 1 : Up / 0 : Down / -1 : Other
+    flag_UpDown = 0
+    
+    flag_In = False
+    
+    for i in range(len1 - len2):
+
+        d1 = lo_BarDatas[i]
+        
+        d1b = d1.price_Close - d1.price_Open
+        
+        # up/down
+        if d1b >= threshHold_Up : #if d1b >= threshHold
+    
+            flag_UpDown = 1
+    
+        elif d1b <= threshHold_Down : #if d1b >= threshHold
+#         elif d1b =< threshHold_Down : #if d1b >= threshHold
+    
+            flag_UpDown = 0
+    
+        else : #if d1b >= threshHold
+        
+            flag_UpDown = -1
+        
+        #/if d1b >= threshHold
+    
+        '''###################
+            judge : j1        
+        ###################'''
+        if flag_UpDown == lo_Updowns[0] : #if flag_UpDown == lo_Updowns[0]
+
+            ### flag ---> set
+            
+            flag_In = True
+            
+            
+            
+            '''###################
+                loop : for : j        
+            ###################'''
+            for j in range(1, len2):
+            
+                ### get : the second data
+                d2 = lo_BarDatas[i + j]
+                
+                
+                
+            #/for j in range(1, len2):
+
+        
+        else : #if flag_UpDown == lo_Updowns[0]
+        
+            ### reset flag
+            flag_In = False
+        
+        #/if flag_UpDown == lo_Updowns[0]
+
+
+    
+    #/for i in range(len1 - len2):
+
+    
+    return lo_Matched
+#     return None
+    
+#/def pattern_Match__Body_Updown(lo_BarDatas, lo_Updowns, volumeOf_Body):
 

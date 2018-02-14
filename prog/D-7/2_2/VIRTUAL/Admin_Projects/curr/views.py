@@ -13,15 +13,20 @@ from macpath import defpath
 
 sys.path.append('.')
 sys.path.append('..')
-sys.path.append('C:/WORKS_2/WS/WS_Others/free/fx/82_')
+# sys.path.append('C:/WORKS_2/WS/WS_Others/free/fx/82_')
+# 
+# sys.path.append('C:/WORKS_2/WS/WS_Others/free/VX7GLZ_science-research/31_Materials')
+sys.path.append('C:/WORKS_2/WS/WS_Others/prog/D-7/2_2/VIRTUAL/Admin_Projects/mm')
 
-sys.path.append('C:/WORKS_2/WS/WS_Others/free/VX7GLZ_science-research/31_Materials')
-
-from libs import libs
-from libs_31 import test_31
-from libs_31 import libmt
+# from libs import libs
+# from libs import libs
+# from libs_31 import test_31
+# from libs_31 import libmt
 
 from mm.libs_mm import cons_mm
+from mm.libs_mm import libs
+from mm.libs_mm import libfx
+# from mm.libs_mm import cons_mm
 # from im.libs_mm import cons_mm
 
 import subprocess
@@ -93,6 +98,21 @@ def exec_updown_patterns(request):
         time        
     ###################'''
     time_Start = time.time()
+    
+    '''######################################
+        updown
+    ######################################'''
+    '''###################
+        get : list of bardatas        
+    ###################'''
+    
+
+    
+    '''###################
+        pattern match        
+    ###################'''
+#     libfx.pattern_Match__Body_Updown(
+#                 lo_BarDatas, lo_Updowns, threshHold_Up, threshHold_Down)
     
     '''###################
         time        
