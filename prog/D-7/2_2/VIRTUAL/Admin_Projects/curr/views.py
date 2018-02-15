@@ -105,7 +105,7 @@ def exec_updown_patterns(request):
     '''###################
         get : list of bardatas        
     ###################'''
-    
+    lo_BarDatas = get_Listof_BarDatas()
 
     
     '''###################

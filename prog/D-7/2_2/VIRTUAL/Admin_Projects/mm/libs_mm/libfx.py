@@ -30,11 +30,17 @@ from time import gmtime, strftime, localtime, time
 ###################'''
 sys.path.append('.')
 sys.path.append('..')
-sys.path.append('C:/WORKS_2/WS/WS_Others/free/fx/82_')
+# sys.path.append('C:/WORKS_2/WS/WS_Others/free/fx/82_')
+# 
+# sys.path.append('C:/WORKS_2/WS/WS_Others/free/VX7GLZ_science-research/31_Materials')
 
-sys.path.append('C:/WORKS_2/WS/WS_Others/free/VX7GLZ_science-research/31_Materials')
+sys.path.append('C:/WORKS_2/WS/WS_Others/prog/D-7/2_2/VIRTUAL/Admin_Projects/mm')
 
-from libs import libs
+from mm.libs_mm import cons_mm
+from mm.libs_mm import libs
+from mm.libs_mm import libfx
+
+# from libs import libs
 # import libs
 
 import csv
@@ -1707,3 +1713,41 @@ def pattern_Match__Body_Updown \
     
 #/def pattern_Match__Body_Updown(lo_BarDatas, lo_Updowns, volumeOf_Body):
 
+'''###################
+    refer : C:\WORKS_2\WS\WS_Others\free\fx\82_\82_6\82_6.py        
+            exec_prog__PatternMatch_RSI()
+###################'''
+def get_Listof_BarDatas():
+    
+    '''######################################
+        get data : raw csv rows
+    ######################################'''
+    #ref enum https://qiita.com/methane/items/8612bdefd8fa4238cc44
+    #ref https://docs.python.org/3.5/library/enum.html
+    fname_In = cons_fx.FPath.dpath_In_CSV.value \
+            + "/" \
+            + cons_fx.FPath.fname_In_CSV.value
+
+    header_Length   = 2
+    
+    skip_Header     = False
+    
+    #debug
+    print()
+    print("[%s:%d] fname_In => %s" % \
+            (os.path.basename(libs.thisfile()), libs.linenum()
+            , fname_In
+            ), file=sys.stderr)
+    
+    '''###################
+        return        
+    ###################'''
+    return None
+    
+    
+#/def get_Listof_BarDatas():
+    
+    
+    
+    
+    
