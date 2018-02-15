@@ -1,6 +1,9 @@
 #!C:\WORKS_2\Programs\Python\Python_3.5.1\python.exe
 from enum import Enum
 
+from Admin_Projects.definitions import ROOT_DIR
+from Admin_Projects.definitions import DPATH_ROOT_CURR
+
 TypeOf_Data_OpenClose   = "OpenClose"
 
 '''###################
@@ -35,8 +38,19 @@ class BarData(Enum):
 
 class FPath(Enum):
     
-    fname_In_CSV = "49_11_file-io.USDJPY.Period-H1.Days-720.Bars-17280.20171231_233725.csv"
-    dpath_In_CSV = "../data"
+    fname_In_CSV = "49_11_file-io" \
+                    + ".USDJPY" \
+                    + ".Period-H1" \
+                     + ".Days-100" \
+                     + ".Bars-17280" +\
+                      ".20171231_233726.csv"
+#     fname_In_CSV = "49_11_file-io.USDJPY.Period-H1.Days-720.Bars-17280.20171231_233725.csv"
+    
+    dpath_In_CSV = DPATH_ROOT_CURR + "/data/csv"
+#     dpath_In_CSV = "C:/WORKS_2/WS/WS_Others/prog/D-7/2_2/VIRTUAL/Admin_Projects/curr/data/csv"
+#     dpath_In_CSV = "./csv"
+#     dpath_In_CSV = "./data"
+#     dpath_In_CSV = "../data"
 #     fpath_In_CSV = dpath_In_CSV + "/" + fname_In_CSV
     
     fpath_Out_HighLowDiff = "outputs"

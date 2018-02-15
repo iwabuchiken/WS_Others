@@ -12,6 +12,8 @@ var cname_LightBlue = "LightBlue";
 
 var className_BT_Numbering_List = "bt_Numbering_List";
 
+var TIME_FADE_IN = 300;
+var TIME_FADE_OUT = 300;
 
 /******************************************************
 	funcs : ready
@@ -286,6 +288,7 @@ function im_Action(_param) {
 			$('div#index_Area__Result').html(data);
 
 			tag
+				.fadeIn(200).fadeOut(200)
 				.fadeIn(200).fadeOut(200)
 				.fadeIn(200).fadeOut(200)
 				
@@ -896,6 +899,15 @@ function _curr_Index_LinkTo__0() {
 	//elem.css("background", "yellow");
 	
 	/***************************
+		clear : message
+	 ***************************/
+	//ref clear div https://stackoverflow.com/questions/1701973/how-to-clear-all-divs-contents-inside-a-parent-div answered Nov 9 '09 at 16:05
+	$('div#index_Message_Area').html('');
+	
+	$('div#index_Area__Result').html('');
+	
+	
+	/***************************
 		ajax
 		
 		ref : C:\WORKS_2\WS\Eclipse_Luna\Cake_IFM11\app\webroot\js\main.js
@@ -953,6 +965,13 @@ function _curr_Index_LinkTo__1() {
 	//elem.css("background", "yellow");
 	
 	/***************************
+		clear : message
+	 ***************************/
+	$('div#index_Message_Area').html('');
+	
+	$('div#index_Area__Result').html('');
+
+	/***************************
 		ajax
 		
 		ref : C:\WORKS_2\WS\Eclipse_Luna\Cake_IFM11\app\webroot\js\main.js
@@ -1009,6 +1028,13 @@ function _curr_Index_LinkTo__2() {
 	elem.css("background", cname_Yellow);
 	//elem.css("background", "yellow");
 	
+	/***************************
+		clear : message
+	 ***************************/
+	$('div#index_Message_Area').html('');
+	
+	$('div#index_Area__Result').html('');
+
 	/***************************
 		ajax
 		
@@ -1154,7 +1180,24 @@ function curr_Index_GO() {
 
 //	//debug
 //	alert("text => '" + text + "'" + " / " + "val = " + value);
+	
+	/***************************
+		clear : areas
+	 ***************************/
+	var area_Display = $('div#index_Display_Area');
+	
+//	alert(area_Display);
+	
+//	area_Display.html() = "";
+	area_Display.html('');
 
+	// index_Message_Area
+	$('div#index_Message_Area').html('');
+	
+	$('div#index_Area__Result').html('');
+	
+	
+	
 	/***************************
 		dispatch
 	 ***************************/
@@ -1180,6 +1223,18 @@ function curr_Updown_GO() {
 	//elem.css("background", "yellow");
 	
 	/***************************
+		param : body volume : up
+	 ***************************/
+	var tag_Vol_Up = $('input#ipt_Curr_UpdownPatterns_Range_Up');
+	
+	var val_Vol_Up = tag_Vol_Up.val();
+	
+	/***************************
+		build : data
+	 ***************************/
+	var _data = {body_volume_up : val_Vol_Up};
+	
+	/***************************
 		ajax
 		
 		ref : C:\WORKS_2\WS\Eclipse_Luna\Cake_IFM11\app\webroot\js\main.js
@@ -1194,20 +1249,79 @@ function curr_Updown_GO() {
 		//REF http://stackoverflow.com/questions/1916309/pass-multiple-parameters-to-jquery-ajax-call answered Dec 16 '09 at 17:37
 	//    data: {id: id},
 	//    data: {memos: memos, image_id: image_id},
-	//	data: _data,
+		data: _data,
 		
 		timeout: 10000
 		
 	}).done(function(data, status, xhr) {
 		
-	//	alert(data);
+//		var tag = $('div#index_Area__Result');
+//		
+//		tag.html(data);
+//		
+//		tag
+//				.css("background", cname_White);
 		
-		var tag = $('div#index_Area__Result');
+		/***************************
+			exception
+		 ***************************/
+		var substr = "ERROR";
 		
-		tag.html(data);
-		
-		tag
-				.css("background", cname_White);
+		//ref substring https://stackoverflow.com/questions/1789945/how-to-check-whether-a-string-contains-a-substring-in-javascript
+		if (data.includes(substr)) {	// detected
+			
+			//debug
+			console.log("'" + substr + "'" + " ==> detected");
+			
+			var tag = $('div#index_Area__Result');
+			
+			$('div#index_Area__Result')
+				.css("background", cname_Red);
+
+			$('div#index_Area__Result')
+				.css("color", cname_White);
+			
+			$('div#index_Area__Result').html(data);
+			
+			//ref fadein/out https://stackoverflow.com/questions/275931/how-do-you-make-an-element-flash-in-jquery answered Feb 1 '12 at 14:19
+			tag
+				.fadeIn(TIME_FADE_IN).fadeOut(TIME_FADE_OUT)
+				.fadeIn(TIME_FADE_IN).fadeOut(TIME_FADE_OUT)
+				.fadeIn(TIME_FADE_IN).fadeOut(TIME_FADE_OUT)
+				
+				.fadeIn(TIME_FADE_IN).fadeOut(TIME_FADE_OUT)
+//				.fadeIn(TIME_FADE_IN).fadeOut(TIME_FADE_OUT)
+//				.fadeIn(TIME_FADE_IN).fadeOut(TIME_FADE_OUT)
+				
+				.fadeIn(TIME_FADE_IN);
+			
+		} else {
+			
+			var tag = $('div#index_Area__Result');
+			
+			$('div#index_Area__Result')
+				.css("background", cname_LightBlue);
+	
+			$('div#index_Area__Result').html(data);
+	
+			tag
+				.fadeIn(TIME_FADE_IN).fadeOut(TIME_FADE_OUT)
+				.fadeIn(TIME_FADE_IN).fadeOut(TIME_FADE_OUT)
+				.fadeIn(TIME_FADE_IN).fadeOut(TIME_FADE_OUT)
+				
+				.fadeIn(TIME_FADE_IN).fadeOut(TIME_FADE_OUT)
+//				.fadeIn(TIME_FADE_IN).fadeOut(TIME_FADE_OUT)
+//				.fadeIn(TIME_FADE_IN).fadeOut(TIME_FADE_OUT)
+				
+//				.fadeIn(TIME_FADE_IN200).fadeOut(200)
+//				.fadeIn(200).fadeOut(200)
+//				
+//				.fadeIn(200).fadeOut(200)
+//				.fadeIn(200).fadeOut(200)
+				
+				.fadeIn(TIME_FADE_IN);
+	
+		}
 		
 	}).fail(function(xhr, status, error) {
 		

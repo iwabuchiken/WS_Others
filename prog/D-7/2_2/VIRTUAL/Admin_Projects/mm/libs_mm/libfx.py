@@ -15,18 +15,28 @@ cp_log.py
 
 import inspect
 import os
+import os.path
+import sys
+
+import copy
+
+import numpy
+
+import csv
 import sys
 
 #ref https://stackoverflow.com/questions/415511/how-to-get-current-time-in-python "answered Jan 6 '09 at 4:59"
 from time import gmtime, strftime, localtime, time
-# from __builtin__ import str
-# from sympy.physics.vector.printing import params
-# from sympy.matrices.densetools import row
-# from _ast import If
-# from curses.ascii import NUL
+
+from pathlib import Path
+
+from Admin_Projects.definitions import ROOT_DIR
+from Admin_Projects.definitions import DPATH_ROOT_CURR
+# from definitions import ROOT_DIR
+
 
 '''###################
-    libs : C:\WORKS_2\WS\WS_Others\free\fx\82_\libs\libs.py
+
 ###################'''
 sys.path.append('.')
 sys.path.append('..')
@@ -35,23 +45,15 @@ sys.path.append('..')
 # sys.path.append('C:/WORKS_2/WS/WS_Others/free/VX7GLZ_science-research/31_Materials')
 
 sys.path.append('C:/WORKS_2/WS/WS_Others/prog/D-7/2_2/VIRTUAL/Admin_Projects/mm')
+sys.path.append('C:/WORKS_2/WS/WS_Others/prog/D-7/2_2/VIRTUAL/Admin_Projects/curr')
+sys.path.append('C:/WORKS_2/WS/WS_Others/prog/D-7/2_2/VIRTUAL/Admin_Projects/curr/data')
 
 from mm.libs_mm import cons_mm
+from mm.libs_mm import cons_fx
 from mm.libs_mm import libs
 from mm.libs_mm import libfx
 
-# from libs import libs
-# import libs
-
-import csv
-import sys
-
 from libs import cons
-# import cons
-
-import copy
-
-import numpy
 
 ###############################################
 
@@ -226,7 +228,7 @@ def get_ChartData_CSV \
     f = open(fname_In, 'r')
 #     f = open(fname_In, 'rb')
     
-    print ("[%s:%d] file => opened : %s" % (libs.thisfile(), libs.linenum(), fname_In))
+#     print ("[%s:%d] file => opened : %s" % (libs.thisfile(), libs.linenum(), fname_In))
     
     '''###################
         file : read
@@ -234,8 +236,8 @@ def get_ChartData_CSV \
     '''###################
         skip header
     ###################'''
-    print ("[%s:%d] skip headers => %d lines" % \
-                    (libs.thisfile(), libs.linenum(), header_Length))
+#     print ("[%s:%d] skip headers => %d lines" % \
+#                     (libs.thisfile(), libs.linenum(), header_Length))
     
     #ref delimiter https://docs.python.org/3.5/library/csv.html
 #     delim = ';'
@@ -326,8 +328,8 @@ def get_ChartData_CSV \
     ###################'''
     f.close()
     
-    print ("[%s:%d] file => closed : %s" % \
-                (libs.thisfile(), libs.linenum(), fname_In))
+#     print ("[%s:%d] file => closed : %s" % \
+#                 (libs.thisfile(), libs.linenum(), fname_In))
 
     #ref None https://stackoverflow.com/questions/3289601/null-object-in-python
 #     return None
@@ -354,10 +356,10 @@ def conv_CSVRows_2_BarDatas(result) :
 #     print "[%s:%d] result[0] => %s" % (libs.thisfile(), libs.linenum(), result[0])
 #     print
     
-    #debug
-    print ("[%s:%d] len(result) => %d" % \
-                (libs.thisfile(), libs.linenum(), len(result)))
-    print
+#     #debug
+#     print ("[%s:%d] len(result) => %d" % \
+#                 (libs.thisfile(), libs.linenum(), len(result)))
+#     print
     
     '''###################
         Vars        
@@ -417,10 +419,10 @@ def conv_CSVRows_2_BarDatas(result) :
         
     #/for item in result :
     
-    #debug
-    print ("[%s:%d] len(aryOf_BarDatas) => %d" % \
-                (libs.thisfile(), libs.linenum(), len(aryOf_BarDatas)))
-    print
+#     #debug
+#     print ("[%s:%d] len(aryOf_BarDatas) => %d" % \
+#                 (libs.thisfile(), libs.linenum(), len(aryOf_BarDatas)))
+#     print
     
 #     #debug
 #     print "[%s:%d] aryOf_BarDatas[%d].id => %d" % \
@@ -1630,6 +1632,12 @@ def get_AryOf_BarDatas_PatternMatched__Body_UpDown \
     
 #/get_AryOf_BarDatas_PatternMatched__Body_UpDown(aryOf_BarDatas)
 
+'''###################
+    @param threshHold_Up: unit ---> JPY
+                        e.g. 0.25
+    @return: lo_Matched
+            => list of matched BarData isntances
+###################'''
 def pattern_Match__Body_Updown \
 (lo_BarDatas, lo_Updowns, threshHold_Up, threshHold_Down):
     
@@ -1640,6 +1648,9 @@ def pattern_Match__Body_Updown \
     lo_Temp = []
     
     lo_Matched = []
+    
+    cnt_Match_Start = 0
+    cnt_Match_All = 0
     
     '''###################
         loop : for: i        
@@ -1655,6 +1666,13 @@ def pattern_Match__Body_Updown \
         d1 = lo_BarDatas[i]
         
         d1b = d1.price_Close - d1.price_Open
+        
+#         #debug
+#         print()
+#         print("[%s:%d] d1b => %.3f" % \
+#             (os.path.basename(libs.thisfile()), libs.linenum()
+#             , d1b
+#             ), file=sys.stderr)
         
         # up/down
         if d1b >= threshHold_Up : #if d1b >= threshHold
@@ -1676,12 +1694,20 @@ def pattern_Match__Body_Updown \
             judge : j1        
         ###################'''
         if flag_UpDown == lo_Updowns[0] : #if flag_UpDown == lo_Updowns[0]
-
+            
+            ### count
+            cnt_Match_Start += 1
+            
             ### flag ---> set
             
             flag_In = True
             
-            
+            #debug
+            print()
+            print("[%s:%d] !!!!!!!!!! flag_In ==> True (%s)" % \
+                (os.path.basename(libs.thisfile()), libs.linenum()
+                , d1.dateTime_Local
+                ), file=sys.stderr)
             
             '''###################
                 loop : for : j        
@@ -1700,6 +1726,13 @@ def pattern_Match__Body_Updown \
         
             ### reset flag
             flag_In = False
+
+#             #debug
+#             print()
+#             print("[%s:%d] flag_In ==> False (%s)" % \
+#                 (os.path.basename(libs.thisfile()), libs.linenum()
+#                 , d1.dateTime_Local
+#                 ), file=sys.stderr)
         
         #/if flag_UpDown == lo_Updowns[0]
 
@@ -1707,7 +1740,19 @@ def pattern_Match__Body_Updown \
     
     #/for i in range(len1 - len2):
 
+    '''###################
+        report        
+    ###################'''
+    ### Start match
+    print()
+    print("[%s:%d] cnt_Match_Start => %d" % \
+            (os.path.basename(libs.thisfile()), libs.linenum()
+            , cnt_Match_Start
+            ), file=sys.stderr)
     
+    '''###################
+        return        
+    ###################'''
     return lo_Matched
 #     return None
     
@@ -1716,6 +1761,9 @@ def pattern_Match__Body_Updown \
 '''###################
     refer : C:\WORKS_2\WS\WS_Others\free\fx\82_\82_6\82_6.py        
             exec_prog__PatternMatch_RSI()
+    @return: 
+        None    => libfx.get_ChartData_CSV returned None
+        None    => libfx.conv_CSVRows_2_BarDatas returned None
 ###################'''
 def get_Listof_BarDatas():
     
@@ -1732,18 +1780,78 @@ def get_Listof_BarDatas():
     
     skip_Header     = False
     
-    #debug
-    print()
-    print("[%s:%d] fname_In => %s" % \
-            (os.path.basename(libs.thisfile()), libs.linenum()
-            , fname_In
-            ), file=sys.stderr)
+    '''###################
+        validate : file exists        
+    ###################'''
+    is_File = os.path.isfile(fname_In)
     
+    if is_File == False : #if is_File == False
+                    
+        print()
+        print("[%s:%d] is_File => False" % \
+        (os.path.basename(libs.thisfile()), libs.linenum()
+        
+        ), file=sys.stderr)
+        
+        return None
+        
+    #/if is_File == False
+    
+#     #test
+#     path = Path(sys.executable)
+#     root_or_drive = path.root or path.drive
+#     
+#     print()
+#     print("[%s:%d] root_or_drive => %s" % \
+#                 (os.path.basename(libs.thisfile()), libs.linenum()
+#                 ,root_or_drive
+#                 ), file=sys.stderr)
+    
+            #     [libfx.py:1760] root_or_drive => \
+            # [C:\WORKS_2\WS\WS_Others\prog\D-7\2_2\VIRTUAL\Admin_Projects\mm\libs_mm\libfx.py
+            # :231] file => opened : C:\WORKS_2\WS\WS_Others\prog\D-7\2_2\VIRTUAL\Admin_Projec
+
+    '''######################################
+        get : list        
+    ######################################'''
+    '''###################
+        get : csv data        
+    ###################'''
+    lo_CSVs = libfx.get_ChartData_CSV(\
+                    fname_In, header_Length, skip_Header)
+    
+#     print()
+#     print("[%s:%d] len(lo_CSVs) => %d" % \
+#                 (os.path.basename(libs.thisfile()), libs.linenum()
+#                 , len(lo_CSVs)
+#                 ), file=sys.stderr)
+    
+    '''###################
+        csv : convert to BarData
+    ###################'''
+    lo_BarDatas = libfx.conv_CSVRows_2_BarDatas(lo_CSVs[header_Length:])
+    
+    print()
+    print("[%s:%d] len(lo_BarDatas) => %d" % \
+                (os.path.basename(libs.thisfile()), libs.linenum()
+                , len(lo_BarDatas)
+                ), file=sys.stderr)
+    
+        ### Validate
+    if lo_BarDatas == None : #if aryOf_BarDatas == None
+    
+        print ("[%s:%d] aryOf_BarDatas => None" % (os.path.basename(libs.thisfile()), libs.linenum()))
+        print()
+        
+        return None
+    
+    #/if lo_BarDatas == None
+
     '''###################
         return        
     ###################'''
-    return None
-    
+#     return None
+    return lo_BarDatas
     
 #/def get_Listof_BarDatas():
     

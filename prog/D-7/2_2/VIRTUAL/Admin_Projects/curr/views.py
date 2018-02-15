@@ -99,29 +99,68 @@ def exec_updown_patterns(request):
     ###################'''
     time_Start = time.time()
     
+    '''###################
+        param : body volume : up        
+    ###################'''
+    threshHold_Up = request.GET.get('body_volume_up', False)
+    
+    if threshHold_Up == False : #if threshHold_Up == False
+
+        threshHold_Up = 0.1
+        
+    else:
+        
+        threshHold_Up = float(threshHold_Up)
+        
+    #/if threshHold_Up == False
+    
     '''######################################
         updown
     ######################################'''
     '''###################
         get : list of bardatas        
     ###################'''
-    lo_BarDatas = get_Listof_BarDatas()
-
+    lo_BarDatas = libfx.get_Listof_BarDatas()
     
+    # validate
+    alert = ""
+    
+    if lo_BarDatas == None : #if lo_BarDatas == None
+
+        print()
+        print("[%s:%d] lo_BarDatas => None" % \
+            (os.path.basename(libs.thisfile()), libs.linenum()
+            ), file=sys.stderr)
+        
+        # set : message
+        alert = "ERROR : Get BarData ==> returned None"
+        
+    #/if lo_BarDatas == None
+
     '''###################
-        pattern match        
+        pattern match  
+              
     ###################'''
-#     libfx.pattern_Match__Body_Updown(
-#                 lo_BarDatas, lo_Updowns, threshHold_Up, threshHold_Down)
+    lo_Updowns = [1,1,1]
+    
+#     threshHold_Up = 0.1
+    threshHold_Down = 0.1
+#     threshHold_Up = 0.2
+#     threshHold_Down = 0.2
+    
+    lo_Matched = libfx.pattern_Match__Body_Updown(
+                lo_BarDatas, lo_Updowns, threshHold_Up, threshHold_Down)
     
     '''###################
         time        
     ###################'''
     time_Elapsed = time.time() - time_Start
     
-    message = "done (time : %02.3f sec)" % (time_Elapsed)
+    message = "done (time : %02.3f sec) (matched : %d)" \
+                % (time_Elapsed, len(lo_Matched))
 
-    dic = {"msg" : message}
+    dic = {"msg" : message, "alert" : alert}
+#     dic = {"msg" : message}
     
     return render(request, 'curr/exec_updown_patterns.html', dic)
     
