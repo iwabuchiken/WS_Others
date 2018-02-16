@@ -7,6 +7,19 @@ from time import gmtime, strftime, localtime, time
 # from __builtin__ import str
 from sympy.physics.vector.printing import params
 
+from enum import Enum
+
+'''#########################################################
+    enums        
+#########################################################'''
+class TimeLabel(Enum):
+    
+    STRING_TYPE_BASIC = "basic"
+    STRING_TYPE_SERIAL = "serial"
+
+'''#########################################################
+    functions        
+#########################################################'''
 def linenum(depth=0):
 #     print "line"
     
@@ -208,7 +221,8 @@ def get_opt_2(arg_ary, keychars = None):
 
 '''
     @param string_type
-            serial    "20160604_1934"
+            serial    "20160604_193404"
+            basic     "2016/06/04 19:34:04"
 '''
 def get_TimeLabel_Now(string_type="serial", mili=False):
 # def get_TimeLabel_Now(string_type="serial"):
@@ -224,6 +238,10 @@ def get_TimeLabel_Now(string_type="serial", mili=False):
     if string_type == "serial" : #if string_type == "serial"
     
         str = strftime("%Y%m%d_%H%M%S", localtime(t))
+    
+    elif string_type == "basic" : #if string_type == "serial"
+    
+        str = strftime("%Y/%m/%d %H:%M:%S", localtime(t))
     
     else : #if string_type == "serial"
     
@@ -284,3 +302,4 @@ def is_Open(filepath):
         except:
             return True
     raise NameError
+

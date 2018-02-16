@@ -1,16 +1,16 @@
+'''###################
+    import : django        
+###################'''
 from django.http import HttpResponse, HttpRequest
-# from django.http import HttpResponse
-
 from django.shortcuts import render
-
-import datetime
 from django import template
+#ref https://stackoverflow.com/questions/29304845/how-to-disable-cache-in-django-view
+from django.views.decorators.cache import never_cache
 
-import os, sys
-from sympy.physics.units.dimensions import action
-from pip._vendor.requests.api import request
-from macpath import defpath
-
+'''###################
+    import : original files        
+###################'''
+import sys
 sys.path.append('.')
 sys.path.append('..')
 # sys.path.append('C:/WORKS_2/WS/WS_Others/free/fx/82_')
@@ -18,40 +18,40 @@ sys.path.append('..')
 # sys.path.append('C:/WORKS_2/WS/WS_Others/free/VX7GLZ_science-research/31_Materials')
 sys.path.append('C:/WORKS_2/WS/WS_Others/prog/D-7/2_2/VIRTUAL/Admin_Projects/mm')
 
-# from libs import libs
-# from libs import libs
-# from libs_31 import test_31
-# from libs_31 import libmt
+from mm.libs_mm import cons_mm, cons_fx, libs, libfx
+# from mm.libs_mm import libs
+# from mm.libs_mm import libfx
 
-from mm.libs_mm import cons_mm
-from mm.libs_mm import libs
-from mm.libs_mm import libfx
-# from mm.libs_mm import cons_mm
-# from im.libs_mm import cons_mm
+from Admin_Projects.definitions import ROOT_DIR
+from Admin_Projects.definitions import DPATH_ROOT_CURR
 
-import subprocess
-
-import copy
-
+'''###################
+    import : built-in modules        
+###################'''
+import os
 #ref https://stackoverflow.com/questions/3207219/how-do-i-list-all-files-of-a-directory
 from os import listdir
-from os.path import isfile, join
+from os.path import isfile, join, splitext
+# from os.path import splitext
 
-#ref https://stackoverflow.com/questions/29304845/how-to-disable-cache-in-django-view
-from django.views.decorators.cache import never_cache
-
+from sympy.physics.units.dimensions import action
+from pip._vendor.requests.api import request
+from macpath import defpath
 from pathlib import Path
 
+import subprocess, copy, time, glob, re, datetime
 #from C:\WORKS_2\WS\WS_Others\free\VX7GLZ_science-research\31_Materials\1_\1_1.3.py
 import xml.etree.ElementTree as ET
 
-import time
+# import datetime
+# import copy
+# import time
 
-from os.path import splitext
+# import glob
 
-import glob
+# import re
 
-import re
+
 
 
 '''######################################
@@ -152,16 +152,138 @@ def exec_updown_patterns(request):
                 lo_BarDatas, lo_Updowns, threshHold_Up, threshHold_Down)
     
     '''###################
+        report        
+    ###################'''
+    if len(lo_Matched) > 0 : #if len(lo_Matched) > 0
+    
+        match_1 = lo_Matched[0]
+        
+        ### display
+        for i in range(len(match_1)):
+    
+            print()
+            print("[%s:%d] match_1[%d].dateTime_Local => %s" % \
+                (os.path.basename(libs.thisfile()), libs.linenum()
+                , i, match_1[i].dateTime_Local
+                ), file=sys.stderr)
+            
+        #/for i in range(len(match_1)):
+
+        
+#         print()
+#         print("[%s:%d] match_1 => %s" % \
+#             (os.path.basename(libs.thisfile()), libs.linenum()
+#             , match_1
+#             ), file=sys.stderr)
+        
+    #/if len(lo_Matched) > 0
+    
+    '''###################
         time        
     ###################'''
     time_Elapsed = time.time() - time_Start
     
+    '''###################
+        message        
+    ###################'''
+    lenOf_Matched = len(lo_Matched)
+    
     message = "done (time : %02.3f sec) (matched : %d)" \
-                % (time_Elapsed, len(lo_Matched))
+                % (time_Elapsed, lenOf_Matched)
+#                 % (time_Elapsed, len(lo_Matched))
 
+    print()
+    print("[%s:%d] message => %s" % \
+            (os.path.basename(libs.thisfile()), libs.linenum()
+            , message
+            ), file=sys.stderr)
+    
     dic = {"msg" : message, "alert" : alert}
 #     dic = {"msg" : message}
     
+    '''###################
+        save history
+    ###################'''
+    dpath_Out = DPATH_ROOT_CURR + "/" + "data/log"
+    
+    fname_Out = "pattern_match_history.log"
+    
+    fpath_Out_Full = dpath_Out + "/" + fname_Out
+    
+    fout = open(fpath_Out_Full, "a")
+    
+    ### timestamp
+    fout.write("[%s : pattern match] ======================" \
+            % libs.get_TimeLabel_Now(string_type = libs.TimeLabel.STRING_TYPE_BASIC.value))
+#                 % libs.get_TimeLabel_Now(string_type = "basic"))
+#     fout.write("updown pattern : %s" % str_Updown)
+    fout.write("\n")
+    
+    ### file name
+    fout.write("file : %s" % cons_fx.FPath.fname_In_CSV.value)
+#     fout.write("updown pattern : %s" % str_Updown)
+    fout.write("\n")
+    
+    ### updown pattern
+    fout.write("updown pattern : %s" % ",".join([str(x) for x in lo_Updowns]))
+#     fout.write("updown pattern : %s" % ",".join(lo_Updowns))
+#     fout.write("updown pattern : %s" % str_Updown)
+    fout.write("\n")
+    
+    ### threshHold_Up, Down
+    fout.write("threshHold_Up = %.3f / threshHold_Down = %.3f" \
+                    % (threshHold_Up, threshHold_Down))
+    fout.write("\n")
+    
+    ### num of matched
+    fout.write("num of matched : %d" % lenOf_Matched)
+#     fout.write("num of matched : %d" % len(lenOf_Matched))
+    fout.write("\n")
+    
+    ### matched data
+    if lenOf_Matched > 0 : #if lenOf_Matched > 0
+            
+        for matched in lo_Matched:
+#         for item in lo_Matched:
+            
+            for item in matched:
+            
+                fout.write("[%s:%d] datetime : %s / diff = %.3f" % \
+                    (os.path.basename(libs.thisfile()), libs.linenum()
+                    , item.dateTime_Local, (item.price_Close - item.price_Open)
+                    )
+                )
+                 
+                fout.write("\n")
+                
+                
+            #/for item in matched:
+
+            ### separator line
+            fout.write("\n")
+            
+#             fout.write("[%s:%d] datetime : %s / diff = %.3f" % \
+#                 (os.path.basename(libs.thisfile()), libs.linenum()
+#                 , item.dateTime_Local, (item.price_Close - item.price_Open)
+#                 )
+#             )
+#             
+#             fout.write("\n")
+            
+        #/for item in lo_Matched:
+        
+    #/if lenOf_Matched > 0
+    
+    ### separation line
+    fout.write("\n")
+    fout.write("\n")
+            
+    ### close file
+    fout.close()
+    
+    '''###################
+        render        
+    ###################'''
     return render(request, 'curr/exec_updown_patterns.html', dic)
     
 #/def exec_updown_patterns(request):

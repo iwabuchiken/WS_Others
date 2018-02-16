@@ -30,6 +30,7 @@ from time import gmtime, strftime, localtime, time
 
 from pathlib import Path
 
+#ref https://stackoverflow.com/questions/25389095/python-get-path-of-root-project-structure answered Aug 19 '14 at 17:42
 from Admin_Projects.definitions import ROOT_DIR
 from Admin_Projects.definitions import DPATH_ROOT_CURR
 # from definitions import ROOT_DIR
@@ -1645,7 +1646,7 @@ def pattern_Match__Body_Updown \
     
     len2 = len(lo_Updowns)
     
-    lo_Temp = []
+#     lo_Temp = []
     
     lo_Matched = []
     
@@ -1666,13 +1667,6 @@ def pattern_Match__Body_Updown \
         d1 = lo_BarDatas[i]
         
         d1b = d1.price_Close - d1.price_Open
-        
-#         #debug
-#         print()
-#         print("[%s:%d] d1b => %.3f" % \
-#             (os.path.basename(libs.thisfile()), libs.linenum()
-#             , d1b
-#             ), file=sys.stderr)
         
         # up/down
         if d1b >= threshHold_Up : #if d1b >= threshHold
@@ -1717,27 +1711,101 @@ def pattern_Match__Body_Updown \
                 ### get : the second data
                 d2 = lo_BarDatas[i + j]
                 
+                ### get : body volume
+                d2b = d2.price_Close - d2.price_Open
                 
+                ### set : updown flag
+                if d2b >= threshHold_Up : #if d1b >= threshHold
+            
+                    flag_UpDown = 1
+            
+                elif d2b <= threshHold_Down : #if d1b >= threshHold
+        #         elif d1b =< threshHold_Down : #if d1b >= threshHold
+            
+                    flag_UpDown = 0
+            
+                else : #if d1b >= threshHold
+                
+                    flag_UpDown = -1
+                
+                #/if d1b >= threshHold
+
+                '''###################
+                    judge : 2        
+                ###################'''
+                if flag_UpDown == lo_Updowns[j] : #if flag_UpDown == lo_Updowns[j]
+
+#                     pass
+                    #debug
+                    print()
+                    print("[%s:%d] !!!!! flag_UpDown == lo_Updowns[%d] / d2 = %s" % \
+                    (os.path.basename(libs.thisfile()), libs.linenum()
+                    , j, d2.dateTime_Local
+                    ), file=sys.stderr)
+                
+                else : #if flag_UpDown == lo_Updowns[j]
+                
+                    ### reset : flag
+                    flag_In = False
+                    
+                    ### loop j : exit
+                    break
+                
+                #/if flag_UpDown == lo_Updowns[j]
+
+
                 
             #/for j in range(1, len2):
+            
+            '''###################
+                judge : 3        
+            ###################'''
+            if flag_In == True : #if flag_In == True
+
+                '''###################
+                    append : matched data        
+                ###################'''
+                '''###################
+                    j3,y1
+                ###################'''
+                lo_Temp = []
+                
+                for index in range(len2):
+                
+                    lo_Temp.append(lo_BarDatas[i + index])
+                    
+                #/for index in range(len2):
+                
+                '''###################
+                    j3,y2        
+                ###################'''
+                lo_Matched.append(lo_Temp)
+                
+                ### flag : reset
+                flag_In = False
+                
+#                 ### clear : temp list
+#                 lo_Temp.clear()
+            
+            else : #if flag_In == True
+            
+                pass
+            
+            #/if flag_In == True
+
 
         
         else : #if flag_UpDown == lo_Updowns[0]
-        
+
+            '''###################
+                j1,n1        
+            ###################'''
+
             ### reset flag
             flag_In = False
-
-#             #debug
-#             print()
-#             print("[%s:%d] flag_In ==> False (%s)" % \
-#                 (os.path.basename(libs.thisfile()), libs.linenum()
-#                 , d1.dateTime_Local
-#                 ), file=sys.stderr)
-        
-        #/if flag_UpDown == lo_Updowns[0]
-
-
     
+        #if flag_UpDown == lo_Updowns[0]
+        
     #/for i in range(len1 - len2):
 
     '''###################
@@ -1783,6 +1851,7 @@ def get_Listof_BarDatas():
     '''###################
         validate : file exists        
     ###################'''
+    #ref https://stackoverflow.com/questions/82831/how-to-check-whether-a-file-exists answered Sep 17 '08 at 12:57
     is_File = os.path.isfile(fname_In)
     
     if is_File == False : #if is_File == False
