@@ -1,13 +1,11 @@
 # -*- coding: utf-8 -*-
 '''
-file : C:\WORKS_2\WS\WS_Others\prog\D-7\2_2\VIRTUAL\Admin_Projects\curr\test_1.py
-orig : C:\WORKS_2\WS\WS_Others\prog\D-7\2_2\1_1.py
-at : 2018/02/17 09:13:55
+file : C:\WORKS_2\WS\WS_Others\prog\D-7\2_2\VIRTUAL\Admin_Projects\others\VX7GLZ\28_physics\1_\1_15.py
+orig : -
+at : 2018/02/17 13:57:51
 
-pushd C:\WORKS_2\WS\WS_Others\prog\D-7\2_2\VIRTUAL\Admin_Projects\curr
-python test_1.py
-
-
+pushd C:\WORKS_2\WS\WS_Others\prog\D-7\2_2\VIRTUAL\Admin_Projects\others\VX7GLZ\28_physics\1_
+python 1_15.py
 
     Regex
 print "[%s:%d] result => %s" % (libs.thisfile(), libs.linenum(), result_HighLowDiffs)
@@ -37,20 +35,28 @@ sys.path.append('..')
 # sys.path.append('C:/WORKS_2/WS/WS_Others/free/fx/82_')
 # 
 # sys.path.append('C:/WORKS_2/WS/WS_Others/free/VX7GLZ_science-research/31_Materials')
+sys.path.append('C:\\WORKS_2\\WS\\WS_Others\\prog\\D-7\\2_2\\VIRTUAL\\Admin_Projects')
+# sys.path.append('C:\\WORKS_2\\WS\\WS_Others\\prog\\D-7\\2_2\\VIRTUAL\\Admin_Projects\\mm')
 # sys.path.append('C:/WORKS_2/WS/WS_Others/prog/D-7/2_2/VIRTUAL/Admin_Projects/mm')
+
+# #debug
+# for item in sys.path :
+#     
+#     print(item)
 
 from mm.libs_mm import cons_mm, cons_fx, libs, libfx
 # from mm.libs_mm import libs
 # from mm.libs_mm import libfx
 
-from Admin_Projects.definitions import ROOT_DIR
-from Admin_Projects.definitions import DPATH_ROOT_CURR
+# from Admin_Projects.definitions import ROOT_DIR
+# from Admin_Projects.definitions import DPATH_ROOT_CURR
 
 '''###################
     import : built-in modules        
 ###################'''
-import getopt, inspect, math as math, struct, random
-import xml.etree.ElementTree as ET
+import getopt, inspect, struct, random
+import xml.etree.ElementTree as ET, math as math, matplotlib.pyplot as plt \
+        , numpy as np
 from shutil import copyfile
 from scipy.stats.stats import pearsonr
 
@@ -58,48 +64,58 @@ from scipy.stats.stats import pearsonr
 def test_1():
     
     '''###################
-        vars
+        vars        
     ###################'''
-    a1 = bin(random.randint(1, 100))[2:]
-    a2 = bin(random.randint(1, 100))[2:]
-    a3 = bin(random.randint(1, 100))[2:]
+    dpath_Out = "C:\\WORKS_2\\WS\\WS_Others\\free\\VX7GLZ_science-research\\28_Physics\\1_\\_15"
     
-    ### length
-    len1 = len(a1)
-    len2 = len(a2)
-    len3 = len(a3)
+    #ref https://stackoverflow.com/questions/9622163/save-plot-to-image-file-instead-of-displaying-it-using-matplotlib answered Apr 28 '15 at 22:35
+    fig, ax = plt.subplots( nrows=1, ncols=1 )
     
-    s1 = ''.join(["0"]*(8 - len1)) + a1
-    s2 = ''.join(["0"]*(8 - len2)) + a2
-    s3 = ''.join(["0"]*(8 - len3)) + a3
+    x = np.arange(-100, 100, 0.1)
+#     x = np.arange(0, 100, 0.1)
     
-    lo_1_tmp = list(s1)
-    lo_2_tmp = list(s2)
-    lo_3_tmp = list(s3)
+    a = np.arange(-2, 2, 0.5)
     
-    lo_1 = [int(x) for x in lo_1_tmp]
-    lo_2 = [int(x) for x in lo_2_tmp]
-    lo_3 = [int(x) for x in lo_3_tmp]
+#     b = 2; d = 2
+#     a = 2; b = 2; d = 2
+    a = -2.0; b = 2; d = 2
+#     a = 2.0; b = 2; d = 2
     
-    '''###################
-        pearson        
-    ###################'''
-    pr_1_2 = pearsonr(lo_1, lo_2)
-    pr_1_3 = pearsonr(lo_1, lo_3)
+    y = [i**3 + a * i**2 + b * i + d for i in x]
+#     
+    ax.plot(x,y)
+#     
+#     ### fpath full
+    fpath_Full = "%s\\tmp.%s.a=%.1f.png" % (dpath_Out, libs.get_TimeLabel_Now(), a)
+#     fpath_Full = "%s\\tmp.%s.png" % (dpath_Out, libs.get_TimeLabel_Now())
+#     
+    fig.savefig(fpath_Full)
     
+#     time_Label = libs.get_TimeLabel_Now()
+    
+#     for num in a:
+#         
+#         y = [i**3 + a * i**2 + b * i + d for i in x]
+#         
+#         ax.plot(x,y)
+#         
+#         ### fpath full
+#         fpath_Full = "%s\\tmp.%s.a=%s.png" % (dpath_Out, time_Label, str(num))
+#         
+#         fig.savefig(fpath_Full)
+
+# #     fig.savefig('tmp.20180217_134221.png')
+#         
+#         ### reset fig
+#         fig, ax = plt.subplots( nrows=1, ncols=1 )
+
     print()
-    print("[%s:%d]\ns1 = %s (%s)\ns2 = %s (%s)\ns3 = %s (%s)" % \
+    print("[%s:%d] file saved => %s" % \
             (os.path.basename(libs.thisfile()), libs.linenum()
-            , s1, lo_1, s2, lo_2, s3, lo_3
+            , fpath_Full
             ), file=sys.stderr)
-#     print("[%s:%d] lo_1 = %s / lo_2 = %s" % \
-#             (os.path.basename(libs.thisfile()), libs.linenum()
-#             , lo_1, lo_2
-#             ), file=sys.stderr)
-    print("[%s:%d] pr_1_2 => %.6f / pr_1_3[0] => %.6f" % \
-            (os.path.basename(libs.thisfile()), libs.linenum()
-            , pr_1_2[0], pr_1_3[0]
-            ), file=sys.stderr)
+    
+    plt.close(fig)
 
 #/def test_1():
 
@@ -144,10 +160,4 @@ if __name__ == "__main__" :
     print ("[%s:%d] all done" % (os.path.basename(os.path.basename(libs.thisfile())), libs.linenum()))
 
 
-'''
 
-lo_1 = ['0', '0', '0', '1', '0', '1', '1', '1']
-lo_2 = ['0', '1', '0', '1', '0', '1', '1', '0']
-
-
-'''

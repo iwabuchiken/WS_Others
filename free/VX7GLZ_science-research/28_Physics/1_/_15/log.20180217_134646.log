@@ -1,0 +1,35 @@
+================================================== 2018/02/17 13:45:45
+
+(env) C:\WORKS_2\WS\WS_Others\prog\D-7\2_2\VIRTUAL>python
+Python 3.5.1 (v3.5.1:37a07cee5969, Dec  6 2015, 01:54:25) [MSC v.1900 64 bit (AM
+D64)] on win32
+Type "help", "copyright", "credits" or "license" for more information.
+>>> import matplotlib.pyplot as plt
+>>> fig, ax = plt.subplots( nrows=1, ncols=1 )
+>>> ax.plot([0,1,2], [10,20,3])
+[<matplotlib.lines.Line2D object at 0x000000000B934E10>]
+>>> fig.savefig('tmp.20180217_133731.png')
+>>> plt.close(fig)
+>>> fig, ax = plt.subplots( nrows=1, ncols=1 )
+>>> import numpy as np
+>>> x = np.arange(10)
+>>> x
+array([0, 1, 2, 3, 4, 5, 6, 7, 8, 9])
+>>> y = [i * 2 for i in x]
+>>> y
+[0, 2, 4, 6, 8, 10, 12, 14, 16, 18]
+>>> x = np.arange(0, 100, 0.1)
+>>> a = 2; b = 2; d = 2
+>>> a
+2
+>>> a**2
+4
+>>> y = [i**3 + a * i**2 + b * i + d for i in x]
+>>> ax.plot(x,y)
+[<matplotlib.lines.Line2D object at 0x000000000B204F28>]
+>>> fig.savefig('tmp.20180217_134221.png')
+>>> plt.close(fig)
+>>>
+
+
+

@@ -1,0 +1,103 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 14.09.0 ] */
+
+/* [wxMaxima: input   start ] */
+/* sec : 1 */
+
+a : 2; b : 2; c : 2;
+
+x_rng : [x, -10, 10];
+
+f1 : x^3           + b * x + c;
+f2 : x^3 + a * x^2 + b * x + c;
+
+fs : [f1, f2];
+
+xt : [xtics, -10,1,10];
+
+ytic : 10;
+yt : [ytics, -100,ytic,100];
+
+opt_y : [gnuplot_preamble, "set yrange[-100:100]"];
+
+wxplot2d(fs, x_rng, grid2d, xt, yt, opt_y);
+plot2d(fs, x_rng, grid2d, xt, yt, opt_y);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* sec : 1.1 */
+
+a : -2; b : -2; c : 2;
+
+x_rng : [x, -10, 10];
+
+f1 : x^3           + b * x + c;
+f2 : x^3 + a * x^2 + b * x + c;
+
+fs : [f1, f2];
+
+xt : [xtics, -10,1,10];
+
+ytic : 5;
+yt : [ytics, -100,ytic,100];
+
+opt_y : [gnuplot_preamble, "set yrange[-20:20]"];
+
+wxplot2d(fs, x_rng, grid2d, xt, yt, opt_y);
+plot2d(fs, x_rng, grid2d, xt, yt, opt_y);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* sec : 1.1 */
+
+a : 5; b : -2; c : 2;
+
+x_rng : [x, -10, 10];
+
+f1 : x^3           + b * x + c;
+f2 : x^3 + a * x^2 + b * x + c;
+
+print("f2_");
+f2_ : diff(f2, x);
+
+fs : [f1, f2];
+
+xt : [xtics, -10,1,10];
+
+ytic : 5;
+yt : [ytics, -100,ytic,100];
+
+opt_y : [gnuplot_preamble, "set yrange[-100:100]"];
+
+wxplot2d(fs, x_rng, grid2d, xt, yt, opt_y);
+plot2d(fs, x_rng, grid2d, xt, yt, opt_y);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* sec : 1.2 */
+
+a : 5; b : -5; c : 2;
+
+x_rng : [x, -10, 10];
+
+f1 : x^3           + b * x + c;
+f2 : x^3 + a * x^2 + b * x + c;
+
+print("f2_");
+f2_ : diff(f2, x);
+
+fs : [f1, f2, f2_];
+
+xt : [xtics, -10,1,10];
+
+ytic : 10;
+yt : [ytics, -100,ytic,100];
+
+opt_y : [gnuplot_preamble, "set yrange[-100:100]"];
+
+wxplot2d(fs, x_rng, grid2d, xt, yt, opt_y);
+plot2d(fs, x_rng, grid2d, xt, yt, opt_y);
+/* [wxMaxima: input   end   ] */
+
+/* Maxima can't load/batch files which end with a comment! */
+"Created with wxMaxima"$
