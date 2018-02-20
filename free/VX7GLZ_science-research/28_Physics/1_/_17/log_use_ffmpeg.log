@@ -1,0 +1,23 @@
+ffmpeg -f image2 -r 1/5 -i image*.png -vcodec mpeg4 -y movie.mp4
+
+
+ffmpeg -f image2 -r 4 -i image*.png -vcodec mpeg4 -y movie.mp4
+
+# image.1-17-2.20180219_101614.png
+ffmpeg -f image2 -r 4 -i image.%%d.png -vcodec mpeg4 -y movie.mp4
+ffmpeg -f image2 -r 4 -i image.%d.png -vcodec mpeg4 -y movie.mp4    #=> works
+
+ffmpeg -f image2 -r 2 -i image.%d-%d.png -vcodec mpeg4 -y movie.mp4
+ffmpeg -f image2 -r 2 -i image.%%d-%%d.png -vcodec mpeg4 -y movie.mp4
+ffmpeg -f image2 -r 2 -i images.%d-%d.png -vcodec mpeg4 -y movie.mp4
+
+ffmpeg -f image2 -r 2 -i image.%2d.png -vcodec mpeg4 -y movie.mp4
+ffmpeg -f image2 -r 2 -i image.%d%d.png -vcodec mpeg4 -y movie.mp4
+
+ffmpeg -f image2 -r 2 -i images.%04d.png -vcodec mpeg4 -y movie.mp4 #=> works
+
+ffmpeg -f image2 -r 2 -i %s.%04d.png -vcodec mpeg4 -y movie.mp4
+
+ffmpeg -f image2 -r 2 -i %04d.%04d.png -vcodec mpeg4 -y movie.mp4
+
+

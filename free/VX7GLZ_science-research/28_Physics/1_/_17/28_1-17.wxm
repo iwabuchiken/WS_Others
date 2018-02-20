@@ -1,0 +1,56 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 14.09.0 ] */
+
+/* [wxMaxima: input   start ] */
+/* sec : 1 */
+
+betha : 0.1;
+g : 1 / sqrt(1 - betha^2);
+omega : 3;
+
+x : g * betha * omega / (g - 1);
+
+kill(x, betha);
+
+x_rng : [x, 0, 10];
+
+betha_rng : [betha, 10^(-2), 0.5];
+
+alpha : - (1 / x) * g * betha * omega;
+
+wxplot3d([alpha, x_rng, betha_rng]);
+plot3d([alpha, x_rng, betha_rng]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* sec : 1.2 */
+
+betha : 0.1;
+g : 1 / sqrt(1 - betha^2);
+omega : 3;
+
+x : g * betha * omega / (g - 1);
+
+kill(x, betha);
+
+pow : 10;
+
+x_rng : [x, 0, 10^pow];
+
+betha_rng : [betha, 10^(-2), 0.5];
+
+alpha : - (1 / x) * g * betha * omega;
+
+xt : [xtics, 0, 10^4, 10^pow];
+
+ytic : 10;
+yt : [ytics, -10,ytic,100];
+
+opt_z : [gnuplot_preamble, "set zrange[-10:100]"];
+
+wxplot3d([alpha, x_rng, betha_rng], opt_z);
+plot3d([alpha, x_rng, betha_rng], opt_z);
+/* [wxMaxima: input   end   ] */
+
+/* Maxima can't load/batch files which end with a comment! */
+"Created with wxMaxima"$
