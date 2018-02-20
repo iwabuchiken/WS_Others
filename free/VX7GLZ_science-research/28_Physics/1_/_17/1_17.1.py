@@ -50,6 +50,93 @@ from scipy.stats.stats import pearsonr
 
 ###############################################
 
+def test_2():
+    
+    '''###################
+        file path        
+    ###################'''
+    PROJECT_ROOT = "C:\\WORKS_2\\WS\\WS_Others\\free\\VX7GLZ_science-research\\28_Physics\\1_\\_17"
+    
+    dpath_Out = "%s\\data_1_17.1" % (PROJECT_ROOT)
+    
+    ### fpath full
+    tlabel = libs.get_TimeLabel_Now()
+    
+    session_Label = "1_17.1"
+    
+#     fpath_Full = "%s\\image.%s.%s.png" % (dpath_Out, session_Label, tlabel)
+    
+    '''###################
+        ops        
+    ###################'''
+    
+    x = np.linspace(0, np.pi * 2, 100)
+#     x = np.linspace(0, np.pi, 1000)
+    
+    ### dir path
+    dpath_Full = "%s\\images\\images_%s" % (dpath_Out, tlabel)
+    ### make dir
+    if not os.path.isdir(dpath_Full) : os.makedirs(dpath_Full)
+#     os.makedirs(dpath_Out)
+    
+    '''###################
+        graph : settings        
+    ###################'''
+#     # graph : settings
+#     plt.ylim(-2,2)
+#     plt.xlim(0, np.pi * 2)
+#     plt.grid(b=None, which='major', axis='both')
+#     plt.xticks(np.arange(0, np.pi*2, np.pi / 4))
+#     plt.yticks(np.arange(-2, 2, 0.5))
+
+    
+    for index in np.arange(0, 12, 1):
+#     for index in np.arange(0, 11, 1):
+#     for index in np.arange(0, 20, 1):
+        
+        # graph : settings
+        plt.ylim(-2,2)
+        plt.xlim(0, np.pi * 2)
+        plt.grid(b=None, which='major', axis='both')
+        plt.xticks(np.arange(0, np.pi*2, np.pi / 4))
+        plt.yticks(np.arange(-2, 2, 0.5))
+
+        ### fpath
+        fpath_Full = "%s\\image.%s.%s.(%02d).png" \
+                    % (dpath_Full, session_Label, tlabel, index)
+
+        tick = np.pi / 6 * index
+        
+        y = np.sin(x + tick)
+        
+#         # graph : settings
+#         plt.ylim(-2,2)
+#         plt.xlim(0, np.pi * 2)
+#         plt.grid(b=None, which='major', axis='both')
+#         plt.xticks(np.arange(0, np.pi*2, np.pi / 4))
+#         plt.yticks(np.arange(-2, 2, 0.5))
+    #     plt.yticks([-2,-1,1,2])
+    #     plt.xticks([-2,-1,1,2])
+    
+        plt.xlabel("x")
+        plt.ylabel("sin(x + %.3f)" % (tick))
+        plt.title("x ~ sin(x + a) (index = %d)\n%s" \
+                    % (index, os.path.basename(fpath_Full)))
+    
+        # plot
+        plt.plot(x, y)
+    
+    
+        plt.savefig(fpath_Full)
+
+        # clear
+#         plt.gcf().clear()
+        plt.clf()
+        
+#     plt.show()
+    
+#/def test_2():
+
 def test_1():
     
     '''###################
@@ -102,7 +189,8 @@ def exec_prog(): # from :
     '''###################
         ops        
     ###################'''
-    test_1()
+    test_2()
+#     test_1()
     
     '''###################
         Report        
