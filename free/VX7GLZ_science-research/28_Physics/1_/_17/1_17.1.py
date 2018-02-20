@@ -37,6 +37,9 @@ sys.path.append('.')
 sys.path.append('..')
 # 
 sys.path.append('C:\\WORKS_2\\WS\\WS_Others\\prog\\D-7\\2_2\\VIRTUAL\\Admin_Projects')
+sys.path.append('C:\\WORKS_2\\WS\\WS_Others\\free\\VX7GLZ_science-research')
+
+from libs_VX7GLZ import libs_VX7GLZ
 
 from mm.libs_mm import cons_mm, cons_fx, libs, libfx
 
@@ -50,6 +53,54 @@ from shutil import copyfile
 from scipy.stats.stats import pearsonr
 
 ###############################################
+def test_4():
+    
+    '''###################
+        build : paths        
+    ###################'''
+    '''###################
+        file path        
+    ###################'''
+    PROJECT_ROOT = "C:\\WORKS_2\\WS\\WS_Others\\free\\VX7GLZ_science-research\\28_Physics\\1_\\_17"
+    
+    dpath_Out = "%s\\data_1_17.1" % (PROJECT_ROOT)
+    
+    ### fpath full
+    tlabel = libs.get_TimeLabel_Now()
+    
+    session_Label = "1_17.1.test-3"
+    
+    fpath_Full = "%s\\image.%s.%s.png" % (dpath_Out, session_Label, tlabel)
+
+    dname_Images = "images"
+    
+    dname_Images_PNG = "images_20180220_140223"
+#     dname_Images_PNG = "images_20180220_141101"
+    
+#     dpath_Full = "%s\\images_20180220_141141" % (dpath_Out)
+    dpath_Full = "%s\\%s\\%s" % (dpath_Out, dname_Images, dname_Images_PNG)
+#     dpath_Full = "%s\\%s\\images_20180220_141141" % (dpath_Out, dname_Images)
+    
+    fpath_Glob = "%s\\*(*).png" % (dpath_Full)
+    
+    dpath_In = "C:\\WORKS_2\\WS\\WS_Others\\free\\VX7GLZ_science-research" \
+            + "\\28_Physics\\1_\\_17\\data_1_17.1" \
+            + "\\images\\%s" % (dname_Images_PNG)
+#             + "\\images\\images_20180220_141141"
+            
+    fpath_In_FFMpeg = "%s\\image.%%03d.png" % (dpath_In)
+#     fpath_In = "%s\\image.%03d.png" % (dpath_In)
+    
+    fpath_Out_FFMpeg = "%s\\movie.%s.mp4" % (dpath_In, libs.get_TimeLabel_Now())
+    
+    '''###################
+        build : video        
+    ###################'''
+    libs_VX7GLZ.build_Video_From_PNGFiles \
+        (dpath_Full, fpath_Glob, fpath_In_FFMpeg, fpath_Out_FFMpeg)
+    
+#/def test_4():
+
 
 def test_3():
     
@@ -90,7 +141,7 @@ def test_3():
         return
         
     #/if os.path.isdir(dpath_Full)
-    
+    aa
     
     
     fpath_Glob = "%s\\*(*).png" % (dpath_Full)
@@ -140,7 +191,9 @@ def test_3():
         copy        
     ###################'''
     cnt = 0
-     
+    
+    lo_CopiedFiles = []
+    
     for item in lo_Files:
      
         dpath = os.path.dirname(item)
@@ -150,6 +203,9 @@ def test_3():
          
          
         copyfile(item, fpath_Dst)
+        
+        # append new file path
+        lo_CopiedFiles.append(fpath_Dst)
          
         print()
         print("[%s:%d] file copied : %s => %s" % \
@@ -189,8 +245,42 @@ def test_3():
         ), file=sys.stderr)
 
     '''###################
-        copy        
+        delete : copied files        
     ###################'''
+    while (not os.path.isfile(fpath_Out)) :
+        
+        pass
+    
+    #/while (not os.path.isfile(fpath_Out)) :
+
+    print()
+    print("[%s:%d] copied files ==> deleting..." % \
+            (os.path.basename(libs.thisfile()), libs.linenum()
+            
+            ), file=sys.stderr)
+    
+    # remove files
+    for item in lo_CopiedFiles:
+    
+        if os.path.isfile(item) : #if os.path.isfile(item)
+    
+            res = os.remove(item)
+            
+            print()
+            print("[%s:%d] remove file : result => %s (%s)" % \
+                    (os.path.basename(libs.thisfile()), libs.linenum()
+                    , res, item
+                    ), file=sys.stderr)
+            
+        #/if os.path.isfile(item)
+    
+    print()
+    print("[%s:%d] copied files ==> deleted" % \
+            (os.path.basename(libs.thisfile()), libs.linenum()
+            
+            ), file=sys.stderr)    
+        
+    #/for item in lo_CopiedFiles:
 
     
         
@@ -334,7 +424,8 @@ def exec_prog(): # from :
     '''###################
         ops        
     ###################'''
-    test_3()
+    test_4()
+#     test_3()
 #     test_2()
 #     test_1()
     
