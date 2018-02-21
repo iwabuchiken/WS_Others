@@ -585,3 +585,69 @@ def gen_PNGFiles_from_Listof_Points__V2 \
 
 #/def _test_5_Generate_PNGFiles():
 
+'''###################
+    @param dname_Folder_Data: name of the data folder
+    @param dname_Images: name of the images folder
+    @param dname_Images_PNG: name of the specific folder
+                            where PNG files have been generated
+    @param session_Label: a string to be added to PNG file names
+###################'''
+def get_FFMpeg_Paths \
+(dname_Folder_Data, dname_Images, dname_Images_PNG, session_Label):
+    
+    '''###################
+        file path        
+    ###################'''
+    PROJECT_ROOT = cons_27_6_1.FPath.PROJECT_ROOT.value
+#     PROJECT_ROOT = "C:\\WORKS_2\\WS\\WS_Others\\free\\VX7GLZ_science-research\\28_Physics\\1_\\_17"
+    
+#     dname_Folder_Data = "data.27_6_1"
+#     dname_Images = "images"
+#     dname_Images_PNG = "images_20180220_140814"
+#     session_Label = "6_1.test-1"
+    tlabel = libs.get_TimeLabel_Now()
+    
+    dpath_Out = "%s\\%s" % (PROJECT_ROOT, dname_Folder_Data)
+    fpath_Full = "%s\\image.%s.%s.png" % (dpath_Out, session_Label, tlabel)
+    dpath_Full = "%s\\%s\\%s" % (dpath_Out, dname_Images, dname_Images_PNG)
+    fpath_Glob = "%s\\*(*).png" % (dpath_Full)
+#     dpath_In = "%s" + "\\%s" + "\\%s" \
+#             + "%s" \
+    dpath_In = "%s\\%s\\%s" \
+            % (PROJECT_ROOT, dname_Folder_Data, dname_Images)
+            
+    dpath_In = "%s\\%s" % (dpath_In, dname_Images_PNG)
+#     dpath_In = "%s\\%s\\%s" \
+#             + "%s" \
+#             % (PROJECT_ROOT, dname_Folder_Data, dname_Images, dname_Images_PNG)
+#             + "\\images\\images_20180220_141141"
+    fpath_In_FFMpeg = "%s\\image.%%03d.png" % (dpath_In)
+#     fpath_In = "%s\\image.%03d.png" % (dpath_In)
+    
+    fpath_Out_FFMpeg = "%s\\movie.%s.mp4" % (dpath_In, libs.get_TimeLabel_Now())
+    
+#     dpath_Out = "%s\\data.27_6_1" % (PROJECT_ROOT)
+    
+    ### fpath full
+    
+    
+
+#     dname_Images_PNG = "images_20180220_140223"
+#     dname_Images_PNG = "images_20180220_141101"
+    
+#     dpath_Full = "%s\\images_20180220_141141" % (dpath_Out)
+#     dpath_Full = "%s\\%s\\images_20180220_141141" % (dpath_Out, dname_Images)
+    
+    
+#     dpath_In = "C:\\WORKS_2\\WS\\WS_Others\\free\\VX7GLZ_science-research" \
+#             + "\\28_Physics\\1_\\_17\\data_1_17.1" \
+            
+
+    '''###################
+        return        
+    ###################'''
+    return dpath_Full, fpath_Glob, fpath_In_FFMpeg, fpath_Out_FFMpeg
+    
+    
+#/def get_FFMpeg_Paths():
+    
