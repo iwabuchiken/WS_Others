@@ -9,6 +9,7 @@ var cname_White = "white";
 var cname_Red = "red";
 var cname_Yellow = "yellow";
 var cname_LightBlue = "LightBlue";
+var cname_Plum = "Plum";
 
 var className_BT_Numbering_List = "bt_Numbering_List";
 
@@ -115,13 +116,6 @@ function im_Action(_param) {
 
 	}//if (_param == "11-0")
 		
-//	} else {//if (_param == "11-0")
-//		
-//		alert("_param ==> '" + _param + "'");
-//		
-//	}//if (_param == "11-0")
-	
-	
 	/***************************
 		operations
 	 ***************************/
@@ -129,21 +123,10 @@ function im_Action(_param) {
 	
 	//debug
 	var td = $("td#td_Label_" + _param);
-//	var tmp = $("td#td_Label_" + _param).text();
-//	var tmp = $("td#td_Label_" + _param).html();
-//	alert("td !! => '" + tmp + "'");
 	
 	//test
 	var x = td.css('backgroundColor');
-//	var x = $(this).css('backgroundColor');
-	
 	var hex = hexc(x);
-	
-//	alert("bg-color => '" + x + "'"
-//			+ " / "
-//			+ "hex => '" + hex + "'"
-//	
-//	);
 	
 	/***************************
 		set : color
@@ -162,7 +145,6 @@ function im_Action(_param) {
 	
 	
 	td.css("background", color_New);
-//	td.css("background", cname_Yellow);
 	
 	/***************************
 		return : if set to white
@@ -173,10 +155,29 @@ function im_Action(_param) {
 		
 	}
 	
-	/*
-	 * test
-	 */
-	$('div#index_Message_Area').html(_param);
+	/***************************
+		bg-color
+	 ***************************/
+	var div_Result = $('div#index_Area__Result');
+	
+	div_Result.css("background", cname_Plum);
+	
+	var tag = $('div#index_Message_Area');
+	tag.html(_param);
+//	$('div#index_Message_Area').html(_param);
+	
+	tag
+		.fadeIn(200).fadeOut(200)
+		.fadeIn(200).fadeOut(200)
+		
+		.fadeIn(200).fadeOut(200)
+		.fadeIn(200).fadeOut(200)
+		
+		.fadeIn(200).fadeOut(200)
+		.fadeIn(200).fadeOut(200)
+		
+		.fadeIn(200);
+
 	
 	/***************************
 		ajax
@@ -204,11 +205,6 @@ function im_Action(_param) {
 
 	}//if (_param == "11-0")
 	
-//	//debug
-//	alert("data => '" + _data + "'");
-	
-//		_data = {action : _param};
-		
 	$.ajax({
 		
 	    url: _url,
