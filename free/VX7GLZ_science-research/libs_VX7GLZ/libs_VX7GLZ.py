@@ -294,11 +294,11 @@ def build_Video_From_PNGFiles__V2 \
         # append new file path
         lo_CopiedFiles.append(fpath_Dst)
          
-        print()
-        print("[%s:%d] file copied : %s => %s" % \
-                (os.path.basename(libs.thisfile()), libs.linenum()
-                , item, fpath_Dst
-                ), file=sys.stderr)
+#         print()
+#         print("[%s:%d] file copied : %s => %s" % \
+#                 (os.path.basename(libs.thisfile()), libs.linenum()
+#                 , item, fpath_Dst
+#                 ), file=sys.stderr)
         
         # increment
         cnt += 1
@@ -329,11 +329,11 @@ def build_Video_From_PNGFiles__V2 \
     
     #/while (not os.path.isfile(fpath_Out)) :
 
-    print()
-    print("[%s:%d] copied files ==> deleting..." % \
-            (os.path.basename(libs.thisfile()), libs.linenum()
-            
-            ), file=sys.stderr)
+#     print()
+#     print("[%s:%d] copied files ==> deleting..." % \
+#             (os.path.basename(libs.thisfile()), libs.linenum()
+#             
+#             ), file=sys.stderr)
     
     # remove files
     for item in lo_CopiedFiles:
@@ -342,11 +342,11 @@ def build_Video_From_PNGFiles__V2 \
     
             res = os.remove(item)
             
-            print()
-            print("[%s:%d] remove file : result => %s (%s)" % \
-                    (os.path.basename(libs.thisfile()), libs.linenum()
-                    , res, item
-                    ), file=sys.stderr)
+#             print()
+#             print("[%s:%d] remove file : result => %s (%s)" % \
+#                     (os.path.basename(libs.thisfile()), libs.linenum()
+#                     , res, item
+#                     ), file=sys.stderr)
             
         #/if os.path.isfile(item)
     
@@ -362,4 +362,226 @@ def build_Video_From_PNGFiles__V2 \
         return        
     ###################'''
     return 0
+
+'''###################
+    <Ops>
+    1. Scatter each point in z
+    2. Scatter figure ---> save as png file
+
+    @param z: list of points
+    @param dpath_Images: 
+            e.g. "C:\\WORKS_2\\WS\\WS_Others\\free" \
+                 + "\\VX7GLZ_science-research\\27_math" \
+                 + "\\27_6_plot\\_1\\data.27_6_1\\images"
+    @param file_Label: e.g. "6-1.test"
+            => label will be "6-1.test.<time label>.(%02d).png"
+    @param lbl_Plot_Title: e.g. "rotate"
+            => title label : "rotate (%02d) : x = %.3f / y = %.3f\n%s"
+    
+    @return: dpath_Images_Out
+###################'''
+def gen_PNGFiles_from_Listof_Points \
+(z, dpath_Images, file_Label, lbl_Plot_Title):
+    
+#     '''###################
+#         graph : settings        
+#     ###################'''
+#     # xlim
+#     plt.xlim(-2,2)
+#     plt.ylim(-2,2)
+#     plt.grid(b=None, which='major', axis='both')
+
+    '''###################
+        paths and dirs
+    ###################'''
+    tlabel = libs.get_TimeLabel_Now()
+    
+#     dpath_Images = "C:\\WORKS_2\\WS\\WS_Others\\free" \
+#                 + "\\VX7GLZ_science-research\\27_math" \
+#                 + "\\27_6_plot\\_1\\data.27_6_1\\images"
+    
+    dpath_Images_Out = "%s\\images_%s" % (dpath_Images, tlabel)
+    
+    # dirs
+    if not os.path.isdir(dpath_Images_Out) : os.makedirs(dpath_Images_Out)
+    
+    '''###################
+        plot        
+    ###################'''
+    cnt = 1
+    
+    for loc in z :
+        
+        '''###################
+            graph : settings        
+        ###################'''
+        # xlim
+        plt.xlim(-2,2)
+        plt.ylim(-2,2)
+        plt.grid(b=None, which='major', axis='both')
+
+        fpath_Images_Out = "%s\\%s.%s.(%02d).png" \
+                % (dpath_Images_Out, file_Label, tlabel, cnt)
+#         fpath_Images_Out = "%s\\6_1.%s.(%02d).png" \
+                 
+        print()
+        print("[%s:%d] fpath_Images_Out => %s" % \
+            (os.path.basename(libs.thisfile()), libs.linenum()
+            , fpath_Images_Out
+            ), file=sys.stderr)
+         
+        '''###################
+            title
+        ###################'''
+#         plt_Title = "rotate : (%02d) : x = %.4f / y = %.4f\n%s" \
+        plt_Title = "%s : (%02d) : x = %.4f / y = %.4f\n%s" \
+                    % (lbl_Plot_Title, cnt, loc[0], loc[1], 
+                       os.path.basename(fpath_Images_Out))
+#                     % (cnt, loc[0], loc[1], os.path.basename(fpath_Images_Out))
+                    
+        plt.title(plt_Title)
+        
+        '''###################
+            grid        
+        ###################'''
+#         plt.grid(b=None, which='major', axis='both')
+         
+        '''###################
+            plot        
+        ###################'''
+        plt.scatter([loc[0]], [loc[1]], s = 60)
+         
+    #     ax.savefig("%s\\6_1.%s.png" % (fpath_Out, libs.get_TimeLabel_Now()))
+        plt.savefig(fpath_Images_Out)
+    
+        '''###################
+            increment        
+        ###################'''
+        cnt += 1
+    
+        '''###################
+            reset : figure  
+        ###################'''
+        plt.clf()
+    
+    '''###################
+        return        
+    ###################'''
+    return dpath_Images_Out, tlabel
+
+#/def _test_5_Generate_PNGFiles():
+
+'''###################
+    <Ops>
+    1. Scatter each point in z
+    2. Scatter figure ---> save as png file
+
+    @param z: list of points
+    @param dpath_Images: 
+            e.g. "C:\\WORKS_2\\WS\\WS_Others\\free" \
+                 + "\\VX7GLZ_science-research\\27_math" \
+                 + "\\27_6_plot\\_1\\data.27_6_1\\images"
+    @param file_Label: e.g. "6-1.test"
+            => label will be "6-1.test.<time label>.(%02d).png"
+    @param lbl_Plot_Title: e.g. "rotate"
+            => title label : "rotate (%02d) : x = %.3f / y = %.3f\n%s"
+    
+    @return: dpath_Images_Out
+###################'''
+def gen_PNGFiles_from_Listof_Points__V2 \
+(z, dpath_Images, file_Label, lbl_Plot_Title
+    , xlim_Start, xlim_End
+    , ylim_Start, ylim_End
+    , clearFigure = True):
+    
+#     '''###################
+#         graph : settings        
+#     ###################'''
+#     # xlim
+#     plt.xlim(-2,2)
+#     plt.ylim(-2,2)
+#     plt.grid(b=None, which='major', axis='both')
+
+    '''###################
+        paths and dirs
+    ###################'''
+    tlabel = libs.get_TimeLabel_Now()
+    
+#     dpath_Images = "C:\\WORKS_2\\WS\\WS_Others\\free" \
+#                 + "\\VX7GLZ_science-research\\27_math" \
+#                 + "\\27_6_plot\\_1\\data.27_6_1\\images"
+    
+    dpath_Images_Out = "%s\\images_%s" % (dpath_Images, tlabel)
+    
+    # dirs
+    if not os.path.isdir(dpath_Images_Out) : os.makedirs(dpath_Images_Out)
+    
+    '''###################
+        plot        
+    ###################'''
+    cnt = 1
+    
+    for loc in z :
+        
+        '''###################
+            graph : settings        
+        ###################'''
+        # xlim
+        plt.xlim(xlim_Start, xlim_End)
+        plt.ylim(ylim_Start, ylim_End)
+#         plt.xlim(-2,2)
+#         plt.ylim(-2,2)
+        plt.grid(b=None, which='major', axis='both')
+
+        fpath_Images_Out = "%s\\%s.%s.(%02d).png" \
+                % (dpath_Images_Out, file_Label, tlabel, cnt)
+#         fpath_Images_Out = "%s\\6_1.%s.(%02d).png" \
+                 
+#         print()
+#         print("[%s:%d] fpath_Images_Out => %s" % \
+#             (os.path.basename(libs.thisfile()), libs.linenum()
+#             , fpath_Images_Out
+#             ), file=sys.stderr)
+         
+        '''###################
+            title
+        ###################'''
+#         plt_Title = "rotate : (%02d) : x = %.4f / y = %.4f\n%s" \
+        plt_Title = "%s : (%02d) : x = %.4f / y = %.4f\n%s" \
+                    % (lbl_Plot_Title, cnt, loc[0], loc[1], 
+                       os.path.basename(fpath_Images_Out))
+#                     % (cnt, loc[0], loc[1], os.path.basename(fpath_Images_Out))
+                    
+        plt.title(plt_Title)
+        
+        '''###################
+            grid        
+        ###################'''
+#         plt.grid(b=None, which='major', axis='both')
+         
+        '''###################
+            plot        
+        ###################'''
+        plt.scatter([loc[0]], [loc[1]], s = 60)
+         
+    #     ax.savefig("%s\\6_1.%s.png" % (fpath_Out, libs.get_TimeLabel_Now()))
+        plt.savefig(fpath_Images_Out)
+    
+        '''###################
+            increment        
+        ###################'''
+        cnt += 1
+    
+        '''###################
+            reset : figure  
+        ###################'''
+        if not clearFigure == False : plt.clf()
+#         plt.clf()
+    
+    '''###################
+        return        
+    ###################'''
+    return dpath_Images_Out, tlabel
+
+#/def _test_5_Generate_PNGFiles():
 

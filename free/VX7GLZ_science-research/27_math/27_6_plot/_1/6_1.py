@@ -113,10 +113,95 @@ def get_FFMpeg_Paths():
     
 #/def get_FFMpeg_Paths():
     
+def _test_6__Params(x = 1, y = 0):
+    
+#     step_Theta = np.pi / 3
+    step_Theta = np.pi / 12
+#     step_Theta = np.pi / 6
+     
+    rng_Theta = np.arange(0, np.pi * 2, step_Theta)
+#     rng_Theta = np.arange(0, np.pi * 2 + step_Theta, step_Theta)
+    
+#     rot = Matrix([
+#             [np.cos(rng_Theta), - np.sin(rng_Theta)], 
+#              [np.sin(rng_Theta), np.cos(rng_Theta)]]
+#     )
+
+    ### 
+#     x = 1; y = 0
+    
+#     r_ = []
+    x_ = []
+    y_ = []
+    
+    for item in rng_Theta:
+
+#         rot = [
+#                 [np.cos(rng_Theta), - np.sin(rng_Theta)], 
+#                  [np.sin(rng_Theta), np.cos(rng_Theta)]
+#          ]
+        
+        a = 1
+#         a = 2
+        
+        rot = Matrix([
+                [np.cos(item), - np.sin(item) * a], 
+                 [np.sin(item) * a, np.cos(item)]]
+#                 [np.cos(item), - np.sin(item)], 
+#                  [np.sin(item), np.cos(item)]]
+        )
+#         rot = Matrix([
+#                 [np.cos(rng_Theta), - np.sin(rng_Theta)], 
+#                  [np.sin(rng_Theta), np.cos(rng_Theta)]]
+#         )
+        
+        ### calc
+#         temp_X = rot[0][0] * x + rot[0][1] * y
+#         temp_Y = rot[1][0] * x + rot[1][1] * y
+        temp_X = rot[0,0] * x + rot[0,1] * y
+        temp_Y = rot[1,0] * x + rot[1,1] * y
+        
+#         r_.append(temp_X, temp_Y)
+#         r_.append([temp_X, temp_Y])
+        
+        x_.append(temp_X)
+        y_.append(temp_Y)
+        
+#         print()
+# #         print("[%s:%d] temp_X => %.5f" % \
+#         print("[%s:%d] type(temp_X) => %s" % \
+#         (os.path.basename(libs.thisfile()), libs.linenum()
+#         , type(temp_X)
+# #         , temp_X
+#         ), file=sys.stderr)
+        
+    #/for item in rng_Theta:
+
+    
+#     print()
+#     print("[%s:%d] len(rng_Theta) => %d" % \
+#         (os.path.basename(libs.thisfile()), libs.linenum()
+#         , len(rng_Theta)
+#         ), file=sys.stderr)
+#     
+#     print("[%s:%d] rng_Theta => %s" % \
+#         (os.path.basename(libs.thisfile()), libs.linenum()
+#         , rng_Theta
+#         ), file=sys.stderr)
+    
+    
+    '''###################
+        return        
+    ###################'''
+    return x_, y_
+    
+#/def _test_5__Params():
+
 def _test_5__Params():
     
 #     step_Theta = np.pi / 3
-    step_Theta = np.pi / 6
+    step_Theta = np.pi / 12
+#     step_Theta = np.pi / 6
      
     rng_Theta = np.arange(0, np.pi * 2, step_Theta)
 #     rng_Theta = np.arange(0, np.pi * 2 + step_Theta, step_Theta)
@@ -298,6 +383,132 @@ def _test_5_Generate_PNGFiles \
 
 #/def _test_5_Generate_PNGFiles():
     
+def test_6():
+
+    '''###################
+        params
+    ###################'''
+#     x = -1; y = 1
+    x = 1; y = 1
+    
+    x_, y_ = _test_6__Params(x, y)
+#     x_, y_ = _test_6__Params()
+ 
+    z = list(zip(x_, y_))
+ 
+    dpath_Images = "C:\\WORKS_2\\WS\\WS_Others\\free" \
+                + "\\VX7GLZ_science-research\\27_math" \
+                + "\\27_6_plot\\_1\\data.27_6_1\\images"
+ 
+    file_Label = "6_1.test_6"
+     
+    lbl_Plot_Title = "Rotate (x = %s / y = %s)" % (x, y)
+ 
+    '''###################
+        gen : png files        
+    ###################'''
+    _clearFigure = False
+    
+    xlim_Start = -5; xlim_End = 5
+    ylim_Start = -5; ylim_End = 5
+    
+    dpath_Images_Out, tlabel = \
+                libs_VX7GLZ.gen_PNGFiles_from_Listof_Points__V2 \
+                (z, dpath_Images, file_Label, lbl_Plot_Title
+                 , xlim_Start, xlim_End
+                 , ylim_Start, ylim_End
+                 , clearFigure = _clearFigure)
+#                 (z, dpath_Images, file_Label, lbl_Plot_Title, clearFigure = _clearFigure)
+#                 libs_VX7GLZ.gen_PNGFiles_from_Listof_Points \
+#                 (z, dpath_Images, file_Label, lbl_Plot_Title)
+#                 _test_5_Generate_PNGFiles \
+
+    '''###################
+        gen : video        
+    ###################'''
+#     dpath_Images_Out = "C:\\WORKS_2\\WS\\WS_Others\\free\\VX7GLZ_science-research\\27_math\\27_6_plot\\_1\\data.27_6_1\\images\\images_20180221_152007"
+    
+    fpath_Glob = "%s\\*(*).png" % (dpath_Images_Out)
+#     fpath_Glob = "%s\\*.(*).png" % (dpath_Images_Out)
+#     fpath_Glob = "C:\\WORKS_2\\WS\\WS_Others\\free\\VX7GLZ_science-research\\27_math\\27_6_plot\\_1\\data.27_6_1\\images\\images_20180221_152007\\*.(*).png"
+#     fpath_Glob = dpath_Images_Out
+
+    fpath_In_FFMpeg = "%s\\image.%%03d.png" % (dpath_Images_Out)
+#     fpath_In_FFMpeg = "%s\\image.%%03d.png" % (fpath_Glob)
+    
+    tlabel2 = libs.get_TimeLabel_Now()
+    
+    fpath_Out_FFMpeg = "%s\\movie.%s.%s.mp4" % (dpath_Images_Out, tlabel, tlabel2)
+#     fpath_Out_FFMpeg = "%s\\movie.%s.mp4" % (fpath_Glob, tlabel)
+    
+    libs_VX7GLZ.build_Video_From_PNGFiles__V2 \
+        (fpath_Glob, fpath_In_FFMpeg, fpath_Out_FFMpeg)
+
+
+#     '''###################
+#         graph : settings        
+#     ###################'''
+#     # xlim
+#     plt.xlim(-2,2)
+#     plt.ylim(-2,2)
+#     plt.grid(b=None, which='major', axis='both')
+# 
+#     '''###################
+#         paths and dirs
+#     ###################'''
+#     tlabel = libs.get_TimeLabel_Now()
+#     
+#     dpath_Images = "C:\\WORKS_2\\WS\\WS_Others\\free" \
+#                 + "\\VX7GLZ_science-research\\27_math" \
+#                 + "\\27_6_plot\\_1\\data.27_6_1\\images"
+#     
+#     dpath_Images_Out = "%s\\images_%s" % (dpath_Images, tlabel)
+#     
+#     # dirs
+#     if not os.path.isdir(dpath_Images_Out) : os.makedirs(dpath_Images_Out)
+#     
+#     '''###################
+#         plot        
+#     ###################'''
+#     cnt = 1
+#     
+#     for loc in z :
+#          
+#         fpath_Images_Out = "%s\\6_1.%s.(%02d).png" \
+#                 % (dpath_Images_Out, tlabel, cnt)
+#                  
+#         print()
+#         print("[%s:%d] fpath_Images_Out => %s" % \
+#             (os.path.basename(libs.thisfile()), libs.linenum()
+#             , fpath_Images_Out
+#             ), file=sys.stderr)
+#          
+#         '''###################
+#             title
+#         ###################'''
+#         plt_Title = "rotate : (%02d) : x = %.4f / y = %.4f\n%s" \
+#                     % (cnt, loc[0], loc[1], os.path.basename(fpath_Images_Out))
+#                     
+#         plt.title(plt_Title)
+#         
+#         '''###################
+#             grid        
+#         ###################'''
+# #         plt.grid(b=None, which='major', axis='both')
+#          
+#         '''###################
+#             plot        
+#         ###################'''
+#         plt.scatter([loc[0]], [loc[1]], s = 60)
+#          
+#     #     ax.savefig("%s\\6_1.%s.png" % (fpath_Out, libs.get_TimeLabel_Now()))
+#         plt.savefig(fpath_Images_Out)
+#     
+#         '''###################
+#             increment        
+#         ###################'''
+#         cnt += 1
+    
 def test_5_3():
 
     '''###################
@@ -319,8 +530,9 @@ def test_5_3():
         gen : png files        
     ###################'''
     dpath_Images_Out, tlabel = \
-                _test_5_Generate_PNGFiles \
+                libs_VX7GLZ.gen_PNGFiles_from_Listof_Points \
                 (z, dpath_Images, file_Label, lbl_Plot_Title)
+#                 _test_5_Generate_PNGFiles \
 
     '''###################
         gen : video        
@@ -1041,7 +1253,8 @@ def exec_prog(): # from :
     '''###################
         ops        
     ###################'''
-    test_5_3()
+    test_6()
+#     test_5_3()
 #     test_5_2()
 #     test_5()
 #     test_4()
