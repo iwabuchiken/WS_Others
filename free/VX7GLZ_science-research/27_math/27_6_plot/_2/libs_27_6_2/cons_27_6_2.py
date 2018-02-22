@@ -59,4 +59,4 @@ class FPath(Enum):
     
     PROJECT_ROOT = "C:\\WORKS_2\\WS\\WS_Others\\free" \
                 + "\\VX7GLZ_science-research\\27_math" \
-                + "\\27_6_plot\\_1"
+                + "\\27_6_plot\\_2"

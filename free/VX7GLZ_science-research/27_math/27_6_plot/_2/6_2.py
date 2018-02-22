@@ -29,6 +29,7 @@ import sys, os
 from cProfile import label
 from pip._vendor.requests.sessions import session
 import cmd
+from mailbox import fcntl
 
 '''###################
     import : original files        
@@ -41,15 +42,15 @@ sys.path.append('C:\\WORKS_2\\WS\\WS_Others\\free\\VX7GLZ_science-research')
 sys.path.append('C:\\WORKS_2\\WS\\WS_Others\\free\\VX7GLZ_science-research\\27_math\\27_6_plot\\_1')
 # sys.path.append('C:\\WORKS_2\\WS\\WS_Others\\free\\VX7GLZ_science-research\\27_math\\27_6_plot\\_1')
 
-#debug
-for item in sys.path: print(item)
+# #debug
+# for item in sys.path: print(item)
 
 
 from libs_VX7GLZ import libs_VX7GLZ
 # from libs_VX7GLZ import cons_VX7GLZ
 from libs_27_6_1 import cons_27_6_1
-from libs_27_6_2 import *
-# from libs_27_6_2 import cons_27_6_2
+# from libs_27_6_2 import *
+from libs_27_6_2 import cons_27_6_2
 
 from mm.libs_mm import cons_mm, cons_fx, libs, libfx
 from sympy.matrices import *
@@ -64,6 +65,151 @@ from shutil import copyfile
 from scipy.stats.stats import pearsonr
 
 ###############################################
+def _test_2__Generate_PNGFiles(dpath_Full, session_Label):
+    
+    '''###################
+        gen        
+    ###################'''
+        # dirs
+    if not os.path.isdir(dpath_Full) : os.makedirs(dpath_Full)
+
+    '''######################################
+        plot        
+    ######################################'''
+#     '''###################
+#         settings        
+#     ###################'''
+#     plt.xlim(-2 * np.pi,2 * np.pi)
+#     plt.ylim(-2,2)
+#     plt.grid(b=None, which='major', axis='both')
+    
+    tlabel = libs.get_TimeLabel_Now()
+    
+    x = np.linspace(-2 * np.pi, 2 * np.pi, 500)
+    
+    fig = plt.figure()
+    ax  = fig.add_subplot(111)
+
+    
+    cnt = 0
+    
+    for index in np.arange(0, np.pi * 2, np.pi / 12):
+
+        '''###################
+            settings        
+        ###################'''
+        plt.xlim(-2 * np.pi,2 * np.pi)
+        plt.ylim(-2,2)
+        plt.grid(b=None, which='major', axis='both')
+
+        fig = plt.figure()
+        ax  = fig.add_subplot(111)
+
+        ax.grid(b=None, which='major', axis='both')
+
+        '''###################
+            labels        
+        ###################'''
+        tickVal_Y = np.pi / 2
+#         tickVal_Y = np.pi
+#         tickVal_Y = 1
+        
+        x_tick = np.arange(-2 * np.pi, 2 * np.pi + tickVal_Y, tickVal_Y)
+#         x_tick = np.arange(-2, 2 + tickVal_Y, tickVal_Y)
+        
+        x_label = [r"$" + format(r / np.pi, ".2g")+ r"\pi$" for r in x_tick]
+#         x_label = [r"$" + format(r, ".2g")+ r"\pi$" for r in x_tick]
+
+        ax.set_xticks(x_tick)
+        
+        ax.set_xticklabels(x_label, fontsize = 10)
+
+        '''###################
+            y values
+        ###################'''
+        y = np.sin(x + index)
+        
+        '''###################
+            ops        
+        ###################'''
+        fpath_Images_Out = "%s\\%s.%s.(%02d).png" \
+                    % (dpath_Full, session_Label, tlabel, cnt)
+        
+        plt_Title = "sin(x + %03f)" % (index)
+        
+        plt.title(plt_Title)
+        
+        plt.plot(x, y)
+        
+        plt.savefig(fpath_Images_Out)
+        
+        cnt += 1
+
+        # clear
+#         plt.clf()
+        
+        '''###################
+            clear        
+        ###################'''
+        plt.close(fig)
+        
+    #/for index in np.arange(0, np.pi * 2, np.pi / 12):
+
+    print()
+    print("[%s:%d] image files saved => %d" % \
+        (os.path.basename(libs.thisfile()), libs.linenum()
+        , cnt
+        ), file=sys.stderr)
+    
+#/def _test_2__Generate_PNGFiles(dpath_Full):
+    
+def test_2():
+    
+    '''###################
+        get : paths        
+    ###################'''
+    tlabel = libs.get_TimeLabel_Now()
+
+    PROJECT_ROOT = cons_27_6_2.FPath.PROJECT_ROOT.value
+    
+    dname_Folder_Data   = "data.27_6_2"
+    dname_Images       = "images"
+    dname_Images_PNG   = "images_%s" % tlabel
+    session_Label      = "6_2-2.test-2"
+    
+    dpath_Full, fpath_Glob, fpath_In_FFMpeg, fpath_Out_FFMpeg = \
+                libs_VX7GLZ.get_FFMpeg_Paths \
+                (PROJECT_ROOT, 
+                 dname_Folder_Data, 
+                 dname_Images, 
+                 dname_Images_PNG, 
+                 session_Label)
+    
+#     #ref https://stackoverflow.com/questions/394809/does-python-have-a-ternary-conditional-operator
+#     msg = "exists" if (os.path.isdir(os.path.dirname(dpath_Full))) else "NOT"
+# #     msg = (os.path.isdir(os.path.dirname(dpath_Full)) == True) ? "exists" : "NOT"
+#     
+#     print()
+#     print("[%s:%d] dpath_Full => %s (%s)" % \
+#         (os.path.basename(libs.thisfile()), libs.linenum()
+#         , os.path.dirname(dpath_Full), msg
+# #         , dpath_Full, msg
+#         ), file=sys.stderr)
+    
+    '''###################
+        gen : png files        
+    ###################'''
+    result = _test_2__Generate_PNGFiles(dpath_Full, session_Label)
+    
+    '''###################
+        video        
+    ###################'''
+    result = libs_VX7GLZ.build_Video_From_PNGFiles__V2(
+                    fpath_Glob, fpath_In_FFMpeg, fpath_Out_FFMpeg)
+    
+    
+#/def test_2():
+
 def test_1():
 
     '''###################
@@ -169,7 +315,8 @@ def exec_prog(): # from :
     '''###################
         ops        
     ###################'''
-    test_1()
+    test_2()
+#     test_1()
     
     '''###################
         Report        
