@@ -100,18 +100,23 @@ def _test_4__Generate_PNGFiles(dpath_Full, session_Label):
     lim_Y_Start = -5
     lim_Y_End = 5
     
-#     val_Scalar_a00 = 2.0
-    val_Scalar_a00 = 3.0    # cos
-#     val_Scalar_a00 = 1.0    # cos
-#     val_Scalar_a01 = 2.0    # -sin
-    val_Scalar_a01 = 1.0    # sin
-#     val_Scalar_a01 = 3.0    # sin
-    val_Scalar_a10 = 1.0    # sin
-#     val_Scalar_a10 = 2.0    # sin
-#     val_Scalar_a10 = 3.0    # sin
-#     val_Scalar_a11 = 1.0    # cos
-    val_Scalar_a11 = 2.0    # cos
-#     val_Scalar_a11 = 3.0    # cos
+# #     val_Scalar_a00 = 2.0
+#     val_Scalar_a00 = 3.0    # cos
+# #     val_Scalar_a00 = 1.0    # cos
+# #     val_Scalar_a01 = 2.0    # -sin
+#     val_Scalar_a01 = 1.0    # sin
+# #     val_Scalar_a01 = 3.0    # sin
+#     val_Scalar_a10 = 1.0    # sin
+# #     val_Scalar_a10 = 2.0    # sin
+# #     val_Scalar_a10 = 3.0    # sin
+# #     val_Scalar_a11 = 1.0    # cos
+#     val_Scalar_a11 = 2.0    # cos
+# #     val_Scalar_a11 = 3.0    # cos
+    
+    val_Scalar_a00, val_Scalar_a01, val_Scalar_a10, val_Scalar_a11 = \
+            (1.0, 2.0, 1.0, 3.0)
+#             (2.0, 1.0, 1.0, 3.0)
+#             (2.0, 1.0, 3.0, 1.0)
     
     tick_Rotate = np.pi / 12
     
