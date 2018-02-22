@@ -101,12 +101,17 @@ def _test_4__Generate_PNGFiles(dpath_Full, session_Label):
     lim_Y_End = 5
     
 #     val_Scalar_a00 = 2.0
-    val_Scalar_a00 = 1.0    # cos
-    val_Scalar_a01 = 2.0    # -sin
-#     val_Scalar_a01 = 1.0    # sin
-#     val_Scalar_a10 = 1.0    # sin
-    val_Scalar_a10 = 2.0    # sin
-    val_Scalar_a11 = 1.0    # cos
+    val_Scalar_a00 = 3.0    # cos
+#     val_Scalar_a00 = 1.0    # cos
+#     val_Scalar_a01 = 2.0    # -sin
+    val_Scalar_a01 = 1.0    # sin
+#     val_Scalar_a01 = 3.0    # sin
+    val_Scalar_a10 = 1.0    # sin
+#     val_Scalar_a10 = 2.0    # sin
+#     val_Scalar_a10 = 3.0    # sin
+#     val_Scalar_a11 = 1.0    # cos
+    val_Scalar_a11 = 2.0    # cos
+#     val_Scalar_a11 = 3.0    # cos
     
     tick_Rotate = np.pi / 12
     
@@ -263,16 +268,16 @@ def _test_4__Generate_PNGFiles(dpath_Full, session_Label):
         fpath_Images_Out = "%s\\%s.%s.(%02d).png" \
                     % (dpath_Full, session_Label, tlabel, cnt)
         
-#         plt_Title = "rot : %.03f pi / start = (%.2f pi, %.2f pi)\n00 : %.2f / 01 : %.2f / 10 : %.2f / 11 : %.2f\n%s" \
-        plt_Title = "rot : %.03f pi / start = (%.2f pi, %.2f pi)\n%s" \
+#         plt_Title = "rot : %.03f pi / start = (%.2f pi, %.2f pi)\n%s" \
+        plt_Title = "rot : %.03f pi / start = (%.2f pi, %.2f pi)\n00 : %.2f / 01 : %.2f / 10 : %.2f / 11 : %.2f\n%s" \
                 % (
 #                     index / np.pi
                     i / np.pi
                     , x2 / np.pi, y2 / np.pi
-#                     , val_Scalar_a00
-#                     , val_Scalar_a01
-#                     , val_Scalar_a10
-#                     , val_Scalar_a11
+                    , val_Scalar_a00
+                    , val_Scalar_a01
+                    , val_Scalar_a10
+                    , val_Scalar_a11
                     , os.path.basename(fpath_Images_Out)
                    )
         plt.title(plt_Title)
