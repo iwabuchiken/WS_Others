@@ -100,11 +100,32 @@ def _test_3__Generate_PNGFiles(dpath_Full, session_Label):
     lim_Y_Start = -5
     lim_Y_End = 5
     
+#     val_Scalar_a00 = 2.0
+    val_Scalar_a00 = 1.0    # cos
+    val_Scalar_a01 = 2.0    # -sin
+#     val_Scalar_a01 = 1.0    # sin
+#     val_Scalar_a10 = 1.0    # sin
+    val_Scalar_a10 = 2.0    # sin
+    val_Scalar_a11 = 1.0    # cos
+    
+    tick_Rotate = np.pi / 12
+    
     cnt = 0
     
-    x = 1; y = 0
+#     x = 1; y = 1
+#     x = np.cos(pi / 2); y = np.sin(pi / 2)
+#     x = np.cos(pi / 4); y = np.sin(pi / 4)
+    x = np.cos(pi / 4 * 3); y = np.sin(pi / 4 * 3)
+#     x = 1; y = 0
     
-    for index in np.arange(0, np.pi * 2, np.pi / 6):
+    xs_ = []
+    ys_ = []
+    
+    
+#     for index in np.arange(0, np.pi * 2 + tick_Rotate / 2, tick_Rotate):
+#     for index in np.arange(0, np.pi * 2 + tick_Rotate, tick_Rotate):
+    for index in np.arange(0, np.pi * 2, tick_Rotate):
+#     for index in np.arange(0, np.pi * 2, np.pi / 6):
 
         '''###################
             settings        
@@ -163,6 +184,7 @@ def _test_3__Generate_PNGFiles(dpath_Full, session_Label):
         
         
         #ref https://stackoverflow.com/questions/45771474/matplotlib-make-center-circle-transparent
+        #ref alpha https://matplotlib.org/devdocs/api/_as_gen/matplotlib.pyplot.scatter.html
         circle1 = plt.Circle((0, 0), 1.0, color='r', fill= False, linewidth = 1, alpha = 0.5)
 #         circle1 = plt.Circle((0, 0), 1.0, color='r', fill= False, linewidth = 1)
 #         circle1 = plt.Circle((0, 0), 1.0, color='r', fill= False, linewidth = 10)
@@ -189,18 +211,33 @@ def _test_3__Generate_PNGFiles(dpath_Full, session_Label):
         ###################'''
         rot = [
             
-                [np.cos(index), - np.sin(index)],
-                [np.sin(index),   np.cos(index)],
+                [np.cos(index) * val_Scalar_a00, - np.sin(index) * val_Scalar_a01],
+                [np.sin(index) * val_Scalar_a10,   np.cos(index) * val_Scalar_a11],
+#                 [np.cos(index), - np.sin(index)],
+#                 [np.sin(index),   np.cos(index)],
             
             ]
         
-        x_ = rot[0][0] * x  - rot[0][1] * y
-        y_ = rot[1][0] *  x + rot[1][1] * y
+        x_ = rot[0][0] * x + rot[0][1] * y
+#         x_ = rot[0][0] * x - rot[0][1] * y
+        y_ = rot[1][0] * x + rot[1][1] * y
+        
+        #debug
+        print()
+        print("[%s:%d] x = %.3f / y = %.3f / x_ = %.3f / y_ = %.3f / rot = %s" % \
+                (os.path.basename(libs.thisfile()), libs.linenum()
+                , x, y, x_, y_, rot
+                ), file=sys.stderr)
+        
+        
+        xs_.append(x_)
+        ys_.append(y_)
         
         '''###################
             plot        
         ###################'''
-        ax.scatter([x_], [y_], s = 40, color = 'b')
+        ax.scatter(xs_, ys_, s = 40, color = 'b')
+#         ax.scatter([x_], [y_], s = 40, color = 'b')
 #         ax.scatter([x_], [y_], s = 20)
 #         plt.scatter([x_], [y_], s = 20)
         
@@ -210,10 +247,19 @@ def _test_3__Generate_PNGFiles(dpath_Full, session_Label):
         fpath_Images_Out = "%s\\%s.%s.(%02d).png" \
                     % (dpath_Full, session_Label, tlabel, cnt)
         
-        plt_Title = "rot : %.03f pi\n%s" % (index / np.pi, os.path.basename(fpath_Images_Out))
+        plt_Title = "rot : %.03f pi / start = (%.2f pi, %.2f pi)\n00 : %.2f / 01 : %.2f / 10 : %.2f / 11 : %.2f\n%s" \
+                % (
+                    index / np.pi
+                    , x / np.pi, y / np.pi
+                    , val_Scalar_a00
+                    , val_Scalar_a01
+                    , val_Scalar_a10
+                    , val_Scalar_a11
+                    , os.path.basename(fpath_Images_Out)
+                   )
         plt.title(plt_Title)
         
-        plt.plot(x, y)
+#         plt.plot(x, y)
         
         plt.savefig(fpath_Images_Out)
 #         #debug
@@ -225,7 +271,7 @@ def _test_3__Generate_PNGFiles(dpath_Full, session_Label):
 #         print()
 #         print("[%s:%d] breaking the loop..." % \
 #             (os.path.basename(libs.thisfile()), libs.linenum()
-#               
+#                
 #             ), file=sys.stderr)
 #         break
 
