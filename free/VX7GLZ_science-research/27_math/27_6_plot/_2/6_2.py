@@ -114,9 +114,15 @@ def _test_4__Generate_PNGFiles(dpath_Full, session_Label):
 # #     val_Scalar_a11 = 3.0    # cos
     
     val_Scalar_a00, val_Scalar_a01, val_Scalar_a10, val_Scalar_a11 = \
-            (1.0, 2.0, 1.0, 3.0)
+            (2.0, 3.0, 4.0, 1.0)
+#             (3.0, 4.0, 1.0, 2.0)
+#             (4.0, 1.0, 2.0, 3.0)
+#             (1.0, 2.0, 3.0, 4.0)
+#             (1.0, 2.0, 1.0, 3.0)
 #             (2.0, 1.0, 1.0, 3.0)
 #             (2.0, 1.0, 3.0, 1.0)
+    
+    val_Scalar_Max = max((val_Scalar_a00, val_Scalar_a01, val_Scalar_a10, val_Scalar_a11))
     
     tick_Rotate = np.pi / 12
     
@@ -149,6 +155,7 @@ def _test_4__Generate_PNGFiles(dpath_Full, session_Label):
         
         ax  = fig.add_subplot(111)
 
+        #ref https://stackoverflow.com/questions/14088687/how-to-change-plot-background-color answered May 14 '14 at 4:05
 #         ax.set_facecolor("#E6E6FA") # Lavender
 #         ax.set_facecolor("#EEE8AA") # PaleGoldenrod
 #         ax.set_facecolor("#FFF8DC") # Cornsilk
@@ -214,7 +221,8 @@ def _test_4__Generate_PNGFiles(dpath_Full, session_Label):
          
         c2 = plt.Circle(
                     (0, 0)
-                    , val_Scalar_a01
+                    , val_Scalar_Max
+#                     , val_Scalar_a01
                     , color='r'
                     , fill= False
                     , linewidth = 1
