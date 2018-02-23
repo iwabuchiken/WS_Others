@@ -101,7 +101,8 @@ def _test_5__Generate_PNGFiles(dpath_Full, session_Label):
     lim_Y_End = 5
     
     val_Scalar_a00, val_Scalar_a01, val_Scalar_a10, val_Scalar_a11 = \
-            (2.0, 3.0, 4.0, 1.0)
+            (1.0, 1.0, 1.0, 1.0)
+#             (2.0, 3.0, 4.0, 1.0)
 #             (3.0, 4.0, 1.0, 2.0)
 #             (4.0, 1.0, 2.0, 3.0)
 #             (1.0, 2.0, 3.0, 4.0)
@@ -111,14 +112,36 @@ def _test_5__Generate_PNGFiles(dpath_Full, session_Label):
     
     val_Scalar_Max = max((val_Scalar_a00, val_Scalar_a01, val_Scalar_a10, val_Scalar_a11))
     
+    # cos and sin signs
+    pow_a00, pow_a01, pow_a10, pow_a11 = \
+                        (1, 1, 1, 2)
+#                         (1, 1, 2, 1)
+#                         (1, 2, 1, 1)
+#                         (2, 1, 1, 1)
+                        
+    # cos and sin signs
+    rot_a00, rot_a01, rot_a10, rot_a11 = \
+                        (1., -1., 1., 1.)
+#                         (1., 1., -1., 1)
+#                         (1., 1., 1., 1)
+#                         (1., 1., 1., -1)
+#                         (-1., 1., 1., 1)
+    
     tick_Rotate = np.pi / 12
     
     cnt = 0
     
+    '''###################
+        starting point        
+    ###################'''
 #     x = 1; y = 1
 #     x = np.cos(pi / 2); y = np.sin(pi / 2)
 #     x = np.cos(pi / 4); y = np.sin(pi / 4)
-    x = np.cos(pi / 4 * 0); y = np.sin(pi / 4 * 0)
+#     x, y = np.cos(pi / 4 * (-3)), np.sin(pi / 4 * (-3))
+#     x, y = np.cos(pi / 4 * 3), np.sin(pi / 4 * 3)
+    x, y = np.cos(pi / 4 * 1), np.sin(pi / 4 * 1)   # 45'
+#     x, y = np.cos(pi / 4 * 2), np.sin(pi / 4 * 2)
+#     x = np.cos(pi / 4 * 0); y = np.sin(pi / 4 * 0)  # (1, 0)
 #     x = np.cos(pi / 4 * 3); y = np.sin(pi / 4 * 3)
 #     x = 1; y = 0
     
@@ -139,6 +162,10 @@ def _test_5__Generate_PNGFiles(dpath_Full, session_Label):
         
         #ref https://stackoverflow.com/questions/45771474/matplotlib-make-center-circle-transparent
         fig.set_facecolor("#fff9c9")
+        
+        #ref https://stackoverflow.com/questions/332289/how-do-you-change-the-size-of-figures-drawn-with-matplotlib
+        fig.set_size_inches(18.5, 10.5)
+        
         
         ax  = fig.add_subplot(111)
 
@@ -170,17 +197,19 @@ def _test_5__Generate_PNGFiles(dpath_Full, session_Label):
         # y ax
         y_tick = np.arange(lim_Y_Start, lim_Y_End + tickVal_Y, tickVal_Y)
         ax.set_yticks(y_tick)
-        ax.set_yticklabels(y_tick, fontsize = 10)
+        ax.set_yticklabels(y_tick, fontsize = 15)
+#         ax.set_yticklabels(y_tick, fontsize = 10)
 
         # x ax
         x_tick = np.arange(lim_X_Start, lim_X_End + tickVal_X, tickVal_X)
         ax.set_xticks(x_tick)
-        ax.set_xticklabels(x_tick, fontsize = 10)
+        ax.set_xticklabels(x_tick, fontsize = 15)
+#         ax.set_xticklabels(x_tick, fontsize = 10)
 
         '''###################
             rotate
         ###################'''
-        rot_a00, rot_a01, rot_a10, rot_a11 = (1., -1., 1., 1.)
+#         rot_a00, rot_a01, rot_a10, rot_a11 = (1., -1., 1., 1.)
 #         rot_a00 =  1
 #         rot_a01 = -1
 #         rot_a10 =  1
@@ -188,12 +217,24 @@ def _test_5__Generate_PNGFiles(dpath_Full, session_Label):
         
         rot = [
             
-                [np.cos(i) * rot_a00, np.sin(i) * rot_a01],
-                [np.sin(i) * rot_a10, np.cos(i) * rot_a11],
+#                 [np.cos(i) * rot_a00, np.sin(i) * rot_a01],
+#                 [np.sin(i) * rot_a10, np.cos(i) * rot_a11],
 #                 [np.cos(i), - np.sin(i)],
 #                 [np.sin(i),   np.cos(i)],
 #                 [np.cos(i) * val_Scalar_a00, - np.sin(i) * val_Scalar_a01],
 #                 [np.sin(i) * val_Scalar_a10,   np.cos(i) * val_Scalar_a11],
+            [
+                (np.cos(i) ** pow_a00) * val_Scalar_a00 * rot_a00
+                , (np.sin(i) ** pow_a01) * val_Scalar_a01 * rot_a01
+             ],
+            [
+                (np.sin(i) ** pow_a10) * val_Scalar_a10 * rot_a10
+                , (np.cos(i) ** pow_a11) * val_Scalar_a11 * rot_a11
+             ],
+#             [np.cos(i) * val_Scalar_a00 * rot_a00, np.sin(i) * val_Scalar_a01 * rot_a01],
+#             [np.sin(i) * val_Scalar_a10 * rot_a10, np.cos(i) * val_Scalar_a11 * rot_a11],
+#             [np.cos(i) * val_Scalar_a00 * rot_a00, np.sin(i) * val_Scalar_a01 * rot_a01],
+#             [np.sin(i) * val_Scalar_a10 * rot_a10, np.cos(i) * val_Scalar_a11 * rot_a11],
             
             ]
         
@@ -227,47 +268,12 @@ def _test_5__Generate_PNGFiles(dpath_Full, session_Label):
         ax.add_artist(circle1)
         ax.add_artist(c2)
 
-        '''###################
-            loop : index        
-        ###################'''
-        '''###################
-            rotate
-        ###################'''
-        for index in np.arange(0, np.pi * 2, tick_Rotate):
-            # rotation matrix
-            rot = [
-                
-                    [np.cos(index) * val_Scalar_a00, - np.sin(index) * val_Scalar_a01],
-                    [np.sin(index) * val_Scalar_a10,   np.cos(index) * val_Scalar_a11],
-#                     [np.cos(index) * val_Scalar_a00, - np.sin(index) * val_Scalar_a01],
-#                     [np.sin(index) * val_Scalar_a10,   np.cos(index) * val_Scalar_a11],
-    #                 [np.cos(index), - np.sin(index)],
-    #                 [np.sin(index),   np.cos(index)],
-                
-                ]
-            
-            #rotate
-            x_ = rot[0][0] * x2 + rot[0][1] * y2
-    #         x_ = rot[0][0] * x - rot[0][1] * y
-            y_ = rot[1][0] * x2 + rot[1][1] * y2
-            
-#             #debug
-#             print()
-#             print("[%s:%d] x = %.3f / y = %.3f / x_ = %.3f / y_ = %.3f / rot = %s" % \
-#                     (os.path.basename(libs.thisfile()), libs.linenum()
-#                     , x, y, x_, y_, rot
-#                     ), file=sys.stderr)
-            
-            # append coordinates
-            xs_.append(x_)
-            ys_.append(y_)
-            
-        #/for index in np.arange(0, np.pi * 2, tick_Rotate):
         
         '''###################
             plot        
         ###################'''
-        ax.scatter(xs_, ys_, s = 40, color = 'b')
+        ax.scatter([x2], [y2], s = 40, color = 'b')
+#         ax.scatter(xs_, ys_, s = 40, color = 'b')
 #         ax.scatter([x_], [y_], s = 40, color = 'b')
 #         ax.scatter([x_], [y_], s = 20)
 #         plt.scatter([x_], [y_], s = 20)
@@ -282,7 +288,8 @@ def _test_5__Generate_PNGFiles(dpath_Full, session_Label):
         fpath_Images_Out = "%s\\%s.%s.(%02d).png" \
             % (dpath_Full, session_Label, tlabel, cnt)
 
-        str_Title = "[rot] %.03f pi / [start] (%.2f pi, %.2f pi)\n" \
+#         str_Title = "[rot] %.03f pi / [point] (%.2f pi, %.2f pi)\n" \
+        str_Title = "[rot] %.02f pi / [point] (%.2f pi, %.2f pi)\n" \
                     + "[abcd] 00 : %.2f / 01 : %.2f / 10 : %.2f / 11 : %.2f"
 #         str_Title = "rot : %.03f pi / start = (%.2f pi, %.2f pi)\n" \
 #                     + "00 : %.2f / 01 : %.2f / 10 : %.2f / 11 : %.2f"
@@ -302,12 +309,15 @@ def _test_5__Generate_PNGFiles(dpath_Full, session_Label):
                    )
                 
 #         ax.set_title(plt_Title)
-        plt.title(plt_Title)
+        plt.title(plt_Title, fontsize = 15)
+#         plt.title(plt_Title)
 
         '''###################
             labels : x label
         ###################'''
-        str_XLabel = "[rot matrix] 00 : %.2f / 01 : %.2f / 10 : %.2f / 11 : %.2f\n"
+        str_XLabel = "[rot matrix] 00 : %.2f / 01 : %.2f / 10 : %.2f / 11 : %.2f\n" \
+                    + "[pow] 00 : %d / 01 : %d / 10 : %d / 11 : %d\n"
+#         str_XLabel = "[rot matrix] 00 : %.2f / 01 : %.2f / 10 : %.2f / 11 : %.2f\n"
 #         str_XLabel = "rot matrix\n" \
 #                     + "00 : %.2f / 01 : %.2f / 10 : %.2f / 11 : %.2f\n"
                     
@@ -318,9 +328,15 @@ def _test_5__Generate_PNGFiles(dpath_Full, session_Label):
                     , rot_a10
                     , rot_a11
                     
+                    , pow_a00
+                    , pow_a01
+                    , pow_a10
+                    , pow_a11
+                    
                    )
                 
-        ax.set_xlabel(plt_XLabel)
+        ax.set_xlabel(plt_XLabel, fontsize = 15)
+#         ax.set_xlabel(plt_XLabel)
 #         plt.xlabel(plt_XLabel)
 
         '''###################
@@ -336,7 +352,8 @@ def _test_5__Generate_PNGFiles(dpath_Full, session_Label):
                     
                    )
                 
-        ax.set_ylabel(plt_YLabel)
+        ax.set_ylabel(plt_YLabel, fontsize = 15)
+#         ax.set_ylabel(plt_YLabel)
 #         plt.xlabel(plt_XLabel)
 
         '''###################
@@ -350,13 +367,13 @@ def _test_5__Generate_PNGFiles(dpath_Full, session_Label):
         
         cnt += 1
 
-        #debug
-        print()
-        print("[%s:%d] breaking the loop..." % \
-            (os.path.basename(libs.thisfile()), libs.linenum()
-                   
-            ), file=sys.stderr)
-        break
+#         #debug
+#         print()
+#         print("[%s:%d] breaking the loop..." % \
+#             (os.path.basename(libs.thisfile()), libs.linenum()
+#                     
+#             ), file=sys.stderr)
+#         break
 
         # clear
 #         plt.clf()
@@ -374,11 +391,13 @@ def _test_5__Generate_PNGFiles(dpath_Full, session_Label):
 #             , cnt
 #             ), file=sys.stderr)
     
-        '''###################
-            reset : vars        
-        ###################'''
-        xs_ = []
-        ys_ = []
+#         '''###################
+#             reset : vars        
+#         ###################'''
+#         xs_ = []
+#         ys_ = []
+    
+    #/for i in np.arange(0, np.pi * 2, tick_Rotate) :
     
 def _test_4__Generate_PNGFiles(dpath_Full, session_Label):
     
@@ -1050,8 +1069,8 @@ def test_5():
     '''###################
         video        
     ###################'''
-#     result = libs_VX7GLZ.build_Video_From_PNGFiles__V3(
-#                     fpath_Glob, fpath_In_FFMpeg, fpath_Out_FFMpeg, fps_FFMpeg)
+    result = libs_VX7GLZ.build_Video_From_PNGFiles__V3(
+                    fpath_Glob, fpath_In_FFMpeg, fpath_Out_FFMpeg, fps_FFMpeg)
     
     
 #/def test_2():
