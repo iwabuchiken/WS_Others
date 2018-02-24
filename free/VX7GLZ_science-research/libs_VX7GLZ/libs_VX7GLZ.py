@@ -785,3 +785,63 @@ def get_FFMpeg_Paths \
     
 #/def get_FFMpeg_Paths():
     
+'''###################
+    @param dname_Folder_Data: name of the data folder
+                            e.g. "data.27_6_1"
+    @param dname_Images: name of the images folder : 
+                            e.g. "images"
+    @param dname_Images_PNG: name of the specific folder
+                            where PNG files have been generated
+                            e.g. "images_20180220_140814"
+    @param session_Label: a string to be added to PNG file names
+                            e.g. "6_1.test-1"
+    
+    @return: 
+        dpath_Full        path to : PNG file directory
+        fpath_Glob        path to : glob file name string
+        fpath_In_FFMpeg    path to : PNG files for ffmpeg 
+        fpath_Out_FFMpeg    path to : output movie file path for ffmpeg
+        
+###################'''
+def get_FFMpeg_Paths__V2 \
+(PROJECT_ROOT, dname_Folder_Data, dname_Images, dname_Images_PNG, session_Label):
+    
+    '''###################
+        file path        
+    ###################'''
+#     PROJECT_ROOT = cons_27_6_1.FPath.PROJECT_ROOT.value
+#     PROJECT_ROOT = "C:\\WORKS_2\\WS\\WS_Others\\free\\VX7GLZ_science-research\\28_Physics\\1_\\_17"
+    
+#     dname_Folder_Data = "data.27_6_1"
+#     dname_Images = "images"
+#     dname_Images_PNG = "images_20180220_140814"
+#     session_Label = "6_1.test-1"
+    tlabel = libs.get_TimeLabel_Now()
+    
+    dpath_Out = "%s\\%s" % (PROJECT_ROOT, dname_Folder_Data)
+    fpath_Full = "%s\\image.%s.%s.png" % (dpath_Out, session_Label, tlabel)
+    dpath_Full = "%s\\%s\\%s" % (dpath_Out, dname_Images, dname_Images_PNG)
+    fpath_Glob = "%s\\*(*).png" % (dpath_Full)
+#     dpath_In = "%s" + "\\%s" + "\\%s" \
+#             + "%s" \
+    dpath_In = "%s\\%s\\%s" \
+            % (PROJECT_ROOT, dname_Folder_Data, dname_Images)
+            
+    dpath_In = "%s\\%s" % (dpath_In, dname_Images_PNG)
+#     dpath_In = "%s\\%s\\%s" \
+#             + "%s" \
+#             % (PROJECT_ROOT, dname_Folder_Data, dname_Images, dname_Images_PNG)
+#             + "\\images\\images_20180220_141141"
+    fpath_In_FFMpeg = "%s\\image.%%03d.png" % (dpath_In)
+#     fpath_In = "%s\\image.%03d.png" % (dpath_In)
+    
+    fpath_Out_FFMpeg = "%s\\movie.%s.mp4" % (dpath_In, libs.get_TimeLabel_Now())
+    
+    '''###################
+        return        
+    ###################'''
+    return dpath_Full, fpath_Glob, fpath_In_FFMpeg, fpath_Out_FFMpeg
+    
+    
+#/def get_FFMpeg_Paths():
+    
