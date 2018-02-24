@@ -67,6 +67,612 @@ from matplotlib.patches import Ellipse, Arc
 from math import pi
 
 ###############################################
+def _test_7_4__Generate_PNGFiles \
+(dpath_Full, session_Label, 
+set_Pow, id_Dir, 
+start_Coord=(np.cos(pi / 4 * 0), np.sin(pi / 4 * 0)),
+_numOf_TickDivision = 24
+):
+# def _test_7_4__Generate_PNGFiles(dpath_Full, session_Label):
+    
+    '''###################
+        gen : directory        
+    ###################'''
+        # dirs
+#     dpath_Full_Each = "%s\\%s.(%02d)(%s)" \
+#     dpath_Full_Each = "%s\\%s.(%02d)(pow_%s)" \
+
+    dpath_Full_Each = dpath_Full
+#     dpath_Full_Each = "%s\\%s.(%02d)(pow.%s)" \
+#                 % (
+#                     dpath_Full
+#                     , os.path.basename(dpath_Full)
+#                     , id_Dir
+#                     , "-".join([str(x) for x in set_Pow])
+#                 )
+                
+#     dpath_Full_Each = "%s\\%s.(%02d)" \
+#                 % (dpath_Full, os.path.basename(dpath_Full), id_Dir)
+    
+    if not os.path.isdir(dpath_Full_Each) : os.makedirs(dpath_Full_Each)
+#     if not os.path.isdir(dpath_Full) : os.makedirs(dpath_Full)
+
+    print()
+    print("[%s:%d] dpath_Full_Each => %s" % \
+        (os.path.basename(libs.thisfile()), libs.linenum()
+        , dpath_Full_Each
+        ), file=sys.stderr)
+
+    '''######################################
+        plot        
+    ######################################'''
+#     '''###################
+#         settings        
+#     ###################'''
+#     plt.xlim(-2 * np.pi,2 * np.pi)
+#     plt.ylim(-2,2)
+#     plt.grid(b=None, which='major', axis='both')
+    
+    tlabel = libs.get_TimeLabel_Now()
+    
+    x = np.linspace(-2 * np.pi, 2 * np.pi, 500)
+    
+#     fig = plt.figure()
+#     ax  = fig.add_subplot(111)
+
+    '''###################
+        constants        
+    ###################'''
+    lim_X_Start = -5
+    lim_X_End = 5
+    lim_Y_Start = -5
+    lim_Y_End = 5
+    
+#     numOf_TickDivision = 24  # used in : tick_Rotate
+#     numOf_TickDivision = 4  # used in : tick_Rotate
+    numOf_TickDivision = _numOf_TickDivision  # used in : tick_Rotate
+    
+    val_StartingPoint_Multiplier = 1    # used in : x, y
+    
+    val_Scalar_a00, val_Scalar_a01, val_Scalar_a10, val_Scalar_a11 = \
+            (1.0, 1.0, 1.0, 1.0)
+#             (2.0, 3.0, 4.0, 1.0)
+#             (3.0, 4.0, 1.0, 2.0)
+#             (4.0, 1.0, 2.0, 3.0)
+#             (1.0, 2.0, 3.0, 4.0)
+#             (1.0, 2.0, 1.0, 3.0)
+#             (2.0, 1.0, 1.0, 3.0)
+#             (2.0, 1.0, 3.0, 1.0)
+    
+    val_Scalar_Max = max((val_Scalar_a00, val_Scalar_a01, val_Scalar_a10, val_Scalar_a11))
+    
+    # cos and sin signs
+    pow_a00, pow_a01, pow_a10, pow_a11 = set_Pow
+#     pow_a00, pow_a01, pow_a10, pow_a11 = \
+#                         (1, 1, 1, 2)
+#                         (1, 1, 2, 1)
+#                         (1, 2, 1, 1)
+#                         (2, 1, 1, 1)
+                        
+    # cos and sin signs
+    rot_a00, rot_a01, rot_a10, rot_a11 = \
+                        (1., -1., 1., 1.)
+#                         (1., 1., -1., 1)
+#                         (1., 1., 1., 1)
+#                         (1., 1., 1., -1)
+#                         (-1., 1., 1., 1)
+    
+#     tick_Rotate = np.pi / 4
+#     tick_Rotate = np.pi / 12
+    tick_Rotate = np.pi / numOf_TickDivision
+#     tick_Rotate = np.pi / 24
+    
+    cnt = 0
+    
+    '''###################
+        starting point        
+    ###################'''
+#     x = 1; y = 1
+#     x = np.cos(pi / 2); y = np.sin(pi / 2)
+#     x = np.cos(pi / 4); y = np.sin(pi / 4)
+#     x, y = np.cos(pi / 4 * (-3)), np.sin(pi / 4 * (-3))
+#     x, y = np.cos(pi / 4 * 3), np.sin(pi / 4 * 3)
+    x, y = start_Coord
+#     x, y = np.cos(pi / 4 * val_StartingPoint_Multiplier) \
+#             , np.sin(pi / 4 * val_StartingPoint_Multiplier)   #
+#     x, y = np.cos(pi / 4 * 1), np.sin(pi / 4 * 1)   # 45'
+#     x, y = np.cos(pi / 4 * 2), np.sin(pi / 4 * 2)
+#     x = np.cos(pi / 4 * 0); y = np.sin(pi / 4 * 0)  # (1, 0)
+#     x = np.cos(pi / 4 * 3); y = np.sin(pi / 4 * 3)
+#     x = 1; y = 0
+    
+    xs_ = []
+    ys_ = []
+    
+    '''###################
+        loop : i : rotate : x^2 + y^2 = 1        
+    ###################'''
+    for i in np.arange(0, np.pi * 2, tick_Rotate) :
+ 
+#         '''###################
+#             settings        
+#         ###################'''
+# #             plt.grid(b=None, which='major', axis='both')
+#  
+#         fig = plt.figure()
+#          
+#         #ref https://stackoverflow.com/questions/45771474/matplotlib-make-center-circle-transparent
+#         fig.set_facecolor("#fff9c9")
+#          
+#         #ref https://stackoverflow.com/questions/332289/how-do-you-change-the-size-of-figures-drawn-with-matplotlib answered Nov 29 '10 at 17:30
+#         fig.set_size_inches(18.5, 10.5)
+#          
+#          
+#         ax  = fig.add_subplot(111)
+#  
+#         #ref https://stackoverflow.com/questions/14088687/how-to-change-plot-background-color answered May 14 '14 at 4:05
+#         ax.set_facecolor("honeydew") # 
+#          
+#         ax.grid(b=None, which='major', axis='both')
+#          
+#         #ref https://stackoverflow.com/questions/7965743/how-can-i-set-the-aspect-ratio-in-matplotlib
+#         ax.set_aspect('equal')
+#  
+#         #ref https://stackoverflow.com/questions/15858192/how-to-set-xlim-and-ylim-for-a-subplot-in-matplotlib answered Apr 7 '13 at 2:33
+#          
+#         ax.set_xlim(lim_X_Start, lim_X_End)
+#         ax.set_ylim(lim_Y_Start, lim_Y_End)
+#          
+#         '''###################
+#             label : y
+#         ###################'''
+#         #ref https://stackoverflow.com/questions/10729737/how-can-i-set-the-y-axis-in-radians-in-a-python-plot
+#         tickVal_Y = 1
+#         tickVal_X = 1
+#          
+#         # y ax
+#         y_tick = np.arange(lim_Y_Start, lim_Y_End + tickVal_Y, tickVal_Y)
+#         ax.set_yticks(y_tick)
+#         ax.set_yticklabels(y_tick, fontsize = 15)
+# #         ax.set_yticklabels(y_tick, fontsize = 10)
+#  
+#         # x ax
+#         x_tick = np.arange(lim_X_Start, lim_X_End + tickVal_X, tickVal_X)
+#         ax.set_xticks(x_tick)
+#         ax.set_xticklabels(x_tick, fontsize = 15)
+# #         ax.set_xticklabels(x_tick, fontsize = 10)
+ 
+        '''###################
+            rotate
+        ###################'''
+#         rot_a00, rot_a01, rot_a10, rot_a11 = (1., -1., 1., 1.)
+#         rot_a00 =  1
+#         rot_a01 = -1
+#         rot_a10 =  1
+#         rot_a11 =  1
+         
+        rot = [
+             
+#                 [np.cos(i) * rot_a00, np.sin(i) * rot_a01],
+#                 [np.sin(i) * rot_a10, np.cos(i) * rot_a11],
+#                 [np.cos(i), - np.sin(i)],
+#                 [np.sin(i),   np.cos(i)],
+#                 [np.cos(i) * val_Scalar_a00, - np.sin(i) * val_Scalar_a01],
+#                 [np.sin(i) * val_Scalar_a10,   np.cos(i) * val_Scalar_a11],
+            [
+                (np.cos(i) ** pow_a00) * val_Scalar_a00 * rot_a00
+                , (np.sin(i) ** pow_a01) * val_Scalar_a01 * rot_a01
+             ],
+            [
+                (np.sin(i) ** pow_a10) * val_Scalar_a10 * rot_a10
+                , (np.cos(i) ** pow_a11) * val_Scalar_a11 * rot_a11
+             ],
+#             [np.cos(i) * val_Scalar_a00 * rot_a00, np.sin(i) * val_Scalar_a01 * rot_a01],
+#             [np.sin(i) * val_Scalar_a10 * rot_a10, np.cos(i) * val_Scalar_a11 * rot_a11],
+#             [np.cos(i) * val_Scalar_a00 * rot_a00, np.sin(i) * val_Scalar_a01 * rot_a01],
+#             [np.sin(i) * val_Scalar_a10 * rot_a10, np.cos(i) * val_Scalar_a11 * rot_a11],
+             
+            ]
+         
+        x2 = rot[0][0] * x + rot[0][1] * y
+        y2 = rot[1][0] * x + rot[1][1] * y
+ 
+        # append
+        xs_.append(x2)
+        ys_.append(y2)
+ 
+    '''###################
+        settings        
+    ###################'''
+    #             plt.grid(b=None, which='major', axis='both')
+    
+    fig = plt.figure()
+     
+    #ref https://stackoverflow.com/questions/45771474/matplotlib-make-center-circle-transparent
+    fig.set_facecolor("#fff9c9")
+     
+    #ref https://stackoverflow.com/questions/332289/how-do-you-change-the-size-of-figures-drawn-with-matplotlib answered Nov 29 '10 at 17:30
+    fig.set_size_inches(18.5, 10.5)
+     
+     
+    ax  = fig.add_subplot(111)
+    
+    #ref https://stackoverflow.com/questions/14088687/how-to-change-plot-background-color answered May 14 '14 at 4:05
+    ax.set_facecolor("honeydew") # 
+     
+    ax.grid(b=None, which='major', axis='both')
+     
+    #ref https://stackoverflow.com/questions/7965743/how-can-i-set-the-aspect-ratio-in-matplotlib
+    ax.set_aspect('equal')
+    
+    #ref https://stackoverflow.com/questions/15858192/how-to-set-xlim-and-ylim-for-a-subplot-in-matplotlib answered Apr 7 '13 at 2:33
+     
+    ax.set_xlim(lim_X_Start, lim_X_End)
+    ax.set_ylim(lim_Y_Start, lim_Y_End)
+     
+    '''###################
+        label : y
+    ###################'''
+    #ref https://stackoverflow.com/questions/10729737/how-can-i-set-the-y-axis-in-radians-in-a-python-plot
+    tickVal_Y = 1
+    tickVal_X = 1
+     
+    # y ax
+    y_tick = np.arange(lim_Y_Start, lim_Y_End + tickVal_Y, tickVal_Y)
+    ax.set_yticks(y_tick)
+    ax.set_yticklabels(y_tick, fontsize = 15)
+    #         ax.set_yticklabels(y_tick, fontsize = 10)
+    
+    # x ax
+    x_tick = np.arange(lim_X_Start, lim_X_End + tickVal_X, tickVal_X)
+    ax.set_xticks(x_tick)
+    ax.set_xticklabels(x_tick, fontsize = 15)
+    #         ax.set_xticklabels(x_tick, fontsize = 10)
+ 
+    '''###################
+        circle        
+    ###################'''
+    #ref https://stackoverflow.com/questions/45771474/matplotlib-make-center-circle-transparent
+    #ref alpha https://matplotlib.org/devdocs/api/_as_gen/matplotlib.pyplot.scatter.html
+    circle1 = plt.Circle(
+                (0, 0)
+                , 1.0
+                , color='r'
+                , fill= False
+                , linewidth = 1
+                , alpha = 0.5
+            )
+      
+    c2 = plt.Circle(
+                (0, 0)
+                , val_Scalar_Max
+    #                     , val_Scalar_a01
+                , color='r'
+                , fill= False
+                , linewidth = 1
+                , alpha = 0.5
+            )
+      
+    ax.add_artist(circle1)
+    ax.add_artist(c2)
+    
+     
+    '''###################
+        plot        
+    ###################'''
+    col_Series = "#00ff%02x" % (int(255 / numOf_TickDivision * cnt))
+    
+    #ref https://stackoverflow.com/questions/17682216/scatter-plot-and-color-mapping-in-python answered Jul 16 '13 at 16:45
+    ax.scatter(xs_, ys_, s = 20, c = range(0, len(xs_)), cmap='viridis')
+#     ax.scatter([x2], [y2], s = 30, color = 'gray')
+
+    '''###################
+        ops        
+    ###################'''
+    '''###################
+        labels : title
+    ###################'''
+    #         plt_Title = "rot : %.03f pi / start = (%.2f pi, %.2f pi)\n%s" \
+    fpath_Images_Out = "%s\\%s.%s.(pow.%s).png" \
+        % (dpath_Full_Each, session_Label, tlabel, "-".join([str(x) for x in set_Pow]))
+#     fpath_Images_Out = "%s\\%s.%s.png" \
+#         % (dpath_Full_Each, session_Label, tlabel)
+
+#     fpath_Images_Out = "%s\\%s.%s.(%02d).png" \
+#         % (dpath_Full_Each, session_Label, tlabel, cnt)
+    #             % (dpath_Full, session_Label, tlabel, cnt)
+    
+    #         str_Title = "[rot] %.03f pi / [point] (%.2f pi, %.2f pi)\n" \
+    str_Title = "[rot] %.02f pi / [point] (%.2f pi, %.2f pi)\n" \
+                + "[abcd] 00 : %.2f / 01 : %.2f / 10 : %.2f / 11 : %.2f"
+    #         str_Title = "rot : %.03f pi / start = (%.2f pi, %.2f pi)\n" \
+    #                     + "00 : %.2f / 01 : %.2f / 10 : %.2f / 11 : %.2f"
+    #                     + "00 : %.2f / 01 : %.2f / 10 : %.2f / 11 : %.2f\n" \
+    #                     + "%s" \
+    #         plt_Title = "rot : %.03f pi / start = (%.2f pi, %.2f pi)\n00 : %.2f / 01 : %.2f / 10 : %.2f / 11 : %.2f\n%s" \
+    plt_Title = str_Title \
+            % (
+    #                     index / np.pi
+                i / np.pi
+                , x / np.pi, y / np.pi
+#                 , x2 / np.pi, y2 / np.pi
+                , val_Scalar_a00
+                , val_Scalar_a01
+                , val_Scalar_a10
+                , val_Scalar_a11
+    #                     , os.path.basename(fpath_Images_Out)
+               )
+             
+    #         ax.set_title(plt_Title)
+    plt.title(plt_Title, fontsize = 15)
+    #         plt.title(plt_Title)
+    
+    '''###################
+        labels : x label
+    ###################'''
+    str_XLabel = "[rot matrix] 00 : %.2f / 01 : %.2f / 10 : %.2f / 11 : %.2f\n" \
+                + "[pow] 00 : %.1f / 01 : %.1f / 10 : %.1f / 11 : %.1f\n"
+#                 + "[pow] 00 : %d / 01 : %d / 10 : %d / 11 : %d\n"
+#                 + "[pow] 00 : %d / 01 : %d / 10 : %d / 11 : %d\n"
+    #         str_XLabel = "[rot matrix] 00 : %.2f / 01 : %.2f / 10 : %.2f / 11 : %.2f\n"
+    #         str_XLabel = "rot matrix\n" \
+    #                     + "00 : %.2f / 01 : %.2f / 10 : %.2f / 11 : %.2f\n"
+                 
+    plt_XLabel = str_XLabel \
+            % (
+                  rot_a00
+                , rot_a01
+                , rot_a10
+                , rot_a11
+                 
+                , pow_a00
+                , pow_a01
+                , pow_a10
+                , pow_a11
+                 
+               )
+             
+    ax.set_xlabel(plt_XLabel, fontsize = 15)
+    #         ax.set_xlabel(plt_XLabel)
+    #         plt.xlabel(plt_XLabel)
+    
+    '''###################
+        labels : y label
+    ###################'''
+    str_YLabel = "[file] %s"
+    #         str_XLabel = "rot matrix\n" \
+    #                     + "00 : %.2f / 01 : %.2f / 10 : %.2f / 11 : %.2f\n"
+                 
+    plt_YLabel = str_YLabel \
+            % (
+                  os.path.basename(fpath_Images_Out)
+                 
+               )
+             
+    ax.set_ylabel(plt_YLabel, fontsize = 15)
+    #         ax.set_ylabel(plt_YLabel)
+    #         plt.xlabel(plt_XLabel)
+    
+    '''###################
+        plot, save image        
+    ###################'''
+    #         plt.plot(x, y)
+     
+    plt.savefig(fpath_Images_Out)
+    #         #debug
+    #         plt.show()
+     
+    cnt += 1
+    
+    #         #debug
+    #         print()
+    #         print("[%s:%d] breaking the loop..." % \
+    #             (os.path.basename(libs.thisfile()), libs.linenum()
+    #                     
+    #             ), file=sys.stderr)
+    #         break
+    
+    # clear
+    #         plt.clf()
+     
+    '''###################
+        clear        
+    ###################'''
+    plt.close(fig)
+
+    #/for i in np.arange(0, np.pi * 2, tick_Rotate) :
+    
+    '''###################
+        return        
+    ###################'''
+    return dpath_Full_Each
+
+'''###################
+    test_7_4()        
+###################'''
+def test_7_4():
+
+    ### test
+    num_Base = 1
+#     num_Pick = 2.3
+    num_Pick = 2
+    lenOf_Num_Pick = 3
+#     lenOf_Num_Pick = 2
+#     lenOf_List = 5
+    lenOf_List = 4
+    
+    res = libs_VX7GLZ.get_Combi_ALL(num_Base, num_Pick, lenOf_List)
+#     res = libs_VX7GLZ.get_Combi(num_Base, num_Pick, lenOf_Num_Pick, lenOf_List)
+    
+    print()
+    print("[%s:%d] res =>\nlen = (%d)\n" % \
+        (os.path.basename(libs.thisfile()), libs.linenum()
+         , len(res)
+        ), file=sys.stderr)
+    
+    for item in res:
+
+        print(item)
+        
+    #/for item in res:
+
+    
+#     print("[%s:%d] res => %s" % \
+#         (os.path.basename(libs.thisfile()), libs.linenum()
+#         , res
+#         ), file=sys.stderr)
+#     
+    return
+    
+    
+    '''###################
+        get : paths        
+    ###################'''
+    tlabel = libs.get_TimeLabel_Now()
+
+    PROJECT_ROOT = cons_27_6_2.FPath.PROJECT_ROOT.value
+    
+    dname_Folder_Data   = "data.27_6_2"
+    dname_Images       = "images"
+    dname_Images_PNG   = "images_%s" % tlabel
+    session_Label      = "6_4-1.test_7-4"
+    
+    fps_FFMpeg          = 6 # 4 frames per second
+#     fps_FFMpeg          = 2
+    
+    _numOf_TickDivision = 24
+    
+    
+    dpath_Full, fpath_Glob, fpath_In_FFMpeg, fpath_Out_FFMpeg = \
+                libs_VX7GLZ.get_FFMpeg_Paths \
+                (PROJECT_ROOT, 
+                 dname_Folder_Data, 
+                 dname_Images, 
+                 dname_Images_PNG, 
+                 session_Label)
+    
+    # cos and sin signs
+    cons_Pow = 3.5
+    
+    lo_Pow = (
+                  (cons_Pow, cons_Pow, 1, 1)
+                , (cons_Pow, 1, cons_Pow, 1)
+                , (cons_Pow, 1, 1, cons_Pow)
+                , (1, cons_Pow, cons_Pow, 1)
+                , (1, cons_Pow, 1, cons_Pow)
+                , (1, 1, cons_Pow, cons_Pow)
+#                   (3, 3, 1, 1)
+#                 , (3, 1, 3, 1)
+#                 , (3, 1, 1, 3)
+#                 , (1, 3, 3, 1)
+#                 , (1, 3, 1, 3)
+#                 , (1, 1, 3, 3)
+#                   (2, 2, 1, 1)
+#                 , (2, 1, 2, 1)
+#                 , (2, 1, 1, 2)
+#                 , (1, 2, 2, 1)
+#                 , (1, 2, 1, 2)
+#                 , (1, 1, 2, 2)
+#                 (1, 1, 1, 1)
+#                 , (2, 1, 1, 1)
+#                 , (1, 2, 1, 1)
+#                 , (1, 1, 2, 1)
+#                 , (1, 1, 1, 2)
+          )
+
+    # id dir
+    id_Dir = 0
+
+    '''###################
+        set : starting point        
+    ###################'''
+    val_StartingPoint_Multiplier = 1
+#     val_StartingPoint_Multiplier = 3
+#     val_StartingPoint_Multiplier = 2
+#     val_StartingPoint_Multiplier = 5
+    
+#     val_StartingPoint_PiDivisor = 3
+    val_StartingPoint_PiDivisor = 4
+#     val_StartingPoint_PiDivisor = 9
+#     val_StartingPoint_PiDivisor = 12
+    
+    start_Coord = (
+#             0
+#             , 0)
+            np.cos(pi / val_StartingPoint_PiDivisor * val_StartingPoint_Multiplier)
+            , np.sin(pi / val_StartingPoint_PiDivisor * val_StartingPoint_Multiplier))
+#             np.cos(pi / 4 * val_StartingPoint_Multiplier)
+#             , np.sin(pi / 4 * val_StartingPoint_Multiplier))
+
+    print()
+    print("[%s:%d] start_Coord => %s" % \
+        (os.path.basename(libs.thisfile()), libs.linenum()
+        , start_Coord
+        ), file=sys.stderr)
+
+    '''###################
+        dpath_Full : modify        
+    ###################'''
+#     dpath_Full = dpath_Full + "." + "pow.(start_%.2fpi,%.2fpi)" \
+    dpath_Full = dpath_Full + "." + "pow.(%d-%d.pi)" \
+                % (val_StartingPoint_Multiplier, val_StartingPoint_PiDivisor)
+#                 % (start_Coord[0], start_Coord[1])
+#     dpath_Full = dpath_Full + "." + "pow.start_-1,0"
+    
+
+    for set_Pow in lo_Pow :
+        '''###################
+            gen : png files        
+        ###################'''
+#         val_StartingPoint_Multiplier = 3
+#         
+#         start_Coord = (
+#                 np.cos(pi / 4 * val_StartingPoint_Multiplier)
+#                 , np.sin(pi / 4 * val_StartingPoint_Multiplier))
+
+        dpath_Full_Each = _test_7_4__Generate_PNGFiles \
+                    (dpath_Full
+                     , session_Label
+                     , set_Pow
+                     , id_Dir
+                     , start_Coord
+                     , _numOf_TickDivision)
+#                     (dpath_Full, session_Label, set_Pow, id_Dir)
+
+        '''###################
+            path : modify        
+        ###################'''
+        fpath_Out_FFMpeg = dpath_Full_Each + "\\" \
+            + os.path.basename(fpath_Out_FFMpeg)
+
+        fpath_In_FFMpeg = dpath_Full_Each + "\\" \
+            + os.path.basename(fpath_In_FFMpeg)
+
+        fpath_Glob = dpath_Full_Each + "\\" \
+            + os.path.basename(fpath_Glob)
+
+        '''###################
+            video        
+        ###################'''
+#         result = libs_VX7GLZ.build_Video_From_PNGFiles__V3(
+#                         fpath_Glob, fpath_In_FFMpeg, fpath_Out_FFMpeg, fps_FFMpeg)
+
+        '''###################
+            increment        
+        ###################'''
+        id_Dir += 1
+
+    #/for set_Pow in lo_Pow :    
+    
+    '''###################
+        video        
+    ###################'''
+#     result = libs_VX7GLZ.build_Video_From_PNGFiles__V3(
+#                     fpath_Glob, fpath_In_FFMpeg, fpath_Out_FFMpeg, fps_FFMpeg)
+    
+    
+#/def test_7_4():
+
 def _test_7_3__Generate_PNGFiles \
 (dpath_Full, session_Label, 
 set_Pow, id_Dir, 
@@ -3438,7 +4044,8 @@ def exec_prog(): # from :
         ops        
     ###################'''
 #     test_5_1()
-    test_7_3()
+    test_7_4()
+#     test_7_3()
 #     test_7_2()
 #     test_7()
 #     test_6()

@@ -48,7 +48,7 @@ from libs_27_6_1 import cons_27_6_1
 ###################'''
 import getopt, inspect, struct, random, glob
 import xml.etree.ElementTree as ET, math as math, matplotlib.pyplot as plt \
-        , numpy as np, matplotlib.patches as mpatches
+        , numpy as np, matplotlib.patches as mpatches, itertools as it
 from shutil import copyfile
 from scipy.stats.stats import pearsonr
 
@@ -845,3 +845,187 @@ def get_FFMpeg_Paths__V2 \
     
 #/def get_FFMpeg_Paths():
     
+def get_Combi_ALL(num_Base, num_Pick, lenOf_List) :
+    
+    lo_Combi = []
+    
+    '''###################
+        get combi        
+    ###################'''
+    for i in np.arange(1, lenOf_List + 1):
+#     for i in np.arange(1, lenOf_List):
+    
+        lo_Combi = lo_Combi + get_Combi__V2(num_Base, num_Pick, i, lenOf_List)
+        
+#         print()
+#         print("[%s:%d] i = %d / lo_Combi => \n%s (len = %d)" % \
+#         (os.path.basename(libs.thisfile()), libs.linenum()
+#         , i, lo_Combi, len(lo_Combi)
+#         ), file=sys.stderr)
+        
+    #/for i in np.arange(1, lenOf_List:
+
+    '''###################
+        return        
+    ###################'''
+    return lo_Combi
+
+#/def get_Combi(num_Base, num_Pick, lenOf_Num_Pick, lenOf_List) :
+
+    
+def get_Combi__V2(num_Base, num_Pick, lenOf_Num_Pick, lenOf_List) :
+
+    L = lenOf_Num_Pick
+    
+    stuff = np.arange(lenOf_List)
+    
+    '''###################
+        count : num of combinations        
+    ###################'''
+    res = it.combinations(stuff, L)
+
+    cntOf_Res = 0
+
+    for i in res:
+        
+        cntOf_Res += 1
+        
+    #/for i in res:
+
+    '''###################
+        combi : init        
+    ###################'''
+    combi = [[num_Base] * len(stuff) for i in range(cntOf_Res)]
+    
+    '''###################
+        combi : process : combination elements        
+    ###################'''
+    cntOf_Loop = 0
+    
+    res = it.combinations(stuff, L)
+    
+    for i in res:
+    
+        for j in i:
+    
+            combi[cntOf_Loop][j] = num_Pick
+            
+        #/for j in i:
+
+        # increment
+        cntOf_Loop += 1
+        
+    #/for i in res:
+
+    '''###################
+        return        
+    ###################'''
+    return combi    
+    
+#/def get_Combi(num_Base, num_Pick, lenOf_Num_Pick, lenOf_List) :
+
+def get_Combi(num_Base, num_Pick, lenOf_Num_Pick, lenOf_List) :
+
+    L = lenOf_Num_Pick
+    
+    stuff = np.arange(lenOf_List)
+    
+    '''###################
+        count : num of combinations        
+    ###################'''
+    res = it.combinations(stuff, L)
+
+    cntOf_Res = 0
+
+    for i in res:
+        
+        cntOf_Res += 1
+        
+    #/for i in res:
+
+#     print()
+#     print("[%s:%d] cntOf_Res => %d" % \
+#         (os.path.basename(libs.thisfile()), libs.linenum()
+#         , cntOf_Res
+#         ), file=sys.stderr)
+
+    '''###################
+        combi : init        
+    ###################'''
+    combi = [[num_Base] * len(stuff) for i in range(cntOf_Res)]
+    
+#     print()
+#     print("[%s:%d] combi => init" % \
+#         (os.path.basename(libs.thisfile()), libs.linenum()
+#         
+#         ), file=sys.stderr)
+#     
+#     for item in combi:
+#     
+#         print(item)
+        
+    #/for item in combi:
+
+    
+    '''###################
+        combi : process : combination elements        
+    ###################'''
+    cntOf_Loop = 0
+    
+    res = it.combinations(stuff, L)
+    
+    for i in res:
+    
+        for j in i:
+    
+            combi[cntOf_Loop][j] = num_Pick
+            
+#             print()
+#             print("[%s:%d] combi[%d][%d] is now => %d" % \
+#                 (os.path.basename(libs.thisfile()), libs.linenum()
+#                 , cntOf_Loop, j, combi[cntOf_Loop][j]
+#                 ), file=sys.stderr)
+            
+        #/for j in i:
+
+        # increment
+        cntOf_Loop += 1
+        
+    #/for i in res:
+
+#     print()
+#     print("[%s:%d] combi => processed" % \
+#         (os.path.basename(libs.thisfile()), libs.linenum()
+#         
+#         ), file=sys.stderr)
+#     
+#     for item in combi:
+#     
+#         print(item)
+        
+    #/for item in combi:
+    
+#     print()
+#     print("[%s:%d] combi as a tuple => %s" % \
+#                     (os.path.basename(libs.thisfile()), libs.linenum()
+#                     , tuple(combi)
+#                     ), file=sys.stderr)
+    
+#     #debug
+#     print("[%s:%d] it.combinations =>" % \
+#             (os.path.basename(libs.thisfile()), libs.linenum()
+#             
+#             ), file=sys.stderr)
+#     for item in res :
+#         
+#         print(item)
+    
+    
+    '''###################
+        return        
+    ###################'''
+    return combi    
+    
+#/def get_Combi(num_Base, num_Pick, lenOf_Num_Pick, lenOf_List) :
+
+
