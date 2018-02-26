@@ -2,6 +2,7 @@
 
 ###############################################
 import sys
+from pandas.tests import scalar
 
 '''###################
     import : original files        
@@ -1227,7 +1228,8 @@ def save_Wave(fname_Out,  wave_Params, binwave):
     
     @return: binwave: array, "-32768から32767の整数値"
 ###################'''
-def gen_WaveData(fs, f0, phase, sec, A):
+def gen_WaveData(fs, f0, phase, sec, A, pow_Param = 1, scalar_Param = 1):
+# def gen_WaveData(fs, f0, phase, sec, A):
     
     swav=[]
 
@@ -1241,8 +1243,16 @@ def gen_WaveData(fs, f0, phase, sec, A):
     
     for n in np.arange(fs * sec):
     #サイン波を生成
-
-        s = A * np.sin(2 * np.pi * f0 * n / fs - phase)
+        
+        base_Param = 2 * np.pi * f0 * n / fs
+        
+#         pow_Param = 2
+        
+        base_SineVal = np.sin((base_Param * scalar_Param) - phase)
+        
+        s = A * ((base_SineVal) ** pow_Param)
+#         s = A * np.sin(base_Param ** pow_Param - phase)
+#         s = A * np.sin(2 * np.pi * f0 * n / fs - phase)
 #         s = A * np.sin(2 * np.pi * f0 * n / fs)
         
         if s > 1.0:  s = 1.0

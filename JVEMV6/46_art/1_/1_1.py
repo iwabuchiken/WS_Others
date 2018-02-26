@@ -87,47 +87,113 @@ def show_Message() :
 #     w.writeframes(binwave)
 #     w.close()
 
-'''###################
-    gen_WaveData(fs, sec, A)
-    2017/12/31 15:21:22
-    @param fs: Sampling frequency ---> e.g. 8000
-    @param f0: Base frequency ---> e.g. 440 for 'A' note
-    @param sec: Length (seconds)
-    @param A: Amplitude ---> e.g. 1.0    
-    
-    @return: binwave: array, "-32768から32767の整数値"
-###################'''
-def gen_WaveData(fs, f0, phase, sec, A):
-    
-    swav=[]
+# '''###################
+#     gen_WaveData(fs, sec, A)
+#     2017/12/31 15:21:22
+#     @param fs: Sampling frequency ---> e.g. 8000
+#     @param f0: Base frequency ---> e.g. 440 for 'A' note
+#     @param sec: Length (seconds)
+#     @param A: Amplitude ---> e.g. 1.0    
+#     
+#     @return: binwave: array, "-32768から32767の整数値"
+# ###################'''
+# def gen_WaveData(fs, f0, phase, sec, A):
+#     
+#     swav=[]
+# 
+#     #test
+#     phase = np.pi  * ( 1 / 6 )
+# #     phase = np.pi  * 1
+# #     phase = np.pi  * (3/2)
+# #     phase = np.pi / 2
+# #     phase = fs
+# #     phase = f0
+#     
+#     for n in np.arange(fs * sec):
+#     #サイン波を生成
+# 
+#         s = A * np.sin(2 * np.pi * f0 * n / fs - phase)
+# #         s = A * np.sin(2 * np.pi * f0 * n / fs)
+#         
+#         if s > 1.0:  s = 1.0
+#         if s < -1.0: s = -1.0
+#         
+#         swav.append(s)
+#         
+#     #サイン波を-32768から32767の整数値に変換(signed 16bit pcmへ)
+#     swav = [int(x * 32767.0) for x in swav]
+#      
+#     #バイナリ化
+#     binwave = struct.pack("h" * len(swav), *swav)
+#     
+#     return binwave
+# #gen_WaveData(fs, sec, A)
 
-    #test
-    phase = np.pi  * ( 1 / 6 )
-#     phase = np.pi  * 1
-#     phase = np.pi  * (3/2)
-#     phase = np.pi / 2
-#     phase = fs
-#     phase = f0
+def test_2():
     
-    for n in np.arange(fs * sec):
-    #サイン波を生成
+    A = 1     #振幅
+    fs = 16000 #サンプリング周波数
+#     fs = 8000 #サンプリング周波数
+    f0 = 392  #周波数
+#     f0 = 262  #周波数
+#     f0 = 440  #周波数
+    sec = 5   #秒
+    
+    phase_Param = 0
+#     phase_Param = 4
+    
+    phase = np.pi * 0
+#     phase = f0 * (4 / 2)
+#     phase = f0 / 2
+    
+    # bin data
+    phase = np.pi * ( 1 / 4 )
+    pow_Param = 1
+    scalar_Param = 2
+    
+    binwave = wablibs.gen_WaveData(fs, f0, phase, sec, A, pow_Param, scalar_Param)
+#     binwave = gen_WaveData(fs, f0, phase, sec, A)
+    
+#     #サイン波をwavファイルとして書き出し
+    wave_Params = (1, 2, fs, len(binwave), 'NONE', 'not compressed')
+#     wave_Params = (1, 2, 8000, len(binwave), 'NONE', 'not compressed')
 
-        s = A * np.sin(2 * np.pi * f0 * n / fs - phase)
-#         s = A * np.sin(2 * np.pi * f0 * n / fs)
-        
-        if s > 1.0:  s = 1.0
-        if s < -1.0: s = -1.0
-        
-        swav.append(s)
-        
-    #サイン波を-32768から32767の整数値に変換(signed 16bit pcmへ)
-    swav = [int(x * 32767.0) for x in swav]
-     
-    #バイナリ化
-    binwave = struct.pack("h" * len(swav), *swav)
+    '''###################
+        dirs, paths        
+    ###################'''
+    dname_Audios = "data.46_1\\audios"
     
-    return binwave
-#gen_WaveData(fs, sec, A)
+    graph_Type = "sin"
+    
+    if not os.path.isdir(dname_Audios) : os.makedirs(dname_Audios)
+
+#     fname_Out = "audio/output_%s.sin.fs-%d_f0-%d_phase-%s_sec-%d.wav" % \
+    
+#     fname_Out = "%s\\output_%s.sin.fs-%d_f0-%d_phase-%s_sec-%d.wav" % \
+    fname_Out = "%s\\output_%s.%s.fs-%d_f0-%d.(phase-%s)(pow-%.1f)(scalar-%.1f)(sec-%d).wav" % \
+                (dname_Audios
+                , libs.get_TimeLabel_Now()
+                , graph_Type
+                , fs, f0
+                , "%.1fpi" % (phase / np.pi)
+                , pow_Param
+                , scalar_Param
+#                 , "%1.2f" % (phase_Param / 4.0) + "pi"
+                , sec)
+
+    '''###################
+        save        
+    ###################'''
+    wablibs.save_Wave(fname_Out, wave_Params, binwave)
+#     save_Wave(fname_Out, wave_Params, binwave)
+    
+    print()
+    print("[%s:%d] save wave => done : %s" % \
+        (os.path.basename(libs.thisfile()), libs.linenum()
+        , fname_Out
+        ), file=sys.stderr)
+        
+#/ def test_1():
 
 def test_1():
     
@@ -190,7 +256,8 @@ def exec_prog():
     '''###################
         ops        
     ###################'''
-    test_1()
+    test_2()
+#     test_1()
     
     print("[%s:%d] exec_prog() => done" % \
             (os.path.basename(libs.thisfile()), libs.linenum()
