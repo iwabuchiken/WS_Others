@@ -40,6 +40,11 @@ sys.path.append('..')
 sys.path.append('C:\\WORKS_2\\WS\\WS_Others\\free\\VX7GLZ_science-research')
 sys.path.append('C:\\WORKS_2\\WS\\WS_Others\\free\\VX7GLZ_science-research\\27_math\\27_6_plot\\_1')
 
+
+#debug
+for item in sys.path :
+    print(item)
+
 from libs_VX7GLZ import libs_VX7GLZ
 from libs_27_6_1 import cons_27_6_1
 from libs_27_6_2 import cons_27_6_2
@@ -3067,7 +3072,9 @@ def test_1():
 
 
 def exec_prog(): # from : 
-    
+    #debug
+    return
+        
     '''###################
         ops        
     ###################'''

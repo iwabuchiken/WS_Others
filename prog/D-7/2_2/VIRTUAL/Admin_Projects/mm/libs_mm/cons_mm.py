@@ -80,6 +80,8 @@ class MM(Enum):
         
         "ADMIN",
         
+        "Z",    #=> used in : Music.mm : "1-1-1) accompany" ---> patterns
+        
     ]
         
 #/ class MM(Enum):

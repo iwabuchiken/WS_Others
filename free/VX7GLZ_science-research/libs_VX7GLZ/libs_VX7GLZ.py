@@ -36,7 +36,8 @@ import cmd
 sys.path.append('.')
 sys.path.append('..')
 # 
-sys.path.append('C:\\WORKS_2\\WS\\WS_Others\\prog\\D-7\\2_2\\VIRTUAL\\Admin_Projects')
+sys.path.append('C:\\WORKS_2\\WS\\WS_Others\\prog\\D-7\\2_2\\VIRTUAL\\Admin_Projects') # mm.libs_mm
+sys.path.append('C:\\WORKS_2\\WS\\WS_Others\\free\\VX7GLZ_science-research\\27_math\\27_6_plot\\_1') # libs_27_6_1
 
 from mm.libs_mm import cons_mm, cons_fx, libs, libfx
 
