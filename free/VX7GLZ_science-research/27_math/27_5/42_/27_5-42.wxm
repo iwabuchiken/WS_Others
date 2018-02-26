@@ -1,0 +1,47 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 14.09.0 ] */
+
+/* [wxMaxima: input   start ] */
+f : y^(-2);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+integrate(f, y);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+f : 1 / (-x + 1);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+f^2;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+diff(f,x);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+x_rng : [x, -10, 0];
+
+wxplot2d(f, x_rng);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+A : 5;
+
+f : 1 / (-x + A);
+
+x_rng : [x, A - 10, A - 1];
+
+print("f^2");
+f^2;
+
+print("diff(f)");
+diff(f, x);
+
+wxplot2d(f, x_rng);
+/* [wxMaxima: input   end   ] */
+
+/* Maxima can't load/batch files which end with a comment! */
+"Created with wxMaxima"$
