@@ -1,0 +1,116 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 14.09.0 ] */
+
+/* [wxMaxima: input   start ] */
+solve(x+1 = %e, x);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+float(%);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+solve(%e^x -1 = %e, x);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+float(%);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+solve(%e^x = 0, x);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+solve(%e^(a * %i + 1) = 0, a);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+log(%e - 1);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+float(%);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+log(2); float(%);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+log(%e^-1 + 1); float(%);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+solve(%e^x + 2 = %e, x); float(%);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+log(3); float(%);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+sqrt(5);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+float(%), numer;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+bfloat(sqrt(5));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+sqrt(10);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+if numer#false then numer:false else numer:true;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+x_rng : [x, 0, 10];
+
+wxplot2d(sqrt(x), x_rng);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+x_rng : [x, -10, 10];
+
+f1 : sqrt(1 + x^2);
+
+fs : [f1];
+
+wxplot2d(fs, x_rng, same_xy);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+diff(f1, x);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+x_rng : [x, -5, 5];
+
+f1 : abs
+(x * sqrt(1 + x^2));
+f2 : x^2;
+f3 : sqrt(1 - x^2);
+f4 : sqrt(1 + x^2);
+f4_1 : sqrt(1 + 2 * (x^2));
+
+fs : [f1, f2,f3,f4,f4_1];
+
+xt : [xtics, -10, 1, 10];
+
+ytic : 10;
+yt : [ytics, -5,1,5];
+
+opt_y : [gnuplot_preamble, "set yrange[-5:5]"];
+
+wxplot2d(fs, x_rng, grid2d, yt, opt_y);
+plot2d(fs, x_rng, grid2d, yt, opt_y);
+/* [wxMaxima: input   end   ] */
+
+/* Maxima can't load/batch files which end with a comment! */
+"Created with wxMaxima"$
