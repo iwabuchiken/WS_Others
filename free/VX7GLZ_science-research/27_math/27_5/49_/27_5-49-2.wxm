@@ -1,0 +1,77 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 14.09.0 ] */
+
+/* [wxMaxima: input   start ] */
+/* sec : 1 */
+
+f1 : - sin(2*x) + 3 * cos(2*x);
+f1_ : diff(f1, x);
+f1__ : diff(f1_, x);
+
+
+x_r : [x, -2,2];
+
+fs : [f1, f1_, f1__];
+
+xt : [xtics, -2, 0.5, 2];
+
+ytic : 10;
+
+yt : [ytics, -20, 5, 20];
+
+opt_y : [gnuplot_preamble, "set yrange[-20:20]"];
+
+wxplot2d(fs, x_r, grid2d, xt, yt, opt_y);
+plot2d(fs, x_r, grid2d, xt, yt, opt_y);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* sec : 1.1 */
+
+f1 : - sin(2*x) + 3 * cos(2*x);
+f1_ : diff(f1, x);
+f1__ : diff(f1_, x);
+
+
+x_r : [x, -2,2];
+
+fs : [f1, f1 + f1_, f1 + f1_ + f1__];
+
+xt : [xtics, -2, 0.5, 2];
+
+ytic : 10;
+
+yt : [ytics, -20, 5, 20];
+
+opt_y : [gnuplot_preamble, "set yrange[-20:20]"];
+
+wxplot2d(fs, x_r, grid2d, xt, yt, opt_y);
+plot2d(fs, x_r, grid2d, xt, yt, opt_y);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* sec : 1.2 */
+
+f1 : - sin(2*x) + 3 * cos(2*x);
+f1_ : diff(f1, x);
+f1__ : diff(f1_, x);
+
+
+x_r : [x, -2,2];
+
+fs : [f1, f1__ - 3 * f1_ + 2 * f1, sin(x)];
+
+xt : [xtics, -2, 0.5, 2];
+
+ytic : 10;
+
+yt : [ytics, -20, 5, 20];
+
+opt_y : [gnuplot_preamble, "set yrange[-20:20]"];
+
+wxplot2d(fs, x_r, grid2d, xt, yt, opt_y);
+plot2d(fs, x_r, grid2d, xt, yt, opt_y);
+/* [wxMaxima: input   end   ] */
+
+/* Maxima can't load/batch files which end with a comment! */
+"Created with wxMaxima"$
