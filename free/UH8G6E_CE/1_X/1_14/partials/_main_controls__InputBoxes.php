@@ -1,4 +1,4 @@
-<table>
+<table id="tbl_InputBoxes">
 
 	<tr>
 	
@@ -80,7 +80,10 @@
 	<tr>
 	
 		<td>
-			<span class="spn_Lbl_Main_Range">
+			<span class="spn_Lbl_Main_Range"
+				id="spn_Lbl_Main_Grid_Interval"
+			
+			>
 			
 				Grid interval
 			
@@ -94,6 +97,7 @@
 			type="text" 
 			id="ipt_Main_Grid_Interval"
 			class="ipt_Main_Range"
+			value="150"
 				>
 		
 		</td>
@@ -120,7 +124,9 @@
 	
 		<td>
 		
-			<span class="spn_Lbl_Main_Range">
+			<span class="spn_Lbl_Main_Range"
+				id="spn_Lbl_Main_Range__Radius"
+				>
 				Radius
 			</span>
 			
@@ -132,6 +138,7 @@
 			type="text" 
 			id="ipt_Main_Circle_Radius"
 			class="ipt_Main_Range"
+			value="30"
 				>
 		
 		</td>

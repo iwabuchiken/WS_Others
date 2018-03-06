@@ -1,4 +1,22 @@
 @CHARSET "UTF-8";
+
+a.a_Link {
+	
+	font-size	: 80px;
+	
+	margin		: 80px;
+
+	background-color	: Gold;
+
+	border-radius: 10px;
+	
+	padding		: 30px;
+	
+	font-family: Arial, Helvetica, sans-serif;
+	
+}/*a.a_Link {*
+
+
 #canvas_area {
         background:#999;
  }
@@ -76,13 +94,34 @@ canvas#canvas-container {
  	/*
  	width	: 50%;
  	*/
- 	height	: 30px;
+ 	height	: 70px;
+ 	
+ 	text-align	: center;
  	/*
  	size	: 30px;
  	*/
- 	font-size	: 25px;
+ 	font-size	: 50px;
+ 	
+ 	width	: 150px;
+ 	
+ 	margin		: 10px;
+ 	
+ 	margin-top	: 20px;
+ 	
  	
  }/*input.ipt_Main_Range {*/
+ 
+ input#ipt_Main_Circle_Radius {
+ 
+ 	background-color	: Gainsboro;
+ 
+ }
+ 
+ input#ipt_Main_Grid_Interval {
+ 
+ 	background-color	: SandyBrown;
+ 
+ }
  
  button#btn_Image_File_URL {
  
@@ -105,17 +144,7 @@ canvas#canvas-container {
 button#btn_Main_Clear_All_Rects {
  
  	background-color	: LightPink;
- 	/*
- 	width	: 40px;
- 	*/
- 	font-size	: 25px;
- 
- 	border-radius: 5px;
  	
- 	padding		:	5px;
- 	/*
- 	width	: 180px;
- 	*/
  }/* button#btn_Main_Clear_All_Rects {*/
  
  button#btn_Main_Clear_One_Rects {
@@ -124,11 +153,7 @@ button#btn_Main_Clear_All_Rects {
  	/*
  	width	: 40px;
  	*/
- 	font-size	: 25px;
- 
- 	border-radius: 5px;
  	
- 	padding		:	5px;
  	/*
  	width	: 180px;
  	*/
@@ -137,104 +162,52 @@ button#btn_Main_Clear_All_Rects {
 button#btn_Main_Toggle_Grid {
 
 	background-color	: DarkOrange;
-	/*
-	width	: 180px;
-	*/
-	font-size	: 25px;
-
-	border-radius: 5px;
-	
-	padding		:	5px;
-	
-	
 	
 }/*button#btn_Main_Toggle_Grid*/
  
 button#btn_Main_Toggle_Grid_Slanted {
 
 	background-color	: DarkOrange;
-	/*
-	width	: 180px;
-	*/
-	font-size	: 25px;
-
-	border-radius: 5px;
-	
-	padding		:	5px;
-	
-	
 	
 }/*button#btn_Main_Toggle_Grid*/
  
 button#btn_Main_Zoom_In {
 
 	background-color	: PaleGreen;
-	/*
-	width	: 180px;
-	*/
-	font-size	: 25px;
-
-	border-radius: 5px;
-	
-	padding		:	5px;
-	
-	
 	
 }/*button#btn_Main_Zoom_In*/
  
 button#btn_Main_Clear_Zoom_In {
 
 	background-color	: PaleVioletRed;
-	/*
-	width	: 180px;
-	*/
-	font-size	: 25px;
-
-	border-radius: 5px;
-	
-	padding		:	5px;
 	
 }/*button#btn_Main_Clear_Zoom_In*/
  
 button#btn_Main_Draw_Circle {
 
 	background-color	: Gray;
-	/*
-	background-color	: PaleVioletRed;
-	*/
-	/*
-	width	: 180px;
-	*/
-	font-size	: 25px;
-
-	border-radius: 5px;
-	
-	padding		:	5px;
 	
 }/*button#btn_Main_Draw_Circle*/
  
 button#btn_Main_Clear_Circle {
 
 	background-color	: Gray;
-	/*
-	background-color	: PaleVioletRed;
-	*/
-	/*
-	width	: 180px;
-	*/
-	font-size	: 25px;
-
-	border-radius: 5px;
-	
-	padding		:	5px;
 	
 }/*button#btn_Main_Clear_Circle*/
  
 button.btn_Main_Controls {
 
-	width	: 180px;
+	width	: 250px;
 	
-	height	: 70px;
+	height	: 100px;
+	
+	margin	: 20px;
+	
+	font-size	: 50px;
+	
+	padding	: 10px;
+	
+	border-radius	: 10px;
 	
 }
 /* ref https://stackoverflow.com/questions/1664785/resize-html5-canvas-to-fit-window 'answered Jun 20 '10 at 6:43' */
@@ -246,6 +219,47 @@ button.btn_Main_Controls {
 
 span.spn_Lbl_Main_Range {
 	
-	font-size	: 20px;
+/*	font-size	: 20px;*/
+	font-size	: 50px;
+	
+	padding		: 5px;
+	
+	margin		: 10px;
+	
+	text-align	: right;
+	
+	font-family: Arial, Helvetica, sans-serif;
 	
 }/*span.spn_Lbl_Main_Range {*/
+
+span#spn_Lbl_Main_Range__Radius {
+	
+	background-color	: LightSeaGreen;
+	
+	color				: white;
+
+	border-radius: 10px;
+	
+	padding-left		: 10px;
+	padding-right		: 10px;
+	
+}
+
+span#spn_Lbl_Main_Grid_Interval {
+	
+	background-color	: BurlyWood;
+	
+	color				: DarkSlateGray;
+
+	border-radius: 10px;
+	
+	padding-left		: 10px;
+	padding-right		: 10px;
+	
+}
+
+table#tbl_InputBoxes {
+	
+	
+	
+}/*table#tbl_InputBoxes {*/
