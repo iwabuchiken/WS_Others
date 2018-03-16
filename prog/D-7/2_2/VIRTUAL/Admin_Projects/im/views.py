@@ -312,6 +312,8 @@ def _im_actions__Ops_14(action): # /im/im_action
     ###################'''
     cnt_Store_Complete = 0
     
+    lo_Files_Remote_NotYetUploaded = []
+    
     for item in lo_ImageFiles__Local:
 #     for item in res:
     
@@ -328,61 +330,142 @@ def _im_actions__Ops_14(action): # /im/im_action
             (os.path.basename(libs.thisfile()), libs.linenum()
             , item
             ), file=sys.stderr)
+            
+            ### append
+            lo_Files_Remote_NotYetUploaded.append(item)
                 
-                
-            '''###################
-                store file        
-            ###################'''
-            fpath = "%s\\%s" % (dpath_Image_Files__Local, item)
-            
-            f = open(fpath, 'rb')
-            
-#             fpath_Remote = "%s/%s" % ()
-            
-            print("[%s:%d] starting storbinary... : %s" % \
-            (os.path.basename(libs.thisfile()), libs.linenum()
-            , item
-            ), file=sys.stderr)
-            
-            # ftp command
-            ftp_Command = "STOR %s" % (item)
-            
-            result = ftp.storbinary(ftp_Command, f)
-#             result = ftp.storbinary(item, f)
-#             ftp.storbinary("STOR /sample/test.csv",fp)
-
-            '''###################
-                valid : complete        
-            ###################'''
-            resMessage_Done = "226 Transfer complete"
-
-            msg = ""
-
-            if result == resMessage_Done : #if result == resMessage_Done
-                    
-                msg = "storbinary complete : returned : %s" % (result)
-                    
-                # count
-                cnt_Store_Complete += 1
-                
-            else : #if result == resMessage_Done
-            
-                msg = "!!!! storbinary NOT complete : returned : %s" % (result)
-            
-            #/if result == resMessage_Done
-                    
-#             print("[%s:%d] storbinary => done : %s" % \
-            print("[%s:%d] %s" % \
-                (os.path.basename(libs.thisfile()), libs.linenum()
-                , msg
-#                 , result
-                ), file=sys.stderr)
+#             '''###################
+#                 store file        
+#             ###################'''
+#             fpath = "%s\\%s" % (dpath_Image_Files__Local, item)
+#             
+#             f = open(fpath, 'rb')
+#             
+# #             fpath_Remote = "%s/%s" % ()
+#             
+#             print("[%s:%d] starting storbinary... : %s" % \
+#             (os.path.basename(libs.thisfile()), libs.linenum()
+#             , item
+#             ), file=sys.stderr)
+#             
+#             # ftp command
+#             ftp_Command = "STOR %s" % (item)
+#             
+#             result = ftp.storbinary(ftp_Command, f)
+# #             result = ftp.storbinary(item, f)
+# #             ftp.storbinary("STOR /sample/test.csv",fp)
+# 
+#             '''###################
+#                 valid : complete        
+#             ###################'''
+#             resMessage_Done = "226 Transfer complete"
+# 
+#             msg = ""
+# 
+#             if result == resMessage_Done : #if result == resMessage_Done
+#                     
+#                 msg = "storbinary complete : returned : %s" % (result)
+#                     
+#                 # count
+#                 cnt_Store_Complete += 1
+#                 
+#             else : #if result == resMessage_Done
+#             
+#                 msg = "!!!! storbinary NOT complete : returned : %s" % (result)
+#             
+#             #/if result == resMessage_Done
+#                     
+# #             print("[%s:%d] storbinary => done : %s" % \
+#             print("[%s:%d] %s" % \
+#                 (os.path.basename(libs.thisfile()), libs.linenum()
+#                 , msg
+# #                 , result
+#                 ), file=sys.stderr)
 
         #/if files.contains
             
             
         
     #/for item in res:
+    
+    '''###################
+        upload files : if not yet        
+    ###################'''
+    print("[%s:%d] -------------------------------------" % \
+        (os.path.basename(libs.thisfile()), libs.linenum()
+        
+        ), file=sys.stderr)
+    
+    print("[%s:%d] Starting file uploads..." % \
+        (os.path.basename(libs.thisfile()), libs.linenum()
+        
+        ), file=sys.stderr)
+    
+    print("total => %d files" % (len(lo_Files_Remote_NotYetUploaded)))
+    
+    print(libs.get_TimeLabel_Now(string_type = "formatted"))
+    
+    ## time : start
+    time_Start = time.time()
+    
+    for item in lo_Files_Remote_NotYetUploaded:
+
+        '''###################
+            store file        
+        ###################'''
+        fpath = "%s\\%s" % (dpath_Image_Files__Local, item)
+         
+        f = open(fpath, 'rb')
+         
+#             fpath_Remote = "%s/%s" % ()
+         
+        print("[%s:%d] starting storbinary... : %s" % \
+        (os.path.basename(libs.thisfile()), libs.linenum()
+        , item
+        ), file=sys.stderr)
+         
+        # ftp command
+        ftp_Command = "STOR %s" % (item)
+         
+        result = ftp.storbinary(ftp_Command, f)
+#             result = ftp.storbinary(item, f)
+#             ftp.storbinary("STOR /sample/test.csv",fp)
+# 
+        '''###################
+            valid : complete        
+        ###################'''
+        resMessage_Done = "226 Transfer complete"
+        
+        msg = ""
+        
+        if result == resMessage_Done : #if result == resMessage_Done
+                 
+            msg = "storbinary complete : returned : %s" % (result)
+                 
+            # count
+            cnt_Store_Complete += 1
+             
+        else : #if result == resMessage_Done
+         
+            msg = "!!!! storbinary NOT complete : returned : %s" % (result)
+         
+        #/if result == resMessage_Done
+#                     
+# #             print("[%s:%d] storbinary => done : %s" % \
+#             print("[%s:%d] %s" % \
+#                 (os.path.basename(libs.thisfile()), libs.linenum()
+#                 , msg
+# #                 , result
+#                 ), file=sys.stderr)
+
+        #/if files.contains
+        
+    #/for item in lo_Files_Remote_NotYetUploaded:
+
+    
+    time_Elapsed = time.time() - time_Start
+
+    lbl_Time_Elapsed = "time : %02.3f sec" % (time_Elapsed)
     
     '''###################
         report : storbinary        
@@ -400,7 +483,22 @@ def _im_actions__Ops_14(action): # /im/im_action
         
         ), file=sys.stderr)
     
-    return None
+    msg = "Done : total = %d / not yet = %d / uploaded = %d (%s)" \
+            % (len(lo_ImageFiles__Local)
+               , len(lo_Files_Remote_NotYetUploaded)
+               , cnt_Store_Complete
+               , lbl_Time_Elapsed)
+    
+    print("[%s:%d] result =>" % \
+            (os.path.basename(libs.thisfile()), libs.linenum()
+            
+            ), file=sys.stderr)
+    
+    print(msg)
+    
+    return msg
+
+#     return None
     
 #     None
     
