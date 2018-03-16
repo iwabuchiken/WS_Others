@@ -1,33 +1,50 @@
+# from django.http import HttpResponse
+# 
+# from django.shortcuts import render
+# 
+# # import datetime
+# from django import template
+
+import sys
+from pip._vendor.html5lib.treewalkers import pprint
+# import os, sys
+# from sympy.physics.units.dimensions import action
+
+'''###################
+    django modules
+###################'''
 from django.http import HttpResponse
-
 from django.shortcuts import render
-
-import datetime
 from django import template
 
-import os, sys
-from sympy.physics.units.dimensions import action
-
+'''###################
+    original modules
+###################'''
 sys.path.append('.')
 sys.path.append('..')
 sys.path.append('C:/WORKS_2/WS/WS_Others/free/fx/82_')
-
 sys.path.append('C:/WORKS_2/WS/WS_Others/free/VX7GLZ_science-research/31_Materials')
 
 from libs import libs
 from libs_31 import test_31
-
 from im.libs_im import cons_im
 
-import subprocess
+'''###################
+    built-in modules        
+###################'''
+import subprocess, copy, re, clipboard, time, os, datetime, ftplib, glob
 
-import copy
+# from ftplib import FTP
 
-import re
-
-import clipboard
-
-import time
+# import subprocess
+# 
+# import copy
+# 
+# import re
+# 
+# import clipboard
+# 
+# import time
 
 ######################################## FUNCS
 # def test_Request():
@@ -109,8 +126,15 @@ def index(request):
 #         
 #         ]
     
+    page_Title = "Image Manager"
     
-    dic = {'action' : action, "message" : message, "lo_Commands" : lo_Commands}
+    dic = {
+            'action' : action, 
+            "message" : message, 
+            "lo_Commands" : lo_Commands,
+            "page_Title" : page_Title,
+    }
+#     dic = {'action' : action, "message" : message, "lo_Commands" : lo_Commands}
     
 #     dic = {message : _message}
     
@@ -139,6 +163,248 @@ def today_is(request):
 #     return render('blog/datetime2.html', {'now': now })
 #     return render_to_response('blog/datetime2.html', {'now': now })
 #     return render_to_response('blog/datetime.html', {'now': now })
+
+def _im_actions__Ops_14(action): # /im/im_action
+    
+    print("[%s:%d] _im_actions__Ops_14()" % \
+        (os.path.basename(libs.thisfile()), libs.linenum()
+        
+        ), file=sys.stderr)
+    
+    '''###################
+        prep : get : local files list        
+    ###################'''
+    dpath_Image_Files__Local = "C:\\WORKS_2\\WS\\WS_Cake_IFM11\\iphone_to_upload\\"
+    
+    fpath_Glob = "%s\\*(*).(png|jpg)" % (dpath_Image_Files__Local)
+#     fpath_Glob = "%s\\*(*).png" % (dpath_Image_Files__Local)
+    
+    flist_Local = os.listdir(dpath_Image_Files__Local)
+    
+    print("[%s:%d] file list => %d" % \
+                    (os.path.basename(libs.thisfile()), libs.linenum()
+                    , len(flist_Local)
+                    ), file=sys.stderr)
+    
+    
+    
+    #debug
+#     return
+             
+    
+#     res = glob.glob(fpath_Glob)
+    #ref https://stackoverflow.com/questions/13031989/regular-expression-using-in-glob-glob-of-python answered Oct 23 '12 at 14:07
+#     res = [f for f in flist_Local if re.search(r'*\.(png|jpg)', f)]
+    lo_ImageFiles__Local = [f for f in flist_Local if re.search(r'.(png|jpg)', f)]
+#     res = [f for f in os.listdir(dpath_Image_Files__Local) if re.search(r'*\.(png|jpg)', f)]
+#     res = [f for f in os.listdir(path) if re.search(r'(abc|123|a1b).*\.txt$', f)]
+    
+    print("[%s:%d] lo_ImageFiles__Local => %d" % \
+#     print("[%s:%d] res => %s" % \
+            (os.path.basename(libs.thisfile()), libs.linenum()
+#             , lo_ImageFiles__Local
+            , len(lo_ImageFiles__Local)
+            ), file=sys.stderr)
+    
+    '''###################
+        validate : length        
+    ###################'''
+    if len(lo_ImageFiles__Local) < 1 : #if len(res) < 1
+
+        return "ERROR : local image files => no entries"
+    #/if len(res) < 1
+
+
+    
+#     if len(res) > 0 : #if len(res) > 0
+#     
+#         for item in res:
+# 
+#             print(item)
+#             
+#         #/for item in res:
+# 
+#         
+#     #/if len(res) > 0
+    
+    
+    
+#     #debug
+#     return
+    
+    '''###################
+         upload        
+    ###################'''
+    '''###################
+        login        
+    ###################'''
+    host = "ftp.benfranklin.chips.jp"
+    user = "chips.jp-benfranklin"
+#     passwd = "aaa"
+    passwd = "6wSKDR2TCc4Uy4t"
+    
+#     ftp = FTP(host)
+    ftp = ftplib.FTP(host)
+#     ftp = ftplib.FTP("xxx.xxx.xxx")
+
+    res = ftp.login(user, passwd)
+    
+    '''###################
+        get : list        
+    ###################'''
+    files = []
+    
+    dir_Target = "/cake_apps/images/ifm11"
+    
+    try:
+        
+        ftp.cwd(dir_Target)
+        
+        files = ftp.nlst()
+        
+        
+        print("[%s:%d] list => len is %d" % \
+        (os.path.basename(libs.thisfile()), libs.linenum()
+        , len(files)
+        ), file=sys.stderr)
+        
+#         pprint(files)
+        
+#         #debug
+#         for item in files:
+# 
+#             print("[%s:%d] file => '%s'" % \
+#                 (os.path.basename(libs.thisfile()), libs.linenum()
+#                 , item
+#                 ), file=sys.stderr)
+            
+        #/for item in files:
+
+        
+#     except ftplib.error_perm :
+#     except ftplib.error_perm, resp :
+#     except ftplib.error_perm :
+    except ftplib.error_perm as e :
+        
+        print("[%s:%d] exception" % \
+        (os.path.basename(libs.thisfile()), libs.linenum()
+        
+        ), file=sys.stderr)
+        
+        #ref https://docs.python.org/2/library/pprint.html
+        pprint(e)
+        
+        ftp.close()
+        
+        return "ERROR : ftp error (see logout)"
+        
+#         pass
+#         if str(resp) == "550 No files found":
+#             
+#             print "No files in this directory"
+#             
+#         else:
+#             raise
+#     
+    
+    '''###################
+        valid : remote already exists        
+    ###################'''
+    cnt_Store_Complete = 0
+    
+    for item in lo_ImageFiles__Local:
+#     for item in res:
+    
+        if item in files : #if files.contains
+            
+            print("[%s:%d] remote has : '%s'" % \
+                    (os.path.basename(libs.thisfile()), libs.linenum()
+                    , item
+                    ), file=sys.stderr)
+                
+        else :
+            
+            print("[%s:%d] remote has NOT : '%s'" % \
+            (os.path.basename(libs.thisfile()), libs.linenum()
+            , item
+            ), file=sys.stderr)
+                
+                
+            '''###################
+                store file        
+            ###################'''
+            fpath = "%s\\%s" % (dpath_Image_Files__Local, item)
+            
+            f = open(fpath, 'rb')
+            
+#             fpath_Remote = "%s/%s" % ()
+            
+            print("[%s:%d] starting storbinary... : %s" % \
+            (os.path.basename(libs.thisfile()), libs.linenum()
+            , item
+            ), file=sys.stderr)
+            
+            # ftp command
+            ftp_Command = "STOR %s" % (item)
+            
+            result = ftp.storbinary(ftp_Command, f)
+#             result = ftp.storbinary(item, f)
+#             ftp.storbinary("STOR /sample/test.csv",fp)
+
+            '''###################
+                valid : complete        
+            ###################'''
+            resMessage_Done = "226 Transfer complete"
+
+            msg = ""
+
+            if result == resMessage_Done : #if result == resMessage_Done
+                    
+                msg = "storbinary complete : returned : %s" % (result)
+                    
+                # count
+                cnt_Store_Complete += 1
+                
+            else : #if result == resMessage_Done
+            
+                msg = "!!!! storbinary NOT complete : returned : %s" % (result)
+            
+            #/if result == resMessage_Done
+                    
+#             print("[%s:%d] storbinary => done : %s" % \
+            print("[%s:%d] %s" % \
+                (os.path.basename(libs.thisfile()), libs.linenum()
+                , msg
+#                 , result
+                ), file=sys.stderr)
+
+        #/if files.contains
+            
+            
+        
+    #/for item in res:
+    
+    '''###################
+        report : storbinary        
+    ###################'''
+    print("[%s:%d] total = %d / store done = %d" % \
+            (os.path.basename(libs.thisfile()), libs.linenum()
+            , len(lo_ImageFiles__Local), cnt_Store_Complete
+            ), file=sys.stderr)
+    
+    
+    ftp.close()
+    
+    print("[%s:%d] ftp => closed" % \
+        (os.path.basename(libs.thisfile()), libs.linenum()
+        
+        ), file=sys.stderr)
+    
+    return None
+    
+#     None
+    
+#/def _im_actions__Ops_2_0(action)
 
 def _im_actions__Ops_13(action): # /im/im_action
     
@@ -314,7 +580,8 @@ def _im_actions__Ops_11_0(action, request): # /im/im_action
         validate        
     ###################'''
     ### match
-    pat = "\d\d\d\d-\d\d-\d\d_\d\d-\d\d-\d\d_\d\d\d.jpg"
+    #pat = "\d\d\d\d-\d\d-\d\d_\d\d-\d\d-\d\d_\d\d\d.jpg"
+    pat = "\d\d\d\d-\d\d-\d\d_\d\d-\d\d-\d\d_\d\d\d.(jpg|png)"
     
     comp = re.compile(pat)
     
@@ -1022,7 +1289,7 @@ def _im_actions__Ops_1_2(action): # /im/im_action
 
 def _im_actions__Ops_1(action): # /im/im_action
 
-    print("[%s:%d] _im_actions__Ops_2_0()" % \
+    print("[%s:%d] _im_actions__Ops_1()" % \
         (os.path.basename(libs.thisfile()), libs.linenum()
         
         ), file=sys.stderr)
@@ -1298,7 +1565,17 @@ def _im_actions__Ops(action, request): # /im/im_action
         
         ## execute
         _im_actions__Ops_13(do_Commands[action])
+    
+    elif action == cons_im.ImOp.OP_14.value : #if action == "4"
+    
+        print("[%s:%d] executing => %s" % \
+                     (os.path.basename(libs.thisfile()), libs.linenum()
+                     , action
+                     ), file=sys.stderr)
         
+        ## execute
+        alert = _im_actions__Ops_14(do_Commands[action])
+    
     else : #if action == "2-0"
 
         print("[%s:%d] Unknown action => %s" % \

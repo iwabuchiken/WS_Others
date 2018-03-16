@@ -25,6 +25,8 @@ class ImOp(Enum):
     
     OP_12 = "12"      # 9) edit_memos.13.validate-admin-value.bat - ショートカット
     OP_13 = "13"      # 9) edit_memos.13.validate-admin-value.bat - ショートカット
+    
+    OP_14 = "14"      # 9) edit_memos.13.validate-admin-value.bat - ショートカット
 
     lo_Commands = [
         
@@ -56,6 +58,8 @@ class ImOp(Enum):
         [OP_12, "edit_memos.5.copy-image-files.bat"],    # 
         
         [OP_13, "13) image_move-uploaded-files.bat"],    # C:\WORKS_2\WS\WS_Cake_IFM11\commands
+    
+        [OP_14, "14) upload image files"],    # C:\WORKS_2\WS\WS_Cake_IFM11\commands
     
     ]
     

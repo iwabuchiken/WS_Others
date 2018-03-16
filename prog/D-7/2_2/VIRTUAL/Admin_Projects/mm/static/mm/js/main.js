@@ -273,6 +273,32 @@ function im_Action(_param) {
 				
 				.fadeIn(200);
 			
+		} else if (data.includes("ERROR")) {	// detected
+//		} else if (data.includes("no entries")) {	// detected
+				
+				//debug
+				console.log("local image files => no entries");
+				
+				var tag = $('div#index_Area__Result');
+				
+				$('div#index_Area__Result')
+				.css("background", cname_Red);
+				
+				$('div#index_Area__Result').html(data);
+				
+				//ref fadein/out https://stackoverflow.com/questions/275931/how-do-you-make-an-element-flash-in-jquery answered Feb 1 '12 at 14:19
+				tag
+				.fadeIn(200).fadeOut(200)
+				.fadeIn(200).fadeOut(200)
+				
+				.fadeIn(200).fadeOut(200)
+				.fadeIn(200).fadeOut(200)
+				
+				.fadeIn(200).fadeOut(200)
+				.fadeIn(200).fadeOut(200)
+				
+				.fadeIn(200);
+				
 		} else {
 			
 			var tag = $('div#index_Area__Result');
