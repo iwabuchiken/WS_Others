@@ -284,3 +284,45 @@ def is_Open(filepath):
         except:
             return True
     raise NameError
+
+'''###################
+    @return: 
+        -1    file NOT exist
+        1    message written
+###################'''
+def saveTo_File(fpath, str_Msg, flg_AddReturn = True):
+    
+    '''###################
+        valid : file exists        
+    ###################'''
+    res = os.path.isfile(fpath)
+    
+    if res == False : #if res == False
+
+        print("[%s:%d] file NOT exist : %s" % \
+                (os.path.basename(libs.thisfile()), libs.linenum()
+                , fpath
+                ), file=sys.stderr)
+        
+        return -1
+    
+    #/if res == False
+    
+    '''###################
+        write        
+    ###################'''
+    f = open(fpath, "a")
+    
+    f.write(str_Msg)
+    
+    # add return at the end
+    if flg_AddReturn == True : #if flg_AddReturn == True
+    
+        f.write("\n")
+        
+    #/if flg_AddReturn == True
+
+    # close
+    f.close()
+
+    return 1

@@ -81,4 +81,6 @@ class FPath(Enum):
     
     DPATH_CMD_LIB_WS_CAKE_IFM11 = "C:\\WORKS_2\\WS\\WS_Cake_IFM11\\commands"
     
+    FPATH_LOG_FILE = "C:\\WORKS_2\\WS\\WS_Cake_IFM11\\commands\\12-2) upload image files.log"
+    
     

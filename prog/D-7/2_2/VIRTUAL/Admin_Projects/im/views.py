@@ -273,7 +273,9 @@ def _im_actions__Ops_15(action): # /im/im_action
     
 #/def _im_actions__Ops_15(action)
 
-
+'''###################
+    upload image files        
+###################'''
 def _im_actions__Ops_14(action): # /im/im_action
     
     print("[%s:%d] _im_actions__Ops_14()" % \
@@ -289,6 +291,9 @@ def _im_actions__Ops_14(action): # /im/im_action
     fpath_Glob = "%s\\*(*).(png|jpg)" % (dpath_Image_Files__Local)
 #     fpath_Glob = "%s\\*(*).png" % (dpath_Image_Files__Local)
     
+        # write log
+    fpath_Log = cons_im.FPath.FPATH_LOG_FILE.value
+
     flist_Local = os.listdir(dpath_Image_Files__Local)
     
     print("[%s:%d] file list => %d" % \
@@ -350,7 +355,6 @@ def _im_actions__Ops_14(action): # /im/im_action
     ###################'''
     host = "ftp.benfranklin.chips.jp"
     user = "chips.jp-benfranklin"
-#     passwd = "aaa"
     passwd = "6wSKDR2TCc4Uy4t"
     
 #     ftp = FTP(host)
@@ -447,46 +451,6 @@ def _im_actions__Ops_14(action): # /im/im_action
             ### append
             lo_Files_Remote_NotYetUploaded.append(item)
                 
-#             '''###################
-#                 store file        
-#             ###################'''
-#             fpath = "%s\\%s" % (dpath_Image_Files__Local, item)
-#             
-#             f = open(fpath, 'rb')
-#             
-# #             fpath_Remote = "%s/%s" % ()
-#             
-#             print("[%s:%d] starting storbinary... : %s" % \
-#             (os.path.basename(libs.thisfile()), libs.linenum()
-#             , item
-#             ), file=sys.stderr)
-#             
-#             # ftp command
-#             ftp_Command = "STOR %s" % (item)
-#             
-#             result = ftp.storbinary(ftp_Command, f)
-# #             result = ftp.storbinary(item, f)
-# #             ftp.storbinary("STOR /sample/test.csv",fp)
-# 
-#             '''###################
-#                 valid : complete        
-#             ###################'''
-#             resMessage_Done = "226 Transfer complete"
-# 
-#             msg = ""
-# 
-#             if result == resMessage_Done : #if result == resMessage_Done
-#                     
-#                 msg = "storbinary complete : returned : %s" % (result)
-#                     
-#                 # count
-#                 cnt_Store_Complete += 1
-#                 
-#             else : #if result == resMessage_Done
-#             
-#                 msg = "!!!! storbinary NOT complete : returned : %s" % (result)
-#             
-#             #/if result == resMessage_Done
 #                     
 # #             print("[%s:%d] storbinary => done : %s" % \
 #             print("[%s:%d] %s" % \
@@ -509,20 +473,55 @@ def _im_actions__Ops_14(action): # /im/im_action
         
         ), file=sys.stderr)
     
-    print("[%s:%d] Starting file uploads..." % \
-        (os.path.basename(libs.thisfile()), libs.linenum()
-        
-        ), file=sys.stderr)
+    str_Msg = "\n[%s] ======================================== UPLOADS" % \
+        (libs.get_TimeLabel_Now(string_type = "formatted"))
     
-    print("total => %d files" % (len(lo_Files_Remote_NotYetUploaded)))
+    res_WriteLog = libs.saveTo_File(fpath_Log, str_Msg)
     
-    print(libs.get_TimeLabel_Now(string_type = "formatted"))
+    str_Msg = "[%s:%d] Starting file uploads..." % \
+        (os.path.basename(libs.thisfile()), libs.linenum())
+    
+    print("%s" % \
+        str_Msg, file=sys.stderr)
+#     print("[%s:%d] Starting file uploads..." % \
+#         (os.path.basename(libs.thisfile()), libs.linenum()
+#         
+#         ), file=sys.stderr)
+
+#     # write log
+#     fpath_Log = cons_im.FPath.FPATH_LOG_FILE.value
+    
+    res_WriteLog = libs.saveTo_File(fpath_Log, str_Msg)
+    
+    # report
+    # total files
+    str_Msg = "total => %d files" % (len(lo_Files_Remote_NotYetUploaded))
+    
+    print(str_Msg)
+#     print("total => %d files" % (len(lo_Files_Remote_NotYetUploaded)))
+    
+    res_WriteLog = libs.saveTo_File(fpath_Log, str_Msg)
+    
+    # time
+    str_Msg = libs.get_TimeLabel_Now(string_type = "formatted")
+    print(str_Msg)
+    
+    res_WriteLog = libs.saveTo_File(fpath_Log, str_Msg)
+    
+#     print(libs.get_TimeLabel_Now(string_type = "formatted"))
     
     ## time : start
     time_Start = time.time()
     
     for item in lo_Files_Remote_NotYetUploaded:
-
+        
+        '''###################
+            prep        
+        ###################'''
+        fpath = "%s\\%s" % (dpath_Image_Files__Local, item)
+        
+        fsize = os.path.getsize(fpath)
+        
         '''###################
             store file        
         ###################'''
@@ -531,11 +530,37 @@ def _im_actions__Ops_14(action): # /im/im_action
         f = open(fpath, 'rb')
          
 #             fpath_Remote = "%s/%s" % ()
-         
-        print("[%s:%d] starting storbinary... : %s" % \
-        (os.path.basename(libs.thisfile()), libs.linenum()
-        , item
-        ), file=sys.stderr)
+        
+        # report
+        str_Msg = "[%s:%d] starting storbinary... : %s" % \
+            (os.path.basename(libs.thisfile()), libs.linenum()
+            , item
+            )
+        print(str_Msg, file=sys.stderr)
+#         print("[%s:%d] starting storbinary... : %s" % \
+#         (os.path.basename(libs.thisfile()), libs.linenum()
+#         , item
+#         ), file=sys.stderr)
+
+        res_WriteLog = libs.saveTo_File(fpath_Log, str_Msg)
+        
+        # time
+        str_Msg = libs.get_TimeLabel_Now(string_type = "formatted")
+        print(str_Msg)
+#         print(libs.get_TimeLabel_Now(string_type = "formatted"))
+        
+        res_WriteLog = libs.saveTo_File(fpath_Log, str_Msg)
+        
+        # size
+        str_Msg = "size : %.2f (MB)" % (fsize / 1000000.0)
+#         str_Msg = "size : %.2f" % (fsize / 1000000.0)
+        print(str_Msg)
+#         print("size : %.2f" % (fsize / 1000000.0))
+        
+        res_WriteLog = libs.saveTo_File(fpath_Log, str_Msg)
+        
+        ## time : start
+        time_Start__Each = time.time()
          
         # ftp command
         ftp_Command = "STOR %s" % (item)
@@ -553,12 +578,17 @@ def _im_actions__Ops_14(action): # /im/im_action
         
         msg = ""
         
+        flag_Transfer_Compelete = False
+        
         if result == resMessage_Done : #if result == resMessage_Done
                  
             msg = "storbinary complete : returned : %s" % (result)
                  
             # count
             cnt_Store_Complete += 1
+            
+            # set flag
+            flag_Transfer_Compelete = True
              
         else : #if result == resMessage_Done
          
@@ -575,6 +605,45 @@ def _im_actions__Ops_14(action): # /im/im_action
 
         #/if files.contains
         
+        '''###################
+            show : data : upload
+        ###################'''
+        str_Msg = "[%s:%d] %s" % \
+                (os.path.basename(libs.thisfile()), libs.linenum()
+                , msg)
+        print(str_Msg, file=sys.stderr)
+#         print("[%s:%d] %s" % \
+#                 (os.path.basename(libs.thisfile()), libs.linenum()
+#                 , msg
+#                 ), file=sys.stderr)
+        
+        res_WriteLog = libs.saveTo_File(fpath_Log, str_Msg)
+        
+        str_Msg = libs.get_TimeLabel_Now(string_type = "formatted")
+        print(str_Msg)
+#         print(libs.get_TimeLabel_Now(string_type = "formatted"))
+        
+        res_WriteLog = libs.saveTo_File(fpath_Log, str_Msg)
+        
+        time_Elapsed__Each = time.time() - time_Start__Each
+
+        str_Time_Elapsed = "time : %02.3f sec" % (time_Elapsed__Each)
+        
+        str_Msg = str_Time_Elapsed
+        print(str_Msg)
+#         print(str_Time_Elapsed)
+        
+        res_WriteLog = libs.saveTo_File(fpath_Log, str_Msg)
+        
+        # rate
+        rate_Upload = fsize / time_Elapsed__Each / 1000000.0
+        
+        str_Msg = "rate : %.3f (MB/sec)" % (rate_Upload)
+        print(str_Msg)
+#         print("rate : %.3f (MB/sec)" % (rate_Upload))
+        
+        res_WriteLog = libs.saveTo_File(fpath_Log, str_Msg)
+        
     #/for item in lo_Files_Remote_NotYetUploaded:
 
     
@@ -585,11 +654,17 @@ def _im_actions__Ops_14(action): # /im/im_action
     '''###################
         report : storbinary        
     ###################'''
-    print("[%s:%d] total = %d / store done = %d" % \
+    str_Msg = "[%s:%d] total = %d / store done = %d" % \
             (os.path.basename(libs.thisfile()), libs.linenum()
             , len(lo_ImageFiles__Local), cnt_Store_Complete
-            ), file=sys.stderr)
+            )
+    print(str_Msg, file=sys.stderr)
+#     print("[%s:%d] total = %d / store done = %d" % \
+#             (os.path.basename(libs.thisfile()), libs.linenum()
+#             , len(lo_ImageFiles__Local), cnt_Store_Complete
+#             ), file=sys.stderr)
     
+    res_WriteLog = libs.saveTo_File(fpath_Log, str_Msg)
     
     ftp.close()
     
@@ -610,6 +685,14 @@ def _im_actions__Ops_14(action): # /im/im_action
             ), file=sys.stderr)
     
     print(msg)
+    
+    # log
+    str_Msg = "[%s:%d] result => %s" % \
+            (os.path.basename(libs.thisfile()), libs.linenum()
+            , msg
+            )
+    
+    res_WriteLog = libs.saveTo_File(fpath_Log, str_Msg)
     
     return msg
 
@@ -1905,3 +1988,6 @@ def im_actions(request): # /im/im_action
     
 #Q/def im_action(request):
     
+'''###################
+    C:\\WORKS_2\\WS\\WS_Cake_IFM11\\iphone_to_upload\\test.2018-03-16_19-55-39_000.jpg        
+###################'''
