@@ -14,19 +14,21 @@ class ImOp(Enum):
     OP_7 = "7"      # 7) edit_memos.12.delete-image-files.bat - ショートカット
     OP_8 = "8"      # 8) edit_memos.4.delete-photos.bat - ショートカット
     OP_9 = "9"      # 9) edit_memos.13.validate-admin-value.bat - ショートカット
-    OP_9_1 = "9-1"      # 9) edit_memos.13.validate-admin-value.bat - ショートカット
+    OP_9_1 = "9-1"      
     
-    OP_10 = "10"      # 9) edit_memos.13.validate-admin-value.bat - ショートカット
-    OP_10_1 = "10-1"      # 9) edit_memos.13.validate-admin-value.bat - ショートカット
+    OP_10 = "10"      
+    OP_10_1 = "10-1"      
     
-    OP_11 = "11"      # 9) edit_memos.13.validate-admin-value.bat - ショートカット
-    OP_11_0 = "11-0"      # 9) edit_memos.13.validate-admin-value.bat - ショートカット
-    OP_11_1 = "11-1"      # 9) edit_memos.13.validate-admin-value.bat - ショートカット
+    OP_11 = "11"      
+    OP_11_0 = "11-0"      
+    OP_11_1 = "11-1"      
     
-    OP_12 = "12"      # 9) edit_memos.13.validate-admin-value.bat - ショートカット
-    OP_13 = "13"      # 9) edit_memos.13.validate-admin-value.bat - ショートカット
+    OP_12 = "12"      
+    OP_13 = "13"      
     
-    OP_14 = "14"      # 9) edit_memos.13.validate-admin-value.bat - ショートカット
+    OP_14 = "14"      
+
+    OP_15 = "15"      
 
     lo_Commands = [
         
@@ -60,6 +62,8 @@ class ImOp(Enum):
         [OP_13, "13) image_move-uploaded-files.bat"],    # C:\WORKS_2\WS\WS_Cake_IFM11\commands
     
         [OP_14, "14) upload image files"],    # C:\WORKS_2\WS\WS_Cake_IFM11\commands
+    
+        [OP_15, "15) close-apps.bat"],    # C:\WORKS_2\WS\WS_Cake_IFM11\commands
     
     ]
     

@@ -164,6 +164,116 @@ def today_is(request):
 #     return render_to_response('blog/datetime2.html', {'now': now })
 #     return render_to_response('blog/datetime.html', {'now': now })
 
+def _im_actions__Ops_15(action): # /im/im_action
+    
+    print("[%s:%d] _im_actions__Ops_15()" % \
+        (os.path.basename(libs.thisfile()), libs.linenum()
+        
+        ), file=sys.stderr)
+    
+    '''###################
+        build : command string        
+    ###################'''
+    command = "%s\\%s" % (cons_im.FPath.DPATH_CMD_LIB_WS_CAKE_IFM11.value, action)
+
+#     print()
+#     print("[%s:%d] _im_actions__Ops_13()" % \
+#         (os.path.basename(libs.thisfile()), libs.linenum()
+#         
+#         ), file=sys.stderr)
+    
+    cmd_Full = [command]  #=> 
+#     cmd_Full = [command, arg1]  #=> 
+    
+    '''###################
+        subprocess        
+    ###################'''
+    #ref https://stackoverflow.com/questions/13525882/tasklist-output answered Nov 23 '12 at 9:36
+    res = subprocess.check_output(cmd_Full)
+#     res = subprocess.call(cmd_Full)
+
+    # convert to string
+    ao_Lines = res.splitlines()
+    
+#     print("[%s:%d] subprocess =>" % \
+#             (os.path.basename(libs.thisfile()), libs.linenum()
+#            
+#             ), file=sys.stderr)
+#     
+#     for item in ao_Lines : print(item.decode("shift-jis"))
+    
+    # counter
+    cnt_Success = 0
+    cnt_Error = 0
+    
+    for text in ao_Lines:
+    
+        if "成功:" in text.decode("shift-jis") : #if "成功:" in text
+#         if "成功:" in text : #if "成功:" in text
+    
+            print("[%s:%d] success =>" % \
+            (os.path.basename(libs.thisfile()), libs.linenum()
+            
+            ), file=sys.stderr)
+            
+            print(text.decode("shift-jis"))
+            
+            cnt_Success += 1
+            
+        elif "エラー:" in text.decode("shift-jis") : #if "成功:" in text
+    
+            print("[%s:%d] error =>" % \
+            (os.path.basename(libs.thisfile()), libs.linenum()
+            
+            ), file=sys.stderr)
+            
+            print(text.decode("shift-jis"))
+            
+            cnt_Error += 1
+            
+        #/if "成功:" in text
+    
+    #/for text in ao_Lines:
+    
+    # message
+    msg = "success = %d / error = %d" % (cnt_Success, cnt_Error)
+
+
+#     res_Str = res.decode("shift-jis")
+# #     res_Str = res.decode("utf-8")
+# 
+#     msg = None
+#     
+#     if "成功:" in res_Str : #if condition
+# 
+#         msg = "process => successfull"
+#         
+#         print("[%s:%d] %s" % \
+#             (os.path.basename(libs.thisfile()), libs.linenum()
+#             , msg
+#             ), file=sys.stderr)
+#         
+#         # set message
+#         
+#     #/if condition
+
+
+
+#     print("[%s:%d] result (subprocess) =>" % \
+#             (os.path.basename(libs.thisfile()), libs.linenum()
+#             
+#             ), file=sys.stderr)
+#     
+#     print(res)
+    
+    return msg
+#     return None
+    
+#     None
+    
+#/def _im_actions__Ops_15(action)
+
+
 def _im_actions__Ops_14(action): # /im/im_action
     
     print("[%s:%d] _im_actions__Ops_14()" % \
@@ -258,8 +368,10 @@ def _im_actions__Ops_14(action): # /im/im_action
     
     try:
         
+        #ref https://stackoverflow.com/questions/19545205/check-ftplib-response-code answered Oct 23 '13 at 15:08
         ftp.cwd(dir_Target)
         
+        #ref https://stackoverflow.com/questions/111954/using-pythons-ftplib-to-get-a-directory-listing-portably answered Sep 21 '08 at 20:15
         files = ftp.nlst()
         
         
@@ -316,7 +428,8 @@ def _im_actions__Ops_14(action): # /im/im_action
     
     for item in lo_ImageFiles__Local:
 #     for item in res:
-    
+        
+        #ref https://stackoverflow.com/questions/12934190/is-there-a-short-contains-function-for-lists answered Oct 17 '12 at 12:21
         if item in files : #if files.contains
             
             print("[%s:%d] remote has : '%s'" % \
@@ -427,6 +540,8 @@ def _im_actions__Ops_14(action): # /im/im_action
         # ftp command
         ftp_Command = "STOR %s" % (item)
          
+        #ref https://algorithm.joho.info/programming/python/ftp-file-upload-server/
+        #ref http://shu-kg.hatenablog.com/entry/how_to_upload_image_file-python/
         result = ftp.storbinary(ftp_Command, f)
 #             result = ftp.storbinary(item, f)
 #             ftp.storbinary("STOR /sample/test.csv",fp)
@@ -1673,6 +1788,16 @@ def _im_actions__Ops(action, request): # /im/im_action
         
         ## execute
         alert = _im_actions__Ops_14(do_Commands[action])
+    
+    elif action == cons_im.ImOp.OP_15.value : #if action == "4"
+    
+        print("[%s:%d] executing => %s" % \
+                     (os.path.basename(libs.thisfile()), libs.linenum()
+                     , action
+                     ), file=sys.stderr)
+        
+        ## execute
+        alert = _im_actions__Ops_15(do_Commands[action])
     
     else : #if action == "2-0"
 
