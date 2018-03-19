@@ -1,0 +1,139 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 14.09.0 ] */
+
+/* [wxMaxima: input   start ] */
+/* sec : 1 */
+/* ref define function http://maxima.sourceforge.net/docs/manual/maxima_36.html "To define a function" */
+
+p(x,y) := x + y;
+
+a : 1 / 2;
+b : 1;
+
+x : 2;
+y : 3;
+
+f1 : a * p(x,y);
+f2 : b * p(x,y);
+
+f3 : p(a * x + b * x, y);
+
+res : (f1 + f2) - f3;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* sec : 1.1 */
+
+p(x,y) := x + y;
+
+a : 1 / 2;
+b : 1 / 2;
+
+x : 2;
+y : 3;
+
+f1 : a * p(x,y);
+f2 : b * p(x,y);
+
+f3 : p(a * x + b * x, y);
+
+res : (f1 + f2) - f3;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* sec : 1.2 */
+
+p(x,y) := x + y;
+
+a : 1 / 3;
+b : 2 / 3;
+
+x : 2;
+y : 3;
+
+f1 : a * p(x,y);
+f2 : b * p(x,y);
+
+f3 : p(a * x + b * x, y);
+
+res : (f1 + f2) - f3;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* sec : 1.3 */
+
+p(x,y) := x + y;
+
+a : 1 / 4;
+b : 3 / 4;
+
+x : 2;
+y : 3;
+
+f1 : a * p(x,y);
+f2 : b * p(x,y);
+
+f3 : p(a * x + b * x, y);
+
+res : (f1 + f2) - f3;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* sec : 1.4 */
+
+p(x,y) := x * y;
+
+a : 1 / 4;
+b : 3 / 4;
+
+x : 2;
+y : 3;
+
+f1 : a * p(x,y);
+f2 : b * p(x,y);
+
+f3 : p(a * x + b * x, y);
+
+res : (f1 + f2) - f3;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* sec : 1.5 */
+
+p(x,y) := x - y;
+
+a : 1 / 4;
+b : 3 / 4;
+
+x : 2;
+y : 3;
+
+f1 : a * p(x,y);
+f2 : b * p(x,y);
+
+f3 : p(a * x + b * x, y);
+
+res : (f1 + f2) - f3;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* sec : 1.6 */
+
+p(x,y) := x + y;
+
+a : 1 / 3;
+b : 2 / 3;
+
+x : 10;
+y : 3;
+
+f1 : a * p(x,y);
+f2 : b * p(x,y);
+
+f3 : p(a * x + b * x, y);
+
+res : (f1 + f2) - f3;
+/* [wxMaxima: input   end   ] */
+
+/* Maxima can't load/batch files which end with a comment! */
+"Created with wxMaxima"$
