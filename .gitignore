@@ -28,6 +28,8 @@
 ### 2018/02/26 15:30:43
 *.wav
 
+### 2018/03/21 13:10:55
+*.mid
 
 ########################
 #
@@ -193,3 +195,9 @@ JVEMV6/45_visual-arts/images/1.1/*.jpeg
 ### 2018/02/18 23:47:14
 prog/D-7/2_2/VIRTUAL/Admin_Projects/others/VX7GLZ/28_physics/1_/_16/*.png
 prog/D-7/2_2/VIRTUAL/Admin_Projects/others/VX7GLZ/28_physics/1_/_16/images/*
+
+### 2018/03/21 13:11:06
+JVEMV6/46_art/3_/1_/pretty-midi/*
+JVEMV6/46_art/3_/1_/pretty-midi/
+JVEMV6/46_art/3_/1_/python-midi/
+JVEMV6/46_art/3_/1_/python-midi/*

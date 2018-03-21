@@ -16,19 +16,20 @@ class ImOp(Enum):
     OP_9 = "9"      # 9) edit_memos.13.validate-admin-value.bat - ショートカット
     OP_9_1 = "9-1"      
     
-    OP_10 = "10"      
-    OP_10_1 = "10-1"      
-    
-    OP_11 = "11"      
-    OP_11_0 = "11-0"      
-    OP_11_1 = "11-1"      
-    
-    OP_12 = "12"      
-    OP_13 = "13"      
-    
-    OP_14 = "14"      
+    OP_10 = "10"
+    OP_10_1 = "10-1"
 
-    OP_15 = "15"      
+    OP_11 = "11"
+    OP_11_0 = "11-0"
+    OP_11_1 = "11-1"
+
+    OP_12 = "12"
+    OP_13 = "13"
+
+    OP_14 = "14"
+
+    OP_15 = "15"
+    OP_16 = "16"
 
     lo_Commands = [
         
@@ -50,6 +51,10 @@ class ImOp(Enum):
 #         [OP_9, "9) edit_memos.13.validate-admin-value.bat - ショートカット"],
 
         [OP_9_1, "9-1) upload db file.txt"],
+        
+        [OP_16, "9-2) upload db file"],    # C:\WORKS_2\WS\WS_Cake_IFM11\commands
+    
+
         [OP_10, "edit_memos.14.add-data-to-remote.bat"],
         [OP_10_1, "10-1) edit_memos.14.add-data-to-remote.history.txt"],
                    
@@ -64,7 +69,7 @@ class ImOp(Enum):
         [OP_14, "14) upload image files"],    # C:\WORKS_2\WS\WS_Cake_IFM11\commands
     
         [OP_15, "15) close-apps.bat"],    # C:\WORKS_2\WS\WS_Cake_IFM11\commands
-    
+        
     ]
     
 #/class ImOp(Enum):
@@ -82,5 +87,18 @@ class FPath(Enum):
     DPATH_CMD_LIB_WS_CAKE_IFM11 = "C:\\WORKS_2\\WS\\WS_Cake_IFM11\\commands"
     
     FPATH_LOG_FILE = "C:\\WORKS_2\\WS\\WS_Cake_IFM11\\commands\\12-2) upload image files.log"
+    
+    #ref capitalize, upper case http://vim.wikia.com/wiki/Changing_case_with_regular_expressions
+    DPATH_DB_FILES__LOCAL = "C:\\WORKS_2\\WS\\Eclipse_Luna\\Cake_IFM11\\app\\Lib\\data"
+    
+    '''###################
+        paths : remote        
+    ###################'''
+    DIR_TARGET_REMOTE__UPLOAD_DB_FILE = "/cake_apps/Cake_IFM11/app/Lib/data"
+    
+    '''###################
+        names        
+    ###################'''
+    FNAME_DB = "ifm11_backup_20160110_080900.bk"
     
     
