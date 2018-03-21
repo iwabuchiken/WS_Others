@@ -29,7 +29,7 @@ from libs_VX7GLZ import wablibs
 '''###################
     import : specifics
 ###################'''
-import midi
+import midi, pretty_midi
 
 '''###################
     import : built-in modules        
@@ -112,6 +112,51 @@ def show_Message() :
 #     
 #     return binwave
 # #gen_WaveData(fs, sec, A)
+
+def test_5():
+    
+    print("[%s:%d] test_5()" % \
+        (os.path.basename(libs.thisfile()), libs.linenum()
+        
+        ), file=sys.stderr)
+
+    for i in range(128):
+    
+        name_Inst = pretty_midi.program_to_instrument_name(i)
+        
+        print("num = %d / %s" % (i, name_Inst))
+        
+    #/for i in range(127):
+
+    
+#/ def test_1():
+
+def test_4():
+    
+    print("[%s:%d] test_4()" % \
+        (os.path.basename(libs.thisfile()), libs.linenum()
+        
+        ), file=sys.stderr)
+        
+    # Create a PrettyMIDI object
+    cello_c_chord = pretty_midi.PrettyMIDI()
+    # Create an Instrument instance for a cello instrument
+    cello_program = pretty_midi.instrument_name_to_program('Cello')
+    cello = pretty_midi.Instrument(program=cello_program)
+    # Iterate over note names, which will be converted to note number later
+    for note_name in ['C5', 'E5', 'G5']:
+        # Retrieve the MIDI note number for this note name
+        note_number = pretty_midi.note_name_to_number(note_name)
+        # Create a Note instance for this note, starting at 0s and ending at .5s
+        note = pretty_midi.Note(velocity=100, pitch=note_number, start=0, end=.5)
+        # Add it to our cello instrument
+        cello.notes.append(note)
+    # Add the cello instrument to the PrettyMIDI object
+    cello_c_chord.instruments.append(cello)
+    # Write out the MIDI data
+    cello_c_chord.write('cello-C-chord.mid')
+    
+#/ def test_1():
 
 def test_3():
     
@@ -309,7 +354,9 @@ def exec_prog():
     '''###################
         ops        
     ###################'''
-    test_3()
+    test_5()
+#     test_4()
+#     test_3()
 #     test_2()
 #     test_1()
 #     test_1()
