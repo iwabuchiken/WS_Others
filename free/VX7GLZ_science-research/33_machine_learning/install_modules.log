@@ -1,0 +1,61 @@
+(env) C:\WORKS_2\WS\WS_Others\free\VX7GLZ_science-research\33_machine_learning>p
+ip install -U scikit-learn
+Requirement already up-to-date: scikit-learn in c:\works_2\ws\ws_others\prog\d-7
+\2_2\virtual\env\lib\site-packages
+You are using pip version 9.0.1, however version 9.0.2 is available.
+You should consider upgrading via the 'python -m pip install --upgrade pip' comm
+and.
+
+
+(env) C:\WORKS_2\WS\WS_Others\free\VX7GLZ_science-research\33_machine_learning>p
+ip install Theano
+Collecting Theano
+  Downloading Theano-1.0.1.tar.gz (2.8MB)
+    100% |################################| 2.8MB 247kB/s
+Requirement already satisfied: numpy>=1.9.1 in c:\works_2\ws\ws_others\prog\d-7\
+2_2\virtual\env\lib\site-packages (from Theano)
+Requirement already satisfied: scipy>=0.14 in c:\works_2\ws\ws_others\prog\d-7\2
+_2\virtual\env\lib\site-packages (from Theano)
+Requirement already satisfied: six>=1.9.0 in c:\works_2\ws\ws_others\prog\d-7\2_
+2\virtual\env\lib\site-packages (from Theano)
+Building wheels for collected packages: Theano
+  Running setup.py bdist_wheel for Theano ... done
+  Stored in directory: C:\Users\iwabuchiken\AppData\Local\pip\Cache\wheels\46\a2
+\7d\b4cac381d5151daa9f9e0b3e4e4b65edaea6355ae296c97cf2
+Successfully built Theano
+Installing collected packages: Theano
+Successfully installed Theano-1.0.1
+You are using pip version 9.0.1, however version 9.0.2 is available.
+You should consider upgrading via the 'python -m pip install --upgrade pip' comm
+and.
+
+
+#theano
+#ref https://stackoverflow.com/questions/42276984/hypot-has-not-been-declared
+
+(env) C:\WORKS_2\WS\WS_Others\free\VX7GLZ_science-research\33_machine_learning>p
+ip install Theano
+Requirement already satisfied: Theano in c:\works_2\ws\ws_others\prog\d-7\2_2\vi
+rtual\env\lib\site-packages
+Requirement already satisfied: numpy>=1.9.1 in c:\works_2\ws\ws_others\prog\d-7\
+2_2\virtual\env\lib\site-packages (from Theano)
+Requirement already satisfied: scipy>=0.14 in c:\works_2\ws\ws_others\prog\d-7\2
+_2\virtual\env\lib\site-packages (from Theano)
+Requirement already satisfied: six>=1.9.0 in c:\works_2\ws\ws_others\prog\d-7\2_
+2\virtual\env\lib\site-packages (from Theano)
+You are using pip version 9.0.1, however version 9.0.2 is available.
+You should consider upgrading via the 'python -m pip install --upgrade pip' comm
+and.
+
+# ERROR	2018/03/23 10:43:32
+AttributeError: module 'theano' has no attribute 'gof'
+>>> https://stackoverflow.com/questions/44103230/theano-attributeerror-module-theano-has-no-attribute-gof
+
+(env) C:\WORKS_2\WS\WS_Others\free\VX7GLZ_science-research\33_machine_learning>p
+ython
+Python 3.5.1 (v3.5.1:37a07cee5969, Dec  6 2015, 01:54:25) [MSC v.1900 64 bit (AM
+D64)] on win32
+Type "help", "copyright", "credits" or "license" for more information.
+>>> import theano
+WARNING (theano.tensor.blas): Using NumPy C-API based implementation for BLAS fu
+nctions.
