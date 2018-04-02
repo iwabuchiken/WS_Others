@@ -1,0 +1,162 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 14.09.0 ] */
+
+/* [wxMaxima: input   start ] */
+/* sec : 1.0 */
+
+f1 : x + 1;
+
+f1_i : integrate(f1, x, 0, 1);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* sec : 1.1 */
+
+f1 : (1/3) * x^3 + x^2 + x;
+
+f2 : x^3;
+
+x_r : [x, -5,5];
+
+fs : [f1, f2];
+
+xt : [xtics, -5, 1, 5];
+
+ytic : 10;
+
+yt : [ytics, -10, 5, 10];
+
+opt_y : [gnuplot_preamble, "set yrange[-10:10]"];
+
+wxplot2d(fs, x_r, grid2d, xt, yt, opt_y);
+plot2d(fs, x_r, grid2d, xt, yt, opt_y);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* sec : 1.2 */
+
+f1 : (1/3) * x^3 + x^2 + x;
+
+f1_2 : (1/3) * x^3 + x^2 * sqrt(2) + x;
+
+f2 : x^3;
+
+x_r : [x, -5,5];
+
+fs : [f1, f1_2, f2];
+
+xt : [xtics, -5, 1, 5];
+
+ytic : 10;
+
+yt : [ytics, -10, 5, 10];
+
+opt_y : [gnuplot_preamble, "set yrange[-10:10]"];
+
+wxplot2d(fs, x_r, grid2d, xt, yt, opt_y);
+plot2d(fs, x_r, grid2d, xt, yt, opt_y);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* sec : 1.3 */
+
+f1 : (1/3) * x^3 + x^2 + x;
+
+f1_2 : (1/3) * x^3 + x^2 * sqrt(2) + x;
+
+f1_3 : (1/3) * x^3 + x^2;
+
+f2 : x^3;
+
+x_r : [x, -5,5];
+
+fs : [f1, f1_2, f1_3, f2];
+
+xt : [xtics, -5, 1, 5];
+
+ytic : 10;
+
+yt : [ytics, -20, 5, 20];
+
+opt_y : [gnuplot_preamble, "set yrange[-20:20]"];
+
+wxplot2d(fs, x_r, grid2d, xt, yt, opt_y);
+plot2d(fs, x_r, grid2d, xt, yt, opt_y);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* sec : 2.0 */
+
+f0 : (1/2) * x^2;
+f1 : (1/2) * x^2 + x;
+
+x_r : [x, -5,5];
+
+fs : [f0, f1];
+
+xt : [xtics, -5, 1, 5];
+
+ytic : 10;
+
+yt : [ytics, -10, 1, 10];
+
+opt_y : [gnuplot_preamble, "set yrange[-10:10]"];
+
+wxplot2d(fs, x_r, grid2d, xt, yt, opt_y);
+plot2d(fs, x_r, grid2d, xt, yt, opt_y);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+1/2 + sqrt(2); float(%);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+sqrt(13 / 4); float(%);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+1.5 / 1.802;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+1.914 / 1.802;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* sec : 3.0 */
+
+f1 : sqrt(x^2 + 2 * x + 2);
+
+integrate(f1, x, 0, 1);
+float(%);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+float(%);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* sec : 3.1 */
+
+kill(a);
+
+f1 : sqrt(x^2 + 2 * x + 4);
+
+integrate(f1, x, 0, 1);
+float(%);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+1.914 / 1.810;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+1.5 / 1.810;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+1.802 / 1.810;
+/* [wxMaxima: input   end   ] */
+
+/* Maxima can't load/batch files which end with a comment! */
+"Created with wxMaxima"$
