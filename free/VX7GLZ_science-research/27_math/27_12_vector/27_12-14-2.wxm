@@ -1,0 +1,45 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 14.09.0 ] */
+
+/* [wxMaxima: input   start ] */
+/* sec : 1 */
+
+f1 : 2 * %pi * sqrt(r^2 - y^2);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+integrate(f1, y, -(%pi/2), (%pi/2));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+r : 1;
+
+f1 : 2 * %pi * sqrt(r^2 - y^2);
+integrate(f1, y, -(%pi/2), (%pi/2));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+r : 1;
+
+f1 : 2 * %pi * sqrt(r^2 - y^2);
+integrate(f1, y, -r, r);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+y_r : [y, -r, r];
+f1 : 2 * %pi * sqrt(r^2 - y^2);
+
+wxplot2d(f1, y_r);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* sec : 2 */
+
+a1 : %pi ^ 2; float(%);
+a2 : %pi * 4; float(%);
+
+a1 / a2 ; float(%);
+/* [wxMaxima: input   end   ] */
+
+/* Maxima can't load/batch files which end with a comment! */
+"Created with wxMaxima"$

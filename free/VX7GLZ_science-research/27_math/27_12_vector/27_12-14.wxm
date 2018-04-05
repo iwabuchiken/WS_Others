@@ -1,0 +1,53 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 14.09.0 ] */
+
+/* [wxMaxima: input   start ] */
+/* sec : 1 */
+
+r : 5;
+
+ri_rng : [ri, 0, r * (1/2)];
+
+f1 : (1/2) * r^2 * (%pi/2 - ri/r - (1/2) * sin(2 * (ri/r)));
+
+f1_ : diff(f1, ri);
+
+fs : [f1, f1_];
+
+xt : [xtics, 0, 1, 10];
+
+yt : [ytics, 5, 5, 30];
+
+opt_y : [gnuplot_preamble, "set yrange[5:30]"];
+
+wxplot2d(fs, ri_rng, grid2d, xt, yt, opt_y);
+plot2d(fs, ri_rng, grid2d, xt, yt, opt_y);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* sec : 2 */
+
+r : 5;
+
+f0 : 4 * %pi * r^2; float(%);
+
+a_r : [a, 0, 1];
+
+f1 : (1/2) * r^2 * (%pi/2 - a - (1/2) * sin(2 * a));
+
+f1_ : diff(f1, a);
+
+fs : [f1, f1_];
+
+xt : [xtics, 0, 1, 10];
+
+yt : [ytics, -30, 5, 30];
+
+opt_y : [gnuplot_preamble, "set yrange[-30:30]"];
+
+wxplot2d(fs, a_r, grid2d, xt, yt, opt_y);
+plot2d(fs, a_r, grid2d, xt, yt, opt_y);
+/* [wxMaxima: input   end   ] */
+
+/* Maxima can't load/batch files which end with a comment! */
+"Created with wxMaxima"$
