@@ -683,6 +683,8 @@ register(
 		(PF_BOOL, 'needCheckVisible', 'レイヤーの表示・非表示を参照する:', 1),
 		(PF_BOOL, 'mergeClipLayerMask', 'クリップ作成レイヤーのレイヤーマスクを参照する:', 1),
 		(PF_SPINNER, 'searchLayerGroupNumMax', '対象とする同階層下方のレイヤーグループ最大数（無視:0）', 1, (0, 100, 1)),
+		# , 0, (0, 100, 1)
+		# initial value, (min, max, tick)
 		(PF_SPINNER, 'searchLayerNumMax', '対象とするる同階層下方のレイヤー最大数（無視:0）', 0, (0, 100, 1))
 	],	# プロシジャの引数
 	[],	# 戻り値の定義
