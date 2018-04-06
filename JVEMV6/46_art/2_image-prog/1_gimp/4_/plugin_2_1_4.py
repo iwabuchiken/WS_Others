@@ -12,6 +12,46 @@
 
 from gimpfu import *
 ########################################################################
+class ImageObject :
+	
+	image = None
+	layer = None
+	
+	def __init__( self, image ):
+		self.image = image
+		
+		return
+		
+	def get_Image(self):
+		
+		return self.image
+	
+	def add_Layer(self, layer_Name):
+		
+		width   = self.image.width
+		height  = self.image.height
+		type    = RGB_IMAGE
+		opacity = 100
+		mode    = NORMAL_MODE
+
+		self.layer = gimp.Layer(image, name, width, height, type, opacity, mode)
+		
+  		self.layer.fill(1)
+  #
+		# 画像データの 0 番目の位置にレイヤーを挿入する
+		position = 0
+		self.image.add_layer(layer, position)
+		
+	def get_Layer(self):
+		
+		if self.layer == None :
+			
+			pdb.gimp_message("layer ==> None !!!")
+			
+			return False
+		
+		# return layer
+		return self.layer
 
 def create_image(width, height):
 	# 画像データを生成
@@ -48,7 +88,31 @@ def draw_rect(drawable, x1, y1, x2, y2):
   lines = [x1, y1, x2, y1, x2, y2, x1, y2, x1, y1]
   draw_pencil_lines(drawable, lines)
 
-def plugin_main(timg, tdrawable):
+def test_2(timg, tdrawable):
+	
+	image = create_image(640, 400)
+	
+	name_Layer = "L-1"
+	
+	# image instance
+	imageObj = ImageObject( image )
+
+	im = imageObj.get_Image()
+	
+# 	im.add_Layer(name_Layer)
+# 	
+# 	#debug
+# 	pdb.gimp_message("layer => added")
+# 	
+# 	layer = im.get_Layer()
+# 
+# 	draw_rect(layer, 190, 210, 490, 310)
+# # 	draw_rect(layer, 390, 210, 490, 310)
+	
+	display_image(im)
+# 	display_image(image)
+
+def test_1(timg, tdrawable):
 	
 	image = create_image(640, 400)
 	
@@ -60,6 +124,23 @@ def plugin_main(timg, tdrawable):
 	draw_rect(layer, 390, 210, 490, 310)
 	
 	display_image(image)
+
+
+def plugin_main(timg, tdrawable):
+	
+	test_2(timg, tdrawable)
+# 	test_1(timg, tdrawable)
+	
+# 	image = create_image(640, 400)
+# 	
+# 	name_Layer = "L-1"
+# 	
+# 	layer = add_layer(image, name_Layer)
+# # 	layer = add_layer(image, "背景")
+# 
+# 	draw_rect(layer, 390, 210, 490, 310)
+# 	
+# 	display_image(image)
 
 ########################################################################
 
