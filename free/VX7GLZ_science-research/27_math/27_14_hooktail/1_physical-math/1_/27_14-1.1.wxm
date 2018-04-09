@@ -1,0 +1,58 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 14.09.0 ] */
+
+/* [wxMaxima: input   start ] */
+load(functs);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* ref https://detail.chiebukuro.yahoo.co.jp/qa/question_detail/q1022795265 */
+combination(7,0);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* sec : 1 */
+
+n : 7;
+kill(n);
+
+f1 : x^(n - 2 * k) * (x^2 - 1)^k;
+
+f2 : combination(n, 2 * k);
+
+/* ref http://maxima.sourceforge.net/docs/manual/maxima_28.html */
+T(n, x) := sum(f2 * f1, k, n, n/2);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* sec : 1.1 */
+
+kill(n);
+
+n : 8; x : 1;
+
+f1 : x^(n - 2 * k) * (x^2 - 1)^k;
+
+f2 : combination(n, 2 * k);
+
+T(a) := sum(f2 * f1, k, 0, a / 2);
+
+T(n);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* sec : 1.2 */
+
+kill(all); 
+
+n : 8; x : 0.5;
+
+f1 : x^(n - 2 * k) * (x^2 - 1)^k;
+
+f2 : combination(n, 2 * k);
+
+sum(f2 * f1, k, 0, n / 2);
+/* [wxMaxima: input   end   ] */
+
+/* Maxima can't load/batch files which end with a comment! */
+"Created with wxMaxima"$
