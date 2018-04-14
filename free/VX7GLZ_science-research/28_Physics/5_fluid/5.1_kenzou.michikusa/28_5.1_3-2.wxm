@@ -1,0 +1,51 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 14.09.0 ] */
+
+/* [wxMaxima: input   start ] */
+/* sec : 1 */
+
+x_r : [x, -1, 1];
+y_r : [y, -1, 1];
+
+f1 : sqrt(x^2 + y^2);
+
+wxplot3d([f1, x_r, y_r]);
+plot3d([f1, x_r, y_r]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* sec : 1.1 */
+
+x_r : [x, -1, 1];
+
+y : 0; f0 : sqrt(x^2 + y^2);
+y : 1; f1 : sqrt(x^2 + y^2);
+y : 2; f2 : sqrt(x^2 + y^2);
+
+fs : [f0, f1, f2];
+
+wxplot2d(fs, x_r);
+plot2d(fs, x_r);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* sec : 1.2 */
+
+kill(all);
+
+x_r : [x, -1, 1];
+
+y : 0; f0 : sqrt(x^2 + y^2);
+y : 0.3; f1 : sqrt(x^2 + y^2);
+y : 0.6; f2 : sqrt(x^2 + y^2);
+y : 0.9; f3 : sqrt(x^2 + y^2);
+
+fs : [f0, f1, f2, f3];
+
+wxplot2d(fs, x_r);
+plot2d(fs, x_r);
+/* [wxMaxima: input   end   ] */
+
+
+/* Maxima can't load/batch files which end with a comment! */
+"Created with wxMaxima"$
