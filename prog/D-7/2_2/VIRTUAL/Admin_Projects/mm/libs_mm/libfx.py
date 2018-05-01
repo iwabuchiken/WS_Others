@@ -1925,6 +1925,105 @@ def get_Listof_BarDatas():
     
 #/def get_Listof_BarDatas():
     
+'''###################
+    refer : C:\WORKS_2\WS\WS_Others\free\fx\82_\82_6\82_6.py        
+            exec_prog__PatternMatch_RSI()
+    @return: 
+        None    => libfx.get_ChartData_CSV returned None
+        None    => libfx.conv_CSVRows_2_BarDatas returned None
+###################'''
+def get_Listof_BarDatas_2(dpath, fname, header_Length = 2, skip_Header = False):
+    
+    '''######################################
+        get data : raw csv rows
+    ######################################'''
+    #ref enum https://qiita.com/methane/items/8612bdefd8fa4238cc44
+    #ref https://docs.python.org/3.5/library/enum.html
+    fname_In = "%s/%s" % (dpath, fname)
+#     fname_In = cons_fx.FPath.dpath_In_CSV.value \
+#             + "/" \
+#             + cons_fx.FPath.fname_In_CSV.value
+
+#     header_Length   = 2
+#     
+#     skip_Header     = False
+    
+    '''###################
+        validate : file exists        
+    ###################'''
+    #ref https://stackoverflow.com/questions/82831/how-to-check-whether-a-file-exists answered Sep 17 '08 at 12:57
+    is_File = os.path.isfile(fname_In)
+    
+    if is_File == False : #if is_File == False
+                    
+        print()
+        print("[%s:%d] is_File => False" % \
+        (os.path.basename(libs.thisfile()), libs.linenum()
+        
+        ), file=sys.stderr)
+        
+        return None
+        
+    #/if is_File == False
+    
+#     #test
+#     path = Path(sys.executable)
+#     root_or_drive = path.root or path.drive
+#     
+#     print()
+#     print("[%s:%d] root_or_drive => %s" % \
+#                 (os.path.basename(libs.thisfile()), libs.linenum()
+#                 ,root_or_drive
+#                 ), file=sys.stderr)
+    
+            #     [libfx.py:1760] root_or_drive => \
+            # [C:\WORKS_2\WS\WS_Others\prog\D-7\2_2\VIRTUAL\Admin_Projects\mm\libs_mm\libfx.py
+            # :231] file => opened : C:\WORKS_2\WS\WS_Others\prog\D-7\2_2\VIRTUAL\Admin_Projec
+
+    '''######################################
+        get : list        
+    ######################################'''
+    '''###################
+        get : csv data        
+    ###################'''
+    lo_CSVs = libfx.get_ChartData_CSV(\
+                    fname_In, header_Length, skip_Header)
+    
+#     print()
+#     print("[%s:%d] len(lo_CSVs) => %d" % \
+#                 (os.path.basename(libs.thisfile()), libs.linenum()
+#                 , len(lo_CSVs)
+#                 ), file=sys.stderr)
+    
+    '''###################
+        csv : convert to BarData
+    ###################'''
+    lo_BarDatas = libfx.conv_CSVRows_2_BarDatas(lo_CSVs[header_Length:])
+    
+    print()
+    print("[%s:%d] len(lo_BarDatas) => %d" % \
+                (os.path.basename(libs.thisfile()), libs.linenum()
+                , len(lo_BarDatas)
+                ), file=sys.stderr)
+    
+        ### Validate
+    if lo_BarDatas == None : #if aryOf_BarDatas == None
+    
+        print ("[%s:%d] aryOf_BarDatas => None" % (os.path.basename(libs.thisfile()), libs.linenum()))
+        print()
+        
+        return None
+    
+    #/if lo_BarDatas == None
+
+    '''###################
+        return        
+    ###################'''
+#     return None
+    return lo_BarDatas
+    
+#/def get_Listof_BarDatas():
+    
     
     
     

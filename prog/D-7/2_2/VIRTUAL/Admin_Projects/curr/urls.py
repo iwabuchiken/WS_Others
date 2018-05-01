@@ -29,5 +29,7 @@ urlpatterns = [
     
     url(r'^exec_correlations/$', views.exec_correlations, name='exec_correlations'),
     
+    url(r'^basics/$', views.basics, name='basics'),
+    
     
 ]

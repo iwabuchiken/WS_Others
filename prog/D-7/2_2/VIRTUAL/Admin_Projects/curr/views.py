@@ -325,10 +325,88 @@ def updown_patterns(request):
 
         return render(request, 'curr/updown_patterns_full.html', dic)
 
+def basics(request):
+
+    dic = {}
+#     dic = {'action' : action, "message" : message}
+    
+    '''###################
+        params
+    ###################'''
+    aa
+    
+    '''###################
+        ops
+    ###################'''
+    dpath = cons_fx.FPath.dpath_In_CSV.value
+    
+    fname = cons_fx.FPath.fname_In_CSV.value
+    
+    header_Length   = 2
+     
+    skip_Header     = False
+
+    lo_BarDatas = libfx.get_Listof_BarDatas_2(
+                        dpath, fname, header_Length, skip_Header)
+    
+    # validate
+    if lo_BarDatas == None : #if lo_BarDatas == None
+    
+        print()
+        print("[%s:%d] lo_BarDatas => None" % \
+                (os.path.basename(libs.thisfile()), libs.linenum()
+                
+                ), file=sys.stderr)
+
+    
+    else : #if lo_BarDatas == None
+    
+        print()
+        print("[%s:%d] lo_BarDatas => %d" % \
+                (os.path.basename(libs.thisfile()), libs.linenum()
+                , len(lo_BarDatas)
+                ), file=sys.stderr)
+    
+    #/if lo_BarDatas == None
+    
+    
+    
+    '''###################
+        get : referer        
+    ###################'''
+    referer_MM = "http://127.0.0.1:8000/curr/"
+    
+    referer_Current = request.META.get('HTTP_REFERER')
+
+
+    '''###################
+        render        
+    ###################'''
+    if referer_Current == referer_MM : #if referer_Current == referer_MM
+    
+        print()
+        print("[%s:%d] referer_Current == referer_MM (current = %s / referer = %s" % \
+                (os.path.basename(libs.thisfile()), libs.linenum()
+                ,referer_Current, referer_MM
+                ), file=sys.stderr)
+    
+        return render(request, 'curr/basics.html', dic)
+#         return render(request, 'mm/numbering.html', dic)
+        
+    else : #if referer_Current == referer_MM
+
+        print()
+        print("[%s:%d] referer_Current <> referer_MM (current = %s / referer = %s" % \
+                (os.path.basename(libs.thisfile()), libs.linenum()
+                ,referer_Current, referer_MM
+                ), file=sys.stderr)
+
+        return render(request, 'curr/basics_full.html', dic)
+
 #     return render(request, 'curr/updown_patterns.html', dic)
 
     
-#/def updown_patterns(request):
+#/def basics(request):
     
     
 def index(request):
