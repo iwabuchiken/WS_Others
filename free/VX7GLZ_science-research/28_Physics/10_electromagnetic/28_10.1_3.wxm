@@ -1,0 +1,25 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 14.09.0 ] */
+
+/* [wxMaxima: input   start ] */
+th_r : [th, 0, %pi];
+
+f0 : sin(th);
+
+f1 : 1 / f0;
+f2 : 1 / sin(th) - 1 / tan(th);
+
+fs : [f0, f1, f2];
+
+xt : [xtics, 0, 1, %pi];
+
+yt : [ytics, -2, 1, 20];
+
+opt_y : [gnuplot_preamble, "set yrange[-2:20]"];
+
+wxplot2d(fs, th_r, grid2d, xt, yt, opt_y);
+plot2d(fs, th_r, grid2d, xt, yt, opt_y);
+/* [wxMaxima: input   end   ] */
+
+/* Maxima can't load/batch files which end with a comment! */
+"Created with wxMaxima"$

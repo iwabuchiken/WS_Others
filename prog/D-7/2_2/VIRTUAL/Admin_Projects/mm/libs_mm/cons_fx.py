@@ -57,6 +57,7 @@ class FPath(Enum):
 
     ### file : output
     
+    dpath_Data_Miscs = DPATH_ROOT_CURR + "/data/miscs"
     
 
 class Label_ColNames(Enum):

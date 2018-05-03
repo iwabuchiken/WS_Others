@@ -325,6 +325,92 @@ def updown_patterns(request):
 
         return render(request, 'curr/updown_patterns_full.html', dic)
 
+def basics_Ops(request, lo_BarDatas):
+    
+    '''###################
+        ops        
+    ###################'''
+    lo_Data = []
+    
+    cntOf_Item = 0
+    
+    sumOf_Diff_OC = 0
+    
+    for item in lo_BarDatas:
+
+        if item.diff_OC >= 0 : #if item.diff_OC >= 0
+
+            val = 1
+        
+        else : #if item.diff_OC >= 0
+        
+            val = -1
+        
+        #/if item.diff_OC >= 0
+        
+        # append data
+        sumOf_Diff_OC += item.diff_OC
+        
+        lo_Data.append([cntOf_Item, val, item.diff_OC, item.dateTime_Local, sumOf_Diff_OC])
+#         lo_Data.append(val)
+        
+        # count
+        cntOf_Item += 1
+        
+    #/for item in lo_BarDatas:
+    
+    print()
+    print("[%s:%d] lo_Data => " % \
+                (os.path.basename(libs.thisfile()), libs.linenum()
+                
+                ), file=sys.stderr)
+    
+    for item in lo_Data[:20]:
+            
+        print(item)
+        
+    #/for item in lo_Data[:20]:
+
+#     print(lo_Data[:20])
+    
+    '''###################
+        write data        
+    ###################'''
+    dpath = cons_fx.FPath.dpath_Data_Miscs.value
+    
+    fname = "lo_BarDatas.20180502_113828.txt"
+    
+    fpath = "%s/%s" % (dpath, fname)
+    
+    fout = open(fpath, "w")
+    
+    for item in lo_Data:
+    
+        str_Line = ""
+        
+        for elem in item:
+            
+            str_Line += "%s," % elem
+        
+        fout.write(str_Line)
+        
+        fout.write("\n")
+        
+    #/for elem in item:
+    
+    fout.close()
+        
+    #/for item in lo_Data:
+    
+    print()
+    print("[%s:%d] lo_Data => written" % \
+                (os.path.basename(libs.thisfile()), libs.linenum()
+                
+                ), file=sys.stderr)
+
+    
+#/ def basics_Ops(request, lo_BarDatas):
+    
 def basics(request):
 
     dic = {}
@@ -333,14 +419,15 @@ def basics(request):
     '''###################
         params
     ###################'''
-    aa
+    
     
     '''###################
         ops
     ###################'''
     dpath = cons_fx.FPath.dpath_In_CSV.value
     
-    fname = cons_fx.FPath.fname_In_CSV.value
+    fname = "49_20_file-io.USDJPY.Period-H1.Days-1200.Bars-28800.20180428_073251.csv"
+#     fname = cons_fx.FPath.fname_In_CSV.value
     
     header_Length   = 2
      
@@ -348,6 +435,9 @@ def basics(request):
 
     lo_BarDatas = libfx.get_Listof_BarDatas_2(
                         dpath, fname, header_Length, skip_Header)
+    
+#     #test
+#     lo_BarDatas = None
     
     # validate
     if lo_BarDatas == None : #if lo_BarDatas == None
@@ -359,6 +449,12 @@ def basics(request):
                 ), file=sys.stderr)
 
     
+        msg = "lo_BarDatas => None"
+        dic = {"msg" : msg}
+    
+        return render(request, 'curr/error.html', dic)
+#         return render(request, 'curr/error.html', msg)
+
     else : #if lo_BarDatas == None
     
         print()
@@ -368,7 +464,7 @@ def basics(request):
                 ), file=sys.stderr)
     
     #/if lo_BarDatas == None
-    
+    result = basics_Ops(request, lo_BarDatas)
     
     
     '''###################
@@ -382,6 +478,8 @@ def basics(request):
     '''###################
         render        
     ###################'''
+    dic["msg"] = "rendering... (%s)" % libs.get_TimeLabel_Now()
+    
     if referer_Current == referer_MM : #if referer_Current == referer_MM
     
         print()
