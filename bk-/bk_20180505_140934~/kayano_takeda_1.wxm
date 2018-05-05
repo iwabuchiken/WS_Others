@@ -1,0 +1,90 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 14.09.0 ] */
+
+/* [wxMaxima: input   start ] */
+q_r : [q, 1, 5];
+
+f1 : q - sqrt(q^2 - 1);
+
+fs : [f1];
+
+wxplot2d(fs, q_r);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+limit(f1, q, inf);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+solve(f1 = 0.5, q);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+q : 3; f1 : q - sqrt(q^2 - 1); float(%);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+q : 200 / 60; f1 : q - sqrt(q^2 - 1); float(%);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+1 / %;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+q : 4; f1 : q - sqrt(q^2 - 1); float(1 / %);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+q : 5; f1 : q - sqrt(q^2 - 1); float(1 / %);
+q : 6; f1 : q - sqrt(q^2 - 1); float(1 / %);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+q : 2; f1 : q - sqrt(q^2 - 1); float(1 / %);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+kill(q);
+f1 : q - sqrt(q^2 - 1);
+f1_ : diff(f1, q);
+
+fs : [f1, f1_];
+
+xt : [xtics, 0, 1, 5];
+
+yt : [ytics, -3, 1, 1];
+
+opt_y : [gnuplot_preamble, "set yrange[-3:1]"];
+
+wxplot2d(fs, q_r, grid2d, xt, yt, opt_y);
+plot2d(fs, q_r, grid2d, xt, yt, opt_y);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+kill(q);
+
+q_r : [q, 1, 5];
+
+q1 : q;
+
+q2 : 1 / (q - sqrt(q^2 - 1));
+
+f1 : q2 / q1;
+
+
+/*fs : [f1];*/
+fs : [q2, q2 / q1];
+
+xt : [xtics, 0, 1, 5];
+
+yt : [ytics, 0, 1, 15];
+
+opt_y : [gnuplot_preamble, "set yrange[0:15]"];
+
+wxplot2d(fs, q_r, grid2d, xt, yt, opt_y);
+plot2d(fs, q_r, grid2d, xt, yt, opt_y);
+/* [wxMaxima: input   end   ] */
+
+/* Maxima can't load/batch files which end with a comment! */
+"Created with wxMaxima"$
