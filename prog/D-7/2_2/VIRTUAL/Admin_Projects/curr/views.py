@@ -57,6 +57,31 @@ import xml.etree.ElementTree as ET
 '''######################################
     funcs        
 ######################################'''
+def write_Log(str_Line):
+
+    dpath = cons_fx.FPath.dpath_Data_Miscs.value
+        
+    fname = "detect_peaks.log"
+    
+    fpath = "%s/%s" % (dpath, fname)
+    
+    fout = open(fpath, "a")
+    
+    fout.write("\n")
+    #                     fout.write("sumOf_Diff < (sum_Max / 2)" % (libs.get_TimeLabel_Now()))
+    
+#     msg = "[%s:%d] (%02d) %s : sumOf_Diff < (sum_Max / 2) : sumOf_Diff = %03f sum_Max = %03f" % \
+#             (os.path.basename(libs.thisfile()), libs.linenum()
+#             , idx, item.dateTime_Local, sumOf_Diff, sum_Max
+#             )
+    fout.write(str_Line)
+    
+    fout.write("\n")
+    
+    fout.close()
+
+#/ def write_Log(str_Line):
+
 
 def exec_correlations(request):
     
@@ -410,6 +435,317 @@ def basics_Ops(request, lo_BarDatas):
 
     
 #/ def basics_Ops(request, lo_BarDatas):
+
+def basics_Ops_1__DetectPieaks(request, lo_BarDatas):
+    
+    '''###################
+        vars        
+    ###################'''
+    idx         = 0
+    idx_Start   = 0
+    sumOf_Diff  = 0.0
+    sum_Max     = 0.0
+    f_New       = True
+    
+    lo_Max      = []
+    
+    idxOf_SumMax = -1
+    
+    '''###################
+        file : finish        
+    ###################'''
+    dpath = cons_fx.FPath.dpath_Data_Miscs.value
+        
+    fname = "detect_peaks.log"
+    
+    fpath = "%s/%s" % (dpath, fname)
+    
+    fout = open(fpath, "a")
+    
+    fout.write("\n")
+    fout.write("[%s]======================" % (libs.get_TimeLabel_Now()))
+    fout.write("\n")
+    
+    fout.close()
+
+    '''###################
+        flows        
+    ###################'''
+    lo_BarDatas_Tmp = copy.deepcopy(lo_BarDatas)
+    
+    lo_BarDatas_Tmp.reverse()
+    
+    for item in lo_BarDatas_Tmp :
+#     for item in lo_BarDatas:
+    
+        #debug
+        if idx > 50 : break
+    
+        # reset idx_Start
+        if f_New == True : idx_Start = idx
+        
+        '''###################
+            j : 1
+        ###################'''
+        diff_OC = item.diff_OC
+        
+        if diff_OC < 0 : #if item.diff_OC < 0
+            #report
+#             msg = "[%s:%d] (%02d) %s : diff_OC < 0 : %03f" % \
+            msg = "[%s:%d] (%02d) %s : diff_OC < 0 : %03f (f_New = %s)" % \
+                            (os.path.basename(libs.thisfile()), libs.linenum()
+                            , idx, item.dateTime_Local, diff_OC, f_New
+                            )
+                            
+            write_Log(msg)
+    
+            '''###################
+                j : 4
+            ###################'''
+            if f_New == True : #if f_New == True
+                
+                # next index in the loop f1
+                #count
+                idx += 1
+                
+                # next index
+                continue
+            
+            else : #if f_New == True
+            
+                # sum of dill
+                sumOf_Diff += diff_OC
+#                 sumOf_Diff -= diff_OC
+            
+                '''###################
+                    j : 5
+                ###################'''
+                if sumOf_Diff < (sum_Max / 2) : #if sumOf_Diff < (sum_Max / 2)
+
+                    '''###################
+                        file : finish        
+                    ###################'''
+                    dpath = cons_fx.FPath.dpath_Data_Miscs.value
+                        
+                    fname = "detect_peaks.log"
+                    
+                    fpath = "%s/%s" % (dpath, fname)
+                    
+                    fout = open(fpath, "a")
+                    
+                    fout.write("\n")
+#                     fout.write("sumOf_Diff < (sum_Max / 2)" % (libs.get_TimeLabel_Now()))
+                    
+                    msg = "[%s:%d] (%02d) %s : sumOf_Diff < (sum_Max / 2) : sumOf_Diff = %03f sum_Max = %03f" % \
+                            (os.path.basename(libs.thisfile()), libs.linenum()
+                            , idx, item.dateTime_Local, sumOf_Diff, sum_Max
+                            )
+                    fout.write(msg)
+
+                    fout.write("\n")
+                    
+                    fout.close()
+
+                    '''###################
+                        ops : sumOf_Diff ---> went under
+                    ###################'''
+                    # reset flag
+                    f_New = True
+                    
+                    # report
+                    msg = "[%s:%d] (%02d) %s : f_New => back to %s" % \
+                            (os.path.basename(libs.thisfile()), libs.linenum()
+                            , idx, item.dateTime_Local, f_New
+                            )
+
+                    write_Log(msg)
+                    
+                    # register : sum_Max, idx
+                    lo_Max.append((round(sum_Max, 3), round(idxOf_SumMax, 3)))
+#                     lo_Max.append((sum_Max, idxOf_SumMax))
+                    
+                    # reset : sum_Max
+                    sum_Max = 0.0
+                    
+                    # reset : sumOf_Diff
+                    sumOf_Diff = 0.0
+                    
+                    # next index in the loop f1
+                    #count
+                    idx += 1
+                    
+                    # next index
+                    continue
+                
+                else : #if sumOf_Diff < (sum_Max / 2)
+                
+                    # next index in the loop f1
+                    #count
+                    idx += 1
+                    
+                    # next index
+                    continue
+#                     pass
+                
+                #/if sumOf_Diff < (sum_Max / 2) ### j : 5
+                
+                
+            
+            #/if f_New == True ### j : 3
+    
+    
+        
+        else : #if item.diff_OC < 0 ### j : 1
+        
+                    #report
+#             msg = "[%s:%d] (%02d) %s : diff_OC >= 0 : %03f" % \
+            msg = "[%s:%d] (%02d) %s : diff_OC >= 0 : %03f (f_New = %s)" % \
+                            (os.path.basename(libs.thisfile()), libs.linenum()
+                            , idx, item.dateTime_Local, diff_OC, f_New
+                            )
+                            
+            write_Log(msg)
+
+            # f_New ---> on
+            if f_New == True : 
+                
+                # set flag
+                f_New = False
+                
+                # report
+                dpath = cons_fx.FPath.dpath_Data_Miscs.value
+                
+                fname = "detect_peaks.log"
+                
+                fpath = "%s/%s" % (dpath, fname)
+                
+                fout = open(fpath, "a")
+                
+                msg = "[%s:%d] (%02d) %s : f_New ==> turned to False" % \
+                        (os.path.basename(libs.thisfile()), libs.linenum()
+                        , idx, item.dateTime_Local
+                        )
+                fout.write(msg)
+                
+                fout.write("\n")
+            
+            # sum of diff
+            sumOf_Diff += diff_OC
+            
+            '''###################
+                j : 2        
+            ###################'''
+            if sumOf_Diff > sum_Max : #if sumOf_Diff> sum_Max
+                
+                # update sum_Max
+                sum_Max = sumOf_Diff
+                
+                # update index
+                idxOf_SumMax = idx
+            
+                # next index in the loop f1
+                #count
+                idx += 1
+                
+                # next index
+                continue
+
+            else : #if sumOf_Diff> sum_Max
+            
+                # next index in the loop f1
+                #count
+                idx += 1
+                
+                # next index
+                continue
+#                 pass
+            
+            #/if sumOf_Diff> sum_Max
+            
+            
+        
+        #/if item.diff_OC < 0 ### j : 1
+        
+#         '''###################
+#             report        
+#         ###################'''
+#         dpath = cons_fx.FPath.dpath_Data_Miscs.value
+#         
+#         fname = "detect_peaks.log"
+#         
+#         fpath = "%s/%s" % (dpath, fname)
+#         
+#         fout = open(fpath, "a")
+#         
+#         msg = "[%s:%d] (%02d) %s / diff_OC = %03f / sumOf_Diff = %03f / sum_Max = %03f" % \
+#                 (os.path.basename(libs.thisfile()), libs.linenum()
+#                 , idx, item.dateTime_Local, diff_OC, sumOf_Diff, sum_Max
+#                 )
+#         fout.write(msg)
+#         
+#         fout.write("\n")
+#             
+#         #/for elem in item:
+#         
+#         fout.close()
+
+#         print()
+#         print("[%s:%d] (%02d) %s / sumOf_Diff = %03f / sum_Max = %03f" % \
+#                 (os.path.basename(libs.thisfile()), libs.linenum()
+#                 , idx, item.dateTime_Local, sumOf_Diff, sum_Max
+#                 ), file=sys.stderr)
+        
+        '''###################
+            j : 3
+            next item
+        ###################'''
+        # counter
+        idx += 1
+        
+        # next index in the loop f1
+        continue
+        
+    #/for item in lo_BarDatas:
+
+    '''###################
+        report : sum_Max
+    ###################'''
+    print()
+    print("[%s:%d] lo_Max ==>" % \
+                    (os.path.basename(libs.thisfile()), libs.linenum()
+                    
+                    ), file=sys.stderr)
+    
+    print(lo_Max)
+#     msg = "[%s:%d] lo_Max ==>" % \
+#                         (os.path.basename(libs.thisfile()), libs.linenum()
+#                         
+#                         )
+#                         
+#     write_Log(msg)
+#     write_Log(lo_Max)
+    
+    '''###################
+        file : finish        
+    ###################'''
+    msg = "\n\n"
+    
+    write_Log(msg)
+    
+#     dpath = cons_fx.FPath.dpath_Data_Miscs.value
+#         
+#     fname = "detect_peaks.log"
+#     
+#     fpath = "%s/%s" % (dpath, fname)
+#     
+#     fout = open(fpath, "a")
+#     
+#     fout.write("\n\n")
+#     
+#     fout.close()
+
+    
+#/ def basics_Ops_1__DetectPieaks(request, lo_BarDatas):
     
 def basics(request):
 
@@ -464,7 +800,8 @@ def basics(request):
                 ), file=sys.stderr)
     
     #/if lo_BarDatas == None
-    result = basics_Ops(request, lo_BarDatas)
+    result = basics_Ops_1__DetectPieaks(request, lo_BarDatas)
+#     result = basics_Ops(request, lo_BarDatas)
     
     
     '''###################
