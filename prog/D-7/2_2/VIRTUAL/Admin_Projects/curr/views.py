@@ -478,8 +478,8 @@ def basics_Ops_1__DetectPieaks(request, lo_BarDatas):
     for item in lo_BarDatas_Tmp :
 #     for item in lo_BarDatas:
     
-        #debug
-        if idx > 50 : break
+#         #debug
+#         if idx > 50 : break
     
         # reset idx_Start
         if f_New == True : idx_Start = idx
@@ -490,14 +490,14 @@ def basics_Ops_1__DetectPieaks(request, lo_BarDatas):
         diff_OC = item.diff_OC
         
         if diff_OC < 0 : #if item.diff_OC < 0
-            #report
-#             msg = "[%s:%d] (%02d) %s : diff_OC < 0 : %03f" % \
-            msg = "[%s:%d] (%02d) %s : diff_OC < 0 : %03f (f_New = %s)" % \
-                            (os.path.basename(libs.thisfile()), libs.linenum()
-                            , idx, item.dateTime_Local, diff_OC, f_New
-                            )
-                            
-            write_Log(msg)
+#             #report
+# #             msg = "[%s:%d] (%02d) %s : diff_OC < 0 : %03f" % \
+#             msg = "[%s:%d] (%02d) %s : diff_OC < 0 : %03f (f_New = %s)" % \
+#                             (os.path.basename(libs.thisfile()), libs.linenum()
+#                             , idx, item.dateTime_Local, diff_OC, f_New
+#                             )
+#                              
+#             write_Log(msg)
     
             '''###################
                 j : 4
@@ -597,14 +597,14 @@ def basics_Ops_1__DetectPieaks(request, lo_BarDatas):
         
         else : #if item.diff_OC < 0 ### j : 1
         
-                    #report
-#             msg = "[%s:%d] (%02d) %s : diff_OC >= 0 : %03f" % \
-            msg = "[%s:%d] (%02d) %s : diff_OC >= 0 : %03f (f_New = %s)" % \
-                            (os.path.basename(libs.thisfile()), libs.linenum()
-                            , idx, item.dateTime_Local, diff_OC, f_New
-                            )
-                            
-            write_Log(msg)
+#             #report
+# #             msg = "[%s:%d] (%02d) %s : diff_OC >= 0 : %03f" % \
+#             msg = "[%s:%d] (%02d) %s : diff_OC >= 0 : %03f (f_New = %s)" % \
+#                             (os.path.basename(libs.thisfile()), libs.linenum()
+#                             , idx, item.dateTime_Local, diff_OC, f_New
+#                             )
+#                             
+#             write_Log(msg)
 
             # f_New ---> on
             if f_New == True : 
