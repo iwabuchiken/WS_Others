@@ -1,4 +1,10 @@
 '''###################
+            
+    C:\WORKS_2\WS\WS_Others\prog\D-7\2_2\VIRTUAL\Admin_Projects\curr\data\miscs
+    
+###################'''
+
+'''###################
     import : django        
 ###################'''
 from django.http import HttpResponse, HttpRequest
@@ -436,7 +442,8 @@ def basics_Ops(request, lo_BarDatas):
     
 #/ def basics_Ops(request, lo_BarDatas):
 
-def basics_Ops_1__DetectPieaks(request, lo_BarDatas):
+def basics_Ops_1__DetectPieaks(request, lo_BarDatas, dpath_Data, fname_Data):
+# def basics_Ops_1__DetectPieaks(request, lo_BarDatas):
     
     '''###################
         vars        
@@ -481,8 +488,8 @@ def basics_Ops_1__DetectPieaks(request, lo_BarDatas):
 #         #debug
 #         if idx > 50 : break
     
-        # reset idx_Start
-        if f_New == True : idx_Start = idx
+#         # reset idx_Start
+#         if f_New == True : idx_Start = idx
         
         '''###################
             j : 1
@@ -549,7 +556,7 @@ def basics_Ops_1__DetectPieaks(request, lo_BarDatas):
                     '''###################
                         ops : sumOf_Diff ---> went under
                     ###################'''
-                    # reset flag
+                    # reset flag    ### j : 5 / y : 1
                     f_New = True
                     
                     # report
@@ -560,10 +567,24 @@ def basics_Ops_1__DetectPieaks(request, lo_BarDatas):
 
                     write_Log(msg)
                     
-                    # register : sum_Max, idx
-                    lo_Max.append((round(sum_Max, 3), round(idxOf_SumMax, 3)))
+                    '''###################
+                        append data        
+                    ###################'''
+                    # register : sum_Max, idx    ### j : 5 / y : 2
+                    data = (round(sum_Max, 3)
+                            , int(idx_Start)
+                            , round(idxOf_SumMax, 3)
+                            , item.dateTime_Local
+                            
+                            )
+#                     data = (round(sum_Max, 3), round(idxOf_SumMax, 3))
+                    
+                    
+                    lo_Max.append(data)
+#                     lo_Max.append((round(sum_Max, 3), round(idxOf_SumMax, 3)))
 #                     lo_Max.append((sum_Max, idxOf_SumMax))
                     
+                    ### j : 5 / y : 3
                     # reset : sum_Max
                     sum_Max = 0.0
                     
@@ -611,6 +632,9 @@ def basics_Ops_1__DetectPieaks(request, lo_BarDatas):
                 
                 # set flag
                 f_New = False
+                
+                # set : idx_Start
+                idx_Start = idx
                 
                 # report
                 dpath = cons_fx.FPath.dpath_Data_Miscs.value
@@ -726,6 +750,56 @@ def basics_Ops_1__DetectPieaks(request, lo_BarDatas):
 #     write_Log(lo_Max)
     
     '''###################
+        write : lo_Max
+    ###################'''
+    # report
+    dpath = cons_fx.FPath.dpath_Data_Miscs.value
+    
+    fname = "detect_peaks.sum_Max.%s.log" % libs.get_TimeLabel_Now()
+    
+    fpath = "%s/%s" % (dpath, fname)
+    
+    fout = open(fpath, "w")
+#     fout = open(fpath, "a")
+    
+    # header : meta data
+    msg = "source = %s (%s)" % \
+            (fname_Data, dpath_Data)
+#             (fname_Data, dpath_Data)
+            
+    fout.write(msg)
+    
+    fout.write("\n")
+    
+    # header : columns
+    #     data = (round(sum_Max, 3)
+    #                 , int(idx_Start)
+    #                 , round(idxOf_SumMax, 3)
+    #                 , item.dateTime_Local
+    msg = "Max,idx_Start,idxOf_SumMax,dateTime_Local"
+            
+    fout.write(msg)
+    fout.write("\n")
+    
+    # write
+    for item in lo_Max:
+        
+            # data = (round(sum_Max, 3), round(idxOf_SumMax, 3))
+        msg = "%03f,%02d,%02d,%s" % \
+                (item[0], int(item[1]), int(item[2]), item[3])
+#                 (item[0], item[1])
+                
+        fout.write(msg)
+        fout.write("\n")
+        
+    #/for item in lo_Max:
+
+    
+    fout.write("\n")
+    
+    fout.close()
+
+    '''###################
         file : finish        
     ###################'''
     msg = "\n\n"
@@ -800,7 +874,8 @@ def basics(request):
                 ), file=sys.stderr)
     
     #/if lo_BarDatas == None
-    result = basics_Ops_1__DetectPieaks(request, lo_BarDatas)
+    result = basics_Ops_1__DetectPieaks(request, lo_BarDatas, dpath, fname)
+#     result = basics_Ops_1__DetectPieaks(request, lo_BarDatas)
 #     result = basics_Ops(request, lo_BarDatas)
     
     
