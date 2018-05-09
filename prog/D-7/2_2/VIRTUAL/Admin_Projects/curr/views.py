@@ -573,10 +573,17 @@ def basics_Ops_1__DetectPieaks(request, lo_BarDatas, dpath_Data, fname_Data):
                     # register : sum_Max, idx    ### j : 5 / y : 2
                     data = (round(sum_Max, 3)
                             , int(idx_Start)
-                            , round(idxOf_SumMax, 3)
+                            , int(idxOf_SumMax)
+                            , int(idx)
                             , item.dateTime_Local
                             
                             )
+#                     data = (round(sum_Max, 3)
+#                             , int(idx_Start)
+#                             , round(idxOf_SumMax, 3)
+#                             , item.dateTime_Local
+#                             
+#                             )
 #                     data = (round(sum_Max, 3), round(idxOf_SumMax, 3))
                     
                     
@@ -776,7 +783,9 @@ def basics_Ops_1__DetectPieaks(request, lo_BarDatas, dpath_Data, fname_Data):
     #                 , int(idx_Start)
     #                 , round(idxOf_SumMax, 3)
     #                 , item.dateTime_Local
-    msg = "Max,idx_Start,idxOf_SumMax,dateTime_Local"
+    msg = "Max\tidx_Start\tidxOf_SumMax\tidx(when ended)\tdateTime_Local(max)"
+#     msg = "Max,idx_Start,idxOf_SumMax,idx(when ended),dateTime_Local(max)"
+#     msg = "Max,idx_Start,idxOf_SumMax,dateTime_Local"
             
     fout.write(msg)
     fout.write("\n")
@@ -785,8 +794,15 @@ def basics_Ops_1__DetectPieaks(request, lo_BarDatas, dpath_Data, fname_Data):
     for item in lo_Max:
         
             # data = (round(sum_Max, 3), round(idxOf_SumMax, 3))
-        msg = "%03f,%02d,%02d,%s" % \
-                (item[0], int(item[1]), int(item[2]), item[3])
+            # data = (round(sum_Max, 3)
+            #         , int(idx_Start)
+            #         , int(idxOf_SumMax)
+            #         , int(idx)
+            #         , item.dateTime_Local
+            
+#         msg = "%03f,%02d,%02d,%02d,%s" % \
+        msg = "%03f\t%02d\t%02d\t%02d\t%s" % \
+                (item[0], int(item[1]), int(item[2]), item[3], item[4])
 #                 (item[0], item[1])
                 
         fout.write(msg)
@@ -822,7 +838,18 @@ def basics_Ops_1__DetectPieaks(request, lo_BarDatas, dpath_Data, fname_Data):
 #/ def basics_Ops_1__DetectPieaks(request, lo_BarDatas):
     
 def basics(request):
+    
+    # time
+    time_Start = time.time()
+    
+#     '''###################
+#         time        
+#     ###################'''
+#     time_Elapsed = time.time() - time_Start
+#     
+#     message = "done (time : %02.3f sec)" % (time_Elapsed)
 
+    
     dic = {}
 #     dic = {'action' : action, "message" : message}
     
@@ -890,7 +917,16 @@ def basics(request):
     '''###################
         render        
     ###################'''
-    dic["msg"] = "rendering... (%s)" % libs.get_TimeLabel_Now()
+    '''###################
+        time        
+    ###################'''
+    time_Elapsed = time.time() - time_Start
+    
+#     message = "done (time : %02.3f sec)" % (time_Elapsed)
+
+    dic["msg"] = "rendering... (%s)(time : %02.3f sec)" \
+                    % (libs.get_TimeLabel_Now(), time_Elapsed)
+#     dic["msg"] = "rendering... (%s)(time : %02.3f sec)" % libs.get_TimeLabel_Now()
     
     if referer_Current == referer_MM : #if referer_Current == referer_MM
     
