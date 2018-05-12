@@ -82,10 +82,12 @@ def test_1():
 
     dpath_Images_Out = "C:\\WORKS_2\\WS\\WS_Others\\free\\VX7GLZ_science-research" \
                 + "\\28_Physics\\10_electromagnetic\\1_\\images\\" \
-                + "9_"
+                + "9_%s" % tlabel
+#                 + "9_"
                 
-#     fname_Images_Out = "image.%s.%s.png" % (tlabel, plt_Title)
-
+    
+    # dirs
+    if not os.path.isdir(dpath_Images_Out) : os.makedirs(dpath_Images_Out)
     
     #ref https://stackoverflow.com/questions/36470343/how-to-draw-a-line-with-matplotlib
     x = np.linspace(0,5)
@@ -102,12 +104,12 @@ def test_1():
 #     C = [r * np.cos(t), r * np.sin(t)]
 #     D = [e + r * np.cos(t), r * np.sin(t)]
     
-    print("[%s:%d] D =>" % \
-            (os.path.basename(libs.thisfile()), libs.linenum()
-            
-            ), file=sys.stderr)
-    
-    print(D)
+#     print("[%s:%d] D =>" % \
+#             (os.path.basename(libs.thisfile()), libs.linenum()
+#             
+#             ), file=sys.stderr)
+#     
+#     print(D)
     
     '''###################
         graph setup        
@@ -121,9 +123,13 @@ def test_1():
 #     plt.ylim([-3, 3])
 #     plt.xlim([-1, 3])
 
+    #ref https://stackoverflow.com/questions/4136244/matplotlib-pyplot-how-to-enforce-axis-range
+    ax = plt.gca()
+    ax.set_autoscale_on(False)
+
     #ref https://matplotlib.org/examples/pylab_examples/equal_aspect_ratio.html
     # xy ratio ---> equal
-    plt.axes().set_aspect('equal')
+#     plt.axes().set_aspect('equal')
 #     plt.axes().set_aspect('equal', 'datalim')
 
     '''###################
@@ -131,31 +137,114 @@ def test_1():
     ###################'''
     cons_Width = 10
     
-    rng = np.linspace(0, np.pi / 2, np.pi / 8)
+#     rng = np.linspace(0, np.pi / 2, 12)
+#     rng = np.linspace(0, np.pi, 6)
+    rng = np.linspace(0, np.pi / 2, 24)
+#     rng = np.linspace(0, np.pi / 2, 12)
+#     rng = np.linspace(0, np.pi / 2, 6)
+#     rng = np.linspace(0, np.pi / 2, np.pi / 8)
+    
+    #debug
+    print("rng =>")
+    print(rng)
+#     return
+    
+    # counter for iteration
+    cntOf_Iter = 0
     
     for th in rng :
         
+        '''###################
+            data        
+        ###################'''
         A = [0, 0]
     #     B = [0, e]
         B = [e, 0]
         C = [r * np.cos(th), r * np.sin(th)]
         D = [e + r * np.cos(th), r * np.sin(th)]
-aa
+        
+        E = [0                  , - r * np.cos(th)]
+        F = [e                  , - r * np.cos(th)]
+
+        # AC, AB
         x1, y1 = [A[0], C[0], A[0], B[0]], \
                     [A[1], C[1], A[1], B[1]]
+        # CD BD
         x2, y2 = [C[0], D[0], B[0], D[0]], \
                     [C[1], D[1], B[1], D[1]]
+        # AE
+        x3, y3 = [A[0], E[0]], \
+                    [A[1], E[1]]
+        # BF
+        x4, y4 = [B[0], F[0]], \
+                    [B[1], F[1]]
+        
+        # EF
+        x5, y5 = [E[0], F[0]], \
+                    [E[1], F[1]]
+        
     #     x2, y2 = [C[0], D[0]], \
     #                 [C[1], D[1]]
     #     x1, y1 = [-1, 12], [1, 4]
     #     x2, y2 = [1, 10], [3, 2]
-        plt.plot(x1, y1, x2, y2, marker = 'o')
+        '''###################
+            graph        
+        ###################'''
+        plt.ylim([-3, 3])
+    #     plt.ylim([-1 * (e * r * 1.5) * 1.0, (e * r * 1.5) * 1.0])
+        plt.xlim([-1 * (e * r * 1.5) * 1.0, (e * r * 1.5) * 1.0])
         
+        plt.grid(b=None, which='major', axis='both')
+    
         # title
-        plt_Title = "theta = %.02f pi" % (t / np.pi)
+        plt_Title = "theta=%d-over-pi" % (cntOf_Iter)
+        
+        # increment counter
+        cntOf_Iter += 1
+#         plt_Title = "theta=%d-over-pi" % (th)
+#         plt_Title = "theta = %d / pi" % (th)
+#         plt_Title = "theta = %.02f pi" % (th / np.pi)
+#         plt_Title = "theta = %.02f pi" % (t / np.pi)
         
         plt.title(plt_Title, fontsize = 15)
         
+        plt.axes().set_aspect('equal')
+        
+#         #ref https://stackoverflow.com/questions/19125722/adding-a-legend-to-pyplot-in-matplotlib-in-the-most-simple-manner-possible
+#         plt.legend(loc='upper left')
+        
+        '''###################
+            plot        
+        ###################'''
+#         handle_AC_AB, = plt.plot(x1, y1, x2, y2, marker = 'o', label='AC AB')
+#         handle_AE, = plt.plot(x3, y3, marker = 'o', label='AE')
+#         handle_AE, = plt.plot(x3, y3, marker = 'o', label='AE')
+#         plt.plot(x4, y4, x5, y5, marker = 'o')
+#         plt.plot(x3, y3, x4, y4, x5, y5, marker = 'o')
+#         plt.plot(x1, y1, x2, y2, x3, y3, x4, y4, x5, y5, marker = 'o')
+
+#         plt.plot(x1, y1, x2, y2, x3, y3, x4, y4, marker = 'o')
+#         plt.plot(x1, y1, x2, y2, x3, y3, marker = 'o')
+#         plt.plot(x1, y1, x2, y2, marker = 'o')
+        
+        plt.plot(x1, y1, marker = 'o', label="AC AB")
+        plt.plot(x2, y2, marker = '^', label="CD BD")
+        plt.plot(x3, y3, marker = '1', label="AE")
+        plt.plot(x4, y4, marker = 's', label="BF")
+        plt.plot(x5, y5, marker = 'P', label="EF")
+        
+#         plt.legend()
+        #ref https://qiita.com/okadate/items/00227316187b60f861f5 "枠外に出す"
+        plt.legend(bbox_to_anchor=(1.01,1), loc=2, borderaxespad=0)
+        
+        # legend
+        #ref https://matplotlib.org/users/legend_guide.html
+#         plt.legend(handles=[handle_AC_AB, handle_AE])
+#         plt.legend(handles=[line_up, line_down])
+        
+        '''###################
+            save : image        
+        ###################'''
         fname_Images_Out = "image.%s.%s.png" % (tlabel, plt_Title)
         
         fpath_Images_Out = "%s\\%s" % (dpath_Images_Out, fname_Images_Out)

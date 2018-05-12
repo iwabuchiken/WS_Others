@@ -741,13 +741,13 @@ def basics_Ops_1__DetectPieaks(request, lo_BarDatas, dpath_Data, fname_Data):
     '''###################
         report : sum_Max
     ###################'''
-    print()
-    print("[%s:%d] lo_Max ==>" % \
-                    (os.path.basename(libs.thisfile()), libs.linenum()
-                    
-                    ), file=sys.stderr)
-    
-    print(lo_Max)
+#     print()
+#     print("[%s:%d] lo_Max ==>" % \
+#                     (os.path.basename(libs.thisfile()), libs.linenum()
+#                     
+#                     ), file=sys.stderr)
+#     
+#     print(lo_Max)
 #     msg = "[%s:%d] lo_Max ==>" % \
 #                         (os.path.basename(libs.thisfile()), libs.linenum()
 #                         
@@ -863,7 +863,8 @@ def basics(request):
     ###################'''
     dpath = cons_fx.FPath.dpath_In_CSV.value
     
-    fname = "49_20_file-io.USDJPY.Period-H1.Days-1200.Bars-28800.20180428_073251.csv"
+    fname = cons_fx.FPath.fname_In_CSV.value
+#     fname = "49_20_file-io.USDJPY.Period-H1.Days-1200.Bars-28800.20180428_073251.csv"
 #     fname = cons_fx.FPath.fname_In_CSV.value
     
     header_Length   = 2

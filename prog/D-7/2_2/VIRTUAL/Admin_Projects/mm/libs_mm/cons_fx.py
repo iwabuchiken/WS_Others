@@ -38,12 +38,16 @@ class BarData(Enum):
 
 class FPath(Enum):
     
-    fname_In_CSV = "49_11_file-io" \
-                    + ".USDJPY" \
-                    + ".Period-H1" \
-                     + ".Days-100" \
-                     + ".Bars-17280" +\
-                      ".20171231_233726.csv"
+    fname_In_CSV = "44_1.14_file-io.EURUSD.Period-H1.Days-1900.Bars-45600.20180511_180935.csv"
+#     fname_In_CSV = "44_1.14_file-io.AUDJPY.Period-H1.Days-1900.Bars-45600.20180511_181322.csv"
+#     fname_In_CSV = "44_1.14_file-io.EURJPY.Period-H1.Days-1900.Bars-45600.20180511_181622.csv"
+#     fname_In_CSV = "44_1.14_file-io.USDJPY.Period-H1.Days-1900.Bars-45600.20180511_181208.csv"
+#     fname_In_CSV = "49_11_file-io" \
+#                     + ".USDJPY" \
+#                     + ".Period-H1" \
+#                      + ".Days-100" \
+#                      + ".Bars-17280" +\
+#                       ".20171231_233726.csv"
 #     fname_In_CSV = "49_11_file-io.USDJPY.Period-H1.Days-720.Bars-17280.20171231_233725.csv"
     
     dpath_In_CSV = DPATH_ROOT_CURR + "/data/csv"
