@@ -200,6 +200,18 @@ table#tbl_Mm_DeNumbering_Actions tr td {
 	
 }
 
+/*table#tbl_Curren_Gen_PeakData {*/
+table#tbl_Curren_Gen_PeakData tr td {
+    
+    /*border     : 1;*/
+    /*border     : 1px solid black;*/
+    /* ref template for css files https://stackoverflow.com/questions/7900575/how-to-add-css-autocomplete-to-eclipse */
+    /*ref table border http://www.html.am/html-codes/tables/table-border.cfm*/
+    border     : 1px solid #aaaaaa;
+    
+    margin     : 10px;
+}
+
 
 button.bt_Basic_1 {
 	
@@ -386,6 +398,32 @@ div#layout_Links_Basic {
 	margin         : 10px;
 	
 }/*div#index_Display_Area {*/
+
+div#div_Curr_Basics_Button_ShowHide {
+	
+	margin         : 10px;
+	
+}/*div#div_Curr_Basics_Button_ShowHide {*/
+
+div#div_Curr_Basics_Message_Area {
+	
+	margin         : 10px;
+	
+	background     : Moccasin;
+	
+	padding     : 10px;
+	
+}/*div#div_Curr_Basics_Message_Area {*/
+
+div#div_Curr_Basics_Result_Area {
+	
+	margin         : 10px;
+	
+	background     : Lavender;
+	
+	padding     : 10px;
+	
+}/*div#div_Curr_Basics_Result_Area {*/
 
 div#index_Message_Area {
 	

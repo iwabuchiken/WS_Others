@@ -7,8 +7,11 @@ register = template.Library()
 def p(param):
 # def show(param):
     
-    return "yes : " % param
-#     return param
+    param = param + " done"
+    
+#     return "yes : " % (param)
+#     return "yes : " % param
+    return param
 
 
 #ref https://stackoverflow.com/questions/4731572/django-counter-in-loop-to-index-list
@@ -17,7 +20,12 @@ def access_index(sequence, position):
     return sequence[position]
 
 # @register.simple_tag
-@register.tag
+
+# @register.tag
+@register.simple_tag
 def get_CurrencyPair_Name(param):
     
-    return "yes : %s" % param
+    tokens = param.split(".")
+    
+    return tokens[0]
+#     return "yes : %s" % param

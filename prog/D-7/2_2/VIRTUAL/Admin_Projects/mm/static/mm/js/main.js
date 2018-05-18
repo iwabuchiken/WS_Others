@@ -864,6 +864,88 @@ function exec_DeNumbering(_param) {
 	
 }//exec_Numbering
 
+function exec_GenPeakData(_param) {
+	
+	alert("_param => '" + _param + "'");
+	
+	//debug
+	return;
+	
+	/***************************
+		get : vars
+	 ***************************/
+	/***************************
+		dpath
+	 ***************************/
+	var elem = $('input#ipt_Numbering_MainDir');
+	
+	//ref val https://stackoverflow.com/questions/4088467/get-the-value-in-an-input-text-box answered Apr 9 '13 at 13:28
+	var _dpath = elem.val();
+	
+//	alert("dpath => " + dpath + "'");
+	
+	/***************************
+		fname
+	 ***************************/
+	var _fname = _param;
+	
+//	alert("file fullpath => '" + _dpath + "\\" + _fname + "'");
+	
+	/***************************
+		data
+	 ***************************/
+//	var _data = {action : _param};
+	var _data = {dpath : _dpath, fname : _fname};
+	
+	var _url = "http://127.0.0.1:8000/mm/exec_Numbering/";
+
+	/***************************
+		background
+	 ***************************/
+	var elem = $('div#numbering_content_Message_Area');
+	
+	elem.css("background", cname_Yellow);
+//	elem.css("background", "yellow");
+	
+	/***************************
+		ajaxing
+	 ***************************/
+	$.ajax({
+		
+		url: _url,
+		type: "GET",
+		//REF http://stackoverflow.com/questions/1916309/pass-multiple-parameters-to-jquery-ajax-call answered Dec 16 '09 at 17:37
+//	    data: {id: id},
+//	    data: {memos: memos, image_id: image_id},
+		data: _data,
+		
+		timeout: 10000
+		
+	}).done(function(data, status, xhr) {
+		
+//		alert(data);
+		
+		$('div#numbering_content_Message_Area').html(data);
+		
+		$('div#numbering_content_Message_Area')
+				.css("background", cname_White);
+		
+	}).fail(function(xhr, status, error) {
+		
+		alert(xhr.status);
+		
+		var msg = "ajax returned error";
+		
+		$('div#index_Display_Area').html(msg);
+
+		$('div#numbering_content_Message_Area')
+				.css("background", cname_Red);
+
+	});
+
+}//exec_GenPeakData
+
+
 function get_Timelabel_Now() {
 	
 	//ref https://stackoverflow.com/questions/10211145/getting-current-date-and-time-in-javascript
@@ -1419,3 +1501,51 @@ function curr_Correl_GO() {
 	});
 
 }
+
+function curr_Show_Basics_Table_Commands() {
+	
+//	alert("show");
+	
+	//ref toggle https://api.jquery.com/toggle/
+	$('#div_Basics_ListOf_Actions').toggle();
+	
+}//function curr_Show_Basics_Table_Commands() {
+
+function curr_Basics_Index_GO() {
+	
+//	alert("curr index");
+	
+	var selection = $( "#select_Curr_Actions option:selected" );
+//	var selection = $( "#select_MM_Actions option:selected" ).text();
+	
+	var text = selection.text();
+	
+	var value = selection.val();
+
+//	//debug
+//	alert("text => '" + text + "'" + " / " + "val = " + value);
+	
+	/***************************
+		clear : areas
+	 ***************************/
+	var area_Display = $('div#index_Display_Area');
+	
+//	alert(area_Display);
+	
+//	area_Display.html() = "";
+	area_Display.html('');
+
+	// index_Message_Area
+	$('div#index_Message_Area').html('');
+	
+	$('div#index_Area__Result').html('');
+	
+	
+	
+	/***************************
+		dispatch
+	 ***************************/
+	curr_Index_LinkTo(value);
+
+}
+

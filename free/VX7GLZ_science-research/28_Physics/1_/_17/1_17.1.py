@@ -151,7 +151,7 @@ def test_3():
     lo_Files = glob.glob(fpath_Glob)
     
     ### validate
-    if len(lo_Files) < 1 : #if len(lo_Files) < 1
+    if len(lo_Files) < 1 : #if len(lo_Files) <+ 1
 
         print()
         print("[%s:%d] len(lo_Files) => less than 1" % \

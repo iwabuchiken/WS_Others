@@ -88,6 +88,28 @@ def write_Log(str_Line):
 
 #/ def write_Log(str_Line):
 
+def get_CurrencyData_FileName(request):
+    
+#     pass
+    
+    print("[%s:%d] get_CurrencyData_FileName()" % \
+        (os.path.basename(libs.thisfile()), libs.linenum()
+        
+        ), file=sys.stderr)
+
+    '''###################
+        file list        
+    ###################'''
+    
+    
+    '''###################
+        return        
+    ###################'''
+    fname = "49_20_file-io.USDJPY.Period-H1.Days-1200.Bars-28800.20180428_073251.csv"
+    
+    return fname
+
+#/ def get_CurrencyData_FileName(request):
 
 def exec_correlations(request):
     
@@ -355,6 +377,114 @@ def updown_patterns(request):
                 ), file=sys.stderr)
 
         return render(request, 'curr/updown_patterns_full.html', dic)
+
+def gen_peak_data(request):
+    
+    '''###################
+        vars        
+    ###################'''
+    dic = {}
+
+    
+    '''###################
+        get : param : pair name        
+    ###################'''
+    nameOf_CurrencyPair = request.GET.get('currency_pair', False)
+    
+    # default
+    if nameOf_CurrencyPair == False : #if nameOf_CurrencyPair == False
+    
+        nameOf_CurrencyPair = "USDJPY"
+        
+    #/if nameOf_CurrencyPair == False
+    
+    print("[%s:%d] nameOf_CurrencyPair => %s" % \
+            (os.path.basename(libs.thisfile()), libs.linenum()
+            , nameOf_CurrencyPair
+            ), file=sys.stderr)
+    
+    # set name
+    dic['currency_pair'] = nameOf_CurrencyPair
+    
+    '''###################
+        get : file path        
+    ###################'''
+    dpath_CSV = cons_fx.FPath.dpath_In_CSV.value
+    
+    print("[%s:%d] dpath_CSV => %s" % \
+            (os.path.basename(libs.thisfile()), libs.linenum()
+            , dpath_CSV
+            ), file=sys.stderr)
+    
+    fpath_Glob = "%s\\*.csv" % (dpath_CSV)
+#     fpath_Glob = "%s\\*(*).csv" % (dpath_CSV)
+#     fpath_Glob = "%s\\*.png" % (dpath_Full)
+
+    #ref glob https://stackoverflow.com/questions/14798220/how-can-i-search-sub-folders-using-glob-glob-module-in-python answered Feb 10 '13 at 13:31    
+    lo_Files = glob.glob(fpath_Glob)
+
+    lo_Files.sort()
+
+    print("[%s:%d] len(lo_Files) => %d" % \
+            (os.path.basename(libs.thisfile()), libs.linenum()
+            , len(lo_Files)
+            ), file=sys.stderr)
+    
+    # set list
+    dic['lo_Files'] = [os.path.basename(x) for x in lo_Files]
+#     dic['lo_Files'] = lo_Files
+    
+    '''###################
+        main dir
+    ###################'''
+    dic['MAIN_DIR'] = dpath_CSV
+    
+    '''###################
+        get : referer        
+    ###################'''
+    referer_MM = "http://127.0.0.1:8000/curr/"
+    
+    referer_Current = request.META.get('HTTP_REFERER')
+
+
+    '''###################
+        render        
+    ###################'''
+    '''###################
+        time        
+    ###################'''
+#     dic = {}
+    
+    
+#     time_Elapsed = time.time() - time_Start
+    
+#     message = "done (time : %02.3f sec)" % (time_Elapsed)
+
+#     dic["msg"] = "rendering... (%s)(time : %02.3f sec)" \
+#                     % (libs.get_TimeLabel_Now(), time_Elapsed)
+    dic["msg"] = "rendering... (%s)" % libs.get_TimeLabel_Now()
+    
+    if referer_Current == referer_MM : #if referer_Current == referer_MM
+    
+        print()
+        print("[%s:%d] referer_Current == referer_MM (current = %s / referer = %s" % \
+                (os.path.basename(libs.thisfile()), libs.linenum()
+                ,referer_Current, referer_MM
+                ), file=sys.stderr)
+    
+        return render(request, 'curr/gen_peak_data.html', dic)
+#         return render(request, 'mm/numbering.html', dic)
+        
+    else : #if referer_Current == referer_MM
+
+        print()
+        print("[%s:%d] referer_Current <> referer_MM (current = %s / referer = %s" % \
+                (os.path.basename(libs.thisfile()), libs.linenum()
+                ,referer_Current, referer_MM
+                ), file=sys.stderr)
+
+        return render(request, 'curr/gen_peak_data_full.html', dic)
+#/ def gen_peak_data(request):
 
 def basics_Ops(request, lo_BarDatas):
     
@@ -857,13 +987,14 @@ def basics(request):
         params
     ###################'''
     
-    
     '''###################
         ops
     ###################'''
     dpath = cons_fx.FPath.dpath_In_CSV.value
     
-    fname = cons_fx.FPath.fname_In_CSV.value
+    fname = get_CurrencyData_FileName(request)
+    
+#     fname = cons_fx.FPath.fname_In_CSV.value
 #     fname = "49_20_file-io.USDJPY.Period-H1.Days-1200.Bars-28800.20180428_073251.csv"
 #     fname = cons_fx.FPath.fname_In_CSV.value
     
@@ -871,6 +1002,8 @@ def basics(request):
      
     skip_Header     = False
 
+    #debug
+#     lo_BarDatas = None
     lo_BarDatas = libfx.get_Listof_BarDatas_2(
                         dpath, fname, header_Length, skip_Header)
     
@@ -902,11 +1035,21 @@ def basics(request):
                 ), file=sys.stderr)
     
     #/if lo_BarDatas == None
-    result = basics_Ops_1__DetectPieaks(request, lo_BarDatas, dpath, fname)
-#     result = basics_Ops_1__DetectPieaks(request, lo_BarDatas)
-#     result = basics_Ops(request, lo_BarDatas)
+#     result = basics_Ops_1__DetectPieaks(request, lo_BarDatas, dpath, fname)
+
+    '''###################
+        list of commands
+    ###################'''
+    lo_Commands = [
+        
+        ["gen_peak_data", "generate peak data"],
+    ]
     
     
+    # set var
+    dic["lo_Commands"] = lo_Commands
+    
+
     '''###################
         get : referer        
     ###################'''

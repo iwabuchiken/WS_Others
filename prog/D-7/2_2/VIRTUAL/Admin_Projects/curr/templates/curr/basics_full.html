@@ -1,27 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends "curr/layouts/__base.html" %}
 
-<head>
-    <meta charset="UTF-8">
-    
-    <title>{% block title %}Currency{% endblock %}</title>
-    
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans">
-    
-    {% load static %}
-    <link rel="stylesheet" href="{% static 'mm/css/reset.css' %}">
-    <link rel="stylesheet" href="{% static 'mm/css/style.css' %}">
-    
-    <link rel="stylesheet" href="{% static 'mm/css/main.css' %}">
-    
-    <script src="{% static 'mm/js/jquery.js' %}"></script>
-    <script src="{% static 'mm/js/main.js' %}"></script>
-    
-</head>
-    
-<body>
 
-    message => "{{ msg }}"
+{% load taglib_curr %}
 
-</body>
-</html>
+{% block content %}
+
+    {% include 'curr/basics.html' %}
+
+{% endblock %}
+    
