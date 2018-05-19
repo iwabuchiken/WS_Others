@@ -10,6 +10,7 @@ var cname_Red = "red";
 var cname_Yellow = "yellow";
 var cname_LightBlue = "LightBlue";
 var cname_Plum = "Plum";
+var cname_Moccasin = "Moccasin";
 
 var className_BT_Numbering_List = "bt_Numbering_List";
 
@@ -63,6 +64,26 @@ function show_Message(msg) {
 	alert(msg);
 	
 }//function show_Message(msg) {
+
+//ref https://stackoverflow.com/questions/21294302/converting-milliseconds-to-minutes-and-seconds-with-javascript#21294619
+function millisToMinutesAndSeconds(millis) {
+	
+//	alert(millis);
+	
+	  var minutes = Math.floor(millis / 60000);
+	  
+	  var seconds = ((millis % 60000) / 1000).toFixed(0);
+	  
+	  var mill = millis - (minutes * 60000) - (seconds * 1000);
+	  
+	  mill = (mill < 10 ? '00' : (mill < 100 ? '0' : "")) + mill;
+	  
+	  return minutes + ":" + (seconds < 10 ? '0' : '') + seconds
+	  			+ "."
+	  			+ mill;
+//	  return minutes + ":" + (seconds < 10 ? '0' : '') + seconds;
+	  
+}
 
 /*
  * https://stackoverflow.com/questions/5999209/how-to-get-the-background-color-code-of-an-element
@@ -961,6 +982,51 @@ function get_Timelabel_Now() {
 	
 }
 
+function get_Timelabel_Now_2() {
+	
+	//ref https://stackoverflow.com/questions/10211145/getting-current-date-and-time-in-javascript
+	//ref https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date
+	
+	var cd = new Date();
+//	var currentdate = new Date();
+	
+//	var month = cd.getMonth() + 1;
+	var month = (cd.getMonth() + 1).toString();
+	
+	if (month.toString().length < 2) {
+		
+		month = "0" + month;
+		
+	}
+	
+	var year = cd.getFullYear().toString();
+	var day = cd.getDate().toString();
+
+	if (day.length < 2) {
+		
+		day = "0" + day;
+		
+	}
+
+//	alert("month => " + month);
+	
+//	var datetime = cd.getFullYear() + (cd.getMonth() + 1) + cd.getDay()
+//	var datetime = "" + cd.getFullYear() + (month) + cd.getDay()
+//	var datetime = "" + cd.getFullYear().toString() + (month).toString() + cd.getDay().toString()
+	var datetime = year + month + day
+	 			+ "_"
+	 			+ cd.getHours() + cd.getMinutes() + cd.getSeconds();
+		
+//	var datetime = "Last Sync: " + currentdate.getDate() + "/"+currentdate.getMonth() + 1 
+////	var datetime = "Last Sync: " + currentdate.getDay() + "/"+currentdate.getMonth() 
+//	+ "/" + currentdate.getFullYear() + " @ " 
+//	+ currentdate.getHours() + ":" 
+//	+ currentdate.getMinutes() + ":" + currentdate.getSeconds();
+	
+	return datetime;
+	
+}//function get_Timelabel_Now_2() {
+
 function mm_Index_GO() {
 	
 	/***************************
@@ -1511,19 +1577,113 @@ function curr_Show_Basics_Table_Commands() {
 	
 }//function curr_Show_Basics_Table_Commands() {
 
-function curr_Basics_Index_GO() {
+function _curr_Basics_Index_GO__Gen_Peak_Data() {
 	
-//	alert("curr index");
+	/***************************
+		vars
+	 ***************************/
+	var t_Start = +new Date();
 	
-	var selection = $( "#select_Curr_Actions option:selected" );
-//	var selection = $( "#select_MM_Actions option:selected" ).text();
+	/***************************
+		ajax
+		
+		ref : C:\WORKS_2\WS\Eclipse_Luna\Cake_IFM11\app\webroot\js\main.js
+	 ***************************/
+	var _url = "http://127.0.0.1:8000/curr/gen_peak_data/";
+	//var _data = {action : _param};
 	
-	var text = selection.text();
+	$.ajax({
+		
+		url: _url,
+		type: "GET",
+		//REF http://stackoverflow.com/questions/1916309/pass-multiple-parameters-to-jquery-ajax-call answered Dec 16 '09 at 17:37
+	//    data: {id: id},
+	//    data: {memos: memos, image_id: image_id},
+	//	data: _data,
+		
+		timeout: 10000
+		
+	}).done(function(data, status, xhr) {
+		
+//		//test
+		//ref http://www.hp-stylelink.com/news/2013/11/20131126.php#list03
+//		var huga = 0;
+//		var hoge = setInterval(function() {
+//		    console.log(huga);
+//		    huga++;
+//		    //終了条件
+////		    if (huga == 10) {
+//		    	if (huga == 4) {
+//		    clearInterval(hoge);
+//		    console.log("終わり");
+//		    }
+//		}, 500);
+		
+		
+	//	alert(data);
+		/***************************
+			result
+		 ***************************/
+		var tag_Result = $('div#div_Curr_Basics_Result_Area');
+		
+		tag_Result.html(data);
+		
+		tag_Result.css("background", cname_White);
+		
+		/***************************
+			time
+		 ***************************/
+		//ref elapsed https://stackoverflow.com/questions/3528425/how-to-display-moving-elapsed-time-in-jquery answered Apr 29 '17 at 1:04
+		var elapsed = +new Date() - t_Start;
+		
+		var txt_Elapsed = millisToMinutesAndSeconds(elapsed);
+		
+		/***************************
+			message
+		 ***************************/
+		var msg = "ajax done for --> 'gen_peak_data'"
+				+ " "
+				+ "(" + get_Timelabel_Now_2() + ")"
+				+ "(command = 'gen_peak_data')"
+				+ " (took = " + txt_Elapsed + ")"
+				;
+		
+		var tag = $('div#div_Curr_Basics_Message_Area');
+		
+		tag.html(msg);
+		
+		tag.css("background", cname_LightBlue);
+		
+		
+	}).fail(function(xhr, status, error) {
+		
+		/***************************
+			message
+		 ***************************/
+//		alert(xhr.status + " / " + error);
+	//	alert(xhr.status);
+		
+		var msg = "ajax returned error (" + xhr.status + " / " + error + ")"
+				+ "(" + get_Timelabel_Now_2() + ")"
+				+ "(command = 'gen_peak_data')";
+//		var msg = "ajax returned error";
 	
-	var value = selection.val();
+		var tag = $('div#div_Curr_Basics_Message_Area');
+	
+		tag.html(msg);
+		
+		tag.css("background", cname_Red);
+	});
+	
+}//function _curr_Basics_Index_GO__Gen_Peak_Data() {
 
+
+function curr_Basics_Index_GO(param) {
+	
 //	//debug
-//	alert("text => '" + text + "'" + " / " + "val = " + value);
+//	alert("param => '" + param + "'");
+//	
+//	return;
 	
 	/***************************
 		clear : areas
@@ -1536,16 +1696,41 @@ function curr_Basics_Index_GO() {
 	area_Display.html('');
 
 	// index_Message_Area
-	$('div#index_Message_Area').html('');
+	var txt_Message = "ajax starting for --> '" + param + "'"
+					+ " (" + get_Timelabel_Now_2() + ")";
+	
+	$('div#div_Curr_Basics_Message_Area').html(txt_Message);
 	
 	$('div#index_Area__Result').html('');
-	
-	
 	
 	/***************************
 		dispatch
 	 ***************************/
-	curr_Index_LinkTo(value);
+	if (param == "gen_peak_data") {
+
+		console.log(param);
+		
+		var div = $('div#div_Curr_Basics_Message_Area');
+
+		div.css("background", cname_Yellow);
+		
+		/***************************
+			start ajax
+		 ***************************/
+		_curr_Basics_Index_GO__Gen_Peak_Data();
+		
+	} else {
+
+		// index_Message_Area
+		var txt_Message = "Unknown commdand --> '" + param + "'"
+						+ " (" + get_Timelabel_Now_2() + ")";
+		
+		$('div#div_Curr_Basics_Message_Area').html(txt_Message);
+		
+		$('div#div_Curr_Basics_Message_Area').css("background", cname_Red);
+
+	}//if (param == )
+	
 
 }
 

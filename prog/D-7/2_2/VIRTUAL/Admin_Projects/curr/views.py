@@ -380,6 +380,14 @@ def updown_patterns(request):
 
 def gen_peak_data(request):
     
+#     #test
+#     print("[%s:%d] sleeping..." % \
+#         (os.path.basename(libs.thisfile()), libs.linenum()
+#         
+#         ), file=sys.stderr)
+#     
+#     time.sleep(2);
+
     '''###################
         vars        
     ###################'''
@@ -442,7 +450,8 @@ def gen_peak_data(request):
     '''###################
         get : referer        
     ###################'''
-    referer_MM = "http://127.0.0.1:8000/curr/"
+#     referer_MM = "http://127.0.0.1:8000/curr/"
+    referer_MM = "http://127.0.0.1:8000/curr/basics/"
     
     referer_Current = request.META.get('HTTP_REFERER')
 
@@ -1043,6 +1052,8 @@ def basics(request):
     lo_Commands = [
         
         ["gen_peak_data", "generate peak data"],
+        
+        ["gen_bottom_data", "generate bottom data"],
     ]
     
     
