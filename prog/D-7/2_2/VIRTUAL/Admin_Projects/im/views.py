@@ -1344,25 +1344,68 @@ def _im_actions__Ops_10_1__TEST(action, request): # /im/im_action
         validate        
     ###################'''
     ### match
-    res = str_AddData.startswith("\t'total_data'")
+    res = False
+    
+    if "total_data" in str_AddData : res = True
+    
+#     res = str_AddData.startswith("\t'total_data'")
 
     if res == False : #if res == None
 
         print()
-        print("[%s:%d] Input ==> doesn't start with \"\t'total_data'\" => '%s'" % \
+#         print("[%s:%d] Input ==> doesn't start with \"\t'total_data'\" => '%s'" % \
+        print("[%s:%d] Input ==> doesn't contain \"total_data\" => '%s'" % \
             (os.path.basename(libs.thisfile()), libs.linenum()
             , str_AddData
             ), file=sys.stderr)
 
-        return "Input ==> doesn't start with \"\t'total_data'\""
+        return "Input ==> doesn't contain \"total_data\""
+#         return "Input ==> doesn't start with \"\t'total_data'\""
 
     #/if res == None
 
     '''###################
+        modify : cotent
+    ###################'''
+    #ref https://stackoverflow.com/questions/16720541/python-string-replace-regular-expression#16720705 answered May 23 '13 at 17:55
+    str_AddData = re.sub("\t", "", str_AddData)
+#     str_AddData = re.sub("^\t+?", "", str_AddData)
+    
+    str_AddData = re.sub(r'(\d+) ', r'\1', str_AddData)
+    
+    str_AddData = re.sub(r'(\d+)', r'\1\n', str_AddData)
+#     str_AddData = re.sub(r'(\d+)', r'\1,\n', str_AddData)
+#     str_AddData = re.sub(r'(\d+?)', r'\1,\n', str_AddData)
+#     str_AddData = re.sub(r'(\d+?)', r'$1,\n', str_AddData)
+#     str_AddData = re.sub("(\d+?)", "$1,\n", str_AddData)
+    
+    str_AddData = re.sub(r'\r\n', r'', str_AddData)
+#     str_AddData = re.sub(r'\n\n', r'', str_AddData)
+#     str_AddData = re.sub(r'^\n\n', r'', str_AddData)
+#     str_AddData = re.sub(r'^\r\n', r'', str_AddData)
+#     str_AddData = re.sub(r'^\n', r'', str_AddData)
+    
+    str_AddData = re.sub(r'^ ', r'', str_AddData)
+    
+    str_AddData = re.sub(r' \n', r'', str_AddData)
+#     str_AddData = re.sub(r' \r\n', r'', str_AddData)
+
+    str_AddData = re.sub(r' $', r'', str_AddData)
+    
+    #debug
+    print()
+    print("[%s:%d] str_AddData => '%s'" % \
+            (os.path.basename(libs.thisfile()), libs.linenum()
+            , str_AddData
+            ), file=sys.stderr)
+    
+#     return "YES"
+    
+    '''###################
         build content
     ###################'''
-    str_AddData = str_AddData.replace(',', ',\n')
-
+#     str_AddData = str_AddData.replace(',', ',\n')
+    
 
     '''###################
         time label

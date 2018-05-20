@@ -72,9 +72,25 @@ function millisToMinutesAndSeconds(millis) {
 	
 	  var minutes = Math.floor(millis / 60000);
 	  
-	  var seconds = ((millis % 60000) / 1000).toFixed(0);
+	  var residue_Minutes = millis % 60000;
+	  
+	  var seconds = Math.floor(residue_Minutes / 1000);
+//	  var seconds = (residue_Minutes / 1000).toFixed(0);
+//	  var seconds = ((millis % 60000) / 1000).toFixed(0);
 	  
 	  var mill = millis - (minutes * 60000) - (seconds * 1000);
+	  
+	  //log
+	  var msg_log = "millis => " + millis
+					+ " "
+		  			+ "residue_Minutes => " + residue_Minutes
+		  			+ " "
+		  			+ "mill => " + mill
+	  				+ " "
+	  				+ "minutes = " + minutes
+	  				+ " "
+	  				+ "seconds = " + seconds;
+	  console.log(msg_log);
 	  
 	  mill = (mill < 10 ? '00' : (mill < 100 ? '0' : "")) + mill;
 	  
@@ -887,46 +903,59 @@ function exec_DeNumbering(_param) {
 
 function exec_GenPeakData(_param) {
 	
-	alert("_param => '" + _param + "'");
-	
-	//debug
-	return;
-	
 	/***************************
-		get : vars
+		vars
 	 ***************************/
+	var t_Start = +new Date();
+
+	
+//	alert("_param => '" + _param + "'");
+//	
+//	//debug
+//	return;
+	
+//	/***************************
+//		get : vars
+//	 ***************************/
+//	/***************************
+//		dpath
+//	 ***************************/
+//	var elem = $('input#ipt_Numbering_MainDir');
+//	
+//	//ref val https://stackoverflow.com/questions/4088467/get-the-value-in-an-input-text-box answered Apr 9 '13 at 13:28
+//	var _dpath = elem.val();
+//	
+////	alert("dpath => " + dpath + "'");
+//	
+//	/***************************
+//		fname
+//	 ***************************/
+//	var _fname = _param;
+//	
+////	alert("file fullpath => '" + _dpath + "\\" + _fname + "'");
+//	
 	/***************************
-		dpath
-	 ***************************/
-	var elem = $('input#ipt_Numbering_MainDir');
-	
-	//ref val https://stackoverflow.com/questions/4088467/get-the-value-in-an-input-text-box answered Apr 9 '13 at 13:28
-	var _dpath = elem.val();
-	
-//	alert("dpath => " + dpath + "'");
-	
-	/***************************
-		fname
-	 ***************************/
-	var _fname = _param;
-	
-//	alert("file fullpath => '" + _dpath + "\\" + _fname + "'");
-	
-	/***************************
-		data
+		params
 	 ***************************/
 //	var _data = {action : _param};
-	var _data = {dpath : _dpath, fname : _fname};
+	var _data = {fname : _param};
 	
-	var _url = "http://127.0.0.1:8000/mm/exec_Numbering/";
+	var _url = "http://127.0.0.1:8000/curr/exec_Gen_PeakData/";
+//	var _url = "http://127.0.0.1:8000/mm/exec_Numbering/";
 
 	/***************************
 		background
 	 ***************************/
-	var elem = $('div#numbering_content_Message_Area');
+	var elem = $('div#div_Curr_Basics_Gen_PeakData_Message_Area');
 	
 	elem.css("background", cname_Yellow);
 //	elem.css("background", "yellow");
+	
+	var txt_Message = "ajax starting for --> '" + _param + "'"
+				+ " (" + get_Timelabel_Now_2() + ")";
+	
+	// log
+	console.log(txt_Message);
 	
 	/***************************
 		ajaxing
@@ -940,26 +969,71 @@ function exec_GenPeakData(_param) {
 //	    data: {memos: memos, image_id: image_id},
 		data: _data,
 		
-		timeout: 10000
+		timeout: 20000		// 20 seconds
+//		timeout: 10000
 		
 	}).done(function(data, status, xhr) {
 		
 //		alert(data);
 		
-		$('div#numbering_content_Message_Area').html(data);
+		$('div#div_Curr_Basics_Gen_PeakData_Result_Area').html(data);
 		
-		$('div#numbering_content_Message_Area')
-				.css("background", cname_White);
+		$('div#div_Curr_Basics_Gen_PeakData_Result_Area')
+				.css("background", cname_Plum);
+		
+		/***************************
+			time
+		 ***************************/
+		//ref elapsed https://stackoverflow.com/questions/3528425/how-to-display-moving-elapsed-time-in-jquery answered Apr 29 '17 at 1:04
+		var elapsed = +new Date() - t_Start;
+		
+		var txt_Elapsed = millisToMinutesAndSeconds(elapsed);
+		
+		/***************************
+			message
+		 ***************************/
+		var msg = "ajax done for --> 'exec_GenPeakData'"
+				+ " "
+				+ "(" + get_Timelabel_Now_2() + ")"
+				+ "(command = 'gen_peak_data')"
+				+ "(file = '" + _param + "')"
+				+ " (took = " + txt_Elapsed + ")"
+				;
+
+		//log
+		console.log(msg);
+		
+		// message
+		$('div#div_Curr_Basics_Gen_PeakData_Message_Area').css("background", cname_LightBlue);
+		
+//		var txt_Message = "ajax done" + _param + " "
+//						+ " (" + get_Timelabel_Now_2() + ")";
+		
+		
+		$('div#div_Curr_Basics_Gen_PeakData_Message_Area').html(msg);
+//		$('div#div_Curr_Basics_Gen_PeakData_Message_Area').html("Ajax => done");
 		
 	}).fail(function(xhr, status, error) {
 		
-		alert(xhr.status);
+		alert(xhr.status + " (error = '" + error + "')");
+//		alert(xhr.status);
 		
-		var msg = "ajax returned error";
+		/***************************
+			time
+		 ***************************/
+		//ref elapsed https://stackoverflow.com/questions/3528425/how-to-display-moving-elapsed-time-in-jquery answered Apr 29 '17 at 1:04
+		var elapsed = +new Date() - t_Start;
 		
-		$('div#index_Display_Area').html(msg);
+		var txt_Elapsed = millisToMinutesAndSeconds(elapsed);
 
-		$('div#numbering_content_Message_Area')
+		var msg = "ajax returned error : " + error + "(elapsed = " + txt_Elapsed + ")";
+		
+		//log
+		console.log(msg);
+		
+		$('div#div_Curr_Basics_Gen_PeakData_Message_Area').html(msg);
+
+		$('div#div_Curr_Basics_Gen_PeakData_Message_Area')
 				.css("background", cname_Red);
 
 	});

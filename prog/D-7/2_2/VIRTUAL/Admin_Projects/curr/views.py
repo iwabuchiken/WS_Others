@@ -28,6 +28,8 @@ from mm.libs_mm import cons_mm, cons_fx, libs, libfx
 # from mm.libs_mm import libs
 # from mm.libs_mm import libfx
 
+
+
 from Admin_Projects.definitions import ROOT_DIR
 from Admin_Projects.definitions import DPATH_ROOT_CURR
 
@@ -494,6 +496,118 @@ def gen_peak_data(request):
 
         return render(request, 'curr/gen_peak_data_full.html', dic)
 #/ def gen_peak_data(request):
+
+def exec_Gen_PeakData(request):
+
+    '''###################
+        exec
+    ###################'''
+    fname = request.GET.get('fname', False)
+    
+    # validate
+    if fname == False : fname = cons_fx.FPath.fname_Gen_PeakData_Dflt.value
+    
+    '''###################
+        exec
+    ###################'''
+    dic = {}
+    
+    dpath = cons_fx.FPath.dpath_In_CSV.value
+    
+#     fname = get_CurrencyData_FileName(request)
+    
+#     fname = cons_fx.FPath.fname_In_CSV.value
+#     fname = "49_20_file-io.USDJPY.Period-H1.Days-1200.Bars-28800.20180428_073251.csv"
+#     fname = cons_fx.FPath.fname_In_CSV.value
+    
+    header_Length   = 2
+    
+    skip_Header     = False
+
+    #debug
+#     lo_BarDatas = None
+    lo_BarDatas = libfx.get_Listof_BarDatas_2(
+                        dpath, fname, header_Length, skip_Header)
+    
+#     #test
+#     lo_BarDatas = None
+    
+    # validate
+    if lo_BarDatas == None : #if lo_BarDatas == None
+    
+        print()
+        print("[%s:%d] lo_BarDatas => None" % \
+                (os.path.basename(libs.thisfile()), libs.linenum()
+                
+                ), file=sys.stderr)
+
+    
+        msg = "lo_BarDatas => None"
+        dic = {"msg" : msg}
+    
+        return render(request, 'curr/error.html', dic)
+#         return render(request, 'curr/error.html', msg)
+
+    else : #if lo_BarDatas == None
+    
+        print()
+        print("[%s:%d] lo_BarDatas => %d" % \
+                (os.path.basename(libs.thisfile()), libs.linenum()
+                , len(lo_BarDatas)
+                ), file=sys.stderr)
+    
+    # get peak data
+    result = basics_Ops_1__DetectPieaks(request, lo_BarDatas, dpath, fname)
+    
+    #debug
+    print()
+    print("[%s:%d] result => %s" % \
+            (os.path.basename(libs.thisfile()), libs.linenum()
+            , result
+            ), file=sys.stderr)
+    
+    '''###################
+        get : referer        
+    ###################'''
+    referer_MM = "http://127.0.0.1:8000/curr/gen_peak_data/"
+#     referer_MM = "http://127.0.0.1:8000/curr/"
+    
+    referer_Current = request.META.get('HTTP_REFERER')
+
+
+    '''###################
+        render        
+    ###################'''
+    dic = {}
+#     dic["msg"] = "rendering... (%s)(time : %02.3f sec)" \
+    dic["msg"] = "rendering... (%s)" \
+                    % (libs.get_TimeLabel_Now())
+#                     % (libs.get_TimeLabel_Now(), time_Elapsed)
+#     dic["msg"] = "rendering... (%s)(time : %02.3f sec)" % libs.get_TimeLabel_Now()
+    
+    if referer_Current == referer_MM : #if referer_Current == referer_MM
+    
+        print()
+        print("[%s:%d] referer_Current == referer_MM (current = %s / referer = %s" % \
+                (os.path.basename(libs.thisfile()), libs.linenum()
+                ,referer_Current, referer_MM
+                ), file=sys.stderr)
+    
+        return render(request, 'curr/exec_Gen_PeakData.html', dic)
+#         return render(request, 'mm/numbering.html', dic)
+        
+    else : #if referer_Current == referer_MM
+
+        print()
+        print("[%s:%d] referer_Current <> referer_MM (current = %s / referer = %s" % \
+                (os.path.basename(libs.thisfile()), libs.linenum()
+                ,referer_Current, referer_MM
+                ), file=sys.stderr)
+
+        return render(request, 'curr/exec_Gen_PeakData.html', dic)
+
+
+#/ def exec_Gen_PeakData():
 
 def basics_Ops(request, lo_BarDatas):
     

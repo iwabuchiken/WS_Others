@@ -33,6 +33,8 @@ urlpatterns = [
     
     url(r'^gen_peak_data/$', views.gen_peak_data, name='gen_peak_data'),
     
+    url(r'^exec_Gen_PeakData/$', views.exec_Gen_PeakData, name='exec_Gen_PeakData'),
+    
 #     url(r'^error/$', views.error, name='error'),
     
     

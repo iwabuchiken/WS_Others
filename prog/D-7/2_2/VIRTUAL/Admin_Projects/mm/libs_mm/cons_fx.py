@@ -50,7 +50,8 @@ class FPath(Enum):
 #                       ".20171231_233726.csv"
 #     fname_In_CSV = "49_11_file-io.USDJPY.Period-H1.Days-720.Bars-17280.20171231_233725.csv"
     
-    dpath_In_CSV = DPATH_ROOT_CURR + "/data/csv"
+    dpath_In_CSV = DPATH_ROOT_CURR + "\\data\\csv"
+#     dpath_In_CSV = DPATH_ROOT_CURR + "/data/csv"
 #     dpath_In_CSV = "C:/WORKS_2/WS/WS_Others/prog/D-7/2_2/VIRTUAL/Admin_Projects/curr/data/csv"
 #     dpath_In_CSV = "./csv"
 #     dpath_In_CSV = "./data"
@@ -63,6 +64,10 @@ class FPath(Enum):
     
     dpath_Data_Miscs = DPATH_ROOT_CURR + "/data/miscs"
     
+    '''###################
+        gen peak data        
+    ###################'''
+    fname_Gen_PeakData_Dflt = "49_20_file-io.USDJPY.Period-H1.Days-1200.Bars-28800.20180428_073251.csv"
 
 class Label_ColNames(Enum):
     
@@ -101,4 +106,15 @@ class PatternMatch(Enum) :
     
     UPDOWN_PATTERN      = [1,1,1,0]
     
+class PairName(Enum) :
     
+    pair_Names = [
+        
+        "USDJPY",
+        "EURJPY",
+        "AUDJPY",
+        "GBPJPY",
+        
+        "EURUSD",
+        
+    ]

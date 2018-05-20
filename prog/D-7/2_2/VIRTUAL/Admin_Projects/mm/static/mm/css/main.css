@@ -415,6 +415,16 @@ div#div_Curr_Basics_Message_Area {
 	
 }/*div#div_Curr_Basics_Message_Area {*/
 
+div#div_Curr_Basics_Gen_PeakData_Message_Area {
+	
+	margin         : 10px;
+	
+	background     : Moccasin;
+	
+	padding     : 10px;
+	
+}/*div#div_Curr_Basics_Gen_PeakData_Message_Area {*/
+
 div#div_Curr_Basics_Result_Area {
 	
 	margin         : 10px;
@@ -424,6 +434,16 @@ div#div_Curr_Basics_Result_Area {
 	padding     : 10px;
 	
 }/*div#div_Curr_Basics_Result_Area {*/
+
+div#div_Curr_Basics_Gen_PeakData_Result_Area {
+	
+	margin         : 10px;
+	
+	background     : Lavender;
+	
+	padding     : 10px;
+	
+}/*div#div_Curr_Basics_Gen_PeakData_Result_Area {*/
 
 div#index_Message_Area {
 	
