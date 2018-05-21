@@ -90,7 +90,7 @@ function millisToMinutesAndSeconds(millis) {
 	  				+ "minutes = " + minutes
 	  				+ " "
 	  				+ "seconds = " + seconds;
-	  console.log(msg_log);
+//	  console.log(msg_log);
 	  
 	  mill = (mill < 10 ? '00' : (mill < 100 ? '0' : "")) + mill;
 	  
