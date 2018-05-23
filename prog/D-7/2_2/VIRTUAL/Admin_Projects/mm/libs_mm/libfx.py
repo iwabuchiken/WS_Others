@@ -474,7 +474,7 @@ class BarData :
     bb_2S       = -1.0
     bb_1S       = -1.0
     bb_Main     = -1.0
-    bb_M1S       = -1.0
+    bb_M1S       = -1.0     # -1σ
     bb_M2S       = -1.0
     
     diff_OC       = -1.0

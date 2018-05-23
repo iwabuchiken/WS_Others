@@ -838,6 +838,13 @@ def basics_Ops_1__DetectPieaks__V2(request, lo_BarDatas, dpath_Data, fname_Data)
                             , lo_BarDatas_Tmp[idxOf_SumMax].price_Close
                             , item.price_Close
                             
+                            # BB prices : idxOf_SumMax
+                            , lo_BarDatas_Tmp[idxOf_SumMax].bb_2S
+                            , lo_BarDatas_Tmp[idxOf_SumMax].bb_1S
+                            , lo_BarDatas_Tmp[idxOf_SumMax].bb_Main
+                            , lo_BarDatas_Tmp[idxOf_SumMax].bb_M1S
+                            , lo_BarDatas_Tmp[idxOf_SumMax].bb_M2S
+                            
                             )
                     
                     lo_Max.append(data)
@@ -980,6 +987,13 @@ def basics_Ops_1__DetectPieaks__V2(request, lo_BarDatas, dpath_Data, fname_Data)
             # , lo_BarDatas_Tmp[idx_Start].price_Close
             # , lo_BarDatas_Tmp[idxOf_SumMax].price_Close
             # , item.price_Close
+
+            # # BB prices : idxOf_SumMax
+            # , lo_BarDatas_Tmp[idxOf_SumMax].bb_2S
+            # , lo_BarDatas_Tmp[idxOf_SumMax].bb_1S
+            # , lo_BarDatas_Tmp[idxOf_SumMax].bb_Main
+            # , lo_BarDatas_Tmp[idxOf_SumMax].bb_M1S
+            # , lo_BarDatas_Tmp[idxOf_SumMax].bb_M2S
             
             #         )
 
@@ -990,7 +1004,8 @@ def basics_Ops_1__DetectPieaks__V2(request, lo_BarDatas, dpath_Data, fname_Data)
     msg = "Max\tidx_Start\tidxOf_SumMax\tidx(when ended)" \
             + "\tdateTime_Local(started)\tdateTime_Local(max)\tdateTime_Local(ended)" \
             + "\tdateTime(started)\tdateTime(max)\tdateTime(ended)" \
-            + "\tprice_Close(started)\tprice_Close(max)\tprice_Close(ended)"
+            + "\tprice_Close(started)\tprice_Close(max)\tprice_Close(ended)" \
+            + "\tBB_2S(max)\tBB_1S(max)\tBB_Main(max)\tBB_M1S(max)\tBB_M2S(max)"
             
     fout.write(msg)
     fout.write("\n")
@@ -999,10 +1014,18 @@ def basics_Ops_1__DetectPieaks__V2(request, lo_BarDatas, dpath_Data, fname_Data)
     for item in lo_Max:
         
 #         msg = "%03f\t%02d\t%02d\t%02d\t%s" % \
-        msg = "%03f\t%02d\t%02d\t%02d\t%s\t%s\t%s\t%s\t%s\t%s\t%.03f\t%.03f\t%.03f" % \
+        msg = "%03f\t%02d\t%02d\t%02d\t%s\t%s\t%s\t%s\t%s\t%s\t%.03f\t%.03f\t%.03f\t%.03f\t%.03f\t%.03f\t%.03f\t%.03f" % \
                 (item[0], int(item[1]), int(item[2]), item[3], item[4],
+                 
+                 # dateTime
                  item[5], item[6], item[7], item[8], item[9]
+                 
+                 # price_Close
                  , float(item[10]), float(item[11]), float(item[12])
+                 
+                 # BB
+                 , float(item[13]), float(item[14]), float(item[15]), 
+                    float(item[16]), float(item[17])
                  )
                 
         fout.write(msg)
