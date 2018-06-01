@@ -1808,3 +1808,106 @@ function curr_Basics_Index_GO(param) {
 
 }
 
+function _curr_Tester_Tmpl_BUSL(_param) {
+	
+	alert("ajax starting for... => '" + _param + "'");
+
+	/***************************
+		ajax
+		
+		ref : C:\WORKS_2\WS\Eclipse_Luna\Cake_IFM11\app\webroot\js\main.js
+	 ***************************/
+	var _url = "http://127.0.0.1:8000/curr/tester_BuyUps_SellLows";
+	//var _url = "http://127.0.0.1:8000/im/actions";
+	
+	/***************************
+		param
+	 ***************************/
+//	var _data;
+	
+	$.ajax({
+		
+	    url: _url,
+	    type: "GET",
+	    //REF http://stackoverflow.com/questions/1916309/pass-multiple-parameters-to-jquery-ajax-call answered Dec 16 '09 at 17:37
+	//    data: {id: id},
+	//    data: {memos: memos, image_id: image_id},
+//	    data: _data,
+	    
+	    timeout: 10000
+	    
+	}).done(function(data, status, xhr) {
+		
+		/***************************
+			result
+		 ***************************/
+//		alert("ajax => done");
+		
+		console.log("ajax => done");
+		
+		var tag = $('div#div_Curr_Tester_Index_Area__Result');
+//		var tag = $('div#index_Area__Result');
+		
+		tag.html(data);
+		
+	//	$('div#index_Area__Result').html(data);
+
+		/***************************
+			message
+		 ***************************/
+		var tag_Message = $('div#div_Curr_Tester_Index_Area_Message');
+//		var tag_Message = $('div#index_Area_Message');
+		
+		var msg = "ajax => done";
+		
+		tag_Message.html(msg);
+//		tag_Message.html(tag_Message);
+		
+		tag_Message.css("background", cname_Plum);
+		
+		tag_Message
+			.fadeIn(200).fadeOut(200)
+			.fadeIn(200).fadeOut(200)
+			
+			.fadeIn(200).fadeOut(200)
+			.fadeIn(200).fadeOut(200)
+			
+			.fadeIn(200).fadeOut(200)
+			.fadeIn(200).fadeOut(200)
+			
+			.fadeIn(200);
+
+		
+		
+	}).fail(function(xhr, status, error) {
+		
+		alert(xhr.status);
+		
+	});
+
+	
+}
+
+function curr_Tester_Tmpl_Commands(_param) {
+	
+	/***************************
+		validate : update date
+	 ***************************/
+	var _update;
+	
+	if ((_param == "buy_Ups_Sell_Lows")
+		) {
+
+//		alert("command => '" + _param + "'");
+		
+		_curr_Tester_Tmpl_BUSL(_param);
+
+	} else {//if ((_param == "buy_Ups_Sell_Lows") ||
+		
+		alert("unknown command !! => '" + _param + "'");
+		
+	}//if ((_param == "buy_Ups_Sell_Lows") ||
+		
+
+}//function curr_Tester_Tmpl_BUSL(param) {
+

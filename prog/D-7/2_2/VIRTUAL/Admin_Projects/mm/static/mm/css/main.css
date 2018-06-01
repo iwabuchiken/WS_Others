@@ -50,6 +50,38 @@ table#tbl_Im_Actions__Body {
 	
 }
 
+table#tbl_Curr_Actions__Header {
+	
+	/*border     : 1;*/
+	/*border     : 1px solid black;*/
+	/* ref template for css files https://stackoverflow.com/questions/7900575/how-to-add-css-autocomplete-to-eclipse */
+	/*ref table border http://www.html.am/html-codes/tables/table-border.cfm*/
+	border     : 1px solid #aaaaaa;
+	
+	margin     : 20px;
+	
+	
+	/*float      : left;*/
+
+	
+}
+
+table#tbl_Curr_Actions__Body {
+	
+	/*border     : 1;*/
+	/*border     : 1px solid black;*/
+	/* ref template for css files https://stackoverflow.com/questions/7900575/how-to-add-css-autocomplete-to-eclipse */
+	/*ref table border http://www.html.am/html-codes/tables/table-border.cfm*/
+	border     : 1px solid #aaaaaa;
+	
+	margin     : 20px;
+	
+	overflow       :scroll;
+    
+    height         : 100px;
+	
+}
+
 table#tbl_Mm_Numbering_Actions {
 	
 	/*border     : 1;*/
@@ -415,6 +447,26 @@ div#div_Curr_Basics_Message_Area {
 	
 }/*div#div_Curr_Basics_Message_Area {*/
 
+div#div_Curr_Tester_Index_Area_Message {
+	
+	margin         : 10px;
+	
+	background     : Moccasin;
+	
+	padding     : 10px;
+	
+}/*div#div_Curr_Basics_Gen_PeakData_Message_Area {*/
+
+div#div_Curr_Tester_Index_Area__Result {
+	
+	margin         : 10px;
+	
+	background     : Lavender;
+	
+	padding     : 10px;
+	
+}/*div#div_Curr_Tester_Index_Area__Result {*/
+
 div#div_Curr_Basics_Gen_PeakData_Message_Area {
 	
 	margin         : 10px;
@@ -628,6 +680,21 @@ div#div_Im_Actions__Body {
 	
 	
 }/*div#div_Im_Actions__Body {*/
+
+div#div_Curr_Tester_Actions__Body {
+	
+	background     : white;
+	
+	/*ref https://stackoverflow.com/questions/17450861/add-scroll-bar-to-table-body */
+	overflow       :scroll;
+	
+	height         : 400px;
+	
+/*height         : 50%;*/
+
+	
+	
+}/*div#div_Curr_Tester_Actions__Body {*/
 
 div#div_IFM11_List_Main {
 	

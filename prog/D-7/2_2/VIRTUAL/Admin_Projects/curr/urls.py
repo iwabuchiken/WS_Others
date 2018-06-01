@@ -35,6 +35,10 @@ urlpatterns = [
     
     url(r'^exec_Gen_PeakData/$', views.exec_Gen_PeakData, name='exec_Gen_PeakData'),
     
+    url(r'^testers/$', views.testers, name='testers'),
+    
+    url(r'^tester_BuyUps_SellLows/$', views.tester_BuyUps_SellLows, name='tester_BuyUps_SellLows'),
+    
 #     url(r'^error/$', views.error, name='error'),
     
     

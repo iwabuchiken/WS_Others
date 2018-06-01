@@ -779,24 +779,24 @@ def basics_Ops_1__DetectPieaks__V2(request, lo_BarDatas, dpath_Data, fname_Data)
                     ###################'''
                     dpath = cons_fx.FPath.dpath_Data_Miscs.value
                         
-                    fname = "detect_peaks.log"
-                    
-                    fpath = "%s/%s" % (dpath, fname)
-                    
-                    fout = open(fpath, "a")
-                    
-                    fout.write("\n")
+#                     fname = "detect_peaks.log"
+#                     
+#                     fpath = "%s/%s" % (dpath, fname)
+#                     
+#                     fout = open(fpath, "a")
+#                     
+#                     fout.write("\n")
 #                     fout.write("sumOf_Diff < (sum_Max / 2)" % (libs.get_TimeLabel_Now()))
                     
-                    msg = "[%s:%d] (%02d) %s : sumOf_Diff < (sum_Max / 2) : sumOf_Diff = %03f sum_Max = %03f" % \
-                            (os.path.basename(libs.thisfile()), libs.linenum()
-                            , idx, item.dateTime_Local, sumOf_Diff, sum_Max
-                            )
-                    fout.write(msg)
-
-                    fout.write("\n")
+#                     msg = "[%s:%d] (%02d) %s : sumOf_Diff < (sum_Max / 2) : sumOf_Diff = %03f sum_Max = %03f" % \
+#                             (os.path.basename(libs.thisfile()), libs.linenum()
+#                             , idx, item.dateTime_Local, sumOf_Diff, sum_Max
+#                             )
+#                     fout.write(msg)
+# 
+#                     fout.write("\n")
                     
-                    fout.close()
+#                     fout.close()
 
                     '''###################
                         ops : sumOf_Diff ---> went under
@@ -804,13 +804,13 @@ def basics_Ops_1__DetectPieaks__V2(request, lo_BarDatas, dpath_Data, fname_Data)
                     # reset flag    ### j : 5 / y : 1
                     f_New = True
                     
-                    # report
-                    msg = "[%s:%d] (%02d) %s : f_New => back to %s" % \
-                            (os.path.basename(libs.thisfile()), libs.linenum()
-                            , idx, item.dateTime_Local, f_New
-                            )
-
-                    write_Log(msg)
+#                     # report
+#                     msg = "[%s:%d] (%02d) %s : f_New => back to %s" % \
+#                             (os.path.basename(libs.thisfile()), libs.linenum()
+#                             , idx, item.dateTime_Local, f_New
+#                             )
+# 
+#                     write_Log(msg)
                     
                     '''###################
                         append data        
@@ -896,13 +896,13 @@ def basics_Ops_1__DetectPieaks__V2(request, lo_BarDatas, dpath_Data, fname_Data)
                 
                 fout = open(fpath, "a")
                 
-                msg = "[%s:%d] (%02d) %s : f_New ==> turned to False" % \
-                        (os.path.basename(libs.thisfile()), libs.linenum()
-                        , idx, item.dateTime_Local
-                        )
-                fout.write(msg)
-                
-                fout.write("\n")
+#                 msg = "[%s:%d] (%02d) %s : f_New ==> turned to False" % \
+#                         (os.path.basename(libs.thisfile()), libs.linenum()
+#                         , idx, item.dateTime_Local
+#                         )
+#                 fout.write(msg)
+#                 
+#                 fout.write("\n")
             
             # sum of diff
             sumOf_Diff += diff_OC
@@ -1608,6 +1608,82 @@ def index(request):
     
     return render(request, 'curr/index.html', dic)
 #     return render(request, 'mm/index.html', dic)
+
+    
+#     return HttpResponse("Hello Django")
+
+def testers(request):
+
+
+    action = "action"
+    message = "message"
+    
+    lo_Commands = cons_fx.Tester.lo_Commands.value
+#     lo_Commands = cons_mm.ImOp.lo_Commands.value
+    
+    #debug
+    print()
+    print(lo_Commands)
+    
+    dic = {'action' : action, "message" : message, "lo_Commands" : lo_Commands}
+    
+    return render(request, 'curr/testers.html', dic)
+#     return render(request, 'mm/index.html', dic)
+
+    
+#     return HttpResponse("Hello Django")
+
+def tester_BuyUps_SellLows(request):
+
+
+    action = "action"
+    message = "message"
+    
+    lo_Commands = cons_fx.Tester.lo_Commands.value
+#     lo_Commands = cons_mm.ImOp.lo_Commands.value
+    
+    #debug
+    print()
+    print(lo_Commands)
+    
+    dic = {'action' : action, "message" : message, "lo_Commands" : lo_Commands}
+
+    '''###################
+        render        
+    ###################'''
+    '''###################
+        get : referer        
+    ###################'''
+    referer_MM = "http://localhost:8000/curr/testers/"
+#     referer_MM = "http://127.0.0.1:8000/curr/"
+    
+    referer_Current = request.META.get('HTTP_REFERER')
+
+    
+    dic["msg"] = "rendering... (%s)" \
+                    % (libs.get_TimeLabel_Now())
+    
+    if referer_Current == referer_MM : #if referer_Current == referer_MM
+    
+        print()
+        print("[%s:%d] referer_Current == referer_MM (current = %s / referer = %s" % \
+                (os.path.basename(libs.thisfile()), libs.linenum()
+                ,referer_Current, referer_MM
+                ), file=sys.stderr)
+    
+        return render(request, 'curr/tester_BuyUps_SellLows.html', dic)
+#         return render(request, 'mm/numbering.html', dic)
+        
+    else : #if referer_Current == referer_MM
+
+        print()
+        print("[%s:%d] referer_Current <> referer_MM (current = %s / referer = %s" % \
+                (os.path.basename(libs.thisfile()), libs.linenum()
+                ,referer_Current, referer_MM
+                ), file=sys.stderr)
+
+        return render(request, 'curr/tester_BuyUps_SellLows_full.html', dic)
+
 
     
 #     return HttpResponse("Hello Django")

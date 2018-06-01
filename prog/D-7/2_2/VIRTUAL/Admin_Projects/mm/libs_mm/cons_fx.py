@@ -118,3 +118,15 @@ class PairName(Enum) :
         "EURUSD",
         
     ]
+
+class Tester(Enum):
+    
+    lo_Commands = [
+        
+        ["buy_Ups_Sell_Lows", "Buy ups, sell lows"],
+        
+#         [1, "Numbering"],
+#         [2, "De-numbering"],
+
+    
+    ]
