@@ -901,8 +901,8 @@ function exec_DeNumbering(_param) {
 	
 }//exec_Numbering
 
-function exec_GenPeakData(_param) {
 	
+function exec_GenPeakData(_param) {
 	/***************************
 		vars
 	 ***************************/
@@ -1039,6 +1039,148 @@ function exec_GenPeakData(_param) {
 	});
 
 }//exec_GenPeakData
+
+
+function exec_Tester_BUSL(_param) {
+	/***************************
+		vars
+	 ***************************/
+	var t_Start = +new Date();
+	
+	
+	alert("_param => '" + _param + "'");
+	
+//	//debug
+//	return;
+	
+	/***************************
+		get : vars
+	 ***************************/
+	/***************************
+		dpath
+	 ***************************/
+	var elem = $('input#ipt_Curr_Tester_BUSL_DpathImages');
+	
+	//ref val https://stackoverflow.com/questions/4088467/get-the-value-in-an-input-text-box answered Apr 9 '13 at 13:28
+	var _dpath = elem.val();
+	
+	alert("dpath => " + _dpath + "'");
+	
+	/***************************
+		fname
+	 ***************************/
+	var _fname = _param;
+//	
+	//debug
+	return;
+	
+////	alert("file fullpath => '" + _dpath + "\\" + _fname + "'");
+//	aa
+	/***************************
+		params
+	 ***************************/
+//	var _data = {action : _param};
+	var _data = {fname : _param, dpath_image : _dpath};
+	
+	var _url = "http://127.0.0.1:8000/curr/exec_Gen_PeakData/";
+//	var _url = "http://127.0.0.1:8000/mm/exec_Numbering/";
+	
+	/***************************
+		background
+	 ***************************/
+	var elem = $('div#div_Curr_Basics_Gen_PeakData_Message_Area');
+	
+	elem.css("background", cname_Yellow);
+//	elem.css("background", "yellow");
+	
+	var txt_Message = "ajax starting for --> '" + _param + "'"
+	+ " (" + get_Timelabel_Now_2() + ")";
+	
+	// log
+	console.log(txt_Message);
+	
+	/***************************
+		ajaxing
+	 ***************************/
+	$.ajax({
+		
+		url: _url,
+		type: "GET",
+		//REF http://stackoverflow.com/questions/1916309/pass-multiple-parameters-to-jquery-ajax-call answered Dec 16 '09 at 17:37
+//	    data: {id: id},
+//	    data: {memos: memos, image_id: image_id},
+		data: _data,
+		
+		timeout: 20000		// 20 seconds
+//		timeout: 10000
+		
+	}).done(function(data, status, xhr) {
+		
+//		alert(data);
+		
+		$('div#div_Curr_Basics_Gen_PeakData_Result_Area').html(data);
+		
+		$('div#div_Curr_Basics_Gen_PeakData_Result_Area')
+		.css("background", cname_Plum);
+		
+		/***************************
+			time
+		 ***************************/
+		//ref elapsed https://stackoverflow.com/questions/3528425/how-to-display-moving-elapsed-time-in-jquery answered Apr 29 '17 at 1:04
+		var elapsed = +new Date() - t_Start;
+		
+		var txt_Elapsed = millisToMinutesAndSeconds(elapsed);
+		
+		/***************************
+			message
+		 ***************************/
+		var msg = "ajax done for --> 'exec_GenPeakData'"
+			+ " "
+			+ "(" + get_Timelabel_Now_2() + ")"
+			+ "(command = 'gen_peak_data')"
+			+ "(file = '" + _param + "')"
+			+ " (took = " + txt_Elapsed + ")"
+			;
+		
+		//log
+		console.log(msg);
+		
+		// message
+		$('div#div_Curr_Basics_Gen_PeakData_Message_Area').css("background", cname_LightBlue);
+		
+//		var txt_Message = "ajax done" + _param + " "
+//						+ " (" + get_Timelabel_Now_2() + ")";
+		
+		
+		$('div#div_Curr_Basics_Gen_PeakData_Message_Area').html(msg);
+//		$('div#div_Curr_Basics_Gen_PeakData_Message_Area').html("Ajax => done");
+		
+	}).fail(function(xhr, status, error) {
+		
+		alert(xhr.status + " (error = '" + error + "')");
+//		alert(xhr.status);
+		
+		/***************************
+			time
+		 ***************************/
+		//ref elapsed https://stackoverflow.com/questions/3528425/how-to-display-moving-elapsed-time-in-jquery answered Apr 29 '17 at 1:04
+		var elapsed = +new Date() - t_Start;
+		
+		var txt_Elapsed = millisToMinutesAndSeconds(elapsed);
+		
+		var msg = "ajax returned error : " + error + "(elapsed = " + txt_Elapsed + ")";
+		
+		//log
+		console.log(msg);
+		
+		$('div#div_Curr_Basics_Gen_PeakData_Message_Area').html(msg);
+		
+		$('div#div_Curr_Basics_Gen_PeakData_Message_Area')
+		.css("background", cname_Red);
+		
+	});
+	
+}//exec_Tester_BUSL
 
 
 function get_Timelabel_Now() {

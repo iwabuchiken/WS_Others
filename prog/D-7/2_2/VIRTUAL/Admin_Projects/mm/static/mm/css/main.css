@@ -50,6 +50,22 @@ table#tbl_Im_Actions__Body {
 	
 }
 
+table#tbl_Curr_Tester_BUSL {
+	
+	/*border     : 1;*/
+	/*border     : 1px solid black;*/
+	/* ref template for css files https://stackoverflow.com/questions/7900575/how-to-add-css-autocomplete-to-eclipse */
+	/*ref table border http://www.html.am/html-codes/tables/table-border.cfm*/
+	border     : 1px solid #aaaaaa;
+	
+	margin     : 20px 100px 20px 20px; /* up right down left
+	
+	/*overflow       :scroll;*/
+    
+    height         : 50px;
+	
+}/*tbl_Curr_Tester_BUSL*/
+
 table#tbl_Curr_Actions__Header {
 	
 	/*border     : 1;*/
@@ -195,6 +211,18 @@ table#tbl_Im_Actions__Body tr td {
 	padding    : 5px;
 	
 }
+
+table#tbl_Curr_Tester_BUSL tr td {
+	
+	background-color   : #ffffff;
+	
+	text-align     : left;
+	
+	border     : 1px solid #aaaaaa;
+	
+	padding    : 5px;
+	
+}/*#tbl_Curr_Tester_BUSL*/
 
 table#tbl_Mm_Numbering_Actions__Body tr td {
 	
@@ -681,6 +709,21 @@ div#div_Im_Actions__Body {
 	
 }/*div#div_Im_Actions__Body {*/
 
+div#div_Curr_Tester_BUSL__Tbl {
+	
+	background     : white;
+	
+	/*ref https://stackoverflow.com/questions/17450861/add-scroll-bar-to-table-body */
+	overflow       :scroll;
+	
+	height         : 350px;
+	
+/*height         : 50%;*/
+
+	
+	
+}/*div#div_Curr_Tester_BUSL__Tbl {*/
+
 div#div_Curr_Tester_Actions__Body {
 	
 	background     : white;
@@ -729,6 +772,23 @@ input#ipt_Numbering_MainDir {
 	
 	
 }/*input#ipt_Numbering_MainDir {*/
+
+input#ipt_Curr_Tester_BUSL_DpathImages {
+	
+	height: 30px;
+    width:  350px;
+    /*width:  250px;*/
+
+    background: #81BEF7;
+    
+    margin-top: 10px;
+    
+    margin-left : 20px;
+    
+    padding     : 5px;
+	
+	
+}/*input#Curr_Tester_BUSL_DpathImages {*/
 
 input#ipt_IM_Update_Date {
 	
