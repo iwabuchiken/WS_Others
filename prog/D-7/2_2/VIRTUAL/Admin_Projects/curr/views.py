@@ -1720,23 +1720,355 @@ def tester_BuyUps_SellLows(request):
 def exec_Tester_BuyUps_SellLows(request):
     
     '''###################
+        vars
+    ###################'''
+    dic = {}
+
+    
+    '''###################
         time        
     ###################'''
     time_Start = time.time()
     
     '''###################
-        time        
+        tester
     ###################'''
-    time_Elapsed = time.time() - time_Start
+    '''###################
+        param : body volume : up        
+    ###################'''
+    fname = request.GET.get('fname', False)
+    dpath_image = request.GET.get('dpath_image', False)
+    
+    print()
+    print("[%s:%d] dpath_image = '%s', fname = '%s'" % \
+            (os.path.basename(libs.thisfile()), libs.linenum()
+            , dpath_image, fname
+            ), file=sys.stderr)
     
     '''###################
-        vars
+        validate : params
     ###################'''
-    dic = {}
+    if fname == False and dpath_image == False : #if fname == False and dpath_image == False
+        
+        '''###################
+            time        
+        ###################'''
+        time_Elapsed = time.time() - time_Start
+        
+        '''###################
+            vars        
+        ###################'''
+        dic['action'] = "action"
+        dic["msg"] = "params ==> not valid ('%s', '%s')" \
+                    % (dpath_image, fname)
+
+        '''###################
+            time        
+        ###################'''
+        time_Elapsed = time.time() - time_Start
+
+    else :#/if fname == False and dpath_image == False
+        
+        '''###################
+            vars        
+        ###################'''
+        dic['action'] = "action"
+        dic["msg"] = "params ==> valid"
+#         dic["msg"] = "params ==> valid ('%s', '%s')" \
+#                     % (dpath_image, fname)
+        
+        '''###################
+            get : bar data
+        ###################'''
+        # params
+        header_Length   = 2
+        skip_Header     = False
+    
+        #debug
+    #     lo_BarDatas = None
+        lo_BarDatas = libfx.get_Listof_BarDatas_2(
+                            dpath_image, fname, header_Length, skip_Header)
+        
+    #     #test
+    #     lo_BarDatas = None
+        
+        # validate
+        if lo_BarDatas == None : #if lo_BarDatas == None
+        
+            print()
+            print("[%s:%d] lo_BarDatas => None" % \
+                    (os.path.basename(libs.thisfile()), libs.linenum()
+                    
+                    ), file=sys.stderr)
+    
+        
+            msg = "lo_BarDatas => None"
+            dic = {"msg" : msg}
+        
+            return render(request, 'curr/error.html', dic)
+    #         return render(request, 'curr/error.html', msg)
+    
+        else : #if lo_BarDatas == None
+        
+            print()
+            print("[%s:%d] lo_BarDatas => %d" % \
+                    (os.path.basename(libs.thisfile()), libs.linenum()
+                    , len(lo_BarDatas)
+                    ), file=sys.stderr)
+        
+            '''###################
+                buy, sell
+            ###################'''
+            # reverse
+            lo_BarDatas.reverse()
+            
+            entry_0 = lo_BarDatas[0]
+            
+            print()
+            print("[%s:%d] entry_0 =>" % \
+                        (os.path.basename(libs.thisfile()), libs.linenum()
+                         
+                        ), file=sys.stderr)
+             
+            print(entry_0)
+            print(entry_0.dateTime_Local)
+            
+            '''###################
+                iteration        
+            ###################'''
+            lenOf_Lo_BarData = len(lo_BarDatas)
+            
+            # price of the position
+            priceOf_Position = -1
+            
+            # flag
+            flg_In = False
+            
+            # counter
+            cntOf_Iteration = 0
+            
+            #debug
+            dbg_MaxCount = 10
+            
+            for i in range(1, lenOf_Lo_BarData):
+                
+                # bars
+                e_0 = lo_BarDatas[i - 1]
+                e_1 = lo_BarDatas[i]
+                
+                # price : close
+                pc_0 = e_0.price_Close
+                pc_1 = e_1.price_Close
+                
+                # compare prices
+                res = (pc_0 < pc_1)
+                
+                #debug
+                print()
+                print("[%s:%d] comparing : e_0.dateTime_Local = %s, e_1.dateTime_Local = %s (count = %d)" % \
+                    (os.path.basename(libs.thisfile()), libs.linenum()
+                    , e_0.dateTime_Local, e_1.dateTime_Local, cntOf_Iteration
+                    ), file=sys.stderr)
+                
+                '''###################
+                    judge : j1 : price is up        
+                ###################'''
+                # judge
+                if res == True : #if res == True
+    
+                    # judge
+                    '''###################
+                        j2 : flag is up ?        
+                    ###################'''
+                    if flg_In == True : #if flg_In == True
+    
+                        # update : price of the position
+                        priceOf_Position = e_1.price_Close
+                        
+                        print()
+                        print("[%s:%d] priceOf_Position : updated => %.03f" % \
+                            (os.path.basename(libs.thisfile()), libs.linenum()
+                            , priceOf_Position
+                            ), file=sys.stderr)
+                        
+                        # counter
+                        cntOf_Iteration += 1
+                        
+                        #debug
+                        if cntOf_Iteration > dbg_MaxCount :     #if cntOf_Iteration > dbg_MaxCount
+                    
+                            print()
+                            print("[%s:%d] break the for loop" % \
+                                (os.path.basename(libs.thisfile()), libs.linenum()
+                                
+                                ), file=sys.stderr)
+                            
+                            break
+
+                        # next iteration
+                        continue
+                        
+                    else :  ### j2.N
+                        
+                        # flag : up
+                        flg_In = True
+#                         flg_in = True
+                        
+                        print()
+                        print("[%s:%d] flg_In => %s" % \
+                            (os.path.basename(libs.thisfile()), libs.linenum()
+                            , flg_In
+                            ), file=sys.stderr)
+                        
+                        # set the price of the position
+                        priceOf_Position = e_1.price_Close
+                        
+                        #debug
+                        print()
+#                         print("[%s:%d] position opened => %.03f" % \
+                        print("[%s:%d] position opened => %.03f (count = %d)" % \
+                            (os.path.basename(libs.thisfile()), libs.linenum()
+                            , priceOf_Position, cntOf_Iteration
+                            ), file=sys.stderr)
+                        
+                        # counter
+                        cntOf_Iteration += 1
+                        
+                        #debug
+                        if cntOf_Iteration > dbg_MaxCount :     #if cntOf_Iteration > dbg_MaxCount
+                    
+                            print()
+                            print("[%s:%d] break the for loop" % \
+                                (os.path.basename(libs.thisfile()), libs.linenum()
+                                
+                                ), file=sys.stderr)
+                            
+                            break
+
+                        # next iteration
+                        continue
+                        
+                    #/if flg_In == True    ### j2
+                    
+                else : #/if res == True    ### j1.N
+                    
+                    '''###################
+                        j3 : flag is up ?
+                    ###################'''
+                    if flg_In == True : #if flg_In == True
+
+                        # sell
+                        
+                        # calculate : profit/loss
+                        profit_loss = priceOf_Position - pc_1
+                        
+                        print()
+                        print("[%s:%d] position => closed" % \
+                            (os.path.basename(libs.thisfile()), libs.linenum()
+                            ), file=sys.stderr)
+                        print("[%s:%d] profit_loss => %.03f" % \
+                        (os.path.basename(libs.thisfile()), libs.linenum()
+                        , profit_loss
+                        ), file=sys.stderr)
+                        
+                        # flag : down
+                        flg_In = False
+                        
+                        # reset : price of the positin
+                        priceOf_Position = 0
+                        
+                        # counter
+                        cntOf_Iteration += 1
+                        
+                        #debug
+                        if cntOf_Iteration > dbg_MaxCount :     #if cntOf_Iteration > dbg_MaxCount
+                    
+                            print()
+                            print("[%s:%d] break the for loop" % \
+                                (os.path.basename(libs.thisfile()), libs.linenum()
+                                
+                                ), file=sys.stderr)
+                            
+                            break
+                        
+                        # next iteration
+                        continue
+                    
+                    else : #if flg_In == True    ### j3.N
+                    
+                        # counter
+                        cntOf_Iteration += 1
+                        
+                        #debug
+                        if cntOf_Iteration > dbg_MaxCount :     #if cntOf_Iteration > dbg_MaxCount
+                    
+                            print()
+                            print("[%s:%d] break the for loop" % \
+                                (os.path.basename(libs.thisfile()), libs.linenum()
+                                
+                                ), file=sys.stderr)
+                            
+                            break
+                    
+                        # next
+                        continue
+                    
+                    #/if flg_In == True    ### j3
+
+
+
+#                     pass
+                
+                #/if res == True    ### j1
+    
+    
+                
+                
+                # counter
+                cntOf_Iteration += 1
+                
+                #debug
+                if cntOf_Iteration > dbg_MaxCount :     #if cntOf_Iteration > dbg_MaxCount
+            
+                    print()
+                    print("[%s:%d] break the for loop" % \
+                        (os.path.basename(libs.thisfile()), libs.linenum()
+                        
+                        ), file=sys.stderr)
+                    
+                    break
+                
+                #/if cntOf_Iteration > dbg_MaxCount
+            
+            
+            
+            #/for i in range(lenOf_Lo_BarData - 1:
+
+            
+            
+        '''###################
+            time        
+        ###################'''
+        time_Elapsed = time.time() - time_Start
+
+    
+    #/if fname == False and dpath_image == False
+        
+        
+    
+#     '''###################
+#         time        
+#     ###################'''
+#     time_Elapsed = time.time() - time_Start
+    
+#     '''###################
+#         vars
+#     ###################'''
+#     dic = {}
     
 
-    dic['action'] = "action"
-    dic["msg"] = "message"
+#     dic['action'] = "action"
+#     dic["msg"] = "message"
 
     '''###################
         render        
@@ -1750,7 +2082,8 @@ def exec_Tester_BuyUps_SellLows(request):
     referer_Current = request.META.get('HTTP_REFERER')
     
     # set : message
-    dic["msg"] = "rendering... (%s)(time : %02.3f sec)" \
+#     dic["msg"] = "rendering... (%s)(time : %02.3f sec)" \
+    dic["msg"] += " (%s)(time : %02.3f sec)" \
                     % (libs.get_TimeLabel_Now(), time_Elapsed)
     
     if referer_Current == referer_MM : #if referer_Current == referer_MM
