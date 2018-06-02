@@ -39,6 +39,8 @@ urlpatterns = [
     
     url(r'^tester_BuyUps_SellLows/$', views.tester_BuyUps_SellLows, name='tester_BuyUps_SellLows'),
     
+    url(r'^exec_Tester_BuyUps_SellLows/$', views.exec_Tester_BuyUps_SellLows, name='exec_Tester_BuyUps_SellLows'),
+    
 #     url(r'^error/$', views.error, name='error'),
     
     

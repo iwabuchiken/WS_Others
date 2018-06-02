@@ -1048,7 +1048,7 @@ function exec_Tester_BUSL(_param) {
 	var t_Start = +new Date();
 	
 	
-	alert("_param => '" + _param + "'");
+//	alert("_param => '" + _param + "'");
 	
 //	//debug
 //	return;
@@ -1064,25 +1064,24 @@ function exec_Tester_BUSL(_param) {
 	//ref val https://stackoverflow.com/questions/4088467/get-the-value-in-an-input-text-box answered Apr 9 '13 at 13:28
 	var _dpath = elem.val();
 	
-	alert("dpath => " + _dpath + "'");
+//	alert("dpath => " + _dpath + "'");
 	
 	/***************************
 		fname
 	 ***************************/
 	var _fname = _param;
 //	
-	//debug
-	return;
+//	//debug
+//	return;
 	
 ////	alert("file fullpath => '" + _dpath + "\\" + _fname + "'");
-//	aa
 	/***************************
 		params
 	 ***************************/
 //	var _data = {action : _param};
 	var _data = {fname : _param, dpath_image : _dpath};
 	
-	var _url = "http://127.0.0.1:8000/curr/exec_Gen_PeakData/";
+	var _url = "http://127.0.0.1:8000/curr/exec_Tester_BuyUps_SellLows/";
 //	var _url = "http://127.0.0.1:8000/mm/exec_Numbering/";
 	
 	/***************************
@@ -1117,11 +1116,13 @@ function exec_Tester_BUSL(_param) {
 	}).done(function(data, status, xhr) {
 		
 //		alert(data);
+		// html elements
+		var div_Result = $('div#div_Curr_Basics_Gen_PeakData_Result_Area');
+		var div_Message = $('div#div_Curr_Basics_Gen_PeakData_Message_Area');
 		
-		$('div#div_Curr_Basics_Gen_PeakData_Result_Area').html(data);
+		div_Result.html(data);
 		
-		$('div#div_Curr_Basics_Gen_PeakData_Result_Area')
-		.css("background", cname_Plum);
+		div_Result.css("background", cname_Plum);
 		
 		/***************************
 			time
@@ -1146,15 +1147,30 @@ function exec_Tester_BUSL(_param) {
 		console.log(msg);
 		
 		// message
-		$('div#div_Curr_Basics_Gen_PeakData_Message_Area').css("background", cname_LightBlue);
+		div_Message.css("background", cname_LightBlue);
+//		$('div#div_Curr_Basics_Gen_PeakData_Message_Area').css("background", cname_LightBlue);
 		
 //		var txt_Message = "ajax done" + _param + " "
 //						+ " (" + get_Timelabel_Now_2() + ")";
 		
 		
-		$('div#div_Curr_Basics_Gen_PeakData_Message_Area').html(msg);
+		div_Message.html(msg);
+//		$('div#div_Curr_Basics_Gen_PeakData_Message_Area').html(msg);
 //		$('div#div_Curr_Basics_Gen_PeakData_Message_Area').html("Ajax => done");
 		
+		// animation
+		div_Message
+			.fadeIn(200).fadeOut(200)
+			.fadeIn(200).fadeOut(200)
+			
+			.fadeIn(200).fadeOut(200)
+			.fadeIn(200).fadeOut(200)
+			
+			.fadeIn(200).fadeOut(200)
+			.fadeIn(200).fadeOut(200)
+			
+			.fadeIn(200);
+
 	}).fail(function(xhr, status, error) {
 		
 		alert(xhr.status + " (error = '" + error + "')");
@@ -1173,10 +1189,26 @@ function exec_Tester_BUSL(_param) {
 		//log
 		console.log(msg);
 		
-		$('div#div_Curr_Basics_Gen_PeakData_Message_Area').html(msg);
+		// tag
+		var div_Message = $('div#div_Curr_Basics_Gen_PeakData_Message_Area');
 		
-		$('div#div_Curr_Basics_Gen_PeakData_Message_Area')
-		.css("background", cname_Red);
+		div_Message.html(msg);
+//		$('div#div_Curr_Basics_Gen_PeakData_Message_Area').html(msg);
+		
+		div_Message.css("background", cname_Red);
+		
+		// animation
+		div_Message
+			.fadeIn(200).fadeOut(200)
+			.fadeIn(200).fadeOut(200)
+			
+			.fadeIn(200).fadeOut(200)
+			.fadeIn(200).fadeOut(200)
+			
+			.fadeIn(200).fadeOut(200)
+			.fadeIn(200).fadeOut(200)
+			
+			.fadeIn(200);
 		
 	});
 	

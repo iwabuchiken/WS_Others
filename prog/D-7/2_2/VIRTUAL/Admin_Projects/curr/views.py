@@ -1720,50 +1720,23 @@ def tester_BuyUps_SellLows(request):
 def exec_Tester_BuyUps_SellLows(request):
     
     '''###################
+        time        
+    ###################'''
+    time_Start = time.time()
+    
+    '''###################
+        time        
+    ###################'''
+    time_Elapsed = time.time() - time_Start
+    
+    '''###################
         vars
     ###################'''
     dic = {}
     
-    '''###################
-        get : files list
-    ###################'''
-    dpath_Images = "C:\\WORKS_2\\WS\\WS_Others\\prog\\D-7\\2_2\\VIRTUAL\\Admin_Projects" \
-                + "\\curr\\data\\csv"
-    
-    fpath_Glob = "%s\\*.csv" % (dpath_Images)
-
-    #ref glob https://stackoverflow.com/questions/14798220/how-can-i-search-sub-folders-using-glob-glob-module-in-python answered Feb 10 '13 at 13:31    
-    lo_Files = glob.glob(fpath_Glob)
-
-    lo_Files.sort()
-    
-    print()
-    print("[%s:%d] len(lo_Files) => %d" % \
-                (os.path.basename(libs.thisfile()), libs.linenum()
-                , len(lo_Files)
-                ), file=sys.stderr)
-
-    # set list
-    dic['lo_Files'] = [os.path.basename(x) for x in lo_Files]
-    
-    # set : dpath
-    dic['dpath_Images'] = dpath_Images
-
-
 
     dic['action'] = "action"
-    dic["message"] = "message"
-#     action = "action"
-#     message = "message"
-    
-    lo_Commands = cons_fx.Tester.lo_Commands.value
-#     lo_Commands = cons_mm.ImOp.lo_Commands.value
-    
-    #debug
-    print()
-    print(lo_Commands)
-    
-#     dic = {'action' : action, "message" : message, "lo_Commands" : lo_Commands}
+    dic["msg"] = "message"
 
     '''###################
         render        
@@ -1775,10 +1748,10 @@ def exec_Tester_BuyUps_SellLows(request):
 #     referer_MM = "http://127.0.0.1:8000/curr/"
     
     referer_Current = request.META.get('HTTP_REFERER')
-
     
-    dic["msg"] = "rendering... (%s)" \
-                    % (libs.get_TimeLabel_Now())
+    # set : message
+    dic["msg"] = "rendering... (%s)(time : %02.3f sec)" \
+                    % (libs.get_TimeLabel_Now(), time_Elapsed)
     
     if referer_Current == referer_MM : #if referer_Current == referer_MM
     
@@ -1788,7 +1761,7 @@ def exec_Tester_BuyUps_SellLows(request):
                 ,referer_Current, referer_MM
                 ), file=sys.stderr)
     
-        return render(request, 'curr/tester_BuyUps_SellLows.html', dic)
+        return render(request, 'curr/exec_Tester_BuyUps_SellLows.html', dic)
 #         return render(request, 'mm/numbering.html', dic)
         
     else : #if referer_Current == referer_MM
@@ -1799,7 +1772,7 @@ def exec_Tester_BuyUps_SellLows(request):
                 ,referer_Current, referer_MM
                 ), file=sys.stderr)
 
-        return render(request, 'curr/tester_BuyUps_SellLows_full.html', dic)
+        return render(request, 'curr/exec_Tester_BuyUps_SellLows_full.html', dic)
 
 
     
