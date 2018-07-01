@@ -2000,11 +2000,11 @@ def get_Listof_BarDatas_2(dpath, fname, header_Length = 2, skip_Header = False):
     ###################'''
     lo_BarDatas = libfx.conv_CSVRows_2_BarDatas(lo_CSVs[header_Length:])
     
-    print()
-    print("[%s:%d] len(lo_BarDatas) => %d" % \
-                (os.path.basename(libs.thisfile()), libs.linenum()
-                , len(lo_BarDatas)
-                ), file=sys.stderr)
+#     print()
+#     print("[%s:%d] len(lo_BarDatas) => %d" % \
+#                 (os.path.basename(libs.thisfile()), libs.linenum()
+#                 , len(lo_BarDatas)
+#                 ), file=sys.stderr)
     
         ### Validate
     if lo_BarDatas == None : #if aryOf_BarDatas == None
@@ -2020,7 +2020,8 @@ def get_Listof_BarDatas_2(dpath, fname, header_Length = 2, skip_Header = False):
         return        
     ###################'''
 #     return None
-    return lo_BarDatas
+    return lo_BarDatas, lo_CSVs[:header_Length]
+#     return lo_BarDatas
     
 #/def get_Listof_BarDatas():
     

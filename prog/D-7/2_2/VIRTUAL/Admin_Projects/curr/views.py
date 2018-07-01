@@ -2161,15 +2161,197 @@ def __exec_Tester_BUSL(request) :
     skip_Header     = False
 
     #debug
-    lo_BarDatas = libfx.get_Listof_BarDatas_2(
+#     lo_BarDatas = libfx.get_Listof_BarDatas_2(
+    lo_BarDatas, lo_Header_Lines = libfx.get_Listof_BarDatas_2(
                         dpath_Peak_Files, fname_Peak_File, header_Length, skip_Header)
 #                         dpath_image, fname, header_Length, skip_Header)
 
+    # validate
+    if lo_BarDatas == None : #if lo_BarDatas == None
+    
+        print()
+        print("[%s:%d] lo_BarDatas => None" % \
+                (os.path.basename(libs.thisfile()), libs.linenum()
+                
+                ), file=sys.stderr)
+
+    
+        msg = "lo_BarDatas => None"
+        dic = {"msg" : msg}
+    
+        return render(request, 'curr/error.html', dic)
+    
     # length
     lenOf_LO_BarData = len(lo_BarDatas)
     
+#     print()
+#     print("[%s:%d] len(lo_BarDatas) => %d" % \
+#                 (os.path.basename(libs.thisfile()), libs.linenum()
+#                 , lenOf_LO_BarData
+#                 ), file=sys.stderr)
+#     
+#     print()
+#     print("[%s:%d] lo_Header_Lines =>" % \
+#             (os.path.basename(libs.thisfile()), libs.linenum()
+#             
+#             ), file=sys.stderr)
+#     
+#     print(lo_Header_Lines)
+    
+    '''######################################
+        for-loop
+    ######################################'''
+    # prep : reverse
+    lo_BarDatas.reverse()
+    
+    '''###################
+        vars
+    ###################'''
+    cntOf_Price_Ups = 0
+    
+    '''###################
+        log : header
+    ###################'''
+    # file
+    dpath_Log = "C:\\WORKS_2\\WS\\WS_Others\\prog\\D-7\\2_2\\VIRTUAL\\Admin_Projects\\curr\\data\\log"
+    fname_Log = "BUSL.log"
+    fpath_Log = os.path.join(dpath_Log, fname_Log)
+    
+    fout = open(fpath_Log, "a")
+
+    msg = "source : %s" % fname_Peak_File
+    
+    print()
+    print("[%s:%d] %s" % \
+        (os.path.basename(libs.thisfile()), libs.linenum()
+        , msg
+        ), file=sys.stderr)
+
+    fout.write("[%s / %s:%d] BUSL ===============================" % \
+        (
+        libs.get_TimeLabel_Now()
+        , os.path.basename(libs.thisfile())
+         , libs.linenum()
+        )
+    )
+     
+    fout.write("\n")
+    
+    fout.write("[%s:%d] %s" % \
+        (
+        os.path.basename(libs.thisfile())
+         , libs.linenum()
+         , msg
+        )
+    )
+     
+    fout.write("\n")
+    
+    # for-loop
+    for i in range(1, lenOf_LO_BarData):
+        
+        '''###################
+            proc 1 : get : bars
+        ###################'''
+        # bars
+        e_0 = lo_BarDatas[i - 1]
+        e_1 = lo_BarDatas[i]
+
+        '''###################
+            proc 2 : get : prices
+        ###################'''
+        # price : close
+        pc_0 = e_0.price_Close
+        pc_1 = e_1.price_Close
+        
+        '''###################
+            proc 3 : get : diff
+        ###################'''
+        diffOf_Prices = pc_1 - pc_0
+        
+        '''###################
+            j1 : diff --> up?
+        ###################'''
+        if diffOf_Prices > 0 : #if diffOf_Prices > 0
+            
+            '''###################
+                count
+            ###################'''
+            cntOf_Price_Ups += 1
+            
+            '''###################
+                log        
+            ###################'''
+            msg = "price up : %.03f (date : %s)" % (diffOf_Prices, e_1.dateTime_Local)
+            
+#             print()
+#             print("[%s:%d] %s" % \
+#                 (os.path.basename(libs.thisfile()), libs.linenum()
+#                 , msg
+#                 ), file=sys.stderr)
+
+            fout.write("[%s / %s:%d] %s" % \
+                (
+                libs.get_TimeLabel_Now()
+                , os.path.basename(libs.thisfile())
+                 , libs.linenum()
+                , msg
+                )
+            )
+             
+            fout.write("\n")
+        
+        else : #if diffOf_Prices > 0
+        
+            pass
+        
+        #/if diffOf_Prices > 0
     
     
+        
+        
+        
+        '''###################
+            get : prices
+        ###################'''
+        
+    #/for i in range(lenOf_LO_BarData):
+
+    '''###################
+        file : meta data
+    ###################'''
+    msg = "total price-up : %d" % (cntOf_Price_Ups)
+    
+    fout.write("[%s / %s:%d] stats ==>" % \
+        (libs.get_TimeLabel_Now(), os.path.basename(libs.thisfile()), libs.linenum()
+        )
+    )
+     
+    fout.write("\n")
+    
+    msg = "price-up = %d / total = %d / up ratio = %.03f" %\
+             (
+                 cntOf_Price_Ups
+                 , lenOf_LO_BarData
+                 , cntOf_Price_Ups * 1.0 / lenOf_LO_BarData
+              )
+    
+    fout.write("%s" % \
+        (
+        msg
+        )
+    )
+     
+    fout.write("\n")
+
+    '''###################
+        file : close
+    ###################'''
+    # separator line
+    fout.write("\n")
+    
+    fout.close()
+
     
     '''###################
         paths        
