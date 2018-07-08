@@ -303,3 +303,46 @@ def is_Open(filepath):
             return True
     raise NameError
 
+'''###################
+    write_Log
+    
+    orig : C:\WORKS_2\WS\WS_Others.Art\JVEMV6\46_art\VIRTUAL\Admin_Projects\libs_admin\libs.py
+    
+    at : 2018/07/08 11:01:32
+    
+###################'''
+def write_Log(\
+      content
+    , dpath_LogFile
+    , fname_LogFile
+#       , fname_Main
+#       , line_Num
+      , flg_Return = 1):
+#       , flg_Return = True):
+    
+    fpath_Log = "%s\\%s" % \
+            (dpath_LogFile, fname_LogFile)
+#             (cons_ip.FilePaths.dpath_LogFile.value
+#              , cons_ip.FilePaths.fname_LogFile.value)
+    
+    fout_Log = open(fpath_Log, "a")
+    
+    # header
+    fout_Log.write(content)
+    
+    # return char
+#     if flg_Return == True : 
+    if flg_Return > 0 : 
+        
+        for i in range(flg_Return):
+
+            fout_Log.write("\n")
+            
+        #/for i in range(flg_Return:
+
+#         fout_Log.write("\n")
+
+    # close file
+    fout_Log.close()
+
+#/ def write_Log(\

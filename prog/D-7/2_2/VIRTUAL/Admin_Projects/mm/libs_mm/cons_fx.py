@@ -69,6 +69,13 @@ class FPath(Enum):
     ###################'''
     fname_Gen_PeakData_Dflt = "49_20_file-io.USDJPY.Period-H1.Days-1200.Bars-28800.20180428_073251.csv"
 
+    '''###################
+        general        
+    ###################'''
+    dpath_LogFile = "C:\\WORKS_2\\WS\\WS_Others\\prog\\D-7\\2_2\\VIRTUAL\\Admin_Projects\\curr\\data\\log"
+    
+    fname_LogFile = "tester_BUSL.log"
+
 class Label_ColNames(Enum):
     
     PAIR    = 'PAIR'

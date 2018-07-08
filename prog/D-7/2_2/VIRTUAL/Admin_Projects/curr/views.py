@@ -3,6 +3,7 @@
     C:\WORKS_2\WS\WS_Others\prog\D-7\2_2\VIRTUAL\Admin_Projects\curr\data\miscs
     
 ###################'''
+from sympy.solvers.tests.test_constantsimp import C1
 
 '''###################
     import : django        
@@ -1633,6 +1634,137 @@ def testers(request):
     
 #     return HttpResponse("Hello Django")
 
+def tester_BuyUps_SellLows__BUSL_2(request):
+
+    '''###################
+        vars
+    ###################'''
+    dic = {}
+    
+    '''###################
+        opening
+    ###################'''
+    print()
+    print("[%s:%d] param ==> BUSL_2" % \
+            (os.path.basename(libs.thisfile()), libs.linenum()
+            
+            ), file=sys.stderr)
+    
+    msg = "param ==> BUSL_2 ======================="
+                
+    msg_Log = "[%s / %s:%d] %s" % \
+            (
+            libs.get_TimeLabel_Now()
+            , os.path.basename(libs.thisfile()), libs.linenum()
+            , msg)
+    
+    libs.write_Log(msg_Log
+                , cons_fx.FPath.dpath_LogFile.value
+                , cons_fx.FPath.fname_LogFile.value
+                , 1)
+
+    '''######################################
+        ops
+    ######################################'''
+#     dpath = "C:\\WORKS_2\\WS\\WS_Others\\prog\\D-7\\2_2\\VIRTUAL\\Admin_Projects\\curr\\data\\csv"
+#     fname = "44_1.14_file-io.AUDJPY.Period-H1.Days-1900.Bars-45600.20180511_181322.csv"
+    dpath = "C:\\WORKS_2\\WS\\WS_Others\\prog\\D-7\\2_2\\VIRTUAL\\Admin_Projects\\curr\\data\\csv_raw"
+    fname = "44_3.2_file-io.USDJPY.Period-M1.Days-1500.Bars-90000.20180708_165622.SHRINKED.csv"
+    
+    header_Length   = 2
+    skip_Header     = False
+    
+    lo_BarDatas, lo_CSVs = libfx.get_Listof_BarDatas_2(
+                        dpath, fname, header_Length, skip_Header)
+    
+    print()
+    print("[%s:%d] len(lo_BarDatas) => %d" % \
+                        (os.path.basename(libs.thisfile()), libs.linenum()
+                        , len(lo_BarDatas)
+                        ), file=sys.stderr)
+    
+    '''###################
+        BarData : by datetime
+    ###################'''
+#     time_Start = "2018.05.09"
+#     time_End = "2018.05.10"
+    time_Start = "2018.07.07 06:00"
+    time_End = "2018.07.07 06:30"
+#     time_End = "2018.05.11"
+    
+    flag_Period_Open = False
+    
+    lo_BarDatas__By_Datetime = \
+                libfx.get_LO_BarData___By_Datetime(
+                        lo_BarDatas
+                        , time_Start
+                        , time_End
+                        , flag_Period_Open)
+    
+    if lo_BarDatas__By_Datetime == False : #if not lo_BarDatas__By_Datetime == False
+
+        print()
+        print("[%s:%d] lo_BarDatas__By_Datetime => False" % \
+            (os.path.basename(libs.thisfile()), libs.linenum()
+            
+            ), file=sys.stderr)
+        
+    
+    else : #if not lo_BarDatas__By_Datetime == False
+    
+        print()
+        print("[%s:%d] len(lo_BarDatas__By_Datetime) => %d" % \
+            (os.path.basename(libs.thisfile()), libs.linenum()
+            , len(lo_BarDatas__By_Datetime)
+            ), file=sys.stderr)
+        print("lo_BarDatas__By_Datetime[0] =>")
+        print(lo_BarDatas__By_Datetime[0].dateTime_Local)
+#         print("lo_BarDatas__By_Datetime[-1] =>")
+#         print(lo_BarDatas__By_Datetime[-1].dateTime_Local)
+#         print(lo_BarDatas__By_Datetime[-1])
+    
+    #/if not lo_BarDatas__By_Datetime == False
+    
+    '''###################
+        exec : BUSL_2
+    ###################'''
+    # sort
+    orderOf_Sort = 2 #=> old --> new
+#     orderOf_Sort = 1 #=> new --> old
+    
+    lo_BarDatas__By_Datetime = \
+            libfx.sort_LO_BarData__By_Datetime(lo_BarDatas__By_Datetime, orderOf_Sort)
+    
+    # execute
+    result = libfx.BUSL_2(lo_BarDatas__By_Datetime)
+    
+    print()
+    print("[%s:%d] result of BUSL_2 =>" % \
+            (os.path.basename(libs.thisfile()), libs.linenum()
+            
+            ), file=sys.stderr)
+    
+    print(result)
+        
+    '''###################
+        messages
+    ###################'''
+    dic['message'] = "done (%s)" % libs.get_TimeLabel_Now()
+    
+    '''###################
+        pages
+    ###################'''
+    render_Page = 'curr/busl_2.html'
+    render_Page_full = 'curr/busl_2_full.html'
+    
+    '''###################
+        return        
+    ###################'''
+    return render_Page, render_Page_full, dic
+    
+    
+#/ def tester_BuyUps_SellLows__BUSL_2(request):
+    
 def tester_BuyUps_SellLows(request):
     
     '''###################
@@ -1641,43 +1773,121 @@ def tester_BuyUps_SellLows(request):
     dic = {}
     
     '''###################
-        get : files list
+        params
     ###################'''
-    dpath_Images = "C:\\WORKS_2\\WS\\WS_Others\\prog\\D-7\\2_2\\VIRTUAL\\Admin_Projects" \
-                + "\\curr\\data\\csv"
+    param_Cmd = request.GET.get('command', False)
     
-    fpath_Glob = "%s\\*.csv" % (dpath_Images)
+    if not param_Cmd == False and param_Cmd == "BUSL_2" : #if not param_Cmd == False and param_Cmd == 
 
-    #ref glob https://stackoverflow.com/questions/14798220/how-can-i-search-sub-folders-using-glob-glob-module-in-python answered Feb 10 '13 at 13:31    
-    lo_Files = glob.glob(fpath_Glob)
-
-    lo_Files.sort()
+        '''###################
+            vars : render pages
+        ###################'''
+        render_Page, render_Page_full, dic = tester_BuyUps_SellLows__BUSL_2(request)
+#         render_Page = 'curr/busl_2.html'
+#         render_Page_full = 'curr/busl_2_full.html'
+        
+#         print()
+#         print("[%s:%d] param ==> BUSL_2" % \
+#                 (os.path.basename(libs.thisfile()), libs.linenum()
+#                 
+#                 ), file=sys.stderr)
     
-    print()
-    print("[%s:%d] len(lo_Files) => %d" % \
-                (os.path.basename(libs.thisfile()), libs.linenum()
-                , len(lo_Files)
-                ), file=sys.stderr)
-
-    # set list
-    dic['lo_Files'] = [os.path.basename(x) for x in lo_Files]
+    else : #if not param_Cmd == False and param_Cmd == 
     
-    # set : dpath
-    dic['dpath_Images'] = dpath_Images
-
-
-
-    dic['action'] = "action"
-    dic["message"] = "message"
-#     action = "action"
-#     message = "message"
+        '''###################
+            vars : render pages
+        ###################'''
+        render_Page = 'curr/tester_BuyUps_SellLows.html'
+        render_Page_full = 'curr/tester_BuyUps_SellLows_full.html'
+        
+        '''###################
+            get : files list
+        ###################'''
+        dpath_Images = "C:\\WORKS_2\\WS\\WS_Others\\prog\\D-7\\2_2\\VIRTUAL\\Admin_Projects" \
+                    + "\\curr\\data\\csv"
+        
+        fpath_Glob = "%s\\*.csv" % (dpath_Images)
     
-    lo_Commands = cons_fx.Tester.lo_Commands.value
-#     lo_Commands = cons_mm.ImOp.lo_Commands.value
+        #ref glob https://stackoverflow.com/questions/14798220/how-can-i-search-sub-folders-using-glob-glob-module-in-python answered Feb 10 '13 at 13:31    
+        lo_Files = glob.glob(fpath_Glob)
     
-    #debug
-    print()
-    print(lo_Commands)
+        lo_Files.sort()
+        
+        print()
+        print("[%s:%d] len(lo_Files) => %d" % \
+                    (os.path.basename(libs.thisfile()), libs.linenum()
+                    , len(lo_Files)
+                    ), file=sys.stderr)
+    
+        # set list
+        dic['lo_Files'] = [os.path.basename(x) for x in lo_Files]
+        
+        # set : dpath
+        dic['dpath_Images'] = dpath_Images
+    
+    
+    
+        dic['action'] = "action"
+        dic["message"] = "message"
+    #     action = "action"
+    #     message = "message"
+        
+        lo_Commands = cons_fx.Tester.lo_Commands.value
+    #     lo_Commands = cons_mm.ImOp.lo_Commands.value
+        
+        #debug
+        print()
+        print(lo_Commands)
+        
+    
+    #/if not param_Cmd == False and param_Cmd == 
+
+
+    
+#     '''###################
+#         vars : render pages
+#     ###################'''
+#     render_Page = 'curr/tester_BuyUps_SellLows.html'
+#     render_Page_full = 'curr/tester_BuyUps_SellLows_full.html'
+#     
+#     '''###################
+#         get : files list
+#     ###################'''
+#     dpath_Images = "C:\\WORKS_2\\WS\\WS_Others\\prog\\D-7\\2_2\\VIRTUAL\\Admin_Projects" \
+#                 + "\\curr\\data\\csv"
+#     
+#     fpath_Glob = "%s\\*.csv" % (dpath_Images)
+# 
+#     #ref glob https://stackoverflow.com/questions/14798220/how-can-i-search-sub-folders-using-glob-glob-module-in-python answered Feb 10 '13 at 13:31    
+#     lo_Files = glob.glob(fpath_Glob)
+# 
+#     lo_Files.sort()
+#     
+#     print()
+#     print("[%s:%d] len(lo_Files) => %d" % \
+#                 (os.path.basename(libs.thisfile()), libs.linenum()
+#                 , len(lo_Files)
+#                 ), file=sys.stderr)
+# 
+#     # set list
+#     dic['lo_Files'] = [os.path.basename(x) for x in lo_Files]
+#     
+#     # set : dpath
+#     dic['dpath_Images'] = dpath_Images
+# 
+# 
+# 
+#     dic['action'] = "action"
+#     dic["message"] = "message"
+# #     action = "action"
+# #     message = "message"
+#     
+#     lo_Commands = cons_fx.Tester.lo_Commands.value
+# #     lo_Commands = cons_mm.ImOp.lo_Commands.value
+#     
+#     #debug
+#     print()
+#     print(lo_Commands)
     
 #     dic = {'action' : action, "message" : message, "lo_Commands" : lo_Commands}
 
@@ -1695,7 +1905,7 @@ def tester_BuyUps_SellLows(request):
     
     dic["msg"] = "rendering... (%s)" \
                     % (libs.get_TimeLabel_Now())
-    
+
     if referer_Current == referer_MM : #if referer_Current == referer_MM
     
         print()
@@ -1704,7 +1914,8 @@ def tester_BuyUps_SellLows(request):
                 ,referer_Current, referer_MM
                 ), file=sys.stderr)
     
-        return render(request, 'curr/tester_BuyUps_SellLows.html', dic)
+        return render(request, render_Page, dic)
+#         return render(request, 'curr/tester_BuyUps_SellLows.html', dic)
 #         return render(request, 'mm/numbering.html', dic)
         
     else : #if referer_Current == referer_MM
@@ -1715,7 +1926,8 @@ def tester_BuyUps_SellLows(request):
                 ,referer_Current, referer_MM
                 ), file=sys.stderr)
 
-        return render(request, 'curr/tester_BuyUps_SellLows_full.html', dic)
+        return render(request, render_Page_full, dic)
+#         return render(request, 'curr/tester_BuyUps_SellLows_full.html', dic)
 
 def agt_BUSL_v_1_0(dpath, fname):
     
@@ -1731,9 +1943,56 @@ def agt_BUSL_v_1_0(dpath, fname):
 
     #debug
 #     lo_BarDatas = None
-    lo_BarDatas = libfx.get_Listof_BarDatas_2(
+#     lo_BarDatas = libfx.get_Listof_BarDatas_2(
+    lo_BarDatas, lo_CSVs = libfx.get_Listof_BarDatas_2(
                         dpath, fname, header_Length, skip_Header)
 #                         dpath_image, fname, header_Length, skip_Header)
+
+#     print()
+#     print("[%s:%d] len(lo_BarDatas) => %d" % \
+#                 (os.path.basename(libs.thisfile()), libs.linenum()
+#                 , len(lo_BarDatas)
+#                 ), file=sys.stderr)
+    
+#     print()
+# #     print("[%s:%d] len(lo_CSVs[:header_Length]) => %d" % \
+#     print("[%s:%d] lo_CSVs[:header_Length] =>" % \
+#                 (os.path.basename(libs.thisfile()), libs.linenum()
+#                 ), file=sys.stderr)
+#     
+#     print(lo_CSVs)
+    
+            #     [views.py:1748] lo_CSVs[:header_Length] =>
+            # [['Pair=AUDJPY', 'Period=H1', 'Days=1900', 'Shift=1', 'Bars=45600', 'Time=201805
+            # 11_181322'], ['no', 'Open', 'High', 'Low', 'Close', 'RSI', 'MFI', 'BB.2s', 'BB.1
+            # s', 'BB.main', 'BB.-1s', 'BB.-2s', 'Diff', 'High/Low', 'datetime']]
+            
+    msg = "lo_CSVs ==>"
+    
+    msg_Log = "[%s / %s:%d] %s" % \
+            (
+            libs.get_TimeLabel_Now()
+            , os.path.basename(libs.thisfile()), libs.linenum()
+            , msg)
+    
+    msg_Log += "\n"
+    
+    lenOf_LO_CSVs = len(lo_CSVs)
+    
+    for i in range(lenOf_LO_CSVs):
+                        
+#             msg_Log += lo_Profit_Loss[i]
+#             msg_Log += ",".join(lo_Profit_Loss[i])
+        msg_Log += "\t".join([str(x) for x in lo_CSVs[i]])
+        msg_Log += "\n"
+        
+    #/for i in range(len(lo_Profit_Loss)):
+
+    libs.write_Log(
+                msg_Log
+                , cons_fx.FPath.dpath_LogFile.value
+                , cons_fx.FPath.fname_LogFile.value
+                , 2)
     
 #     #test
 #     lo_BarDatas = None
@@ -1770,14 +2029,14 @@ def agt_BUSL_v_1_0(dpath, fname):
         
         entry_0 = lo_BarDatas[0]
         
-        print()
-        print("[%s:%d] entry_0 =>" % \
-                    (os.path.basename(libs.thisfile()), libs.linenum()
-                     
-                    ), file=sys.stderr)
-         
-        print(entry_0)
-        print(entry_0.dateTime_Local)
+#         print()
+#         print("[%s:%d] entry_0 =>" % \
+#                     (os.path.basename(libs.thisfile()), libs.linenum()
+#                      
+#                     ), file=sys.stderr)
+#          
+#         print(entry_0)
+#         print(entry_0.dateTime_Local)
         
         '''###################
             iteration        
@@ -1814,11 +2073,27 @@ def agt_BUSL_v_1_0(dpath, fname):
             res = (pc_0 < pc_1)
             
             #debug
-            print()
-            print("[%s:%d] comparing : e_0.dateTime_Local = %s, e_1.dateTime_Local = %s (count = %d)" % \
-                (os.path.basename(libs.thisfile()), libs.linenum()
-                , e_0.dateTime_Local, e_1.dateTime_Local, cntOf_Iteration
-                ), file=sys.stderr)
+#             print()
+#             print("[%s:%d] comparing : e_0.dateTime_Local = %s, e_1.dateTime_Local = %s (count = %d)" % \
+#                 (os.path.basename(libs.thisfile()), libs.linenum()
+#                 , e_0.dateTime_Local, e_1.dateTime_Local, cntOf_Iteration
+#                 ), file=sys.stderr)
+
+            msg = "comparing : e_0.dateTime_Local = %s, e_1.dateTime_Local = %s (count = %d)" %\
+                    (e_0.dateTime_Local, e_1.dateTime_Local, cntOf_Iteration)
+            
+            msg_Log = "[%s / %s:%d] %s" % \
+                    (
+                    libs.get_TimeLabel_Now()
+                    , os.path.basename(libs.thisfile()), libs.linenum()
+                    , msg)
+            
+            libs.write_Log(
+                        msg_Log
+                        , cons_fx.FPath.dpath_LogFile.value
+                        , cons_fx.FPath.fname_LogFile.value
+                        , 1)
+
             
             '''###################
                 judge : j1 : price is up        
@@ -1882,13 +2157,29 @@ def agt_BUSL_v_1_0(dpath, fname):
                     priceOf_Position = e_1.price_Close
                     
                     #debug
-                    print()
-#                         print("[%s:%d] position opened => %.03f" % \
-                    print("[%s:%d] position opened => %.03f (count = %d)" % \
-                        (os.path.basename(libs.thisfile()), libs.linenum()
-                        , priceOf_Position, cntOf_Iteration
-                        ), file=sys.stderr)
+#                     print()
+# #                         print("[%s:%d] position opened => %.03f" % \
+# #                     print("[%s:%d] position opened => %.03f (count = %d)" % \
+#                     print("[%s:%d] position opened => %.03f (count = %d / datetime_Local = %s)" % \
+#                         (os.path.basename(libs.thisfile()), libs.linenum()
+#                         , priceOf_Position, cntOf_Iteration, e_1.dateTime_Local
+#                         ), file=sys.stderr)
+
+                    msg = "position opened => %.03f (count = %d / datetime_Local = %s" %\
+                            (priceOf_Position, cntOf_Iteration, e_1.dateTime_Local)
                     
+                    msg_Log = "[%s / %s:%d] %s" % \
+                            (
+                            libs.get_TimeLabel_Now()
+                            , os.path.basename(libs.thisfile()), libs.linenum()
+                            , msg)
+                    
+                    libs.write_Log(msg_Log
+                                , cons_fx.FPath.dpath_LogFile.value
+                                , cons_fx.FPath.fname_LogFile.value
+                                , 1)
+
+                                        
                     # counter
                     cntOf_Iteration += 1
                     
@@ -1910,22 +2201,51 @@ def agt_BUSL_v_1_0(dpath, fname):
                 
             else : #/if res == True    ### j1.N
 
-                print()
-                print("[%s:%d] res ==> not True (price is down)" % \
-                    (os.path.basename(libs.thisfile()), libs.linenum()
-                    
-                    ), file=sys.stderr)
+#                 print()
+#                 print("[%s:%d] res ==> not True (price is down)" % \
+#                     (os.path.basename(libs.thisfile()), libs.linenum()
+#                     
+#                     ), file=sys.stderr)
+
+                msg = "res ==> not True (price is down)"
+                
+                msg_Log = "[%s / %s:%d] %s" % \
+                        (
+                        libs.get_TimeLabel_Now()
+                        , os.path.basename(libs.thisfile())
+                        , libs.linenum()
+                        , msg)
+                
+                libs.write_Log( \
+                            msg_Log
+                            , cons_fx.FPath.dpath_LogFile.value
+                            , cons_fx.FPath.fname_LogFile.value
+                            , 1)
+
                 
                 '''###################
                     j3 : flag is up ?
                 ###################'''
                 if flg_In == True : #if flg_In == True
+# 
+#                     print()
+#                     print("[%s:%d] flg_In ==> True (prev is up, now down)" % \
+#                         (os.path.basename(libs.thisfile()), libs.linenum()
+#                         
+#                         ), file=sys.stderr)
 
-                    print()
-                    print("[%s:%d] flg_In ==> True (prev is up, now down)" % \
-                        (os.path.basename(libs.thisfile()), libs.linenum()
-                        
-                        ), file=sys.stderr)
+                    msg = "flg_In ==> True (prev is up, now down)"
+                    
+                    msg_Log = "[%s / %s:%d] %s" % \
+                            (
+                            libs.get_TimeLabel_Now()
+                            , os.path.basename(libs.thisfile()), libs.linenum()
+                            , msg)
+                    
+                    libs.write_Log(msg_Log
+                                , cons_fx.FPath.dpath_LogFile.value
+                                , cons_fx.FPath.fname_LogFile.value
+                                , 1)
 
                     # sell
                     
@@ -2027,11 +2347,40 @@ def agt_BUSL_v_1_0(dpath, fname):
         #/for i in range(lenOf_Lo_BarData - 1:
 
         #report
-        print()
-        print("[%s:%d] lo_Profit_Loss ==>" % \
-                (os.path.basename(libs.thisfile()), libs.linenum()
-                
-                ), file=sys.stderr)
+#         print()
+#         print("[%s:%d] lo_Profit_Loss ==>" % \
+#                 (os.path.basename(libs.thisfile()), libs.linenum()
+#                 
+#                 ), file=sys.stderr)
+        
+        msg = "lo_Profit_Loss ==>"
+        
+        msg_Log = "[%s / %s:%d] %s" % \
+                (
+                libs.get_TimeLabel_Now()
+                , os.path.basename(libs.thisfile()), libs.linenum()
+                , msg)
+        
+        msg_Log += "\n"
+        
+        lenOf_LO_Profit_Loss = len(lo_Profit_Loss)
+        
+        for i in range(lenOf_LO_Profit_Loss):
+                            
+#             msg_Log += lo_Profit_Loss[i]
+#             msg_Log += ",".join(lo_Profit_Loss[i])
+            msg_Log += ",".join([str(x) for x in lo_Profit_Loss[i]])
+            msg_Log += "\n"
+            
+        #/for i in range(len(lo_Profit_Loss)):
+
+        libs.write_Log(
+                    msg_Log
+                    , cons_fx.FPath.dpath_LogFile.value
+                    , cons_fx.FPath.fname_LogFile.value
+                    , 2)
+
+
         
         for item in lo_Profit_Loss:
         
@@ -2071,12 +2420,44 @@ def __exec_Tester_BuyUps_SellLows__Basic(request) :
     ###################'''
     fname = request.GET.get('fname', False)
     dpath_image = request.GET.get('dpath_image', False)
+
+    msg = "__exec_Tester_BuyUps_SellLows__Basic(request) ================================"
     
-    print()
-    print("[%s:%d] dpath_image = '%s', fname = '%s'" % \
-            (os.path.basename(libs.thisfile()), libs.linenum()
-            , dpath_image, fname
-            ), file=sys.stderr)
+    msg_Log = "[%s / %s:%d] %s" % \
+            (
+            libs.get_TimeLabel_Now()
+            , os.path.basename(libs.thisfile()), libs.linenum()
+            , msg)
+    
+#     dpath_Log = cons_fx.FPath.dpath_LogFile.value
+#     
+#     fname_Log = cons_fx.FPath.fname_LogFile.value
+
+    libs.write_Log(
+                msg_Log
+                , cons_fx.FPath.dpath_LogFile.value
+                , cons_fx.FPath.fname_LogFile.value
+                , 1)
+#                 , True)
+    
+#     print()
+#     print("[%s:%d] dpath_image = '%s', fname = '%s'" % \
+#             (os.path.basename(libs.thisfile()), libs.linenum()
+#             , dpath_image, fname
+#             ), file=sys.stderr)
+
+    msg_Log = "[%s / %s:%d] dpath_image = '%s', fname = '%s'" % \
+            (
+            libs.get_TimeLabel_Now()
+            , os.path.basename(libs.thisfile()), libs.linenum()
+            , dpath_image, fname)
+
+    libs.write_Log(
+                msg_Log
+                , cons_fx.FPath.dpath_LogFile.value
+                , cons_fx.FPath.fname_LogFile.value
+                , 1)
+#                 , True)
     
     '''###################
         validate : params

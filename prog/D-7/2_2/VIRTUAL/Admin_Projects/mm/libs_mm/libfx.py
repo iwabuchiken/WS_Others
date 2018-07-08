@@ -1948,6 +1948,27 @@ def get_Listof_BarDatas_2(dpath, fname, header_Length = 2, skip_Header = False):
 #     
 #     skip_Header     = False
     
+    #debug
+#     print()
+#     print("[%s:%d] fname_In => %s" % \
+#                         (os.path.basename(libs.thisfile()), libs.linenum()
+#                         , fname_In
+#                         ), file=sys.stderr)
+
+    msg = "fname_In => %s" % (fname_In)
+    
+    msg_Log = "[%s / %s:%d] %s" % \
+            (
+            libs.get_TimeLabel_Now()
+            , os.path.basename(libs.thisfile()), libs.linenum()
+            , msg)
+    
+    libs.write_Log(
+                msg_Log
+                , cons_fx.FPath.dpath_LogFile.value
+                , cons_fx.FPath.fname_LogFile.value
+                , 2)
+    
     '''###################
         validate : file exists        
     ###################'''
@@ -1966,20 +1987,6 @@ def get_Listof_BarDatas_2(dpath, fname, header_Length = 2, skip_Header = False):
         
     #/if is_File == False
     
-#     #test
-#     path = Path(sys.executable)
-#     root_or_drive = path.root or path.drive
-#     
-#     print()
-#     print("[%s:%d] root_or_drive => %s" % \
-#                 (os.path.basename(libs.thisfile()), libs.linenum()
-#                 ,root_or_drive
-#                 ), file=sys.stderr)
-    
-            #     [libfx.py:1760] root_or_drive => \
-            # [C:\WORKS_2\WS\WS_Others\prog\D-7\2_2\VIRTUAL\Admin_Projects\mm\libs_mm\libfx.py
-            # :231] file => opened : C:\WORKS_2\WS\WS_Others\prog\D-7\2_2\VIRTUAL\Admin_Projec
-
     '''######################################
         get : list        
     ######################################'''
@@ -2025,7 +2032,264 @@ def get_Listof_BarDatas_2(dpath, fname, header_Length = 2, skip_Header = False):
     
 #/def get_Listof_BarDatas():
     
+'''###################
+    get_LO_BarData___By_Datetime
     
+    at : 2018/07/08 12:50:57
     
+    <Meta data>
+    @param time_Start: e.g. "2018.05.09"
+    @param flag_Period_Open: when True, comarison of datetimes will be
+                            based on the open period, i.e. those BarDatas
+                            with either of the two datetimes won't be
+                            in the resulting list; whe False, otherwise.
     
+    @return: list of BarData instances matchig the filter values
     
+    <What it does>
+    filtering : time_Start < x < time_End
+    
+    <example>
+    time_Start = "2018.05.09"
+    time_End = "2018.05.11"
+    
+    ==> returns list of BarDatas whose "dateTime_Local" are
+            between the two datetimes (open period i.e. those
+            BarDatas with either of the two datetimes won't be
+            in the resulting list.)
+    
+###################'''
+def get_LO_BarData___By_Datetime(lo_BarData, time_Start, time_End, flag_Period_Open = True):
+    
+    '''###################
+        vars
+    ###################'''
+    lo_BarDatas__By_Datetime = []
+    
+    '''###################
+        ops        
+    ###################'''
+    lenOf_List = len(lo_BarData)
+    
+    for i in range(lenOf_List):
+
+        bar_Data = lo_BarData[i]
+        
+        dateLocal = bar_Data.dateTime_Local
+#         dateLocal = bar_Data.datetime_Local
+        
+        # compare
+        # default : open period
+        cmp_Period = (dateLocal > time_Start and dateLocal < time_End)
+#         cmp_Period_Open = dateLocal > time_Start and dateLocal < time_End
+        
+        # closed period
+        if flag_Period_Open == False : #if flag_Period_Open == False
+                            
+            cmp_Period = (dateLocal >= time_Start and dateLocal <= time_End)
+            
+        #/if flag_Period_Open == False
+        
+#         if dateLocal > time_Start \
+#             and dateLocal < time_End : #if dateLocal > 
+        if cmp_Period : #if dateLocal > 
+
+            lo_BarDatas__By_Datetime.append(bar_Data)
+            
+        #/if dateLocal > 
+        
+    #/for i in range(lenOf_List):
+    
+    print()
+    print("[%s:%d] len(lo_BarDatas__By_Datetime) => %d" % \
+            (os.path.basename(libs.thisfile()), libs.linenum()
+            , len(lo_BarDatas__By_Datetime)
+            ), file=sys.stderr)
+    
+    '''###################
+        return        
+    ###################'''
+    return lo_BarDatas__By_Datetime
+
+#/ def get_LO_BarData___By_Datetime(lo_BarData, time_Start, time_End):
+    
+def BUSL_2(lo_BarData):
+    
+    print()
+    print("[%s:%d] lo_BarData[0] =>" % \
+                (os.path.basename(libs.thisfile()), libs.linenum()
+                
+                ), file=sys.stderr)
+    
+    print(lo_BarData[0].dateTime_Local)
+    print("[%s:%d] lo_BarData[-1] =>" % \
+                (os.path.basename(libs.thisfile()), libs.linenum()
+                
+                ), file=sys.stderr)
+    
+    print(lo_BarData[-1].dateTime_Local)
+#     print(lo_BarData[0])
+
+    '''###################
+        for-loop
+    ###################'''
+    # length
+    lenOf_LO_BarData = len(lo_BarData)
+    
+    # number of bars to be referred
+    numOf_BarDatas_Referred = 2
+    
+    # loop
+    #ref range https://www.pythoncentral.io/pythons-range-function-explained/
+    for i in range((numOf_BarDatas_Referred - 1), lenOf_LO_BarData):
+#     for i in range(2, lenOf_LO_BarData):
+
+        '''###################
+            p1 : get BarData instances        
+        ###################'''
+        e_0 = lo_BarData[i - 1]
+        e_1 = lo_BarData[i]
+#         e_0 = lo_BarData[i - 1]
+#         e_1 = lo_BarData[i - 2]
+        
+        '''###################
+            p2 : get BarData body
+        ###################'''
+        diff_0 = e_0.diff_OC
+        diff_1 = e_1.diff_OC
+        
+        #debug
+#         print()
+#         print("[%s:%d] e_0.dateTime_Local = %s, e_1.dateTime_Local = %s" % \
+#                     (os.path.basename(libs.thisfile()), libs.linenum()
+#                     , e_0.dateTime_Local, e_1.dateTime_Local
+#                     ), file=sys.stderr)
+        
+        msg = "e_0.dateTime_Local = %s, e_1.dateTime_Local = %s" %\
+            (e_0.dateTime_Local, e_1.dateTime_Local)
+        msg_Log = "[%s / %s:%d] %s" % \
+                (
+                libs.get_TimeLabel_Now()
+                , os.path.basename(libs.thisfile()), libs.linenum()
+                , msg)
+        
+        libs.write_Log(msg_Log
+                    , cons_fx.FPath.dpath_LogFile.value
+                    , cons_fx.FPath.fname_LogFile.value
+                    , 1)
+
+        
+#         print("[%s:%d] diff_0 = %.03f, diff_1 = %.03f" % \
+#                     (os.path.basename(libs.thisfile()), libs.linenum()
+#                     , diff_0, diff_1
+#                     ), file=sys.stderr)
+#         msg = "diff_0 = %.03f, diff_1 = %.03f" %\
+#             (diff_0, diff_1)
+#         msg_Log = "[%s / %s:%d] %s" % \
+#                 (
+#                 libs.get_TimeLabel_Now()
+#                 , os.path.basename(libs.thisfile()), libs.linenum()
+#                 , msg)
+#         
+#         libs.write_Log(msg_Log
+#                     , cons_fx.FPath.dpath_LogFile.value
+#                     , cons_fx.FPath.fname_LogFile.value
+#                     , 1)
+        '''###################
+            j1 : both bars are up        
+        ###################'''
+        if diff_0 > 0 and diff_1 > 0 : #if diff_0 > 0 and diff_1 > 0
+            
+            msg = "BOTH UP : diff_0 = %.03f, diff_1 = %.03f" %\
+                        (diff_0, diff_1)
+                        
+            print("[%s:%d] %s" % \
+                        (os.path.basename(libs.thisfile()), libs.linenum()
+                        , msg
+                        ), file=sys.stderr)
+                
+            msg_Log = "[%s / %s:%d] %s" % \
+                    (
+                    libs.get_TimeLabel_Now()
+                    , os.path.basename(libs.thisfile()), libs.linenum()
+                    , msg)
+             
+            libs.write_Log(msg_Log
+                        , cons_fx.FPath.dpath_LogFile.value
+                        , cons_fx.FPath.fname_LogFile.value
+                        , 1)
+            
+            
+        else : #if diff_0 > 0 and diff_1 > 0
+        
+            pass
+        
+        #/if diff_0 > 0 and diff_1 > 0
+            
+            
+        
+        
+#         break
+        
+    #/for i in range(2,:
+
+
+
+    '''###################
+        return        
+    ###################'''
+    return False
+    
+#/ def BUSL_2(lo_BarData):
+
+'''###################
+    sort_LO_BarData__By_Datetime(lo_BarData, orderOf_Sort = 1)
+    
+    @param orderOf_Sort: 1 ==> new --> old
+                        2 ==> old --> new
+    
+    @return: list of BarDatas
+    
+###################'''
+def sort_LO_BarData__By_Datetime(lo_BarData, orderOf_Sort = 1) :    
+    
+    '''###################
+        get : reference data        
+    ###################'''
+    data_First = lo_BarData[0]
+    data_Last = lo_BarData[-1]
+    
+    # if True --> the original list is on old-new order
+    # if False --> the original list is on new-old order
+    cmp_DateTime_Local = data_First.dateTime_Local > data_Last.dateTime_Local
+    
+    '''###################
+        judge        
+    ###################'''
+    if (cmp_DateTime_Local == True and orderOf_Sort == 2) : #if (cmp_DateTime_Local == True and orderOf_Sort == 2)
+            
+        lo_BarData.reverse()
+        
+#         return lo_BarData
+            
+    elif (cmp_DateTime_Local == False and orderOf_Sort == 1) : #if (cmp_DateTime_Local == True and orderOf_Sort == 2)
+            
+        lo_BarData.reverse()
+        
+#         return lo_BarData
+            
+    else : #if (cmp_DateTime_Local == True and orderOf_Sort == 2)
+        
+        pass
+    
+    #/if (cmp_DateTime_Local == True and orderOf_Sort == 2)
+            
+    '''###################
+        return        
+    ###################'''
+    return lo_BarData
+    
+            
+    
+
+#/ def sort_LO_BarData__By_Datetime(list : lo_BarData, int orderOf_Sort = 1) :    
