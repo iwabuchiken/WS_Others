@@ -2,6 +2,9 @@
             
     C:\WORKS_2\WS\WS_Others\prog\D-7\2_2\VIRTUAL\Admin_Projects\curr\data\miscs
     
+<Start server>
+r w && r d2
+    
 ###################'''
 from sympy.solvers.tests.test_constantsimp import C1
 
@@ -1634,24 +1637,22 @@ def testers(request):
     
 #     return HttpResponse("Hello Django")
 
-def tester_BuyUps_SellLows__BUSL_2(request):
-
-    '''###################
-        vars
-    ###################'''
-    dic = {}
+def tester_BuyUps_SellLows__BUSL_2__1_Exec(request, lo_BarDatas, time_Start, time_End):
     
     '''###################
-        opening
+        BarData : by datetime
     ###################'''
-    print()
-    print("[%s:%d] param ==> BUSL_2" % \
-            (os.path.basename(libs.thisfile()), libs.linenum()
-            
-            ), file=sys.stderr)
+#     time_Start = "2018.05.09"
+#     time_End = "2018.05.10"
+#     time_Start = "2018.07.07 06:30"
+#     time_End = "2018.07.07 07:00"
+#     time_Start = "2018.07.07 06:00"
+#     time_End = "2018.07.07 06:30"
+#     time_End = "2018.05.11"
     
-    msg = "param ==> BUSL_2 ======================="
-                
+    msg = "\ntime_Start = %s, time_End = %s" %\
+            (time_Start, time_End)
+    
     msg_Log = "[%s / %s:%d] %s" % \
             (
             libs.get_TimeLabel_Now()
@@ -1663,34 +1664,6 @@ def tester_BuyUps_SellLows__BUSL_2(request):
                 , cons_fx.FPath.fname_LogFile.value
                 , 1)
 
-    '''######################################
-        ops
-    ######################################'''
-#     dpath = "C:\\WORKS_2\\WS\\WS_Others\\prog\\D-7\\2_2\\VIRTUAL\\Admin_Projects\\curr\\data\\csv"
-#     fname = "44_1.14_file-io.AUDJPY.Period-H1.Days-1900.Bars-45600.20180511_181322.csv"
-    dpath = "C:\\WORKS_2\\WS\\WS_Others\\prog\\D-7\\2_2\\VIRTUAL\\Admin_Projects\\curr\\data\\csv_raw"
-    fname = "44_3.2_file-io.USDJPY.Period-M1.Days-1500.Bars-90000.20180708_165622.SHRINKED.csv"
-    
-    header_Length   = 2
-    skip_Header     = False
-    
-    lo_BarDatas, lo_CSVs = libfx.get_Listof_BarDatas_2(
-                        dpath, fname, header_Length, skip_Header)
-    
-    print()
-    print("[%s:%d] len(lo_BarDatas) => %d" % \
-                        (os.path.basename(libs.thisfile()), libs.linenum()
-                        , len(lo_BarDatas)
-                        ), file=sys.stderr)
-    
-    '''###################
-        BarData : by datetime
-    ###################'''
-#     time_Start = "2018.05.09"
-#     time_End = "2018.05.10"
-    time_Start = "2018.07.07 06:00"
-    time_End = "2018.07.07 06:30"
-#     time_End = "2018.05.11"
     
     flag_Period_Open = False
     
@@ -1744,8 +1717,93 @@ def tester_BuyUps_SellLows__BUSL_2(request):
             
             ), file=sys.stderr)
     
-    print(result)
+    print(result)    
+    
+#/ def tester_BuyUps_SellLows__BUSL_2__1_Exec(request):
+    
+def tester_BuyUps_SellLows__BUSL_2(request):
+
+    '''###################
+        vars
+    ###################'''
+    dic = {}
+    
+    '''###################
+        opening
+    ###################'''
+    print()
+    print("[%s:%d] param ==> BUSL_2" % \
+            (os.path.basename(libs.thisfile()), libs.linenum()
+            
+            ), file=sys.stderr)
+    
+    msg = "param ==> BUSL_2 ======================="
+                
+#     msg_Log = "[%s / %s:%d] %s" % \
+    msg_Log = "\n[%s / %s:%d] %s" % \
+            (
+            libs.get_TimeLabel_Now()
+            , os.path.basename(libs.thisfile()), libs.linenum()
+            , msg)
+    
+    libs.write_Log(msg_Log
+                , cons_fx.FPath.dpath_LogFile.value
+                , cons_fx.FPath.fname_LogFile.value
+                , 1)
+
+    '''######################################
+        ops
+    ######################################'''
+#     dpath = "C:\\WORKS_2\\WS\\WS_Others\\prog\\D-7\\2_2\\VIRTUAL\\Admin_Projects\\curr\\data\\csv"
+#     fname = "44_1.14_file-io.AUDJPY.Period-H1.Days-1900.Bars-45600.20180511_181322.csv"
+    dpath = "C:\\WORKS_2\\WS\\WS_Others\\prog\\D-7\\2_2\\VIRTUAL\\Admin_Projects\\curr\\data\\csv_raw"
+    fname = "44_3.2_file-io.USDJPY.Period-M1.Days-1500.Bars-90000.20180708_165621.SHIRINKED-361.csv"
+#     fname = "44_3.2_file-io.USDJPY.Period-M1.Days-1500.Bars-90000.20180708_165622.SHRINKED.csv"
+    
+    header_Length   = 2
+    skip_Header     = False
+    
+    lo_BarDatas, lo_CSVs = libfx.get_Listof_BarDatas_2(
+                        dpath, fname, header_Length, skip_Header)
+    
+    print()
+    print("[%s:%d] len(lo_BarDatas) => %d" % \
+                        (os.path.basename(libs.thisfile()), libs.linenum()
+                        , len(lo_BarDatas)
+                        ), file=sys.stderr)
+    
+    '''###################
+        execute        
+    ###################'''
+#     time_Start = "2018.07.07 06:30"
+#     time_End = "2018.07.07 07:00"
+    
+    
+    
+    lo_PairOf_Time_StartEnd = libfx.get_LO_PairOf_Time_StartEnd("2018.07.07")
+
+    print()
+    print("[%s:%d] lo_PairOf_Time_StartEnd =>" % \
+        (os.path.basename(libs.thisfile()), libs.linenum()
         
+        ), file=sys.stderr)
+    print(lo_PairOf_Time_StartEnd)
+
+    # iteration
+    for pairOf_Times in lo_PairOf_Time_StartEnd:
+        
+        time_Start = pairOf_Times[0]
+        time_End = pairOf_Times[1]
+        
+        tester_BuyUps_SellLows__BUSL_2__1_Exec( \
+            request, lo_BarDatas, time_Start, time_End)
+        
+    #/for pairOf_Times in lo_PairOf_Time_StartEnd:
+
+        
+#     tester_BuyUps_SellLows__BUSL_2__1_Exec(request, lo_BarDatas, lo_PairOf_Time_StartEnd)
+# #     tester_BuyUps_SellLows__BUSL_2__1_Exec(request, lo_BarDatas)
+    
     '''###################
         messages
     ###################'''
