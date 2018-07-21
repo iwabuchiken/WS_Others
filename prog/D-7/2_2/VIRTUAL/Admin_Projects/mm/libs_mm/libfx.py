@@ -1931,6 +1931,7 @@ def get_Listof_BarDatas():
     @return: 
         None    => libfx.get_ChartData_CSV returned None
         None    => libfx.conv_CSVRows_2_BarDatas returned None
+        lo_CSVs    => csv header lines
 ###################'''
 def get_Listof_BarDatas_2(dpath, fname, header_Length = 2, skip_Header = False):
     
@@ -2100,11 +2101,11 @@ def get_LO_BarData___By_Datetime(lo_BarData, time_Start, time_End, flag_Period_O
         
     #/for i in range(lenOf_List):
     
-    print()
-    print("[%s:%d] len(lo_BarDatas__By_Datetime) => %d" % \
-            (os.path.basename(libs.thisfile()), libs.linenum()
-            , len(lo_BarDatas__By_Datetime)
-            ), file=sys.stderr)
+#     print()
+#     print("[%s:%d] len(lo_BarDatas__By_Datetime) => %d" % \
+#             (os.path.basename(libs.thisfile()), libs.linenum()
+#             , len(lo_BarDatas__By_Datetime)
+#             ), file=sys.stderr)
     
     '''###################
         return        
@@ -2112,24 +2113,103 @@ def get_LO_BarData___By_Datetime(lo_BarData, time_Start, time_End, flag_Period_O
     return lo_BarDatas__By_Datetime
 
 #/ def get_LO_BarData___By_Datetime(lo_BarData, time_Start, time_End):
+
+def BUSL_3(lo_BarDatas):
     
+    '''###################
+        vars
+    ###################'''
+    cntOf_UpUps = 0
+    cntOf_Total_Cmp = 0
+    
+    '''###################
+        for-loop        
+    ###################'''
+    lenOf_LO_BarDatas = len(lo_BarDatas)
+    
+    for i in range(2, lenOf_LO_BarDatas):
+        
+        # count : total
+        cntOf_Total_Cmp += 1
+        
+        '''###################
+            proc : 1
+        ###################'''
+        e_0 = lo_BarDatas[i - 2]
+        e_1 = lo_BarDatas[i - 1]
+        
+        '''###################
+            proc : 2
+        ###################'''
+        dif_0 = e_0.price_Close - e_0.price_Open
+        dif_1 = e_1.price_Close - e_1.price_Open
+        
+        '''###################
+            j1        
+        ###################'''
+        cond_J1 = (dif_0 > 0) and (dif_1 > 0)
+        
+        if cond_J1 == True : #if cond_J1 == True
+            
+            # count
+            cntOf_UpUps += 1
+            
+            msg = "UP-UP : %s / %s (dif : %.03f %.03f)" %\
+                    (e_0.dateTime_Local, e_1.dateTime_Local,
+                     dif_0, dif_1)
+            
+            msg_Log = "[%s / %s:%d] %s" % \
+                    (
+                    libs.get_TimeLabel_Now()
+                    , os.path.basename(libs.thisfile()), libs.linenum()
+                    , msg)
+            
+            libs.write_Log(msg_Log
+                        , cons_fx.FPath.dpath_LogFile.value
+                        , cons_fx.FPath.fname_LogFile.value
+                        , 1)
+        
+        else :
+            
+            print("[%s:%d] Not UP-UP : %s %s (dif : %.03f %.03f)" % \
+                (os.path.basename(libs.thisfile()), libs.linenum()
+                , e_0.dateTime_Local, e_1.dateTime_Local
+                , dif_0, dif_1
+                ), file=sys.stderr)
+            
+        #/if cond_J1 == True
+            
+            
+        
+        
+    #/for i in range(2, lenOf_LO_BarDatas):
+    '''###################
+        record : stats        
+    ###################'''
+    msg = "total = %d / UP-UPs = %d / ratio = %.03f" %\
+            (cntOf_Total_Cmp, cntOf_UpUps, cntOf_UpUps * 1.0 / cntOf_Total_Cmp)
+    
+    msg_Log = "[%s / %s:%d] %s" % \
+            (
+            libs.get_TimeLabel_Now()
+            , os.path.basename(libs.thisfile()), libs.linenum()
+            , msg)
+    
+    libs.write_Log(msg_Log
+                , cons_fx.FPath.dpath_LogFile.value
+                , cons_fx.FPath.fname_LogFile.value
+                , 1)
+
+
+    '''###################
+        return        
+    ###################'''
+    return False
+
+#/ def BUSL_3(lo_BarData):
+
 def BUSL_2(lo_BarData):
     
-    print()
-    print("[%s:%d] lo_BarData[0] =>" % \
-                (os.path.basename(libs.thisfile()), libs.linenum()
-                
-                ), file=sys.stderr)
-    
-    print(lo_BarData[0].dateTime_Local)
-    print("[%s:%d] lo_BarData[-1] =>" % \
-                (os.path.basename(libs.thisfile()), libs.linenum()
-                
-                ), file=sys.stderr)
-    
-    print(lo_BarData[-1].dateTime_Local)
-#     print(lo_BarData[0])
-
     '''###################
         for-loop
     ###################'''
@@ -2142,18 +2222,18 @@ def BUSL_2(lo_BarData):
     # counter
     cntOf_Both2Bars_Up = 0
     
+    # 2-bar-up BarDatas
+    lo_BarData__2Bar_Up = []
+    
     # loop
     #ref range https://www.pythoncentral.io/pythons-range-function-explained/
     for i in range((numOf_BarDatas_Referred - 1), lenOf_LO_BarData):
-#     for i in range(2, lenOf_LO_BarData):
 
         '''###################
             p1 : get BarData instances        
         ###################'''
         e_0 = lo_BarData[i - 1]
         e_1 = lo_BarData[i]
-#         e_0 = lo_BarData[i - 1]
-#         e_1 = lo_BarData[i - 2]
         
         '''###################
             p2 : get BarData body
@@ -2161,43 +2241,6 @@ def BUSL_2(lo_BarData):
         diff_0 = e_0.diff_OC
         diff_1 = e_1.diff_OC
         
-        #debug
-#         print()
-#         print("[%s:%d] e_0.dateTime_Local = %s, e_1.dateTime_Local = %s" % \
-#                     (os.path.basename(libs.thisfile()), libs.linenum()
-#                     , e_0.dateTime_Local, e_1.dateTime_Local
-#                     ), file=sys.stderr)
-        
-#         msg = "e_0.dateTime_Local = %s, e_1.dateTime_Local = %s" %\
-#             (e_0.dateTime_Local, e_1.dateTime_Local)
-#         msg_Log = "[%s / %s:%d] %s" % \
-#                 (
-#                 libs.get_TimeLabel_Now()
-#                 , os.path.basename(libs.thisfile()), libs.linenum()
-#                 , msg)
-#         
-#         libs.write_Log(msg_Log
-#                     , cons_fx.FPath.dpath_LogFile.value
-#                     , cons_fx.FPath.fname_LogFile.value
-#                     , 1)
-
-        
-#         print("[%s:%d] diff_0 = %.03f, diff_1 = %.03f" % \
-#                     (os.path.basename(libs.thisfile()), libs.linenum()
-#                     , diff_0, diff_1
-#                     ), file=sys.stderr)
-#         msg = "diff_0 = %.03f, diff_1 = %.03f" %\
-#             (diff_0, diff_1)
-#         msg_Log = "[%s / %s:%d] %s" % \
-#                 (
-#                 libs.get_TimeLabel_Now()
-#                 , os.path.basename(libs.thisfile()), libs.linenum()
-#                 , msg)
-#         
-#         libs.write_Log(msg_Log
-#                     , cons_fx.FPath.dpath_LogFile.value
-#                     , cons_fx.FPath.fname_LogFile.value
-#                     , 1)
         '''###################
             j1 : both bars are up        
         ###################'''
@@ -2205,6 +2248,15 @@ def BUSL_2(lo_BarData):
             
             # count
             cntOf_Both2Bars_Up += 1
+            
+            # BarDatas
+            lo_BarData__2Bar_Up.append( \
+#                     (
+#                         (e_0.dateTime_Local, e_0.price_Close, e_0.bb_Main)
+#                         , (e_1.dateTime_Local, e_1.price_Close, e_1.bb_Main)
+                        (e_1.dateTime_Local, e_1.price_Close, e_1.bb_Main)
+#                        )
+           )
             
             # message
             
@@ -2215,10 +2267,10 @@ def BUSL_2(lo_BarData):
 #                         (diff_0, diff_1, e_0.dateTime_Local, e_1.dateTime_Local)
 #                         (diff_0, diff_1, e_0.dateTime_Local, e_1.dateTime_Local)
 
-            print("[%s:%d] %s" % \
-                        (os.path.basename(libs.thisfile()), libs.linenum()
-                        , msg
-                        ), file=sys.stderr)
+#             print("[%s:%d] %s" % \
+#                         (os.path.basename(libs.thisfile()), libs.linenum()
+#                         , msg
+#                         ), file=sys.stderr)
                 
 #             msg_Log = "[%s / %s:%d] %s" % \
             msg_Log = "[%s / %s:%d]\n%s" % \
@@ -2251,10 +2303,10 @@ def BUSL_2(lo_BarData):
                 (cntOf_Both2Bars_Up, lenOf_LO_BarData, (cntOf_Both2Bars_Up * 1.0 / lenOf_LO_BarData))
 #                 (cntOf_Both2Bars_Up)
                 
-    print("[%s:%d] %s" % \
-                (os.path.basename(libs.thisfile()), libs.linenum()
-                , msg
-                ), file=sys.stderr)
+#     print("[%s:%d] %s" % \
+#                 (os.path.basename(libs.thisfile()), libs.linenum()
+#                 , msg
+#                 ), file=sys.stderr)
         
     msg_Log = "[%s / %s:%d] %s" % \
             (
@@ -2272,7 +2324,9 @@ def BUSL_2(lo_BarData):
     '''###################
         return        
     ###################'''
-    return False
+    return cntOf_Both2Bars_Up, lenOf_LO_BarData, lo_BarData__2Bar_Up
+#     return cntOf_Both2Bars_Up, lenOf_LO_BarData
+#     return False
     
 #/ def BUSL_2(lo_BarData):
 
@@ -2371,6 +2425,49 @@ def get_LO_PairOf_Time_StartEnd(str_Date) :
         lo_Datetime.append((tmp_2, tmp_3))
 #         lo_Datetime.append((tmp_1, tmp_2))
 #         lo_Datetime.append(tmp)
+        
+    #/for i in range(1,7):
+
+    # return
+    return lo_Datetime
+    
+#/ def get_LO_PairOf_Time_StartEnd(str_Date) :
+
+'''###################
+    get_LO_PairOf_Time_StartEnd(str_Date)
+    
+    at : 2018/07/11 08:29:58
+    
+    @param str_Date : e.g. "2018.07.07"
+    
+    @return: list of pair of datetimes
+            [('2018.07.07 01:00', '2018.07.07 01:30'), ('2018.07.07 01:30', '2018.07.07 02:0
+            0'), ('2018.07.07 02:00', '2018.07.07 02:30'), ('2018.07.07 02:30', '2018.07.07
+            03:00'), ('2018.07.07 03:00', '2018.07.07 03:30'), ('2018.07.07 03:30', '2018.07
+            .07 04:00'), ('2018.07.07 04:00', '2018.07.07 04:30'), ('2018.07.07 04:30', '201
+            8.07.07 05:00'), ('2018.07.07 05:00', '2018.07.07 05:30'), ('2018.07.07 05:30',
+            '2018.07.07 06:00'), ('2018.07.07 06:00', '2018.07.07 06:30'), ('2018.07.07 06:3
+            0', '2018.07.07 07:00')]
+    
+###################'''
+def get_LO_PairOf_Time_StartEnd__V1(str_Date, hour_Start, hour_End) :
+    
+    lo_Datetime = []
+    
+    lo_Minutes = ["00", "30"]
+    
+#     hour_Start = 1
+#     hour_End = 6
+    
+    for i in range(hour_Start, hour_End + 1):
+#     for i in range(1,7):
+        
+        tmp_1 = str_Date + " " + "0" + str(i) + ":" + lo_Minutes[0]
+        tmp_2 = str_Date + " " + "0" + str(i) + ":" + lo_Minutes[1]
+        tmp_3 = str_Date + " " + "0" + str(i + 1) + ":" + lo_Minutes[0]
+        
+        lo_Datetime.append((tmp_1, tmp_2))
+        lo_Datetime.append((tmp_2, tmp_3))
         
     #/for i in range(1,7):
 

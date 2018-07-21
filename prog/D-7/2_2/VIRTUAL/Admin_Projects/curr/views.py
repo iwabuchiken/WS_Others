@@ -1653,6 +1653,10 @@ def tester_BuyUps_SellLows__BUSL_2__1_Exec(request, lo_BarDatas, time_Start, tim
     msg = "\ntime_Start = %s, time_End = %s" %\
             (time_Start, time_End)
     
+    # message : time period
+    time_Period = (time_Start, time_End)
+#     time_Period = msg
+    
     msg_Log = "[%s / %s:%d] %s" % \
             (
             libs.get_TimeLabel_Now()
@@ -1685,16 +1689,14 @@ def tester_BuyUps_SellLows__BUSL_2__1_Exec(request, lo_BarDatas, time_Start, tim
     
     else : #if not lo_BarDatas__By_Datetime == False
     
-        print()
-        print("[%s:%d] len(lo_BarDatas__By_Datetime) => %d" % \
-            (os.path.basename(libs.thisfile()), libs.linenum()
-            , len(lo_BarDatas__By_Datetime)
-            ), file=sys.stderr)
-        print("lo_BarDatas__By_Datetime[0] =>")
-        print(lo_BarDatas__By_Datetime[0].dateTime_Local)
-#         print("lo_BarDatas__By_Datetime[-1] =>")
-#         print(lo_BarDatas__By_Datetime[-1].dateTime_Local)
-#         print(lo_BarDatas__By_Datetime[-1])
+        pass
+#         print()
+#         print("[%s:%d] len(lo_BarDatas__By_Datetime) => %d" % \
+#             (os.path.basename(libs.thisfile()), libs.linenum()
+#             , len(lo_BarDatas__By_Datetime)
+#             ), file=sys.stderr)
+#         print("lo_BarDatas__By_Datetime[0] =>")
+#         print(lo_BarDatas__By_Datetime[0].dateTime_Local)
     
     #/if not lo_BarDatas__By_Datetime == False
     
@@ -1709,20 +1711,97 @@ def tester_BuyUps_SellLows__BUSL_2__1_Exec(request, lo_BarDatas, time_Start, tim
             libfx.sort_LO_BarData__By_Datetime(lo_BarDatas__By_Datetime, orderOf_Sort)
     
     # execute
-    result = libfx.BUSL_2(lo_BarDatas__By_Datetime)
+    (cntOf_Both2Bars_Up, lenOf_LO_BarData, lo_BarData__2Bar_Up) = \
+                    libfx.BUSL_2(lo_BarDatas__By_Datetime)
+#     (cntOf_Both2Bars_Up, lenOf_LO_BarData) = libfx.BUSL_2(lo_BarDatas__By_Datetime)
+#     result = libfx.BUSL_2(lo_BarDatas__By_Datetime)
+    
+#     print()
+#     print("[%s:%d] result of BUSL_2 =>" % \
+#             (os.path.basename(libs.thisfile()), libs.linenum()
+#             
+#             ), file=sys.stderr)
+#     
+#     print((cntOf_Both2Bars_Up, lenOf_LO_BarData))    
+# #     print(result)    
+    
+    '''###################
+        return        
+    ###################'''
+    
+    return time_Period, cntOf_Both2Bars_Up, lenOf_LO_BarData, lo_BarData__2Bar_Up
+#     return time_Period, cntOf_Both2Bars_Up, lenOf_LO_BarData
+#/ def tester_BuyUps_SellLows__BUSL_2__1_Exec(request):
+    
+def tester_BuyUps_SellLows__BUSL_3(request):
+    
+    '''###################
+        time        
+    ###################'''
+    time_Exec_Start = time.time()
+
+    '''###################
+        vars
+    ###################'''
+    dic = {}
+    
+    '''###################
+        get : list of BarDatas
+    ###################'''
+    dpath = "C:\\WORKS_2\\WS\\WS_Others\\prog\\D-7\\2_2\\VIRTUAL\\Admin_Projects\\curr\\data\\csv_raw"
+    fname = "44_3.2_5_file-io.USDJPY.Period-M5.Days-26000.Bars-26000.20180721_160222.SHRINK-100.csv"
+    
+    header_Length   = 2
+    skip_Header     = False
+    
+    lo_BarDatas, lo_CSVs = libfx.get_Listof_BarDatas_2(
+                        dpath, fname, header_Length, skip_Header)
     
     print()
-    print("[%s:%d] result of BUSL_2 =>" % \
-            (os.path.basename(libs.thisfile()), libs.linenum()
-            
-            ), file=sys.stderr)
+    print("[%s:%d] len(lo_BarDatas) => %d" % \
+                        (os.path.basename(libs.thisfile()), libs.linenum()
+                        , len(lo_BarDatas)
+                        ), file=sys.stderr)
     
-    print(result)    
+    '''###################
+        op : BUSL_3
+    ###################'''
+    libfx.BUSL_3(lo_BarDatas)
     
-#/ def tester_BuyUps_SellLows__BUSL_2__1_Exec(request):
+    '''###################
+        time        
+    ###################'''
+    time_Exec_Elapsed = time.time() - time_Exec_Start
+    
+#     message = "done (time : %02.3f sec)" % (time_Elapsed)
+    
+    '''###################
+        messages
+    ###################'''
+#     dic['message'] = "done (%s)" % libs.get_TimeLabel_Now()
+    dic['message'] = "BUSL_3 ==> done (%s)(elapsed = %02.3f sec)" % \
+                    (libs.get_TimeLabel_Now(), time_Exec_Elapsed)
+    
+    '''###################
+        pages
+    ###################'''
+    render_Page = 'curr/busl_2.html'
+    render_Page_full = 'curr/busl_2_full.html'
+
+    '''###################
+        return        
+    ###################'''
+    return render_Page, render_Page_full, dic
+
+#/ def tester_BuyUps_SellLows__BUSL_3(request):
     
 def tester_BuyUps_SellLows__BUSL_2(request):
 
+    '''###################
+        time : start
+    ###################'''
+    time_Exec_Start = time.time()
+    
     '''###################
         vars
     ###################'''
@@ -1757,7 +1836,8 @@ def tester_BuyUps_SellLows__BUSL_2(request):
 #     dpath = "C:\\WORKS_2\\WS\\WS_Others\\prog\\D-7\\2_2\\VIRTUAL\\Admin_Projects\\curr\\data\\csv"
 #     fname = "44_1.14_file-io.AUDJPY.Period-H1.Days-1900.Bars-45600.20180511_181322.csv"
     dpath = "C:\\WORKS_2\\WS\\WS_Others\\prog\\D-7\\2_2\\VIRTUAL\\Admin_Projects\\curr\\data\\csv_raw"
-    fname = "44_3.2_file-io.USDJPY.Period-M1.Days-1500.Bars-90000.20180708_165621.SHIRINKED-361.csv"
+    fname = "44_3.2_file-io.USDJPY.Period-M1.Days-1500.Bars-90000.20180708_165621.SHIRINKED_0707-0706.csv"
+#     fname = "44_3.2_file-io.USDJPY.Period-M1.Days-1500.Bars-90000.20180708_165621.SHIRINKED-361.csv"
 #     fname = "44_3.2_file-io.USDJPY.Period-M1.Days-1500.Bars-90000.20180708_165622.SHRINKED.csv"
     
     header_Length   = 2
@@ -1775,12 +1855,14 @@ def tester_BuyUps_SellLows__BUSL_2(request):
     '''###################
         execute        
     ###################'''
-#     time_Start = "2018.07.07 06:30"
-#     time_End = "2018.07.07 07:00"
-    
-    
-    
-    lo_PairOf_Time_StartEnd = libfx.get_LO_PairOf_Time_StartEnd("2018.07.07")
+    # params
+    base_Date = "2018.07.06"
+    hour_Start = 1
+    hour_End = 6
+
+    lo_PairOf_Time_StartEnd = \
+            libfx.get_LO_PairOf_Time_StartEnd__V1(base_Date, hour_Start, hour_End)
+#     lo_PairOf_Time_StartEnd = libfx.get_LO_PairOf_Time_StartEnd("2018.07.07")
 
     print()
     print("[%s:%d] lo_PairOf_Time_StartEnd =>" % \
@@ -1790,24 +1872,159 @@ def tester_BuyUps_SellLows__BUSL_2(request):
     print(lo_PairOf_Time_StartEnd)
 
     # iteration
+    lo_MetaData = []
+    
     for pairOf_Times in lo_PairOf_Time_StartEnd:
         
         time_Start = pairOf_Times[0]
         time_End = pairOf_Times[1]
         
-        tester_BuyUps_SellLows__BUSL_2__1_Exec( \
-            request, lo_BarDatas, time_Start, time_End)
+#         time_Period, cntOf_Both2Bars_Up, lenOf_LO_BarData = tester_BuyUps_SellLows__BUSL_2__1_Exec( \
+        time_Period, cntOf_Both2Bars_Up, lenOf_LO_BarData, lo_BarData__2Bar_Up \
+                = tester_BuyUps_SellLows__BUSL_2__1_Exec( \
+                        request, lo_BarDatas, time_Start, time_End)
+        
+        # add to list
+        lo_MetaData.append(( \
+                time_Period
+                , cntOf_Both2Bars_Up
+                , lenOf_LO_BarData
+                , lo_BarData__2Bar_Up
+                ))
+#         lo_MetaData.append((time_Period, cntOf_Both2Bars_Up, lenOf_LO_BarData))
         
     #/for pairOf_Times in lo_PairOf_Time_StartEnd:
 
+    #debug
+    print()
+    print("[%s:%d] lo_MetaData =>" % \
+            (os.path.basename(libs.thisfile()), libs.linenum()
+            
+            ), file=sys.stderr)
+    print(lo_MetaData)
+    
+    '''###################
+        write to file : meta data
+    ###################'''
+    msg = "[%s:%d] lo_MetaData" %\
+            (os.path.basename(libs.thisfile()), libs.linenum())
+    
+    msg_Log = "[%s / %s:%d] %s" % \
+            (
+            libs.get_TimeLabel_Now()
+            , os.path.basename(libs.thisfile()), libs.linenum()
+            , msg)
+    
+    libs.write_Log(msg_Log
+                , cons_fx.FPath.dpath_LogFile.value
+                , cons_fx.FPath.fname_LogFile.value
+                , 1)
+    
+    for item in lo_MetaData:
+    
+        msg_Log = "%s\t%s\t%d\t%d" % \
+                (
+                        item[0][0], item[0][1], item[1], item[2]
+                )
         
+        libs.write_Log(msg_Log
+                    , cons_fx.FPath.dpath_LogFile.value
+                    , cons_fx.FPath.fname_LogFile.value
+                    , 1)
+    
+    # separator
+
+    msg_Log = ""
+    
+    libs.write_Log(msg_Log
+                , cons_fx.FPath.dpath_LogFile.value
+                , cons_fx.FPath.fname_LogFile.value
+                , 1)
+        
+    #/for item in lo_MetaData:
+
+    '''###################
+        write to file : BB-related
+    ###################'''
+    msg = "[%s:%d] lo_MetaData" %\
+            (os.path.basename(libs.thisfile()), libs.linenum())
+    
+    msg_Log = "[%s / %s:%d] %s" % \
+            (
+            libs.get_TimeLabel_Now()
+            , os.path.basename(libs.thisfile()), libs.linenum()
+            , msg)
+    
+    libs.write_Log(msg_Log
+                , cons_fx.FPath.dpath_LogFile.value
+                , cons_fx.FPath.fname_LogFile.value
+                , 1)
+    
+    for item in lo_MetaData:
+        
+        # list
+        lo_2Bar_Up = item[3]
+        
+        #debug
+        print()
+        print("[%s:%d] lo_2Bar_Up =>" % \
+                    (os.path.basename(libs.thisfile()), libs.linenum()
+                    
+                    ), file=sys.stderr)
+        print(lo_2Bar_Up)
+        print()
+        
+        # each list
+        # e_1.dateTime_Local, e_1.price_Close, e_1.bb_Main
+        for item2 in lo_2Bar_Up:
+    
+            msg_Log = "%s\t%3.3f\t%3.3f" % \
+                    (
+                            item2[0], item2[1], item2[2]
+                    )
+             
+            libs.write_Log(msg_Log
+                        , cons_fx.FPath.dpath_LogFile.value
+                        , cons_fx.FPath.fname_LogFile.value
+                        , 1)
+            
+            
+        #/for item2 in lo_2Bar_Up:
+        
+        # line separator
+        msg_Log = ""
+         
+        libs.write_Log(msg_Log
+                    , cons_fx.FPath.dpath_LogFile.value
+                    , cons_fx.FPath.fname_LogFile.value
+                    , 1)
+
+    
+#     #debug
+#     print()
+#     print("[%s:%d] lo_BarData__2Bar_Up =>" % \
+#                 (os.path.basename(libs.thisfile()), libs.linenum()
+#                 
+#                 ), file=sys.stderr)
+#     print(lo_BarData__2Bar_Up)
+#     print()
+    
 #     tester_BuyUps_SellLows__BUSL_2__1_Exec(request, lo_BarDatas, lo_PairOf_Time_StartEnd)
 # #     tester_BuyUps_SellLows__BUSL_2__1_Exec(request, lo_BarDatas)
+
+    '''###################
+        time        
+    ###################'''
+    time_Exec_Elapsed = time.time() - time_Exec_Start
+    
+#     message = "done (time : %02.3f sec)" % (time_Elapsed)
     
     '''###################
         messages
     ###################'''
-    dic['message'] = "done (%s)" % libs.get_TimeLabel_Now()
+#     dic['message'] = "done (%s)" % libs.get_TimeLabel_Now()
+    dic['message'] = "done (%s)(elapsed = %02.3f sec)" % \
+                    (libs.get_TimeLabel_Now(), time_Exec_Elapsed)
     
     '''###################
         pages
@@ -1841,15 +2058,14 @@ def tester_BuyUps_SellLows(request):
             vars : render pages
         ###################'''
         render_Page, render_Page_full, dic = tester_BuyUps_SellLows__BUSL_2(request)
-#         render_Page = 'curr/busl_2.html'
-#         render_Page_full = 'curr/busl_2_full.html'
         
-#         print()
-#         print("[%s:%d] param ==> BUSL_2" % \
-#                 (os.path.basename(libs.thisfile()), libs.linenum()
-#                 
-#                 ), file=sys.stderr)
-    
+    elif not param_Cmd == False and param_Cmd == "BUSL_3" : #if not param_Cmd == False and param_Cmd == 
+
+        '''###################
+            vars : render pages
+        ###################'''
+        render_Page, render_Page_full, dic = tester_BuyUps_SellLows__BUSL_3(request)
+        
     else : #if not param_Cmd == False and param_Cmd == 
     
         '''###################
