@@ -1790,6 +1790,49 @@ def __tester_BuyUps_SellLows__BUSL_3__2Ups(request):
     
 #/ def __tester_BuyUps_SellLows__BUSL_3__2Ups(request):
 
+def __tester_BuyUps_SellLows__BUSL_3__3Ups(request):
+    
+    '''###################
+        vars
+    ###################'''
+    dic = {}
+    
+    '''###################
+        get : list of BarDatas
+    ###################'''
+    dpath = "C:\\WORKS_2\\WS\\WS_Others\\prog\\D-7\\2_2\\VIRTUAL\\Admin_Projects\\curr\\data\\csv_raw"
+    fname = "44_3.2_5_file-io.USDJPY.Period-M5.Days-26000.Bars-26000.20180721_160222.SHRINK-100.csv"
+    
+    header_Length   = 2
+    skip_Header     = False
+    
+    lo_BarDatas, lo_CSVs = libfx.get_Listof_BarDatas_2(
+                        dpath, fname, header_Length, skip_Header)
+    
+    print()
+    print("[%s:%d] len(lo_BarDatas) => %d" % \
+                        (os.path.basename(libs.thisfile()), libs.linenum()
+                        , len(lo_BarDatas)
+                        ), file=sys.stderr)
+    
+    '''###################
+        op : BUSL_3
+    ###################'''
+    libfx.BUSL_3(lo_BarDatas)
+    
+    '''###################
+        pages
+    ###################'''
+    render_Page = 'curr/busl_2.html'
+    render_Page_full = 'curr/busl_2_full.html'
+    
+    '''###################
+        return        
+    ###################'''
+    return render_Page, render_Page_full, dic
+
+#/ def __tester_BuyUps_SellLows__BUSL_3__3Ups(request):
+
 def tester_BuyUps_SellLows__BUSL_3(request):
     
     '''###################
@@ -1805,7 +1848,10 @@ def tester_BuyUps_SellLows__BUSL_3(request):
     '''######################################
         params
     ###################'''
-    param_Cmd = request.GET.get('command', False)
+    param_Cmd = request.GET.get(
+                    cons_fx.ParamConstants.PARAM_BUSL3_KEY__ACTION.value
+                    , False)
+#     param_Cmd = request.GET.get('command', False)
     
     print()
     print("[%s:%d] param_Cmd => %s" % \
@@ -1816,58 +1862,65 @@ def tester_BuyUps_SellLows__BUSL_3(request):
     '''###################
         param : default
     ###################'''
-    render_Page, render_Page_full, dic = __tester_BuyUps_SellLows__BUSL_3__2Ups(request)
+    if param_Cmd == cons_fx.ParamConstants.PARAM_BUSL3_CMD_2UPS.value : #if param_Cmd == cons_fx.ParamConstants.PARAM_BUSL3_CMD_2UPS.value
+    
+        render_Page, render_Page_full, dic = \
+                    __tester_BuyUps_SellLows__BUSL_3__2Ups(request)
+    
+    elif param_Cmd == cons_fx.ParamConstants.PARAM_BUSL3_CMD_3UPS.value : #if param_Cmd == cons_fx.ParamConstants.PARAM_BUSL3_CMD_2UPS.value
+    
+        render_Page, render_Page_full, dic = \
+                    __tester_BuyUps_SellLows__BUSL_3__3Ups(request)
+
+        #debug
+#         dic['message'] = " (param is '%s')" % param_Cmd
+        dic['message'] = " (param for 'action' is '%s' ==> use default)" % param_Cmd
+    
+    else : #if param_Cmd == cons_fx.ParamConstants.PARAM_BUSL3_CMD_2UPS.value
+    
+        render_Page, render_Page_full, dic = \
+                    __tester_BuyUps_SellLows__BUSL_3__2Ups(request)
+        
+        print()
+        print("[%s:%d] dic =>" % \
+            (os.path.basename(libs.thisfile()), libs.linenum()
+            
+            ), file=sys.stderr)
+        print(dic)
+        
+        #debug
+#         dic['message'] = " (param is '%s')" % param_Cmd
+        dic['message'] = " (param for 'action' is '%s' ==> use default)" % param_Cmd
+# #         dic['message'] = dic['message'] + " (param is '%s')" % param_Cmd
+# #         dic['message'] += " (param is '%s')" % param_Cmd
+    
+    #/if param_Cmd == cons_fx.ParamConstants.PARAM_BUSL3_CMD_2UPS.value
+    
+    
+#     render_Page, render_Page_full, dic = __tester_BuyUps_SellLows__BUSL_3__2Ups(request)
     
     '''###################
         time        
     ###################'''
     time_Exec_Elapsed = time.time() - time_Exec_Start
     
-    dic['message'] = "BUSL_3 ==> done (%s)(elapsed = %02.3f sec)" % \
-                    (libs.get_TimeLabel_Now(), time_Exec_Elapsed)
+    # build : message
+    if 'message' in dic : #if 'message' in dic
+                
+        dic['message'] += "BUSL_3 ==> done (%s)(elapsed = %02.3f sec)" % \
+                        (libs.get_TimeLabel_Now(), time_Exec_Elapsed)
+                    
+    else : #if 'message' in dic
     
-#     '''###################
-#         get : list of BarDatas
-#     ###################'''
-#     dpath = "C:\\WORKS_2\\WS\\WS_Others\\prog\\D-7\\2_2\\VIRTUAL\\Admin_Projects\\curr\\data\\csv_raw"
-#     fname = "44_3.2_5_file-io.USDJPY.Period-M5.Days-26000.Bars-26000.20180721_160222.SHRINK-100.csv"
-#     
-#     header_Length   = 2
-#     skip_Header     = False
-#     
-#     lo_BarDatas, lo_CSVs = libfx.get_Listof_BarDatas_2(
-#                         dpath, fname, header_Length, skip_Header)
-#     
-#     print()
-#     print("[%s:%d] len(lo_BarDatas) => %d" % \
-#                         (os.path.basename(libs.thisfile()), libs.linenum()
-#                         , len(lo_BarDatas)
-#                         ), file=sys.stderr)
-#     
-#     '''###################
-#         op : BUSL_3
-#     ###################'''
-#     libfx.BUSL_3(lo_BarDatas)
-#     
-#     '''###################
-#         time        
-#     ###################'''
-#     time_Exec_Elapsed = time.time() - time_Exec_Start
-#     
-# #     message = "done (time : %02.3f sec)" % (time_Elapsed)
-#     
-#     '''###################
-#         messages
-#     ###################'''
-# #     dic['message'] = "done (%s)" % libs.get_TimeLabel_Now()
+        dic['message'] = "BUSL_3 ==> done (%s)(elapsed = %02.3f sec)" % \
+                        (libs.get_TimeLabel_Now(), time_Exec_Elapsed)
+        
+    
+    #/if 'message' in dic
+                
+                
 #     dic['message'] = "BUSL_3 ==> done (%s)(elapsed = %02.3f sec)" % \
 #                     (libs.get_TimeLabel_Now(), time_Exec_Elapsed)
-#     
-#     '''###################
-#         pages
-#     ###################'''
-#     render_Page = 'curr/busl_2.html'
-#     render_Page_full = 'curr/busl_2_full.html'
 
     '''###################
         return        
@@ -2132,6 +2185,7 @@ def tester_BuyUps_SellLows(request):
         params
     ###################'''
     param_Cmd = request.GET.get('command', False)
+#     param_Cmd = request.GET.get('command', False)
     
     if not param_Cmd == False and param_Cmd == "BUSL_2" : #if not param_Cmd == False and param_Cmd == 
 

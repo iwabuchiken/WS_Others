@@ -2171,11 +2171,12 @@ def BUSL_3(lo_BarDatas):
         
         else :
             
-            print("[%s:%d] Not UP-UP : %s %s (dif : %.03f %.03f)" % \
-                (os.path.basename(libs.thisfile()), libs.linenum()
-                , e_0.dateTime_Local, e_1.dateTime_Local
-                , dif_0, dif_1
-                ), file=sys.stderr)
+            pass
+#             print("[%s:%d] Not UP-UP : %s %s (dif : %.03f %.03f)" % \
+#                 (os.path.basename(libs.thisfile()), libs.linenum()
+#                 , e_0.dateTime_Local, e_1.dateTime_Local
+#                 , dif_0, dif_1
+#                 ), file=sys.stderr)
             
         #/if cond_J1 == True
             

@@ -126,6 +126,13 @@ class PairName(Enum) :
         
     ]
 
+class ParamConstants(Enum):
+    
+    PARAM_BUSL3_KEY__ACTION = "busl3_action"
+    PARAM_BUSL3_CMD_2UPS = "busl3_command_2ups"
+    PARAM_BUSL3_CMD_3UPS = "busl3_command_3ups"
+#     PARAM_BUSL3_CMD_2UPS = "2ups"
+    
 class Tester(Enum):
     
     lo_Commands = [
