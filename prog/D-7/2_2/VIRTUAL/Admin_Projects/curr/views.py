@@ -1733,13 +1733,8 @@ def tester_BuyUps_SellLows__BUSL_2__1_Exec(request, lo_BarDatas, time_Start, tim
 #     return time_Period, cntOf_Both2Bars_Up, lenOf_LO_BarData
 #/ def tester_BuyUps_SellLows__BUSL_2__1_Exec(request):
     
-def tester_BuyUps_SellLows__BUSL_3(request):
+def __tester_BuyUps_SellLows__BUSL_3__2Ups(request):
     
-    '''###################
-        time        
-    ###################'''
-    time_Exec_Start = time.time()
-
     '''###################
         vars
     ###################'''
@@ -1768,25 +1763,111 @@ def tester_BuyUps_SellLows__BUSL_3(request):
     ###################'''
     libfx.BUSL_3(lo_BarDatas)
     
-    '''###################
-        time        
-    ###################'''
-    time_Exec_Elapsed = time.time() - time_Exec_Start
+#     '''###################
+#         time        
+#     ###################'''
+#     time_Exec_Elapsed = time.time() - time_Exec_Start
     
 #     message = "done (time : %02.3f sec)" % (time_Elapsed)
     
-    '''###################
-        messages
-    ###################'''
-#     dic['message'] = "done (%s)" % libs.get_TimeLabel_Now()
-    dic['message'] = "BUSL_3 ==> done (%s)(elapsed = %02.3f sec)" % \
-                    (libs.get_TimeLabel_Now(), time_Exec_Elapsed)
+#     '''###################
+#         messages
+#     ###################'''
+# #     dic['message'] = "done (%s)" % libs.get_TimeLabel_Now()
+#     dic['message'] = "BUSL_3 ==> done (%s)(elapsed = %02.3f sec)" % \
+#                     (libs.get_TimeLabel_Now(), time_Exec_Elapsed)
     
     '''###################
         pages
     ###################'''
     render_Page = 'curr/busl_2.html'
     render_Page_full = 'curr/busl_2_full.html'
+    
+    '''###################
+        return        
+    ###################'''
+    return render_Page, render_Page_full, dic
+    
+#/ def __tester_BuyUps_SellLows__BUSL_3__2Ups(request):
+
+def tester_BuyUps_SellLows__BUSL_3(request):
+    
+    '''###################
+        time        
+    ###################'''
+    time_Exec_Start = time.time()
+
+#     '''###################
+#         vars
+#     ###################'''
+#     dic = {}
+    
+    '''######################################
+        params
+    ###################'''
+    param_Cmd = request.GET.get('command', False)
+    
+    print()
+    print("[%s:%d] param_Cmd => %s" % \
+            (os.path.basename(libs.thisfile()), libs.linenum()
+            , param_Cmd
+            ), file=sys.stderr)
+    
+    '''###################
+        param : default
+    ###################'''
+    render_Page, render_Page_full, dic = __tester_BuyUps_SellLows__BUSL_3__2Ups(request)
+    
+    '''###################
+        time        
+    ###################'''
+    time_Exec_Elapsed = time.time() - time_Exec_Start
+    
+    dic['message'] = "BUSL_3 ==> done (%s)(elapsed = %02.3f sec)" % \
+                    (libs.get_TimeLabel_Now(), time_Exec_Elapsed)
+    
+#     '''###################
+#         get : list of BarDatas
+#     ###################'''
+#     dpath = "C:\\WORKS_2\\WS\\WS_Others\\prog\\D-7\\2_2\\VIRTUAL\\Admin_Projects\\curr\\data\\csv_raw"
+#     fname = "44_3.2_5_file-io.USDJPY.Period-M5.Days-26000.Bars-26000.20180721_160222.SHRINK-100.csv"
+#     
+#     header_Length   = 2
+#     skip_Header     = False
+#     
+#     lo_BarDatas, lo_CSVs = libfx.get_Listof_BarDatas_2(
+#                         dpath, fname, header_Length, skip_Header)
+#     
+#     print()
+#     print("[%s:%d] len(lo_BarDatas) => %d" % \
+#                         (os.path.basename(libs.thisfile()), libs.linenum()
+#                         , len(lo_BarDatas)
+#                         ), file=sys.stderr)
+#     
+#     '''###################
+#         op : BUSL_3
+#     ###################'''
+#     libfx.BUSL_3(lo_BarDatas)
+#     
+#     '''###################
+#         time        
+#     ###################'''
+#     time_Exec_Elapsed = time.time() - time_Exec_Start
+#     
+# #     message = "done (time : %02.3f sec)" % (time_Elapsed)
+#     
+#     '''###################
+#         messages
+#     ###################'''
+# #     dic['message'] = "done (%s)" % libs.get_TimeLabel_Now()
+#     dic['message'] = "BUSL_3 ==> done (%s)(elapsed = %02.3f sec)" % \
+#                     (libs.get_TimeLabel_Now(), time_Exec_Elapsed)
+#     
+#     '''###################
+#         pages
+#     ###################'''
+#     render_Page = 'curr/busl_2.html'
+#     render_Page_full = 'curr/busl_2_full.html'
 
     '''###################
         return        
