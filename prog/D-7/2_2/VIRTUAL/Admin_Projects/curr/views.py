@@ -1833,6 +1833,49 @@ def __tester_BuyUps_SellLows__BUSL_3__3Ups(request):
 
 #/ def __tester_BuyUps_SellLows__BUSL_3__3Ups(request):
 
+def __tester_BuyUps_SellLows__BUSL_3__NextUp(request):
+    
+    '''###################
+        vars
+    ###################'''
+    dic = {}
+    
+    '''###################
+        get : list of BarDatas
+    ###################'''
+    dpath = "C:\\WORKS_2\\WS\\WS_Others\\prog\\D-7\\2_2\\VIRTUAL\\Admin_Projects\\curr\\data\\csv_raw"
+    fname = "44_3.2_5_file-io.USDJPY.Period-M5.Days-26000.Bars-26000.20180721_160222.SHRINK-100.csv"
+    
+    header_Length   = 2
+    skip_Header     = False
+    
+    lo_BarDatas, lo_CSVs = libfx.get_Listof_BarDatas_2(
+                        dpath, fname, header_Length, skip_Header)
+    
+    print()
+    print("[%s:%d] len(lo_BarDatas) => %d" % \
+                        (os.path.basename(libs.thisfile()), libs.linenum()
+                        , len(lo_BarDatas)
+                        ), file=sys.stderr)
+    
+    '''###################
+        op : BUSL_3
+    ###################'''
+    libfx.BUSL_3__NextUp(lo_BarDatas)
+    
+    '''###################
+        pages
+    ###################'''
+    render_Page = 'curr/busl_2.html'
+    render_Page_full = 'curr/busl_2_full.html'
+    
+    '''###################
+        return        
+    ###################'''
+    return render_Page, render_Page_full, dic
+
+#/ def __tester_BuyUps_SellLows__BUSL_3__NextUp(request):
+
 def tester_BuyUps_SellLows__BUSL_3(request):
     
     '''###################
@@ -1875,6 +1918,14 @@ def tester_BuyUps_SellLows__BUSL_3(request):
         #debug
 #         dic['message'] = " (param is '%s')" % param_Cmd
         dic['message'] = " (param for 'action' is '%s' ==> use default)" % param_Cmd
+    
+    elif param_Cmd == cons_fx.ParamConstants.PARAM_BUSL3_CMD_NEXTUP.value : #if param_Cmd == cons_fx.ParamConstants.PARAM_BUSL3_CMD_2UPS.value
+    
+        render_Page, render_Page_full, dic = \
+                    __tester_BuyUps_SellLows__BUSL_3__NextUp(request)
+
+        #debug
+        dic['message'] = " (param for 'action' is '%s')" % param_Cmd
     
     else : #if param_Cmd == cons_fx.ParamConstants.PARAM_BUSL3_CMD_2UPS.value
     
@@ -2175,6 +2226,24 @@ def tester_BuyUps_SellLows__BUSL_2(request):
 #/ def tester_BuyUps_SellLows__BUSL_2(request):
     
 def tester_BuyUps_SellLows(request):
+    
+    '''###################
+        log
+    ###################'''
+    msg = "\nstarting : tester_BuyUps_SellLows ======================="
+                
+    msg_Log = "[%s / %s:%d] %s" % \
+            (
+            libs.get_TimeLabel_Now()
+            , os.path.basename(libs.thisfile()), libs.linenum()
+            , msg)
+    
+    libs.write_Log(msg_Log
+                , cons_fx.FPath.dpath_LogFile.value
+                , cons_fx.FPath.fname_LogFile.value
+                , 1)
+
+    
     
     '''###################
         vars

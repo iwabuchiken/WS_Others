@@ -2114,6 +2114,13 @@ def get_LO_BarData___By_Datetime(lo_BarData, time_Start, time_End, flag_Period_O
 
 #/ def get_LO_BarData___By_Datetime(lo_BarData, time_Start, time_End):
 
+'''###################
+    BUSL_3(lo_BarDatas)
+    
+    <description>
+    1. detect pattern ==> up + up
+    
+###################'''
 def BUSL_3(lo_BarDatas):
     
     '''###################
@@ -2208,6 +2215,331 @@ def BUSL_3(lo_BarDatas):
     return False
 
 #/ def BUSL_3(lo_BarData):
+
+def _BUSL_3__NextUp(lo_BarDatas):
+    
+    '''###################
+        vars
+    ###################'''
+    cntOf_NextUp = 0
+    cntOf_NextDown = 0
+    
+    cntOf_Up = 0
+    cntOf_Down = 0
+    
+    cntOf_Total = 0
+    
+    '''###################
+        for-loop        
+    ###################'''
+    lenOf_LO_BarDatas = len(lo_BarDatas)
+    
+    for i in range(0, lenOf_LO_BarDatas - 1):
+#     for i in range(2, lenOf_LO_BarDatas):
+        
+        # count : total
+        cntOf_Total += 1
+        
+        '''###################
+            proc : 1
+        ###################'''
+        e_0 = lo_BarDatas[i]
+        e_1 = lo_BarDatas[i + 1]
+#         e_1 = lo_BarDatas[i]
+        
+        '''###################
+            proc : 2
+        ###################'''
+        dif_0 = e_0.price_Close - e_0.price_Open
+        dif_1 = e_1.price_Close - e_1.price_Open
+        
+        '''######################################
+            j1        
+        ###################'''
+        cond_J1_1 = (dif_0 > 0)
+        cond_J1_2 = (dif_0 < 0)
+        
+        cond_J1_3 = (dif_1 > 0)
+        cond_J1_4 = (dif_1 < 0)
+        
+        '''###################
+            dif_0 ---> NOT up        
+        ###################'''
+        if cond_J1_1 == False : #if cond_J1 == True
+            
+            # count
+            cntOf_Down += 1
+            
+            continue
+        
+        # dif_0 --> up
+        # dif_1 --> up
+        elif cond_J1_1 == True and cond_J1_3 == True : #if cond_J1 == True
+            
+            # count
+            cntOf_NextUp += 1
+            cntOf_Up += 1
+            
+            msg = "UP-UP : %s / %s (dif : %.03f %.03f)" %\
+                    (e_0.dateTime_Local, e_1.dateTime_Local,
+                     dif_0, dif_1)
+             
+            msg_Log = "[%s / %s:%d] %s" % \
+                    (
+                    libs.get_TimeLabel_Now()
+                    , os.path.basename(libs.thisfile()), libs.linenum()
+                    , msg)
+             
+            libs.write_Log(msg_Log
+                        , cons_fx.FPath.dpath_LogFile.value
+                        , cons_fx.FPath.fname_LogFile.value
+                        , 1)
+        
+        # dif_0 --> up
+        # dif_1 --> down
+        elif cond_J1_1 == True and cond_J1_4 == True : #if cond_J1 == True
+            
+            # count
+            cntOf_Up += 1
+            cntOf_NextDown += 1
+            
+            
+            msg = "UP-DOWN : %s / %s (dif : %.03f %.03f)" %\
+                    (e_0.dateTime_Local, e_1.dateTime_Local,
+                     dif_0, dif_1)
+             
+            msg_Log = "[%s / %s:%d] %s" % \
+                    (
+                    libs.get_TimeLabel_Now()
+                    , os.path.basename(libs.thisfile()), libs.linenum()
+                    , msg)
+             
+            libs.write_Log(msg_Log
+                        , cons_fx.FPath.dpath_LogFile.value
+                        , cons_fx.FPath.fname_LogFile.value
+                        , 1)
+            
+            continue
+        
+        else :
+            
+            continue
+            
+        #/if cond_J1 == True
+            
+            
+        
+        
+    #/for i in range(2, lenOf_LO_BarDatas):
+    '''###################
+        record : stats        
+    ###################'''
+#     msg = "total = %d / UP-UPs = %d (ratio = %.03f) / UP-DOWNs = %d (ratio = %.03f)" %\
+    msg = "total = %d / UP-UPs = %d (ratio = %.03f) / UP-DOWNs = %d (ratio = %.03f) / UPs = %d (ratio = %.03f) / DOWNs = %d (ratio = %.03f) / UP-UPs over UPs = %.03f) / UP-DOWNs over UPs = %.03f)" %\
+            (cntOf_Total
+             , cntOf_NextUp, cntOf_NextUp * 1.0 / cntOf_Total
+             , cntOf_NextDown, cntOf_NextDown * 1.0 / cntOf_Total
+             , cntOf_Up, cntOf_Up * 1.0 / cntOf_Total
+             , cntOf_Down, cntOf_Down * 1.0 / cntOf_Total
+             
+             , cntOf_NextUp * 1.0 / cntOf_Up
+             , cntOf_NextDown * 1.0 / cntOf_Down
+             )
+    
+    msg_Log = "[%s / %s:%d] %s" % \
+            (
+            libs.get_TimeLabel_Now()
+            , os.path.basename(libs.thisfile()), libs.linenum()
+            , msg)
+    
+    libs.write_Log(msg_Log
+                , cons_fx.FPath.dpath_LogFile.value
+                , cons_fx.FPath.fname_LogFile.value
+                , 1)
+    
+    '''###################
+        return        
+    ###################'''
+    return False
+    
+#/ def _BUSL_3__NextUp(lo_BarDatas):
+
+def _BUSL_3__NextUp__Above_BB_Main(lo_BarDatas):
+    
+    '''###################
+        vars
+    ###################'''
+    cntOf_NextUp = 0
+    cntOf_NextUp_Above_BB_Main = 0
+    cntOf_NextDown = 0
+    
+    cntOf_Up = 0
+    cntOf_Down = 0
+    cntOf_Flat = 0
+    
+    cntOf_Total = 0
+    
+    '''###################
+        for-loop        
+    ###################'''
+    lenOf_LO_BarDatas = len(lo_BarDatas)
+    
+    for i in range(0, lenOf_LO_BarDatas - 1):
+#     for i in range(2, lenOf_LO_BarDatas):
+        
+        # count : total
+        cntOf_Total += 1
+        
+        '''###################
+            proc : 1
+        ###################'''
+        e_0 = lo_BarDatas[i]
+        e_1 = lo_BarDatas[i + 1]
+#         e_1 = lo_BarDatas[i]
+        
+        '''###################
+            proc : 2
+        ###################'''
+        dif_0 = e_0.price_Close - e_0.price_Open
+        dif_1 = e_1.price_Close - e_1.price_Open
+        
+        '''###################
+            proc : 3
+        ###################'''
+        bbMain_0 = e_0.bb_Main
+        bbMain_1 = e_1.price_Open
+        
+        '''###################
+            j1        
+        ###################'''
+        if dif_0 < 0 : 
+            
+            # count
+            cntOf_Down += 1
+            
+            continue
+            
+        '''###################
+            j2
+        ###################'''
+        if dif_0 == 0 : 
+            
+            # count
+            cntOf_Flat += 1
+            
+            continue
+            
+        '''###################
+            j2-2
+        ###################'''
+        if dif_0 > 0 : 
+            
+            # count
+            cntOf_Up += 1
+            
+#             continue
+            
+        '''###################
+            j2-3
+        ###################'''
+        if dif_0 > 0 \
+            and dif_1 > 0: 
+            
+            # count
+            cntOf_NextUp += 1
+            
+#             continue
+            
+        '''###################
+            j3
+        ###################'''
+#         if e_0.price_Close > bbMain_0 \
+#             and dif_1 > 0: 
+        if dif_0 > 0 \
+            and dif_1 > 0 \
+            and e_0.price_Close > bbMain_0: 
+            
+            # count
+            cntOf_NextUp_Above_BB_Main += 1
+#             cntOf_NextUp += 1
+            
+            continue
+        
+        else :
+            
+            continue
+            
+        
+        
+    #/for i in range(2, lenOf_LO_BarDatas):
+    '''###################
+        record : stats        
+    ###################'''
+#     msg = "total = %d / UP-UPs = %d (ratio = %.03f) / UP-DOWNs = %d (ratio = %.03f)" %\
+#     msg = "total = %d / UP-UPs = %d (ratio = %.03f) / UP-DOWNs = %d (ratio = %.03f) / UPs = %d (ratio = %.03f) / DOWNs = %d (ratio = %.03f) / UP-UPs over UPs = %.03f) / UP-DOWNs over UPs = %.03f)" %\
+#     msg = "total = %d / UPs = %d (ratio = %.03f) / DOWNs = %d (ratio = %.03f) / NextUps = %d (ratio = %.03f)" %\
+    msg = "total = %d / UPs = %d (ratio = %.03f) / DOWNs = %d (ratio = %.03f) / NextUps = %d (ratio = %.03f) / NextUp_Above_BB_Main = %d (ratio = %.03f)" %\
+            (cntOf_Total
+             , cntOf_Up, cntOf_Up * 1.0 / cntOf_Total
+             , cntOf_Down, cntOf_Down * 1.0 / cntOf_Total
+             , cntOf_NextUp, cntOf_NextUp * 1.0 / cntOf_Total
+             , cntOf_NextUp_Above_BB_Main, cntOf_NextUp_Above_BB_Main * 1.0 / cntOf_Total
+             )
+#              , cntOf_NextUp, cntOf_NextUp * 1.0 / cntOf_Total
+#              , cntOf_NextDown, cntOf_NextDown * 1.0 / cntOf_Total
+#              , cntOf_Up, cntOf_Up * 1.0 / cntOf_Total
+#              , cntOf_Down, cntOf_Down * 1.0 / cntOf_Total
+#              
+#              , cntOf_NextUp * 1.0 / cntOf_Up
+#              , cntOf_NextDown * 1.0 / cntOf_Down
+#              )
+    
+    msg_Log = "[%s / %s:%d] %s" % \
+            (
+            libs.get_TimeLabel_Now()
+            , os.path.basename(libs.thisfile()), libs.linenum()
+            , msg)
+    
+    libs.write_Log(msg_Log
+                , cons_fx.FPath.dpath_LogFile.value
+                , cons_fx.FPath.fname_LogFile.value
+                , 1)
+    
+    '''###################
+        return        
+    ###################'''
+    return False
+    
+#/ def _BUSL_3__NextUp__Above_BB_Main(lo_BarDatas)
+
+
+'''###################
+    BUSL_3(lo_BarDatas)
+    
+    <description>
+    1. detect pattern ==> up + up
+    
+###################'''
+def BUSL_3__NextUp(lo_BarDatas):
+    
+    '''###################
+        UP-UPs        
+    ###################'''
+#     result = _BUSL_3__NextUp(lo_BarDatas)
+    
+    '''###################
+        UP-UPs : above BB main
+    ###################'''
+    result = _BUSL_3__NextUp__Above_BB_Main(lo_BarDatas)
+    
+
+    '''###################
+        return        
+    ###################'''
+    return result
+#     return False
+
+#/ def BUSL_3__NextUp(lo_BarDatas):
 
 def BUSL_2(lo_BarData):
     

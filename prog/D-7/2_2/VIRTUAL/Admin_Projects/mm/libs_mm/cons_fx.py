@@ -128,10 +128,21 @@ class PairName(Enum) :
 
 class ParamConstants(Enum):
     
+    '''###################
+        http://127.0.0.1:8000/curr/tester_BuyUps_SellLows/?command=BUSL_3&busl3_action=        
+    ###################'''
+    # key
     PARAM_BUSL3_KEY__ACTION = "busl3_action"
+    
+    # values
     PARAM_BUSL3_CMD_2UPS = "busl3_command_2ups"
     PARAM_BUSL3_CMD_3UPS = "busl3_command_3ups"
 #     PARAM_BUSL3_CMD_2UPS = "2ups"
+    '''###################
+        next_up        
+    ###################'''
+    PARAM_BUSL3_CMD_NEXTUP = "next_up"
+    PARAM_BUSL3_CMD_NEXTUP_ABOVE_BB_MAIN = "next_up_above_bb_main"
     
 class Tester(Enum):
     
