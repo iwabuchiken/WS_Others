@@ -1843,8 +1843,12 @@ def __tester_BuyUps_SellLows__BUSL_3__NextUp(request):
     '''###################
         get : list of BarDatas
     ###################'''
-    dpath = "C:\\WORKS_2\\WS\\WS_Others\\prog\\D-7\\2_2\\VIRTUAL\\Admin_Projects\\curr\\data\\csv_raw"
-    fname = "44_3.2_5_file-io.USDJPY.Period-M5.Days-26000.Bars-26000.20180721_160222.SHRINK-100.csv"
+    fname = cons_fx.FPath.BUSL_3_FNAME_PEAK_LIST.value
+    dpath = cons_fx.FPath.BUSL_3_DPATH_PEAK_LIST.value
+#     dpath = "C:\\WORKS_2\\WS\\WS_Others\\prog\\D-7\\2_2\\VIRTUAL\\Admin_Projects\\curr\\data\\csv_raw"
+#     fname = "44_3.2_5_file-io.USDJPY.Period-M5.Days-26000.Bars-26000.20180721_160221.SHRINK-1000.csv"
+#     fname = "44_3.2_5_file-io.USDJPY.Period-M5.Days-26000.Bars-26000.20180721_160221.SHRINK-1000.csv"
+#     fname = "44_3.2_5_file-io.USDJPY.Period-M5.Days-26000.Bars-26000.20180721_160222.SHRINK-100.csv"
     
     header_Length   = 2
     skip_Header     = False
@@ -1894,7 +1898,6 @@ def tester_BuyUps_SellLows__BUSL_3(request):
     param_Cmd = request.GET.get(
                     cons_fx.ParamConstants.PARAM_BUSL3_KEY__ACTION.value
                     , False)
-#     param_Cmd = request.GET.get('command', False)
     
     print()
     print("[%s:%d] param_Cmd => %s" % \
@@ -1919,8 +1922,8 @@ def tester_BuyUps_SellLows__BUSL_3(request):
 #         dic['message'] = " (param is '%s')" % param_Cmd
         dic['message'] = " (param for 'action' is '%s' ==> use default)" % param_Cmd
     
+    #PARAM_BUSL3_CMD_NEXTUP = "next_up"
     elif param_Cmd == cons_fx.ParamConstants.PARAM_BUSL3_CMD_NEXTUP.value : #if param_Cmd == cons_fx.ParamConstants.PARAM_BUSL3_CMD_2UPS.value
-    
         render_Page, render_Page_full, dic = \
                     __tester_BuyUps_SellLows__BUSL_3__NextUp(request)
 
@@ -2242,8 +2245,6 @@ def tester_BuyUps_SellLows(request):
                 , cons_fx.FPath.dpath_LogFile.value
                 , cons_fx.FPath.fname_LogFile.value
                 , 1)
-
-    
     
     '''###################
         vars
@@ -2320,55 +2321,6 @@ def tester_BuyUps_SellLows(request):
     
     #/if not param_Cmd == False and param_Cmd == 
 
-
-    
-#     '''###################
-#         vars : render pages
-#     ###################'''
-#     render_Page = 'curr/tester_BuyUps_SellLows.html'
-#     render_Page_full = 'curr/tester_BuyUps_SellLows_full.html'
-#     
-#     '''###################
-#         get : files list
-#     ###################'''
-#     dpath_Images = "C:\\WORKS_2\\WS\\WS_Others\\prog\\D-7\\2_2\\VIRTUAL\\Admin_Projects" \
-#                 + "\\curr\\data\\csv"
-#     
-#     fpath_Glob = "%s\\*.csv" % (dpath_Images)
-# 
-#     #ref glob https://stackoverflow.com/questions/14798220/how-can-i-search-sub-folders-using-glob-glob-module-in-python answered Feb 10 '13 at 13:31    
-#     lo_Files = glob.glob(fpath_Glob)
-# 
-#     lo_Files.sort()
-#     
-#     print()
-#     print("[%s:%d] len(lo_Files) => %d" % \
-#                 (os.path.basename(libs.thisfile()), libs.linenum()
-#                 , len(lo_Files)
-#                 ), file=sys.stderr)
-# 
-#     # set list
-#     dic['lo_Files'] = [os.path.basename(x) for x in lo_Files]
-#     
-#     # set : dpath
-#     dic['dpath_Images'] = dpath_Images
-# 
-# 
-# 
-#     dic['action'] = "action"
-#     dic["message"] = "message"
-# #     action = "action"
-# #     message = "message"
-#     
-#     lo_Commands = cons_fx.Tester.lo_Commands.value
-# #     lo_Commands = cons_mm.ImOp.lo_Commands.value
-#     
-#     #debug
-#     print()
-#     print(lo_Commands)
-    
-#     dic = {'action' : action, "message" : message, "lo_Commands" : lo_Commands}
-
     '''###################
         render        
     ###################'''
@@ -2393,8 +2345,6 @@ def tester_BuyUps_SellLows(request):
                 ), file=sys.stderr)
     
         return render(request, render_Page, dic)
-#         return render(request, 'curr/tester_BuyUps_SellLows.html', dic)
-#         return render(request, 'mm/numbering.html', dic)
         
     else : #if referer_Current == referer_MM
 
@@ -2405,7 +2355,6 @@ def tester_BuyUps_SellLows(request):
                 ), file=sys.stderr)
 
         return render(request, render_Page_full, dic)
-#         return render(request, 'curr/tester_BuyUps_SellLows_full.html', dic)
 
 def agt_BUSL_v_1_0(dpath, fname):
     

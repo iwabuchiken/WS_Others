@@ -39,24 +39,8 @@ class BarData(Enum):
 class FPath(Enum):
     
     fname_In_CSV = "44_1.14_file-io.EURUSD.Period-H1.Days-1900.Bars-45600.20180511_180935.csv"
-#     fname_In_CSV = "44_1.14_file-io.AUDJPY.Period-H1.Days-1900.Bars-45600.20180511_181322.csv"
-#     fname_In_CSV = "44_1.14_file-io.EURJPY.Period-H1.Days-1900.Bars-45600.20180511_181622.csv"
-#     fname_In_CSV = "44_1.14_file-io.USDJPY.Period-H1.Days-1900.Bars-45600.20180511_181208.csv"
-#     fname_In_CSV = "49_11_file-io" \
-#                     + ".USDJPY" \
-#                     + ".Period-H1" \
-#                      + ".Days-100" \
-#                      + ".Bars-17280" +\
-#                       ".20171231_233726.csv"
-#     fname_In_CSV = "49_11_file-io.USDJPY.Period-H1.Days-720.Bars-17280.20171231_233725.csv"
     
     dpath_In_CSV = DPATH_ROOT_CURR + "\\data\\csv"
-#     dpath_In_CSV = DPATH_ROOT_CURR + "/data/csv"
-#     dpath_In_CSV = "C:/WORKS_2/WS/WS_Others/prog/D-7/2_2/VIRTUAL/Admin_Projects/curr/data/csv"
-#     dpath_In_CSV = "./csv"
-#     dpath_In_CSV = "./data"
-#     dpath_In_CSV = "../data"
-#     fpath_In_CSV = dpath_In_CSV + "/" + fname_In_CSV
     
     fpath_Out_HighLowDiff = "outputs"
 
@@ -75,7 +59,14 @@ class FPath(Enum):
     dpath_LogFile = "C:\\WORKS_2\\WS\\WS_Others\\prog\\D-7\\2_2\\VIRTUAL\\Admin_Projects\\curr\\data\\log"
     
     fname_LogFile = "tester_BUSL.log"
-
+    
+    '''###################
+        BUSL_3
+    ###################'''
+#     BUSL_3_FNAME_PEAK_LIST = "44_3.2_5_file-io.USDJPY.Period-M5.Days-26000.Bars-26000.20180721_160221.SHRINK-2000.csv"
+    BUSL_3_FNAME_PEAK_LIST = "44_3.2_5_file-io.USDJPY.Period-M5.Days-26000.Bars-26000.20180721_160221.csv"
+    BUSL_3_DPATH_PEAK_LIST = "C:\\WORKS_2\\WS\\WS_Others\\prog\\D-7\\2_2\\VIRTUAL\\Admin_Projects\\curr\\data\\csv_raw"
+    
 class Label_ColNames(Enum):
     
     PAIR    = 'PAIR'
@@ -130,6 +121,7 @@ class ParamConstants(Enum):
     
     '''###################
         http://127.0.0.1:8000/curr/tester_BuyUps_SellLows/?command=BUSL_3&busl3_action=        
+        key : busl3_action
     ###################'''
     # key
     PARAM_BUSL3_KEY__ACTION = "busl3_action"
