@@ -1,0 +1,7 @@
+num of tasks	6
+prog	Cake	-	20180812_064704
+currency	prog	-	20180812_064704
+bk	ANY	-	20180812_064704
+bk	*money	-	20180812_064704
+bk	*relativity	-	20180812_064704
+res	cars		20180812_064704

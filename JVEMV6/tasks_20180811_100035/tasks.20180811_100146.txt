@@ -1,0 +1,8 @@
+prog	Cake	-	8/11			o	d
+prog	visual	-	8/11			-	-
+currency	prog	-	8/11			~	d
+currency	observe	-	8/11			-	-
+bk	ANY	-	8/11			o	d
+bk	*money	-	8/11			o	d
+bk	*relativity	-	8/11			~	d
+res	cars		8/11			-	d
