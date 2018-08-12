@@ -2512,6 +2512,140 @@ def _BUSL_3__NextUp__Above_BB_Main(lo_BarDatas):
     
 #/ def _BUSL_3__NextUp__Above_BB_Main(lo_BarDatas)
 
+def _BUSL_3__NextUp__Above_BB_1S(lo_BarDatas):
+# def _BUSL_3__NextUp__Above_BB_1S(lo_BarDatas, ts_Mark = "BB_1S"):
+    
+    '''###################
+        vars
+    ###################'''
+    cntOf_NextUp = 0
+    cntOf_NextUp_Above_BB_1S = 0
+    cntOf_NextDown = 0
+    
+    cntOf_Up = 0
+    cntOf_Down = 0
+    cntOf_Flat = 0
+    
+    cntOf_Total = 0
+    
+    '''###################
+        for-loop        
+    ###################'''
+    lenOf_LO_BarDatas = len(lo_BarDatas)
+    
+    for i in range(0, lenOf_LO_BarDatas - 1):
+#     for i in range(2, lenOf_LO_BarDatas):
+        
+        # count : total
+        cntOf_Total += 1
+        
+        '''###################
+            proc : 1
+        ###################'''
+        e_0 = lo_BarDatas[i]
+        e_1 = lo_BarDatas[i + 1]
+#         e_1 = lo_BarDatas[i]
+        
+        '''###################
+            proc : 2
+        ###################'''
+        dif_0 = e_0.price_Close - e_0.price_Open
+        dif_1 = e_1.price_Close - e_1.price_Open
+        
+        '''###################
+            proc : 3
+        ###################'''
+        bb_1S = e_0.bb_1S
+#         bbMain_0 = e_0.bb_Main
+        bbMain_1 = e_1.price_Open
+        
+        '''###################
+            j1        
+        ###################'''
+        if dif_0 < 0 : 
+            
+            # count
+            cntOf_Down += 1
+            
+            continue
+            
+        '''###################
+            j2
+        ###################'''
+        if dif_0 == 0 : 
+            
+            # count
+            cntOf_Flat += 1
+            
+            continue
+            
+        '''###################
+            j2-2
+        ###################'''
+        if dif_0 > 0 : 
+            
+            # count
+            cntOf_Up += 1
+            
+#             continue
+            
+        '''###################
+            j2-3
+        ###################'''
+        if dif_0 > 0 \
+            and dif_1 > 0: 
+            
+            # count
+            cntOf_NextUp += 1
+            
+#             continue
+            
+        '''###################
+            j3
+        ###################'''
+        if dif_0 > 0 \
+            and dif_1 > 0 \
+            and e_0.price_Close > bb_1S: 
+            
+            # count
+            cntOf_NextUp_Above_BB_1S += 1
+            
+            continue
+        
+        else :
+            
+            continue
+        
+    #/for i in range(2, lenOf_LO_BarDatas):
+    '''###################
+        record : stats        
+    ###################'''
+    msg = "total = %d / UPs = %d (ratio = %.03f) / DOWNs = %d (ratio = %.03f) / NextUps = %d (ratio = %.03f) / NextUp_Above_BB_1S = %d (ratio = %.03f)" %\
+            (cntOf_Total
+             , cntOf_Up, cntOf_Up * 1.0 / cntOf_Total
+             , cntOf_Down, cntOf_Down * 1.0 / cntOf_Total
+             , cntOf_NextUp, cntOf_NextUp * 1.0 / cntOf_Total
+             , cntOf_NextUp_Above_BB_1S, cntOf_NextUp_Above_BB_1S * 1.0 / cntOf_Total
+             )
+    
+    msg_Log = "[%s / %s:%d] %s" % \
+            (
+            libs.get_TimeLabel_Now()
+            , os.path.basename(libs.thisfile()), libs.linenum()
+            , msg)
+    
+    libs.write_Log(msg_Log
+                , cons_fx.FPath.dpath_LogFile.value
+                , cons_fx.FPath.fname_LogFile.value
+                , 1)
+    
+    '''###################
+        return        
+    ###################'''
+    return False
+    
+#/ def _BUSL_3__NextUp__Above_BB_1S(lo_BarDatas)
+
 
 '''###################
     BUSL_3(lo_BarDatas)
@@ -2532,6 +2666,10 @@ def BUSL_3__NextUp(lo_BarDatas):
     ###################'''
     result = _BUSL_3__NextUp__Above_BB_Main(lo_BarDatas)
     
+    '''###################
+        UP-UPs : above +1S
+    ###################'''
+    result = _BUSL_3__NextUp__Above_BB_1S(lo_BarDatas)
 
     '''###################
         return        
