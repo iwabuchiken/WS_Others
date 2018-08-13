@@ -139,6 +139,13 @@ class ParamConstants(Enum):
     PARAM_BUSL3_CMD_NEXTUP = "next_up"
     PARAM_BUSL3_CMD_NEXTUP_ABOVE_BB_MAIN = "next_up_above_bb_main"
     
+    '''###################
+        expert : busl3 : 1 : over BB.1S
+    ###################'''
+    PARAM_BUSL3_CMD_EXPERT_1_OVER_BB_1S = "expert_busl3___1_over_bb_1s"
+    
+    
+    
 class Tester(Enum):
     
     lo_Commands = [

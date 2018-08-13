@@ -1880,6 +1880,49 @@ def __tester_BuyUps_SellLows__BUSL_3__NextUp(request):
 
 #/ def __tester_BuyUps_SellLows__BUSL_3__NextUp(request):
 
+def __tester_BuyUps_SellLows__BUSL_3__Expert__Over_BB_1S(request):
+    
+    '''###################
+        vars
+    ###################'''
+    dic = {}
+    
+    '''###################
+        get : list of BarDatas
+    ###################'''
+    fname = cons_fx.FPath.BUSL_3_FNAME_PEAK_LIST.value
+    dpath = cons_fx.FPath.BUSL_3_DPATH_PEAK_LIST.value
+    
+    header_Length   = 2
+    skip_Header     = False
+    
+    lo_BarDatas, lo_CSVs = libfx.get_Listof_BarDatas_2(
+                        dpath, fname, header_Length, skip_Header)
+    
+    print()
+    print("[%s:%d] len(lo_BarDatas) => %d" % \
+                        (os.path.basename(libs.thisfile()), libs.linenum()
+                        , len(lo_BarDatas)
+                        ), file=sys.stderr)
+    
+    '''###################
+        op : BUSL_3
+    ###################'''
+    libfx.BUSL_3__Expert__Over_BB_1S(lo_BarDatas)
+    
+    '''###################
+        pages
+    ###################'''
+    render_Page = 'curr/busl_2.html'
+    render_Page_full = 'curr/busl_2_full.html'
+    
+    '''###################
+        return        
+    ###################'''
+    return render_Page, render_Page_full, dic
+
+#/ def __tester_BuyUps_SellLows__BUSL_3__Expert__Over_BB_1S(request):
+
 def tester_BuyUps_SellLows__BUSL_3(request):
     
     '''###################
@@ -1920,12 +1963,23 @@ def tester_BuyUps_SellLows__BUSL_3(request):
 
         #debug
 #         dic['message'] = " (param is '%s')" % param_Cmd
-        dic['message'] = " (param for 'action' is '%s' ==> use default)" % param_Cmd
+        dic['message'] = " (param for 'action' is '%s')" % param_Cmd
+#         dic['message'] = " (param for 'action' is '%s' ==> use default)" % param_Cmd
     
     #PARAM_BUSL3_CMD_NEXTUP = "next_up"
     elif param_Cmd == cons_fx.ParamConstants.PARAM_BUSL3_CMD_NEXTUP.value : #if param_Cmd == cons_fx.ParamConstants.PARAM_BUSL3_CMD_2UPS.value
+        
         render_Page, render_Page_full, dic = \
                     __tester_BuyUps_SellLows__BUSL_3__NextUp(request)
+
+        #debug
+        dic['message'] = " (param for 'action' is '%s')" % param_Cmd
+    
+    #PARAM_BUSL3_CMD_EXPERT_1_OVER_BB_1S = "expert_busl3___1_over_bb_1s"
+    elif param_Cmd == cons_fx.ParamConstants.PARAM_BUSL3_CMD_EXPERT_1_OVER_BB_1S.value : #if param_Cmd == cons_fx.ParamConstants.PARAM_BUSL3_CMD_2UPS.value
+        
+        render_Page, render_Page_full, dic = \
+                    __tester_BuyUps_SellLows__BUSL_3__Expert__Over_BB_1S(request)
 
         #debug
         dic['message'] = " (param for 'action' is '%s')" % param_Cmd

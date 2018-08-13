@@ -2646,6 +2646,72 @@ def _BUSL_3__NextUp__Above_BB_1S(lo_BarDatas):
     
 #/ def _BUSL_3__NextUp__Above_BB_1S(lo_BarDatas)
 
+def _BUSL_3__Expert__Above_BB_1S(lo_BarDatas):
+# def _BUSL_3__NextUp__Above_BB_1S(lo_BarDatas, ts_Mark = "BB_1S"):
+    
+    '''###################
+        vars
+    ###################'''
+    cntOf_NextUp = 0
+    cntOf_NextUp_Above_BB_1S = 0
+    cntOf_NextDown = 0
+    
+    cntOf_Up = 0
+    cntOf_Down = 0
+    cntOf_Flat = 0
+    
+    cntOf_Total = 0
+    
+    # position taken?
+    flg_Position_Taken = False
+    
+    '''###################
+        for-loop        
+    ###################'''
+    lenOf_LO_BarDatas = len(lo_BarDatas)
+    
+    for i in range(0, lenOf_LO_BarDatas):
+        
+        '''###################
+            proc : 1
+        ###################'''
+        # count : total
+        cntOf_Total += 1
+        
+        '''###################
+            proc : 2
+        ###################'''
+        e_0 = lo_BarDatas[i]
+        
+        '''###################
+            proc : 3
+        ###################'''
+        dif_0 = e_0.price_Close - e_0.price_Open
+        
+        pc_0 = e_o.price_Close
+        
+        '''###################
+            j1
+        ###################'''
+        if flg_Position_Taken == True : #if flg_Position_Taken == True
+        
+            pass
+        
+        else : #if flg_Position_Taken == True
+        
+            pass
+        
+        #/if flg_Position_Taken == True
+        
+    #/ for i in range(0, lenOf_LO_BarDatas):
+    
+    '''###################
+        return        
+    ###################'''
+    return False
+    
+#/ def _BUSL_3__Expert__Above_BB_1S(lo_BarDatas)
+
 
 '''###################
     BUSL_3(lo_BarDatas)
@@ -2678,6 +2744,35 @@ def BUSL_3__NextUp(lo_BarDatas):
 #     return False
 
 #/ def BUSL_3__NextUp(lo_BarDatas):
+
+'''###################
+    BUSL_3(lo_BarDatas)
+    
+    <description>
+    1. detect pattern ==> up + up
+    
+###################'''
+def BUSL_3__Expert__Over_BB_1S(lo_BarDatas):
+    
+    '''###################
+        UP-UPs : above +1S
+    ###################'''
+    result = _BUSL_3__NextUp__Above_BB_1S(lo_BarDatas)
+    
+    # debug
+    print()
+    print("[%s:%d] BUSL_3__Expert__Over_BB_1S ==> done" % \
+        (os.path.basename(libs.thisfile()), libs.linenum()
+        
+        ), file=sys.stderr)
+    
+    '''###################
+        return        
+    ###################'''
+    return result
+#     return False
+
+#/ def BUSL_3__Expert__Over_BB_1S(lo_BarDatas):
 
 def BUSL_2(lo_BarData):
     
