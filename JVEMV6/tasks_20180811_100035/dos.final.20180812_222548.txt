@@ -1,0 +1,7 @@
+num of tasks	6
+currency	prog	-	20180812_222548
+bk	ANY	-	20180812_222548
+bk	*money	-	20180812_222548
+bk	*relativity	-	20180812_222548
+res	cars		20180812_222548
+music	kb		20180812_222548
