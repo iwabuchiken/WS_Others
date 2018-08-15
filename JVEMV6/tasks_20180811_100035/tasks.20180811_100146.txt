@@ -1,9 +1,9 @@
-prog	Cake	-	8/11			o	o	-	-
-prog	visual	-	8/11			-	-	-	-
-currency	prog	-	8/11			~	o	o	d
-currency	observe	-	8/11			-	-	-	-
-bk	ANY	-	8/11			o	o	o	d
-bk	*money	-	8/11			o	o	o	d
-bk	*relativity	-	8/11			~	o	o	d
-res	cars		8/11			-	o	~	d
-music	kb		8/12					o	d
+prog	Cake	-	8/11			o	o	-	-	-
+prog	visual	-	8/11			-	-	-	-	-
+currency	prog	-	8/11			~	o	o	o	d
+currency	observe	-	8/11			-	-	-	-	-
+bk	ANY	-	8/11			o	o	o	o	d
+bk	*money	-	8/11			o	o	o	o	d
+bk	*relativity	-	8/11			~	o	o	o	d
+res	cars		8/11			-	o	~	o	d
+music	kb		8/12					o	o	d

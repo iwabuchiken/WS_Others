@@ -2649,6 +2649,21 @@ def _BUSL_3__NextUp__Above_BB_1S(lo_BarDatas):
 def _BUSL_3__Expert__Above_BB_1S(lo_BarDatas):
 # def _BUSL_3__NextUp__Above_BB_1S(lo_BarDatas, ts_Mark = "BB_1S"):
     
+    #debug
+    msg = "_BUSL_3__Expert__Above_BB_1S => starts -----------------------"
+                    
+    msg_Log = "[%s / %s:%d] %s" % \
+            (
+            libs.get_TimeLabel_Now()
+            , os.path.basename(libs.thisfile()), libs.linenum()
+            , msg)
+    
+    libs.write_Log(
+                msg_Log
+                , cons_fx.FPath.dpath_LogFile.value
+                , cons_fx.FPath.fname_LogFile.value
+                , 2)
+    
     '''###################
         vars
     ###################'''
@@ -2688,7 +2703,7 @@ def _BUSL_3__Expert__Above_BB_1S(lo_BarDatas):
         ###################'''
         dif_0 = e_0.price_Close - e_0.price_Open
         
-        pc_0 = e_o.price_Close
+        pc_0 = e_0.price_Close
         
         '''###################
             j1
@@ -2757,7 +2772,8 @@ def BUSL_3__Expert__Over_BB_1S(lo_BarDatas):
     '''###################
         UP-UPs : above +1S
     ###################'''
-    result = _BUSL_3__NextUp__Above_BB_1S(lo_BarDatas)
+    result = _BUSL_3__Expert__Above_BB_1S(lo_BarDatas)
+#     result = _BUSL_3__NextUp__Above_BB_1S(lo_BarDatas)
     
     # debug
     print()
