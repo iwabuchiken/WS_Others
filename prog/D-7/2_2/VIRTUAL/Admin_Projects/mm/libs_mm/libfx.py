@@ -2649,6 +2649,11 @@ def _BUSL_3__NextUp__Above_BB_1S(lo_BarDatas):
 def _BUSL_3__Expert__Above_BB_1S(lo_BarDatas):
 # def _BUSL_3__NextUp__Above_BB_1S(lo_BarDatas, ts_Mark = "BB_1S"):
     
+    '''###################
+        list ==> reverse        
+    ###################'''
+    lo_BarDatas.reverse()
+    
     #debug
     msg = "_BUSL_3__Expert__Above_BB_1S => starts -----------------------"
                     
@@ -2681,11 +2686,41 @@ def _BUSL_3__Expert__Above_BB_1S(lo_BarDatas):
     flg_Position_Taken = False
     
     '''###################
-        for-loop        
+        prep : vars
     ###################'''
     lenOf_LO_BarDatas = len(lo_BarDatas)
     
-    for i in range(0, lenOf_LO_BarDatas):
+    msg = "lenOf_LO_BarDatas => %d" %\
+                    (lenOf_LO_BarDatas)
+        
+    msg_Log = "[%s / %s:%d] %s" % \
+                    (
+                    libs.get_TimeLabel_Now()
+                    , os.path.basename(libs.thisfile()), libs.linenum()
+                    , msg)
+            
+    libs.write_Log(msg_Log
+                        , cons_fx.FPath.dpath_LogFile.value
+                        , cons_fx.FPath.fname_LogFile.value
+                        , 1)
+
+    
+    account = {
+        
+        "price_current" : -1.0
+        , "price_entry" : -1.0
+        , "price_diff" : -1.0
+        
+        , "date_current" : ""
+        , "date_entry" : ""
+        
+        }
+    
+    '''###################
+        for-loop        
+    ###################'''
+    for i in range(0, lenOf_LO_BarDatas - 1):
+#     for i in range(0, lenOf_LO_BarDatas):
         
         '''###################
             proc : 1
@@ -2697,25 +2732,285 @@ def _BUSL_3__Expert__Above_BB_1S(lo_BarDatas):
             proc : 2
         ###################'''
         e_0 = lo_BarDatas[i]
+        e_1 = lo_BarDatas[i + 1]
         
         '''###################
             proc : 3
         ###################'''
         dif_0 = e_0.price_Close - e_0.price_Open
+        dif_1 = e_1.price_Close - e_1.price_Open
         
         pc_0 = e_0.price_Close
+        pc_1 = e_1.price_Close
         
         '''###################
-            j1
+            j1 : y
         ###################'''
         if flg_Position_Taken == True : #if flg_Position_Taken == True
         
-            pass
+            #debug
+            msg = "flg_Position_Taken ==> True (%s)" % (e_0.dateTime_Local)
+                    
+#             msg_Log = "[%s / %s:%d] %s" % \
+            msg_Log = "\n[%s / %s:%d] %s" % \
+                    (
+                    libs.get_TimeLabel_Now()
+                    , os.path.basename(libs.thisfile()), libs.linenum()
+                    , msg)
+            
+            libs.write_Log(msg_Log
+                                , cons_fx.FPath.dpath_LogFile.value
+                                , cons_fx.FPath.fname_LogFile.value
+                                , 1)
         
+            '''###################
+                j4 : y
+            ###################'''
+            #debug
+            msg = "dif_0 ==> %.03f (pc_0 ==> %.03f)" %\
+                (dif_0, pc_0)
+                    
+            msg_Log = "[%s / %s:%d] %s" % \
+                            (
+                            libs.get_TimeLabel_Now()
+                            , os.path.basename(libs.thisfile()), libs.linenum()
+                            , msg)
+                    
+            libs.write_Log(msg_Log
+                                , cons_fx.FPath.dpath_LogFile.value
+                                , cons_fx.FPath.fname_LogFile.value
+                                , 1)
+
+            
+            if dif_0 > 0 : #if dif_1 > 0
+
+                '''###################
+                    j4 : y : 1
+                ###################'''
+                account['price_current'] = pc_0
+                account['price_diff'] = pc_0 - account['price_entry']
+                
+                account['date_current'] = e_0.dateTime_Local
+                
+                #debug
+                msg = "account['price_entry'] = %.03f, account['price_current'] = %.03f, account['price_diff'] = %.03f" %\
+                                (account['price_entry']
+                                 , account['price_current']
+                                 , account['price_diff']
+                                 )
+                        
+                msg_Log = "[%s / %s:%d] account updated =>\n%s" % \
+                                (
+                                libs.get_TimeLabel_Now()
+                                , os.path.basename(libs.thisfile()), libs.linenum()
+                                , msg)
+                        
+                libs.write_Log(msg_Log
+                                    , cons_fx.FPath.dpath_LogFile.value
+                                    , cons_fx.FPath.fname_LogFile.value
+                                    , 1)
+
+                
+                continue
+
+                '''###################
+                    j4 : n
+                ###################'''
+            else : #if dif_1 > 0
+            
+                '''###################
+                    j4 : n : 1
+                ###################'''
+                # get : diff
+                dif_Final = pc_0 - account['price_entry']
+
+                '''###################
+                    j4 : n : 2
+                ###################'''
+                # record data
+                msg = "profit_loss => %.03f (pc_0 = %.03f, entry = %.03f" %\
+                                (dif_Final, pc_0, account['price_entry'])
+#                 msg = "profit_loss => %.03f" %\
+#                                 (dif_Final)
+                    
+                msg_Log = "[%s / %s:%d] %s" % \
+                        (
+                        libs.get_TimeLabel_Now()
+                        , os.path.basename(libs.thisfile()), libs.linenum()
+                        , msg)
+                
+                libs.write_Log(msg_Log
+                            , cons_fx.FPath.dpath_LogFile.value
+                            , cons_fx.FPath.fname_LogFile.value
+                            , 1)
+
+                '''###################
+                    j4 : n : 3
+                ###################'''
+                # reset : flag
+                flg_Position_Taken = False
+                
+                '''###################
+                    j4 : n : 4
+                ###################'''
+                #         "price_current" : -1.0
+                #         , "price_entry" : -1.0
+                #         , "price_diff" : -1.0
+                account['price_current'] = -1.0
+                account['price_entry'] = -1.0
+                account['price_diff'] = -1.0
+                
+                continue
+
+            #/if dif_1 > 0
+
+
+        
+            '''###################
+                j1 : n
+            ###################'''
         else : #if flg_Position_Taken == True
-        
-            pass
-        
+            
+            msg = "flg_Position_Taken ==> False (%s)" % (e_0.dateTime_Local)
+#             msg = "flg_Position_Taken ==> False"
+                
+#             msg_Log = "[%s / %s:%d] %s" % \
+            msg_Log = "\n[%s / %s:%d] %s" % \
+                        (
+                        libs.get_TimeLabel_Now()
+                        , os.path.basename(libs.thisfile()), libs.linenum()
+                        , msg)
+                
+            libs.write_Log(msg_Log
+                            , cons_fx.FPath.dpath_LogFile.value
+                            , cons_fx.FPath.fname_LogFile.value
+                            , 1)
+
+            
+            '''###################
+                j2
+            ###################'''
+            cond = dif_0 > 0
+            
+            msg = "dif_0 => %.03f" %\
+                    (dif_0)
+            
+            msg_Log = "[%s / %s:%d] %s" % \
+                    (
+                    libs.get_TimeLabel_Now()
+                    , os.path.basename(libs.thisfile()), libs.linenum()
+                    , msg)
+            
+            libs.write_Log(msg_Log
+                                    , cons_fx.FPath.dpath_LogFile.value
+                                    , cons_fx.FPath.fname_LogFile.value
+                                    , 1)
+
+            
+            if cond == True : #if cond == True
+                
+                msg = "cond ==> True"
+                
+                msg_Log = "[%s / %s:%d] %s" % \
+                        (
+                        libs.get_TimeLabel_Now()
+                        , os.path.basename(libs.thisfile()), libs.linenum()
+                        , msg)
+                
+                libs.write_Log(msg_Log
+                            , cons_fx.FPath.dpath_LogFile.value
+                            , cons_fx.FPath.fname_LogFile.value
+                            , 1)
+
+                
+                '''###################
+                    j3 : y
+                ###################'''                
+                msg = "pc_0 = %.03f, e_0.bb_1S = %.03f (%s)" %\
+                        (pc_0, e_0.bb_1S, e_0.dateTime_Local)
+                
+                msg_Log = "[%s / %s:%d] %s" % \
+                        (
+                        libs.get_TimeLabel_Now()
+                        , os.path.basename(libs.thisfile()), libs.linenum()
+                        , msg)
+                
+                libs.write_Log(msg_Log
+                                , cons_fx.FPath.dpath_LogFile.value
+                                , cons_fx.FPath.fname_LogFile.value
+                                , 1)
+
+                
+                if pc_0 > e_0.bb_1S: #if pc_0 > 
+                
+                    #debug
+                    msg = "pc_0 > e_0.bb_1S"
+                    
+                    msg_Log = "[%s / %s:%d] %s" % \
+                            (
+                            libs.get_TimeLabel_Now()
+                            , os.path.basename(libs.thisfile()), libs.linenum()
+                            , msg)
+                    
+                    libs.write_Log(msg_Log
+                                , cons_fx.FPath.dpath_LogFile.value
+                                , cons_fx.FPath.fname_LogFile.value
+                                , 1)
+
+                    
+                    '''###################
+                        j3 : y : 1        
+                    ###################'''
+                    # flag ==> set
+                    flg_Position_Taken = True
+#                     flg_Position_Taken == True
+                    
+                    '''###################
+                        j3 : y : 2        
+                    ###################'''
+                    # update : account
+                    account['price_entry'] = pc_0
+                    account['price_current'] = pc_0
+                    
+                    account['date_entry'] = e_0.dateTime_Local
+                    account['date_current'] = e_0.dateTime_Local
+                    
+                    #debug
+                    msg = "account['price_entry'] = %.03f, account['price_current'] = %.03f, account['price_diff'] = %.03f account['date_entry'] = %s account['date_current'] = %s" %\
+                                    (account['price_entry']
+                                     , account['price_current']
+                                     , account['price_diff']
+                                     , account['date_entry']
+                                     , account['date_current']
+                                     )
+                            
+                    msg_Log = "[%s / %s:%d] account set =>\n%s" % \
+                                    (
+                                    libs.get_TimeLabel_Now()
+                                    , os.path.basename(libs.thisfile()), libs.linenum()
+                                    , msg)
+                            
+                    libs.write_Log(msg_Log
+                                        , cons_fx.FPath.dpath_LogFile.value
+                                        , cons_fx.FPath.fname_LogFile.value
+                                        , 1)
+                    
+                    
+                    # next index
+                    continue
+                    
+                else : #if pc_0 > 
+                
+                    continue
+                
+                #/if pc_0 > 
+                
+            else : #if cond == True
+            
+                continue
+            
+            #/if cond == True
+            
         #/if flg_Position_Taken == True
         
     #/ for i in range(0, lenOf_LO_BarDatas):

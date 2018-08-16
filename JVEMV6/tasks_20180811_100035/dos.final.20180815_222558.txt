@@ -1,0 +1,7 @@
+num of dos	6
+currency	prog	-	20180815_222558
+bk	ANY	-	20180815_222558
+bk	*money	-	20180815_222558
+bk	*relativity	-	20180815_222558
+res	cars		20180815_222558
+music	kb		20180815_222558
