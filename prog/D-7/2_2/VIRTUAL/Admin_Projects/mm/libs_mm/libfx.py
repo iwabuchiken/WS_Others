@@ -2284,6 +2284,7 @@ def _BUSL_3__NextUp(lo_BarDatas):
                     (e_0.dateTime_Local, e_1.dateTime_Local,
                      dif_0, dif_1)
              
+#             msg_Log = "[%s / %s:%d] %s" % \
             msg_Log = "[%s / %s:%d] %s" % \
                     (
                     libs.get_TimeLabel_Now()
@@ -2782,11 +2783,16 @@ def _BUSL_3__Expert__Above_BB_1S(lo_BarDatas):
                                 , 1)
 
             
-            if dif_0 > 0 : #if dif_1 > 0
+            if dif_0 > 0 : #if dif_0 > 0
 
                 '''###################
                     j4 : y : 1
                 ###################'''
+                # count
+                cntOf_Up += 1
+                cntOf_NextUp += 1
+                
+                
                 account['price_current'] = pc_0
                 account['price_diff'] = pc_0 - account['price_entry']
                 
@@ -2816,11 +2822,18 @@ def _BUSL_3__Expert__Above_BB_1S(lo_BarDatas):
                 '''###################
                     j4 : n
                 ###################'''
-            else : #if dif_1 > 0
+            else : #if dif_0 > 0
             
                 '''###################
                     j4 : n : 1
                 ###################'''
+                # count
+                if dif_0 < 0 : #if dif_0 < 0
+                
+                    cntOf_Down += 1
+                    
+                #/if dif_0 < 0
+                
                 # get : diff
                 dif_Final = pc_0 - account['price_entry']
 
@@ -2888,7 +2901,7 @@ def _BUSL_3__Expert__Above_BB_1S(lo_BarDatas):
 
             
             '''###################
-                j2
+                j2 : y
             ###################'''
             cond = dif_0 > 0
             
@@ -2909,7 +2922,11 @@ def _BUSL_3__Expert__Above_BB_1S(lo_BarDatas):
             
             if cond == True : #if cond == True
                 
-                msg = "cond ==> True"
+                # count
+                cntOf_Up += 1
+                
+                msg = "cond ==> True (dif_0 > 0)"
+#                 msg = "cond ==> True"
                 
                 msg_Log = "[%s / %s:%d] %s" % \
                         (
@@ -2943,6 +2960,12 @@ def _BUSL_3__Expert__Above_BB_1S(lo_BarDatas):
                 
                 if pc_0 > e_0.bb_1S: #if pc_0 > 
                 
+                    '''###################
+                        j3 : y : 1        
+                    ###################'''
+                    # count
+                    cntOf_NextUp_Above_BB_1S += 1
+                
                     #debug
                     msg = "pc_0 > e_0.bb_1S"
                     
@@ -2958,9 +2981,6 @@ def _BUSL_3__Expert__Above_BB_1S(lo_BarDatas):
                                 , 1)
 
                     
-                    '''###################
-                        j3 : y : 1        
-                    ###################'''
                     # flag ==> set
                     flg_Position_Taken = True
 #                     flg_Position_Taken == True
@@ -2999,13 +3019,40 @@ def _BUSL_3__Expert__Above_BB_1S(lo_BarDatas):
                     # next index
                     continue
                     
-                else : #if pc_0 > 
-                
+                else : #if pc_0 > e_0.bb_1S 
+                    
+                    #debug
+                    msg = "pc_0 ==> under bb_1S (%s : pc_0 = %.03f / bb_1S =  = %.03f" %\
+                                    (
+                                        e_0.dateTime_Local, pc_0, e_0.bb_1S
+                                     )
+                            
+                    msg_Log = "[%s / %s:%d] %s / flg_Position_Taken ==> stays false (%s)" % \
+                                    (
+                                    libs.get_TimeLabel_Now()
+                                    , os.path.basename(libs.thisfile()), libs.linenum()
+                                    , flg_Position_Taken
+                                    , msg)
+                            
+                    libs.write_Log(msg_Log
+                                        , cons_fx.FPath.dpath_LogFile.value
+                                        , cons_fx.FPath.fname_LogFile.value
+                                        , 1)
+                    
                     continue
                 
                 #/if pc_0 > 
                 
             else : #if cond == True
+                
+                # count
+                if dif_0 < 0 : #if dif_0 < 0
+                
+                    cntOf_Down += 1
+                    
+                #/if dif_0 < 0
+                
+                
             
                 continue
             
@@ -3015,6 +3062,24 @@ def _BUSL_3__Expert__Above_BB_1S(lo_BarDatas):
         
     #/ for i in range(0, lenOf_LO_BarDatas):
     
+    '''###################
+        rpeort
+    ###################'''
+#     msg = "cntOf_Up = %d, cntOf_Down = %d, cntOf_NextUp = %d, cntOf_NextUp_Above_BB_1S = %d" %\
+    msg = "cntOf_Up = %d, cntOf_Down = %d, cntOf_NextUp(Up,above 1S + Up) = %d, cntOf_NextUp_Above_BB_1S = %d" %\
+                        (cntOf_Up, cntOf_Down, cntOf_NextUp, cntOf_NextUp_Above_BB_1S)
+                            
+    msg_Log = "[%s / %s:%d] %s" % \
+                                    (
+                                    libs.get_TimeLabel_Now()
+                                    , os.path.basename(libs.thisfile()), libs.linenum()
+                                    , msg)
+                            
+    libs.write_Log(msg_Log
+                                        , cons_fx.FPath.dpath_LogFile.value
+                                        , cons_fx.FPath.fname_LogFile.value
+                                        , 1)
+           
     '''###################
         return        
     ###################'''

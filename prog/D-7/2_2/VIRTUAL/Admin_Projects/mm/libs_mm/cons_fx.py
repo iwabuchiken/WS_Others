@@ -68,7 +68,8 @@ class FPath(Enum):
 #     BUSL_3_FNAME_PEAK_LIST = "44_3.2_11_file-io.USDJPY.Period-H1.Days-6000.Bars-144000.20180813_113150.csv"
 #     BUSL_3_FNAME_PEAK_LIST = "44_3.2_11_file-io.EURJPY.Period-H1.Days-5000.Bars-120000.20180813_115015.csv"
 #     BUSL_3_FNAME_PEAK_LIST = "44_3.2_11_file-io.EURJPY.Period-M5.Days-25000.Bars-25000.20180813_120112.csv"
-    BUSL_3_FNAME_PEAK_LIST = "44_3.2_5_file-io.USDJPY.Period-M5.Days-26000.Bars-26000.20180721_160222.SHRINK-100.csv"
+#     BUSL_3_FNAME_PEAK_LIST = "44_3.2_5_file-io.USDJPY.Period-M5.Days-26000.Bars-26000.20180721_160222.SHRINK-100.csv"
+    BUSL_3_FNAME_PEAK_LIST = "44_3.2_11_file-io.USDJPY.Period-H1.Days-6000.Bars-144000.20180813_113150.SHRINK-100.csv"
     BUSL_3_DPATH_PEAK_LIST = "C:\\WORKS_2\\WS\\WS_Others\\prog\\D-7\\2_2\\VIRTUAL\\Admin_Projects\\curr\\data\\csv_raw"
     
 class Label_ColNames(Enum):
@@ -140,10 +141,17 @@ class ParamConstants(Enum):
     PARAM_BUSL3_CMD_NEXTUP = "next_up"
     PARAM_BUSL3_CMD_NEXTUP_ABOVE_BB_MAIN = "next_up_above_bb_main"
     
+    '''######################################
+        expert : busl3
+    ######################################'''
     '''###################
         expert : busl3 : 1 : over BB.1S
     ###################'''
     PARAM_BUSL3_CMD_EXPERT_1_OVER_BB_1S = "expert_busl3___1_over_bb_1s"
+    '''###################
+        expert : busl3 : 2 : up-up, down-down
+    ###################'''
+    PARAM_BUSL3_CMD_EXPERT_2_UPUPS_DOWNDOWNS = "expert_busl3___2_upups_downdowns"
     
     
     

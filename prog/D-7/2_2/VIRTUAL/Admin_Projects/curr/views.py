@@ -2287,7 +2287,8 @@ def tester_BuyUps_SellLows(request):
     '''###################
         log
     ###################'''
-    msg = "\nstarting : tester_BuyUps_SellLows ======================="
+    msg = "\n\nstarting : tester_BuyUps_SellLows ======================="
+#     msg = "\nstarting : tester_BuyUps_SellLows ======================="
                 
     msg_Log = "[%s / %s:%d] %s" % \
             (
