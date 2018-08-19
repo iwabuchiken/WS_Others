@@ -2681,7 +2681,11 @@ def _BUSL_3__Expert__Above_BB_1S(lo_BarDatas):
     cntOf_Down = 0
     cntOf_Flat = 0
     
+    cntOf_Entries = 0
+    
     cntOf_Total = 0
+    
+    sumOf_Profit_Loss = 0.0
     
     # position taken?
     flg_Position_Taken = False
@@ -2749,38 +2753,38 @@ def _BUSL_3__Expert__Above_BB_1S(lo_BarDatas):
         ###################'''
         if flg_Position_Taken == True : #if flg_Position_Taken == True
         
-            #debug
-            msg = "flg_Position_Taken ==> True (%s)" % (e_0.dateTime_Local)
-                    
-#             msg_Log = "[%s / %s:%d] %s" % \
-            msg_Log = "\n[%s / %s:%d] %s" % \
-                    (
-                    libs.get_TimeLabel_Now()
-                    , os.path.basename(libs.thisfile()), libs.linenum()
-                    , msg)
-            
-            libs.write_Log(msg_Log
-                                , cons_fx.FPath.dpath_LogFile.value
-                                , cons_fx.FPath.fname_LogFile.value
-                                , 1)
+#             #debug
+#             msg = "flg_Position_Taken ==> True (%s)" % (e_0.dateTime_Local)
+#                     
+# #             msg_Log = "[%s / %s:%d] %s" % \
+#             msg_Log = "\n[%s / %s:%d] %s" % \
+#                     (
+#                     libs.get_TimeLabel_Now()
+#                     , os.path.basename(libs.thisfile()), libs.linenum()
+#                     , msg)
+#             
+#             libs.write_Log(msg_Log
+#                                 , cons_fx.FPath.dpath_LogFile.value
+#                                 , cons_fx.FPath.fname_LogFile.value
+#                                 , 1)
         
             '''###################
                 j4 : y
             ###################'''
-            #debug
-            msg = "dif_0 ==> %.03f (pc_0 ==> %.03f)" %\
-                (dif_0, pc_0)
-                    
-            msg_Log = "[%s / %s:%d] %s" % \
-                            (
-                            libs.get_TimeLabel_Now()
-                            , os.path.basename(libs.thisfile()), libs.linenum()
-                            , msg)
-                    
-            libs.write_Log(msg_Log
-                                , cons_fx.FPath.dpath_LogFile.value
-                                , cons_fx.FPath.fname_LogFile.value
-                                , 1)
+#             #debug
+#             msg = "dif_0 ==> %.03f (pc_0 ==> %.03f)" %\
+#                 (dif_0, pc_0)
+#                     
+#             msg_Log = "[%s / %s:%d] %s" % \
+#                             (
+#                             libs.get_TimeLabel_Now()
+#                             , os.path.basename(libs.thisfile()), libs.linenum()
+#                             , msg)
+#                     
+#             libs.write_Log(msg_Log
+#                                 , cons_fx.FPath.dpath_LogFile.value
+#                                 , cons_fx.FPath.fname_LogFile.value
+#                                 , 1)
 
             
             if dif_0 > 0 : #if dif_0 > 0
@@ -2840,6 +2844,9 @@ def _BUSL_3__Expert__Above_BB_1S(lo_BarDatas):
                 '''###################
                     j4 : n : 2
                 ###################'''
+                # profit_loss --> sum up
+                sumOf_Profit_Loss += dif_Final
+                
                 # record data
                 msg = "profit_loss => %.03f (pc_0 = %.03f, entry = %.03f" %\
                                 (dif_Final, pc_0, account['price_entry'])
@@ -2884,78 +2891,78 @@ def _BUSL_3__Expert__Above_BB_1S(lo_BarDatas):
             ###################'''
         else : #if flg_Position_Taken == True
             
-            msg = "flg_Position_Taken ==> False (%s)" % (e_0.dateTime_Local)
-#             msg = "flg_Position_Taken ==> False"
-                
-#             msg_Log = "[%s / %s:%d] %s" % \
-            msg_Log = "\n[%s / %s:%d] %s" % \
-                        (
-                        libs.get_TimeLabel_Now()
-                        , os.path.basename(libs.thisfile()), libs.linenum()
-                        , msg)
-                
-            libs.write_Log(msg_Log
-                            , cons_fx.FPath.dpath_LogFile.value
-                            , cons_fx.FPath.fname_LogFile.value
-                            , 1)
+#             msg = "flg_Position_Taken ==> False (%s)" % (e_0.dateTime_Local)
+# #             msg = "flg_Position_Taken ==> False"
+#                 
+# #             msg_Log = "[%s / %s:%d] %s" % \
+#             msg_Log = "\n[%s / %s:%d] %s" % \
+#                         (
+#                         libs.get_TimeLabel_Now()
+#                         , os.path.basename(libs.thisfile()), libs.linenum()
+#                         , msg)
+#                 
+#             libs.write_Log(msg_Log
+#                             , cons_fx.FPath.dpath_LogFile.value
+#                             , cons_fx.FPath.fname_LogFile.value
+#                             , 1)
 
             
             '''###################
                 j2 : y
             ###################'''
             cond = dif_0 > 0
-            
-            msg = "dif_0 => %.03f" %\
-                    (dif_0)
-            
-            msg_Log = "[%s / %s:%d] %s" % \
-                    (
-                    libs.get_TimeLabel_Now()
-                    , os.path.basename(libs.thisfile()), libs.linenum()
-                    , msg)
-            
-            libs.write_Log(msg_Log
-                                    , cons_fx.FPath.dpath_LogFile.value
-                                    , cons_fx.FPath.fname_LogFile.value
-                                    , 1)
+#             
+#             msg = "dif_0 => %.03f" %\
+#                     (dif_0)
+#             
+#             msg_Log = "[%s / %s:%d] %s" % \
+#                     (
+#                     libs.get_TimeLabel_Now()
+#                     , os.path.basename(libs.thisfile()), libs.linenum()
+#                     , msg)
+#             
+#             libs.write_Log(msg_Log
+#                                     , cons_fx.FPath.dpath_LogFile.value
+#                                     , cons_fx.FPath.fname_LogFile.value
+#                                     , 1)
 
             
             if cond == True : #if cond == True
                 
-                # count
-                cntOf_Up += 1
-                
-                msg = "cond ==> True (dif_0 > 0)"
-#                 msg = "cond ==> True"
-                
-                msg_Log = "[%s / %s:%d] %s" % \
-                        (
-                        libs.get_TimeLabel_Now()
-                        , os.path.basename(libs.thisfile()), libs.linenum()
-                        , msg)
-                
-                libs.write_Log(msg_Log
-                            , cons_fx.FPath.dpath_LogFile.value
-                            , cons_fx.FPath.fname_LogFile.value
-                            , 1)
+#                 # count
+#                 cntOf_Up += 1
+#                 
+#                 msg = "cond ==> True (dif_0 > 0)"
+# #                 msg = "cond ==> True"
+#                 
+#                 msg_Log = "[%s / %s:%d] %s" % \
+#                         (
+#                         libs.get_TimeLabel_Now()
+#                         , os.path.basename(libs.thisfile()), libs.linenum()
+#                         , msg)
+#                 
+#                 libs.write_Log(msg_Log
+#                             , cons_fx.FPath.dpath_LogFile.value
+#                             , cons_fx.FPath.fname_LogFile.value
+#                             , 1)
 
                 
                 '''###################
                     j3 : y
                 ###################'''                
-                msg = "pc_0 = %.03f, e_0.bb_1S = %.03f (%s)" %\
-                        (pc_0, e_0.bb_1S, e_0.dateTime_Local)
-                
-                msg_Log = "[%s / %s:%d] %s" % \
-                        (
-                        libs.get_TimeLabel_Now()
-                        , os.path.basename(libs.thisfile()), libs.linenum()
-                        , msg)
-                
-                libs.write_Log(msg_Log
-                                , cons_fx.FPath.dpath_LogFile.value
-                                , cons_fx.FPath.fname_LogFile.value
-                                , 1)
+#                 msg = "pc_0 = %.03f, e_0.bb_1S = %.03f (%s)" %\
+#                         (pc_0, e_0.bb_1S, e_0.dateTime_Local)
+#                 
+#                 msg_Log = "[%s / %s:%d] %s" % \
+#                         (
+#                         libs.get_TimeLabel_Now()
+#                         , os.path.basename(libs.thisfile()), libs.linenum()
+#                         , msg)
+#                 
+#                 libs.write_Log(msg_Log
+#                                 , cons_fx.FPath.dpath_LogFile.value
+#                                 , cons_fx.FPath.fname_LogFile.value
+#                                 , 1)
 
                 
                 if pc_0 > e_0.bb_1S: #if pc_0 > 
@@ -2966,24 +2973,27 @@ def _BUSL_3__Expert__Above_BB_1S(lo_BarDatas):
                     # count
                     cntOf_NextUp_Above_BB_1S += 1
                 
-                    #debug
-                    msg = "pc_0 > e_0.bb_1S"
-                    
-                    msg_Log = "[%s / %s:%d] %s" % \
-                            (
-                            libs.get_TimeLabel_Now()
-                            , os.path.basename(libs.thisfile()), libs.linenum()
-                            , msg)
-                    
-                    libs.write_Log(msg_Log
-                                , cons_fx.FPath.dpath_LogFile.value
-                                , cons_fx.FPath.fname_LogFile.value
-                                , 1)
+#                     #debug
+#                     msg = "pc_0 > e_0.bb_1S"
+#                     
+#                     msg_Log = "[%s / %s:%d] %s" % \
+#                             (
+#                             libs.get_TimeLabel_Now()
+#                             , os.path.basename(libs.thisfile()), libs.linenum()
+#                             , msg)
+#                     
+#                     libs.write_Log(msg_Log
+#                                 , cons_fx.FPath.dpath_LogFile.value
+#                                 , cons_fx.FPath.fname_LogFile.value
+#                                 , 1)
 
                     
                     # flag ==> set
                     flg_Position_Taken = True
 #                     flg_Position_Taken == True
+                    
+                    # count
+                    cntOf_Entries += 1
                     
                     '''###################
                         j3 : y : 2        
@@ -3021,23 +3031,23 @@ def _BUSL_3__Expert__Above_BB_1S(lo_BarDatas):
                     
                 else : #if pc_0 > e_0.bb_1S 
                     
-                    #debug
-                    msg = "pc_0 ==> under bb_1S (%s : pc_0 = %.03f / bb_1S =  = %.03f" %\
-                                    (
-                                        e_0.dateTime_Local, pc_0, e_0.bb_1S
-                                     )
-                            
-                    msg_Log = "[%s / %s:%d] %s / flg_Position_Taken ==> stays false (%s)" % \
-                                    (
-                                    libs.get_TimeLabel_Now()
-                                    , os.path.basename(libs.thisfile()), libs.linenum()
-                                    , flg_Position_Taken
-                                    , msg)
-                            
-                    libs.write_Log(msg_Log
-                                        , cons_fx.FPath.dpath_LogFile.value
-                                        , cons_fx.FPath.fname_LogFile.value
-                                        , 1)
+#                     #debug
+#                     msg = "pc_0 ==> under bb_1S (%s : pc_0 = %.03f / bb_1S =  = %.03f" %\
+#                                     (
+#                                         e_0.dateTime_Local, pc_0, e_0.bb_1S
+#                                      )
+#                             
+#                     msg_Log = "[%s / %s:%d] %s / flg_Position_Taken ==> stays false (%s)" % \
+#                                     (
+#                                     libs.get_TimeLabel_Now()
+#                                     , os.path.basename(libs.thisfile()), libs.linenum()
+#                                     , flg_Position_Taken
+#                                     , msg)
+#                             
+#                     libs.write_Log(msg_Log
+#                                         , cons_fx.FPath.dpath_LogFile.value
+#                                         , cons_fx.FPath.fname_LogFile.value
+#                                         , 1)
                     
                     continue
                 
@@ -3063,11 +3073,13 @@ def _BUSL_3__Expert__Above_BB_1S(lo_BarDatas):
     #/ for i in range(0, lenOf_LO_BarDatas):
     
     '''###################
-        rpeort
+        report
     ###################'''
 #     msg = "cntOf_Up = %d, cntOf_Down = %d, cntOf_NextUp = %d, cntOf_NextUp_Above_BB_1S = %d" %\
-    msg = "cntOf_Up = %d, cntOf_Down = %d, cntOf_NextUp(Up,above 1S + Up) = %d, cntOf_NextUp_Above_BB_1S = %d" %\
-                        (cntOf_Up, cntOf_Down, cntOf_NextUp, cntOf_NextUp_Above_BB_1S)
+#     msg = "cntOf_Up = %d, cntOf_Down = %d, cntOf_NextUp(Up,above 1S + Up) = %d, cntOf_NextUp_Above_BB_1S = %d" %\
+    msg = "cntOf_Up = %d, cntOf_Down = %d, cntOf_NextUp(Up,above 1S + Up) = %d, cntOf_NextUp_Above_BB_1S = %d, sumOf_Profit_Loss = %.03f, cntOf_Entries = %d" %\
+                        (cntOf_Up, cntOf_Down, cntOf_NextUp, cntOf_NextUp_Above_BB_1S, sumOf_Profit_Loss, cntOf_Entries)
+#                         (cntOf_Up, cntOf_Down, cntOf_NextUp, cntOf_NextUp_Above_BB_1S)
                             
     msg_Log = "[%s / %s:%d] %s" % \
                                     (
